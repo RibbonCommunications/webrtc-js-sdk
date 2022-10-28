@@ -13,6 +13,7 @@ Kandy.js change log.
   - This issue was introduced in the v5.0 release.
 - Fixed the `directory:change` event to contain the proper payload so that `Address Book & Directory` search results can be properly obtained by the application from this event. `KJS-1151`
   - This issue was introduced in the v5.0 release.
+- Fixed a Call issue where where the music on hold would not be received during slow-start negotiations. `KJS-1162`
 
 ## 5.2.0 - 2022-09-30
 
