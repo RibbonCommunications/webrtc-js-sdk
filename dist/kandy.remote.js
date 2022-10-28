@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.remote.js
- * Version: 5.3.0-beta.954
+ * Version: 5.3.0-beta.955
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -96,7 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 563);
+/******/ 	return __webpack_require__(__webpack_require__.s = 564);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1579,6 +1579,12 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = { "default": __webpack_require__(172), __esModule: true };
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -1586,7 +1592,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -1714,12 +1720,6 @@ function defer() {
   });
   return d;
 }
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(172), __esModule: true };
 
 /***/ }),
 /* 13 */
@@ -5434,7 +5434,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.3.0-beta.954';
+  return '5.3.0-beta.955';
 }
 
 /***/ }),
@@ -6590,43 +6590,43 @@ exports.convertMedia = convertMedia;
 exports.convertSession = convertSession;
 exports.convertLogger = convertLogger;
 
-var _deviceManager = __webpack_require__(565);
+var _deviceManager = __webpack_require__(566);
 
 var _deviceManager2 = _interopRequireDefault(_deviceManager);
 
-var _mediaManager = __webpack_require__(566);
+var _mediaManager = __webpack_require__(567);
 
 var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
-var _sessionManager = __webpack_require__(567);
+var _sessionManager = __webpack_require__(568);
 
 var _sessionManager2 = _interopRequireDefault(_sessionManager);
 
-var _trackManager = __webpack_require__(568);
+var _trackManager = __webpack_require__(569);
 
 var _trackManager2 = _interopRequireDefault(_trackManager);
 
-var _logManager = __webpack_require__(569);
+var _logManager = __webpack_require__(570);
 
 var _logManager2 = _interopRequireDefault(_logManager);
 
-var _webrtcManager = __webpack_require__(570);
+var _webrtcManager = __webpack_require__(571);
 
 var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
 
-var _media = __webpack_require__(571);
+var _media = __webpack_require__(572);
 
 var _media2 = _interopRequireDefault(_media);
 
-var _session = __webpack_require__(572);
+var _session = __webpack_require__(573);
 
 var _session2 = _interopRequireDefault(_session);
 
-var _track = __webpack_require__(573);
+var _track = __webpack_require__(574);
 
 var _track2 = _interopRequireDefault(_track);
 
-var _logger = __webpack_require__(574);
+var _logger = __webpack_require__(575);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -9226,7 +9226,7 @@ var _reduxSaga = __webpack_require__(27);
 
 var _actions = __webpack_require__(25);
 
-var _utils = __webpack_require__(11);
+var _utils = __webpack_require__(12);
 
 /**
  * Sets up event listeners for a Track's events.
@@ -9308,7 +9308,7 @@ exports.setListeners = setListeners;
 
 var _actions = __webpack_require__(25);
 
-var _utils = __webpack_require__(11);
+var _utils = __webpack_require__(12);
 
 var _effects = __webpack_require__(6);
 
@@ -9401,7 +9401,7 @@ exports.setListeners = setListeners;
 
 var _actions = __webpack_require__(25);
 
-var _utils = __webpack_require__(11);
+var _utils = __webpack_require__(12);
 
 var _effects = __webpack_require__(6);
 
@@ -13981,7 +13981,7 @@ exports.setListeners = setListeners;
 
 var _actions = __webpack_require__(25);
 
-var _utils = __webpack_require__(11);
+var _utils = __webpack_require__(12);
 
 var _effects = __webpack_require__(6);
 
@@ -18407,7 +18407,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -18507,7 +18507,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -18613,7 +18613,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -18752,7 +18752,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -18837,7 +18837,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -18993,7 +18993,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -19104,7 +19104,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -19647,7 +19647,7 @@ var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -20216,7 +20216,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -21298,7 +21298,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.WEBRTC_DEVICE_KINDS = undefined;
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -21656,7 +21656,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(12);
+var _promise = __webpack_require__(11);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -22103,7 +22103,8 @@ function replyChannel(channel) {
 /* 560 */,
 /* 561 */,
 /* 562 */,
-/* 563 */
+/* 563 */,
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22113,15 +22114,15 @@ var _objectWithoutProperties2 = __webpack_require__(71);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _clientProxy = __webpack_require__(564);
+var _clientProxy = __webpack_require__(565);
 
 var _clientProxy2 = _interopRequireDefault(_clientProxy);
 
-var _media = __webpack_require__(576);
+var _media = __webpack_require__(577);
 
 var mediaApis = _interopRequireWildcard(_media);
 
-var _events = __webpack_require__(577);
+var _events = __webpack_require__(578);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -22227,7 +22228,7 @@ remoteClient.create = remoteClient;
 module.exports = remoteClient;
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22242,7 +22243,7 @@ var _converters = __webpack_require__(103);
 
 var _converters2 = _interopRequireDefault(_converters);
 
-var _webrtcEvents = __webpack_require__(575);
+var _webrtcEvents = __webpack_require__(576);
 
 var _webrtcEvents2 = _interopRequireDefault(_webrtcEvents);
 
@@ -22456,7 +22457,7 @@ function isWebrtcCommand(data) {
 }
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22505,7 +22506,7 @@ exports.default = async function deviceManager(webRTC, command) {
 };
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22574,7 +22575,7 @@ exports.default = async function mediaManager(webRTC, command) {
 };
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22618,7 +22619,7 @@ exports.default = async function sessionManager(webRTC, command) {
 };
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22659,7 +22660,7 @@ exports.default = async function trackManager(webRTC, command) {
 };
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22709,7 +22710,7 @@ exports.default = async function logManager(webRTC, command) {
 };
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22737,7 +22738,7 @@ exports.default = async function webrtcManager(webRTC, command) {
 };
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22778,7 +22779,7 @@ exports.default = async function media(webRTC, command) {
 };
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22831,7 +22832,7 @@ exports.default = async function session(webRTC, command) {
 };
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22870,7 +22871,7 @@ exports.default = async function track(webRTC, command) {
 };
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22917,7 +22918,7 @@ exports.default = async function logger(webRTC, command) {
 };
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23005,7 +23006,7 @@ function setupListeners(webRTC, emit) {
 }
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23190,7 +23191,7 @@ function removeTracks(webRTC, trackIds, cssSelector) {
 }
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
