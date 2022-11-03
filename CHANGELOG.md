@@ -7,6 +7,11 @@ Kandy.js change log.
 
 ## 5.4.0 - beta
 
+### Added
+
+- Updated the `subscription:error` event documentation with some more information on possible errors. `KJS-916`
+- Added a new "Handling Subscription Errors" tutorial section covering recommended approaches for handling subscription-related errors. `KJS-917`
+
 ## 5.3.0 - 2022-10-28
 
 ### Fixed

@@ -51960,6 +51960,369 @@
                     "value": " API."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Below are some common errors related to service subscriptions."
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:1"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Authorization failed with server. Please check credentials. Status code: 4`\" - Invalid credentials."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:3"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"No subscription found for \"X\", can't unsubscribe\" - The requested service is not currently subscribed."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:3"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"No subscription found, can't unsubscribe.\" - There are no active subscriptions."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 19\" - Too many active sessions with the requested user."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 37\" - Invalid service string."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 38\" - Invalid characters in client correlator."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 39\" - Session does not exist anymore."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:12"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - \"No services found in configuration.\" - No services found in SDK configuration."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The following errors indicate an issue with the user account or temporary backend issue. They may require help from support or a delay before being retried."
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 9\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 17\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 26\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 27\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 54\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 62\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "  - \"Failed to subscribe user. Status Code 63\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "authentication:13"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - \"Failed to subscribe user. Status Code 53\""
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "For a more detailed look into subscription errors and handling recommendations,\nplease refer to the \"Handling Subscription Errors\" tutorial."
+                  }
+                ]
               }
             ]
           },
@@ -51967,23 +52330,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 30,
               "type": null
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 6
+              "lineNumber": 31
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 32,
+              "name": "link_subscription"
             },
             {
               "title": "event",
               "description": "subscription:error",
-              "lineNumber": 7
+              "lineNumber": 33
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 34,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51993,7 +52362,7 @@
             {
               "title": "param",
               "description": "A Basic error object, representing the error that occurred.",
-              "lineNumber": 9,
+              "lineNumber": 35,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -52003,22 +52372,22 @@
           ],
           "loc": {
             "start": {
-              "line": 18,
+              "line": 30,
               "column": 0
             },
             "end": {
-              "line": 28,
+              "line": 66,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 29,
+                "line": 67,
                 "column": 0
               },
               "end": {
-                "line": 29,
+                "line": 67,
                 "column": 45
               }
             },
@@ -52031,7 +52400,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 8,
+              "lineNumber": 34,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -52040,7 +52409,7 @@
                 {
                   "title": "param",
                   "name": "params.error",
-                  "lineNumber": 9,
+                  "lineNumber": 35,
                   "description": {
                     "type": "root",
                     "children": [
@@ -52179,22 +52548,22 @@
           ],
           "loc": {
             "start": {
-              "line": 31,
+              "line": 69,
               "column": 0
             },
             "end": {
-              "line": 44,
+              "line": 82,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 45,
+                "line": 83,
                 "column": 0
               },
               "end": {
-                "line": 45,
+                "line": 83,
                 "column": 45
               }
             },

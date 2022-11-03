@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.4.0-beta.960
+ * Version: 5.4.0-beta.961
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.4.0-beta.960';
+  return '5.4.0-beta.961';
 }
 
 /***/ }),
@@ -41858,6 +41858,44 @@ const SUB_CHANGE = exports.SUB_CHANGE = 'subscription:change';
  *    {@link services.getSubscriptions} API.
  * @public
  * @memberof services
+ * @requires cpaas_subscription
+ * @event subscription:error
+ * @param {Object} params
+ * @param {Object} params.error A Basic error object, representing the error that occurred.
+ */
+/**
+ * An error occurred during a subscription operation.
+ *
+ * The subscription information can be retrieved using the
+ *    {@link services.getSubscriptions} API.
+ *
+ * Below are some common errors related to service subscriptions.
+ *
+ *  * `authentication:1`  - "Authorization failed with server. Please check credentials. Status code: 4`" - Invalid credentials.
+ *  * `authentication:3`  - "No subscription found for "X", can't unsubscribe" - The requested service is not currently subscribed.
+ *  * `authentication:3`  - "No subscription found, can't unsubscribe." - There are no active subscriptions.
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 19" - Too many active sessions with the requested user.
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 37" - Invalid service string.
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 38" - Invalid characters in client correlator.
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 39" - Session does not exist anymore.
+ *  * `authentication:12` - "No services found in configuration." - No services found in SDK configuration.
+ *
+ * The following errors indicate an issue with the user account or temporary backend issue. They may require help from support or a delay before being retried.
+ *
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 9"
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 17"
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 26"
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 27"
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 54"
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 62"
+ *  * `authentication:4`  - "Failed to subscribe user. Status Code 63"
+ *  * `authentication:13` - "Failed to subscribe user. Status Code 53"
+ *
+ *  For a more detailed look into subscription errors and handling recommendations,
+ *   please refer to the "Handling Subscription Errors" tutorial.
+ * @public
+ * @memberof services
+ * @requires link_subscription
  * @event subscription:error
  * @param {Object} params
  * @param {Object} params.error A Basic error object, representing the error that occurred.

@@ -13,6 +13,10 @@
   description: # Connecting and Disconnecting
   link: /quickstarts/javascript/newLink/User%20Connect
 
+- name: Handling Subscription Errors
+  description: # Subscription Errors
+  link: /quickstarts/javascript/newLink/Handling%20Subscription%20Errors
+
 - name: Call States
   description: # Call States
   link: /quickstarts/javascript/newLink/Call%20States
