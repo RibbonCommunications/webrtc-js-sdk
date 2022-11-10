@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.4.0-beta.963
+ * Version: 5.4.0-beta.964
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.4.0-beta.963';
+  return '5.4.0-beta.964';
 }
 
 /***/ }),
@@ -25720,10 +25720,16 @@ function replyChannel(channel) {
 
     // Determine how the message needs to be handled.
     if (messageId && sentMessages[messageId]) {
-      // If the message has an ID from a sent message, then it is a reply to
-      //    that message. Resolve the promise associated with it.
-      log.debug(`Received reply from message ${messageId}.`);
-      sentMessages[messageId].resolve(data);
+      if (sentMessages[messageId].isExpired) {
+        // If the reply came after the time-out, ignore the message.
+        log.debug(`Received reply from timed-out message ${messageId}. Ignoring.`);
+        delete sentMessages[messageId];
+      } else {
+        // If the message has an ID from a sent message, then it is a reply to
+        //    that message. Resolve the promise associated with it.
+        log.debug(`Received reply from message ${messageId}.`);
+        sentMessages[messageId].resolve(data);
+      }
     } else if (messageId && !sentMessages[messageId]) {
       // If the message has an ID that we don't know about, then the application
       //    will need to handle it.
@@ -25749,7 +25755,7 @@ function replyChannel(channel) {
    * @method send
    * @param {string} messageId A unique ID to track the sent message.
    * @param {Object} data
-   * @param {Function} callback Function called when a reply is received.
+   * @param {Function} [callback] Function called when a reply is received.
    */
   api.send = (messageId, data, callback) => {
     if (sentMessages[messageId]) {
@@ -25763,24 +25769,45 @@ function replyChannel(channel) {
     const message = {
       data,
       messageId
+    };
 
+    if (callback) {
+      // If there is a callback function, then a reply is expected.
       // Wrap `send` is a promise so that we can correlate receiving a reply
       //    to the callback.
-    };new _promise2.default(resolve => {
-      // Store `resolve` so we can call it call it when we receive a reply.
-      sentMessages[messageId] = {
-        resolve
-        // Send the message over the channel.
-      };log.debug(`Sending new message ${messageId}.`);
-      channel.send(message);
-    }).then(data => {
-      // The message received a reply, so remove the reference.
-      delete sentMessages[messageId];
+      new _promise2.default(resolve => {
+        // Race receiving the reply against a time-out.
+        // 12s was chosen to be slightly longer than a valid WebRTC operation
+        //    timeout (collecting ICE candidates can take 10s).
+        const timeoutId = setTimeout(() => {
+          log.debug(`Message ${messageId} timed-out. Failing operation.`);
+          sentMessages[messageId].isExpired = true;
+          callback(null, new Error('Operation timed-out; no reply from other side of channel.'));
+        }, 12000);
 
-      if (typeof callback === 'function') {
-        callback(data);
-      }
-    });
+        // Store `resolve` so we can call it call it when we receive a reply.
+        sentMessages[messageId] = {
+          resolve,
+          timeoutId,
+          isExpired: false
+
+          // Send the message over the channel.
+        };log.debug(`Sending new message ${messageId} with reply expected.`);
+        channel.send(message);
+      }).then(data => {
+        // The message received a reply, so remove the reference.
+        clearTimeout(sentMessages[messageId].timeoutId);
+        delete sentMessages[messageId];
+
+        if (typeof callback === 'function') {
+          callback(data);
+        }
+      });
+    } else {
+      // Send the message over the channel.
+      log.debug(`Sending new message ${messageId}.`);
+      channel.send(message);
+    }
   };
 
   /**
@@ -40338,9 +40365,11 @@ function initializeProxy(webRTC) {
 
     return new _promise2.default(resolve => {
       if (!base.clientReady && base.channel) {
-        const callback = data => {
+        const callback = (data, error) => {
           log.debug('Received initialize response.', data);
-          if (data.initialized && data.remoteVersion === version) {
+          if (error) {
+            resolve({ error });
+          } else if (data.initialized && data.remoteVersion === version) {
             // The Client is now ready.
             base.clientReady = true;
             resolve({ browser: data.browser });
@@ -40495,7 +40524,7 @@ exports.default = function (base, actualManager) {
                *    until the promise resolves.
                */
               return new _promise2.default((resolve, reject) => {
-                function callback(data) {
+                function callback(data, error) {
                   log.debug(`Received manager ${operation.operation} response (${messageId}).`, data);
 
                   /**
@@ -40526,7 +40555,9 @@ exports.default = function (base, actualManager) {
                     }
                   }
 
-                  if ((0, _fp.isArray)(data)) {
+                  if (error) {
+                    reject(error);
+                  } else if ((0, _fp.isArray)(data)) {
                     const proxies = data.map(parseData);
                     resolve(proxies);
                   } else {
@@ -40684,8 +40715,8 @@ function modelProxy(base, channel) {
                * Since sagas `yield` on these API calls, they will also wait
                *    until the promise resolves.
                */
-            };return new _promise2.default(resolve => {
-              function callback(data) {
+            };return new _promise2.default((resolve, reject) => {
+              function callback(data, error) {
                 log.debug(`Received model ${operation.operation} response (${messageId}).`, data);
                 if (operation.operation === 'getStats') {
                   // If-block required for https://jira.rbbn.com/browse/KAA-2056
@@ -40715,7 +40746,9 @@ function modelProxy(base, channel) {
                   }
                 }
 
-                if (Array.isArray(data)) {
+                if (error) {
+                  reject(error);
+                } else if (Array.isArray(data)) {
                   const proxies = data.map(parseData);
                   resolve(proxies);
                 } else {

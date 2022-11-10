@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.remote.js
- * Version: 5.4.0-beta.963
+ * Version: 5.4.0-beta.964
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5434,7 +5434,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.4.0-beta.963';
+  return '5.4.0-beta.964';
 }
 
 /***/ }),
@@ -21726,10 +21726,16 @@ function replyChannel(channel) {
 
     // Determine how the message needs to be handled.
     if (messageId && sentMessages[messageId]) {
-      // If the message has an ID from a sent message, then it is a reply to
-      //    that message. Resolve the promise associated with it.
-      log.debug(`Received reply from message ${messageId}.`);
-      sentMessages[messageId].resolve(data);
+      if (sentMessages[messageId].isExpired) {
+        // If the reply came after the time-out, ignore the message.
+        log.debug(`Received reply from timed-out message ${messageId}. Ignoring.`);
+        delete sentMessages[messageId];
+      } else {
+        // If the message has an ID from a sent message, then it is a reply to
+        //    that message. Resolve the promise associated with it.
+        log.debug(`Received reply from message ${messageId}.`);
+        sentMessages[messageId].resolve(data);
+      }
     } else if (messageId && !sentMessages[messageId]) {
       // If the message has an ID that we don't know about, then the application
       //    will need to handle it.
@@ -21755,7 +21761,7 @@ function replyChannel(channel) {
    * @method send
    * @param {string} messageId A unique ID to track the sent message.
    * @param {Object} data
-   * @param {Function} callback Function called when a reply is received.
+   * @param {Function} [callback] Function called when a reply is received.
    */
   api.send = (messageId, data, callback) => {
     if (sentMessages[messageId]) {
@@ -21769,24 +21775,45 @@ function replyChannel(channel) {
     const message = {
       data,
       messageId
+    };
 
+    if (callback) {
+      // If there is a callback function, then a reply is expected.
       // Wrap `send` is a promise so that we can correlate receiving a reply
       //    to the callback.
-    };new _promise2.default(resolve => {
-      // Store `resolve` so we can call it call it when we receive a reply.
-      sentMessages[messageId] = {
-        resolve
-        // Send the message over the channel.
-      };log.debug(`Sending new message ${messageId}.`);
-      channel.send(message);
-    }).then(data => {
-      // The message received a reply, so remove the reference.
-      delete sentMessages[messageId];
+      new _promise2.default(resolve => {
+        // Race receiving the reply against a time-out.
+        // 12s was chosen to be slightly longer than a valid WebRTC operation
+        //    timeout (collecting ICE candidates can take 10s).
+        const timeoutId = setTimeout(() => {
+          log.debug(`Message ${messageId} timed-out. Failing operation.`);
+          sentMessages[messageId].isExpired = true;
+          callback(null, new Error('Operation timed-out; no reply from other side of channel.'));
+        }, 12000);
 
-      if (typeof callback === 'function') {
-        callback(data);
-      }
-    });
+        // Store `resolve` so we can call it call it when we receive a reply.
+        sentMessages[messageId] = {
+          resolve,
+          timeoutId,
+          isExpired: false
+
+          // Send the message over the channel.
+        };log.debug(`Sending new message ${messageId} with reply expected.`);
+        channel.send(message);
+      }).then(data => {
+        // The message received a reply, so remove the reference.
+        clearTimeout(sentMessages[messageId].timeoutId);
+        delete sentMessages[messageId];
+
+        if (typeof callback === 'function') {
+          callback(data);
+        }
+      });
+    } else {
+      // Send the message over the channel.
+      log.debug(`Sending new message ${messageId}.`);
+      channel.send(message);
+    }
   };
 
   /**

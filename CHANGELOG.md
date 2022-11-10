@@ -12,6 +12,10 @@ Kandy.js change log.
 - Updated the `subscription:error` event documentation with some more information on possible errors. `KJS-916`
 - Added a new "Handling Subscription Errors" tutorial section covering recommended approaches for handling subscription-related errors. `KJS-917`
 
+### Fixed
+
+- Fixed a Proxy issue where a Call operation could fail silently if a reply was never received from the Remote SDK. The failure will now be evident in the SDK logs. `KJS-541`
+
 ## 5.3.0 - 2022-10-28
 
 ### Fixed
