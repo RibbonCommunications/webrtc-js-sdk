@@ -14,7 +14,8 @@ Kandy.js change log.
 
 ### Fixed
 
-- Fixed a Proxy issue where a Call operation could fail silently if a reply was never received from the Remote SDK. The failure will now be evident in the SDK logs. `KJS-541`
+- Fixed a Proxy issue where a Call operation could fail silently if a reply was never received from the Remote SDK. `KJS-541`
+  - This issue will also no longer prevent a call from being ended. `KJS-1274`
 
 ## 5.3.0 - 2022-10-28
 

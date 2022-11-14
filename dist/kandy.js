@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.4.0-beta.964
+ * Version: 5.4.0-beta.965
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.4.0-beta.964';
+  return '5.4.0-beta.965';
 }
 
 /***/ }),
@@ -10894,7 +10894,17 @@ const log = _logs.logManager.getLogger('CALLSTACK');
 
 // WebRTC operations.
 function* recreatePeer(webRTC, sessionId) {
-  const session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  let session;
+  try {
+    session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  } catch (err) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.warn(err.message);
+    return;
+  }
   if (!session) {
     log.debug(`webRTC session ${sessionId} not found.`);
     return;
@@ -10911,7 +10921,17 @@ function* recreatePeer(webRTC, sessionId) {
  * @param {string} sessionId the local webRTC session id, used to lookup the session object
  */
 function* closeCall(webRTC, sessionId) {
-  const session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  let session;
+  try {
+    session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  } catch (err) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.warn('Failed to clean-up call resources.');
+    return;
+  }
   if (!session) {
     log.debug(`webRTC session ${sessionId} not found.`);
     return;
@@ -10935,7 +10955,17 @@ function* closeCall(webRTC, sessionId) {
  */
 function* handleOffer(deps, offer, webrtcSessionId, bandwidth) {
   const { webRTC } = deps;
-  const session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], webrtcSessionId);
+  let session;
+  try {
+    session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], webrtcSessionId);
+  } catch (err) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.info(err.message);
+    return { error: err };
+  }
 
   if (!session) {
     log.debug(`webRTC session ${webrtcSessionId} not found.`);
@@ -11029,7 +11059,17 @@ function* handleOffer(deps, offer, webrtcSessionId, bandwidth) {
  */
 function* generateOffer(deps, sessionId, mediaDirections, bandwidth) {
   const { webRTC } = deps;
-  const session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  let session;
+  try {
+    session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  } catch (err) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.warn(err.message);
+    return;
+  }
 
   if (!session) {
     log.debug(`webRTC session ${sessionId} not found.`);
@@ -11206,7 +11246,18 @@ function* webRtcRemoveMedia(deps, sessionOptions) {
   const { sessionId, tracks, bandwidth } = sessionOptions;
 
   // Get the tracks that we want to remove
-  const localTracksToRemove = yield (0, _effects.call)([webRTC.track, 'getTracks'], tracks);
+  let localTracksToRemove;
+  try {
+    localTracksToRemove = yield (0, _effects.call)([webRTC.track, 'getTracks'], tracks);
+  } catch (err) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.info(err.message);
+    return { error: err };
+  }
+
   // Get the indexes of undefined tracks.
   const invalidIndexes = localTracksToRemove.reduce((acc, cur, ind) => {
     return (0, _fp.isUndefined)(cur) ? acc.concat(ind) : acc;
@@ -11326,7 +11377,17 @@ function* webRtcReplaceTrack(webRTC, params) {
     };
   }
 
-  const session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  let session;
+  try {
+    session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  } catch (err) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.debug(err.message);
+    return { error: err };
+  }
   const oldTrack = session.allLocalTracks.find(track => track.id === trackId);
 
   if (!oldTrack) {
@@ -27070,7 +27131,17 @@ function* answerWebrtcSession(deps, mediaConstraints, sessionOptions) {
   log.info('Setting up local WebRTC portions of call.');
 
   // Get the webRTC session that represents this call.
-  const session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  let session;
+  try {
+    session = yield (0, _effects.call)([webRTC.sessionManager, 'get'], sessionId);
+  } catch (error) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    log.debug(error.message);
+    return { error };
+  }
 
   if (!session) {
     log.error(`Error: webRTC session ${sessionId} not found.`);
@@ -56647,7 +56718,21 @@ function* getAvailableCodecs(deps, action) {
   log.info(`Retrieving list of available codecs for media kind '${kind}'.`);
 
   // Get the list of codecs from the general WebRTCManager
-  const codecs = yield (0, _effects.call)([webRTC.webrtcManager, 'getAvailableCodecs'], kind);
+
+  let codecs;
+  try {
+    codecs = yield (0, _effects.call)([webRTC.webrtcManager, 'getAvailableCodecs'], kind);
+  } catch (error) {
+    /*
+     * A WebRTC operation should only throw in Proxy mode when the channel times-out
+     *    the operation. Check the first "get" in the saga to catch this problem.
+     */
+    yield (0, _effects.call)([action.meta.deferred, 'reject'], {
+      error
+    });
+    return;
+  }
+
   log.debug('Successfully retrieved codec list:', codecs);
 
   // We got codecs, so 'resolve' the deferred result and respond with the list of codecs.
