@@ -16,6 +16,7 @@ Kandy.js change log.
 
 - Fixed a Proxy issue where a Call operation could fail silently if a reply was never received from the Remote SDK. `KJS-541`
   - This issue will also no longer prevent a call from being ended. `KJS-1274`
+- Fixed a Call issue where unrendering a track after the call ends could fail, leaving the track in the DOM. `KJS-1148`
 
 ## 5.3.0 - 2022-10-28
 
