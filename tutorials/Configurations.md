@@ -5,16 +5,16 @@ title: Configurations
 permalink: /quickstarts/javascript/link/Configurations
 ---
 
-# Kandy Configurations
+# The WebRTC JS SDK Configurations
 
-The first step for any application is to initialize Kandy.js. When doing this, you can customize certain features by providing a configurations object.
+The first step for any application is to initialize the SDK. When doing this, you can customize certain features by providing a configurations object.
 
-Kandy's configuration object is separated by feature, and is provided to the Kandy Factory as seen in the example below, as a sample.
+The WebRTC JS SDK's configuration object is separated by feature, and is provided to the WebRTC Factory as seen in the example below, as a sample.
 To use an alternative configuration (e.g. a default one), or to further modify any of its properties, see the 'Example Configurations' section, below.
 
 ```javascript 
-// Initialize an instance of Kandy.js.
-import { create } from kandy
+// Initialize an instance of the SDK.
+import { create } from Kandy
 
 // Sample configuration object.
 const configuration = {
@@ -38,16 +38,16 @@ const configuration = {
           // Specify the TURN/STUN servers that should be used.
           iceServers:[
               {
-                  url: '$KANDYTURN1$'
+                  url: '$RIBBONTURN1$'
               },
               {
-                  url: '$KANDYTURN2$'
+                  url: '$RIBBONTURN2$'
               },
               {
-                  url: '$KANDYSTUN1$'
+                  url: '$RIBBONSTUN1$'
               },
               {
-                  url: '$KANDYSTUN2$'
+                  url: '$RIBBONSTUN2$'
               }
           ]
         },
@@ -59,7 +59,7 @@ const configuration = {
     ...
 }
 
-// Invoke the factory create to instantiate Kandy.js by providing the configuration object.
+// Invoke the factory create to instantiate the SDK by providing the configuration object.
 const client = create(configuration)
 ```
 
@@ -69,7 +69,7 @@ In most cases, the default values will suffice for an application, but specifyin
 
 ### Default configurations
 
-To get you started more quickly, we provide some default configurations which can be used as a starting point and make configuration easier. See [Kandy.js Support Libraries](https://github.com/Kandy-IO/kandy-js-support).
+To get you started more quickly, we provide some default configurations which can be used as a starting point and make configuration easier. See [WebRTC JS SDK Support Library](https://github.com/RibbonCommunications/webrtc-js-support).
 
 Note that each default configuration is based on a targeted geographical area.
 See [this config]($DEFAULTCONFIGURL$) which applies for this particular tutorial.
@@ -121,8 +121,8 @@ const client = create(config)
 
 The following sections describe various properties within the configuration object in more detail.
 
-Each section refers to a specific Kandy.js feature that in general maps to that configuration property.
-For example, modifying the value of `config.logs` property in your configuration object, will affect how the Kandy.js 'Logs' feature will behave at runtime.
+Each section refers to a specific SDK feature that in general maps to that configuration property.
+For example, modifying the value of `config.logs` property in your configuration object will affect how the 'Logs' feature will behave at runtime.
 
 ### Logs
 
@@ -168,8 +168,8 @@ call: {
 
 ### Authentication
 
-The Authentication configs are used to specify the backend service that Kandy.js should connect to. The value provided is the host for the Kandy Link that the application is targeting.
-Also if the Kandy Link is deployed on-prem, it will be up to the user to define the host.
+The Authentication configs are used to specify the backend service that the SDK should connect to. The value provided is the host for the WebRTC Gateway that the application is targeting.
+Also if the WebRTC Gateway is deployed on-premise, it will be up to the user to define the host.
 Note: It is important to always include these configurations.
 
 ```javascript
@@ -182,8 +182,8 @@ authentication: {
 
 ### Subscription
 
-The Subscription config is used to specify websocket that Kandy.js should connect to. The value provided is the host for the Kandy Link that the application is targeting.
-Also if the Kandy Link is deployed on-prem, it will be up to the user to define the host.
+The Subscription config is used to specify websocket that the SDK should connect to. The value provided is the host for the WebRTC Gateway that the application is targeting.
+Also if the WebRTC Gateway is deployed on-premise, it will be up to the user to define the host.
 Note: It is important to always include these configurations.
 
 ```javascript
@@ -194,7 +194,7 @@ subscription: {
 }
 ```
 
-Examples of the Kandy Link Systems include:
+Examples of the WebRTC Gateway Systems include:
 
 NA:
 
