@@ -5,6 +5,19 @@ Kandy.js change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 5.4.0 - 2022-11-25
+
+### Added
+
+- Updated the `subscription:error` event documentation with some more information on possible errors. `KJS-916`
+- Added a new "Handling Subscription Errors" tutorial section covering recommended approaches for handling subscription-related errors. `KJS-917`
+
+### Fixed
+
+- Fixed a Proxy issue where a Call operation could fail silently if a reply was never received from the Remote SDK. `KJS-541`
+  - This issue will also no longer prevent a call from being ended. `KJS-1274`
+- Fixed a Call issue where unrendering a track after the call ends could fail, leaving the track in the DOM. `KJS-1148`
+
 ## 5.3.0 - 2022-10-28
 
 ### Fixed
