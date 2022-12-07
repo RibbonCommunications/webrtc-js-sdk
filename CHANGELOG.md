@@ -7,6 +7,10 @@ Kandy.js change log.
 
 ## 5.5.0 - beta
 
+### Fixed
+
+- Fixed a SIP Events issue where an operation could block other operations from being performed in parallel. `KJS-1137`
+
 ## 5.4.0 - 2022-11-25
 
 ### Added

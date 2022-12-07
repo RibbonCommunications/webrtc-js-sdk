@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.5.0-beta.976
+ * Version: 5.5.0-beta.977
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -912,7 +912,7 @@ var _kandyLogger = __webpack_require__(91);
 
 var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
 
-var _config = __webpack_require__(141);
+var _config = __webpack_require__(142);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -1970,7 +1970,7 @@ exports.getRequestInfo = getRequestInfo;
 
 var _fp = __webpack_require__(2);
 
-var _constants = __webpack_require__(154);
+var _constants = __webpack_require__(155);
 
 var _constants2 = __webpack_require__(20);
 
@@ -2979,7 +2979,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.miscActions = exports.mediaActions = exports.sessionActions = exports.trackActions = exports.deviceActions = undefined;
 
-var _devices = __webpack_require__(148);
+var _devices = __webpack_require__(149);
 
 var deviceActionsImport = _interopRequireWildcard(_devices);
 
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.5.0-beta.976';
+  return '5.5.0-beta.977';
 }
 
 /***/ }),
@@ -7226,7 +7226,7 @@ __webpack_require__(85)(String, 'String', function (iterated) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(24);
-var dPs = __webpack_require__(138);
+var dPs = __webpack_require__(139);
 var enumBugKeys = __webpack_require__(82);
 var IE_PROTO = __webpack_require__(80)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -8367,7 +8367,7 @@ const CHANNEL_CLOSED = exports.CHANNEL_CLOSED = prefix + 'CHANNEL_CLOSED';
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(137);
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(138);
 /* global window */
 
 
@@ -10509,7 +10509,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = request;
 exports.requestSaga = requestSaga;
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var _actions = __webpack_require__(282);
 
@@ -10656,7 +10656,7 @@ exports.webRtcAddMedia = webRtcAddMedia;
 exports.webRtcRemoveMedia = webRtcRemoveMedia;
 exports.webRtcReplaceTrack = webRtcReplaceTrack;
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -11683,6 +11683,29 @@ const FILE_UPLOAD_FAIL = exports.FILE_UPLOAD_FAIL = PREFIX + 'FILE_UPLOAD_FAIL';
 
 /***/ }),
 /* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const PREFIX = '@@KANDY/';
+
+const SIP_EVENT_SUBSCRIBE = exports.SIP_EVENT_SUBSCRIBE = PREFIX + 'SIP_EVENT_SUBSCRIBE';
+const SIP_EVENT_SUBSCRIBE_FINISH = exports.SIP_EVENT_SUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_SUBSCRIBE_FINISH';
+
+const SIP_EVENT_UPDATE = exports.SIP_EVENT_UPDATE = PREFIX + 'SIP_EVENT_UPDATE';
+const SIP_EVENT_UPDATE_FINISH = exports.SIP_EVENT_UPDATE_FINISH = PREFIX + 'SIP_EVENT_UPDATE_FINISH';
+
+const SIP_EVENT_UNSUBSCRIBE = exports.SIP_EVENT_UNSUBSCRIBE = PREFIX + 'SIP_EVENT_UNSUBSCRIBE';
+const SIP_EVENT_UNSUBSCRIBE_FINISH = exports.SIP_EVENT_UNSUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_UNSUBSCRIBE_FINISH';
+
+const SIP_EVENT_RECEIVED = exports.SIP_EVENT_RECEIVED = PREFIX + 'SIP_EVENT_RECEIVED';
+
+/***/ }),
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11707,7 +11730,7 @@ function symbolObservablePonyfill(root) {
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(19);
@@ -11726,7 +11749,7 @@ module.exports = __webpack_require__(18) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(18);
@@ -11753,13 +11776,13 @@ module.exports = function (isEntries) {
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(193), __esModule: true };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11862,7 +11885,7 @@ const partialDefaultLogActions = exports.partialDefaultLogActions = {
 };
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12013,7 +12036,7 @@ module.exports = {
 
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12079,7 +12102,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -12094,7 +12117,7 @@ module.exports = function (NAME) {
 
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12113,7 +12136,7 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12148,13 +12171,13 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(213), __esModule: true };
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12202,7 +12225,7 @@ function initializeDeviceFinish({ devices, error }) {
 }
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12288,7 +12311,7 @@ function setListeners(track, emit, END = 'END') {
 }
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12381,7 +12404,7 @@ function setListeners(media, emit, END = 'END') {
 }
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12526,7 +12549,7 @@ function setListeners(session, emit, END = 'END') {
 }
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12553,7 +12576,7 @@ function getSdpSessionId(sdp) {
 }
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12574,7 +12597,7 @@ const INITIALIZE = exports.INITIALIZE = PREFIX + 'INITIALIZE';
 const INITIALIZE_FINISH = exports.INITIALIZE_FINISH = PREFIX + 'INITIALIZE_FINISH';
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12604,7 +12627,7 @@ const SUBSCRIPTION_STATE = exports.SUBSCRIPTION_STATE = {
 };
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12621,7 +12644,7 @@ const RESPONSE = exports.RESPONSE = PREFIX + 'RESPONSE';
 const AUTHORIZATION_ERROR = exports.AUTHORIZATION_ERROR = PREFIX + 'AUTHORIZATION_ERROR';
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12687,7 +12710,7 @@ const changeConnectivityChecking = exports.changeConnectivityChecking = createWs
 const changePingInterval = exports.changePingInterval = createWsAction(actionTypes.CHANGE_PING_INTERVAL);
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12873,7 +12896,7 @@ const sixSpaces = '      ';
 const eightSpaces = '        ';
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13063,29 +13086,6 @@ function trackRemovedHandler(action) {
     }
   };
 }
-
-/***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-const PREFIX = '@@KANDY/';
-
-const SIP_EVENT_SUBSCRIBE = exports.SIP_EVENT_SUBSCRIBE = PREFIX + 'SIP_EVENT_SUBSCRIBE';
-const SIP_EVENT_SUBSCRIBE_FINISH = exports.SIP_EVENT_SUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_SUBSCRIBE_FINISH';
-
-const SIP_EVENT_UPDATE = exports.SIP_EVENT_UPDATE = PREFIX + 'SIP_EVENT_UPDATE';
-const SIP_EVENT_UPDATE_FINISH = exports.SIP_EVENT_UPDATE_FINISH = PREFIX + 'SIP_EVENT_UPDATE_FINISH';
-
-const SIP_EVENT_UNSUBSCRIBE = exports.SIP_EVENT_UNSUBSCRIBE = PREFIX + 'SIP_EVENT_UNSUBSCRIBE';
-const SIP_EVENT_UNSUBSCRIBE_FINISH = exports.SIP_EVENT_UNSUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_UNSUBSCRIBE_FINISH';
-
-const SIP_EVENT_RECEIVED = exports.SIP_EVENT_RECEIVED = PREFIX + 'SIP_EVENT_RECEIVED';
 
 /***/ }),
 /* 160 */
@@ -15581,7 +15581,7 @@ var _values = __webpack_require__(56);
 
 var _values2 = _interopRequireDefault(_values);
 
-var _symbol = __webpack_require__(140);
+var _symbol = __webpack_require__(141);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -15869,7 +15869,7 @@ module.exports = __webpack_require__(7).Object.values;
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(8);
-var $values = __webpack_require__(139)(false);
+var $values = __webpack_require__(140)(false);
 
 $export($export.S, 'Object', {
   values: function values(it) {
@@ -17920,7 +17920,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _track = __webpack_require__(149);
+var _track = __webpack_require__(150);
 
 var _track2 = _interopRequireDefault(_track);
 
@@ -18045,7 +18045,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _media = __webpack_require__(150);
+var _media = __webpack_require__(151);
 
 var _media2 = _interopRequireDefault(_media);
 
@@ -18157,7 +18157,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _session = __webpack_require__(151);
+var _session = __webpack_require__(152);
 
 var _session2 = _interopRequireDefault(_session);
 
@@ -18263,12 +18263,12 @@ module.exports = __webpack_require__(7).Map;
 
 "use strict";
 
-var strong = __webpack_require__(142);
+var strong = __webpack_require__(143);
 var validate = __webpack_require__(100);
 var MAP = 'Map';
 
 // 23.1 Map Objects
-module.exports = __webpack_require__(143)(MAP, function (get) {
+module.exports = __webpack_require__(144)(MAP, function (get) {
   return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -18290,7 +18290,7 @@ module.exports = __webpack_require__(143)(MAP, function (get) {
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(8);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(145)('Map') });
 
 
 /***/ }),
@@ -18298,7 +18298,7 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') 
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
-__webpack_require__(145)('Map');
+__webpack_require__(146)('Map');
 
 
 /***/ }),
@@ -18306,7 +18306,7 @@ __webpack_require__(145)('Map');
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
-__webpack_require__(146)('Map');
+__webpack_require__(147)('Map');
 
 
 /***/ }),
@@ -23424,7 +23424,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _create = __webpack_require__(147);
+var _create = __webpack_require__(148);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -24093,7 +24093,7 @@ var _pipeline2 = _interopRequireDefault(_pipeline);
 
 var _sdpSemantics = __webpack_require__(43);
 
-var _extractors = __webpack_require__(152);
+var _extractors = __webpack_require__(153);
 
 var _utils = __webpack_require__(67);
 
@@ -26163,7 +26163,7 @@ exports.request = request;
 exports.response = response;
 exports.authorizationError = authorizationError;
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -26834,7 +26834,7 @@ var _selectors = __webpack_require__(21);
 
 var _logs = __webpack_require__(4);
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -28633,7 +28633,7 @@ exports.setChannelFinish = setChannelFinish;
 exports.initializeRemote = initializeRemote;
 exports.initializeRemoteFinish = initializeRemoteFinish;
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -28728,7 +28728,7 @@ exports.connectWebsocket = connectWebsocket;
 exports.disconnectWebsocket = disconnectWebsocket;
 exports.waitForReconnect = waitForReconnect;
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var _actionTypes = __webpack_require__(68);
 
@@ -32674,7 +32674,7 @@ exports.sipEventUnsubscribe = sipEventUnsubscribe;
 exports.sipEventUnsubscribeFinish = sipEventUnsubscribeFinish;
 exports.sipEventReceived = sipEventReceived;
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -32987,7 +32987,7 @@ exports.__testonly__ = undefined;
 exports.default = watchRequests;
 exports.handleRequest = handleRequest;
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -32995,7 +32995,7 @@ var _actions = __webpack_require__(282);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _makeRequest = __webpack_require__(558);
+var _makeRequest = __webpack_require__(559);
 
 var _makeRequest2 = _interopRequireDefault(_makeRequest);
 
@@ -34257,13 +34257,13 @@ var _sipEvents = __webpack_require__(537);
 
 var _sipEvents2 = _interopRequireDefault(_sipEvents);
 
-var _index = __webpack_require__(544);
+var _index = __webpack_require__(545);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _request = __webpack_require__(556);
+var _request = __webpack_require__(557);
 
-__webpack_require__(564);
+__webpack_require__(565);
 
 var _sdpHandlers = __webpack_require__(334);
 
@@ -36188,7 +36188,7 @@ var _actions = __webpack_require__(204);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _config = __webpack_require__(141);
+var _config = __webpack_require__(142);
 
 var _sagas = __webpack_require__(353);
 
@@ -36881,12 +36881,12 @@ module.exports = __webpack_require__(7).Set;
 
 "use strict";
 
-var strong = __webpack_require__(142);
+var strong = __webpack_require__(143);
 var validate = __webpack_require__(100);
 var SET = 'Set';
 
 // 23.2 Set Objects
-module.exports = __webpack_require__(143)(SET, function (get) {
+module.exports = __webpack_require__(144)(SET, function (get) {
   return function Set() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.2.3.1 Set.prototype.add(value)
@@ -36903,7 +36903,7 @@ module.exports = __webpack_require__(143)(SET, function (get) {
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(8);
 
-$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(144)('Set') });
+$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(145)('Set') });
 
 
 /***/ }),
@@ -36911,7 +36911,7 @@ $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(144)('Set') 
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
-__webpack_require__(145)('Set');
+__webpack_require__(146)('Set');
 
 
 /***/ }),
@@ -36919,7 +36919,7 @@ __webpack_require__(145)('Set');
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
-__webpack_require__(146)('Set');
+__webpack_require__(147)('Set');
 
 
 /***/ }),
@@ -37138,7 +37138,7 @@ var _iterator = __webpack_require__(367);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(140);
+var _symbol = __webpack_require__(141);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -37150,7 +37150,7 @@ var _keys = __webpack_require__(54);
 
 var _keys2 = _interopRequireDefault(_keys);
 
-var _create = __webpack_require__(147);
+var _create = __webpack_require__(148);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -37448,7 +37448,7 @@ module.exports = function defineProperties(T, D) {
 
 var $export = __webpack_require__(8);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(18), 'Object', { defineProperties: __webpack_require__(138) });
+$export($export.S + $export.F * !__webpack_require__(18), 'Object', { defineProperties: __webpack_require__(139) });
 
 
 /***/ }),
@@ -40193,7 +40193,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -40652,7 +40652,7 @@ module.exports = __webpack_require__(7).Object.entries;
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(8);
-var $entries = __webpack_require__(139)(true);
+var $entries = __webpack_require__(140)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it) {
@@ -40834,7 +40834,7 @@ exports.setChannel = setChannel;
 exports.initializeRemote = initializeRemote;
 exports.updateLogLevelEntry = updateLogLevelEntry;
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -40900,7 +40900,7 @@ var _logs = __webpack_require__(4);
 
 var _selectors3 = __webpack_require__(205);
 
-var _devices = __webpack_require__(148);
+var _devices = __webpack_require__(149);
 
 var _errors = __webpack_require__(9);
 
@@ -41128,7 +41128,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -41361,7 +41361,7 @@ var _constants = __webpack_require__(20);
 
 var _constants2 = __webpack_require__(280);
 
-var _constants3 = __webpack_require__(154);
+var _constants3 = __webpack_require__(155);
 
 var _reduxActions = __webpack_require__(23);
 
@@ -43575,7 +43575,7 @@ var actions = _interopRequireWildcard(_actions);
 
 var _selectors = __webpack_require__(16);
 
-var _constants = __webpack_require__(154);
+var _constants = __webpack_require__(155);
 
 var _logs = __webpack_require__(4);
 
@@ -44146,7 +44146,7 @@ var _actionTypes = __webpack_require__(102);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _constants = __webpack_require__(154);
+var _constants = __webpack_require__(155);
 
 var _actionTypes2 = __webpack_require__(36);
 
@@ -53734,7 +53734,7 @@ var _negotiation = __webpack_require__(460);
 
 var negotiation = _interopRequireWildcard(_negotiation);
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -55556,7 +55556,7 @@ var _utils = __webpack_require__(215);
 
 var _sdp = __webpack_require__(464);
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -55707,7 +55707,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hasSameSessionId = hasSameSessionId;
 
-var _extractors = __webpack_require__(152);
+var _extractors = __webpack_require__(153);
 
 /**
  * Checks whether two SDPs have the same session ID.
@@ -56796,7 +56796,7 @@ var _constants = __webpack_require__(59);
 
 var _selectors = __webpack_require__(21);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -57049,7 +57049,7 @@ var _constants = __webpack_require__(59);
 
 var _selectors = __webpack_require__(21);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -57298,7 +57298,7 @@ var actionTypes = _interopRequireWildcard(_actionTypes);
 
 var _constants = __webpack_require__(59);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 var _fp = __webpack_require__(2);
 
@@ -57437,7 +57437,7 @@ var _actionTypes2 = __webpack_require__(13);
 
 var webrtcActionTypes = _interopRequireWildcard(_actionTypes2);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 var _fp = __webpack_require__(2);
 
@@ -59336,7 +59336,7 @@ exports.default = api;
 
 var _constants = __webpack_require__(20);
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var _selectors = __webpack_require__(133);
 
@@ -59703,7 +59703,7 @@ var _actionTypes = __webpack_require__(68);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -60192,7 +60192,7 @@ exports.openWebsocket = openWebsocket;
 exports.cleanupWebSocket = cleanupWebSocket;
 exports.wsEmitter = wsEmitter;
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var _reduxSaga = __webpack_require__(27);
 
@@ -71497,7 +71497,7 @@ var _sagas = __webpack_require__(541);
 
 var sagas = _interopRequireWildcard(_sagas);
 
-var _events = __webpack_require__(542);
+var _events = __webpack_require__(543);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -71787,7 +71787,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -71872,6 +71872,66 @@ exports.default = reducer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.subscribeEntry = subscribeEntry;
+exports.updateEntry = updateEntry;
+exports.unsubscribeEntry = unsubscribeEntry;
+exports.receiveEventEntry = receiveEventEntry;
+
+var _actionTypes = __webpack_require__(137);
+
+var actionTypes = _interopRequireWildcard(_actionTypes);
+
+var _sagas = __webpack_require__(542);
+
+var _actionTypes2 = __webpack_require__(36);
+
+var _effects = __webpack_require__(6);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// Saga to trigger the "subscribe" functionality on every API call (via action).
+
+
+// Other plugins.
+// Sip Events plugin.
+function* subscribeEntry() {
+  yield (0, _effects.takeEvery)(actionTypes.SIP_EVENT_SUBSCRIBE, _sagas.sipEventSubscribe);
+}
+
+// Saga to trigger the "update" functionality on every API call (via action).
+
+
+// Libraries.
+function* updateEntry() {
+  yield (0, _effects.takeEvery)(actionTypes.SIP_EVENT_UPDATE, _sagas.sipEventUpdate);
+}
+
+// Saga to trigger the "unsubscribe" functionality on every API call (via action).
+function* unsubscribeEntry() {
+  yield (0, _effects.takeEvery)(actionTypes.SIP_EVENT_UNSUBSCRIBE, _sagas.sipEventUnsubscribe);
+}
+
+// Saga to trigger the "receive event" functionality on every notification.
+function* receiveEventEntry() {
+  // Redux-saga take() pattern.
+  // Take notification actions that MAY be for sip events.
+  function receiveEventNotifyPattern(action) {
+    return action.type === _actionTypes2.NOTIFICATION_RECEIVED && action.payload.notificationMessage.hasOwnProperty('genericNotificationParams');
+  }
+
+  yield (0, _effects.takeEvery)(receiveEventNotifyPattern, _sagas.receiveEventNotify);
+}
+
+/***/ }),
+/* 542 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _extends2 = __webpack_require__(3);
 
@@ -71886,7 +71946,7 @@ exports.sipEventUpdate = sipEventUpdate;
 exports.sipEventUnsubscribe = sipEventUnsubscribe;
 exports.receiveEventNotify = receiveEventNotify;
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -71901,8 +71961,6 @@ var _selectors2 = __webpack_require__(16);
 var _selectors3 = __webpack_require__(21);
 
 var _selectors4 = __webpack_require__(101);
-
-var _actionTypes2 = __webpack_require__(36);
 
 var _effects = __webpack_require__(132);
 
@@ -71928,9 +71986,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 // Libraries.
-
-
-// Other plugins.
+// Sip Events plugin.
 const log = _logs.logManager.getLogger('SIPEVENTS');
 
 /**
@@ -71943,99 +71999,98 @@ const log = _logs.logManager.getLogger('SIPEVENTS');
 
 
 // Logs
-// Sip Events plugin.
-function* sipEventSubscribe() {
-  while (true) {
-    const action = yield (0, _effects3.take)(actionTypes.SIP_EVENT_SUBSCRIBE);
-    // TODO: Have the client correlator be provided as a config, not through the API.
-    log.debug(`Subscribing for sip ${action.payload.eventType}.`, action.payload.clientCorrelator);
 
-    // Determine if the user is subscribed to the specified sip event.
-    const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
 
-    const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
+// Other plugins.
+function* sipEventSubscribe(action) {
+  // TODO: Have the client correlator be provided as a config, not through the API.
+  log.debug(`Subscribing for sip ${action.payload.eventType}.`, action.payload.clientCorrelator);
 
-    if (!(0, _fp.includes)(action.payload.eventType, sipEvents)) {
-      log.info(`Cannot subscribe to sip ${action.payload.eventType}; service not provisioned during user subscription.`);
-      yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
-        error: new _errors2.default({
-          code: _errors.sipEventCodes.NOT_PROVISIONED,
-          message: 'Cannot subscribe to sip event; service was not provisioned during user subscription.'
-        }),
-        eventType: action.payload.eventType
-      }));
-      continue;
+  // Determine if the user is subscribed to the specified sip event.
+  const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
+
+  const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
+
+  if (!(0, _fp.includes)(action.payload.eventType, sipEvents)) {
+    log.info(`Cannot subscribe to sip ${action.payload.eventType}; service not provisioned during user subscription.`);
+    yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
+      error: new _errors2.default({
+        code: _errors.sipEventCodes.NOT_PROVISIONED,
+        message: 'Cannot subscribe to sip event; service was not provisioned during user subscription.'
+      }),
+      eventType: action.payload.eventType
+    }));
+    return;
+  }
+
+  // Use the same subscription duration as the user subscription.
+  const { expires } = yield (0, _effects3.select)(_selectors4.getSubscriptionInfo);
+
+  const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
+  let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+
+  // TODO: UC should store it's token the same way as Link.
+  if (platform === _constants.platforms.UC && !token) {
+    token = accessToken;
+  }
+
+  const requestOptions = {};
+  requestOptions.method = 'POST';
+
+  requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + 'eventSubscription';
+
+  requestOptions.body = {
+    eventSubscriptionRequest: {
+      subscribeUserList: action.payload.subscribeUserList,
+      clientCorrelator: action.payload.clientCorrelator,
+      eventType: action.payload.eventType,
+      expires
     }
+  };
+  if (action.payload.customParameters.length) {
+    requestOptions.body.eventSubscriptionRequest.customParameters = action.payload.customParameters;
+  }
+  requestOptions.body = (0, _stringify2.default)(requestOptions.body);
 
-    // Use the same subscription duration as the user subscription.
-    const { expires } = yield (0, _effects3.select)(_selectors4.getSubscriptionInfo);
+  const response = yield (0, _effects2.default)(requestOptions);
 
-    const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
-    let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+  if (response.error) {
+    let error;
+    if (response.payload.body) {
+      // Handle errors from the server.
+      const { statusCode } = response.payload.body.eventSubscriptionResponse;
+      log.info(`Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
 
-    // TODO: UC should store it's token the same way as Link.
-    if (platform === _constants.platforms.UC && !token) {
-      token = accessToken;
-    }
-
-    const requestOptions = {};
-    requestOptions.method = 'POST';
-
-    requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + 'eventSubscription';
-
-    requestOptions.body = {
-      eventSubscriptionRequest: {
-        subscribeUserList: action.payload.subscribeUserList,
-        clientCorrelator: action.payload.clientCorrelator,
-        eventType: action.payload.eventType,
-        expires
-      }
-    };
-    if (action.payload.customParameters.length) {
-      requestOptions.body.eventSubscriptionRequest.customParameters = action.payload.customParameters;
-    }
-    requestOptions.body = (0, _stringify2.default)(requestOptions.body);
-
-    const response = yield (0, _effects2.default)(requestOptions);
-
-    if (response.error) {
-      let error;
-      if (response.payload.body) {
-        // Handle errors from the server.
-        const { statusCode } = response.payload.body.eventSubscriptionResponse;
-        log.info(`Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
-        });
-      } else {
-        // Handler errors from the request helper.
-        const { message } = response.payload.result;
-        log.info(`SIP event subscription request failed: ${message}.`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `SIP event subscription request failed: ${message}.`
-        });
-      }
-
-      yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
-        error,
-        eventType: action.payload.eventType
-      }));
-    } else {
-      log.info(`Successfully subscribed to sip event ${action.payload.eventType}.`);
-      const finishAction = actions.sipEventSubscribeFinish({
-        response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
-          eventType: action.payload.eventType,
-          subscribedUsers: action.payload.subscribeUserList
-        })
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
       });
-      // Spawn a non-blocking saga to handle resubscriptions.
-      yield (0, _effects3.spawn)(sipEventResub, finishAction);
-      yield (0, _effects3.put)(finishAction);
+    } else {
+      // Handler errors from the request helper.
+      const { message } = response.payload.result;
+      log.info(`SIP event subscription request failed: ${message}.`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `SIP event subscription request failed: ${message}.`
+      });
     }
+
+    yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
+      error,
+      eventType: action.payload.eventType
+    }));
+  } else {
+    log.info(`Successfully subscribed to sip event ${action.payload.eventType}.`);
+    const finishAction = actions.sipEventSubscribeFinish({
+      response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
+        eventType: action.payload.eventType,
+        subscribedUsers: action.payload.subscribeUserList
+      })
+    });
+    // Spawn a non-blocking saga to handle resubscriptions.
+    yield (0, _effects3.spawn)(sipEventResub, finishAction);
+    yield (0, _effects3.put)(finishAction);
   }
 }
 
@@ -72076,108 +72131,105 @@ function* sipEventResub(action) {
  * Saga to update/resubscribe to a subscribed sip event.
  * @method sipEventUpdate
  */
-function* sipEventUpdate() {
-  while (true) {
-    const action = yield (0, _effects3.take)(actionTypes.SIP_EVENT_UPDATE);
-    log.debug(`Updating sip event subscription: ${action.payload.eventType}.`);
-    const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload.eventType);
+function* sipEventUpdate(action) {
+  log.debug(`Updating sip event subscription: ${action.payload.eventType}.`);
+  const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload.eventType);
 
-    if (!eventInfo) {
-      if (action.meta.isResub) {
-        // Don't need to resub, since we're not subscribed anymore.
-        // TODO: Tech-Debt: BasicError isn't very useful for these scenarios. The emitted event provides
-        //      the BasicError, except there's no (easy to use) info indicating _which_ event was being
-        //      acted on. BasicError needs the ability to provide extra information.
-        const error = new _errors2.default({
-          code: _errors.sipEventCodes.NOT_SUBSCRIBED,
-          message: `Cannot resubscribe for ${action.payload.eventType} subscription; user not subscribed.`
-        });
-        yield (0, _effects3.put)(actions.sipEventUpdateFinish({
-          error,
-          eventType: action.payload.eventType
-        }));
-      } else {
-        // Error: Not subscribed to this sip event. Cannot update.
-        const error = new _errors2.default({
-          code: _errors.sipEventCodes.NOT_SUBSCRIBED,
-          message: `Cannot update subscription for ${action.payload.eventType}; user not subscribed.`
-        });
-        yield (0, _effects3.put)(actions.sipEventUpdateFinish({
-          error,
-          eventType: action.payload.eventType
-        }));
-      }
-      continue;
-    }
-
-    const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
-    let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
-
-    // TODO: UC should store it's token the same way as Link.
-    if (platform === _constants.platforms.UC && !token) {
-      token = accessToken;
-    }
-
-    const requestOptions = {};
-    requestOptions.method = 'PUT';
-
-    requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
-
-    // Only include user lists in the request body if there are entries.
-    const userLists = {};
-    if (action.payload.subscribeUserList.length > 0) {
-      userLists.subscribeUserList = action.payload.subscribeUserList;
-    }
-    if (action.payload.unsubscribeUserList.length > 0) {
-      userLists.unsubscribeUserList = action.payload.unsubscribeUserList;
-    }
-
-    requestOptions.body = (0, _stringify2.default)({
-      eventSubscriptionRequest: (0, _extends3.default)({}, userLists, {
-        eventType: action.payload.eventType,
-        customParameters: action.payload.customParameters,
-        expires: eventInfo.expires
-      })
-    });
-
-    const response = yield (0, _effects2.default)(requestOptions);
-
-    if (response.error) {
-      let error;
-      if (response.payload.body) {
-        // Handle errors from the server.
-        const { statusCode } = response.payload.body.eventSubscriptionResponse;
-        log.info(`Failed to update sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `Failed to update to sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`
-        });
-      } else {
-        // Handler errors from the request helper.
-        const { message } = response.payload.result;
-        log.info(`SIP event update subscription request failed: ${message}.`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `SIP event update subscription request failed: ${message}.`
-        });
-      }
-
+  if (!eventInfo) {
+    if (action.meta.isResub) {
+      // Don't need to resub, since we're not subscribed anymore.
+      // TODO: Tech-Debt: BasicError isn't very useful for these scenarios. The emitted event provides
+      //      the BasicError, except there's no (easy to use) info indicating _which_ event was being
+      //      acted on. BasicError needs the ability to provide extra information.
+      const error = new _errors2.default({
+        code: _errors.sipEventCodes.NOT_SUBSCRIBED,
+        message: `Cannot resubscribe for ${action.payload.eventType} subscription; user not subscribed.`
+      });
       yield (0, _effects3.put)(actions.sipEventUpdateFinish({
         error,
         eventType: action.payload.eventType
       }));
     } else {
-      log.info(`Updated sip event subscription: ${action.payload.eventType}.`);
+      // Error: Not subscribed to this sip event. Cannot update.
+      const error = new _errors2.default({
+        code: _errors.sipEventCodes.NOT_SUBSCRIBED,
+        message: `Cannot update subscription for ${action.payload.eventType}; user not subscribed.`
+      });
       yield (0, _effects3.put)(actions.sipEventUpdateFinish({
-        response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
-          eventType: action.payload.eventType,
-          subscribeUserList: action.payload.subscribeUserList || [],
-          unsubscribeUserList: action.payload.unsubscribeUserList || []
-        })
+        error,
+        eventType: action.payload.eventType
       }));
     }
+    return;
+  }
+
+  const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
+  let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+
+  // TODO: UC should store it's token the same way as Link.
+  if (platform === _constants.platforms.UC && !token) {
+    token = accessToken;
+  }
+
+  const requestOptions = {};
+  requestOptions.method = 'PUT';
+
+  requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
+
+  // Only include user lists in the request body if there are entries.
+  const userLists = {};
+  if (action.payload.subscribeUserList.length > 0) {
+    userLists.subscribeUserList = action.payload.subscribeUserList;
+  }
+  if (action.payload.unsubscribeUserList.length > 0) {
+    userLists.unsubscribeUserList = action.payload.unsubscribeUserList;
+  }
+
+  requestOptions.body = (0, _stringify2.default)({
+    eventSubscriptionRequest: (0, _extends3.default)({}, userLists, {
+      eventType: action.payload.eventType,
+      customParameters: action.payload.customParameters,
+      expires: eventInfo.expires
+    })
+  });
+
+  const response = yield (0, _effects2.default)(requestOptions);
+
+  if (response.error) {
+    let error;
+    if (response.payload.body) {
+      // Handle errors from the server.
+      const { statusCode } = response.payload.body.eventSubscriptionResponse;
+      log.info(`Failed to update sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `Failed to update to sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`
+      });
+    } else {
+      // Handler errors from the request helper.
+      const { message } = response.payload.result;
+      log.info(`SIP event update subscription request failed: ${message}.`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `SIP event update subscription request failed: ${message}.`
+      });
+    }
+
+    yield (0, _effects3.put)(actions.sipEventUpdateFinish({
+      error,
+      eventType: action.payload.eventType
+    }));
+  } else {
+    log.info(`Updated sip event subscription: ${action.payload.eventType}.`);
+    yield (0, _effects3.put)(actions.sipEventUpdateFinish({
+      response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
+        eventType: action.payload.eventType,
+        subscribeUserList: action.payload.subscribeUserList || [],
+        unsubscribeUserList: action.payload.unsubscribeUserList || []
+      })
+    }));
   }
 }
 
@@ -72185,75 +72237,72 @@ function* sipEventUpdate() {
  * Saga to unsubscribe from [all currently subscribed] sip events.
  * @method sipEventUnsubscribe
  */
-function* sipEventUnsubscribe() {
-  while (true) {
-    const action = yield (0, _effects3.take)(actionTypes.SIP_EVENT_UNSUBSCRIBE);
-    log.debug(`Unsubscribing from sip event subscriptions: ${action.payload}.`);
-    const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload);
+function* sipEventUnsubscribe(action) {
+  log.debug(`Unsubscribing from sip event subscriptions: ${action.payload}.`);
+  const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload);
 
-    if (!eventInfo) {
-      log.info(`Cannot unsubscribe from sip event ${action.payload}; no subscription exists.`);
-      const error = new _errors2.default({
-        code: _errors.sipEventCodes.NOT_SUBSCRIBED,
-        message: `Cannot unsubscribe from ${action.payload}; no subscription found.`
+  if (!eventInfo) {
+    log.info(`Cannot unsubscribe from sip event ${action.payload}; no subscription exists.`);
+    const error = new _errors2.default({
+      code: _errors.sipEventCodes.NOT_SUBSCRIBED,
+      message: `Cannot unsubscribe from ${action.payload}; no subscription found.`
+    });
+    yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
+      error,
+      eventType: action.payload
+    }));
+    return;
+  }
+
+  const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
+  let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+
+  // TODO: UC should store it's token the same way as Link.
+  if (platform === _constants.platforms.UC && !token) {
+    token = accessToken;
+  }
+
+  const requestOptions = {};
+  requestOptions.method = 'DELETE';
+  requestOptions.responseType = 'none';
+
+  requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
+
+  const response = yield (0, _effects2.default)(requestOptions);
+
+  if (response.error) {
+    let error;
+    if (response.payload.body) {
+      // Handle errors from the server.
+      const { statusCode } = response.payload.body.eventSubscriptionResponse;
+      log.info(`Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
       });
-      yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
-        error,
-        eventType: action.payload
-      }));
-      continue;
-    }
-
-    const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
-    let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
-
-    // TODO: UC should store it's token the same way as Link.
-    if (platform === _constants.platforms.UC && !token) {
-      token = accessToken;
-    }
-
-    const requestOptions = {};
-    requestOptions.method = 'DELETE';
-    requestOptions.responseType = 'none';
-
-    requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
-
-    const response = yield (0, _effects2.default)(requestOptions);
-
-    if (response.error) {
-      let error;
-      if (response.payload.body) {
-        // Handle errors from the server.
-        const { statusCode } = response.payload.body.eventSubscriptionResponse;
-        log.info(`Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
-        });
-      } else {
-        // Handler errors from the request helper.
-        const { message } = response.payload.result;
-        log.info(`SIP event unsubscription request failed: ${message}.`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `SIP event unsubscription request failed: ${message}.`
-        });
-      }
-
-      yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
-        error,
-        eventType: action.payload
-      }));
     } else {
-      log.info(`Successfully unsubscribed from sip ${action.payload}.`);
-      yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
-        response: {
-          eventType: action.payload
-        }
-      }));
+      // Handler errors from the request helper.
+      const { message } = response.payload.result;
+      log.info(`SIP event unsubscription request failed: ${message}.`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `SIP event unsubscription request failed: ${message}.`
+      });
     }
+
+    yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
+      error,
+      eventType: action.payload
+    }));
+  } else {
+    log.info(`Successfully unsubscribed from sip ${action.payload}.`);
+    yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
+      response: {
+        eventType: action.payload
+      }
+    }));
   }
 }
 
@@ -72261,74 +72310,64 @@ function* sipEventUnsubscribe() {
  * Saga to handle received sip event notifications.
  * @method receiveEventNotify
  */
-function* receiveEventNotify() {
-  // Redux-saga take() pattern.
-  // Take notification actions that MAY be for sip events.
-  function receiveEventNotifyPattern(action) {
-    return action.type === _actionTypes2.NOTIFICATION_RECEIVED && action.payload.notificationMessage.hasOwnProperty('genericNotificationParams');
-  }
+function* receiveEventNotify(action) {
+  // Determine which sip events the user is subscribed/connected for.
+  const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
 
-  while (true) {
-    const action = yield (0, _effects3.take)(receiveEventNotifyPattern);
+  const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
 
-    // Determine which sip events the user is subscribed/connected for.
-    const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
-
-    const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
-
-    const notification = action.payload.notificationMessage;
-    const genericNotification = notification.genericNotificationParams;
-    let callId = '';
-    /*
-     * Check if the notification's sessiondataType (if it exists) is of type call.
-     * If it is, then the sessionData field of the notification is a WebRTC Gateway's Call ID.
-     * We can then map that KL Call ID to an SDK Call ID (if it exists) and attach that to the
-     * sip event we emit to the application.
-     */
-    if (genericNotification.sessiondataType && genericNotification.sessiondataType === 'call') {
-      // Look at our existing calls to find the SDK Call ID (if any) that corresponds to the sessiondata
-      const targetcall = yield (0, _effects3.select)(_selectors3.getCallByWrtcsSessionId, genericNotification.sessionData);
-      if (!targetcall) {
-        log.warn('Call associated with received SIP notification cannot be found.');
-      } else {
-        callId = targetcall.id;
-      }
-    }
-
-    /*
-     * Determine which scenario we received this notification in:
-     *  - Provisioned and subscribed: Application subscribed for the event during user subscription,
-     *      and created a SIP subscription for it.
-     *  - Provisioned, not subscribed: Application subscribed for the event during user subscription,
-     *      but the SDK does not have a SIP subscription for it.
-     *  - Unsolicited: Application has no user or SIP subscription for the event.
-     *
-     * We want to emit the notification in all scenarios, so this check is mainly for logging purposes.
-     */
-    if ((0, _fp.includes)(notification.eventType, sipEvents)) {
-      const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, notification.eventType);
-
-      // Determine if there is a SIP subscription for this sip event in state.
-      if (eventInfo) {
-        // User subscribed to sip event, with a SIP subscription found in state.
-        log.info(`Received solicited SIP event notification of type ${notification.eventType}.`, notification);
-      } else {
-        // User subscribed to sip event, but no SIP subscription found.
-        //    This is assumed to be an edge-case where the SDK lost the SIP subscription info.
-        log.info(`Received solicited SIP event notification for untracked event of type ${notification.eventType}.`, notification);
-      }
+  const notification = action.payload.notificationMessage;
+  const genericNotification = notification.genericNotificationParams;
+  let callId = '';
+  /*
+   * Check if the notification's sessiondataType (if it exists) is of type call.
+   * If it is, then the sessionData field of the notification is a WebRTC Gateway's Call ID.
+   * We can then map that KL Call ID to an SDK Call ID (if it exists) and attach that to the
+   * sip event we emit to the application.
+   */
+  if (genericNotification.sessiondataType && genericNotification.sessiondataType === 'call') {
+    // Look at our existing calls to find the SDK Call ID (if any) that corresponds to the sessiondata
+    const targetcall = yield (0, _effects3.select)(_selectors3.getCallByWrtcsSessionId, genericNotification.sessionData);
+    if (!targetcall) {
+      log.warn('Call associated with received SIP notification cannot be found.');
     } else {
-      // User not subscribed to sip event.
-      log.info(`Received unsolicited SIP event notification of type ${notification.eventType}.`, notification);
+      callId = targetcall.id;
     }
-
-    // Always emit the notification to the application.
-    yield (0, _effects3.put)(actions.sipEventReceived(notification, callId));
   }
+
+  /*
+   * Determine which scenario we received this notification in:
+   *  - Provisioned and subscribed: Application subscribed for the event during user subscription,
+   *      and created a SIP subscription for it.
+   *  - Provisioned, not subscribed: Application subscribed for the event during user subscription,
+   *      but the SDK does not have a SIP subscription for it.
+   *  - Unsolicited: Application has no user or SIP subscription for the event.
+   *
+   * We want to emit the notification in all scenarios, so this check is mainly for logging purposes.
+   */
+  if ((0, _fp.includes)(notification.eventType, sipEvents)) {
+    const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, notification.eventType);
+
+    // Determine if there is a SIP subscription for this sip event in state.
+    if (eventInfo) {
+      // User subscribed to sip event, with a SIP subscription found in state.
+      log.info(`Received solicited SIP event notification of type ${notification.eventType}.`, notification);
+    } else {
+      // User subscribed to sip event, but no SIP subscription found.
+      //    This is assumed to be an edge-case where the SDK lost the SIP subscription info.
+      log.info(`Received solicited SIP event notification for untracked event of type ${notification.eventType}.`, notification);
+    }
+  } else {
+    // User not subscribed to sip event.
+    log.info(`Received unsolicited SIP event notification of type ${notification.eventType}.`, notification);
+  }
+
+  // Always emit the notification to the application.
+  yield (0, _effects3.put)(actions.sipEventReceived(notification, callId));
 }
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72338,11 +72377,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _eventTypes = __webpack_require__(543);
+var _eventTypes = __webpack_require__(544);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -72412,7 +72451,7 @@ events[actionTypes.SIP_EVENT_RECEIVED] = function (action) {
 exports.default = events;
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72502,7 +72541,7 @@ const EVENT_ERROR = exports.EVENT_ERROR = 'sip:error';
 const EVENT_RECEIVED = exports.EVENT_RECEIVED = 'sip:eventsChange';
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72513,13 +72552,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = usersFactory;
 
-var _interface = __webpack_require__(545);
+var _interface = __webpack_require__(546);
 
-var _operations = __webpack_require__(552);
+var _operations = __webpack_require__(553);
 
 var _operations2 = _interopRequireDefault(_operations);
 
-var _requests = __webpack_require__(555);
+var _requests = __webpack_require__(556);
 
 var _requests2 = _interopRequireDefault(_requests);
 
@@ -72545,7 +72584,7 @@ function usersFactory(options = {}, bottle) {
 }
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72556,11 +72595,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reducer = exports.createAPI = exports.name = undefined;
 
-var _index = __webpack_require__(546);
+var _index = __webpack_require__(547);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _reducers = __webpack_require__(549);
+var _reducers = __webpack_require__(550);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -72579,7 +72618,7 @@ exports.createAPI = _index2.default;
 exports.reducer = _reducers2.default;
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72590,11 +72629,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createAPI;
 
-var _users = __webpack_require__(547);
+var _users = __webpack_require__(548);
 
 var _users2 = _interopRequireDefault(_users);
 
-var _contacts = __webpack_require__(548);
+var _contacts = __webpack_require__(549);
 
 var _contacts2 = _interopRequireDefault(_contacts);
 
@@ -72616,7 +72655,7 @@ function createAPI(container) {
 }
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72838,7 +72877,7 @@ function usersApi(container) {
 }
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73092,7 +73131,7 @@ function contactsAPI(container) {
 }
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73106,11 +73145,11 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _contacts = __webpack_require__(550);
+var _contacts = __webpack_require__(551);
 
 var _contacts2 = _interopRequireDefault(_contacts);
 
-var _users = __webpack_require__(551);
+var _users = __webpack_require__(552);
 
 var _users2 = _interopRequireDefault(_users);
 
@@ -73131,7 +73170,7 @@ const reducer = (0, _reduxActions.handleActions)((0, _extends3.default)({}, _con
 exports.default = reducer;
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73258,7 +73297,7 @@ reducers[actionTypes.UPDATE_CONTACT_FINISH] = {
 exports.default = reducers;
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73338,7 +73377,7 @@ reducers[actionTypes.SEARCH_DIRECTORY_FINISH] = {
 exports.default = reducers;
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73358,11 +73397,11 @@ var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = createOperations;
 
-var _users = __webpack_require__(553);
+var _users = __webpack_require__(554);
 
 var actions = _interopRequireWildcard(_users);
 
-var _contacts = __webpack_require__(554);
+var _contacts = __webpack_require__(555);
 
 var contactsActions = _interopRequireWildcard(_contacts);
 
@@ -73884,7 +73923,7 @@ function createOperations(container) {
 } // Users' Actions
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73995,7 +74034,7 @@ function searchDirectoryFinish({ users, error }) {
 }
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74156,7 +74195,7 @@ function updateContactFinish({ contact, error }) {
 }
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74404,7 +74443,7 @@ function createRequests(container) {
 }
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74415,21 +74454,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cpaasRequest = exports.ucRequest = exports.linkRequest = undefined;
 
-var _configs = __webpack_require__(557);
+var _configs = __webpack_require__(558);
 
 var _sagas = __webpack_require__(330);
 
 var _sagas2 = _interopRequireDefault(_sagas);
 
-var _events = __webpack_require__(559);
+var _events = __webpack_require__(560);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _requestModule = __webpack_require__(560);
+var _requestModule = __webpack_require__(561);
 
 var _requestModule2 = _interopRequireDefault(_requestModule);
 
-var _interface = __webpack_require__(561);
+var _interface = __webpack_require__(562);
 
 var _actions = __webpack_require__(58);
 
@@ -74499,7 +74538,7 @@ function pluginFactory(platform) {
 }
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74534,7 +74573,7 @@ const v8nValidation = _validation.validation.schema({
 const parseOptions = exports.parseOptions = (0, _validation.parse)('request', v8nValidation);
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74841,7 +74880,7 @@ function makeResponse(apiResponse = {}, httpResponse = {}) {
 }
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74855,7 +74894,7 @@ var _eventTypes = __webpack_require__(332);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -74875,7 +74914,7 @@ eventsMap[actionTypes.AUTHORIZATION_ERROR] = function (action) {
 exports.default = eventsMap;
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75035,7 +75074,7 @@ function getTime() {
 }
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75046,11 +75085,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.api = exports.name = undefined;
 
-var _name = __webpack_require__(562);
+var _name = __webpack_require__(563);
 
 var _name2 = _interopRequireDefault(_name);
 
-var _api = __webpack_require__(563);
+var _api = __webpack_require__(564);
 
 var _api2 = _interopRequireDefault(_api);
 
@@ -75060,7 +75099,7 @@ exports.name = _name2.default;
 exports.api = _api2.default;
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75077,7 +75116,7 @@ const name = 'requests';
 exports.default = name;
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75161,7 +75200,7 @@ function api({ dispatch, getState }) {
 }
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.remote.js
- * Version: 5.5.0-beta.976
+ * Version: 5.5.0-beta.977
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -96,7 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 565);
+/******/ 	return __webpack_require__(__webpack_require__.s = 566);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -912,7 +912,7 @@ var _kandyLogger = __webpack_require__(91);
 
 var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
 
-var _config = __webpack_require__(141);
+var _config = __webpack_require__(142);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -1967,7 +1967,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.miscActions = exports.mediaActions = exports.sessionActions = exports.trackActions = exports.deviceActions = undefined;
 
-var _devices = __webpack_require__(148);
+var _devices = __webpack_require__(149);
 
 var deviceActionsImport = _interopRequireWildcard(_devices);
 
@@ -5434,7 +5434,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.5.0-beta.976';
+  return '5.5.0-beta.977';
 }
 
 /***/ }),
@@ -5558,7 +5558,7 @@ __webpack_require__(85)(String, 'String', function (iterated) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(24);
-var dPs = __webpack_require__(138);
+var dPs = __webpack_require__(139);
 var enumBugKeys = __webpack_require__(82);
 var IE_PROTO = __webpack_require__(80)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -6493,7 +6493,7 @@ function preventDtlsRoleChange(newSdp, info, originalSdp) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(137);
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(138);
 /* global window */
 
 
@@ -6590,47 +6590,47 @@ exports.convertMedia = convertMedia;
 exports.convertSession = convertSession;
 exports.convertLogger = convertLogger;
 
-var _deviceManager = __webpack_require__(567);
+var _deviceManager = __webpack_require__(568);
 
 var _deviceManager2 = _interopRequireDefault(_deviceManager);
 
-var _mediaManager = __webpack_require__(568);
+var _mediaManager = __webpack_require__(569);
 
 var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
-var _sessionManager = __webpack_require__(569);
+var _sessionManager = __webpack_require__(570);
 
 var _sessionManager2 = _interopRequireDefault(_sessionManager);
 
-var _trackManager = __webpack_require__(570);
+var _trackManager = __webpack_require__(571);
 
 var _trackManager2 = _interopRequireDefault(_trackManager);
 
-var _logManager = __webpack_require__(571);
+var _logManager = __webpack_require__(572);
 
 var _logManager2 = _interopRequireDefault(_logManager);
 
-var _webrtcManager = __webpack_require__(572);
+var _webrtcManager = __webpack_require__(573);
 
 var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
 
-var _renderer = __webpack_require__(573);
+var _renderer = __webpack_require__(574);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _media = __webpack_require__(574);
+var _media = __webpack_require__(575);
 
 var _media2 = _interopRequireDefault(_media);
 
-var _session = __webpack_require__(575);
+var _session = __webpack_require__(576);
 
 var _session2 = _interopRequireDefault(_session);
 
-var _track = __webpack_require__(576);
+var _track = __webpack_require__(577);
 
 var _track2 = _interopRequireDefault(_track);
 
-var _logger = __webpack_require__(577);
+var _logger = __webpack_require__(578);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -8498,7 +8498,8 @@ function iceCollectionScheduledCheck(proxyBase) {
 /* 134 */,
 /* 135 */,
 /* 136 */,
-/* 137 */
+/* 137 */,
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8523,7 +8524,7 @@ function symbolObservablePonyfill(root) {
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(19);
@@ -8542,7 +8543,7 @@ module.exports = __webpack_require__(18) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(18);
@@ -8569,13 +8570,13 @@ module.exports = function (isEntries) {
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(193), __esModule: true };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8678,7 +8679,7 @@ const partialDefaultLogActions = exports.partialDefaultLogActions = {
 };
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8829,7 +8830,7 @@ module.exports = {
 
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8895,7 +8896,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -8910,7 +8911,7 @@ module.exports = function (NAME) {
 
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8929,7 +8930,7 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8964,13 +8965,13 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(213), __esModule: true };
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9018,7 +9019,7 @@ function initializeDeviceFinish({ devices, error }) {
 }
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9104,7 +9105,7 @@ function setListeners(track, emit, END = 'END') {
 }
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9197,7 +9198,7 @@ function setListeners(media, emit, END = 'END') {
 }
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9342,7 +9343,7 @@ function setListeners(session, emit, END = 'END') {
 }
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9369,7 +9370,6 @@ function getSdpSessionId(sdp) {
 }
 
 /***/ }),
-/* 153 */,
 /* 154 */,
 /* 155 */,
 /* 156 */,
@@ -11815,7 +11815,7 @@ var _values = __webpack_require__(56);
 
 var _values2 = _interopRequireDefault(_values);
 
-var _symbol = __webpack_require__(140);
+var _symbol = __webpack_require__(141);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -12103,7 +12103,7 @@ module.exports = __webpack_require__(7).Object.values;
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(8);
-var $values = __webpack_require__(139)(false);
+var $values = __webpack_require__(140)(false);
 
 $export($export.S, 'Object', {
   values: function values(it) {
@@ -13870,7 +13870,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _track = __webpack_require__(149);
+var _track = __webpack_require__(150);
 
 var _track2 = _interopRequireDefault(_track);
 
@@ -13995,7 +13995,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _media = __webpack_require__(150);
+var _media = __webpack_require__(151);
 
 var _media2 = _interopRequireDefault(_media);
 
@@ -14107,7 +14107,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _session = __webpack_require__(151);
+var _session = __webpack_require__(152);
 
 var _session2 = _interopRequireDefault(_session);
 
@@ -14213,12 +14213,12 @@ module.exports = __webpack_require__(7).Map;
 
 "use strict";
 
-var strong = __webpack_require__(142);
+var strong = __webpack_require__(143);
 var validate = __webpack_require__(100);
 var MAP = 'Map';
 
 // 23.1 Map Objects
-module.exports = __webpack_require__(143)(MAP, function (get) {
+module.exports = __webpack_require__(144)(MAP, function (get) {
   return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -14240,7 +14240,7 @@ module.exports = __webpack_require__(143)(MAP, function (get) {
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(8);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(145)('Map') });
 
 
 /***/ }),
@@ -14248,7 +14248,7 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') 
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
-__webpack_require__(145)('Map');
+__webpack_require__(146)('Map');
 
 
 /***/ }),
@@ -14256,7 +14256,7 @@ __webpack_require__(145)('Map');
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
-__webpack_require__(146)('Map');
+__webpack_require__(147)('Map');
 
 
 /***/ }),
@@ -19374,7 +19374,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _create = __webpack_require__(147);
+var _create = __webpack_require__(148);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -20043,7 +20043,7 @@ var _pipeline2 = _interopRequireDefault(_pipeline);
 
 var _sdpSemantics = __webpack_require__(43);
 
-var _extractors = __webpack_require__(152);
+var _extractors = __webpack_require__(153);
 
 var _utils = __webpack_require__(67);
 
@@ -22118,7 +22118,8 @@ function replyChannel(channel) {
 /* 562 */,
 /* 563 */,
 /* 564 */,
-/* 565 */
+/* 565 */,
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22128,15 +22129,15 @@ var _objectWithoutProperties2 = __webpack_require__(71);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _clientProxy = __webpack_require__(566);
+var _clientProxy = __webpack_require__(567);
 
 var _clientProxy2 = _interopRequireDefault(_clientProxy);
 
-var _media = __webpack_require__(579);
+var _media = __webpack_require__(580);
 
 var mediaApis = _interopRequireWildcard(_media);
 
-var _events = __webpack_require__(580);
+var _events = __webpack_require__(581);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -22242,7 +22243,7 @@ remoteClient.create = remoteClient;
 module.exports = remoteClient;
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22257,7 +22258,7 @@ var _converters = __webpack_require__(103);
 
 var _converters2 = _interopRequireDefault(_converters);
 
-var _webrtcEvents = __webpack_require__(578);
+var _webrtcEvents = __webpack_require__(579);
 
 var _webrtcEvents2 = _interopRequireDefault(_webrtcEvents);
 
@@ -22471,7 +22472,7 @@ function isWebrtcCommand(data) {
 }
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22520,7 +22521,7 @@ exports.default = async function deviceManager(webRTC, command) {
 };
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22589,7 +22590,7 @@ exports.default = async function mediaManager(webRTC, command) {
 };
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22633,7 +22634,7 @@ exports.default = async function sessionManager(webRTC, command) {
 };
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22674,7 +22675,7 @@ exports.default = async function trackManager(webRTC, command) {
 };
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22724,7 +22725,7 @@ exports.default = async function logManager(webRTC, command) {
 };
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22752,7 +22753,7 @@ exports.default = async function webrtcManager(webRTC, command) {
 };
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22780,7 +22781,7 @@ exports.default = async function rendererManager(webRTC, command) {
 };
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22821,7 +22822,7 @@ exports.default = async function media(webRTC, command) {
 };
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22874,7 +22875,7 @@ exports.default = async function session(webRTC, command) {
 };
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22913,7 +22914,7 @@ exports.default = async function track(webRTC, command) {
 };
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22960,7 +22961,7 @@ exports.default = async function logger(webRTC, command) {
 };
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22973,15 +22974,15 @@ exports.default = setupListeners;
 
 var _mediaManager = __webpack_require__(226);
 
-var _media = __webpack_require__(150);
+var _media = __webpack_require__(151);
 
 var _sessionManager = __webpack_require__(227);
 
-var _session = __webpack_require__(151);
+var _session = __webpack_require__(152);
 
 var _trackManager = __webpack_require__(225);
 
-var _track = __webpack_require__(149);
+var _track = __webpack_require__(150);
 
 var _devices = __webpack_require__(224);
 
@@ -23048,7 +23049,7 @@ function setupListeners(webRTC, emit) {
 }
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23231,7 +23232,7 @@ function removeTracks(webRTC, trackIds, cssSelector) {
 }
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
