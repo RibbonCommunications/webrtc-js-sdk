@@ -7,14 +7,16 @@ Kandy.js change log.
 
 ## 5.5.0 - beta
 
-### Changed
-
-- Updated the call configuration in the tutorial sections so that ICE Server URLs adhere to the RFC spec for STUN/TURN URLs, which will be more strictly validated with the upcoming Chromium 110+ versions. `KJS-1361`
-  - TURN URLs only support a `transport` parameter as part of query section, and STUN URLs do not support any query section.
-
 ### Fixed
 
 - Fixed a SIP Events issue where an operation could block other operations from being performed in parallel. `KJS-1137`
+
+### Changed
+
+- Starting from Chromium 110, Chromium will perform stricter validation of STUN and TURN server urls as according to RFC spec. Please update any ice server URL configs as appropriate. `KJS-1349`
+  - TURN URLs only support a `transport` parameter as part of query section, and STUN URLs do not support any query section.
+  - The SDK will automatically remove incorrect query parameters on the STUN/TURN server URLs for Chrome 110+.
+  - Updated the call configuration in the tutorial sections so that ICE Server URLs adhere to the RFC spec for STUN/TURN URLs, and updated the API documentation for ICE server URLs highlighting this change. `KJS-1361`
 
 ## 5.4.0 - 2022-11-25
 
