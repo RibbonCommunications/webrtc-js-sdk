@@ -10,9 +10,9 @@ export const configs = [
       SUBSCRIPTIONFQDN: 'webrtc-na.kandy.io',
       WEBSOCKETFQDN: 'webrtc-na.kandy.io',
       RIBBONTURN1: 'turns:turn-na-1.kandy.io:443?transport=tcp',
-      RIBBONSTUN1: 'stun:turn-na-1.kandy.io:3478?transport=udp',
+      RIBBONSTUN1: 'stun:turn-na-1.kandy.io:3478',
       RIBBONTURN2: 'turns:turn-na-2.kandy.io:443?transport=tcp',
-      RIBBONSTUN2: 'stun:turn-na-2.kandy.io:3478?transport=udp'
+      RIBBONSTUN2: 'stun:turn-na-2.kandy.io:3478'
     }
   },
   {
@@ -24,9 +24,9 @@ export const configs = [
       SUBSCRIPTIONFQDN: 'webrtc-em.kandy.io"',
       WEBSOCKETFQDN: 'webrtc-em.kandy.io"',
       RIBBONTURN1: 'turns:turn-em-1.kandy.io:443?transport=tcp',
-      RIBBONSTUN1: 'stun:turn-em-1.kandy.io:3478?transport=udp',
+      RIBBONSTUN1: 'stun:turn-em-1.kandy.io:3478',
       RIBBONTURN2: 'turns:turn-em-2.kandy.io:443?transport=tcp',
-      RIBBONSTUN2: 'stun:turn-em-2.kandy.io:3478?transport=udp'
+      RIBBONSTUN2: 'stun:turn-em-2.kandy.io:3478'
     }
   },
   {
@@ -38,9 +38,9 @@ export const configs = [
       SUBSCRIPTIONFQDN: 'ct-webrtc.etisalat.ae',
       WEBSOCKETFQDN: 'ct-webrtc.etisalat.ae',
       RIBBONTURN1: 'turns:ct-turn1.etisalat.ae:443?transport=tcp',
-      RIBBONSTUN1: 'stun:ct-turn1.etisalat.ae:3478?transport=udp',
+      RIBBONSTUN1: 'stun:ct-turn1.etisalat.ae:3478',
       RIBBONTURN2: 'turns:ct-turn2.etisalat.ae:443?transport=tcp',
-      RIBBONSTUN2: 'stun:ct-turn2.etisalat.ae:3478?transport=udp'
+      RIBBONSTUN2: 'stun:ct-turn2.etisalat.ae:3478'
     }
   }
 ]
