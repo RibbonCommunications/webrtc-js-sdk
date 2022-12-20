@@ -643,6 +643,16 @@ Type: [Object][7]
 *   `code` **[string][8]** The code of the error. If no code is known, this will be 'NO_CODE'.
 *   `message` **[string][8]** A human-readable message to describe the error. If no message is known, this will be 'An error occurred'.
 
+### auth:change
+
+Authentication state has changed. You can get the new state by calling `getConnection()`.
+
+#### Parameters
+
+*   `params` **[Object][7]** 
+
+    *   `params.reason` **[string][8]** The cause of the authentication change, provided in the event of an unsolicited disconnection. See the `disconnectReasons` API for possible values.
+
 ### request:error
 
 An error occurred with server authorization.

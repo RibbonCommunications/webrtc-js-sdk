@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.5.0-beta.980
+ * Version: 5.5.0-beta.981
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.5.0-beta.980';
+  return '5.5.0-beta.981';
 }
 
 /***/ }),
@@ -43264,7 +43264,6 @@ Object.defineProperty(exports, "__esModule", {
  *
  * @public
  * @memberof api
- * @requires connect
  * @event auth:change
  * @param {Object} params
  * @param {string} params.reason The cause of the authentication change, provided in the event of an unsolicited disconnection. See the `disconnectReasons` API for possible values.
