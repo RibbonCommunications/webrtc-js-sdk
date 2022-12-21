@@ -10,6 +10,8 @@ Kandy.js change log.
 ### Fixed
 
 - Fixed a SIP Events issue where an operation could block other operations from being performed in parallel. `KJS-1137`
+- Fixed a Users issue where event payloads had an incorrect format. `KJS-1372`
+  - The `directory:change` and `users:change` events now properly match their documentation.
 
 ### Changed
 

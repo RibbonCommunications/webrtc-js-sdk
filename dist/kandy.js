@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.5.0-beta.982
+ * Version: 5.5.0-beta.983
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.5.0-beta.982';
+  return '5.5.0-beta.983';
 }
 
 /***/ }),
@@ -72950,12 +72950,13 @@ function usersApi(container) {
       let usersData;
       try {
         usersData = await operations.fetchUser(userId);
+
+        if (usersData) {
+          emitEvent(_eventTypes.USERS_CHANGE, { results: [usersData] });
+        }
       } catch (error) {
         emitEvent(_eventTypes.USERS_ERROR, { error });
-        return;
       }
-      // fetchUser succeeded
-      emitEvent(_eventTypes.USERS_CHANGE, usersData);
     },
 
     /**
@@ -73003,7 +73004,7 @@ function usersApi(container) {
       }
 
       // fetchSelf succeeded
-      emitEvent(_eventTypes.USERS_CHANGE, selfData);
+      emitEvent(_eventTypes.USERS_CHANGE, { results: [selfData] });
     },
 
     /**
@@ -73746,11 +73747,11 @@ function createOperations(container) {
 
     try {
       const connection = (0, _selectors.getConnectionInfo)(context.getState());
-      const userData = await requests.getDirectory(connection, body);
-      if (userData && userData.result.directoryItems) {
+      const directory = await requests.getDirectory(connection, body);
+      if (directory.length > 0) {
         // Update state by dispatching an action
-        dispatch(actions.fetchUserFinish(userData.result.directoryItems[0]));
-        return userData.result.directoryItems[0];
+        dispatch(actions.fetchUserFinish(directory[0]));
+        return directory[0];
       } else {
         log.debug('Fetch user request was successful, but result was empty');
       }
@@ -74108,11 +74109,10 @@ function createOperations(container) {
 
     try {
       const connection = (0, _selectors.getConnectionInfo)(context.getState());
-      const searchData = await requests.getDirectory(connection, body);
-      const users = searchData.result.directoryItems || [];
+      const users = await requests.getDirectory(connection, body);
 
-      const usersData = { users: users.map(localUserFromRemote) };
-      dispatch(actions.searchDirectoryFinish(usersData));
+      const usersData = users.map(localUserFromRemote);
+      dispatch(actions.searchDirectoryFinish({ users: usersData }));
 
       return usersData;
     } catch (error) {
@@ -74500,7 +74500,7 @@ function createRequests(container) {
     } else {
       if (body && body.directory.statusCode === 0) {
         // Request was successful.
-        return { result: body.directory || {} };
+        return body.directory.directoryItems || [];
       } else {
         // Unknown case.
         log.debug('Unknown error case for directory search.');
@@ -74618,7 +74618,7 @@ function createRequests(container) {
       }
     } else if (body && body.userProfileData && body.userProfileData.statusCode === 0) {
       // Request was successful.
-      return { result: body.userProfileData };
+      return body.userProfileData;
     } else {
       // Unknown case.
       log.debug('Unknown error case for user details fetch.');
