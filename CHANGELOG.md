@@ -13,6 +13,7 @@ Kandy.js change log.
 - Fixed a Call issue where the application would not be notified of a remote track added to a Call in certain scenarios. `KJS-1139`
 - Fixed a Users issue where event payloads had an incorrect format. `KJS-1372`
   - The `directory:change` and `users:change` events now properly match their documentation.
+- Fixed an issue which prevented the replacement of a local track, in Proxy mode. `KJS-1374`
 
 ### Changed
 

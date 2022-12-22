@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.5.0-beta.985
+ * Version: 5.5.0-beta.986
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.5.0-beta.985';
+  return '5.5.0-beta.986';
 }
 
 /***/ }),
@@ -24191,6 +24191,19 @@ function Session(id, managers, config = {}) {
   }
 
   /**
+   * @property {Array} getAllLocalTracks List of all Track objects the Session has added locally.
+   */
+  function getAllLocalTracks() {
+    const peer = peerManager.get(peerId);
+    if (peer) {
+      // Get all local Track objects, not just the active ones.
+      return peer.senderTracks.map(nativeTrack => trackManager.get(nativeTrack.id));
+    } else {
+      return [];
+    }
+  }
+
+  /**
    * @property {Array} getRemoteTracks List of active Track objects the Session has received remotely.
    */
   function getRemoteTracks() {
@@ -24211,7 +24224,8 @@ function Session(id, managers, config = {}) {
     return {
       id: sessionId,
       localTracks: getLocalTracks(),
-      remoteTracks: getRemoteTracks()
+      remoteTracks: getRemoteTracks(),
+      allLocalTracks: getAllLocalTracks()
     };
   }
 
@@ -25103,8 +25117,7 @@ function Session(id, managers, config = {}) {
       return getRemoteTracks();
     },
     get allLocalTracks() {
-      // Get all local Track objects, not just the active ones.
-      return peer.senderTracks.map(nativeTrack => trackManager.get(nativeTrack.id));
+      return getAllLocalTracks();
     },
     warmup,
     addTracks,
@@ -40778,10 +40791,10 @@ function modelProxy(base, channel) {
       /**
        * The base object used to create a model's proxy may have references to
        *    other webRTC objects. We need to proxy those references as well.
-       * Session: localTracks, remoteTracks
+       * Session: localTracks, remoteTracks, allLocalTracks
        * Media: tracks
        */
-      if (['localTracks', 'remoteTracks', 'tracks'].includes(prop)) {
+      if (['localTracks', 'allLocalTracks', 'remoteTracks', 'tracks'].includes(prop)) {
         return objTarget[prop].map(track => modelProxy(track, channel));
       }
 
