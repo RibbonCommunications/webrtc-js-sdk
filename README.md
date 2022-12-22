@@ -1,4 +1,4 @@
-# Kandy Link JavaScript SDK
+# Ribbon's WebRTC JavaScript SDK
 
 ## Install
 
@@ -14,8 +14,8 @@ To install a particular build branch or beta branch with the Github URL, run:
 
 ### In the browser :
 ```html
-<script src="https://unpkg.com/@kandy-io/link-sdk@5.4.0/dist/kandy.js"
-  integrity="sha384-iH7PS+N73H0H1wEmxD52ufA25oxAsVhyvCgCL3Q/P788sZa6kvQnQXlxj9R18AfW"
+<script src="https://unpkg.com/@kandy-io/link-sdk@5.5.0/dist/kandy.js"
+  integrity="sha384-ZeVYDlBqbf37fsZthd8Jqa+ra7oWi3yk77pUrxnyYccJ/z4Cc1wPJI5v1MhxrgRp"
   crossorigin="anonymous">
 </script>
 ```
@@ -25,7 +25,7 @@ The information about tutorials and documents can be found in the links below
 
 * `Documents`: [docs](https://RibbonCommunications.github.io/webrtc-js-sdk/docs)
 
-* `Tutorials`: Choose your configuration ( [Kandy-US](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/?config=us#/Configurations) | [Kandy-EMEA](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/?config=emea#/Configurations) | [Kandy-UAE](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/?config=uae#/Configurations) )
+* `Tutorials`: Choose your configuration ( [Ribbon-WebRTC-US](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/?config=us#/Configurations) | [Ribbon-WebRTC-EMEA](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/?config=emea#/Configurations) | [Ribbon-WebRTC-UAE](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/?config=uae#/Configurations) )
 
 ## Compatibility
 

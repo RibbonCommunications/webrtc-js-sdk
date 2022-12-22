@@ -7,9 +7,9 @@ permalink: /quickstarts/javascript/link/User%20Connect
 
 # Connecting and Disconnecting
 
-In this quickstart we will cover how to connect and disconnect to the Kandy Platform using Kandy.js. We will provide snippets of code below, which together will form a working demo application.
+In this quickstart we will cover how to connect and disconnect to the WebRTC Gateway using the Javascript SDK. We will provide snippets of code below, which together will form a working demo application.
 
-The first step with Kandy.js is always to initialize it. You will need to know the server information for the Kandy platform that you are using for initialization. However, for convenience, we'll use the default configuration which can be used as a starting point.
+The first step with the SDK is always to initialize it. You will need to know the server information for the WebRTC Gateway that you are using for initialization. However, for convenience, we'll use the default configuration which can be used as a starting point.
 
 ```javascript 
 import { config } from '$DEFAULTCONFIGNAME$'
@@ -18,7 +18,7 @@ import { create } from '@kandy-io/link-sdk'
 const client = create(config)
 ```
 
-To learn more about initializing Kandy, see our [Configuration Quickstart](Configurations).
+To learn more about initializing the WebRTC JS SDK, see our [Configuration Quickstart](Configurations).
 
 Since we're going to be making a working demo, we also need some HTML. The HTML for this demo is quite simple.
 
@@ -43,12 +43,12 @@ What we have is a simple div containing the subscribed state of our app, two but
 
 ## Step 1: Setting credentials
 
-To connect using Kandy, you will need two things:
+To connect using the WebRTC JS SDK, you will need two things:
 
-1. A username. This is the full username of a user on your domain. (Example: your-user@your-domain.kandy.io)
+1. A username. This is the full username of a user on your domain. (Example: your-user@your-domain.ribboncommunications.io)
 1. A password. Don't worry, its safe with us.
 
-With these two things, you can set your credentials and subscribe to services on Kandy. This is performed with the following code. Note, the `client.setCredentials` function does not return a value.
+With these two things, you can set your credentials and subscribe to services on the WebRTC Gateway. This is performed with the following code. Note, the `client.setCredentials` function does not return a value.
 
 ```javascript
 function setCredentials () {
@@ -61,7 +61,7 @@ function setCredentials () {
 
 ## Step 2: Subscribe for services
 
-To subscribe for services on Kandy, you need to have first set your credentials (see previous step). To subscribe for services you will call the `client.services.subscribe()` API function. This function takes two parameters, an array of service names and an options parameter. The only supported option is `forceLogOut`. When set to true this will ensure that this user is logged out of Kandy before attempting to connect and subscribe again.
+To subscribe for services on the WebRTC Gateway, you need to have first set your credentials (see previous step). To subscribe for services you will call the `client.services.subscribe()` API function. This function takes two parameters, an array of service names and an options parameter. The only supported option is `forceLogOut`. When set to true this will ensure that this user is logged out of the WebRTC Gateway before attempting to connect and subscribe again.
 
 ```javascript
 function subscribe () {
@@ -71,7 +71,7 @@ function subscribe () {
 
 ## Step 3: Connection Events
 
-The `client.setCredentials()` and `client.services.subscribe()` functions do not return a value. Instead, Kandy.js uses events to tell you when something has changed. To subscribe to these events, you use the `client.on()` API.
+The `client.setCredentials()` and `client.services.subscribe()` functions do not return a value. Instead, the SDK uses events to tell you when something has changed. To subscribe to these events, you use the `client.on()` API.
 
 For credentials and authentication, the `auth:change` and `request:error` events are used for feedback. The `auth:change` event will be emitted when the credentials provided to the SDK have changed. The `request:error` event will be emitted when the SDK encounters an authorization issue using the credentials, which may mean the credentials are invalid or expired. In the below snippet, we set listeners for these two events.
 
@@ -142,7 +142,7 @@ function unsubscribe () {
       document.getElementById('setCredentials').disabled = true
       // If user is not subscribed to services, then the user disconnected.
       client.destroy()
-      log('Kandy SDK has been uninitialized, reload the page to reset tutorial.')
+      log('WebRTC SDK has been uninitialized, reload the page to reset tutorial.')
     }
     log('Subscription state changed.')
   })
@@ -154,5 +154,5 @@ function unsubscribe () {
 
 Want to play around with this example for yourself? Feel free to edit this code on Codepen.
 
-<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="codepen-form"><input type="hidden" name="data" value=' {&quot;js&quot;:&quot;/**\n * Kandy.io Authentication Demo\n */\n\nconst defaultConfig = $DEFAULTCONFIGACCESS$\nconst { create } = Kandy\n\nconst client = create(defaultConfig)\n\nfunction setCredentials () {\n  const username = document.getElementById(&apos;username&apos;).value\n  const password = document.getElementById(&apos;password&apos;).value\n\n  client.setCredentials({ username, password })\n}\n\nfunction subscribe () {\n  client.services.subscribe([&apos;call&apos;, &apos;Presence&apos;, &apos;IM&apos;], { forceLogOut: true })\n}\n\nclient.on(&apos;auth:change&apos;, function () {\n  const user = client.getUserInfo()\n  document.getElementById(&apos;current-user&apos;).innerHTML = user.username || &apos;None.&apos;\n  document.getElementById(&apos;setCredentials&apos;).disabled = Boolean(user.username)\n  document.getElementById(&apos;subscribeBtn&apos;).disabled = !Boolean(user.username)\n  log(&apos;Credentials &apos; + (user.username ? &apos;set&apos; : &apos;unset&apos;))\n})\n\n// Listen for server authorization errors.\nclient.on(&apos;request:error&apos;, function (params) {\n  log(params.error.message)\n})\n\n// Listen for subscription changes.\nclient.on(&apos;subscription:change&apos;, params => {\n  const services = client.services.getSubscriptions()\n  const isSubscribed = services.subscribed.length > 0\n  document.getElementById(&apos;subscribeBtn&apos;).disabled = isSubscribed\n  document.getElementById(&apos;unsubscribeBtn&apos;).disabled = !isSubscribed\n  document.getElementById(&apos;setCredentials&apos;).disabled = isSubscribed\n  log(&apos;Subscription state changed.&apos;)\n})\n\nclient.on(&apos;subscription:resub&apos;, function (params) {\n  log(&apos;Subscribed services: &apos; + params.isFailure ? &apos;Failed to resubscribe to services&apos; : &apos;Resubscribed to services&apos;)\n})\n\nclient.on(&apos;subscription:error&apos;, function (params) {\n  log(&apos;Subscription error: &apos; + params.error.message + &apos; (&apos; + params.error.code + &apos;)&apos;)\n\n  document.getElementById(&apos;setCredentials&apos;).disabled = false\n})\n\nfunction unsubscribe () {\n  client.on(&apos;subscription:change&apos;, params => {\n    const services = client.services.getSubscriptions()\n    const isSubscribed = services.subscribed.length > 0\n    if (isSubscribed === false) {\n      document.getElementById(&apos;subscribeBtn&apos;).disabled = true\n      document.getElementById(&apos;unsubscribeBtn&apos;).disabled = true\n      document.getElementById(&apos;setCredentials&apos;).disabled = true\n      // If user is not subscribed to services, then the user disconnected.\n      client.destroy()\n      log(&apos;Kandy SDK has been uninitialized, reload the page to reset tutorial.&apos;)\n    }\n    log(&apos;Subscription state changed.&apos;)\n  })\n  client.services.unsubscribe([&apos;call&apos;, &apos;Presence&apos;, &apos;IM&apos;])\n}\n\n// Utility function for appending messages to the message div.\nfunction log (message) {\n  document.getElementById(&apos;messages&apos;).innerHTML += &apos;<div>&apos; + message + &apos;</div>&apos;\n}\n\n&quot;,&quot;html&quot;:&quot;<script src=\&quot;https://unpkg.com/@kandy-io/link-sdk@5.4.0/dist/kandy.js\&quot;></script>\n<script src=\&quot;$DEFAULTCONFIGURL$\&quot;></script>\n\n<div>\n  <fieldset>\n    <legend>Set Credentials using your account information</legend>\n    User Email: <input type=\&quot;text\&quot; id=\&quot;username\&quot; /> Password:<input type=\&quot;password\&quot; id=\&quot;password\&quot; />\n    <input type=\&quot;submit\&quot; id=\&quot;setCredentials\&quot; value=\&quot;setCredentials\&quot; onclick=\&quot;setCredentials();\&quot; />\n    Current user: <span id=\&quot;current-user\&quot;>None.</span>\n  </fieldset>\n  <fieldset>\n    <legend>Subscribe</legend>\n    <input type=\&quot;submit\&quot; id=\&quot;subscribeBtn\&quot; disabled value=\&quot;Subscribe\&quot; onclick=\&quot;subscribe();\&quot; />\n    <input type=\&quot;submit\&quot; id=\&quot;unsubscribeBtn\&quot; disabled value=\&quot;Unsubscribe\&quot; onclick=\&quot;unsubscribe();\&quot; />\n  </fieldset>\n  <div id=\&quot;messages\&quot;></div>\n</div>\n\n&quot;,&quot;css&quot;:&quot;&quot;,&quot;title&quot;:&quot;Kandy.io Authentication Demo&quot;,&quot;editors&quot;:&quot;101&quot;} '><input type="image" src="./TryItOn-CodePen.png"></form>
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="codepen-form"><input type="hidden" name="data" value=' {&quot;js&quot;:&quot;/**\n * The WebRTC JS SDK Authentication Demo\n */\n\nconst defaultConfig = $DEFAULTCONFIGACCESS$\nconst { create } = Kandy\n\nconst client = create(defaultConfig)\n\nfunction setCredentials () {\n  const username = document.getElementById(&apos;username&apos;).value\n  const password = document.getElementById(&apos;password&apos;).value\n\n  client.setCredentials({ username, password })\n}\n\nfunction subscribe () {\n  client.services.subscribe([&apos;call&apos;, &apos;Presence&apos;, &apos;IM&apos;], { forceLogOut: true })\n}\n\nclient.on(&apos;auth:change&apos;, function () {\n  const user = client.getUserInfo()\n  document.getElementById(&apos;current-user&apos;).innerHTML = user.username || &apos;None.&apos;\n  document.getElementById(&apos;setCredentials&apos;).disabled = Boolean(user.username)\n  document.getElementById(&apos;subscribeBtn&apos;).disabled = !Boolean(user.username)\n  log(&apos;Credentials &apos; + (user.username ? &apos;set&apos; : &apos;unset&apos;))\n})\n\n// Listen for server authorization errors.\nclient.on(&apos;request:error&apos;, function (params) {\n  log(params.error.message)\n})\n\n// Listen for subscription changes.\nclient.on(&apos;subscription:change&apos;, params => {\n  const services = client.services.getSubscriptions()\n  const isSubscribed = services.subscribed.length > 0\n  document.getElementById(&apos;subscribeBtn&apos;).disabled = isSubscribed\n  document.getElementById(&apos;unsubscribeBtn&apos;).disabled = !isSubscribed\n  document.getElementById(&apos;setCredentials&apos;).disabled = isSubscribed\n  log(&apos;Subscription state changed.&apos;)\n})\n\nclient.on(&apos;subscription:resub&apos;, function (params) {\n  log(&apos;Subscribed services: &apos; + params.isFailure ? &apos;Failed to resubscribe to services&apos; : &apos;Resubscribed to services&apos;)\n})\n\nclient.on(&apos;subscription:error&apos;, function (params) {\n  log(&apos;Subscription error: &apos; + params.error.message + &apos; (&apos; + params.error.code + &apos;)&apos;)\n\n  document.getElementById(&apos;setCredentials&apos;).disabled = false\n})\n\nfunction unsubscribe () {\n  client.on(&apos;subscription:change&apos;, params => {\n    const services = client.services.getSubscriptions()\n    const isSubscribed = services.subscribed.length > 0\n    if (isSubscribed === false) {\n      document.getElementById(&apos;subscribeBtn&apos;).disabled = true\n      document.getElementById(&apos;unsubscribeBtn&apos;).disabled = true\n      document.getElementById(&apos;setCredentials&apos;).disabled = true\n      // If user is not subscribed to services, then the user disconnected.\n      client.destroy()\n      log(&apos;WebRTC SDK has been uninitialized, reload the page to reset tutorial.&apos;)\n    }\n    log(&apos;Subscription state changed.&apos;)\n  })\n  client.services.unsubscribe([&apos;call&apos;, &apos;Presence&apos;, &apos;IM&apos;])\n}\n\n// Utility function for appending messages to the message div.\nfunction log (message) {\n  document.getElementById(&apos;messages&apos;).innerHTML += &apos;<div>&apos; + message + &apos;</div>&apos;\n}\n\n&quot;,&quot;html&quot;:&quot;<script src=\&quot;https://unpkg.com/@kandy-io/link-sdk@5.5.0/dist/kandy.js\&quot;></script>\n<script src=\&quot;$DEFAULTCONFIGURL$\&quot;></script>\n\n<div>\n  <fieldset>\n    <legend>Set Credentials using your account information</legend>\n    User Email: <input type=\&quot;text\&quot; id=\&quot;username\&quot; /> Password:<input type=\&quot;password\&quot; id=\&quot;password\&quot; />\n    <input type=\&quot;submit\&quot; id=\&quot;setCredentials\&quot; value=\&quot;setCredentials\&quot; onclick=\&quot;setCredentials();\&quot; />\n    Current user: <span id=\&quot;current-user\&quot;>None.</span>\n  </fieldset>\n  <fieldset>\n    <legend>Subscribe</legend>\n    <input type=\&quot;submit\&quot; id=\&quot;subscribeBtn\&quot; disabled value=\&quot;Subscribe\&quot; onclick=\&quot;subscribe();\&quot; />\n    <input type=\&quot;submit\&quot; id=\&quot;unsubscribeBtn\&quot; disabled value=\&quot;Unsubscribe\&quot; onclick=\&quot;unsubscribe();\&quot; />\n  </fieldset>\n  <div id=\&quot;messages\&quot;></div>\n</div>\n\n&quot;,&quot;css&quot;:&quot;&quot;,&quot;title&quot;:&quot;The WebRTC JS SDK Authentication Demo&quot;,&quot;editors&quot;:&quot;101&quot;} '><input type="image" src="./TryItOn-CodePen.png"></form>
 

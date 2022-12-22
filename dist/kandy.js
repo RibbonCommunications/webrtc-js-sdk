@@ -1,7 +1,7 @@
 /**
  * Kandy.js
  * kandy.newLink.js
- * Version: 5.4.0
+ * Version: 5.5.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -912,7 +912,7 @@ var _kandyLogger = __webpack_require__(91);
 
 var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
 
-var _config = __webpack_require__(141);
+var _config = __webpack_require__(142);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -1970,7 +1970,7 @@ exports.getRequestInfo = getRequestInfo;
 
 var _fp = __webpack_require__(2);
 
-var _constants = __webpack_require__(154);
+var _constants = __webpack_require__(155);
 
 var _constants2 = __webpack_require__(20);
 
@@ -2979,7 +2979,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.miscActions = exports.mediaActions = exports.sessionActions = exports.trackActions = exports.deviceActions = undefined;
 
-var _devices = __webpack_require__(148);
+var _devices = __webpack_require__(149);
 
 var deviceActionsImport = _interopRequireWildcard(_devices);
 
@@ -5506,7 +5506,7 @@ module.exports = function (fn, that, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(19);
-var createDesc = __webpack_require__(38);
+var createDesc = __webpack_require__(39);
 module.exports = __webpack_require__(18) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -5577,6 +5577,12 @@ module.exports = function (it) {
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = { "default": __webpack_require__(210), __esModule: true };
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -5599,7 +5605,7 @@ const UNREGISTER_APPLE_PUSH_NOTIFICATION = exports.UNREGISTER_APPLE_PUSH_NOTIFIC
 const UNREGISTER_ANDROID_PUSH_NOTIFICATION = exports.UNREGISTER_ANDROID_PUSH_NOTIFICATION = prefix + 'UNREGISTER_ANDROID_PUSH_NOTIFICATION';
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5737,7 +5743,7 @@ const TRACK_ADDED = exports.TRACK_ADDED = trackPrefix + 'ADDED';
 const TRACK_REMOVED = exports.TRACK_REMOVED = trackPrefix + 'REMOVED';
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -5751,7 +5757,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
@@ -5762,12 +5768,6 @@ module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
 
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(210), __esModule: true };
 
 /***/ }),
 /* 41 */
@@ -6941,7 +6941,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.4.0';
+  return '5.5.0';
 }
 
 /***/ }),
@@ -7226,7 +7226,7 @@ __webpack_require__(85)(String, 'String', function (iterated) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(24);
-var dPs = __webpack_require__(138);
+var dPs = __webpack_require__(139);
 var enumBugKeys = __webpack_require__(82);
 var IE_PROTO = __webpack_require__(80)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -8367,7 +8367,7 @@ const CHANNEL_CLOSED = exports.CHANNEL_CLOSED = prefix + 'CHANNEL_CLOSED';
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(137);
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(138);
 /* global window */
 
 
@@ -9009,7 +9009,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(50);
-var createDesc = __webpack_require__(38);
+var createDesc = __webpack_require__(39);
 var toIObject = __webpack_require__(33);
 var toPrimitive = __webpack_require__(76);
 var has = __webpack_require__(30);
@@ -10034,7 +10034,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(40);
+var _from = __webpack_require__(36);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -10509,7 +10509,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = request;
 exports.requestSaga = requestSaga;
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var _actions = __webpack_require__(282);
 
@@ -10656,7 +10656,7 @@ exports.webRtcAddMedia = webRtcAddMedia;
 exports.webRtcRemoveMedia = webRtcRemoveMedia;
 exports.webRtcReplaceTrack = webRtcReplaceTrack;
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -11683,6 +11683,29 @@ const FILE_UPLOAD_FAIL = exports.FILE_UPLOAD_FAIL = PREFIX + 'FILE_UPLOAD_FAIL';
 
 /***/ }),
 /* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const PREFIX = '@@KANDY/';
+
+const SIP_EVENT_SUBSCRIBE = exports.SIP_EVENT_SUBSCRIBE = PREFIX + 'SIP_EVENT_SUBSCRIBE';
+const SIP_EVENT_SUBSCRIBE_FINISH = exports.SIP_EVENT_SUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_SUBSCRIBE_FINISH';
+
+const SIP_EVENT_UPDATE = exports.SIP_EVENT_UPDATE = PREFIX + 'SIP_EVENT_UPDATE';
+const SIP_EVENT_UPDATE_FINISH = exports.SIP_EVENT_UPDATE_FINISH = PREFIX + 'SIP_EVENT_UPDATE_FINISH';
+
+const SIP_EVENT_UNSUBSCRIBE = exports.SIP_EVENT_UNSUBSCRIBE = PREFIX + 'SIP_EVENT_UNSUBSCRIBE';
+const SIP_EVENT_UNSUBSCRIBE_FINISH = exports.SIP_EVENT_UNSUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_UNSUBSCRIBE_FINISH';
+
+const SIP_EVENT_RECEIVED = exports.SIP_EVENT_RECEIVED = PREFIX + 'SIP_EVENT_RECEIVED';
+
+/***/ }),
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11707,12 +11730,12 @@ function symbolObservablePonyfill(root) {
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(19);
 var anObject = __webpack_require__(24);
-var getKeys = __webpack_require__(39);
+var getKeys = __webpack_require__(40);
 
 module.exports = __webpack_require__(18) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -11726,11 +11749,11 @@ module.exports = __webpack_require__(18) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(18);
-var getKeys = __webpack_require__(39);
+var getKeys = __webpack_require__(40);
 var toIObject = __webpack_require__(33);
 var isEnum = __webpack_require__(50).f;
 module.exports = function (isEntries) {
@@ -11753,13 +11776,13 @@ module.exports = function (isEntries) {
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(193), __esModule: true };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11862,7 +11885,7 @@ const partialDefaultLogActions = exports.partialDefaultLogActions = {
 };
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12013,7 +12036,7 @@ module.exports = {
 
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12079,7 +12102,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -12094,7 +12117,7 @@ module.exports = function (NAME) {
 
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12113,7 +12136,7 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12148,13 +12171,13 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(213), __esModule: true };
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12202,7 +12225,7 @@ function initializeDeviceFinish({ devices, error }) {
 }
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12288,7 +12311,7 @@ function setListeners(track, emit, END = 'END') {
 }
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12381,7 +12404,7 @@ function setListeners(media, emit, END = 'END') {
 }
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12526,7 +12549,7 @@ function setListeners(session, emit, END = 'END') {
 }
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12553,7 +12576,7 @@ function getSdpSessionId(sdp) {
 }
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12574,7 +12597,7 @@ const INITIALIZE = exports.INITIALIZE = PREFIX + 'INITIALIZE';
 const INITIALIZE_FINISH = exports.INITIALIZE_FINISH = PREFIX + 'INITIALIZE_FINISH';
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12604,7 +12627,7 @@ const SUBSCRIPTION_STATE = exports.SUBSCRIPTION_STATE = {
 };
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12621,7 +12644,7 @@ const RESPONSE = exports.RESPONSE = PREFIX + 'RESPONSE';
 const AUTHORIZATION_ERROR = exports.AUTHORIZATION_ERROR = PREFIX + 'AUTHORIZATION_ERROR';
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12687,7 +12710,7 @@ const changeConnectivityChecking = exports.changeConnectivityChecking = createWs
 const changePingInterval = exports.changePingInterval = createWsAction(actionTypes.CHANGE_PING_INTERVAL);
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12873,7 +12896,7 @@ const sixSpaces = '      ';
 const eightSpaces = '        ';
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13065,29 +13088,6 @@ function trackRemovedHandler(action) {
 }
 
 /***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-const PREFIX = '@@KANDY/';
-
-const SIP_EVENT_SUBSCRIBE = exports.SIP_EVENT_SUBSCRIBE = PREFIX + 'SIP_EVENT_SUBSCRIBE';
-const SIP_EVENT_SUBSCRIBE_FINISH = exports.SIP_EVENT_SUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_SUBSCRIBE_FINISH';
-
-const SIP_EVENT_UPDATE = exports.SIP_EVENT_UPDATE = PREFIX + 'SIP_EVENT_UPDATE';
-const SIP_EVENT_UPDATE_FINISH = exports.SIP_EVENT_UPDATE_FINISH = PREFIX + 'SIP_EVENT_UPDATE_FINISH';
-
-const SIP_EVENT_UNSUBSCRIBE = exports.SIP_EVENT_UNSUBSCRIBE = PREFIX + 'SIP_EVENT_UNSUBSCRIBE';
-const SIP_EVENT_UNSUBSCRIBE_FINISH = exports.SIP_EVENT_UNSUBSCRIBE_FINISH = PREFIX + 'SIP_EVENT_UNSUBSCRIBE_FINISH';
-
-const SIP_EVENT_RECEIVED = exports.SIP_EVENT_RECEIVED = PREFIX + 'SIP_EVENT_RECEIVED';
-
-/***/ }),
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13159,7 +13159,7 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(163) });
 
 // 19.1.2.1 Object.assign(target, source, ...)
 var DESCRIPTORS = __webpack_require__(18);
-var getKeys = __webpack_require__(39);
+var getKeys = __webpack_require__(40);
 var gOPS = __webpack_require__(83);
 var pIE = __webpack_require__(50);
 var toObject = __webpack_require__(35);
@@ -14419,7 +14419,7 @@ module.exports = function (TO_STRING) {
 "use strict";
 
 var create = __webpack_require__(63);
-var descriptor = __webpack_require__(38);
+var descriptor = __webpack_require__(39);
 var setToStringTag = __webpack_require__(52);
 var IteratorPrototype = {};
 
@@ -14940,7 +14940,7 @@ module.exports = __webpack_require__(7).Object.keys;
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(35);
-var $keys = __webpack_require__(39);
+var $keys = __webpack_require__(40);
 
 __webpack_require__(98)('keys', function () {
   return function keys(it) {
@@ -15419,13 +15419,13 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 "use strict";
 
 var token = '%[a-f0-9]{2}';
-var singleMatcher = new RegExp(token, 'gi');
+var singleMatcher = new RegExp('(' + token + ')|([^%]+?)', 'gi');
 var multiMatcher = new RegExp('(' + token + ')+', 'gi');
 
 function decodeComponents(components, split) {
 	try {
 		// Try to decode the entire string first
-		return decodeURIComponent(components.join(''));
+		return [decodeURIComponent(components.join(''))];
 	} catch (err) {
 		// Do nothing
 	}
@@ -15447,12 +15447,12 @@ function decode(input) {
 	try {
 		return decodeURIComponent(input);
 	} catch (err) {
-		var tokens = input.match(singleMatcher);
+		var tokens = input.match(singleMatcher) || [];
 
 		for (var i = 1; i < tokens.length; i++) {
 			input = decodeComponents(tokens, i).join('');
 
-			tokens = input.match(singleMatcher);
+			tokens = input.match(singleMatcher) || [];
 		}
 
 		return input;
@@ -15581,7 +15581,7 @@ var _values = __webpack_require__(56);
 
 var _values2 = _interopRequireDefault(_values);
 
-var _symbol = __webpack_require__(140);
+var _symbol = __webpack_require__(141);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -15869,7 +15869,7 @@ module.exports = __webpack_require__(7).Object.values;
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(8);
-var $values = __webpack_require__(139)(false);
+var $values = __webpack_require__(140)(false);
 
 $export($export.S, 'Object', {
   values: function values(it) {
@@ -15916,13 +15916,13 @@ var isObject = __webpack_require__(17);
 var toObject = __webpack_require__(35);
 var toIObject = __webpack_require__(33);
 var toPrimitive = __webpack_require__(76);
-var createDesc = __webpack_require__(38);
+var createDesc = __webpack_require__(39);
 var _create = __webpack_require__(63);
 var gOPNExt = __webpack_require__(196);
 var $GOPD = __webpack_require__(121);
 var $GOPS = __webpack_require__(83);
 var $DP = __webpack_require__(19);
-var $keys = __webpack_require__(39);
+var $keys = __webpack_require__(40);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -16147,7 +16147,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(39);
+var getKeys = __webpack_require__(40);
 var gOPS = __webpack_require__(83);
 var pIE = __webpack_require__(50);
 module.exports = function (it) {
@@ -16900,7 +16900,7 @@ $export($export.S + $export.F * !__webpack_require__(118)(function (iter) { Arra
 "use strict";
 
 var $defineProperty = __webpack_require__(19);
-var createDesc = __webpack_require__(38);
+var createDesc = __webpack_require__(39);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -17920,7 +17920,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _track = __webpack_require__(149);
+var _track = __webpack_require__(150);
 
 var _track2 = _interopRequireDefault(_track);
 
@@ -18045,7 +18045,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _media = __webpack_require__(150);
+var _media = __webpack_require__(151);
 
 var _media2 = _interopRequireDefault(_media);
 
@@ -18157,7 +18157,7 @@ var _actionTypes = __webpack_require__(13);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _session = __webpack_require__(151);
+var _session = __webpack_require__(152);
 
 var _session2 = _interopRequireDefault(_session);
 
@@ -18263,12 +18263,12 @@ module.exports = __webpack_require__(7).Map;
 
 "use strict";
 
-var strong = __webpack_require__(142);
+var strong = __webpack_require__(143);
 var validate = __webpack_require__(100);
 var MAP = 'Map';
 
 // 23.1 Map Objects
-module.exports = __webpack_require__(143)(MAP, function (get) {
+module.exports = __webpack_require__(144)(MAP, function (get) {
   return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -18290,7 +18290,7 @@ module.exports = __webpack_require__(143)(MAP, function (get) {
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(8);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(145)('Map') });
 
 
 /***/ }),
@@ -18298,7 +18298,7 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') 
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
-__webpack_require__(145)('Map');
+__webpack_require__(146)('Map');
 
 
 /***/ }),
@@ -18306,7 +18306,7 @@ __webpack_require__(145)('Map');
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
-__webpack_require__(146)('Map');
+__webpack_require__(147)('Map');
 
 
 /***/ }),
@@ -18333,7 +18333,7 @@ var gOPD = __webpack_require__(121);
 var getPrototypeOf = __webpack_require__(97);
 var has = __webpack_require__(30);
 var $export = __webpack_require__(8);
-var createDesc = __webpack_require__(38);
+var createDesc = __webpack_require__(39);
 var anObject = __webpack_require__(24);
 var isObject = __webpack_require__(17);
 
@@ -23424,7 +23424,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _create = __webpack_require__(147);
+var _create = __webpack_require__(148);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -23503,7 +23503,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(40);
+var _from = __webpack_require__(36);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -23830,7 +23830,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(40);
+var _from = __webpack_require__(36);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -23954,7 +23954,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(40);
+var _from = __webpack_require__(36);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -24093,7 +24093,7 @@ var _pipeline2 = _interopRequireDefault(_pipeline);
 
 var _sdpSemantics = __webpack_require__(43);
 
-var _extractors = __webpack_require__(152);
+var _extractors = __webpack_require__(153);
 
 var _utils = __webpack_require__(67);
 
@@ -24191,6 +24191,19 @@ function Session(id, managers, config = {}) {
   }
 
   /**
+   * @property {Array} getAllLocalTracks List of all Track objects the Session has added locally.
+   */
+  function getAllLocalTracks() {
+    const peer = peerManager.get(peerId);
+    if (peer) {
+      // Get all local Track objects, not just the active ones.
+      return peer.senderTracks.map(nativeTrack => trackManager.get(nativeTrack.id));
+    } else {
+      return [];
+    }
+  }
+
+  /**
    * @property {Array} getRemoteTracks List of active Track objects the Session has received remotely.
    */
   function getRemoteTracks() {
@@ -24211,7 +24224,8 @@ function Session(id, managers, config = {}) {
     return {
       id: sessionId,
       localTracks: getLocalTracks(),
-      remoteTracks: getRemoteTracks()
+      remoteTracks: getRemoteTracks(),
+      allLocalTracks: getAllLocalTracks()
     };
   }
 
@@ -25103,8 +25117,7 @@ function Session(id, managers, config = {}) {
       return getRemoteTracks();
     },
     get allLocalTracks() {
-      // Get all local Track objects, not just the active ones.
-      return peer.senderTracks.map(nativeTrack => trackManager.get(nativeTrack.id));
+      return getAllLocalTracks();
     },
     warmup,
     addTracks,
@@ -25322,7 +25335,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(40);
+var _from = __webpack_require__(36);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -26163,7 +26176,7 @@ exports.request = request;
 exports.response = response;
 exports.authorizationError = authorizationError;
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -26834,7 +26847,7 @@ var _selectors = __webpack_require__(21);
 
 var _logs = __webpack_require__(4);
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -27402,7 +27415,7 @@ function getAddedSectionIds(mediaDiff) {
   mediaDiff.changed.forEach(changedMedia => {
     const { media, changes } = changedMedia;
     // This ChangedMedia object represents a "track added".
-    if (changes.sending === 'START' && changes.receiving === 'SAME') {
+    if (changes.sending === 'START' && (changes.receiving === 'SAME' || changes.receiving === 'START')) {
       const id = typeof media.sectionId === 'undefined' ? media.sectionIndex : media.sectionId;
       addedMediaSections.push(id);
     }
@@ -27488,7 +27501,7 @@ exports.unregisterApplePushNotification = unregisterApplePushNotification;
 exports.unregisterAndroidPushNotification = unregisterAndroidPushNotification;
 exports.enableNotificationChannelFinish = enableNotificationChannelFinish;
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -28082,6 +28095,12 @@ const SET_SDP_HANDLERS = exports.SET_SDP_HANDLERS = PREFIX + 'SET_SDP_HANDLERS';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _from = __webpack_require__(36);
+
+var _from2 = _interopRequireDefault(_from);
+
+exports.fixIceServerUrls = fixIceServerUrls;
 exports.default = parseConfigs;
 exports.mergeDefaults = mergeDefaults;
 
@@ -28094,6 +28113,8 @@ var _version = __webpack_require__(55);
 var _defaults = __webpack_require__(374);
 
 var _validation = __webpack_require__(73);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Helpers.
 const log = _logs.logManager.getLogger('CALL');
@@ -28174,6 +28195,47 @@ const defaultOptions = {
   mediaConnectionRetryDelay: _validation.validation.positive()
 });
 const parseOptions = (0, _validation.parse)('call', v8nValidation);
+
+/**
+ * A helper function to validate and fix STUN/TURN server urls according to RFC Spec.
+ *
+ * @method fixIceServerUrls
+ * @param {string} url The URL of the ice server
+ * @return The updated URL
+ */
+function fixIceServerUrls(url) {
+  let serverUrl;
+  try {
+    serverUrl = new URL(url);
+  } catch (error) {
+    log.warn(`Invalid URL specified for ice server: ${url}`);
+    return url;
+  }
+  const protocol = serverUrl.protocol;
+  const query = serverUrl.search;
+  if (!query) {
+    return url;
+  }
+
+  let queryFilterFunc;
+  if (protocol && protocol.toLowerCase().startsWith('turn')) {
+    // Remove all query parameters other than "transport" for TURN URLs.
+    queryFilterFunc = key => key !== 'transport';
+  } else {
+    // Remove all query parameters for STUN URLs
+    queryFilterFunc = () => true;
+  }
+  const serverQueryParams = new URLSearchParams(query);
+  (0, _from2.default)(serverQueryParams.keys()).filter(queryFilterFunc).forEach(key => serverQueryParams.delete(key));
+
+  const newQuery = serverQueryParams.toString();
+  serverUrl.search = newQuery;
+  if (serverUrl.search.length !== query.length) {
+    log.warn(`Invalid STUN/TURN server URL provided: ${url}`);
+  }
+
+  return serverUrl.toString();
+}
 
 /**
  * Helper function to format the Call configs as the plugins expect it to be.
@@ -28633,7 +28695,7 @@ exports.setChannelFinish = setChannelFinish;
 exports.initializeRemote = initializeRemote;
 exports.initializeRemoteFinish = initializeRemoteFinish;
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -28728,7 +28790,7 @@ exports.connectWebsocket = connectWebsocket;
 exports.disconnectWebsocket = disconnectWebsocket;
 exports.waitForReconnect = waitForReconnect;
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var _actionTypes = __webpack_require__(68);
 
@@ -28918,7 +28980,7 @@ exports.resync = resync;
 exports.resyncFinish = resyncFinish;
 exports.updateCall = updateCall;
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -30869,7 +30931,11 @@ function wasAddMedia(mediaDiff) {
    * 3b) Any media that changed was to start sending.
    */
   const changedSending = changed.every(({ media, changes }) => {
-    return changes.sending === _compareMedia.MEDIA_TRANSITIONS.START && changes.receiving === _compareMedia.MEDIA_TRANSITIONS.SAME;
+    // Should handle:
+    //    reconly  --> sendrecv
+    //    inactive --> sendonly
+    //    inactive --> sendrecv
+    return changes.sending === _compareMedia.MEDIA_TRANSITIONS.START && (changes.receiving === _compareMedia.MEDIA_TRANSITIONS.SAME || changes.receiving === _compareMedia.MEDIA_TRANSITIONS.START);
   });
 
   /*
@@ -32674,7 +32740,7 @@ exports.sipEventUnsubscribe = sipEventUnsubscribe;
 exports.sipEventUnsubscribeFinish = sipEventUnsubscribeFinish;
 exports.sipEventReceived = sipEventReceived;
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -32987,7 +33053,7 @@ exports.__testonly__ = undefined;
 exports.default = watchRequests;
 exports.handleRequest = handleRequest;
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -32995,7 +33061,7 @@ var _actions = __webpack_require__(282);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _makeRequest = __webpack_require__(558);
+var _makeRequest = __webpack_require__(559);
 
 var _makeRequest2 = _interopRequireDefault(_makeRequest);
 
@@ -34257,13 +34323,13 @@ var _sipEvents = __webpack_require__(537);
 
 var _sipEvents2 = _interopRequireDefault(_sipEvents);
 
-var _index = __webpack_require__(544);
+var _index = __webpack_require__(545);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _request = __webpack_require__(556);
+var _request = __webpack_require__(557);
 
-__webpack_require__(564);
+__webpack_require__(565);
 
 var _sdpHandlers = __webpack_require__(334);
 
@@ -36188,7 +36254,7 @@ var _actions = __webpack_require__(204);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _config = __webpack_require__(141);
+var _config = __webpack_require__(142);
 
 var _sagas = __webpack_require__(353);
 
@@ -36881,12 +36947,12 @@ module.exports = __webpack_require__(7).Set;
 
 "use strict";
 
-var strong = __webpack_require__(142);
+var strong = __webpack_require__(143);
 var validate = __webpack_require__(100);
 var SET = 'Set';
 
 // 23.2 Set Objects
-module.exports = __webpack_require__(143)(SET, function (get) {
+module.exports = __webpack_require__(144)(SET, function (get) {
   return function Set() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.2.3.1 Set.prototype.add(value)
@@ -36903,7 +36969,7 @@ module.exports = __webpack_require__(143)(SET, function (get) {
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(8);
 
-$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(144)('Set') });
+$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(145)('Set') });
 
 
 /***/ }),
@@ -36911,7 +36977,7 @@ $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(144)('Set') 
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
-__webpack_require__(145)('Set');
+__webpack_require__(146)('Set');
 
 
 /***/ }),
@@ -36919,7 +36985,7 @@ __webpack_require__(145)('Set');
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
-__webpack_require__(146)('Set');
+__webpack_require__(147)('Set');
 
 
 /***/ }),
@@ -37130,7 +37196,7 @@ var _defineProperties = __webpack_require__(364);
 
 var _defineProperties2 = _interopRequireDefault(_defineProperties);
 
-var _from = __webpack_require__(40);
+var _from = __webpack_require__(36);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -37138,7 +37204,7 @@ var _iterator = __webpack_require__(367);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(140);
+var _symbol = __webpack_require__(141);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -37150,7 +37216,7 @@ var _keys = __webpack_require__(54);
 
 var _keys2 = _interopRequireDefault(_keys);
 
-var _create = __webpack_require__(147);
+var _create = __webpack_require__(148);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -37448,7 +37514,7 @@ module.exports = function defineProperties(T, D) {
 
 var $export = __webpack_require__(8);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(18), 'Object', { defineProperties: __webpack_require__(138) });
+$export($export.S + $export.F * !__webpack_require__(18), 'Object', { defineProperties: __webpack_require__(139) });
 
 
 /***/ }),
@@ -40193,7 +40259,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -40652,7 +40718,7 @@ module.exports = __webpack_require__(7).Object.entries;
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(8);
-var $entries = __webpack_require__(139)(true);
+var $entries = __webpack_require__(140)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it) {
@@ -40725,10 +40791,10 @@ function modelProxy(base, channel) {
       /**
        * The base object used to create a model's proxy may have references to
        *    other webRTC objects. We need to proxy those references as well.
-       * Session: localTracks, remoteTracks
+       * Session: localTracks, remoteTracks, allLocalTracks
        * Media: tracks
        */
-      if (['localTracks', 'remoteTracks', 'tracks'].includes(prop)) {
+      if (['localTracks', 'allLocalTracks', 'remoteTracks', 'tracks'].includes(prop)) {
         return objTarget[prop].map(track => modelProxy(track, channel));
       }
 
@@ -40834,7 +40900,7 @@ exports.setChannel = setChannel;
 exports.initializeRemote = initializeRemote;
 exports.updateLogLevelEntry = updateLogLevelEntry;
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -40900,7 +40966,7 @@ var _logs = __webpack_require__(4);
 
 var _selectors3 = __webpack_require__(205);
 
-var _devices = __webpack_require__(148);
+var _devices = __webpack_require__(149);
 
 var _errors = __webpack_require__(9);
 
@@ -41128,7 +41194,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _actionTypes = __webpack_require__(153);
+var _actionTypes = __webpack_require__(154);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -41361,7 +41427,7 @@ var _constants = __webpack_require__(20);
 
 var _constants2 = __webpack_require__(280);
 
-var _constants3 = __webpack_require__(154);
+var _constants3 = __webpack_require__(155);
 
 var _reduxActions = __webpack_require__(23);
 
@@ -42066,7 +42132,7 @@ var _actionTypes2 = __webpack_require__(68);
 
 var connectivityActionTypes = _interopRequireWildcard(_actionTypes2);
 
-var _actionTypes3 = __webpack_require__(36);
+var _actionTypes3 = __webpack_require__(37);
 
 var _actions2 = __webpack_require__(284);
 
@@ -43215,7 +43281,6 @@ Object.defineProperty(exports, "__esModule", {
  *
  * @public
  * @memberof api
- * @requires connect
  * @event auth:change
  * @param {Object} params
  * @param {string} params.reason The cause of the authentication change, provided in the event of an unsolicited disconnection. See the `disconnectReasons` API for possible values.
@@ -43575,7 +43640,7 @@ var actions = _interopRequireWildcard(_actions);
 
 var _selectors = __webpack_require__(16);
 
-var _constants = __webpack_require__(154);
+var _constants = __webpack_require__(155);
 
 var _logs = __webpack_require__(4);
 
@@ -44146,9 +44211,9 @@ var _actionTypes = __webpack_require__(102);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _constants = __webpack_require__(154);
+var _constants = __webpack_require__(155);
 
-var _actionTypes2 = __webpack_require__(36);
+var _actionTypes2 = __webpack_require__(37);
 
 var _actions2 = __webpack_require__(281);
 
@@ -44983,7 +45048,7 @@ const log = _logs.logManager.getLogger('CALL');
  * @param {Array<call.SdpHandlerFunction>} [call.sdpHandlers] List of SDP handler functions to modify SDP. Advanced usage.
  * @param {boolean} [call.removeH264Codecs=true] Whether to remove "H264" codec lines from incoming and outgoing SDP messages.
  * @param {boolean} [call.earlyMedia=false] Whether early media should be supported for calls. Not supported on Firefox.
- * @param {boolean} [call.resyncOnConnect=false] Whether the SDK should re-sync all call states after connecting (requires Kandy Link 4.7.1+).
+ * @param {boolean} [call.resyncOnConnect=false] Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+).
  * @param {boolean} [call.mediaBrokerOnly=false] Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode.
  * @param {boolean} [call.removeBundling=false] Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages.
  * @param {string} [call.ringingFeedbackMode='auto'] The mode for sending ringing feedback to the Caller ('auto', 'manual').
@@ -45042,6 +45107,20 @@ function callsLink(options = {}) {
     if (browserDetails.browser === 'firefox' && options.earlyMedia === true) {
       log.warn('Firefox does not support pranswer for Early Media. Disabling early media configuration.');
       options.earlyMedia = false;
+    }
+
+    /*
+     * Chrome 110+ will enforce STUN/TURN URL according to RFC Spec.
+     * Ref: https://groups.google.com/g/discuss-webrtc/c/L0qDWipd7VE?pli=1
+     */
+    if (browserDetails.browser === 'chrome' && browserDetails.version >= 110 && options.defaultPeerConfig.iceServers) {
+      options.defaultPeerConfig.iceServers.forEach(iceServer => {
+        if (Array.isArray(iceServer.urls)) {
+          iceServer.urls = iceServer.urls.map(_configs.fixIceServerUrls);
+        } else if (iceServer.urls) {
+          iceServer.urls = (0, _configs.fixIceServerUrls)(iceServer.urls);
+        }
+      });
     }
 
     yield (0, _effects.put)((0, _actions2.update)(options, _interfaceNew2.default.name));
@@ -45331,6 +45410,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @typedef {Object} IceServer
  * @memberof call
  * @property {Array<string>|string} urls Either an array of URLs for reaching out several ICE servers or a single URL for reaching one ICE server. See {@link https://developer.mozilla.org/en-US/docs/Web/API/RTCIceServer/urls RTCIceServers.urls documentation} to learn more about the actual url format.
+ * Starting with Chromium 110, TURN(S) urls must only contain a transport
+ * parameter in the query section and STUN urls must not specify any query section.
  * @property {string} [credential] The credential needed by the ICE server.
  * @property {string} [username] The credential needed by the ICE server.
  */
@@ -47227,7 +47308,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.turnChanged = turnChanged;
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -47295,7 +47376,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -47490,7 +47571,7 @@ callReducers[actionTypes.GET_STATS_FINISH] = noop;
 /*
  * When answering, rejecting, or forwarding a call, update state to say that we
  *    are handling it.
- * This is needed for Link because KandyLink will send a "call cancel" notification
+ * This is needed for the WebRTC JS SDK because WebRTC Gateway will send a "call cancel" notification
  *    to _ALL_ of the user's subscriptions. The intention is to stop the call from
  *    ringing on other subscribed devices, and for the handling device to ignore
  *    the notification. This flag is used to know when to ignore the call cancel.
@@ -48328,7 +48409,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -48410,7 +48491,7 @@ exports.restartIce = restartIce;
 exports.watchForMediaDisconnect = watchForMediaDisconnect;
 exports.callCollectionCheckEntry = callCollectionCheckEntry;
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -48452,7 +48533,7 @@ var _codecs = __webpack_require__(467);
 
 var _effects = __webpack_require__(6);
 
-var _actionTypes4 = __webpack_require__(36);
+var _actionTypes4 = __webpack_require__(37);
 
 var _actionTypes5 = __webpack_require__(95);
 
@@ -49835,7 +49916,7 @@ function* updateSession(callInfo) {
  *
  * Assumptions:
  *    1. The current user is authenticated.
- *    2. Signalling server has Kandy Link 4.7.1+
+ *    2. Signalling server has WebRTC Gateway 4.7.1+
  * Responsibilities:
  *    1. Format parameters as needed for signalling.
  *    2. Perform the REST request.
@@ -53720,7 +53801,7 @@ exports.receiveEarlyMedia = receiveEarlyMedia;
 
 var _actions = __webpack_require__(69);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var _selectors = __webpack_require__(21);
 
@@ -53734,7 +53815,7 @@ var _negotiation = __webpack_require__(460);
 
 var negotiation = _interopRequireWildcard(_negotiation);
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -54585,7 +54666,7 @@ var _remoteTracks2 = _interopRequireDefault(_remoteTracks);
 
 var _actions = __webpack_require__(69);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -55556,7 +55637,7 @@ var _utils = __webpack_require__(215);
 
 var _sdp = __webpack_require__(464);
 
-var _pipeline = __webpack_require__(157);
+var _pipeline = __webpack_require__(158);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -55707,7 +55788,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hasSameSessionId = hasSameSessionId;
 
-var _extractors = __webpack_require__(152);
+var _extractors = __webpack_require__(153);
 
 /**
  * Checks whether two SDPs have the same session ID.
@@ -56186,7 +56267,7 @@ exports.callIceCollectionCheck = callIceCollectionCheck;
 
 var _actions = __webpack_require__(69);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -56362,7 +56443,7 @@ function* getSessions(deps, action) {
  *    There are no local webRTC operations involved.
  *
  * Assumptions:
- *    1. The server uses Kandy Link 4.7.1+
+ *    1. The server uses WebRTC Gateway 4.7.1+
  * Responsibilities:
  *    2. Update the call state if the call is out of sync (call's status does not match response from server)
  * @method updateCallState
@@ -56788,7 +56869,7 @@ var _eventTypes = __webpack_require__(135);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -56796,7 +56877,7 @@ var _constants = __webpack_require__(59);
 
 var _selectors = __webpack_require__(21);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -57041,7 +57122,7 @@ var _eventTypes = __webpack_require__(135);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -57049,7 +57130,7 @@ var _constants = __webpack_require__(59);
 
 var _selectors = __webpack_require__(21);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -57292,13 +57373,13 @@ var _eventTypes = __webpack_require__(135);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
 var _constants = __webpack_require__(59);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 var _fp = __webpack_require__(2);
 
@@ -57425,7 +57506,7 @@ var _eventTypes = __webpack_require__(135);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -57437,7 +57518,7 @@ var _actionTypes2 = __webpack_require__(13);
 
 var webrtcActionTypes = _interopRequireWildcard(_actionTypes2);
 
-var _handlers = __webpack_require__(158);
+var _handlers = __webpack_require__(159);
 
 var _fp = __webpack_require__(2);
 
@@ -58059,7 +58140,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createMiddleware;
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 /**
  * Call History middleware factory function.
@@ -58125,7 +58206,7 @@ var eventTypes = _interopRequireWildcard(_eventTypes);
 
 var _selectors = __webpack_require__(16);
 
-var _actionTypes = __webpack_require__(37);
+var _actionTypes = __webpack_require__(38);
 
 var _constants = __webpack_require__(41);
 
@@ -59336,7 +59417,7 @@ exports.default = api;
 
 var _constants = __webpack_require__(20);
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var _selectors = __webpack_require__(133);
 
@@ -59703,7 +59784,7 @@ var _actionTypes = __webpack_require__(68);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -60192,7 +60273,7 @@ exports.openWebsocket = openWebsocket;
 exports.cleanupWebSocket = cleanupWebSocket;
 exports.wsEmitter = wsEmitter;
 
-var _actions = __webpack_require__(156);
+var _actions = __webpack_require__(157);
 
 var _reduxSaga = __webpack_require__(27);
 
@@ -60599,7 +60680,7 @@ var _selectors = __webpack_require__(289);
 
 var _selectors2 = __webpack_require__(16);
 
-var _actionTypes2 = __webpack_require__(36);
+var _actionTypes2 = __webpack_require__(37);
 
 var _predicates = __webpack_require__(504);
 
@@ -62399,7 +62480,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createMiddleware;
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 /**
  * Message Waiting Indicator middleware factory function.
@@ -62457,7 +62538,7 @@ var _eventTypes = __webpack_require__(317);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -62889,7 +62970,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -63185,7 +63266,7 @@ var _eventTypes = __webpack_require__(525);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -63292,7 +63373,7 @@ var _selectors = __webpack_require__(16);
 
 var _logs = __webpack_require__(4);
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -63447,7 +63528,7 @@ var _actions = __webpack_require__(287);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -63479,7 +63560,6 @@ function* enableWebsocketChannel(action) {
 
   // TODO: Handle possible error case when connecting websockets.
   //      Otherwise, plain dispatch to update state.
-  log.info('Enabling WEBSOCKET notification channel ...');
   yield (0, _effects.put)(actions.enableNotificationChannelFinish(action.meta.channel, {
     params: action.payload
   }));
@@ -63545,7 +63625,6 @@ function* processNotification() {
         }
 
         const { platform, channel } = action.meta;
-        log.debug('Added notification ID to the ID cache. Informing listeners ...');
         // Inform all other plugins by sending a NOTIFICATION_RECEIVED action
         yield (0, _effects.put)(actions.notificationReceived(formattedPayload, platform, channel));
       }
@@ -63662,7 +63741,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inflateRaw", function() { return inflateRaw_1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ungzip", function() { return ungzip_1; });
 
-/*! pako 2.0.4 https://github.com/nodeca/pako @license (MIT AND Zlib) */
+/*! pako 2.1.0 https://github.com/nodeca/pako @license (MIT AND Zlib) */
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
 // (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
 //
@@ -63939,10 +64018,10 @@ const bi_flush = (s) => {
  *     The length opt_len is updated; static_len is also updated if stree is
  *     not null.
  */
-const gen_bitlen = (s, desc) =>
+const gen_bitlen = (s, desc) => {
 //    deflate_state *s;
 //    tree_desc *desc;    /* the tree descriptor */
-{
+
   const tree            = desc.dyn_tree;
   const max_code        = desc.max_code;
   const stree           = desc.stat_desc.static_tree;
@@ -63991,7 +64070,7 @@ const gen_bitlen = (s, desc) =>
   }
   if (overflow === 0) { return; }
 
-  // Trace((stderr,"\nbit length overflow\n"));
+  // Tracev((stderr,"\nbit length overflow\n"));
   /* This happens for example on obj2 and pic of the Calgary corpus */
 
   /* Find the first bit length which could increase: */
@@ -64018,7 +64097,7 @@ const gen_bitlen = (s, desc) =>
       m = s.heap[--h];
       if (m > max_code) { continue; }
       if (tree[m * 2 + 1]/*.Len*/ !== bits) {
-        // Trace((stderr,"code %d bits %d->%d\n", m, tree[m].Len, bits));
+        // Tracev((stderr,"code %d bits %d->%d\n", m, tree[m].Len, bits));
         s.opt_len += (bits - tree[m * 2 + 1]/*.Len*/) * tree[m * 2]/*.Freq*/;
         tree[m * 2 + 1]/*.Len*/ = bits;
       }
@@ -64036,11 +64115,11 @@ const gen_bitlen = (s, desc) =>
  * OUT assertion: the field code is set for all tree elements of non
  *     zero code length.
  */
-const gen_codes = (tree, max_code, bl_count) =>
+const gen_codes = (tree, max_code, bl_count) => {
 //    ct_data *tree;             /* the tree to decorate */
 //    int max_code;              /* largest code with non zero frequency */
 //    ushf *bl_count;            /* number of codes at each bit length */
-{
+
   const next_code = new Array(MAX_BITS$1 + 1); /* next code value for each bit length */
   let code = 0;              /* running code value */
   let bits;                  /* bit index */
@@ -64050,7 +64129,8 @@ const gen_codes = (tree, max_code, bl_count) =>
    * without bit reversal.
    */
   for (bits = 1; bits <= MAX_BITS$1; bits++) {
-    next_code[bits] = code = (code + bl_count[bits - 1]) << 1;
+    code = (code + bl_count[bits - 1]) << 1;
+    next_code[bits] = code;
   }
   /* Check that the bit counts in bl_count are consistent. The last code
    * must be all ones.
@@ -64190,7 +64270,7 @@ const init_block = (s) => {
 
   s.dyn_ltree[END_BLOCK * 2]/*.Freq*/ = 1;
   s.opt_len = s.static_len = 0;
-  s.last_lit = s.matches = 0;
+  s.sym_next = s.matches = 0;
 };
 
 
@@ -64207,29 +64287,6 @@ const bi_windup = (s) =>
   }
   s.bi_buf = 0;
   s.bi_valid = 0;
-};
-
-/* ===========================================================================
- * Copy a stored block, storing first the length and its
- * one's complement if requested.
- */
-const copy_block = (s, buf, len, header) =>
-//DeflateState *s;
-//charf    *buf;    /* the input data */
-//unsigned len;     /* its length */
-//int      header;  /* true if block header must be written */
-{
-  bi_windup(s);        /* align on byte boundary */
-
-  if (header) {
-    put_short(s, len);
-    put_short(s, ~len);
-  }
-//  while (len--) {
-//    put_byte(s, *buf++);
-//  }
-  s.pending_buf.set(s.window.subarray(buf, buf + len), s.pending);
-  s.pending += len;
 };
 
 /* ===========================================================================
@@ -64250,11 +64307,11 @@ const smaller = (tree, n, m, depth) => {
  * when the heap property is re-established (each father smaller than its
  * two sons).
  */
-const pqdownheap = (s, tree, k) =>
+const pqdownheap = (s, tree, k) => {
 //    deflate_state *s;
 //    ct_data *tree;  /* the tree to restore */
 //    int k;               /* node to move down */
-{
+
   const v = s.heap[k];
   let j = k << 1;  /* left son of k */
   while (j <= s.heap_len) {
@@ -64283,23 +64340,22 @@ const pqdownheap = (s, tree, k) =>
 /* ===========================================================================
  * Send the block data compressed using the given Huffman trees
  */
-const compress_block = (s, ltree, dtree) =>
+const compress_block = (s, ltree, dtree) => {
 //    deflate_state *s;
 //    const ct_data *ltree; /* literal tree */
 //    const ct_data *dtree; /* distance tree */
-{
+
   let dist;           /* distance of matched string */
   let lc;             /* match length or unmatched char (if dist == 0) */
-  let lx = 0;         /* running index in l_buf */
+  let sx = 0;         /* running index in sym_buf */
   let code;           /* the code to send */
   let extra;          /* number of extra bits to send */
 
-  if (s.last_lit !== 0) {
+  if (s.sym_next !== 0) {
     do {
-      dist = (s.pending_buf[s.d_buf + lx * 2] << 8) | (s.pending_buf[s.d_buf + lx * 2 + 1]);
-      lc = s.pending_buf[s.l_buf + lx];
-      lx++;
-
+      dist = s.pending_buf[s.sym_buf + sx++] & 0xff;
+      dist += (s.pending_buf[s.sym_buf + sx++] & 0xff) << 8;
+      lc = s.pending_buf[s.sym_buf + sx++];
       if (dist === 0) {
         send_code(s, lc, ltree); /* send a literal byte */
         //Tracecv(isgraph(lc), (stderr," '%c' ", lc));
@@ -64324,11 +64380,10 @@ const compress_block = (s, ltree, dtree) =>
         }
       } /* literal or match pair ? */
 
-      /* Check that the overlay between pending_buf and d_buf+l_buf is ok: */
-      //Assert((uInt)(s->pending) < s->lit_bufsize + 2*lx,
-      //       "pendingBuf overflow");
+      /* Check that the overlay between pending_buf and sym_buf is ok: */
+      //Assert(s->pending < s->lit_bufsize + sx, "pendingBuf overflow");
 
-    } while (lx < s.last_lit);
+    } while (sx < s.sym_next);
   }
 
   send_code(s, END_BLOCK, ltree);
@@ -64343,10 +64398,10 @@ const compress_block = (s, ltree, dtree) =>
  *     and corresponding code. The length opt_len is updated; static_len is
  *     also updated if stree is not null. The field max_code is set.
  */
-const build_tree = (s, desc) =>
+const build_tree = (s, desc) => {
 //    deflate_state *s;
 //    tree_desc *desc; /* the tree descriptor */
-{
+
   const tree     = desc.dyn_tree;
   const stree    = desc.stat_desc.static_tree;
   const has_stree = desc.stat_desc.has_stree;
@@ -64439,11 +64494,11 @@ const build_tree = (s, desc) =>
  * Scan a literal or distance tree to determine the frequencies of the codes
  * in the bit length tree.
  */
-const scan_tree = (s, tree, max_code) =>
+const scan_tree = (s, tree, max_code) => {
 //    deflate_state *s;
 //    ct_data *tree;   /* the tree to be scanned */
 //    int max_code;    /* and its largest code of non zero frequency */
-{
+
   let n;                     /* iterates over all tree elements */
   let prevlen = -1;          /* last emitted length */
   let curlen;                /* length of current code */
@@ -64505,11 +64560,11 @@ const scan_tree = (s, tree, max_code) =>
  * Send a literal or distance tree in compressed form, using the codes in
  * bl_tree.
  */
-const send_tree = (s, tree, max_code) =>
+const send_tree = (s, tree, max_code) => {
 //    deflate_state *s;
 //    ct_data *tree; /* the tree to be scanned */
 //    int max_code;       /* and its largest code of non zero frequency */
-{
+
   let n;                     /* iterates over all tree elements */
   let prevlen = -1;          /* last emitted length */
   let curlen;                /* length of current code */
@@ -64613,10 +64668,10 @@ const build_bl_tree = (s) => {
  * lengths of the bit length codes, the literal tree and the distance tree.
  * IN assertion: lcodes >= 257, dcodes >= 1, blcodes >= 4.
  */
-const send_all_trees = (s, lcodes, dcodes, blcodes) =>
+const send_all_trees = (s, lcodes, dcodes, blcodes) => {
 //    deflate_state *s;
 //    int lcodes, dcodes, blcodes; /* number of codes for each tree */
-{
+
   let rank;                    /* index in bl_order */
 
   //Assert (lcodes >= 257 && dcodes >= 1 && blcodes >= 4, "not enough codes");
@@ -64644,9 +64699,9 @@ const send_all_trees = (s, lcodes, dcodes, blcodes) =>
  * Check if the data type is TEXT or BINARY, using the following algorithm:
  * - TEXT if the two conditions below are satisfied:
  *    a) There are no non-portable control characters belonging to the
- *       "black list" (0..6, 14..25, 28..31).
+ *       "block list" (0..6, 14..25, 28..31).
  *    b) There is at least one printable character belonging to the
- *       "white list" (9 {TAB}, 10 {LF}, 13 {CR}, 32..255).
+ *       "allow list" (9 {TAB}, 10 {LF}, 13 {CR}, 32..255).
  * - BINARY otherwise.
  * - The following partially-portable control characters form a
  *   "gray list" that is ignored in this detection algorithm:
@@ -64654,21 +64709,21 @@ const send_all_trees = (s, lcodes, dcodes, blcodes) =>
  * IN assertion: the fields Freq of dyn_ltree are set.
  */
 const detect_data_type = (s) => {
-  /* black_mask is the bit mask of black-listed bytes
+  /* block_mask is the bit mask of block-listed bytes
    * set bits 0..6, 14..25, and 28..31
    * 0xf3ffc07f = binary 11110011111111111100000001111111
    */
-  let black_mask = 0xf3ffc07f;
+  let block_mask = 0xf3ffc07f;
   let n;
 
-  /* Check for non-textual ("black-listed") bytes. */
-  for (n = 0; n <= 31; n++, black_mask >>>= 1) {
-    if ((black_mask & 1) && (s.dyn_ltree[n * 2]/*.Freq*/ !== 0)) {
+  /* Check for non-textual ("block-listed") bytes. */
+  for (n = 0; n <= 31; n++, block_mask >>>= 1) {
+    if ((block_mask & 1) && (s.dyn_ltree[n * 2]/*.Freq*/ !== 0)) {
       return Z_BINARY;
     }
   }
 
-  /* Check for textual ("white-listed") bytes. */
+  /* Check for textual ("allow-listed") bytes. */
   if (s.dyn_ltree[9 * 2]/*.Freq*/ !== 0 || s.dyn_ltree[10 * 2]/*.Freq*/ !== 0 ||
       s.dyn_ltree[13 * 2]/*.Freq*/ !== 0) {
     return Z_TEXT;
@@ -64679,7 +64734,7 @@ const detect_data_type = (s) => {
     }
   }
 
-  /* There are no "black-listed" or "white-listed" bytes:
+  /* There are no "block-listed" or "allow-listed" bytes:
    * this stream either is empty or has tolerated ("gray-listed") bytes only.
    */
   return Z_BINARY;
@@ -64714,14 +64769,20 @@ const _tr_init$1 = (s) =>
 /* ===========================================================================
  * Send a stored block
  */
-const _tr_stored_block$1 = (s, buf, stored_len, last) =>
+const _tr_stored_block$1 = (s, buf, stored_len, last) => {
 //DeflateState *s;
 //charf *buf;       /* input block */
 //ulg stored_len;   /* length of input block */
 //int last;         /* one if this is the last block for a file */
-{
+
   send_bits(s, (STORED_BLOCK << 1) + (last ? 1 : 0), 3);    /* send block type */
-  copy_block(s, buf, stored_len, true); /* with header */
+  bi_windup(s);        /* align on byte boundary */
+  put_short(s, stored_len);
+  put_short(s, ~stored_len);
+  if (stored_len) {
+    s.pending_buf.set(s.window.subarray(buf, buf + stored_len), s.pending);
+  }
+  s.pending += stored_len;
 };
 
 
@@ -64738,14 +64799,14 @@ const _tr_align$1 = (s) => {
 
 /* ===========================================================================
  * Determine the best encoding for the current block: dynamic trees, static
- * trees or store, and output the encoded block to the zip file.
+ * trees or store, and write out the encoded block.
  */
-const _tr_flush_block$1 = (s, buf, stored_len, last) =>
+const _tr_flush_block$1 = (s, buf, stored_len, last) => {
 //DeflateState *s;
 //charf *buf;       /* input block, or NULL if too old */
 //ulg stored_len;   /* length of input block */
 //int last;         /* one if this is the last block for a file */
-{
+
   let opt_lenb, static_lenb;  /* opt_len and static_len in bytes */
   let max_blindex = 0;        /* index of last bit length code of non zero freq */
 
@@ -64780,7 +64841,7 @@ const _tr_flush_block$1 = (s, buf, stored_len, last) =>
 
     // Tracev((stderr, "\nopt %lu(%lu) stat %lu(%lu) stored %lu lit %u ",
     //        opt_lenb, s->opt_len, static_lenb, s->static_len, stored_len,
-    //        s->last_lit));
+    //        s->sym_next / 3));
 
     if (static_lenb <= opt_lenb) { opt_lenb = static_lenb; }
 
@@ -64827,19 +64888,14 @@ const _tr_flush_block$1 = (s, buf, stored_len, last) =>
  * Save the match info and tally the frequency counts. Return true if
  * the current block must be flushed.
  */
-const _tr_tally$1 = (s, dist, lc) =>
+const _tr_tally$1 = (s, dist, lc) => {
 //    deflate_state *s;
 //    unsigned dist;  /* distance of matched string */
 //    unsigned lc;    /* match length-MIN_MATCH or unmatched char (if dist==0) */
-{
-  //let out_length, in_length, dcode;
 
-  s.pending_buf[s.d_buf + s.last_lit * 2]     = (dist >>> 8) & 0xff;
-  s.pending_buf[s.d_buf + s.last_lit * 2 + 1] = dist & 0xff;
-
-  s.pending_buf[s.l_buf + s.last_lit] = lc & 0xff;
-  s.last_lit++;
-
+  s.pending_buf[s.sym_buf + s.sym_next++] = dist;
+  s.pending_buf[s.sym_buf + s.sym_next++] = dist >> 8;
+  s.pending_buf[s.sym_buf + s.sym_next++] = lc;
   if (dist === 0) {
     /* lc is the unmatched char */
     s.dyn_ltree[lc * 2]/*.Freq*/++;
@@ -64855,34 +64911,7 @@ const _tr_tally$1 = (s, dist, lc) =>
     s.dyn_dtree[d_code(dist) * 2]/*.Freq*/++;
   }
 
-// (!) This block is disabled in zlib defaults,
-// don't enable it for binary compatibility
-
-//#ifdef TRUNCATE_BLOCK
-//  /* Try to guess if it is profitable to stop the current block here */
-//  if ((s.last_lit & 0x1fff) === 0 && s.level > 2) {
-//    /* Compute an upper bound for the compressed length */
-//    out_length = s.last_lit*8;
-//    in_length = s.strstart - s.block_start;
-//
-//    for (dcode = 0; dcode < D_CODES; dcode++) {
-//      out_length += s.dyn_dtree[dcode*2]/*.Freq*/ * (5 + extra_dbits[dcode]);
-//    }
-//    out_length >>>= 3;
-//    //Tracev((stderr,"\nlast_lit %u, in %ld, out ~%ld(%ld%%) ",
-//    //       s->last_lit, in_length, out_length,
-//    //       100L - out_length*100L/in_length));
-//    if (s.matches < (s.last_lit>>1)/*int /2*/ && out_length < (in_length>>1)/*int /2*/) {
-//      return true;
-//    }
-//  }
-//#endif
-
-  return (s.last_lit === s.lit_bufsize - 1);
-  /* We avoid equality with lit_bufsize because of wraparound at 64K
-   * on 16 bit machines and because stored blocks are restricted to
-   * 64K-1 bytes.
-   */
+  return (s.sym_next === s.sym_end);
 };
 
 var _tr_init_1  = _tr_init$1;
@@ -65172,13 +65201,16 @@ const MIN_LOOKAHEAD = (MAX_MATCH + MIN_MATCH + 1);
 
 const PRESET_DICT = 0x20;
 
-const INIT_STATE = 42;
-const EXTRA_STATE = 69;
-const NAME_STATE = 73;
-const COMMENT_STATE = 91;
-const HCRC_STATE = 103;
-const BUSY_STATE = 113;
-const FINISH_STATE = 666;
+const INIT_STATE    =  42;    /* zlib header -> BUSY_STATE */
+//#ifdef GZIP
+const GZIP_STATE    =  57;    /* gzip header -> BUSY_STATE | EXTRA_STATE */
+//#endif
+const EXTRA_STATE   =  69;    /* gzip extra block -> NAME_STATE */
+const NAME_STATE    =  73;    /* gzip file name -> COMMENT_STATE */
+const COMMENT_STATE =  91;    /* gzip comment -> HCRC_STATE */
+const HCRC_STATE    = 103;    /* gzip header CRC -> BUSY_STATE */
+const BUSY_STATE    = 113;    /* deflate -> FINISH_STATE */
+const FINISH_STATE  = 666;    /* stream complete */
 
 const BS_NEED_MORE      = 1; /* block not completed, need more input or more output */
 const BS_BLOCK_DONE     = 2; /* block flush performed */
@@ -65193,13 +65225,41 @@ const err = (strm, errorCode) => {
 };
 
 const rank = (f) => {
-  return ((f) << 1) - ((f) > 4 ? 9 : 0);
+  return ((f) * 2) - ((f) > 4 ? 9 : 0);
 };
 
 const zero = (buf) => {
   let len = buf.length; while (--len >= 0) { buf[len] = 0; }
 };
 
+/* ===========================================================================
+ * Slide the hash table when sliding the window down (could be avoided with 32
+ * bit values at the expense of memory usage). We slide even when level == 0 to
+ * keep the hash table consistent if we switch back to level > 0 later.
+ */
+const slide_hash = (s) => {
+  let n, m;
+  let p;
+  let wsize = s.w_size;
+
+  n = s.hash_size;
+  p = n;
+  do {
+    m = s.head[--p];
+    s.head[p] = (m >= wsize ? m - wsize : 0);
+  } while (--n);
+  n = wsize;
+//#ifndef FASTEST
+  p = n;
+  do {
+    m = s.prev[--p];
+    s.prev[p] = (m >= wsize ? m - wsize : 0);
+    /* If n is not on any hash chain, prev[n] is garbage but
+     * its value will never be used.
+     */
+  } while (--n);
+//#endif
+};
 
 /* eslint-disable new-cap */
 let HASH_ZLIB = (s, prev, data) => ((prev << s.hash_shift) ^ data) & s.hash_mask;
@@ -65208,11 +65268,12 @@ let HASH_ZLIB = (s, prev, data) => ((prev << s.hash_shift) ^ data) & s.hash_mask
 //let HASH_FAST = (s, prev, data) => ((prev << 8) + (prev >> 8) + (data << 4)) & s.hash_mask;
 let HASH = HASH_ZLIB;
 
+
 /* =========================================================================
- * Flush as much pending output as possible. All deflate() output goes
- * through this function so some applications may wish to modify it
- * to avoid allocating a large strm->output buffer and copying into it.
- * (See also read_buf()).
+ * Flush as much pending output as possible. All deflate() output, except for
+ * some deflate_stored() output, goes through this function so some
+ * applications may wish to modify it to avoid allocating a large
+ * strm->next_out buffer and copying into it. (See also read_buf()).
  */
 const flush_pending = (strm) => {
   const s = strm.state;
@@ -65225,11 +65286,11 @@ const flush_pending = (strm) => {
   if (len === 0) { return; }
 
   strm.output.set(s.pending_buf.subarray(s.pending_out, s.pending_out + len), strm.next_out);
-  strm.next_out += len;
-  s.pending_out += len;
+  strm.next_out  += len;
+  s.pending_out  += len;
   strm.total_out += len;
   strm.avail_out -= len;
-  s.pending -= len;
+  s.pending      -= len;
   if (s.pending === 0) {
     s.pending_out = 0;
   }
@@ -65421,7 +65482,7 @@ const longest_match = (s, cur_match) => {
 const fill_window = (s) => {
 
   const _w_size = s.w_size;
-  let p, n, m, more, str;
+  let n, more, str;
 
   //Assert(s->lookahead < MIN_LOOKAHEAD, "already enough lookahead");
 
@@ -65448,38 +65509,15 @@ const fill_window = (s) => {
      */
     if (s.strstart >= _w_size + (_w_size - MIN_LOOKAHEAD)) {
 
-      s.window.set(s.window.subarray(_w_size, _w_size + _w_size), 0);
+      s.window.set(s.window.subarray(_w_size, _w_size + _w_size - more), 0);
       s.match_start -= _w_size;
       s.strstart -= _w_size;
       /* we now have strstart >= MAX_DIST */
       s.block_start -= _w_size;
-
-      /* Slide the hash table (could be avoided with 32 bit values
-       at the expense of memory usage). We slide even when level == 0
-       to keep the hash table consistent if we switch back to level > 0
-       later. (Using level 0 permanently is not an optimal usage of
-       zlib, so we don't care about this pathological case.)
-       */
-
-      n = s.hash_size;
-      p = n;
-
-      do {
-        m = s.head[--p];
-        s.head[p] = (m >= _w_size ? m - _w_size : 0);
-      } while (--n);
-
-      n = _w_size;
-      p = n;
-
-      do {
-        m = s.prev[--p];
-        s.prev[p] = (m >= _w_size ? m - _w_size : 0);
-        /* If n is not on any hash chain, prev[n] is garbage but
-         * its value will never be used.
-         */
-      } while (--n);
-
+      if (s.insert > s.strstart) {
+        s.insert = s.strstart;
+      }
+      slide_hash(s);
       more += _w_size;
     }
     if (s.strm.avail_in === 0) {
@@ -65571,103 +65609,215 @@ const fill_window = (s) => {
 /* ===========================================================================
  * Copy without compression as much as possible from the input stream, return
  * the current block state.
- * This function does not insert new strings in the dictionary since
- * uncompressible data is probably not useful. This function is used
- * only for the level=0 compression option.
- * NOTE: this function should be optimized to avoid extra copying from
- * window to pending_buf.
+ *
+ * In case deflateParams() is used to later switch to a non-zero compression
+ * level, s->matches (otherwise unused when storing) keeps track of the number
+ * of hash table slides to perform. If s->matches is 1, then one hash table
+ * slide will be done when switching. If s->matches is 2, the maximum value
+ * allowed here, then the hash table will be cleared, since two or more slides
+ * is the same as a clear.
+ *
+ * deflate_stored() is written to minimize the number of times an input byte is
+ * copied. It is most efficient with large input and output buffers, which
+ * maximizes the opportunites to have a single copy from next_in to next_out.
  */
 const deflate_stored = (s, flush) => {
 
-  /* Stored blocks are limited to 0xffff bytes, pending_buf is limited
-   * to pending_buf_size, and each stored block has a 5 byte header:
+  /* Smallest worthy block size when not flushing or finishing. By default
+   * this is 32K. This can be as small as 507 bytes for memLevel == 1. For
+   * large input and output buffers, the stored block size will be larger.
    */
-  let max_block_size = 0xffff;
+  let min_block = s.pending_buf_size - 5 > s.w_size ? s.w_size : s.pending_buf_size - 5;
 
-  if (max_block_size > s.pending_buf_size - 5) {
-    max_block_size = s.pending_buf_size - 5;
-  }
-
-  /* Copy as much as possible from input to output: */
-  for (;;) {
-    /* Fill the window as much as possible: */
-    if (s.lookahead <= 1) {
-
-      //Assert(s->strstart < s->w_size+MAX_DIST(s) ||
-      //  s->block_start >= (long)s->w_size, "slide too late");
-//      if (!(s.strstart < s.w_size + (s.w_size - MIN_LOOKAHEAD) ||
-//        s.block_start >= s.w_size)) {
-//        throw  new Error("slide too late");
-//      }
-
-      fill_window(s);
-      if (s.lookahead === 0 && flush === Z_NO_FLUSH$2) {
-        return BS_NEED_MORE;
-      }
-
-      if (s.lookahead === 0) {
-        break;
-      }
-      /* flush the current block */
-    }
-    //Assert(s->block_start >= 0L, "block gone");
-//    if (s.block_start < 0) throw new Error("block gone");
-
-    s.strstart += s.lookahead;
-    s.lookahead = 0;
-
-    /* Emit a stored block if pending_buf will be full: */
-    const max_start = s.block_start + max_block_size;
-
-    if (s.strstart === 0 || s.strstart >= max_start) {
-      /* strstart == 0 is possible when wraparound on 16-bit machine */
-      s.lookahead = s.strstart - max_start;
-      s.strstart = max_start;
-      /*** FLUSH_BLOCK(s, 0); ***/
-      flush_block_only(s, false);
-      if (s.strm.avail_out === 0) {
-        return BS_NEED_MORE;
-      }
-      /***/
-
-
-    }
-    /* Flush if we may have to slide, otherwise block_start may become
-     * negative and the data will be gone:
+  /* Copy as many min_block or larger stored blocks directly to next_out as
+   * possible. If flushing, copy the remaining available input to next_out as
+   * stored blocks, if there is enough space.
+   */
+  let len, left, have, last = 0;
+  let used = s.strm.avail_in;
+  do {
+    /* Set len to the maximum size block that we can copy directly with the
+     * available input data and output space. Set left to how much of that
+     * would be copied from what's left in the window.
      */
-    if (s.strstart - s.block_start >= (s.w_size - MIN_LOOKAHEAD)) {
-      /*** FLUSH_BLOCK(s, 0); ***/
-      flush_block_only(s, false);
-      if (s.strm.avail_out === 0) {
-        return BS_NEED_MORE;
-      }
-      /***/
+    len = 65535/* MAX_STORED */;     /* maximum deflate stored block length */
+    have = (s.bi_valid + 42) >> 3;     /* number of header bytes */
+    if (s.strm.avail_out < have) {         /* need room for header */
+      break;
     }
+      /* maximum stored block length that will fit in avail_out: */
+    have = s.strm.avail_out - have;
+    left = s.strstart - s.block_start;  /* bytes left in window */
+    if (len > left + s.strm.avail_in) {
+      len = left + s.strm.avail_in;   /* limit len to the input */
+    }
+    if (len > have) {
+      len = have;             /* limit len to the output */
+    }
+
+    /* If the stored block would be less than min_block in length, or if
+     * unable to copy all of the available input when flushing, then try
+     * copying to the window and the pending buffer instead. Also don't
+     * write an empty block when flushing -- deflate() does that.
+     */
+    if (len < min_block && ((len === 0 && flush !== Z_FINISH$3) ||
+                        flush === Z_NO_FLUSH$2 ||
+                        len !== left + s.strm.avail_in)) {
+      break;
+    }
+
+    /* Make a dummy stored block in pending to get the header bytes,
+     * including any pending bits. This also updates the debugging counts.
+     */
+    last = flush === Z_FINISH$3 && len === left + s.strm.avail_in ? 1 : 0;
+    _tr_stored_block(s, 0, 0, last);
+
+    /* Replace the lengths in the dummy stored block with len. */
+    s.pending_buf[s.pending - 4] = len;
+    s.pending_buf[s.pending - 3] = len >> 8;
+    s.pending_buf[s.pending - 2] = ~len;
+    s.pending_buf[s.pending - 1] = ~len >> 8;
+
+    /* Write the stored block header bytes. */
+    flush_pending(s.strm);
+
+//#ifdef ZLIB_DEBUG
+//    /* Update debugging counts for the data about to be copied. */
+//    s->compressed_len += len << 3;
+//    s->bits_sent += len << 3;
+//#endif
+
+    /* Copy uncompressed bytes from the window to next_out. */
+    if (left) {
+      if (left > len) {
+        left = len;
+      }
+      //zmemcpy(s->strm->next_out, s->window + s->block_start, left);
+      s.strm.output.set(s.window.subarray(s.block_start, s.block_start + left), s.strm.next_out);
+      s.strm.next_out += left;
+      s.strm.avail_out -= left;
+      s.strm.total_out += left;
+      s.block_start += left;
+      len -= left;
+    }
+
+    /* Copy uncompressed bytes directly from next_in to next_out, updating
+     * the check value.
+     */
+    if (len) {
+      read_buf(s.strm, s.strm.output, s.strm.next_out, len);
+      s.strm.next_out += len;
+      s.strm.avail_out -= len;
+      s.strm.total_out += len;
+    }
+  } while (last === 0);
+
+  /* Update the sliding window with the last s->w_size bytes of the copied
+   * data, or append all of the copied data to the existing window if less
+   * than s->w_size bytes were copied. Also update the number of bytes to
+   * insert in the hash tables, in the event that deflateParams() switches to
+   * a non-zero compression level.
+   */
+  used -= s.strm.avail_in;    /* number of input bytes directly copied */
+  if (used) {
+    /* If any input was used, then no unused input remains in the window,
+     * therefore s->block_start == s->strstart.
+     */
+    if (used >= s.w_size) {  /* supplant the previous history */
+      s.matches = 2;     /* clear hash */
+      //zmemcpy(s->window, s->strm->next_in - s->w_size, s->w_size);
+      s.window.set(s.strm.input.subarray(s.strm.next_in - s.w_size, s.strm.next_in), 0);
+      s.strstart = s.w_size;
+      s.insert = s.strstart;
+    }
+    else {
+      if (s.window_size - s.strstart <= used) {
+        /* Slide the window down. */
+        s.strstart -= s.w_size;
+        //zmemcpy(s->window, s->window + s->w_size, s->strstart);
+        s.window.set(s.window.subarray(s.w_size, s.w_size + s.strstart), 0);
+        if (s.matches < 2) {
+          s.matches++;   /* add a pending slide_hash() */
+        }
+        if (s.insert > s.strstart) {
+          s.insert = s.strstart;
+        }
+      }
+      //zmemcpy(s->window + s->strstart, s->strm->next_in - used, used);
+      s.window.set(s.strm.input.subarray(s.strm.next_in - used, s.strm.next_in), s.strstart);
+      s.strstart += used;
+      s.insert += used > s.w_size - s.insert ? s.w_size - s.insert : used;
+    }
+    s.block_start = s.strstart;
+  }
+  if (s.high_water < s.strstart) {
+    s.high_water = s.strstart;
   }
 
-  s.insert = 0;
-
-  if (flush === Z_FINISH$3) {
-    /*** FLUSH_BLOCK(s, 1); ***/
-    flush_block_only(s, true);
-    if (s.strm.avail_out === 0) {
-      return BS_FINISH_STARTED;
-    }
-    /***/
+  /* If the last block was written to next_out, then done. */
+  if (last) {
     return BS_FINISH_DONE;
   }
 
-  if (s.strstart > s.block_start) {
-    /*** FLUSH_BLOCK(s, 0); ***/
-    flush_block_only(s, false);
-    if (s.strm.avail_out === 0) {
-      return BS_NEED_MORE;
-    }
-    /***/
+  /* If flushing and all input has been consumed, then done. */
+  if (flush !== Z_NO_FLUSH$2 && flush !== Z_FINISH$3 &&
+    s.strm.avail_in === 0 && s.strstart === s.block_start) {
+    return BS_BLOCK_DONE;
   }
 
-  return BS_NEED_MORE;
+  /* Fill the window with any remaining input. */
+  have = s.window_size - s.strstart;
+  if (s.strm.avail_in > have && s.block_start >= s.w_size) {
+    /* Slide the window down. */
+    s.block_start -= s.w_size;
+    s.strstart -= s.w_size;
+    //zmemcpy(s->window, s->window + s->w_size, s->strstart);
+    s.window.set(s.window.subarray(s.w_size, s.w_size + s.strstart), 0);
+    if (s.matches < 2) {
+      s.matches++;       /* add a pending slide_hash() */
+    }
+    have += s.w_size;      /* more space now */
+    if (s.insert > s.strstart) {
+      s.insert = s.strstart;
+    }
+  }
+  if (have > s.strm.avail_in) {
+    have = s.strm.avail_in;
+  }
+  if (have) {
+    read_buf(s.strm, s.window, s.strstart, have);
+    s.strstart += have;
+    s.insert += have > s.w_size - s.insert ? s.w_size - s.insert : have;
+  }
+  if (s.high_water < s.strstart) {
+    s.high_water = s.strstart;
+  }
+
+  /* There was not enough avail_out to write a complete worthy or flushed
+   * stored block to next_out. Write a stored block to pending instead, if we
+   * have enough input for a worthy block, or if flushing and there is enough
+   * room for the remaining input as a stored block in the pending buffer.
+   */
+  have = (s.bi_valid + 42) >> 3;     /* number of header bytes */
+    /* maximum stored block length that will fit in pending: */
+  have = s.pending_buf_size - have > 65535/* MAX_STORED */ ? 65535/* MAX_STORED */ : s.pending_buf_size - have;
+  min_block = have > s.w_size ? s.w_size : have;
+  left = s.strstart - s.block_start;
+  if (left >= min_block ||
+     ((left || flush === Z_FINISH$3) && flush !== Z_NO_FLUSH$2 &&
+     s.strm.avail_in === 0 && left <= have)) {
+    len = left > have ? have : left;
+    last = flush === Z_FINISH$3 && s.strm.avail_in === 0 &&
+         len === left ? 1 : 0;
+    _tr_stored_block(s, s.block_start, len, last);
+    s.block_start += len;
+    flush_pending(s.strm);
+  }
+
+  /* We've done all we can with the available input and output. */
+  return last ? BS_FINISH_STARTED : BS_NEED_MORE;
 };
+
 
 /* ===========================================================================
  * Compress as much as possible from the input stream, return the current
@@ -65789,7 +65939,7 @@ const deflate_fast = (s, flush) => {
     /***/
     return BS_FINISH_DONE;
   }
-  if (s.last_lit) {
+  if (s.sym_next) {
     /*** FLUSH_BLOCK(s, 0); ***/
     flush_block_only(s, false);
     if (s.strm.avail_out === 0) {
@@ -65950,7 +66100,7 @@ const deflate_slow = (s, flush) => {
     /***/
     return BS_FINISH_DONE;
   }
-  if (s.last_lit) {
+  if (s.sym_next) {
     /*** FLUSH_BLOCK(s, 0); ***/
     flush_block_only(s, false);
     if (s.strm.avail_out === 0) {
@@ -66049,7 +66199,7 @@ const deflate_rle = (s, flush) => {
     /***/
     return BS_FINISH_DONE;
   }
-  if (s.last_lit) {
+  if (s.sym_next) {
     /*** FLUSH_BLOCK(s, 0); ***/
     flush_block_only(s, false);
     if (s.strm.avail_out === 0) {
@@ -66106,7 +66256,7 @@ const deflate_huff = (s, flush) => {
     /***/
     return BS_FINISH_DONE;
   }
-  if (s.last_lit) {
+  if (s.sym_next) {
     /*** FLUSH_BLOCK(s, 0); ***/
     flush_block_only(s, false);
     if (s.strm.avail_out === 0) {
@@ -66307,7 +66457,7 @@ function DeflateState() {
   /* Depth of each subtree used as tie breaker for trees of equal frequency
    */
 
-  this.l_buf = 0;          /* buffer index for literals or lengths */
+  this.sym_buf = 0;        /* buffer for distances and literals/lengths */
 
   this.lit_bufsize = 0;
   /* Size of match buffer for literals/lengths.  There are 4 reasons for
@@ -66329,13 +66479,8 @@ function DeflateState() {
    *   - I can't count above 4
    */
 
-  this.last_lit = 0;      /* running index in l_buf */
-
-  this.d_buf = 0;
-  /* Buffer index for distances. To simplify the code, d_buf and l_buf have
-   * the same number of elements. To use different lengths, an extra flag
-   * array would be necessary.
-   */
+  this.sym_next = 0;      /* running index in sym_buf */
+  this.sym_end = 0;       /* symbol table full when sym_next reaches this */
 
   this.opt_len = 0;       /* bit length of current block with optimal trees */
   this.static_len = 0;    /* bit length of current block with static trees */
@@ -66363,9 +66508,34 @@ function DeflateState() {
 }
 
 
+/* =========================================================================
+ * Check for a valid deflate stream state. Return 0 if ok, 1 if not.
+ */
+const deflateStateCheck = (strm) => {
+
+  if (!strm) {
+    return 1;
+  }
+  const s = strm.state;
+  if (!s || s.strm !== strm || (s.status !== INIT_STATE &&
+//#ifdef GZIP
+                                s.status !== GZIP_STATE &&
+//#endif
+                                s.status !== EXTRA_STATE &&
+                                s.status !== NAME_STATE &&
+                                s.status !== COMMENT_STATE &&
+                                s.status !== HCRC_STATE &&
+                                s.status !== BUSY_STATE &&
+                                s.status !== FINISH_STATE)) {
+    return 1;
+  }
+  return 0;
+};
+
+
 const deflateResetKeep = (strm) => {
 
-  if (!strm || !strm.state) {
+  if (deflateStateCheck(strm)) {
     return err(strm, Z_STREAM_ERROR$2);
   }
 
@@ -66380,12 +66550,16 @@ const deflateResetKeep = (strm) => {
     s.wrap = -s.wrap;
     /* was made negative by deflate(..., Z_FINISH); */
   }
-  s.status = (s.wrap ? INIT_STATE : BUSY_STATE);
+  s.status =
+//#ifdef GZIP
+    s.wrap === 2 ? GZIP_STATE :
+//#endif
+    s.wrap ? INIT_STATE : BUSY_STATE;
   strm.adler = (s.wrap === 2) ?
     0  // crc32(0, Z_NULL, 0)
   :
     1; // adler32(0, Z_NULL, 0)
-  s.last_flush = Z_NO_FLUSH$2;
+  s.last_flush = -2;
   _tr_init(s);
   return Z_OK$3;
 };
@@ -66403,8 +66577,9 @@ const deflateReset = (strm) => {
 
 const deflateSetHeader = (strm, head) => {
 
-  if (!strm || !strm.state) { return Z_STREAM_ERROR$2; }
-  if (strm.state.wrap !== 2) { return Z_STREAM_ERROR$2; }
+  if (deflateStateCheck(strm) || strm.state.wrap !== 2) {
+    return Z_STREAM_ERROR$2;
+  }
   strm.state.gzhead = head;
   return Z_OK$3;
 };
@@ -66434,7 +66609,7 @@ const deflateInit2 = (strm, level, method, windowBits, memLevel, strategy) => {
 
   if (memLevel < 1 || memLevel > MAX_MEM_LEVEL || method !== Z_DEFLATED$2 ||
     windowBits < 8 || windowBits > 15 || level < 0 || level > 9 ||
-    strategy < 0 || strategy > Z_FIXED) {
+    strategy < 0 || strategy > Z_FIXED || (windowBits === 8 && wrap !== 1)) {
     return err(strm, Z_STREAM_ERROR$2);
   }
 
@@ -66448,6 +66623,7 @@ const deflateInit2 = (strm, level, method, windowBits, memLevel, strategy) => {
 
   strm.state = s;
   s.strm = strm;
+  s.status = INIT_STATE;     /* to pass state test in deflateReset() */
 
   s.wrap = wrap;
   s.gzhead = null;
@@ -66469,18 +66645,58 @@ const deflateInit2 = (strm, level, method, windowBits, memLevel, strategy) => {
 
   s.lit_bufsize = 1 << (memLevel + 6); /* 16K elements by default */
 
-  s.pending_buf_size = s.lit_bufsize * 4;
+  /* We overlay pending_buf and sym_buf. This works since the average size
+   * for length/distance pairs over any compressed block is assured to be 31
+   * bits or less.
+   *
+   * Analysis: The longest fixed codes are a length code of 8 bits plus 5
+   * extra bits, for lengths 131 to 257. The longest fixed distance codes are
+   * 5 bits plus 13 extra bits, for distances 16385 to 32768. The longest
+   * possible fixed-codes length/distance pair is then 31 bits total.
+   *
+   * sym_buf starts one-fourth of the way into pending_buf. So there are
+   * three bytes in sym_buf for every four bytes in pending_buf. Each symbol
+   * in sym_buf is three bytes -- two for the distance and one for the
+   * literal/length. As each symbol is consumed, the pointer to the next
+   * sym_buf value to read moves forward three bytes. From that symbol, up to
+   * 31 bits are written to pending_buf. The closest the written pending_buf
+   * bits gets to the next sym_buf symbol to read is just before the last
+   * code is written. At that time, 31*(n-2) bits have been written, just
+   * after 24*(n-2) bits have been consumed from sym_buf. sym_buf starts at
+   * 8*n bits into pending_buf. (Note that the symbol buffer fills when n-1
+   * symbols are written.) The closest the writing gets to what is unread is
+   * then n+14 bits. Here n is lit_bufsize, which is 16384 by default, and
+   * can range from 128 to 32768.
+   *
+   * Therefore, at a minimum, there are 142 bits of space between what is
+   * written and what is read in the overlain buffers, so the symbols cannot
+   * be overwritten by the compressed data. That space is actually 139 bits,
+   * due to the three-bit fixed-code block header.
+   *
+   * That covers the case where either Z_FIXED is specified, forcing fixed
+   * codes, or when the use of fixed codes is chosen, because that choice
+   * results in a smaller compressed block than dynamic codes. That latter
+   * condition then assures that the above analysis also covers all dynamic
+   * blocks. A dynamic-code block will only be chosen to be emitted if it has
+   * fewer bits than a fixed-code block would for the same set of symbols.
+   * Therefore its average symbol length is assured to be less than 31. So
+   * the compressed data for a dynamic block also cannot overwrite the
+   * symbols from which it is being constructed.
+   */
 
-  //overlay = (ushf *) ZALLOC(strm, s->lit_bufsize, sizeof(ush)+2);
-  //s->pending_buf = (uchf *) overlay;
+  s.pending_buf_size = s.lit_bufsize * 4;
   s.pending_buf = new Uint8Array(s.pending_buf_size);
 
   // It is offset from `s.pending_buf` (size is `s.lit_bufsize * 2`)
-  //s->d_buf = overlay + s->lit_bufsize/sizeof(ush);
-  s.d_buf = 1 * s.lit_bufsize;
+  //s->sym_buf = s->pending_buf + s->lit_bufsize;
+  s.sym_buf = s.lit_bufsize;
 
-  //s->l_buf = s->pending_buf + (1+sizeof(ush))*s->lit_bufsize;
-  s.l_buf = (1 + 2) * s.lit_bufsize;
+  //s->sym_end = (s->lit_bufsize - 1) * 3;
+  s.sym_end = (s.lit_bufsize - 1) * 3;
+  /* We avoid equality with lit_bufsize*3 because of wraparound at 64K
+   * on 16 bit machines and because stored blocks are restricted to
+   * 64K-1 bytes.
+   */
 
   s.level = level;
   s.strategy = strategy;
@@ -66495,226 +66711,23 @@ const deflateInit = (strm, level) => {
 };
 
 
+/* ========================================================================= */
 const deflate$2 = (strm, flush) => {
 
-  let beg, val; // for gzip header write only
-
-  if (!strm || !strm.state ||
-    flush > Z_BLOCK$1 || flush < 0) {
+  if (deflateStateCheck(strm) || flush > Z_BLOCK$1 || flush < 0) {
     return strm ? err(strm, Z_STREAM_ERROR$2) : Z_STREAM_ERROR$2;
   }
 
   const s = strm.state;
 
   if (!strm.output ||
-      (!strm.input && strm.avail_in !== 0) ||
+      (strm.avail_in !== 0 && !strm.input) ||
       (s.status === FINISH_STATE && flush !== Z_FINISH$3)) {
     return err(strm, (strm.avail_out === 0) ? Z_BUF_ERROR$1 : Z_STREAM_ERROR$2);
   }
 
-  s.strm = strm; /* just in case */
   const old_flush = s.last_flush;
   s.last_flush = flush;
-
-  /* Write the header */
-  if (s.status === INIT_STATE) {
-
-    if (s.wrap === 2) { // GZIP header
-      strm.adler = 0;  //crc32(0L, Z_NULL, 0);
-      put_byte(s, 31);
-      put_byte(s, 139);
-      put_byte(s, 8);
-      if (!s.gzhead) { // s->gzhead == Z_NULL
-        put_byte(s, 0);
-        put_byte(s, 0);
-        put_byte(s, 0);
-        put_byte(s, 0);
-        put_byte(s, 0);
-        put_byte(s, s.level === 9 ? 2 :
-                    (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2 ?
-                     4 : 0));
-        put_byte(s, OS_CODE);
-        s.status = BUSY_STATE;
-      }
-      else {
-        put_byte(s, (s.gzhead.text ? 1 : 0) +
-                    (s.gzhead.hcrc ? 2 : 0) +
-                    (!s.gzhead.extra ? 0 : 4) +
-                    (!s.gzhead.name ? 0 : 8) +
-                    (!s.gzhead.comment ? 0 : 16)
-        );
-        put_byte(s, s.gzhead.time & 0xff);
-        put_byte(s, (s.gzhead.time >> 8) & 0xff);
-        put_byte(s, (s.gzhead.time >> 16) & 0xff);
-        put_byte(s, (s.gzhead.time >> 24) & 0xff);
-        put_byte(s, s.level === 9 ? 2 :
-                    (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2 ?
-                     4 : 0));
-        put_byte(s, s.gzhead.os & 0xff);
-        if (s.gzhead.extra && s.gzhead.extra.length) {
-          put_byte(s, s.gzhead.extra.length & 0xff);
-          put_byte(s, (s.gzhead.extra.length >> 8) & 0xff);
-        }
-        if (s.gzhead.hcrc) {
-          strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending, 0);
-        }
-        s.gzindex = 0;
-        s.status = EXTRA_STATE;
-      }
-    }
-    else // DEFLATE header
-    {
-      let header = (Z_DEFLATED$2 + ((s.w_bits - 8) << 4)) << 8;
-      let level_flags = -1;
-
-      if (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2) {
-        level_flags = 0;
-      } else if (s.level < 6) {
-        level_flags = 1;
-      } else if (s.level === 6) {
-        level_flags = 2;
-      } else {
-        level_flags = 3;
-      }
-      header |= (level_flags << 6);
-      if (s.strstart !== 0) { header |= PRESET_DICT; }
-      header += 31 - (header % 31);
-
-      s.status = BUSY_STATE;
-      putShortMSB(s, header);
-
-      /* Save the adler32 of the preset dictionary: */
-      if (s.strstart !== 0) {
-        putShortMSB(s, strm.adler >>> 16);
-        putShortMSB(s, strm.adler & 0xffff);
-      }
-      strm.adler = 1; // adler32(0L, Z_NULL, 0);
-    }
-  }
-
-//#ifdef GZIP
-  if (s.status === EXTRA_STATE) {
-    if (s.gzhead.extra/* != Z_NULL*/) {
-      beg = s.pending;  /* start of bytes to update crc */
-
-      while (s.gzindex < (s.gzhead.extra.length & 0xffff)) {
-        if (s.pending === s.pending_buf_size) {
-          if (s.gzhead.hcrc && s.pending > beg) {
-            strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
-          }
-          flush_pending(strm);
-          beg = s.pending;
-          if (s.pending === s.pending_buf_size) {
-            break;
-          }
-        }
-        put_byte(s, s.gzhead.extra[s.gzindex] & 0xff);
-        s.gzindex++;
-      }
-      if (s.gzhead.hcrc && s.pending > beg) {
-        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
-      }
-      if (s.gzindex === s.gzhead.extra.length) {
-        s.gzindex = 0;
-        s.status = NAME_STATE;
-      }
-    }
-    else {
-      s.status = NAME_STATE;
-    }
-  }
-  if (s.status === NAME_STATE) {
-    if (s.gzhead.name/* != Z_NULL*/) {
-      beg = s.pending;  /* start of bytes to update crc */
-      //int val;
-
-      do {
-        if (s.pending === s.pending_buf_size) {
-          if (s.gzhead.hcrc && s.pending > beg) {
-            strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
-          }
-          flush_pending(strm);
-          beg = s.pending;
-          if (s.pending === s.pending_buf_size) {
-            val = 1;
-            break;
-          }
-        }
-        // JS specific: little magic to add zero terminator to end of string
-        if (s.gzindex < s.gzhead.name.length) {
-          val = s.gzhead.name.charCodeAt(s.gzindex++) & 0xff;
-        } else {
-          val = 0;
-        }
-        put_byte(s, val);
-      } while (val !== 0);
-
-      if (s.gzhead.hcrc && s.pending > beg) {
-        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
-      }
-      if (val === 0) {
-        s.gzindex = 0;
-        s.status = COMMENT_STATE;
-      }
-    }
-    else {
-      s.status = COMMENT_STATE;
-    }
-  }
-  if (s.status === COMMENT_STATE) {
-    if (s.gzhead.comment/* != Z_NULL*/) {
-      beg = s.pending;  /* start of bytes to update crc */
-      //int val;
-
-      do {
-        if (s.pending === s.pending_buf_size) {
-          if (s.gzhead.hcrc && s.pending > beg) {
-            strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
-          }
-          flush_pending(strm);
-          beg = s.pending;
-          if (s.pending === s.pending_buf_size) {
-            val = 1;
-            break;
-          }
-        }
-        // JS specific: little magic to add zero terminator to end of string
-        if (s.gzindex < s.gzhead.comment.length) {
-          val = s.gzhead.comment.charCodeAt(s.gzindex++) & 0xff;
-        } else {
-          val = 0;
-        }
-        put_byte(s, val);
-      } while (val !== 0);
-
-      if (s.gzhead.hcrc && s.pending > beg) {
-        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
-      }
-      if (val === 0) {
-        s.status = HCRC_STATE;
-      }
-    }
-    else {
-      s.status = HCRC_STATE;
-    }
-  }
-  if (s.status === HCRC_STATE) {
-    if (s.gzhead.hcrc) {
-      if (s.pending + 2 > s.pending_buf_size) {
-        flush_pending(strm);
-      }
-      if (s.pending + 2 <= s.pending_buf_size) {
-        put_byte(s, strm.adler & 0xff);
-        put_byte(s, (strm.adler >> 8) & 0xff);
-        strm.adler = 0; //crc32(0L, Z_NULL, 0);
-        s.status = BUSY_STATE;
-      }
-    }
-    else {
-      s.status = BUSY_STATE;
-    }
-  }
-//#endif
 
   /* Flush as much pending output as possible */
   if (s.pending !== 0) {
@@ -66744,13 +66757,238 @@ const deflate$2 = (strm, flush) => {
     return err(strm, Z_BUF_ERROR$1);
   }
 
+  /* Write the header */
+  if (s.status === INIT_STATE && s.wrap === 0) {
+    s.status = BUSY_STATE;
+  }
+  if (s.status === INIT_STATE) {
+    /* zlib header */
+    let header = (Z_DEFLATED$2 + ((s.w_bits - 8) << 4)) << 8;
+    let level_flags = -1;
+
+    if (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2) {
+      level_flags = 0;
+    } else if (s.level < 6) {
+      level_flags = 1;
+    } else if (s.level === 6) {
+      level_flags = 2;
+    } else {
+      level_flags = 3;
+    }
+    header |= (level_flags << 6);
+    if (s.strstart !== 0) { header |= PRESET_DICT; }
+    header += 31 - (header % 31);
+
+    putShortMSB(s, header);
+
+    /* Save the adler32 of the preset dictionary: */
+    if (s.strstart !== 0) {
+      putShortMSB(s, strm.adler >>> 16);
+      putShortMSB(s, strm.adler & 0xffff);
+    }
+    strm.adler = 1; // adler32(0L, Z_NULL, 0);
+    s.status = BUSY_STATE;
+
+    /* Compression must start with an empty pending buffer */
+    flush_pending(strm);
+    if (s.pending !== 0) {
+      s.last_flush = -1;
+      return Z_OK$3;
+    }
+  }
+//#ifdef GZIP
+  if (s.status === GZIP_STATE) {
+    /* gzip header */
+    strm.adler = 0;  //crc32(0L, Z_NULL, 0);
+    put_byte(s, 31);
+    put_byte(s, 139);
+    put_byte(s, 8);
+    if (!s.gzhead) { // s->gzhead == Z_NULL
+      put_byte(s, 0);
+      put_byte(s, 0);
+      put_byte(s, 0);
+      put_byte(s, 0);
+      put_byte(s, 0);
+      put_byte(s, s.level === 9 ? 2 :
+                  (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2 ?
+                   4 : 0));
+      put_byte(s, OS_CODE);
+      s.status = BUSY_STATE;
+
+      /* Compression must start with an empty pending buffer */
+      flush_pending(strm);
+      if (s.pending !== 0) {
+        s.last_flush = -1;
+        return Z_OK$3;
+      }
+    }
+    else {
+      put_byte(s, (s.gzhead.text ? 1 : 0) +
+                  (s.gzhead.hcrc ? 2 : 0) +
+                  (!s.gzhead.extra ? 0 : 4) +
+                  (!s.gzhead.name ? 0 : 8) +
+                  (!s.gzhead.comment ? 0 : 16)
+      );
+      put_byte(s, s.gzhead.time & 0xff);
+      put_byte(s, (s.gzhead.time >> 8) & 0xff);
+      put_byte(s, (s.gzhead.time >> 16) & 0xff);
+      put_byte(s, (s.gzhead.time >> 24) & 0xff);
+      put_byte(s, s.level === 9 ? 2 :
+                  (s.strategy >= Z_HUFFMAN_ONLY || s.level < 2 ?
+                   4 : 0));
+      put_byte(s, s.gzhead.os & 0xff);
+      if (s.gzhead.extra && s.gzhead.extra.length) {
+        put_byte(s, s.gzhead.extra.length & 0xff);
+        put_byte(s, (s.gzhead.extra.length >> 8) & 0xff);
+      }
+      if (s.gzhead.hcrc) {
+        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending, 0);
+      }
+      s.gzindex = 0;
+      s.status = EXTRA_STATE;
+    }
+  }
+  if (s.status === EXTRA_STATE) {
+    if (s.gzhead.extra/* != Z_NULL*/) {
+      let beg = s.pending;   /* start of bytes to update crc */
+      let left = (s.gzhead.extra.length & 0xffff) - s.gzindex;
+      while (s.pending + left > s.pending_buf_size) {
+        let copy = s.pending_buf_size - s.pending;
+        // zmemcpy(s.pending_buf + s.pending,
+        //    s.gzhead.extra + s.gzindex, copy);
+        s.pending_buf.set(s.gzhead.extra.subarray(s.gzindex, s.gzindex + copy), s.pending);
+        s.pending = s.pending_buf_size;
+        //--- HCRC_UPDATE(beg) ---//
+        if (s.gzhead.hcrc && s.pending > beg) {
+          strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
+        }
+        //---//
+        s.gzindex += copy;
+        flush_pending(strm);
+        if (s.pending !== 0) {
+          s.last_flush = -1;
+          return Z_OK$3;
+        }
+        beg = 0;
+        left -= copy;
+      }
+      // JS specific: s.gzhead.extra may be TypedArray or Array for backward compatibility
+      //              TypedArray.slice and TypedArray.from don't exist in IE10-IE11
+      let gzhead_extra = new Uint8Array(s.gzhead.extra);
+      // zmemcpy(s->pending_buf + s->pending,
+      //     s->gzhead->extra + s->gzindex, left);
+      s.pending_buf.set(gzhead_extra.subarray(s.gzindex, s.gzindex + left), s.pending);
+      s.pending += left;
+      //--- HCRC_UPDATE(beg) ---//
+      if (s.gzhead.hcrc && s.pending > beg) {
+        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
+      }
+      //---//
+      s.gzindex = 0;
+    }
+    s.status = NAME_STATE;
+  }
+  if (s.status === NAME_STATE) {
+    if (s.gzhead.name/* != Z_NULL*/) {
+      let beg = s.pending;   /* start of bytes to update crc */
+      let val;
+      do {
+        if (s.pending === s.pending_buf_size) {
+          //--- HCRC_UPDATE(beg) ---//
+          if (s.gzhead.hcrc && s.pending > beg) {
+            strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
+          }
+          //---//
+          flush_pending(strm);
+          if (s.pending !== 0) {
+            s.last_flush = -1;
+            return Z_OK$3;
+          }
+          beg = 0;
+        }
+        // JS specific: little magic to add zero terminator to end of string
+        if (s.gzindex < s.gzhead.name.length) {
+          val = s.gzhead.name.charCodeAt(s.gzindex++) & 0xff;
+        } else {
+          val = 0;
+        }
+        put_byte(s, val);
+      } while (val !== 0);
+      //--- HCRC_UPDATE(beg) ---//
+      if (s.gzhead.hcrc && s.pending > beg) {
+        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
+      }
+      //---//
+      s.gzindex = 0;
+    }
+    s.status = COMMENT_STATE;
+  }
+  if (s.status === COMMENT_STATE) {
+    if (s.gzhead.comment/* != Z_NULL*/) {
+      let beg = s.pending;   /* start of bytes to update crc */
+      let val;
+      do {
+        if (s.pending === s.pending_buf_size) {
+          //--- HCRC_UPDATE(beg) ---//
+          if (s.gzhead.hcrc && s.pending > beg) {
+            strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
+          }
+          //---//
+          flush_pending(strm);
+          if (s.pending !== 0) {
+            s.last_flush = -1;
+            return Z_OK$3;
+          }
+          beg = 0;
+        }
+        // JS specific: little magic to add zero terminator to end of string
+        if (s.gzindex < s.gzhead.comment.length) {
+          val = s.gzhead.comment.charCodeAt(s.gzindex++) & 0xff;
+        } else {
+          val = 0;
+        }
+        put_byte(s, val);
+      } while (val !== 0);
+      //--- HCRC_UPDATE(beg) ---//
+      if (s.gzhead.hcrc && s.pending > beg) {
+        strm.adler = crc32_1(strm.adler, s.pending_buf, s.pending - beg, beg);
+      }
+      //---//
+    }
+    s.status = HCRC_STATE;
+  }
+  if (s.status === HCRC_STATE) {
+    if (s.gzhead.hcrc) {
+      if (s.pending + 2 > s.pending_buf_size) {
+        flush_pending(strm);
+        if (s.pending !== 0) {
+          s.last_flush = -1;
+          return Z_OK$3;
+        }
+      }
+      put_byte(s, strm.adler & 0xff);
+      put_byte(s, (strm.adler >> 8) & 0xff);
+      strm.adler = 0; //crc32(0L, Z_NULL, 0);
+    }
+    s.status = BUSY_STATE;
+
+    /* Compression must start with an empty pending buffer */
+    flush_pending(strm);
+    if (s.pending !== 0) {
+      s.last_flush = -1;
+      return Z_OK$3;
+    }
+  }
+//#endif
+
   /* Start a new block or continue the current one.
    */
   if (strm.avail_in !== 0 || s.lookahead !== 0 ||
     (flush !== Z_NO_FLUSH$2 && s.status !== FINISH_STATE)) {
-    let bstate = (s.strategy === Z_HUFFMAN_ONLY) ? deflate_huff(s, flush) :
-      (s.strategy === Z_RLE ? deflate_rle(s, flush) :
-        configuration_table[s.level].func(s, flush));
+    let bstate = s.level === 0 ? deflate_stored(s, flush) :
+                 s.strategy === Z_HUFFMAN_ONLY ? deflate_huff(s, flush) :
+                 s.strategy === Z_RLE ? deflate_rle(s, flush) :
+                 configuration_table[s.level].func(s, flush);
 
     if (bstate === BS_FINISH_STARTED || bstate === BS_FINISH_DONE) {
       s.status = FINISH_STATE;
@@ -66797,8 +67035,6 @@ const deflate$2 = (strm, flush) => {
       }
     }
   }
-  //Assert(strm->avail_out > 0, "bug2");
-  //if (strm.avail_out <= 0) { throw new Error("bug2");}
 
   if (flush !== Z_FINISH$3) { return Z_OK$3; }
   if (s.wrap <= 0) { return Z_STREAM_END$3; }
@@ -66832,21 +67068,11 @@ const deflate$2 = (strm, flush) => {
 
 const deflateEnd = (strm) => {
 
-  if (!strm/*== Z_NULL*/ || !strm.state/*== Z_NULL*/) {
+  if (deflateStateCheck(strm)) {
     return Z_STREAM_ERROR$2;
   }
 
   const status = strm.state.status;
-  if (status !== INIT_STATE &&
-    status !== EXTRA_STATE &&
-    status !== NAME_STATE &&
-    status !== COMMENT_STATE &&
-    status !== HCRC_STATE &&
-    status !== BUSY_STATE &&
-    status !== FINISH_STATE
-  ) {
-    return err(strm, Z_STREAM_ERROR$2);
-  }
 
   strm.state = null;
 
@@ -66862,7 +67088,7 @@ const deflateSetDictionary = (strm, dictionary) => {
 
   let dictLength = dictionary.length;
 
-  if (!strm/*== Z_NULL*/ || !strm.state/*== Z_NULL*/) {
+  if (deflateStateCheck(strm)) {
     return Z_STREAM_ERROR$2;
   }
 
@@ -66948,6 +67174,7 @@ var deflateInfo = 'pako deflate (from Nodeca project)';
 /* Not implemented
 module.exports.deflateBound = deflateBound;
 module.exports.deflateCopy = deflateCopy;
+module.exports.deflateGetDictionary = deflateGetDictionary;
 module.exports.deflateParams = deflateParams;
 module.exports.deflatePending = deflatePending;
 module.exports.deflatePrime = deflatePrime;
@@ -67537,7 +67764,7 @@ Deflate$1.prototype.onEnd = function (status) {
 
 /**
  * deflate(data[, options]) -> Uint8Array
- * - data (Uint8Array|String): input data to compress.
+ * - data (Uint8Array|ArrayBuffer|String): input data to compress.
  * - options (Object): zlib deflate options.
  *
  * Compress `data` with deflate algorithm and `options`.
@@ -67581,7 +67808,7 @@ function deflate$1(input, options) {
 
 /**
  * deflateRaw(data[, options]) -> Uint8Array
- * - data (Uint8Array|String): input data to compress.
+ * - data (Uint8Array|ArrayBuffer|String): input data to compress.
  * - options (Object): zlib deflate options.
  *
  * The same as [[deflate]], but creates raw data, without wrapper
@@ -67596,7 +67823,7 @@ function deflateRaw$1(input, options) {
 
 /**
  * gzip(data[, options]) -> Uint8Array
- * - data (Uint8Array|String): input data to compress.
+ * - data (Uint8Array|ArrayBuffer|String): input data to compress.
  * - options (Object): zlib deflate options.
  *
  * The same as [[deflate]], but create gzip wrapper instead of
@@ -67643,8 +67870,8 @@ var deflate_1$1 = {
 // 3. This notice may not be removed or altered from any source distribution.
 
 // See state defs from inflate.js
-const BAD$1 = 30;       /* got a data error -- remain here until reset */
-const TYPE$1 = 12;      /* i: waiting for type bits, including last-flag bit */
+const BAD$1 = 16209;       /* got a data error -- remain here until reset */
+const TYPE$1 = 16191;      /* i: waiting for type bits, including last-flag bit */
 
 /*
    Decode literal, length, and distance codes and write out the resulting
@@ -68036,13 +68263,11 @@ const inflate_table = (type, lens, lens_index, codes, table, table_index, work, 
   let mask;              /* mask for low root bits */
   let next;             /* next available space in table */
   let base = null;     /* base value table to use */
-  let base_index = 0;
 //  let shoextra;    /* extra bits table to use */
-  let end;                    /* use base and extra for symbol > end */
+  let match;                  /* use base and extra for symbol >= match */
   const count = new Uint16Array(MAXBITS + 1); //[MAXBITS+1];    /* number of codes of each length */
   const offs = new Uint16Array(MAXBITS + 1); //[MAXBITS+1];     /* offsets in table for each length */
   let extra = null;
-  let extra_index = 0;
 
   let here_bits, here_op, here_val;
 
@@ -68177,19 +68402,17 @@ const inflate_table = (type, lens, lens_index, codes, table, table_index, work, 
   // to avoid deopts in old v8
   if (type === CODES$1) {
     base = extra = work;    /* dummy value--not used */
-    end = 19;
+    match = 20;
 
   } else if (type === LENS$1) {
     base = lbase;
-    base_index -= 257;
     extra = lext;
-    extra_index -= 257;
-    end = 256;
+    match = 257;
 
   } else {                    /* DISTS */
     base = dbase;
     extra = dext;
-    end = -1;
+    match = 0;
   }
 
   /* initialize opts for loop */
@@ -68213,13 +68436,13 @@ const inflate_table = (type, lens, lens_index, codes, table, table_index, work, 
   for (;;) {
     /* create table entry */
     here_bits = len - drop;
-    if (work[sym] < end) {
+    if (work[sym] + 1 < match) {
       here_op = 0;
       here_val = work[sym];
     }
-    else if (work[sym] > end) {
-      here_op = extra[extra_index + work[sym]];
-      here_val = base[base_index + work[sym]];
+    else if (work[sym] >= match) {
+      here_op = extra[work[sym] - match];
+      here_val = base[work[sym] - match];
     }
     else {
       here_op = 32 + 64;         /* end of block */
@@ -68351,38 +68574,38 @@ const {
 /* ===========================================================================*/
 
 
-const    HEAD = 1;       /* i: waiting for magic header */
-const    FLAGS = 2;      /* i: waiting for method and flags (gzip) */
-const    TIME = 3;       /* i: waiting for modification time (gzip) */
-const    OS = 4;         /* i: waiting for extra flags and operating system (gzip) */
-const    EXLEN = 5;      /* i: waiting for extra length (gzip) */
-const    EXTRA = 6;      /* i: waiting for extra bytes (gzip) */
-const    NAME = 7;       /* i: waiting for end of file name (gzip) */
-const    COMMENT = 8;    /* i: waiting for end of comment (gzip) */
-const    HCRC = 9;       /* i: waiting for header crc (gzip) */
-const    DICTID = 10;    /* i: waiting for dictionary check value */
-const    DICT = 11;      /* waiting for inflateSetDictionary() call */
-const        TYPE = 12;      /* i: waiting for type bits, including last-flag bit */
-const        TYPEDO = 13;    /* i: same, but skip check to exit inflate on new block */
-const        STORED = 14;    /* i: waiting for stored size (length and complement) */
-const        COPY_ = 15;     /* i/o: same as COPY below, but only first time in */
-const        COPY = 16;      /* i/o: waiting for input or output to copy stored block */
-const        TABLE = 17;     /* i: waiting for dynamic block table lengths */
-const        LENLENS = 18;   /* i: waiting for code length code lengths */
-const        CODELENS = 19;  /* i: waiting for length/lit and distance code lengths */
-const            LEN_ = 20;      /* i: same as LEN below, but only first time in */
-const            LEN = 21;       /* i: waiting for length/lit/eob code */
-const            LENEXT = 22;    /* i: waiting for length extra bits */
-const            DIST = 23;      /* i: waiting for distance code */
-const            DISTEXT = 24;   /* i: waiting for distance extra bits */
-const            MATCH = 25;     /* o: waiting for output space to copy string */
-const            LIT = 26;       /* o: waiting for output space to write literal */
-const    CHECK = 27;     /* i: waiting for 32-bit check value */
-const    LENGTH = 28;    /* i: waiting for 32-bit length (gzip) */
-const    DONE = 29;      /* finished check, done -- remain here until reset */
-const    BAD = 30;       /* got a data error -- remain here until reset */
-const    MEM = 31;       /* got an inflate() memory error -- remain here until reset */
-const    SYNC = 32;      /* looking for synchronization bytes to restart inflate() */
+const    HEAD = 16180;       /* i: waiting for magic header */
+const    FLAGS = 16181;      /* i: waiting for method and flags (gzip) */
+const    TIME = 16182;       /* i: waiting for modification time (gzip) */
+const    OS = 16183;         /* i: waiting for extra flags and operating system (gzip) */
+const    EXLEN = 16184;      /* i: waiting for extra length (gzip) */
+const    EXTRA = 16185;      /* i: waiting for extra bytes (gzip) */
+const    NAME = 16186;       /* i: waiting for end of file name (gzip) */
+const    COMMENT = 16187;    /* i: waiting for end of comment (gzip) */
+const    HCRC = 16188;       /* i: waiting for header crc (gzip) */
+const    DICTID = 16189;    /* i: waiting for dictionary check value */
+const    DICT = 16190;      /* waiting for inflateSetDictionary() call */
+const        TYPE = 16191;      /* i: waiting for type bits, including last-flag bit */
+const        TYPEDO = 16192;    /* i: same, but skip check to exit inflate on new block */
+const        STORED = 16193;    /* i: waiting for stored size (length and complement) */
+const        COPY_ = 16194;     /* i/o: same as COPY below, but only first time in */
+const        COPY = 16195;      /* i/o: waiting for input or output to copy stored block */
+const        TABLE = 16196;     /* i: waiting for dynamic block table lengths */
+const        LENLENS = 16197;   /* i: waiting for code length code lengths */
+const        CODELENS = 16198;  /* i: waiting for length/lit and distance code lengths */
+const            LEN_ = 16199;      /* i: same as LEN below, but only first time in */
+const            LEN = 16200;       /* i: waiting for length/lit/eob code */
+const            LENEXT = 16201;    /* i: waiting for length extra bits */
+const            DIST = 16202;      /* i: waiting for distance code */
+const            DISTEXT = 16203;   /* i: waiting for distance extra bits */
+const            MATCH = 16204;     /* o: waiting for output space to copy string */
+const            LIT = 16205;       /* o: waiting for output space to write literal */
+const    CHECK = 16206;     /* i: waiting for 32-bit check value */
+const    LENGTH = 16207;    /* i: waiting for 32-bit length (gzip) */
+const    DONE = 16208;      /* finished check, done -- remain here until reset */
+const    BAD = 16209;       /* got a data error -- remain here until reset */
+const    MEM = 16210;       /* got an inflate() memory error -- remain here until reset */
+const    SYNC = 16211;      /* looking for synchronization bytes to restart inflate() */
 
 /* ===========================================================================*/
 
@@ -68407,11 +68630,14 @@ const zswap32 = (q) => {
 
 
 function InflateState() {
-  this.mode = 0;             /* current inflate mode */
+  this.strm = null;           /* pointer back to this zlib stream */
+  this.mode = 0;              /* current inflate mode */
   this.last = false;          /* true if processing last block */
-  this.wrap = 0;              /* bit 0 true for zlib, bit 1 true for gzip */
+  this.wrap = 0;              /* bit 0 true for zlib, bit 1 true for gzip,
+                                 bit 2 true to validate check value */
   this.havedict = false;      /* true if dictionary provided */
-  this.flags = 0;             /* gzip header method and flags (0 if zlib) */
+  this.flags = 0;             /* gzip header method and flags (0 if zlib), or
+                                 -1 if raw or no header yet */
   this.dmax = 0;              /* zlib header max distance (INFLATE_STRICT) */
   this.check = 0;             /* protected copy of check value */
   this.total = 0;             /* protected copy of output count */
@@ -68465,9 +68691,23 @@ function InflateState() {
 }
 
 
+const inflateStateCheck = (strm) => {
+
+  if (!strm) {
+    return 1;
+  }
+  const state = strm.state;
+  if (!state || state.strm !== strm ||
+    state.mode < HEAD || state.mode > SYNC) {
+    return 1;
+  }
+  return 0;
+};
+
+
 const inflateResetKeep = (strm) => {
 
-  if (!strm || !strm.state) { return Z_STREAM_ERROR$1; }
+  if (inflateStateCheck(strm)) { return Z_STREAM_ERROR$1; }
   const state = strm.state;
   strm.total_in = strm.total_out = state.total = 0;
   strm.msg = ''; /*Z_NULL*/
@@ -68477,6 +68717,7 @@ const inflateResetKeep = (strm) => {
   state.mode = HEAD;
   state.last = 0;
   state.havedict = 0;
+  state.flags = -1;
   state.dmax = 32768;
   state.head = null/*Z_NULL*/;
   state.hold = 0;
@@ -68494,7 +68735,7 @@ const inflateResetKeep = (strm) => {
 
 const inflateReset = (strm) => {
 
-  if (!strm || !strm.state) { return Z_STREAM_ERROR$1; }
+  if (inflateStateCheck(strm)) { return Z_STREAM_ERROR$1; }
   const state = strm.state;
   state.wsize = 0;
   state.whave = 0;
@@ -68508,7 +68749,7 @@ const inflateReset2 = (strm, windowBits) => {
   let wrap;
 
   /* get the state */
-  if (!strm || !strm.state) { return Z_STREAM_ERROR$1; }
+  if (inflateStateCheck(strm)) { return Z_STREAM_ERROR$1; }
   const state = strm.state;
 
   /* extract wrap request from windowBits parameter */
@@ -68517,7 +68758,7 @@ const inflateReset2 = (strm, windowBits) => {
     windowBits = -windowBits;
   }
   else {
-    wrap = (windowBits >> 4) + 1;
+    wrap = (windowBits >> 4) + 5;
     if (windowBits < 48) {
       windowBits &= 15;
     }
@@ -68548,7 +68789,9 @@ const inflateInit2 = (strm, windowBits) => {
   //if (state === Z_NULL) return Z_MEM_ERROR;
   //Tracev((stderr, "inflate: allocated\n"));
   strm.state = state;
+  state.strm = strm;
   state.window = null/*Z_NULL*/;
+  state.mode = HEAD;     /* to pass state test in inflateReset2() */
   const ret = inflateReset2(strm, windowBits);
   if (ret !== Z_OK$1) {
     strm.state = null/*Z_NULL*/;
@@ -68697,7 +68940,7 @@ const inflate$2 = (strm, flush) => {
     new Uint8Array([ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 ]);
 
 
-  if (!strm || !strm.state || !strm.output ||
+  if (inflateStateCheck(strm) || !strm.output ||
       (!strm.input && strm.avail_in !== 0)) {
     return Z_STREAM_ERROR$1;
   }
@@ -68738,6 +68981,9 @@ const inflate$2 = (strm, flush) => {
         }
         //===//
         if ((state.wrap & 2) && hold === 0x8b1f) {  /* gzip header */
+          if (state.wbits === 0) {
+            state.wbits = 15;
+          }
           state.check = 0/*crc32(0L, Z_NULL, 0)*/;
           //=== CRC2(state.check, hold);
           hbuf[0] = hold & 0xff;
@@ -68752,7 +68998,6 @@ const inflate$2 = (strm, flush) => {
           state.mode = FLAGS;
           break;
         }
-        state.flags = 0;           /* expect zlib header */
         if (state.head) {
           state.head.done = false;
         }
@@ -68775,7 +69020,7 @@ const inflate$2 = (strm, flush) => {
         if (state.wbits === 0) {
           state.wbits = len;
         }
-        else if (len > state.wbits) {
+        if (len > 15 || len > state.wbits) {
           strm.msg = 'invalid window size';
           state.mode = BAD;
           break;
@@ -68786,6 +69031,7 @@ const inflate$2 = (strm, flush) => {
         state.dmax = 1 << state.wbits;
         //state.dmax = 1 << len;
 
+        state.flags = 0;               /* indicate zlib header */
         //Tracev((stderr, "inflate:   zlib header ok\n"));
         strm.adler = state.check = 1/*adler32(0L, Z_NULL, 0)*/;
         state.mode = hold & 0x200 ? DICTID : TYPE;
@@ -68817,7 +69063,7 @@ const inflate$2 = (strm, flush) => {
         if (state.head) {
           state.head.text = ((hold >> 8) & 1);
         }
-        if (state.flags & 0x0200) {
+        if ((state.flags & 0x0200) && (state.wrap & 4)) {
           //=== CRC2(state.check, hold);
           hbuf[0] = hold & 0xff;
           hbuf[1] = (hold >>> 8) & 0xff;
@@ -68842,7 +69088,7 @@ const inflate$2 = (strm, flush) => {
         if (state.head) {
           state.head.time = hold;
         }
-        if (state.flags & 0x0200) {
+        if ((state.flags & 0x0200) && (state.wrap & 4)) {
           //=== CRC4(state.check, hold)
           hbuf[0] = hold & 0xff;
           hbuf[1] = (hold >>> 8) & 0xff;
@@ -68870,7 +69116,7 @@ const inflate$2 = (strm, flush) => {
           state.head.xflags = (hold & 0xff);
           state.head.os = (hold >> 8);
         }
-        if (state.flags & 0x0200) {
+        if ((state.flags & 0x0200) && (state.wrap & 4)) {
           //=== CRC2(state.check, hold);
           hbuf[0] = hold & 0xff;
           hbuf[1] = (hold >>> 8) & 0xff;
@@ -68897,7 +69143,7 @@ const inflate$2 = (strm, flush) => {
           if (state.head) {
             state.head.extra_len = hold;
           }
-          if (state.flags & 0x0200) {
+          if ((state.flags & 0x0200) && (state.wrap & 4)) {
             //=== CRC2(state.check, hold);
             hbuf[0] = hold & 0xff;
             hbuf[1] = (hold >>> 8) & 0xff;
@@ -68939,7 +69185,7 @@ const inflate$2 = (strm, flush) => {
               //        len + copy > state.head.extra_max ?
               //        state.head.extra_max - len : copy);
             }
-            if (state.flags & 0x0200) {
+            if ((state.flags & 0x0200) && (state.wrap & 4)) {
               state.check = crc32_1(state.check, input, copy, next);
             }
             have -= copy;
@@ -68965,7 +69211,7 @@ const inflate$2 = (strm, flush) => {
             }
           } while (len && copy < have);
 
-          if (state.flags & 0x0200) {
+          if ((state.flags & 0x0200) && (state.wrap & 4)) {
             state.check = crc32_1(state.check, input, copy, next);
           }
           have -= copy;
@@ -68990,7 +69236,7 @@ const inflate$2 = (strm, flush) => {
               state.head.comment += String.fromCharCode(len);
             }
           } while (len && copy < have);
-          if (state.flags & 0x0200) {
+          if ((state.flags & 0x0200) && (state.wrap & 4)) {
             state.check = crc32_1(state.check, input, copy, next);
           }
           have -= copy;
@@ -69012,7 +69258,7 @@ const inflate$2 = (strm, flush) => {
             bits += 8;
           }
           //===//
-          if (hold !== (state.check & 0xffff)) {
+          if ((state.wrap & 4) && hold !== (state.check & 0xffff)) {
             strm.msg = 'header crc mismatch';
             state.mode = BAD;
             break;
@@ -69665,15 +69911,15 @@ const inflate$2 = (strm, flush) => {
           _out -= left;
           strm.total_out += _out;
           state.total += _out;
-          if (_out) {
+          if ((state.wrap & 4) && _out) {
             strm.adler = state.check =
-                /*UPDATE(state.check, put - _out, _out);*/
+                /*UPDATE_CHECK(state.check, put - _out, _out);*/
                 (state.flags ? crc32_1(state.check, output, _out, put - _out) : adler32_1(state.check, output, _out, put - _out));
 
           }
           _out = left;
           // NB: crc32 stored as signed 32-bit int, zswap32 returns signed too
-          if ((state.flags ? hold : zswap32(hold)) !== state.check) {
+          if ((state.wrap & 4) && (state.flags ? hold : zswap32(hold)) !== state.check) {
             strm.msg = 'incorrect data check';
             state.mode = BAD;
             break;
@@ -69696,7 +69942,7 @@ const inflate$2 = (strm, flush) => {
             bits += 8;
           }
           //===//
-          if (hold !== (state.total & 0xffffffff)) {
+          if ((state.wrap & 4) && hold !== (state.total & 0xffffffff)) {
             strm.msg = 'incorrect length check';
             state.mode = BAD;
             break;
@@ -69751,8 +69997,8 @@ const inflate$2 = (strm, flush) => {
   strm.total_in += _in;
   strm.total_out += _out;
   state.total += _out;
-  if (state.wrap && _out) {
-    strm.adler = state.check = /*UPDATE(state.check, strm.next_out - _out, _out);*/
+  if ((state.wrap & 4) && _out) {
+    strm.adler = state.check = /*UPDATE_CHECK(state.check, strm.next_out - _out, _out);*/
       (state.flags ? crc32_1(state.check, output, _out, strm.next_out - _out) : adler32_1(state.check, output, _out, strm.next_out - _out));
   }
   strm.data_type = state.bits + (state.last ? 64 : 0) +
@@ -69767,7 +70013,7 @@ const inflate$2 = (strm, flush) => {
 
 const inflateEnd = (strm) => {
 
-  if (!strm || !strm.state /*|| strm->zfree == (free_func)0*/) {
+  if (inflateStateCheck(strm)) {
     return Z_STREAM_ERROR$1;
   }
 
@@ -69783,7 +70029,7 @@ const inflateEnd = (strm) => {
 const inflateGetHeader = (strm, head) => {
 
   /* check state */
-  if (!strm || !strm.state) { return Z_STREAM_ERROR$1; }
+  if (inflateStateCheck(strm)) { return Z_STREAM_ERROR$1; }
   const state = strm.state;
   if ((state.wrap & 2) === 0) { return Z_STREAM_ERROR$1; }
 
@@ -69802,7 +70048,7 @@ const inflateSetDictionary = (strm, dictionary) => {
   let ret;
 
   /* check state */
-  if (!strm /* == Z_NULL */ || !strm.state /* == Z_NULL */) { return Z_STREAM_ERROR$1; }
+  if (inflateStateCheck(strm)) { return Z_STREAM_ERROR$1; }
   state = strm.state;
 
   if (state.wrap !== 0 && state.mode !== DICT) {
@@ -69843,6 +70089,7 @@ var inflateSetDictionary_1 = inflateSetDictionary;
 var inflateInfo = 'pako inflate (from Nodeca project)';
 
 /* Not implemented
+module.exports.inflateCodesUsed = inflateCodesUsed;
 module.exports.inflateCopy = inflateCopy;
 module.exports.inflateGetDictionary = inflateGetDictionary;
 module.exports.inflateMark = inflateMark;
@@ -69850,6 +70097,7 @@ module.exports.inflatePrime = inflatePrime;
 module.exports.inflateSync = inflateSync;
 module.exports.inflateSyncPoint = inflateSyncPoint;
 module.exports.inflateUndermine = inflateUndermine;
+module.exports.inflateValidate = inflateValidate;
 */
 
 var inflate_1$2 = {
@@ -70252,7 +70500,7 @@ Inflate$1.prototype.onEnd = function (status) {
 
 /**
  * inflate(data[, options]) -> Uint8Array|String
- * - data (Uint8Array): input data to decompress.
+ * - data (Uint8Array|ArrayBuffer): input data to decompress.
  * - options (Object): zlib inflate options.
  *
  * Decompress `data` with inflate/ungzip and `options`. Autodetect
@@ -70303,7 +70551,7 @@ function inflate$1(input, options) {
 
 /**
  * inflateRaw(data[, options]) -> Uint8Array|String
- * - data (Uint8Array): input data to decompress.
+ * - data (Uint8Array|ArrayBuffer): input data to decompress.
  * - options (Object): zlib inflate options.
  *
  * The same as [[inflate]], but creates raw data, without wrapper
@@ -70318,7 +70566,7 @@ function inflateRaw$1(input, options) {
 
 /**
  * ungzip(data[, options]) -> Uint8Array|String
- * - data (Uint8Array): input data to decompress.
+ * - data (Uint8Array|ArrayBuffer): input data to decompress.
  * - options (Object): zlib inflate options.
  *
  * Just shortcut to [[inflate]], because it autodetects format
@@ -70835,7 +71083,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createMiddleware;
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 /**
  * Presence middleware factory function.
@@ -70895,7 +71143,7 @@ var eventTypes = _interopRequireWildcard(_eventTypes);
 
 var _selectors = __webpack_require__(323);
 
-var _actionTypes = __webpack_require__(36);
+var _actionTypes = __webpack_require__(37);
 
 var _errors = __webpack_require__(9);
 
@@ -71497,7 +71745,7 @@ var _sagas = __webpack_require__(541);
 
 var sagas = _interopRequireWildcard(_sagas);
 
-var _events = __webpack_require__(542);
+var _events = __webpack_require__(543);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -71605,10 +71853,10 @@ const log = _logs.logManager.getLogger('SIPEVENTS');
 /* eslint-disable no-warning-comments */
 /**
  *  The SIP Events feature allows an application to communicate with a SIP network integrated
- *      with their Kandy Link instance. The SIP network may generate custom events intended
+ *      with their WebRTC Gateway instance. The SIP network may generate custom events intended
  *      for an application, which can be handled with the SDK's `sip` namespace.
  *
- * Usage of SIP Events is dependent on your Kandy Link instance. The types of SIP Events can
+ * Usage of SIP Events is dependent on your WebRTC Gateway instance. The types of SIP Events can
  *    be different based on configurations and components, often being part of a custom
  *    solution. As such, the SIP Events feature is presented in a generic manner to be
  *    flexible for any possible events.
@@ -71787,7 +72035,7 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -71872,6 +72120,66 @@ exports.default = reducer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.subscribeEntry = subscribeEntry;
+exports.updateEntry = updateEntry;
+exports.unsubscribeEntry = unsubscribeEntry;
+exports.receiveEventEntry = receiveEventEntry;
+
+var _actionTypes = __webpack_require__(137);
+
+var actionTypes = _interopRequireWildcard(_actionTypes);
+
+var _sagas = __webpack_require__(542);
+
+var _actionTypes2 = __webpack_require__(37);
+
+var _effects = __webpack_require__(6);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// Saga to trigger the "subscribe" functionality on every API call (via action).
+
+
+// Other plugins.
+// Sip Events plugin.
+function* subscribeEntry() {
+  yield (0, _effects.takeEvery)(actionTypes.SIP_EVENT_SUBSCRIBE, _sagas.sipEventSubscribe);
+}
+
+// Saga to trigger the "update" functionality on every API call (via action).
+
+
+// Libraries.
+function* updateEntry() {
+  yield (0, _effects.takeEvery)(actionTypes.SIP_EVENT_UPDATE, _sagas.sipEventUpdate);
+}
+
+// Saga to trigger the "unsubscribe" functionality on every API call (via action).
+function* unsubscribeEntry() {
+  yield (0, _effects.takeEvery)(actionTypes.SIP_EVENT_UNSUBSCRIBE, _sagas.sipEventUnsubscribe);
+}
+
+// Saga to trigger the "receive event" functionality on every notification.
+function* receiveEventEntry() {
+  // Redux-saga take() pattern.
+  // Take notification actions that MAY be for sip events.
+  function receiveEventNotifyPattern(action) {
+    return action.type === _actionTypes2.NOTIFICATION_RECEIVED && action.payload.notificationMessage.hasOwnProperty('genericNotificationParams');
+  }
+
+  yield (0, _effects.takeEvery)(receiveEventNotifyPattern, _sagas.receiveEventNotify);
+}
+
+/***/ }),
+/* 542 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _extends2 = __webpack_require__(3);
 
@@ -71886,7 +72194,7 @@ exports.sipEventUpdate = sipEventUpdate;
 exports.sipEventUnsubscribe = sipEventUnsubscribe;
 exports.receiveEventNotify = receiveEventNotify;
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -71901,8 +72209,6 @@ var _selectors2 = __webpack_require__(16);
 var _selectors3 = __webpack_require__(21);
 
 var _selectors4 = __webpack_require__(101);
-
-var _actionTypes2 = __webpack_require__(36);
 
 var _effects = __webpack_require__(132);
 
@@ -71928,9 +72234,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 // Libraries.
-
-
-// Other plugins.
+// Sip Events plugin.
 const log = _logs.logManager.getLogger('SIPEVENTS');
 
 /**
@@ -71943,99 +72247,98 @@ const log = _logs.logManager.getLogger('SIPEVENTS');
 
 
 // Logs
-// Sip Events plugin.
-function* sipEventSubscribe() {
-  while (true) {
-    const action = yield (0, _effects3.take)(actionTypes.SIP_EVENT_SUBSCRIBE);
-    // TODO: Have the client correlator be provided as a config, not through the API.
-    log.debug(`Subscribing for sip ${action.payload.eventType}.`, action.payload.clientCorrelator);
 
-    // Determine if the user is subscribed to the specified sip event.
-    const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
 
-    const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
+// Other plugins.
+function* sipEventSubscribe(action) {
+  // TODO: Have the client correlator be provided as a config, not through the API.
+  log.debug(`Subscribing for sip ${action.payload.eventType}.`, action.payload.clientCorrelator);
 
-    if (!(0, _fp.includes)(action.payload.eventType, sipEvents)) {
-      log.info(`Cannot subscribe to sip ${action.payload.eventType}; service not provisioned during user subscription.`);
-      yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
-        error: new _errors2.default({
-          code: _errors.sipEventCodes.NOT_PROVISIONED,
-          message: 'Cannot subscribe to sip event; service was not provisioned during user subscription.'
-        }),
-        eventType: action.payload.eventType
-      }));
-      continue;
+  // Determine if the user is subscribed to the specified sip event.
+  const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
+
+  const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
+
+  if (!(0, _fp.includes)(action.payload.eventType, sipEvents)) {
+    log.info(`Cannot subscribe to sip ${action.payload.eventType}; service not provisioned during user subscription.`);
+    yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
+      error: new _errors2.default({
+        code: _errors.sipEventCodes.NOT_PROVISIONED,
+        message: 'Cannot subscribe to sip event; service was not provisioned during user subscription.'
+      }),
+      eventType: action.payload.eventType
+    }));
+    return;
+  }
+
+  // Use the same subscription duration as the user subscription.
+  const { expires } = yield (0, _effects3.select)(_selectors4.getSubscriptionInfo);
+
+  const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
+  let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+
+  // TODO: UC should store it's token the same way as Link.
+  if (platform === _constants.platforms.UC && !token) {
+    token = accessToken;
+  }
+
+  const requestOptions = {};
+  requestOptions.method = 'POST';
+
+  requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + 'eventSubscription';
+
+  requestOptions.body = {
+    eventSubscriptionRequest: {
+      subscribeUserList: action.payload.subscribeUserList,
+      clientCorrelator: action.payload.clientCorrelator,
+      eventType: action.payload.eventType,
+      expires
     }
+  };
+  if (action.payload.customParameters.length) {
+    requestOptions.body.eventSubscriptionRequest.customParameters = action.payload.customParameters;
+  }
+  requestOptions.body = (0, _stringify2.default)(requestOptions.body);
 
-    // Use the same subscription duration as the user subscription.
-    const { expires } = yield (0, _effects3.select)(_selectors4.getSubscriptionInfo);
+  const response = yield (0, _effects2.default)(requestOptions);
 
-    const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
-    let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+  if (response.error) {
+    let error;
+    if (response.payload.body) {
+      // Handle errors from the server.
+      const { statusCode } = response.payload.body.eventSubscriptionResponse;
+      log.info(`Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
 
-    // TODO: UC should store it's token the same way as Link.
-    if (platform === _constants.platforms.UC && !token) {
-      token = accessToken;
-    }
-
-    const requestOptions = {};
-    requestOptions.method = 'POST';
-
-    requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + 'eventSubscription';
-
-    requestOptions.body = {
-      eventSubscriptionRequest: {
-        subscribeUserList: action.payload.subscribeUserList,
-        clientCorrelator: action.payload.clientCorrelator,
-        eventType: action.payload.eventType,
-        expires
-      }
-    };
-    if (action.payload.customParameters.length) {
-      requestOptions.body.eventSubscriptionRequest.customParameters = action.payload.customParameters;
-    }
-    requestOptions.body = (0, _stringify2.default)(requestOptions.body);
-
-    const response = yield (0, _effects2.default)(requestOptions);
-
-    if (response.error) {
-      let error;
-      if (response.payload.body) {
-        // Handle errors from the server.
-        const { statusCode } = response.payload.body.eventSubscriptionResponse;
-        log.info(`Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
-        });
-      } else {
-        // Handler errors from the request helper.
-        const { message } = response.payload.result;
-        log.info(`SIP event subscription request failed: ${message}.`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `SIP event subscription request failed: ${message}.`
-        });
-      }
-
-      yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
-        error,
-        eventType: action.payload.eventType
-      }));
-    } else {
-      log.info(`Successfully subscribed to sip event ${action.payload.eventType}.`);
-      const finishAction = actions.sipEventSubscribeFinish({
-        response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
-          eventType: action.payload.eventType,
-          subscribedUsers: action.payload.subscribeUserList
-        })
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `Failed to subscribe to sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
       });
-      // Spawn a non-blocking saga to handle resubscriptions.
-      yield (0, _effects3.spawn)(sipEventResub, finishAction);
-      yield (0, _effects3.put)(finishAction);
+    } else {
+      // Handler errors from the request helper.
+      const { message } = response.payload.result;
+      log.info(`SIP event subscription request failed: ${message}.`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `SIP event subscription request failed: ${message}.`
+      });
     }
+
+    yield (0, _effects3.put)(actions.sipEventSubscribeFinish({
+      error,
+      eventType: action.payload.eventType
+    }));
+  } else {
+    log.info(`Successfully subscribed to sip event ${action.payload.eventType}.`);
+    const finishAction = actions.sipEventSubscribeFinish({
+      response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
+        eventType: action.payload.eventType,
+        subscribedUsers: action.payload.subscribeUserList
+      })
+    });
+    // Spawn a non-blocking saga to handle resubscriptions.
+    yield (0, _effects3.spawn)(sipEventResub, finishAction);
+    yield (0, _effects3.put)(finishAction);
   }
 }
 
@@ -72076,108 +72379,105 @@ function* sipEventResub(action) {
  * Saga to update/resubscribe to a subscribed sip event.
  * @method sipEventUpdate
  */
-function* sipEventUpdate() {
-  while (true) {
-    const action = yield (0, _effects3.take)(actionTypes.SIP_EVENT_UPDATE);
-    log.debug(`Updating sip event subscription: ${action.payload.eventType}.`);
-    const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload.eventType);
+function* sipEventUpdate(action) {
+  log.debug(`Updating sip event subscription: ${action.payload.eventType}.`);
+  const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload.eventType);
 
-    if (!eventInfo) {
-      if (action.meta.isResub) {
-        // Don't need to resub, since we're not subscribed anymore.
-        // TODO: Tech-Debt: BasicError isn't very useful for these scenarios. The emitted event provides
-        //      the BasicError, except there's no (easy to use) info indicating _which_ event was being
-        //      acted on. BasicError needs the ability to provide extra information.
-        const error = new _errors2.default({
-          code: _errors.sipEventCodes.NOT_SUBSCRIBED,
-          message: `Cannot resubscribe for ${action.payload.eventType} subscription; user not subscribed.`
-        });
-        yield (0, _effects3.put)(actions.sipEventUpdateFinish({
-          error,
-          eventType: action.payload.eventType
-        }));
-      } else {
-        // Error: Not subscribed to this sip event. Cannot update.
-        const error = new _errors2.default({
-          code: _errors.sipEventCodes.NOT_SUBSCRIBED,
-          message: `Cannot update subscription for ${action.payload.eventType}; user not subscribed.`
-        });
-        yield (0, _effects3.put)(actions.sipEventUpdateFinish({
-          error,
-          eventType: action.payload.eventType
-        }));
-      }
-      continue;
-    }
-
-    const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
-    let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
-
-    // TODO: UC should store it's token the same way as Link.
-    if (platform === _constants.platforms.UC && !token) {
-      token = accessToken;
-    }
-
-    const requestOptions = {};
-    requestOptions.method = 'PUT';
-
-    requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
-
-    // Only include user lists in the request body if there are entries.
-    const userLists = {};
-    if (action.payload.subscribeUserList.length > 0) {
-      userLists.subscribeUserList = action.payload.subscribeUserList;
-    }
-    if (action.payload.unsubscribeUserList.length > 0) {
-      userLists.unsubscribeUserList = action.payload.unsubscribeUserList;
-    }
-
-    requestOptions.body = (0, _stringify2.default)({
-      eventSubscriptionRequest: (0, _extends3.default)({}, userLists, {
-        eventType: action.payload.eventType,
-        customParameters: action.payload.customParameters,
-        expires: eventInfo.expires
-      })
-    });
-
-    const response = yield (0, _effects2.default)(requestOptions);
-
-    if (response.error) {
-      let error;
-      if (response.payload.body) {
-        // Handle errors from the server.
-        const { statusCode } = response.payload.body.eventSubscriptionResponse;
-        log.info(`Failed to update sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `Failed to update to sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`
-        });
-      } else {
-        // Handler errors from the request helper.
-        const { message } = response.payload.result;
-        log.info(`SIP event update subscription request failed: ${message}.`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `SIP event update subscription request failed: ${message}.`
-        });
-      }
-
+  if (!eventInfo) {
+    if (action.meta.isResub) {
+      // Don't need to resub, since we're not subscribed anymore.
+      // TODO: Tech-Debt: BasicError isn't very useful for these scenarios. The emitted event provides
+      //      the BasicError, except there's no (easy to use) info indicating _which_ event was being
+      //      acted on. BasicError needs the ability to provide extra information.
+      const error = new _errors2.default({
+        code: _errors.sipEventCodes.NOT_SUBSCRIBED,
+        message: `Cannot resubscribe for ${action.payload.eventType} subscription; user not subscribed.`
+      });
       yield (0, _effects3.put)(actions.sipEventUpdateFinish({
         error,
         eventType: action.payload.eventType
       }));
     } else {
-      log.info(`Updated sip event subscription: ${action.payload.eventType}.`);
+      // Error: Not subscribed to this sip event. Cannot update.
+      const error = new _errors2.default({
+        code: _errors.sipEventCodes.NOT_SUBSCRIBED,
+        message: `Cannot update subscription for ${action.payload.eventType}; user not subscribed.`
+      });
       yield (0, _effects3.put)(actions.sipEventUpdateFinish({
-        response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
-          eventType: action.payload.eventType,
-          subscribeUserList: action.payload.subscribeUserList || [],
-          unsubscribeUserList: action.payload.unsubscribeUserList || []
-        })
+        error,
+        eventType: action.payload.eventType
       }));
     }
+    return;
+  }
+
+  const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
+  let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+
+  // TODO: UC should store it's token the same way as Link.
+  if (platform === _constants.platforms.UC && !token) {
+    token = accessToken;
+  }
+
+  const requestOptions = {};
+  requestOptions.method = 'PUT';
+
+  requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
+
+  // Only include user lists in the request body if there are entries.
+  const userLists = {};
+  if (action.payload.subscribeUserList.length > 0) {
+    userLists.subscribeUserList = action.payload.subscribeUserList;
+  }
+  if (action.payload.unsubscribeUserList.length > 0) {
+    userLists.unsubscribeUserList = action.payload.unsubscribeUserList;
+  }
+
+  requestOptions.body = (0, _stringify2.default)({
+    eventSubscriptionRequest: (0, _extends3.default)({}, userLists, {
+      eventType: action.payload.eventType,
+      customParameters: action.payload.customParameters,
+      expires: eventInfo.expires
+    })
+  });
+
+  const response = yield (0, _effects2.default)(requestOptions);
+
+  if (response.error) {
+    let error;
+    if (response.payload.body) {
+      // Handle errors from the server.
+      const { statusCode } = response.payload.body.eventSubscriptionResponse;
+      log.info(`Failed to update sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `Failed to update to sip event subscription; ${action.payload.eventType}, ` + `status code ${statusCode}`
+      });
+    } else {
+      // Handler errors from the request helper.
+      const { message } = response.payload.result;
+      log.info(`SIP event update subscription request failed: ${message}.`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `SIP event update subscription request failed: ${message}.`
+      });
+    }
+
+    yield (0, _effects3.put)(actions.sipEventUpdateFinish({
+      error,
+      eventType: action.payload.eventType
+    }));
+  } else {
+    log.info(`Updated sip event subscription: ${action.payload.eventType}.`);
+    yield (0, _effects3.put)(actions.sipEventUpdateFinish({
+      response: (0, _extends3.default)({}, response.payload.body.eventSubscriptionResponse, {
+        eventType: action.payload.eventType,
+        subscribeUserList: action.payload.subscribeUserList || [],
+        unsubscribeUserList: action.payload.unsubscribeUserList || []
+      })
+    }));
   }
 }
 
@@ -72185,75 +72485,72 @@ function* sipEventUpdate() {
  * Saga to unsubscribe from [all currently subscribed] sip events.
  * @method sipEventUnsubscribe
  */
-function* sipEventUnsubscribe() {
-  while (true) {
-    const action = yield (0, _effects3.take)(actionTypes.SIP_EVENT_UNSUBSCRIBE);
-    log.debug(`Unsubscribing from sip event subscriptions: ${action.payload}.`);
-    const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload);
+function* sipEventUnsubscribe(action) {
+  log.debug(`Unsubscribing from sip event subscriptions: ${action.payload}.`);
+  const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, action.payload);
 
-    if (!eventInfo) {
-      log.info(`Cannot unsubscribe from sip event ${action.payload}; no subscription exists.`);
-      const error = new _errors2.default({
-        code: _errors.sipEventCodes.NOT_SUBSCRIBED,
-        message: `Cannot unsubscribe from ${action.payload}; no subscription found.`
+  if (!eventInfo) {
+    log.info(`Cannot unsubscribe from sip event ${action.payload}; no subscription exists.`);
+    const error = new _errors2.default({
+      code: _errors.sipEventCodes.NOT_SUBSCRIBED,
+      message: `Cannot unsubscribe from ${action.payload}; no subscription found.`
+    });
+    yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
+      error,
+      eventType: action.payload
+    }));
+    return;
+  }
+
+  const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
+  let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
+
+  // TODO: UC should store it's token the same way as Link.
+  if (platform === _constants.platforms.UC && !token) {
+    token = accessToken;
+  }
+
+  const requestOptions = {};
+  requestOptions.method = 'DELETE';
+  requestOptions.responseType = 'none';
+
+  requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
+
+  const response = yield (0, _effects2.default)(requestOptions);
+
+  if (response.error) {
+    let error;
+    if (response.payload.body) {
+      // Handle errors from the server.
+      const { statusCode } = response.payload.body.eventSubscriptionResponse;
+      log.info(`Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
       });
-      yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
-        error,
-        eventType: action.payload
-      }));
-      continue;
-    }
-
-    const platform = yield (0, _effects3.select)(_selectors2.getPlatform);
-    let { server, username, token, accessToken } = yield (0, _effects3.select)(_selectors2.getConnectionInfo);
-
-    // TODO: UC should store it's token the same way as Link.
-    if (platform === _constants.platforms.UC && !token) {
-      token = accessToken;
-    }
-
-    const requestOptions = {};
-    requestOptions.method = 'DELETE';
-    requestOptions.responseType = 'none';
-
-    requestOptions.url = `${server.protocol}://${server.server}:${server.port}/` + `rest/version/${server.version}/` + `user/${username}/` + `eventSubscription/${eventInfo.sessionData}`;
-
-    const response = yield (0, _effects2.default)(requestOptions);
-
-    if (response.error) {
-      let error;
-      if (response.payload.body) {
-        // Handle errors from the server.
-        const { statusCode } = response.payload.body.eventSubscriptionResponse;
-        log.info(`Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `Failed to unsubscribe from sip event ${action.payload.eventType}, ` + `status code ${statusCode}`
-        });
-      } else {
-        // Handler errors from the request helper.
-        const { message } = response.payload.result;
-        log.info(`SIP event unsubscription request failed: ${message}.`);
-
-        error = new _errors2.default({
-          code: _errors.sipEventCodes.UNKNOWN_ERROR,
-          message: `SIP event unsubscription request failed: ${message}.`
-        });
-      }
-
-      yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
-        error,
-        eventType: action.payload
-      }));
     } else {
-      log.info(`Successfully unsubscribed from sip ${action.payload}.`);
-      yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
-        response: {
-          eventType: action.payload
-        }
-      }));
+      // Handler errors from the request helper.
+      const { message } = response.payload.result;
+      log.info(`SIP event unsubscription request failed: ${message}.`);
+
+      error = new _errors2.default({
+        code: _errors.sipEventCodes.UNKNOWN_ERROR,
+        message: `SIP event unsubscription request failed: ${message}.`
+      });
     }
+
+    yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
+      error,
+      eventType: action.payload
+    }));
+  } else {
+    log.info(`Successfully unsubscribed from sip ${action.payload}.`);
+    yield (0, _effects3.put)(actions.sipEventUnsubscribeFinish({
+      response: {
+        eventType: action.payload
+      }
+    }));
   }
 }
 
@@ -72261,74 +72558,64 @@ function* sipEventUnsubscribe() {
  * Saga to handle received sip event notifications.
  * @method receiveEventNotify
  */
-function* receiveEventNotify() {
-  // Redux-saga take() pattern.
-  // Take notification actions that MAY be for sip events.
-  function receiveEventNotifyPattern(action) {
-    return action.type === _actionTypes2.NOTIFICATION_RECEIVED && action.payload.notificationMessage.hasOwnProperty('genericNotificationParams');
-  }
+function* receiveEventNotify(action) {
+  // Determine which sip events the user is subscribed/connected for.
+  const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
 
-  while (true) {
-    const action = yield (0, _effects3.take)(receiveEventNotifyPattern);
+  const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
 
-    // Determine which sip events the user is subscribed/connected for.
-    const subscribedServices = yield (0, _effects3.select)(_selectors4.getSubscribedServices);
-
-    const sipEvents = subscribedServices.filter(service => service.startsWith('event:'));
-
-    const notification = action.payload.notificationMessage;
-    const genericNotification = notification.genericNotificationParams;
-    let callId = '';
-    /*
-     * Check if the notification's sessiondataType (if it exists) is of type call.
-     * If it is, then the sessionData field of the notification is a KandyLink Call ID.
-     * We can then map that KL Call ID to an SDK Call ID (if it exists) and attach that to the
-     * sip event we emit to the application.
-     */
-    if (genericNotification.sessiondataType && genericNotification.sessiondataType === 'call') {
-      // Look at our existing calls to find the SDK Call ID (if any) that corresponds to the sessiondata
-      const targetcall = yield (0, _effects3.select)(_selectors3.getCallByWrtcsSessionId, genericNotification.sessionData);
-      if (!targetcall) {
-        log.warn('Call associated with received SIP notification cannot be found.');
-      } else {
-        callId = targetcall.id;
-      }
-    }
-
-    /*
-     * Determine which scenario we received this notification in:
-     *  - Provisioned and subscribed: Application subscribed for the event during user subscription,
-     *      and created a SIP subscription for it.
-     *  - Provisioned, not subscribed: Application subscribed for the event during user subscription,
-     *      but the SDK does not have a SIP subscription for it.
-     *  - Unsolicited: Application has no user or SIP subscription for the event.
-     *
-     * We want to emit the notification in all scenarios, so this check is mainly for logging purposes.
-     */
-    if ((0, _fp.includes)(notification.eventType, sipEvents)) {
-      const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, notification.eventType);
-
-      // Determine if there is a SIP subscription for this sip event in state.
-      if (eventInfo) {
-        // User subscribed to sip event, with a SIP subscription found in state.
-        log.info(`Received solicited SIP event notification of type ${notification.eventType}.`, notification);
-      } else {
-        // User subscribed to sip event, but no SIP subscription found.
-        //    This is assumed to be an edge-case where the SDK lost the SIP subscription info.
-        log.info(`Received solicited SIP event notification for untracked event of type ${notification.eventType}.`, notification);
-      }
+  const notification = action.payload.notificationMessage;
+  const genericNotification = notification.genericNotificationParams;
+  let callId = '';
+  /*
+   * Check if the notification's sessiondataType (if it exists) is of type call.
+   * If it is, then the sessionData field of the notification is a WebRTC Gateway's Call ID.
+   * We can then map that KL Call ID to an SDK Call ID (if it exists) and attach that to the
+   * sip event we emit to the application.
+   */
+  if (genericNotification.sessiondataType && genericNotification.sessiondataType === 'call') {
+    // Look at our existing calls to find the SDK Call ID (if any) that corresponds to the sessiondata
+    const targetcall = yield (0, _effects3.select)(_selectors3.getCallByWrtcsSessionId, genericNotification.sessionData);
+    if (!targetcall) {
+      log.warn('Call associated with received SIP notification cannot be found.');
     } else {
-      // User not subscribed to sip event.
-      log.info(`Received unsolicited SIP event notification of type ${notification.eventType}.`, notification);
+      callId = targetcall.id;
     }
-
-    // Always emit the notification to the application.
-    yield (0, _effects3.put)(actions.sipEventReceived(notification, callId));
   }
+
+  /*
+   * Determine which scenario we received this notification in:
+   *  - Provisioned and subscribed: Application subscribed for the event during user subscription,
+   *      and created a SIP subscription for it.
+   *  - Provisioned, not subscribed: Application subscribed for the event during user subscription,
+   *      but the SDK does not have a SIP subscription for it.
+   *  - Unsolicited: Application has no user or SIP subscription for the event.
+   *
+   * We want to emit the notification in all scenarios, so this check is mainly for logging purposes.
+   */
+  if ((0, _fp.includes)(notification.eventType, sipEvents)) {
+    const eventInfo = yield (0, _effects3.select)(_selectors.getSipEventInfo, notification.eventType);
+
+    // Determine if there is a SIP subscription for this sip event in state.
+    if (eventInfo) {
+      // User subscribed to sip event, with a SIP subscription found in state.
+      log.info(`Received solicited SIP event notification of type ${notification.eventType}.`, notification);
+    } else {
+      // User subscribed to sip event, but no SIP subscription found.
+      //    This is assumed to be an edge-case where the SDK lost the SIP subscription info.
+      log.info(`Received solicited SIP event notification for untracked event of type ${notification.eventType}.`, notification);
+    }
+  } else {
+    // User not subscribed to sip event.
+    log.info(`Received unsolicited SIP event notification of type ${notification.eventType}.`, notification);
+  }
+
+  // Always emit the notification to the application.
+  yield (0, _effects3.put)(actions.sipEventReceived(notification, callId));
 }
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72338,11 +72625,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _eventTypes = __webpack_require__(543);
+var _eventTypes = __webpack_require__(544);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(159);
+var _actionTypes = __webpack_require__(137);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -72412,7 +72699,7 @@ events[actionTypes.SIP_EVENT_RECEIVED] = function (action) {
 exports.default = events;
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72502,7 +72789,7 @@ const EVENT_ERROR = exports.EVENT_ERROR = 'sip:error';
 const EVENT_RECEIVED = exports.EVENT_RECEIVED = 'sip:eventsChange';
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72513,13 +72800,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = usersFactory;
 
-var _interface = __webpack_require__(545);
+var _interface = __webpack_require__(546);
 
-var _operations = __webpack_require__(552);
+var _operations = __webpack_require__(553);
 
 var _operations2 = _interopRequireDefault(_operations);
 
-var _requests = __webpack_require__(555);
+var _requests = __webpack_require__(556);
 
 var _requests2 = _interopRequireDefault(_requests);
 
@@ -72545,7 +72832,7 @@ function usersFactory(options = {}, bottle) {
 }
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72556,11 +72843,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reducer = exports.createAPI = exports.name = undefined;
 
-var _index = __webpack_require__(546);
+var _index = __webpack_require__(547);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _reducers = __webpack_require__(549);
+var _reducers = __webpack_require__(550);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -72579,7 +72866,7 @@ exports.createAPI = _index2.default;
 exports.reducer = _reducers2.default;
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72590,11 +72877,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createAPI;
 
-var _users = __webpack_require__(547);
+var _users = __webpack_require__(548);
 
 var _users2 = _interopRequireDefault(_users);
 
-var _contacts = __webpack_require__(548);
+var _contacts = __webpack_require__(549);
 
 var _contacts2 = _interopRequireDefault(_contacts);
 
@@ -72616,7 +72903,7 @@ function createAPI(container) {
 }
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72680,12 +72967,13 @@ function usersApi(container) {
       let usersData;
       try {
         usersData = await operations.fetchUser(userId);
+
+        if (usersData) {
+          emitEvent(_eventTypes.USERS_CHANGE, { results: [usersData] });
+        }
       } catch (error) {
         emitEvent(_eventTypes.USERS_ERROR, { error });
-        return;
       }
-      // fetchUser succeeded
-      emitEvent(_eventTypes.USERS_CHANGE, usersData);
     },
 
     /**
@@ -72733,7 +73021,7 @@ function usersApi(container) {
       }
 
       // fetchSelf succeeded
-      emitEvent(_eventTypes.USERS_CHANGE, selfData);
+      emitEvent(_eventTypes.USERS_CHANGE, { results: [selfData] });
     },
 
     /**
@@ -72838,7 +73126,7 @@ function usersApi(container) {
 }
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73092,7 +73380,7 @@ function contactsAPI(container) {
 }
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73106,11 +73394,11 @@ var _extends2 = __webpack_require__(3);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _contacts = __webpack_require__(550);
+var _contacts = __webpack_require__(551);
 
 var _contacts2 = _interopRequireDefault(_contacts);
 
-var _users = __webpack_require__(551);
+var _users = __webpack_require__(552);
 
 var _users2 = _interopRequireDefault(_users);
 
@@ -73131,7 +73419,7 @@ const reducer = (0, _reduxActions.handleActions)((0, _extends3.default)({}, _con
 exports.default = reducer;
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73258,7 +73546,7 @@ reducers[actionTypes.UPDATE_CONTACT_FINISH] = {
 exports.default = reducers;
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73338,7 +73626,7 @@ reducers[actionTypes.SEARCH_DIRECTORY_FINISH] = {
 exports.default = reducers;
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73358,11 +73646,11 @@ var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = createOperations;
 
-var _users = __webpack_require__(553);
+var _users = __webpack_require__(554);
 
 var actions = _interopRequireWildcard(_users);
 
-var _contacts = __webpack_require__(554);
+var _contacts = __webpack_require__(555);
 
 var contactsActions = _interopRequireWildcard(_contacts);
 
@@ -73476,11 +73764,11 @@ function createOperations(container) {
 
     try {
       const connection = (0, _selectors.getConnectionInfo)(context.getState());
-      const userData = await requests.getDirectory(connection, body);
-      if (userData && userData.result.directoryItems) {
+      const directory = await requests.getDirectory(connection, body);
+      if (directory.length > 0) {
         // Update state by dispatching an action
-        dispatch(actions.fetchUserFinish(userData.result.directoryItems[0]));
-        return userData.result.directoryItems[0];
+        dispatch(actions.fetchUserFinish(directory[0]));
+        return directory[0];
       } else {
         log.debug('Fetch user request was successful, but result was empty');
       }
@@ -73838,11 +74126,10 @@ function createOperations(container) {
 
     try {
       const connection = (0, _selectors.getConnectionInfo)(context.getState());
-      const searchData = await requests.getDirectory(connection, body);
-      const users = searchData.result.directoryItems || [];
+      const users = await requests.getDirectory(connection, body);
 
-      const usersData = { users: users.map(localUserFromRemote) };
-      dispatch(actions.searchDirectoryFinish(usersData));
+      const usersData = users.map(localUserFromRemote);
+      dispatch(actions.searchDirectoryFinish({ users: usersData }));
 
       return usersData;
     } catch (error) {
@@ -73884,7 +74171,7 @@ function createOperations(container) {
 } // Users' Actions
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73995,7 +74282,7 @@ function searchDirectoryFinish({ users, error }) {
 }
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74156,7 +74443,7 @@ function updateContactFinish({ contact, error }) {
 }
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74230,7 +74517,7 @@ function createRequests(container) {
     } else {
       if (body && body.directory.statusCode === 0) {
         // Request was successful.
-        return { result: body.directory || {} };
+        return body.directory.directoryItems || [];
       } else {
         // Unknown case.
         log.debug('Unknown error case for directory search.');
@@ -74348,7 +74635,7 @@ function createRequests(container) {
       }
     } else if (body && body.userProfileData && body.userProfileData.statusCode === 0) {
       // Request was successful.
-      return { result: body.userProfileData };
+      return body.userProfileData;
     } else {
       // Unknown case.
       log.debug('Unknown error case for user details fetch.');
@@ -74404,7 +74691,7 @@ function createRequests(container) {
 }
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74415,21 +74702,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cpaasRequest = exports.ucRequest = exports.linkRequest = undefined;
 
-var _configs = __webpack_require__(557);
+var _configs = __webpack_require__(558);
 
 var _sagas = __webpack_require__(330);
 
 var _sagas2 = _interopRequireDefault(_sagas);
 
-var _events = __webpack_require__(559);
+var _events = __webpack_require__(560);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _requestModule = __webpack_require__(560);
+var _requestModule = __webpack_require__(561);
 
 var _requestModule2 = _interopRequireDefault(_requestModule);
 
-var _interface = __webpack_require__(561);
+var _interface = __webpack_require__(562);
 
 var _actions = __webpack_require__(58);
 
@@ -74499,7 +74786,7 @@ function pluginFactory(platform) {
 }
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74534,7 +74821,7 @@ const v8nValidation = _validation.validation.schema({
 const parseOptions = exports.parseOptions = (0, _validation.parse)('request', v8nValidation);
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74841,7 +75128,7 @@ function makeResponse(apiResponse = {}, httpResponse = {}) {
 }
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74855,7 +75142,7 @@ var _eventTypes = __webpack_require__(332);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _actionTypes = __webpack_require__(155);
+var _actionTypes = __webpack_require__(156);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -74875,7 +75162,7 @@ eventsMap[actionTypes.AUTHORIZATION_ERROR] = function (action) {
 exports.default = eventsMap;
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75035,7 +75322,7 @@ function getTime() {
 }
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75046,11 +75333,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.api = exports.name = undefined;
 
-var _name = __webpack_require__(562);
+var _name = __webpack_require__(563);
 
 var _name2 = _interopRequireDefault(_name);
 
-var _api = __webpack_require__(563);
+var _api = __webpack_require__(564);
 
 var _api2 = _interopRequireDefault(_api);
 
@@ -75060,7 +75347,7 @@ exports.name = _name2.default;
 exports.api = _api2.default;
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75077,7 +75364,7 @@ const name = 'requests';
 exports.default = name;
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75161,7 +75448,7 @@ function api({ dispatch, getState }) {
 }
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

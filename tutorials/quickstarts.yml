@@ -2,7 +2,7 @@
 # Information to be displayed on the Quickstarts page.
 
 - name: Configurations
-  description: # Kandy Configurations
+  description: # The WebRTC JS SDK Configurations
   link: /quickstarts/javascript/newLink/Configurations
 
 - name: Logging
