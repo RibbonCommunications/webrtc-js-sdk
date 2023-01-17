@@ -1,5 +1,5 @@
 {
-    "name": "@kandy-io/link-sdk",
+    "name": "@rbbn/webrtc-js-sdk",
     "version": "5.6.0",
     "license": "SEE LICENSE IN LICENSE.md",
     "main":"./dist/kandy.js",

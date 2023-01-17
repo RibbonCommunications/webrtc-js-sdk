@@ -11,7 +11,7 @@ Here are some frequently asked questions about the WebRTC JS SDKs.
 
 ### 1. How do I configure the SDK to connect to my region/server?
 
-The WebrtcSDK.js SDK allows you to connect to multiple servers including on-premise servers. For connecting to our Kandy cloud platforms, you can refer to the following documentation links to guide you through configuration:
+The WebrtcSDK.js SDK allows you to connect to multiple servers including on-premise servers. For connecting to our WebRTC regional configurations, you can refer to the following documentation links to guide you through configuration:
 
 - [WebRTC US Region Configuration](https://ribboncommunications.github.io/webrtc-anonymous-js-sdk/tutorials/?config=us#/Configurations)
 - [WebRTC UAE Region Documentation](https://ribboncommunications.github.io/webrtc-anonymous-js-sdk/tutorials/?config=uae#/Configurations)

@@ -4,7 +4,7 @@
 
 ### Using npm :
 
-`$ npm install @kandy-io/link-sdk`
+`$ npm install @rbbn/webrtc-js-sdk`
 
 #### Install a particular build :
 
@@ -14,8 +14,8 @@ To install a particular build branch or beta branch with the Github URL, run:
 
 ### In the browser :
 ```html
-<script src="https://unpkg.com/@kandy-io/link-sdk@5.6.0/dist/kandy.js"
-  integrity="sha384-eX4KpOdVoNn2sWv34x8NdNO+qXntb/ZFPjKIna2l0bI3y4bmLjX/mE1Fk+BGiUMw"
+<script src="https://unpkg.com/@rbbn/webrtc-js-sdk@5.6.0/dist/kandy.js"
+  integrity="sha384-sE0tRJxsF2FTswzH94okg+/lcSfWgIwvEmqBsfrS5Y2dHj7JNR3UO030QqxgX5uv"
   crossorigin="anonymous">
 </script>
 ```

@@ -1,6 +1,6 @@
 # Change Log
 
-Kandy.js change log.
+Ribbon WebRTC SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
@@ -695,7 +695,7 @@ order to do so you need to change the sdpSemantics option in your configuration 
 SDK like so:
 
 ```javascript
-import { create } from '@kandy-io/link-sdk'
+import { create } from '@rbbn/webrtc-js-sdk'
 const client = create({
   call: {
     sdpSemantics: 'unified-plan'
