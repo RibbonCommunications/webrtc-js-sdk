@@ -14,7 +14,7 @@ To use an alternative configuration (e.g. a default one), or to further modify a
 
 ```javascript 
 // Initialize an instance of the SDK.
-import { create } from Kandy
+import { create } from WebRTC
 
 // Sample configuration object.
 const configuration = {
