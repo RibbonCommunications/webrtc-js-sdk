@@ -13,6 +13,15 @@ Ribbon WebRTC SDK change log.
   - This API allows an application to temporarily replace their local audio track with audio from a file, allowing the remote call endpoint to hear the file.
   - Please see the `call.playAudioFile` API documentation for more information.
 
+### Changed
+
+- As part of rebranding of Ribbon's WebRTC JS SDKs, the build filenames (as well as the associated map filenames) for `Kandy Link` & `Kandy Remote` SDKs, were changed as follows:
+  - kandy.js was renamed to: webrtc.js
+  - kandy.js.map was renamed to: webrtc.js.map
+  - kandy.remote.js was renamed to: webrtc.remote.js
+- Also, the global exported variable from this build file, has changed from `Kandy` to `WebRTC`.
+  `KJS-1220`
+
 ## 5.5.0 - 2022-12-22
 
 ### Fixed
