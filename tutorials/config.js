@@ -11,7 +11,8 @@ export const configs = [
       SUBSCRIPTIONFQDN: 'webrtc-blue.rbbn.com',
       WEBSOCKETFQDN: 'webrtc-blue.rbbn.com',
       RIBBONTURN1: 'turns:turn-blue.rbbn.com:443?transport=tcp',
-      RIBBONSTUN1: 'stun:turn-blue.rbbn.com:3478'
+      RIBBONSTUN1: 'stun:turn-blue.rbbn.com:3478',
+      SERVERBASE: 'blue.rbbn.com'
     }
   }
 ]
