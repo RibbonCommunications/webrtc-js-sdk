@@ -14,7 +14,7 @@ To use an alternative configuration (e.g. a default one), or to further modify a
 
 ```javascript 
 // Initialize an instance of the SDK.
-import { create } from Kandy
+import { create } from WebRTC
 
 // Sample configuration object.
 const configuration = {
@@ -43,13 +43,7 @@ const configuration = {
                   url: '$RIBBONTURN1$'
               },
               {
-                  url: '$RIBBONTURN2$'
-              },
-              {
                   url: '$RIBBONSTUN1$'
-              },
-              {
-                  url: '$RIBBONSTUN2$'
               }
           ]
         },
@@ -94,7 +88,7 @@ And then use it:
 
 ```javascript
 import { config } from '$DEFAULTCONFIGNAME$'
-import { create } from '@kandy-io/link-sdk'
+import { create } from '@rbbn/webrtc-js-sdk'
 
 const client = create(config)
 
@@ -106,7 +100,7 @@ customization, by modifying its content.
 
 ```javascript
 import { config as defaultConfig } from '$DEFAULTCONFIGNAME$'
-import { create } from '@kandy-io/link-sdk'
+import { create } from '@rbbn/webrtc-js-sdk'
 
 const config = {
   ...defaultConfig,
