@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.6.0-beta.1012
+ * Version: 5.6.0-beta.1013
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6948,7 +6948,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.6.0-beta.1012';
+  return '5.6.0-beta.1013';
 }
 
 /***/ }),
@@ -34613,7 +34613,7 @@ var _fp = __webpack_require__(2);
  * @return {api} The SDK instance.
  * @example
  * // Instantiate the SDK.
- * import { create } from 'kandy'
+ * import { create } from '@rbbn/webrtc-js-sdk'
  * const client = create({
  *     authentication: { ... },
  *     logs: { ... },
@@ -34654,7 +34654,7 @@ var _fp = __webpack_require__(2);
  * @public
  * @namespace sdpHandlers
  * @example
- * import { create, sdpHandlers } from 'kandy';
+ * import { create, sdpHandlers } from '@rbbn/webrtc-js-sdk';
  * const codecRemover = sdpHandlers.createCodecRemover(['VP8', 'VP9'])
  * const client = create({
  *   call: {
@@ -34697,7 +34697,7 @@ var _fp = __webpack_require__(2);
  *                                                      codec selectors that correspond to those names without any extra FMTP parameters.
  * @returns {call.SdpHandlerFunction} The resulting SDP handler that will remove the codec.
  * @example
- * import { create, sdpHandlers } from 'kandy';
+ * import { create, sdpHandlers } from '@rbbn/webrtc-js-sdk';
  *
  * const codecRemover = sdpHandlers.createCodecRemover([
  *   // Remove all VP8 and VP9 codecs.
@@ -35073,7 +35073,7 @@ function factory(pluginFactories, sdkOptions = {}) {
      * @method destroy
      * @example
      * // Instantiate the SDK.
-     * import { create } from 'kandy'
+     * import { create } from '@rbbn/webrtc-js-sdk'
      * const config = {
      *     authentication: { ... },
      *     logs: { ... },
