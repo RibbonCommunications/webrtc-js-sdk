@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.remote.js
- * Version: 5.6.0-beta.1010
+ * Version: 5.6.0-beta.1011
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5437,7 +5437,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.6.0-beta.1010';
+  return '5.6.0-beta.1011';
 }
 
 /***/ }),
