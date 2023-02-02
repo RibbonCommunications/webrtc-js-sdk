@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.7.0-beta.1015
+ * Version: 5.7.0-beta.1016
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6948,7 +6948,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.7.0-beta.1015';
+  return '5.7.0-beta.1016';
 }
 
 /***/ }),
