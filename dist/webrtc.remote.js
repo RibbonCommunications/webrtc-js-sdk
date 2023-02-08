@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.remote.js
- * Version: 5.7.0-beta.1018
+ * Version: 5.7.0-beta.1019
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2377,13 +2377,11 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   var target = {};
   var sourceKeys = Object.keys(source);
   var key, i;
-
   for (i = 0; i < sourceKeys.length; i++) {
     key = sourceKeys[i];
     if (excluded.indexOf(key) >= 0) continue;
     target[key] = source[key];
   }
-
   return target;
 }
 // EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
@@ -5308,20 +5306,17 @@ function version_version(uuid) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _extends; });
 function _extends() {
-  _extends = Object.assign || function (target) {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
-
       for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
       }
     }
-
     return target;
   };
-
   return _extends.apply(this, arguments);
 }
 
@@ -5437,7 +5432,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.7.0-beta.1018';
+  return '5.7.0-beta.1019';
 }
 
 /***/ }),
@@ -11664,13 +11659,13 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 "use strict";
 
 var token = '%[a-f0-9]{2}';
-var singleMatcher = new RegExp('(' + token + ')|([^%]+?)', 'gi');
+var singleMatcher = new RegExp(token, 'gi');
 var multiMatcher = new RegExp('(' + token + ')+', 'gi');
 
 function decodeComponents(components, split) {
 	try {
 		// Try to decode the entire string first
-		return [decodeURIComponent(components.join(''))];
+		return decodeURIComponent(components.join(''));
 	} catch (err) {
 		// Do nothing
 	}
@@ -11692,12 +11687,12 @@ function decode(input) {
 	try {
 		return decodeURIComponent(input);
 	} catch (err) {
-		var tokens = input.match(singleMatcher) || [];
+		var tokens = input.match(singleMatcher);
 
 		for (var i = 1; i < tokens.length; i++) {
 			input = decodeComponents(tokens, i).join('');
 
-			tokens = input.match(singleMatcher) || [];
+			tokens = input.match(singleMatcher);
 		}
 
 		return input;
