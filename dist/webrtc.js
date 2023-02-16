@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.7.0-beta.1022
+ * Version: 5.7.0-beta.1023
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6308,7 +6308,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.7.0-beta.1022';
+  return '5.7.0-beta.1023';
 }
 
 /***/ }),
@@ -33237,6 +33237,7 @@ function sipEventReceived(sipEvent, callId) {
     type: actionTypes.SIP_EVENT_RECEIVED,
     payload: {
       event: sipEvent,
+      eventType: sipEvent.eventType,
       callId
     }
   };
