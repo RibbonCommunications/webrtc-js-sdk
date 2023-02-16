@@ -41,8 +41,8 @@ client.on('subscription:error', function (params) {
   const { code, message } = params.error
   log('There was an error during subscription: ', code, '-', message)
 
-  if (message.includes('Status code: 4')) {
-    // Status code 4 refers to an invalid credentials error
+  if (message.toLowerCase().includes('status code: 4')) {
+    // Status Code 4 refers to an invalid credentials error
     // Display a message to the user that the credentials were invalid
   }
 })
@@ -107,7 +107,7 @@ function subscribe (service) {
 
 client.on('subscription:error', function (params) {
   const { code, message } = params.error
-  if (message.includes('Status Code: 54')) {
+  if (message.toLowerCase().includes('status code: 54')) {
     if (shortTimerAttempts === 5) {
       // Switch to a long timer after 5 short timer re-tries
       setTimeout(() => subscribe('call'), LONG_TIMER)

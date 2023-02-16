@@ -7,6 +7,10 @@ Ribbon WebRTC SDK change log.
 
 ## 5.7.0 - beta
 
+### Changed
+
+- Changed the rest of tutorial trails to use the same approach in handling subscription errors (as outlined in `Handling Subscription Errors` trail). `KJS-918`
+
 ## 5.6.0 - 2023-01-27
 
 ### Added
