@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.7.0-beta.1023
+ * Version: 5.7.0-beta.1024
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1977,6 +1977,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getAuthConfig = getAuthConfig;
+exports.getServiceUnavailableMaxRetries = getServiceUnavailableMaxRetries;
 exports.getSubscriptionInfo = getSubscriptionInfo;
 exports.getConnectionInfo = getConnectionInfo;
 exports.getDomain = getDomain;
@@ -2006,6 +2007,17 @@ var _constants2 = __webpack_require__(21);
  */
 function getAuthConfig(state) {
   return (0, _fp.cloneDeep)(state.config.authentication);
+}
+
+/**
+ * Retrieves the maximum number of times this client will attempt to subscribe, while getting a
+ * 'Service Unavailable' response from backend.
+ * @method getServiceUnavailableMaxRetries
+ * @param {Object} state Current state object.
+ * @return {number}
+ */
+function getServiceUnavailableMaxRetries(state) {
+  return state.config.authentication.subscription.serviceUnavailableMaxRetries;
 }
 
 /**
@@ -6308,7 +6320,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.7.0-beta.1023';
+  return '5.7.0-beta.1024';
 }
 
 /***/ }),
@@ -74908,6 +74920,9 @@ exports.default = async function makeRequest(options, requestId) {
           // Try to get the retry value from the body of the response.
           // If it is in the body, then its value is a number
           retryValue = responseBody.subscribeResponse.retryAfter;
+        } else if (responseBody && responseBody.authorizationResponse) {
+          // This is the case where request has been initiated as part of an anonymous call.
+          retryValue = responseBody.authorizationResponse.retryAfter;
         }
 
         let retryAfter; // the final value to be used
@@ -74944,7 +74959,8 @@ exports.default = async function makeRequest(options, requestId) {
         //       as HTTP reverse proxy/load balancer does not guarantee to provide one
         //       (see `SPiDR REST Overload Controls - Functional Description` spec).
         if (retryAfter && retryAfter > 0) {
-          // retry value is available & valid
+          // retry value is available & valid.
+          // return the same body for both link & anonymous rquest.
           responseBody = { subscribeResponse: { statusCode: 503, retryAfter } };
         } else {
           // The spec says that if we got a 503 but with no retryAfter available, then treat the reply as 500 error.
