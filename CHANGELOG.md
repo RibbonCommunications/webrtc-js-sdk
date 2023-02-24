@@ -5,6 +5,12 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 5.7.0 - 2023-02-24
+
+### Changed
+
+- Changed the rest of tutorial trails to use the same approach in handling subscription errors (as outlined in `Handling Subscription Errors` trail). `KJS-918`
+
 ## 5.6.0 - 2023-01-27
 
 ### Added
