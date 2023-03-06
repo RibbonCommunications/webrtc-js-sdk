@@ -7,6 +7,10 @@ Ribbon WebRTC SDK change log.
 
 ## 5.8.0 - beta
 
+### Fixed
+
+- Fixed the error handling for sending an instant message when user connection info has not been set. The SDK will now emit a `messages:error` event to application with appropriate error information. `KJS-1438`
+
 ## 5.7.0 - 2023-02-24
 
 ### Changed

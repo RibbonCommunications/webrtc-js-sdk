@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.8.0-beta.1030
+ * Version: 5.8.0-beta.1031
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6320,7 +6320,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.8.0-beta.1030';
+  return '5.8.0-beta.1031';
 }
 
 /***/ }),
@@ -60661,7 +60661,26 @@ function* sendMessage() {
     const destination = action.payload.destination[0];
     const parts = action.payload.message.parts;
     const timestamp = action.payload.message.timestamp;
-    const { server, username } = yield (0, _effects.select)(_selectors2.getConnectionInfo);
+    const connectionInfo = yield (0, _effects.select)(_selectors2.getConnectionInfo);
+
+    let error;
+    if (!connectionInfo) {
+      log.debug('Sending mesage was aborted due to: no connection info available. Ensure user is authenticated.');
+      error = new _errors2.default({
+        code: _errors.messagingCodes.SEND_MESSAGE_FAIL,
+        message: 'Failed to send message; no user connection info available.'
+      });
+      yield (0, _effects.put)(_actions.messageActions.sendMessageFinish({
+        sender: undefined,
+        destination: [destination],
+        type: 'im',
+        parts,
+        timestamp,
+        error
+      }));
+      continue;
+    }
+    const { server, username } = connectionInfo;
 
     const response = yield (0, _effects3.default)({
       url: `${server.protocol}://${server.server}:${server.port}/rest/version/${server.version}/user/${username}/instantmessage`,
@@ -60677,7 +60696,6 @@ function* sendMessage() {
     });
 
     if (response.error) {
-      let error;
       if (response.payload.body) {
         // Handle errors from the server.
         const { statusCode } = response.payload.body.imResponse;
