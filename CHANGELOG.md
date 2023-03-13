@@ -11,6 +11,10 @@ Ribbon WebRTC SDK change log.
 
 - Fixed the error handling for sending an instant message when user connection info has not been set. The SDK will now emit a `messages:error` event to application with appropriate error information. `KJS-1438`
 
+### Changed
+
+- Changed the logic around the fetching of call history, so that it takes into account wether call logs are managed on client+server side or managed by client side, only. If `CallLog` service is not enabled on backend, then any management operation on those call logs (e.g. fetching or removing) occurs on client side, only. `KJS-393`
+
 ## 5.7.0 - 2023-02-24
 
 ### Changed
