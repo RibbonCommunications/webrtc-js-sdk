@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.remote.js
- * Version: 5.7.0
+ * Version: 5.8.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2407,7 +2407,7 @@ var redux_saga_is_esm = __webpack_require__(1);
 var io_c3792963 = __webpack_require__(0);
 
 // EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux/es/redux.js + 5 modules
-var redux = __webpack_require__(95);
+var redux = __webpack_require__(96);
 
 // CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/deferred/dist/redux-saga-deferred.esm.js
 function deferred() {
@@ -4797,7 +4797,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.7.0';
+  return '5.8.0';
 }
 
 /***/ }),
@@ -5408,7 +5408,7 @@ var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(51);
 var $iterCreate = __webpack_require__(172);
 var setToStringTag = __webpack_require__(52);
-var getPrototypeOf = __webpack_require__(96);
+var getPrototypeOf = __webpack_require__(97);
 var ITERATOR = __webpack_require__(14)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -5619,7 +5619,7 @@ const logFormatter = exports.logFormatter = _logFormatter2.default;
 var global = __webpack_require__(11);
 var core = __webpack_require__(7);
 var LIBRARY = __webpack_require__(49);
-var wksExt = __webpack_require__(98);
+var wksExt = __webpack_require__(99);
 var defineProperty = __webpack_require__(19).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -5830,7 +5830,8 @@ function preventDtlsRoleChange(newSdp, info, originalSdp) {
 
 /***/ }),
 /* 94 */,
-/* 95 */
+/* 95 */,
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6609,7 +6610,7 @@ function applyMiddleware() {
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
@@ -6628,7 +6629,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
@@ -6644,14 +6645,14 @@ module.exports = function (KEY, exec) {
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(14);
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(17);
@@ -6662,7 +6663,6 @@ module.exports = function (it, TYPE) {
 
 
 /***/ }),
-/* 100 */,
 /* 101 */,
 /* 102 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8791,7 +8791,7 @@ var step = __webpack_require__(109);
 var setSpecies = __webpack_require__(117);
 var DESCRIPTORS = __webpack_require__(18);
 var fastKey = __webpack_require__(65).fastKey;
-var validate = __webpack_require__(99);
+var validate = __webpack_require__(100);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function (that, key) {
@@ -11249,7 +11249,7 @@ module.exports = __webpack_require__(7).Object.keys;
 var toObject = __webpack_require__(35);
 var $keys = __webpack_require__(41);
 
-__webpack_require__(97)('keys', function () {
+__webpack_require__(98)('keys', function () {
   return function keys(it) {
     return $keys(toObject(it));
   };
@@ -12249,7 +12249,7 @@ var shared = __webpack_require__(81);
 var setToStringTag = __webpack_require__(52);
 var uid = __webpack_require__(62);
 var wks = __webpack_require__(14);
-var wksExt = __webpack_require__(98);
+var wksExt = __webpack_require__(99);
 var wksDefine = __webpack_require__(91);
 var enumKeys = __webpack_require__(193);
 var isArray = __webpack_require__(119);
@@ -14335,7 +14335,7 @@ module.exports = __webpack_require__(7).Map;
 "use strict";
 
 var strong = __webpack_require__(142);
-var validate = __webpack_require__(99);
+var validate = __webpack_require__(100);
 var MAP = 'Map';
 
 // 23.1 Map Objects
@@ -14401,7 +14401,7 @@ module.exports = __webpack_require__(7).Reflect.set;
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
 var dP = __webpack_require__(19);
 var gOPD = __webpack_require__(121);
-var getPrototypeOf = __webpack_require__(96);
+var getPrototypeOf = __webpack_require__(97);
 var has = __webpack_require__(30);
 var $export = __webpack_require__(8);
 var createDesc = __webpack_require__(40);
@@ -15040,7 +15040,7 @@ module.exports = __webpack_require__(7).Object.freeze;
 var isObject = __webpack_require__(17);
 var meta = __webpack_require__(65).onFreeze;
 
-__webpack_require__(97)('freeze', function ($freeze) {
+__webpack_require__(98)('freeze', function ($freeze) {
   return function freeze(it) {
     return $freeze && isObject(it) ? $freeze(meta(it)) : it;
   };
