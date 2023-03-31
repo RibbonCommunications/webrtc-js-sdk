@@ -24628,13 +24628,13 @@
                   },
                   {
                     "type": "link",
-                    "url": "call.event:call:newTrack",
+                    "url": "#calleventcalltracksadded",
                     "title": null,
                     "jsdoc": true,
                     "children": [
                       {
                         "type": "text",
-                        "value": "call:newTrack"
+                        "value": "call:tracksAdded"
                       }
                     ]
                   },
@@ -25148,13 +25148,13 @@
                   },
                   {
                     "type": "link",
-                    "url": "call.event:call:trackEnded",
+                    "url": "#calleventcalltracksremoved",
                     "title": null,
                     "jsdoc": true,
                     "children": [
                       {
                         "type": "text",
-                        "value": "call:trackEnded"
+                        "value": "call:tracksRemoved"
                       }
                     ]
                   },
