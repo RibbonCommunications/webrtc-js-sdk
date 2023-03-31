@@ -5,7 +5,7 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
-## 5.8.0 - beta
+## 5.8.0 - 2023-03-31
 
 ### Fixed
 
@@ -13,7 +13,7 @@ Ribbon WebRTC SDK change log.
 
 ### Changed
 
-- Changed the logic around the fetching of call history, so that it takes into account wether call logs are managed on client+server side or managed by client side, only. If `CallLog` service is not enabled on backend, then any management operation on those call logs (e.g. fetching or removing) occurs on client side, only. `KJS-393`
+- Changed the logic around the fetching of call history, so that it takes into account whether call logs are managed on client+server side or managed by client side, only. If `CallLog` service is not enabled on backend, then any management operation on those call logs (e.g. fetching or removing) occurs on client side, only. `KJS-393`
 
 ## 5.7.0 - 2023-02-24
 
