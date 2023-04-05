@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.remote.js
- * Version: 5.9.0-beta.1044
+ * Version: 5.9.0-beta.1045
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -4797,7 +4797,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.9.0-beta.1044';
+  return '5.9.0-beta.1045';
 }
 
 /***/ }),
@@ -23095,8 +23095,17 @@ exports.default = async function rendererManager(webRTC, command) {
   const { operation, params } = command;
   const manager = webRTC.managers.renderer;
 
-  // General case: Don't convert the return.
-  return manager[operation](...params);
+  if (operation === 'renderTrack') {
+    // Get the actual Track object using the serialized-track object.
+    const track = webRTC.managers.track.get(params[0].id);
+
+    if (track) {
+      return manager.renderTrack(track, params[1], params[2]);
+    }
+  } else {
+    // General case: Don't convert the return.
+    return manager[operation](...params);
+  }
 };
 
 /***/ }),

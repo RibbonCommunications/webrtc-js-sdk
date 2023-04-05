@@ -10,6 +10,7 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed the API documentation (for `call.stopVideo`) by indicating the correct final event names that are being triggered to application. `KJS-1459`
+- Fixed a Proxy Call issue where rendering a media track to the remote side would cause an exception. `KJS-1475`
 
 ## 5.8.0 - 2023-03-31
 
