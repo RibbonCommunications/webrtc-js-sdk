@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.remote.js
- * Version: 5.8.0
+ * Version: 5.9.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -4797,7 +4797,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.8.0';
+  return '5.9.0';
 }
 
 /***/ }),
@@ -21805,6 +21805,7 @@ function Renderer() {
    * @param  {HTMLElement|String} container The DOM element to be rendered in,
    *    or a unique CSS selector for the DOM element.
    * @param  {String} [speakerId] The device ID to be used for audio output.
+   * @return {boolean} true if rendering of track suceeded, false otherwise.
    */
   function renderTrack(track, container, speakerId) {
     const log = _logs.logManager.getLogger('Track', track.id);
@@ -21831,10 +21832,10 @@ function Renderer() {
     // Get the existing entry for this track.
     let entry = entries[track.id];
     if (entry) {
-      if (entry.containers.findIndex(item => item.element === element) > -1) {
+      if (entry.containers.indexOf(element) > -1) {
         // Already rendered in element.
-        log.info('Failed to render track; already rendered in element.');
-        return;
+        log.warn('Failed to render track; already rendered in element.');
+        return false;
       } else {
         // Rendering the track in a second element; no issue with that.
       }
@@ -21888,6 +21889,7 @@ function Renderer() {
 
     // Save the new/updated entry to the Renderer scope.
     entries[track.id] = entry;
+    return true;
   }
 
   /**
@@ -21896,6 +21898,7 @@ function Renderer() {
    * @param  {string}      trackId   ID of the track to be unrendered.
    * @param  {HTMLElement} container The DOM element to be removed from, or
    *     a unique CSS selector for the DOM element.
+   * @return {boolean} true if unrendering of track suceeded, false otherwise.
    */
   function unrenderTrack(trackId, container) {
     const log = _logs.logManager.getLogger('Track', trackId);
@@ -21904,7 +21907,7 @@ function Renderer() {
     const entry = entries[trackId];
     if (!entry) {
       log.info('Failed to unrender track; not rendered anywhere.');
-      return;
+      return false;
     }
 
     let element;
@@ -21926,7 +21929,7 @@ function Renderer() {
     if (index === -1) {
       // Not rendered in element.
       log.info('Failed to unrender track; not rendered in element.');
-      return;
+      return false;
     }
 
     const renderer = element.querySelector(`#${entry.rendererId}`);
@@ -21943,6 +21946,7 @@ function Renderer() {
     if (entry.containers.length === 0) {
       delete entries[trackId];
     }
+    return true;
   }
 
   return {
@@ -23095,8 +23099,17 @@ exports.default = async function rendererManager(webRTC, command) {
   const { operation, params } = command;
   const manager = webRTC.managers.renderer;
 
-  // General case: Don't convert the return.
-  return manager[operation](...params);
+  if (operation === 'renderTrack') {
+    // Get the actual Track object using the serialized-track object.
+    const track = webRTC.managers.track.get(params[0].id);
+
+    if (track) {
+      return manager.renderTrack(track, params[1], params[2]);
+    }
+  } else {
+    // General case: Don't convert the return.
+    return manager[operation](...params);
+  }
 };
 
 /***/ }),
