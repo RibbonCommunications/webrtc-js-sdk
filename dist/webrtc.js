@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.9.0-beta.1051
+ * Version: 5.10.0-beta.1052
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6320,7 +6320,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.9.0-beta.1051';
+  return '5.10.0-beta.1052';
 }
 
 /***/ }),
@@ -42522,7 +42522,7 @@ function* unsubscribe(connection, subscriptionURL) {
    * For debug purposes, log what the response was but handle it as a success.
    */
   if (response.error) {
-    if (response.payload.body) {
+    if (response.payload.body && response.payload.body.subscribeResponse) {
       // Handle errors from the server.
       const { statusCode } = response.payload.body.subscribeResponse;
       log.debug(`Encountered error unsubscribing user with status code ${statusCode}.`);
