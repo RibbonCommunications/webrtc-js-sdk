@@ -1,7 +1,7 @@
 /**
  * WebRTC.js
  * webrtc.js
- * Version: 5.9.0
+ * Version: 5.10.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -6320,7 +6320,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.9.0';
+  return '5.10.0';
 }
 
 /***/ }),
@@ -38415,12 +38415,13 @@ function mediaAPI({ dispatch, getState }) {
      * @param  {string} [options.speakerId] The speaker's Device ID to use for audio tracks.
      * @example
      * // When a Call receives a new track, render it.
-     * client.on('call:newTrack', function (params) {
-     *    const track = client.media.getTrackById(params.trackId)
-     *    const container = params.local ? localContainer : remoteContainer
-     *
-     *    // Render the Call's new track when it first becomes available.
-     *    client.media.renderTracks([ track.trackId ], container)
+     * client.on('call:tracksAdded', function (params) {
+     *    params.trackIds.forEach(trackId => {
+     *      const track = client.media.getTrackById(trackId)
+     *      const container = track.isLocal ? localContainer : remoteContainer
+      *      // Render the Call's new track when it first becomes available.
+     *      client.media.renderTracks([ trackId ], container)
+     *    }
      * })
      */
     renderTracks(trackIds, cssSelector, options = {}) {
@@ -42522,7 +42523,7 @@ function* unsubscribe(connection, subscriptionURL) {
    * For debug purposes, log what the response was but handle it as a success.
    */
   if (response.error) {
-    if (response.payload.body) {
+    if (response.payload.body && response.payload.body.subscribeResponse) {
       // Handle errors from the server.
       const { statusCode } = response.payload.body.subscribeResponse;
       log.debug(`Encountered error unsubscribing user with status code ${statusCode}.`);
@@ -45644,7 +45645,7 @@ function callAPI({ dispatch, getState }) {
      *    {@link call.getById} API can be used to retrieve the latest call state
      *    after the change. Further events will be emitted to indicate that the
      *    call has received media from the remote participant. See the
-     *    {@link call.event:call:newTrack call:newTrack} event for more
+     *    {@link call.event:call:tracksAdded call:tracksAdded} event for more
      *    information about this.
      *
      * The SDK requires access to the system's media devices (eg. microphone)
@@ -45692,7 +45693,7 @@ function callAPI({ dispatch, getState }) {
      *    {@link call.getById} API can be used to retrieve the latest call state
      *    after the change. Further events will be emitted to indicate that the
      *    call has received media from the remote participant. See the
-     *    {@link call.event:call:newTrack call:newTrack} event for more
+     *    {@link call.event:call:tracksAdded call:tracksAdded} event for more
      *    information about this.
      *
      * The SDK requires access to the system's media devices (eg. microphone)
@@ -46006,7 +46007,7 @@ function callAPI({ dispatch, getState }) {
      * The progress of the operation will be tracked via the
      *    {@link call.event:call:operation call:operation} event.
      *
-     * The SDK will emit a {@link call.event:call:newTrack call:newTrack} event
+     * The SDK will emit a {@link call.event:call:tracksAdded call:tracksAdded} event
      *    both for the local and remote users to indicate a track has been
      *    added to the Call.
      *
@@ -47421,8 +47422,8 @@ callReducers[actionTypes.REJECT_CALL_FINISH] = {
 callReducers[actionTypes.SESSION_CREATED] = {
   next(state, action) {
     // When we get SESSION_CREATED action, the call object already exists as part of reducers state
-    // so we only add the webrtc session id. This way, when call:newTrack action is later triggered,
-    // we can find the call object by searching for this associated webrtcSessionId.
+    // so we only add the webrtc session id. This way we can find the call object
+    // by searching for this associated webrtcSessionId.
     return (0, _extends3.default)({}, state, {
       webrtcSessionId: action.payload.webrtcSessionId
     });
