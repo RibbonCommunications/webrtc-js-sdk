@@ -1,7 +1,10 @@
 /**
+ *
+ * COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED
+ *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.0.0-beta.1061
+ * Version: 6.0.0-beta.1062
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1816,7 +1819,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.0.0-beta.1061';
+  return '6.0.0-beta.1062';
 }
 
 /***/ }),

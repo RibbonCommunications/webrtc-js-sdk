@@ -1,3 +1,4 @@
+[COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
 ---
 layout: page
 categories: quickstarts-javascript
@@ -187,24 +188,4 @@ Below you'll find a diagram showing call state transitions, which apply to both 
 
 <br></br>
 <strong>State transitions for midcall operations (for both Caller & Callee)</strong>
-
-```mermaid
-%% State transitions for midcall operations (for both Caller & Callee)
-stateDiagram-v2
-s1 : CONNECTED
-state OnHold {
-  dualHeld --> locallyHeld: remote unhold
-  dualHeld --> remotelyHeld: local<br>unhold
-  locallyHeld --> dualHeld: remote hold
-  remotelyHeld --> dualHeld: local hold
-}
-s1 --> locallyHeld: local hold
-s1 --> remotelyHeld: remote hold
-s3: ENDED
-locallyHeld --> s1: local<br>unhold
-remotelyHeld --> s1: remote unhold
-locallyHeld --> s3: error<br>occurred or<br>call.end API called
-remotelyHeld --> s3: error<br>occurred or<br>call.end API called
-dualHeld --> s3: error<br>occurred or<br>call.end API called
-```
 

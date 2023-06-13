@@ -1,6 +1,4 @@
-// TODO: Update DEFAULTCONFIGNAME, DEFAULTCONFIGACCESS, SUBSCRIPTIONFQDN, WEBSOCKETFQDN when changes are also covered by backend.
-//       Update DEFAULTCONFIGURL when WebRTC SDK is published to npm site.
-//       May want to add further RIBBONTURN* entries when uspported by backend.
+// COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED
 export const configs = [
   {
     name: 'blue',
@@ -16,3 +14,4 @@ export const configs = [
     }
   }
 ]
+// COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED
