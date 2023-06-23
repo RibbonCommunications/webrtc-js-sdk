@@ -4,7 +4,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.0.0-beta.1063
+ * Version: 6.0.0-beta.1064
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -4289,14 +4289,17 @@ function getCallAction(remoteOp) {
             skip: false
           };
         case eventTypes.CALL_TRACKS_REMOVED:
-          return {
-            type,
-            args: {
-              callId: action.payload.id,
-              trackIds: remoteOp === _constants.OPERATIONS.UNHOLD ? tracksRemoved(action, prevState, currentState) : trackIds
-            },
-            skip: trackIds.length === 0 || remoteOp === _constants.OPERATIONS.UNHOLD && tracksRemoved(action, prevState, currentState) > 0
-          };
+          {
+            const removedTracks = tracksRemoved(action, prevState, currentState);
+            return {
+              type,
+              args: {
+                callId: action.payload.id,
+                trackIds: remoteOp === _constants.OPERATIONS.UNHOLD ? removedTracks : trackIds
+              },
+              skip: trackIds.length === 0 || remoteOp === _constants.OPERATIONS.UNHOLD && (!removedTracks || removedTracks.length === 0)
+            };
+          }
         case eventTypes.CALL_TRACKS_ADDED:
           return {
             type,
@@ -5344,7 +5347,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.0.0-beta.1063';
+  return '6.0.0-beta.1064';
 }
 
 /***/ }),
