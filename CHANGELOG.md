@@ -37,6 +37,7 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed a Call issue where a `call.reject` API would succeed but the call would not change to `Ended` state in some scenarios.
+- Fixed a SIP Events issue where an event associated with an on-going call would not include the ID for the call.
 
 ### Migration
 
