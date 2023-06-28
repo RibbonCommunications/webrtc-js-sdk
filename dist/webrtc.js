@@ -4,7 +4,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.0.0-beta.1066
+ * Version: 6.0.0-beta.1067
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -4392,6 +4392,14 @@ function getLocalOpTrackEvents(callId, operation, action, prevState, currState) 
             args: { callId, trackIds }
           };
         }
+        return;
+      }
+    case _constants.OPERATIONS.MEDIA_RESTART:
+      {
+        return {
+          type: eventTypes.MEDIA_RESTART,
+          args: { callId }
+        };
       }
   }
 }
@@ -5347,7 +5355,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.0.0-beta.1066';
+  return '6.0.0-beta.1067';
 }
 
 /***/ }),
