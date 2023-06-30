@@ -7,6 +7,24 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.1.0 - beta
+
+- A new API has been added that allows for the collection of various metrics during a call.
+  - These metrics include `time to media`, `ice collection duration` and `time to answer` among others.
+  - Specific events during a call are also collected and included in the call report.
+  - A call report can be obtained from by calling the `getReport(callId)` API function. This will return a JSON formated object containing all call events and computed metrics relating to that call.
+  - For more information, please see the [API documentation](https://ribboncommunications.github.io/webrtc-js-sdk/docs/#callgetreport).
+  - Try the tutorial. [Get Report tutorial](https://ribboncommunications.github.io/webrtc-js-sdk/tutorials/?config=blue#/Call%20Reports)
+
+### Added
+
+- Added a new `Handling Subscription Events` section within our tutorials. It covers the authentication, subscription and connectivity events. `KJS-1461`
+
+### Fixed
+
+- Fixed a Call issue where the `call:operation` event was not consistently emitted during consultative transfer and join operations.
+  - The `call:operation` event will now be emitted for all calls involved in the operations at each step, rather than only the primary call.
+
 ## 6.0.0 - 2023-06-30
 
 ### Removed
