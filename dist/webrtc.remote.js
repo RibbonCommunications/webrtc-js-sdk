@@ -1038,22 +1038,22 @@ __webpack_require__.d(__webpack_exports__, "takeLatest", function() { return /* 
 __webpack_require__.d(__webpack_exports__, "takeLeading", function() { return /* reexport */ takeLeading$1; });
 __webpack_require__.d(__webpack_exports__, "throttle", function() { return /* reexport */ throttle$1; });
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
 var redux_saga_symbols_esm = __webpack_require__(5);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(45);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
 var redux_saga_is_esm = __webpack_require__(1);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/io-c3792963.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/core/dist/io-c3792963.js
 var io_c3792963 = __webpack_require__(0);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
 var redux_saga_delay_p_esm = __webpack_require__(70);
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/redux-saga-effects.esm.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/core/dist/redux-saga-effects.esm.js
 
 
 
@@ -1498,7 +1498,7 @@ function debounce(delayLength, pattern, worker) {
 
 
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js
 
 
 
@@ -2381,13 +2381,13 @@ __webpack_require__.d(__webpack_exports__, "multicastChannel", function() { retu
 __webpack_require__.d(__webpack_exports__, "runSaga", function() { return /* reexport */ runSaga; });
 __webpack_require__.d(__webpack_exports__, "stdChannel", function() { return /* reexport */ stdChannel; });
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
 var redux_saga_symbols_esm = __webpack_require__(5);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(45);
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -2400,16 +2400,16 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   }
   return target;
 }
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
 var redux_saga_is_esm = __webpack_require__(1);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/io-c3792963.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/core/dist/io-c3792963.js
 var io_c3792963 = __webpack_require__(0);
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux/es/redux.js + 5 modules
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/redux/es/redux.js + 5 modules
 var redux = __webpack_require__(96);
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/deferred/dist/redux-saga-deferred.esm.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/deferred/dist/redux-saga-deferred.esm.js
 function deferred() {
   var def = {};
   def.promise = new Promise(function (resolve, reject) {
@@ -2431,10 +2431,10 @@ function arrayOfDeferred(length) {
 /* harmony default export */ var redux_saga_deferred_esm = (deferred);
 
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
+// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
 var redux_saga_delay_p_esm = __webpack_require__(70);
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/redux-saga-core.esm.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@redux-saga/core/dist/redux-saga-core.esm.js
 
 
 
@@ -3820,7 +3820,7 @@ function sagaMiddlewareFactory(_temp) {
 /* harmony default export */ var redux_saga_core_esm = (sagaMiddlewareFactory);
 
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js
 
 
 
@@ -4019,7 +4019,7 @@ __webpack_require__.d(__webpack_exports__, "validate", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "stringify", function() { return /* reexport */ esm_browser_stringify; });
 __webpack_require__.d(__webpack_exports__, "parse", function() { return /* reexport */ esm_browser_parse; });
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/rng.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/rng.js
 // Unique ID creation requires a high quality random # generator. In the browser we therefore
 // require the crypto API and do not support built-in fallback to lower quality random number
 // generators (like Math.random()).
@@ -4038,9 +4038,9 @@ function rng() {
 
   return getRandomValues(rnds8);
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/regex.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/regex.js
 /* harmony default export */ var regex = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/validate.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/validate.js
 
 
 function validate(uuid) {
@@ -4048,7 +4048,7 @@ function validate(uuid) {
 }
 
 /* harmony default export */ var esm_browser_validate = (validate);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/stringify.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/stringify.js
 
 /**
  * Convert array of 16 byte values to UUID string format of the form:
@@ -4082,7 +4082,7 @@ function stringify(arr, offset = 0) {
 }
 
 /* harmony default export */ var esm_browser_stringify = (stringify);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/v1.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/v1.js
 
  // **`v1()` - Generate time-based UUID**
 //
@@ -4178,7 +4178,7 @@ function v1(options, buf, offset) {
 }
 
 /* harmony default export */ var esm_browser_v1 = (v1);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/parse.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/parse.js
 
 
 function parse(uuid) {
@@ -4214,7 +4214,7 @@ function parse(uuid) {
 }
 
 /* harmony default export */ var esm_browser_parse = (parse);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/v35.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/v35.js
 
 
 
@@ -4281,7 +4281,7 @@ function v35(name, version, hashfunc) {
   generateUUID.URL = URL;
   return generateUUID;
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/md5.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/md5.js
 /*
  * Browser-compatible JavaScript MD5
  *
@@ -4497,17 +4497,17 @@ function md5ii(a, b, c, d, x, s, t) {
 }
 
 /* harmony default export */ var esm_browser_md5 = (md5);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/v3.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/v3.js
 
 
 const v3 = v35('v3', 0x30, esm_browser_md5);
 /* harmony default export */ var esm_browser_v3 = (v3);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/native.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/native.js
 const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
 /* harmony default export */ var esm_browser_native = ({
   randomUUID
 });
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/v4.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/v4.js
 
 
 
@@ -4537,7 +4537,7 @@ function v4(options, buf, offset) {
 }
 
 /* harmony default export */ var esm_browser_v4 = (v4);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/sha1.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/sha1.js
 // Adapted from Chris Veness' SHA1 code at
 // http://www.movable-type.co.uk/scripts/sha1.html
 function f(s, x, y, z) {
@@ -4634,14 +4634,14 @@ function sha1(bytes) {
 }
 
 /* harmony default export */ var esm_browser_sha1 = (sha1);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/v5.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/v5.js
 
 
 const v5 = v35('v5', 0x50, esm_browser_sha1);
 /* harmony default export */ var esm_browser_v5 = (v5);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/nil.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/nil.js
 /* harmony default export */ var nil = ('00000000-0000-0000-0000-000000000000');
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/version.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/version.js
 
 
 function version_version(uuid) {
@@ -4653,7 +4653,7 @@ function version_version(uuid) {
 }
 
 /* harmony default export */ var esm_browser_version = (version_version);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/uuid/dist/esm-browser/index.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/uuid/dist/esm-browser/index.js
 
 
 
@@ -5847,7 +5847,7 @@ __webpack_require__.d(__webpack_exports__, "compose", function() { return /* bin
 __webpack_require__.d(__webpack_exports__, "createStore", function() { return /* binding */ redux_createStore; });
 __webpack_require__.d(__webpack_exports__, "legacy_createStore", function() { return /* binding */ legacy_createStore; });
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/typeof.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/typeof.js
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -5857,7 +5857,7 @@ function _typeof(obj) {
     return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   }, _typeof(obj);
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/toPrimitive.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/toPrimitive.js
 
 function _toPrimitive(input, hint) {
   if (_typeof(input) !== "object" || input === null) return input;
@@ -5869,14 +5869,14 @@ function _toPrimitive(input, hint) {
   }
   return (hint === "string" ? String : Number)(input);
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
 
 
 function _toPropertyKey(arg) {
   var key = _toPrimitive(arg, "string");
   return _typeof(key) === "symbol" ? key : String(key);
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/defineProperty.js
 
 function _defineProperty(obj, key, value) {
   key = _toPropertyKey(key);
@@ -5892,7 +5892,7 @@ function _defineProperty(obj, key, value) {
   }
   return obj;
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -5915,7 +5915,7 @@ function _objectSpread2(target) {
   }
   return target;
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux/es/redux.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_v5-support/node_modules/redux/es/redux.js
 
 
 /**
