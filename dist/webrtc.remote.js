@@ -1,7 +1,10 @@
 /**
+ *
+ * COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED
+ *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 5.10.0
+ * Version: 6.0.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -96,789 +99,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 564);
+/******/ 	return __webpack_require__(__webpack_require__.s = 685);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return apply; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return logError; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return CALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return wrapSagaDispatch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return identity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return FORK; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return GET_CONTEXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return buffers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return detach; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return JOIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return take; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return fork; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return cancel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return call; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return delay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return PUT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return actionChannel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return RACE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return SELECT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return TAKE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return sliding; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return race; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return effectTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return takeMaybe; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return put; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return putResolve; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return all; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return CPS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return cps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return spawn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return join; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return select; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return cancelled; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return flush; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return getContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return setContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return check; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return ACTION_CHANNEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return expanding; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return CANCELLED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return FLUSH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return SET_CONTEXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return internalErr; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return getMetaInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return kTrue; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return createAllStyleChildCallbacks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return createEmptyArray; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return none; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return once; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return assignWithSymbols; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ab", function() { return makeIterator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bb", function() { return remove; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cb", function() { return shouldComplete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "db", function() { return noop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eb", function() { return flatMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return getLocation; });
-/* unused harmony export w */
-/* unused harmony export x */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return shouldCancel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return shouldTerminate; });
-/* harmony import */ var _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45);
-/* harmony import */ var _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
-/* harmony import */ var _redux_saga_delay_p__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(70);
-
-
-
-
-
-var konst = function konst(v) {
-  return function () {
-    return v;
-  };
-};
-var kTrue =
-/*#__PURE__*/
-konst(true);
-
-var noop = function noop() {};
-
-if (false) {}
-var identity = function identity(v) {
-  return v;
-};
-var hasSymbol = typeof Symbol === 'function';
-var asyncIteratorSymbol = hasSymbol && Symbol.asyncIterator ? Symbol.asyncIterator : '@@asyncIterator';
-function check(value, predicate, error) {
-  if (!predicate(value)) {
-    throw new Error(error);
-  }
-}
-var assignWithSymbols = function assignWithSymbols(target, source) {
-  Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(target, source);
-
-  if (Object.getOwnPropertySymbols) {
-    Object.getOwnPropertySymbols(source).forEach(function (s) {
-      target[s] = source[s];
-    });
-  }
-};
-var flatMap = function flatMap(mapper, arr) {
-  var _ref;
-
-  return (_ref = []).concat.apply(_ref, arr.map(mapper));
-};
-function remove(array, item) {
-  var index = array.indexOf(item);
-
-  if (index >= 0) {
-    array.splice(index, 1);
-  }
-}
-function once(fn) {
-  var called = false;
-  return function () {
-    if (called) {
-      return;
-    }
-
-    called = true;
-    fn();
-  };
-}
-
-var kThrow = function kThrow(err) {
-  throw err;
-};
-
-var kReturn = function kReturn(value) {
-  return {
-    value: value,
-    done: true
-  };
-};
-
-function makeIterator(next, thro, name) {
-  if (thro === void 0) {
-    thro = kThrow;
-  }
-
-  if (name === void 0) {
-    name = 'iterator';
-  }
-
-  var iterator = {
-    meta: {
-      name: name
-    },
-    next: next,
-    throw: thro,
-    return: kReturn,
-    isSagaIterator: true
-  };
-
-  if (typeof Symbol !== 'undefined') {
-    iterator[Symbol.iterator] = function () {
-      return iterator;
-    };
-  }
-
-  return iterator;
-}
-function logError(error, _ref2) {
-  var sagaStack = _ref2.sagaStack;
-
-  /*eslint-disable no-console*/
-  console.error(error);
-  console.error(sagaStack);
-}
-var internalErr = function internalErr(err) {
-  return new Error("\n  redux-saga: Error checking hooks detected an inconsistent state. This is likely a bug\n  in redux-saga code and not yours. Thanks for reporting this in the project's github repo.\n  Error: " + err + "\n");
-};
-var createSetContextWarning = function createSetContextWarning(ctx, props) {
-  return (ctx ? ctx + '.' : '') + "setContext(props): argument " + props + " is not a plain object";
-};
-var FROZEN_ACTION_ERROR = "You can't put (a.k.a. dispatch from saga) frozen actions.\nWe have to define a special non-enumerable property on those actions for scheduling purposes.\nOtherwise you wouldn't be able to communicate properly between sagas & other subscribers (action ordering would become far less predictable).\nIf you are using redux and you care about this behaviour (frozen actions),\nthen you might want to switch to freezing actions in a middleware rather than in action creator.\nExample implementation:\n\nconst freezeActions = store => next => action => next(Object.freeze(action))\n"; // creates empty, but not-holey array
-
-var createEmptyArray = function createEmptyArray(n) {
-  return Array.apply(null, new Array(n));
-};
-var wrapSagaDispatch = function wrapSagaDispatch(dispatch) {
-  return function (action) {
-    if (false) {}
-
-    return dispatch(Object.defineProperty(action, _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SAGA_ACTION */ "f"], {
-      value: true
-    }));
-  };
-};
-var shouldTerminate = function shouldTerminate(res) {
-  return res === _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* TERMINATE */ "k"];
-};
-var shouldCancel = function shouldCancel(res) {
-  return res === _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* TASK_CANCEL */ "j"];
-};
-var shouldComplete = function shouldComplete(res) {
-  return shouldTerminate(res) || shouldCancel(res);
-};
-function createAllStyleChildCallbacks(shape, parentCallback) {
-  var keys = Object.keys(shape);
-  var totalCount = keys.length;
-
-  if (false) {}
-
-  var completedCount = 0;
-  var completed;
-  var results = Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* array */ "a"])(shape) ? createEmptyArray(totalCount) : {};
-  var childCallbacks = {};
-
-  function checkEnd() {
-    if (completedCount === totalCount) {
-      completed = true;
-      parentCallback(results);
-    }
-  }
-
-  keys.forEach(function (key) {
-    var chCbAtKey = function chCbAtKey(res, isErr) {
-      if (completed) {
-        return;
-      }
-
-      if (isErr || shouldComplete(res)) {
-        parentCallback.cancel();
-        parentCallback(res, isErr);
-      } else {
-        results[key] = res;
-        completedCount++;
-        checkEnd();
-      }
-    };
-
-    chCbAtKey.cancel = noop;
-    childCallbacks[key] = chCbAtKey;
-  });
-
-  parentCallback.cancel = function () {
-    if (!completed) {
-      completed = true;
-      keys.forEach(function (key) {
-        return childCallbacks[key].cancel();
-      });
-    }
-  };
-
-  return childCallbacks;
-}
-function getMetaInfo(fn) {
-  return {
-    name: fn.name || 'anonymous',
-    location: getLocation(fn)
-  };
-}
-function getLocation(instrumented) {
-  return instrumented[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SAGA_LOCATION */ "g"]];
-}
-
-var BUFFER_OVERFLOW = "Channel's Buffer overflow!";
-var ON_OVERFLOW_THROW = 1;
-var ON_OVERFLOW_DROP = 2;
-var ON_OVERFLOW_SLIDE = 3;
-var ON_OVERFLOW_EXPAND = 4;
-var zeroBuffer = {
-  isEmpty: kTrue,
-  put: noop,
-  take: noop
-};
-
-function ringBuffer(limit, overflowAction) {
-  if (limit === void 0) {
-    limit = 10;
-  }
-
-  var arr = new Array(limit);
-  var length = 0;
-  var pushIndex = 0;
-  var popIndex = 0;
-
-  var push = function push(it) {
-    arr[pushIndex] = it;
-    pushIndex = (pushIndex + 1) % limit;
-    length++;
-  };
-
-  var take = function take() {
-    if (length != 0) {
-      var it = arr[popIndex];
-      arr[popIndex] = null;
-      length--;
-      popIndex = (popIndex + 1) % limit;
-      return it;
-    }
-  };
-
-  var flush = function flush() {
-    var items = [];
-
-    while (length) {
-      items.push(take());
-    }
-
-    return items;
-  };
-
-  return {
-    isEmpty: function isEmpty() {
-      return length == 0;
-    },
-    put: function put(it) {
-      if (length < limit) {
-        push(it);
-      } else {
-        var doubledLimit;
-
-        switch (overflowAction) {
-          case ON_OVERFLOW_THROW:
-            throw new Error(BUFFER_OVERFLOW);
-
-          case ON_OVERFLOW_SLIDE:
-            arr[pushIndex] = it;
-            pushIndex = (pushIndex + 1) % limit;
-            popIndex = pushIndex;
-            break;
-
-          case ON_OVERFLOW_EXPAND:
-            doubledLimit = 2 * limit;
-            arr = flush();
-            length = arr.length;
-            pushIndex = arr.length;
-            popIndex = 0;
-            arr.length = doubledLimit;
-            limit = doubledLimit;
-            push(it);
-            break;
-
-          default: // DROP
-
-        }
-      }
-    },
-    take: take,
-    flush: flush
-  };
-}
-
-var none = function none() {
-  return zeroBuffer;
-};
-var fixed = function fixed(limit) {
-  return ringBuffer(limit, ON_OVERFLOW_THROW);
-};
-var dropping = function dropping(limit) {
-  return ringBuffer(limit, ON_OVERFLOW_DROP);
-};
-var sliding = function sliding(limit) {
-  return ringBuffer(limit, ON_OVERFLOW_SLIDE);
-};
-var expanding = function expanding(initialSize) {
-  return ringBuffer(initialSize, ON_OVERFLOW_EXPAND);
-};
-
-var buffers = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  none: none,
-  fixed: fixed,
-  dropping: dropping,
-  sliding: sliding,
-  expanding: expanding
-});
-
-var TAKE = 'TAKE';
-var PUT = 'PUT';
-var ALL = 'ALL';
-var RACE = 'RACE';
-var CALL = 'CALL';
-var CPS = 'CPS';
-var FORK = 'FORK';
-var JOIN = 'JOIN';
-var CANCEL = 'CANCEL';
-var SELECT = 'SELECT';
-var ACTION_CHANNEL = 'ACTION_CHANNEL';
-var CANCELLED = 'CANCELLED';
-var FLUSH = 'FLUSH';
-var GET_CONTEXT = 'GET_CONTEXT';
-var SET_CONTEXT = 'SET_CONTEXT';
-
-var effectTypes = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  TAKE: TAKE,
-  PUT: PUT,
-  ALL: ALL,
-  RACE: RACE,
-  CALL: CALL,
-  CPS: CPS,
-  FORK: FORK,
-  JOIN: JOIN,
-  CANCEL: CANCEL,
-  SELECT: SELECT,
-  ACTION_CHANNEL: ACTION_CHANNEL,
-  CANCELLED: CANCELLED,
-  FLUSH: FLUSH,
-  GET_CONTEXT: GET_CONTEXT,
-  SET_CONTEXT: SET_CONTEXT
-});
-
-var TEST_HINT = '\n(HINT: if you are getting these errors in tests, consider using createMockTask from @redux-saga/testing-utils)';
-
-var makeEffect = function makeEffect(type, payload) {
-  var _ref;
-
-  return _ref = {}, _ref[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* IO */ "c"]] = true, _ref.combinator = false, _ref.type = type, _ref.payload = payload, _ref;
-};
-
-var isForkEffect = function isForkEffect(eff) {
-  return Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* effect */ "c"])(eff) && eff.type === FORK;
-};
-
-var detach = function detach(eff) {
-  if (false) {}
-
-  return makeEffect(FORK, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({}, eff.payload, {
-    detached: true
-  }));
-};
-function take(patternOrChannel, multicastPattern) {
-  if (patternOrChannel === void 0) {
-    patternOrChannel = '*';
-  }
-
-  if (false) {}
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* pattern */ "i"])(patternOrChannel)) {
-    if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"])(multicastPattern)) {
-      /* eslint-disable no-console */
-      console.warn("take(pattern) takes one argument but two were provided. Consider passing an array for listening to several action types");
-    }
-
-    return makeEffect(TAKE, {
-      pattern: patternOrChannel
-    });
-  }
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* multicast */ "f"])(patternOrChannel) && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"])(multicastPattern) && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* pattern */ "i"])(multicastPattern)) {
-    return makeEffect(TAKE, {
-      channel: patternOrChannel,
-      pattern: multicastPattern
-    });
-  }
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* channel */ "b"])(patternOrChannel)) {
-    if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"])(multicastPattern)) {
-      /* eslint-disable no-console */
-      console.warn("take(channel) takes one argument but two were provided. Second argument is ignored.");
-    }
-
-    return makeEffect(TAKE, {
-      channel: patternOrChannel
-    });
-  }
-
-  if (false) {}
-}
-var takeMaybe = function takeMaybe() {
-  var eff = take.apply(void 0, arguments);
-  eff.payload.maybe = true;
-  return eff;
-};
-function put(channel$1, action) {
-  if (false) {}
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* undef */ "n"])(action)) {
-    action = channel$1; // `undefined` instead of `null` to make default parameter work
-
-    channel$1 = undefined;
-  }
-
-  return makeEffect(PUT, {
-    channel: channel$1,
-    action: action
-  });
-}
-var putResolve = function putResolve() {
-  var eff = put.apply(void 0, arguments);
-  eff.payload.resolve = true;
-  return eff;
-};
-function all(effects) {
-  var eff = makeEffect(ALL, effects);
-  eff.combinator = true;
-  return eff;
-}
-function race(effects) {
-  var eff = makeEffect(RACE, effects);
-  eff.combinator = true;
-  return eff;
-} // this match getFnCallDescriptor logic
-
-var validateFnDescriptor = function validateFnDescriptor(effectName, fnDescriptor) {
-  check(fnDescriptor, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"], effectName + ": argument fn is undefined or null");
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"])(fnDescriptor)) {
-    return;
-  }
-
-  var context = null;
-  var fn;
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* array */ "a"])(fnDescriptor)) {
-    context = fnDescriptor[0];
-    fn = fnDescriptor[1];
-    check(fn, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"], effectName + ": argument of type [context, fn] has undefined or null `fn`");
-  } else if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* object */ "h"])(fnDescriptor)) {
-    context = fnDescriptor.context;
-    fn = fnDescriptor.fn;
-    check(fn, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"], effectName + ": argument of type {context, fn} has undefined or null `fn`");
-  } else {
-    check(fnDescriptor, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"], effectName + ": argument fn is not function");
-    return;
-  }
-
-  if (context && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* string */ "k"])(fn)) {
-    check(context[fn], _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"], effectName + ": context arguments has no such method - \"" + fn + "\"");
-    return;
-  }
-
-  check(fn, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"], effectName + ": unpacked fn argument (from [context, fn] or {context, fn}) is not a function");
-};
-
-function getFnCallDescriptor(fnDescriptor, args) {
-  var context = null;
-  var fn;
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"])(fnDescriptor)) {
-    fn = fnDescriptor;
-  } else {
-    if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* array */ "a"])(fnDescriptor)) {
-      context = fnDescriptor[0];
-      fn = fnDescriptor[1];
-    } else {
-      context = fnDescriptor.context;
-      fn = fnDescriptor.fn;
-    }
-
-    if (context && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* string */ "k"])(fn) && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"])(context[fn])) {
-      fn = context[fn];
-    }
-  }
-
-  return {
-    context: context,
-    fn: fn,
-    args: args
-  };
-}
-
-var isNotDelayEffect = function isNotDelayEffect(fn) {
-  return fn !== delay;
-};
-
-function call(fnDescriptor) {
-  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    args[_key - 1] = arguments[_key];
-  }
-
-  if (false) { var arg0; }
-
-  return makeEffect(CALL, getFnCallDescriptor(fnDescriptor, args));
-}
-function apply(context, fn, args) {
-  if (args === void 0) {
-    args = [];
-  }
-
-  var fnDescriptor = [context, fn];
-
-  if (false) {}
-
-  return makeEffect(CALL, getFnCallDescriptor([context, fn], args));
-}
-function cps(fnDescriptor) {
-  if (false) {}
-
-  for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    args[_key2 - 1] = arguments[_key2];
-  }
-
-  return makeEffect(CPS, getFnCallDescriptor(fnDescriptor, args));
-}
-function fork(fnDescriptor) {
-  if (false) {}
-
-  for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-    args[_key3 - 1] = arguments[_key3];
-  }
-
-  return makeEffect(FORK, getFnCallDescriptor(fnDescriptor, args));
-}
-function spawn(fnDescriptor) {
-  if (false) {}
-
-  for (var _len4 = arguments.length, args = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-    args[_key4 - 1] = arguments[_key4];
-  }
-
-  return detach(fork.apply(void 0, [fnDescriptor].concat(args)));
-}
-function join(taskOrTasks) {
-  if (false) {}
-
-  return makeEffect(JOIN, taskOrTasks);
-}
-function cancel(taskOrTasks) {
-  if (taskOrTasks === void 0) {
-    taskOrTasks = _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SELF_CANCELLATION */ "h"];
-  }
-
-  if (false) {}
-
-  return makeEffect(CANCEL, taskOrTasks);
-}
-function select(selector) {
-  if (selector === void 0) {
-    selector = identity;
-  }
-
-  for (var _len5 = arguments.length, args = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
-    args[_key5 - 1] = arguments[_key5];
-  }
-
-  if (false) {}
-
-  return makeEffect(SELECT, {
-    selector: selector,
-    args: args
-  });
-}
-/**
-  channel(pattern, [buffer])    => creates a proxy channel for store actions
-**/
-
-function actionChannel(pattern$1, buffer$1) {
-  if (false) {}
-
-  return makeEffect(ACTION_CHANNEL, {
-    pattern: pattern$1,
-    buffer: buffer$1
-  });
-}
-function cancelled() {
-  return makeEffect(CANCELLED, {});
-}
-function flush(channel$1) {
-  if (false) {}
-
-  return makeEffect(FLUSH, channel$1);
-}
-function getContext(prop) {
-  if (false) {}
-
-  return makeEffect(GET_CONTEXT, prop);
-}
-function setContext(props) {
-  if (false) {}
-
-  return makeEffect(SET_CONTEXT, props);
-}
-var delay =
-/*#__PURE__*/
-call.bind(null, _redux_saga_delay_p__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]);
-
-
-
-
-/***/ }),
+/* 0 */,
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return array; });
-/* unused harmony export buffer */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return channel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return effect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return func; });
-/* unused harmony export iterable */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return iterator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return multicast; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return notUndef; });
-/* unused harmony export number */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return object; });
-/* unused harmony export observable */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return pattern; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return promise; });
-/* unused harmony export sagaAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return string; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return stringableFunc; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return symbol; });
-/* unused harmony export task */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return undef; });
-/* harmony import */ var _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
-
-
-var undef = function undef(v) {
-  return v === null || v === undefined;
-};
-var notUndef = function notUndef(v) {
-  return v !== null && v !== undefined;
-};
-var func = function func(f) {
-  return typeof f === 'function';
-};
-var number = function number(n) {
-  return typeof n === 'number';
-};
-var string = function string(s) {
-  return typeof s === 'string';
-};
-var array = Array.isArray;
-var object = function object(obj) {
-  return obj && !array(obj) && typeof obj === 'object';
-};
-var promise = function promise(p) {
-  return p && func(p.then);
-};
-var iterator = function iterator(it) {
-  return it && func(it.next) && func(it.throw);
-};
-var iterable = function iterable(it) {
-  return it && func(Symbol) ? func(it[Symbol.iterator]) : array(it);
-};
-var task = function task(t) {
-  return t && t[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* TASK */ "i"]];
-};
-var sagaAction = function sagaAction(a) {
-  return Boolean(a && a[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SAGA_ACTION */ "f"]]);
-};
-var observable = function observable(ob) {
-  return ob && func(ob.subscribe);
-};
-var buffer = function buffer(buf) {
-  return buf && func(buf.isEmpty) && func(buf.take) && func(buf.put);
-};
-var pattern = function pattern(pat) {
-  return pat && (string(pat) || symbol(pat) || func(pat) || array(pat) && pat.every(pattern));
-};
-var channel = function channel(ch) {
-  return ch && func(ch.take) && func(ch.close);
-};
-var stringableFunc = function stringableFunc(f) {
-  return func(f) && f.hasOwnProperty('toString');
-};
-var symbol = function symbol(sym) {
-  return Boolean(sym) && typeof Symbol === 'function' && sym.constructor === Symbol && sym !== Symbol.prototype;
-};
-var multicast = function multicast(ch) {
-  return channel(ch) && ch[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* MULTICAST */ "e"]];
-};
-var effect = function effect(eff) {
-  return eff && eff[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* IO */ "c"]];
-};
-
-
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _ = __webpack_require__(165).runInContext();
-module.exports = __webpack_require__(166)(_, _);
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -886,7 +112,7 @@ module.exports = __webpack_require__(166)(_, _);
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(74);
+var _assign = __webpack_require__(75);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -907,7 +133,19 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 4 */
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _ = __webpack_require__(160).runInContext();
+module.exports = __webpack_require__(161)(_, _);
+
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -918,11 +156,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logManager = exports.API_LOG_TAG = undefined;
 
-var _kandyLogger = __webpack_require__(90);
+var _kandyLogger = __webpack_require__(91);
 
 var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
 
-var _config = __webpack_require__(141);
+var _config = __webpack_require__(138);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -945,565 +183,7 @@ const manager = (0, _kandyLogger2.default)(_config2.default);
 const logManager = exports.logManager = manager;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CHANNEL_END_TYPE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return IO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MATCH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return MULTICAST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SAGA_ACTION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SAGA_LOCATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return SELF_CANCELLATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return TASK; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return TASK_CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return TERMINATE; });
-var createSymbol = function createSymbol(name) {
-  return "@@redux-saga/" + name;
-};
-
-var CANCEL =
-/*#__PURE__*/
-createSymbol('CANCEL_PROMISE');
-var CHANNEL_END_TYPE =
-/*#__PURE__*/
-createSymbol('CHANNEL_END');
-var IO =
-/*#__PURE__*/
-createSymbol('IO');
-var MATCH =
-/*#__PURE__*/
-createSymbol('MATCH');
-var MULTICAST =
-/*#__PURE__*/
-createSymbol('MULTICAST');
-var SAGA_ACTION =
-/*#__PURE__*/
-createSymbol('SAGA_ACTION');
-var SELF_CANCELLATION =
-/*#__PURE__*/
-createSymbol('SELF_CANCELLATION');
-var TASK =
-/*#__PURE__*/
-createSymbol('TASK');
-var TASK_CANCEL =
-/*#__PURE__*/
-createSymbol('TASK_CANCEL');
-var TERMINATE =
-/*#__PURE__*/
-createSymbol('TERMINATE');
-var SAGA_LOCATION =
-/*#__PURE__*/
-createSymbol('LOCATION');
-
-
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "actionChannel", function() { return /* reexport */ io_c3792963["r" /* Q */]; });
-__webpack_require__.d(__webpack_exports__, "all", function() { return /* reexport */ io_c3792963["B" /* _ */]; });
-__webpack_require__.d(__webpack_exports__, "apply", function() { return /* reexport */ io_c3792963["a" /* $ */]; });
-__webpack_require__.d(__webpack_exports__, "call", function() { return /* reexport */ io_c3792963["o" /* N */]; });
-__webpack_require__.d(__webpack_exports__, "cancel", function() { return /* reexport */ io_c3792963["n" /* M */]; });
-__webpack_require__.d(__webpack_exports__, "cancelled", function() { return /* reexport */ io_c3792963["H" /* a4 */]; });
-__webpack_require__.d(__webpack_exports__, "cps", function() { return /* reexport */ io_c3792963["D" /* a0 */]; });
-__webpack_require__.d(__webpack_exports__, "delay", function() { return /* reexport */ io_c3792963["p" /* O */]; });
-__webpack_require__.d(__webpack_exports__, "effectTypes", function() { return /* reexport */ io_c3792963["x" /* W */]; });
-__webpack_require__.d(__webpack_exports__, "flush", function() { return /* reexport */ io_c3792963["I" /* a5 */]; });
-__webpack_require__.d(__webpack_exports__, "fork", function() { return /* reexport */ io_c3792963["m" /* L */]; });
-__webpack_require__.d(__webpack_exports__, "getContext", function() { return /* reexport */ io_c3792963["J" /* a6 */]; });
-__webpack_require__.d(__webpack_exports__, "join", function() { return /* reexport */ io_c3792963["F" /* a2 */]; });
-__webpack_require__.d(__webpack_exports__, "put", function() { return /* reexport */ io_c3792963["z" /* Y */]; });
-__webpack_require__.d(__webpack_exports__, "putResolve", function() { return /* reexport */ io_c3792963["A" /* Z */]; });
-__webpack_require__.d(__webpack_exports__, "race", function() { return /* reexport */ io_c3792963["w" /* V */]; });
-__webpack_require__.d(__webpack_exports__, "select", function() { return /* reexport */ io_c3792963["G" /* a3 */]; });
-__webpack_require__.d(__webpack_exports__, "setContext", function() { return /* reexport */ io_c3792963["K" /* a7 */]; });
-__webpack_require__.d(__webpack_exports__, "spawn", function() { return /* reexport */ io_c3792963["E" /* a1 */]; });
-__webpack_require__.d(__webpack_exports__, "take", function() { return /* reexport */ io_c3792963["l" /* K */]; });
-__webpack_require__.d(__webpack_exports__, "takeMaybe", function() { return /* reexport */ io_c3792963["y" /* X */]; });
-__webpack_require__.d(__webpack_exports__, "debounce", function() { return /* reexport */ debounce; });
-__webpack_require__.d(__webpack_exports__, "retry", function() { return /* reexport */ retry$1; });
-__webpack_require__.d(__webpack_exports__, "takeEvery", function() { return /* reexport */ takeEvery$1; });
-__webpack_require__.d(__webpack_exports__, "takeLatest", function() { return /* reexport */ takeLatest$1; });
-__webpack_require__.d(__webpack_exports__, "takeLeading", function() { return /* reexport */ takeLeading$1; });
-__webpack_require__.d(__webpack_exports__, "throttle", function() { return /* reexport */ throttle$1; });
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
-var redux_saga_symbols_esm = __webpack_require__(5);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(45);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
-var redux_saga_is_esm = __webpack_require__(1);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/io-c3792963.js
-var io_c3792963 = __webpack_require__(0);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
-var redux_saga_delay_p_esm = __webpack_require__(70);
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/redux-saga-effects.esm.js
-
-
-
-
-
-
-
-var done = function done(value) {
-  return {
-    done: true,
-    value: value
-  };
-};
-
-var qEnd = {};
-function safeName(patternOrChannel) {
-  if (Object(redux_saga_is_esm["b" /* channel */])(patternOrChannel)) {
-    return 'channel';
-  }
-
-  if (Object(redux_saga_is_esm["l" /* stringableFunc */])(patternOrChannel)) {
-    return String(patternOrChannel);
-  }
-
-  if (Object(redux_saga_is_esm["d" /* func */])(patternOrChannel)) {
-    return patternOrChannel.name;
-  }
-
-  return String(patternOrChannel);
-}
-function fsmIterator(fsm, startState, name) {
-  var stateUpdater,
-      errorState,
-      effect,
-      nextState = startState;
-
-  function next(arg, error) {
-    if (nextState === qEnd) {
-      return done(arg);
-    }
-
-    if (error && !errorState) {
-      nextState = qEnd;
-      throw error;
-    } else {
-      stateUpdater && stateUpdater(arg);
-      var currentState = error ? fsm[errorState](error) : fsm[nextState]();
-      nextState = currentState.nextState;
-      effect = currentState.effect;
-      stateUpdater = currentState.stateUpdater;
-      errorState = currentState.errorState;
-      return nextState === qEnd ? done(arg) : effect;
-    }
-  }
-
-  return Object(io_c3792963["ab" /* q */])(next, function (error) {
-    return next(null, error);
-  }, name);
-}
-
-function takeEvery(patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var yTake = {
-    done: false,
-    value: Object(io_c3792963["l" /* K */])(patternOrChannel)
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_c3792963["m" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var action,
-      setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q1',
-        effect: yFork(action)
-      };
-    }
-  }, 'q1', "takeEvery(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function takeLatest(patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var yTake = {
-    done: false,
-    value: Object(io_c3792963["l" /* K */])(patternOrChannel)
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_c3792963["m" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var yCancel = function yCancel(task) {
-    return {
-      done: false,
-      value: Object(io_c3792963["n" /* M */])(task)
-    };
-  };
-
-  var task, action;
-
-  var setTask = function setTask(t) {
-    return task = t;
-  };
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return task ? {
-        nextState: 'q3',
-        effect: yCancel(task)
-      } : {
-        nextState: 'q1',
-        effect: yFork(action),
-        stateUpdater: setTask
-      };
-    },
-    q3: function q3() {
-      return {
-        nextState: 'q1',
-        effect: yFork(action),
-        stateUpdater: setTask
-      };
-    }
-  }, 'q1', "takeLatest(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function takeLeading(patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var yTake = {
-    done: false,
-    value: Object(io_c3792963["l" /* K */])(patternOrChannel)
-  };
-
-  var yCall = function yCall(ac) {
-    return {
-      done: false,
-      value: io_c3792963["o" /* N */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var action;
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q1',
-        effect: yCall(action)
-      };
-    }
-  }, 'q1', "takeLeading(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function throttle(delayLength, patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    args[_key - 3] = arguments[_key];
-  }
-
-  var action, channel$1;
-
-  var yTake = function yTake() {
-    return {
-      done: false,
-      value: Object(io_c3792963["l" /* K */])(channel$1)
-    };
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_c3792963["m" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var yDelay = {
-    done: false,
-    value: Object(io_c3792963["p" /* O */])(delayLength)
-  };
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  var setChannel = function setChannel(ch) {
-    return channel$1 = ch;
-  };
-
-  var needsChannel = !Object(redux_saga_is_esm["b" /* channel */])(patternOrChannel);
-
-  if (!needsChannel) {
-    setChannel(patternOrChannel);
-  }
-
-  return fsmIterator({
-    q1: function q1() {
-      var yActionChannel = {
-        done: false,
-        value: Object(io_c3792963["r" /* Q */])(patternOrChannel, Object(io_c3792963["v" /* U */])(1))
-      };
-      return {
-        nextState: 'q2',
-        effect: yActionChannel,
-        stateUpdater: setChannel
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q3',
-        effect: yTake(),
-        stateUpdater: setAction
-      };
-    },
-    q3: function q3() {
-      return {
-        nextState: 'q4',
-        effect: yFork(action)
-      };
-    },
-    q4: function q4() {
-      return {
-        nextState: 'q2',
-        effect: yDelay
-      };
-    }
-  }, needsChannel ? 'q1' : 'q2', "throttle(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function retry(maxTries, delayLength, fn) {
-  var counter = maxTries;
-
-  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    args[_key - 3] = arguments[_key];
-  }
-
-  var yCall = {
-    done: false,
-    value: io_c3792963["o" /* N */].apply(void 0, [fn].concat(args))
-  };
-  var yDelay = {
-    done: false,
-    value: Object(io_c3792963["p" /* O */])(delayLength)
-  };
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yCall,
-        errorState: 'q10'
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: qEnd
-      };
-    },
-    q10: function q10(error) {
-      counter -= 1;
-
-      if (counter <= 0) {
-        throw error;
-      }
-
-      return {
-        nextState: 'q1',
-        effect: yDelay
-      };
-    }
-  }, 'q1', "retry(" + fn.name + ")");
-}
-
-function debounceHelper(delayLength, patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    args[_key - 3] = arguments[_key];
-  }
-
-  var action, raceOutput;
-  var yTake = {
-    done: false,
-    value: Object(io_c3792963["l" /* K */])(patternOrChannel)
-  };
-  var yRace = {
-    done: false,
-    value: Object(io_c3792963["w" /* V */])({
-      action: Object(io_c3792963["l" /* K */])(patternOrChannel),
-      debounce: Object(io_c3792963["p" /* O */])(delayLength)
-    })
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_c3792963["m" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var yNoop = function yNoop(value) {
-    return {
-      done: false,
-      value: value
-    };
-  };
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  var setRaceOutput = function setRaceOutput(ro) {
-    return raceOutput = ro;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q3',
-        effect: yRace,
-        stateUpdater: setRaceOutput
-      };
-    },
-    q3: function q3() {
-      return raceOutput.debounce ? {
-        nextState: 'q1',
-        effect: yFork(action)
-      } : {
-        nextState: 'q2',
-        effect: yNoop(raceOutput.action),
-        stateUpdater: setAction
-      };
-    }
-  }, 'q1', "debounce(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-var redux_saga_effects_esm_validateTakeEffect = function validateTakeEffect(fn, patternOrChannel, worker) {
-  Object(io_c3792963["M" /* c */])(patternOrChannel, redux_saga_is_esm["g" /* notUndef */], fn.name + " requires a pattern or channel");
-  Object(io_c3792963["M" /* c */])(worker, redux_saga_is_esm["g" /* notUndef */], fn.name + " requires a saga parameter");
-};
-
-function takeEvery$1(patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  return io_c3792963["m" /* L */].apply(void 0, [takeEvery, patternOrChannel, worker].concat(args));
-}
-function takeLatest$1(patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-    args[_key2 - 2] = arguments[_key2];
-  }
-
-  return io_c3792963["m" /* L */].apply(void 0, [takeLatest, patternOrChannel, worker].concat(args));
-}
-function takeLeading$1(patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len3 = arguments.length, args = new Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
-    args[_key3 - 2] = arguments[_key3];
-  }
-
-  return io_c3792963["m" /* L */].apply(void 0, [takeLeading, patternOrChannel, worker].concat(args));
-}
-function throttle$1(ms, patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len4 = arguments.length, args = new Array(_len4 > 3 ? _len4 - 3 : 0), _key4 = 3; _key4 < _len4; _key4++) {
-    args[_key4 - 3] = arguments[_key4];
-  }
-
-  return io_c3792963["m" /* L */].apply(void 0, [throttle, ms, patternOrChannel, worker].concat(args));
-}
-function retry$1(maxTries, delayLength, worker) {
-  for (var _len5 = arguments.length, args = new Array(_len5 > 3 ? _len5 - 3 : 0), _key5 = 3; _key5 < _len5; _key5++) {
-    args[_key5 - 3] = arguments[_key5];
-  }
-
-  return io_c3792963["o" /* N */].apply(void 0, [retry, maxTries, delayLength, worker].concat(args));
-}
-function debounce(delayLength, pattern, worker) {
-  for (var _len6 = arguments.length, args = new Array(_len6 > 3 ? _len6 - 3 : 0), _key6 = 3; _key6 < _len6; _key6++) {
-    args[_key6 - 3] = arguments[_key6];
-  }
-
-  return io_c3792963["m" /* L */].apply(void 0, [debounceHelper, delayLength, pattern, worker].concat(args));
-}
-
-
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js
-
-
-
-/***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 var core = module.exports = { version: '2.6.12' };
@@ -1511,14 +191,23 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
 /***/ }),
-/* 8 */
+/* 9 */,
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(11);
-var core = __webpack_require__(7);
-var ctx = __webpack_require__(28);
-var hide = __webpack_require__(29);
-var has = __webpack_require__(30);
+module.exports = { "default": __webpack_require__(165), __esModule: true };
+
+/***/ }),
+/* 11 */,
+/* 12 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__(15);
+var core = __webpack_require__(8);
+var ctx = __webpack_require__(32);
+var hide = __webpack_require__(33);
+var has = __webpack_require__(34);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -1579,14 +268,8 @@ module.exports = $export;
 
 
 /***/ }),
-/* 9 */,
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(170), __esModule: true };
-
-/***/ }),
-/* 11 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -1598,7 +281,88 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 
 /***/ }),
-/* 12 */
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var store = __webpack_require__(82)('wks');
+var uid = __webpack_require__(60);
+var Symbol = __webpack_require__(15).Symbol;
+var USE_SYMBOL = typeof Symbol == 'function';
+
+var $exports = module.exports = function (name) {
+  return store[name] || (store[name] =
+    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
+};
+
+$exports.store = store;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.logManager = undefined;
+
+var _kandyLogger = __webpack_require__(91);
+
+var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const manager = (0, _kandyLogger2.default)({ level: 'DEBUG' });
+const logManager = exports.logManager = manager;
+
+/***/ }),
+/* 18 */,
+/* 19 */
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+/* 20 */,
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__(36)(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__(27);
+var IE8_DOM_DEFINE = __webpack_require__(109);
+var toPrimitive = __webpack_require__(77);
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__(21) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1648,7 +412,6 @@ const SESSION_REMOVED = exports.SESSION_REMOVED = sessionPrefix + 'REMOVED';
 
 const SESSION_NEW_TRACK = exports.SESSION_NEW_TRACK = sessionPrefix + 'NEW_TRACK';
 const SESSION_TRACK_ENDED = exports.SESSION_TRACK_ENDED = sessionPrefix + 'TRACK_ENDED';
-const SESSION_CHANGE = exports.SESSION_CHANGE = sessionPrefix + 'CHANGE';
 const SESSION_TRACK_REPLACED = exports.SESSION_TRACK_REPLACED = sessionPrefix + 'TRACK_REPLACED';
 
 // Audio file from the `insertAudio` API has ended.
@@ -1678,296 +441,13 @@ const MEDIA_TRACK_ENDED = exports.MEDIA_TRACK_ENDED = mediaPrefix + 'TRACK_ENDED
 const SET_BROWSER_DETAILS = exports.SET_BROWSER_DETAILS = prefix + 'SET_BROWSER_DETAILS';
 
 /***/ }),
-/* 13 */
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _promise = __webpack_require__(10);
-
-var _promise2 = _interopRequireDefault(_promise);
-
-var _keys = __webpack_require__(54);
-
-var _keys2 = _interopRequireDefault(_keys);
-
-exports.mergeValues = mergeValues;
-exports.toQueryString = toQueryString;
-exports.autoRestart = autoRestart;
-exports.forwardAction = forwardAction;
-exports.normalizeServices = normalizeServices;
-exports.defer = defer;
-
-var _fp = __webpack_require__(2);
-
-var _queryString = __webpack_require__(183);
-
-var _queryString2 = _interopRequireDefault(_queryString);
-
-var _effects = __webpack_require__(6);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Deeply merges the values of multiple objects. Objects on the left receive the values from objects on their right.
- * Unlike lodash's default merge behavior this doesn't merge arrays.
- *
- * @name mergeValues
- * @param {...Object} objects - Objects to merge
- * @return {Object} A new object containing the merged values.
- */
-function mergeValues(...objects) {
-  return (0, _fp.mergeAllWith)((leftValue, rightValue) => {
-    // Overwrite the default behavior of lodash's merge for arrays and simply
-    // clobber what's on the left so we don't end up with merged arrays.
-    if ((0, _fp.isArray)(leftValue)) {
-      return rightValue;
-    }
-  }, objects);
-}
-
-/**
- * Utility function to convert an object to a query string.
- *
- * @param {Object} params An object of query parameters to be parsed and converted for use in a URL string
- * @param {Object} [options] Options to be passed to the query-string library
- * * @param {String} [options.arrayFormat] Format in which to compose array values which were passed as query parameters
- */
-// Libraries.
-function toQueryString(params = {}, options = {}) {
-  if ((0, _keys2.default)(params).length > 0) {
-    const stringifiedParams = _queryString2.default.stringify(params, options);
-    return '?' + stringifiedParams;
-  }
-  return '';
-}
-
-/**
- * Higher-order function to auto-restart sagas when they crash.
- * Based on: https://github.com/redux-saga/redux-saga/pull/644#issuecomment-266454875
- * @method autoRestart
- * @param  {Generator} saga The saga to wrap.
- * @return {Generator} Wrapped saga.
- */
-function autoRestart(saga) {
-  return function* autoRestarting(...args) {
-    // Only restart the saga if it crashed; avoid restarting it if
-    //      it returned normally.
-    let shouldRestart = false;
-    do {
-      try {
-        yield (0, _effects.call)(saga, ...args);
-        shouldRestart = false;
-      } catch (e) {
-        // TODO: Re-add this log line.
-        // Importing the LogManager in this file breaks tests for an unknown
-        //    reason. Should find out why so that we can log in our utils.
-        // log.error(`Unhandled error in saga ${saga.name}.`, e)
-        console.log(`Unhandled error in saga ${saga.name}.`, e);
-        shouldRestart = true;
-      }
-    } while (shouldRestart);
-  };
-}
-
-/**
- * Forwards the actions by directly dispatching them.
- * For example, this can be used with a takeEvery effect to grab actions from a channel and dispatch them.
- * @param {Object} action The action to be forwarded.
- * @example
- * const channel = eventChannel(...)
- * yield takeEvery(channel, forwardAction)
- */
-function* forwardAction(action) {
-  yield (0, _effects.put)(action);
-}
-
-/**
- * Ensures that services are in the same format understood by the server regardless,
- * of whether the client provides services as strings or objects.
- * @param {Array} services The list of services requested by the client.
- * @return {Array} A normalized list of services requested by the client.
- */
-function normalizeServices(services = []) {
-  return services.map(service => {
-    if ((0, _fp.isPlainObject)(service) && service.hasOwnProperty('service')) {
-      return service;
-    }
-    return { service: service };
-  });
-}
-
-/**
- * A deferred promise
- * Don't use this unless you know what you are doing:
- *  <https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns#the-deferred-anti-pattern>
- * @returns An object a with promise property and functions to resolve and reject
- */
-function defer() {
-  const d = {};
-  d.promise = new _promise2.default((resolve, reject) => {
-    d.resolve = resolve;
-    d.reject = reject;
-  });
-  return d;
-}
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var store = __webpack_require__(81)('wks');
-var uid = __webpack_require__(62);
-var Symbol = __webpack_require__(11).Symbol;
-var USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.logManager = undefined;
-
-var _kandyLogger = __webpack_require__(90);
-
-var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const manager = (0, _kandyLogger2.default)({ level: 'DEBUG' });
-const logManager = exports.logManager = manager;
-
-/***/ }),
-/* 16 */,
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(32)(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(24);
-var IE8_DOM_DEFINE = __webpack_require__(103);
-var toPrimitive = __webpack_require__(76);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(18) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * Constants relating to the Peer model.
- */
-const PEER = exports.PEER = {
-  TRICKLE_ICE: {
-    FULL: 'FULL',
-    HALF: 'HALF',
-    NONE: 'NONE'
-  },
-  // Defined by the RTCPeerConnection.iceGatheringState spec.
-  ICE_GATHERING_STATE: {
-    NEW: 'new',
-    GATHERING: 'gathering',
-    COMPLETE: 'complete'
-  },
-  ENDPOINT: {
-    LOCAL: 'local',
-    REMOTE: 'remote'
-  },
-  SDP_SEMANTICS: {
-    PLAN_B: 'plan-b',
-    UNIFIED_PLAN: 'unified-plan'
-  }
-
-  /**
-   * SDP constants for media direction.
-   * @type {Object}
-   */
-};const MEDIA_DIR = exports.MEDIA_DIR = {
-  INACTIVE: 'inactive',
-  SEND_ONLY: 'sendonly',
-  RECV_ONLY: 'recvonly',
-  SEND_RECV: 'sendrecv'
-
-  /**
-   * Reasons for calling the Ice Collection Check function.
-   * @name ICE_COLLECTION_CHECK_REASONS
-   */
-};const ICE_COLLECTION_CHECK_REASONS = exports.ICE_COLLECTION_CHECK_REASONS = {
-  ICE_GATHERING_STATE_CHANGE: 'IceGatheringStateChanged',
-  NEW_CANDIDATE: 'NewCandidate',
-  SCHEDULED: 'Scheduled'
-
-  /**
-   * Result types for the Ice Collection Check Function.
-   * @name ICE_COLLECTION_RESULT_TYPES
-   */
-};const ICE_COLLECTION_RESULT_TYPES = exports.ICE_COLLECTION_RESULT_TYPES = {
-  START_CALL: 'StartCall',
-  WAIT: 'Wait',
-  ERROR: 'Error'
-};
-
-/***/ }),
-/* 23 */,
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(17);
+var isObject = __webpack_require__(19);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -1975,50 +455,14 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 25 */
+/* 28 */,
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.miscActions = exports.mediaActions = exports.sessionActions = exports.trackActions = exports.deviceActions = undefined;
-
-var _devices = __webpack_require__(148);
-
-var deviceActionsImport = _interopRequireWildcard(_devices);
-
-var _tracks = __webpack_require__(218);
-
-var trackActionsImport = _interopRequireWildcard(_tracks);
-
-var _sessions = __webpack_require__(219);
-
-var sessionActionsImport = _interopRequireWildcard(_sessions);
-
-var _media = __webpack_require__(220);
-
-var mediaActionsImport = _interopRequireWildcard(_media);
-
-var _misc = __webpack_require__(221);
-
-var miscActionsImport = _interopRequireWildcard(_misc);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-// Apparently the following doesn't work:
-//      export * as newName from './place';
-// So import everything from each file, then re-export.
-const deviceActions = exports.deviceActions = deviceActionsImport;
-const trackActions = exports.trackActions = trackActionsImport;
-const sessionActions = exports.sessionActions = sessionActionsImport;
-const mediaActions = exports.mediaActions = mediaActionsImport;
-const miscActions = exports.miscActions = miscActionsImport;
+module.exports = { "default": __webpack_require__(191), __esModule: true };
 
 /***/ }),
-/* 26 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2361,1480 +805,70 @@ if (true) {
 
 
 /***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "CANCEL", function() { return /* reexport */ redux_saga_symbols_esm["a" /* CANCEL */]; });
-__webpack_require__.d(__webpack_exports__, "SAGA_LOCATION", function() { return /* reexport */ redux_saga_symbols_esm["g" /* SAGA_LOCATION */]; });
-__webpack_require__.d(__webpack_exports__, "buffers", function() { return /* reexport */ io_c3792963["i" /* H */]; });
-__webpack_require__.d(__webpack_exports__, "detach", function() { return /* reexport */ io_c3792963["j" /* I */]; });
-__webpack_require__.d(__webpack_exports__, "END", function() { return /* reexport */ END; });
-__webpack_require__.d(__webpack_exports__, "channel", function() { return /* reexport */ redux_saga_core_esm_channel; });
-__webpack_require__.d(__webpack_exports__, "eventChannel", function() { return /* reexport */ eventChannel; });
-__webpack_require__.d(__webpack_exports__, "isEnd", function() { return /* reexport */ redux_saga_core_esm_isEnd; });
-__webpack_require__.d(__webpack_exports__, "multicastChannel", function() { return /* reexport */ multicastChannel; });
-__webpack_require__.d(__webpack_exports__, "runSaga", function() { return /* reexport */ runSaga; });
-__webpack_require__.d(__webpack_exports__, "stdChannel", function() { return /* reexport */ stdChannel; });
 
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
-var redux_saga_symbols_esm = __webpack_require__(5);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(45);
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
-var redux_saga_is_esm = __webpack_require__(1);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/io-c3792963.js
-var io_c3792963 = __webpack_require__(0);
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux/es/redux.js + 5 modules
-var redux = __webpack_require__(96);
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/deferred/dist/redux-saga-deferred.esm.js
-function deferred() {
-  var def = {};
-  def.promise = new Promise(function (resolve, reject) {
-    def.resolve = resolve;
-    def.reject = reject;
-  });
-  return def;
-}
-function arrayOfDeferred(length) {
-  var arr = [];
-
-  for (var i = 0; i < length; i++) {
-    arr.push(deferred());
-  }
-
-  return arr;
-}
-
-/* harmony default export */ var redux_saga_deferred_esm = (deferred);
-
-
-// EXTERNAL MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
-var redux_saga_delay_p_esm = __webpack_require__(70);
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@redux-saga/core/dist/redux-saga-core.esm.js
-
-
-
-
-
-
-
-
-
-
-
-var redux_saga_core_esm_queue = [];
-/**
-  Variable to hold a counting semaphore
-  - Incrementing adds a lock and puts the scheduler in a `suspended` state (if it's not
-    already suspended)
-  - Decrementing releases a lock. Zero locks puts the scheduler in a `released` state. This
-    triggers flushing the queued tasks.
-**/
-
-var semaphore = 0;
-/**
-  Executes a task 'atomically'. Tasks scheduled during this execution will be queued
-  and flushed after this task has finished (assuming the scheduler endup in a released
-  state).
-**/
-
-function exec(task) {
-  try {
-    suspend();
-    task();
-  } finally {
-    release();
-  }
-}
-/**
-  Executes or queues a task depending on the state of the scheduler (`suspended` or `released`)
-**/
-
-
-function asap(task) {
-  redux_saga_core_esm_queue.push(task);
-
-  if (!semaphore) {
-    suspend();
-    redux_saga_core_esm_flush();
-  }
-}
-/**
- * Puts the scheduler in a `suspended` state and executes a task immediately.
- */
-
-function immediately(task) {
-  try {
-    suspend();
-    return task();
-  } finally {
-    redux_saga_core_esm_flush();
-  }
-}
-/**
-  Puts the scheduler in a `suspended` state. Scheduled tasks will be queued until the
-  scheduler is released.
-**/
-
-function suspend() {
-  semaphore++;
-}
-/**
-  Puts the scheduler in a `released` state.
-**/
-
-
-function release() {
-  semaphore--;
-}
-/**
-  Releases the current lock. Executes all queued tasks if the scheduler is in the released state.
-**/
-
-
-function redux_saga_core_esm_flush() {
-  release();
-  var task;
-
-  while (!semaphore && (task = redux_saga_core_esm_queue.shift()) !== undefined) {
-    exec(task);
-  }
-}
-
-var array = function array(patterns) {
-  return function (input) {
-    return patterns.some(function (p) {
-      return redux_saga_core_esm_matcher(p)(input);
-    });
-  };
-};
-var predicate = function predicate(_predicate) {
-  return function (input) {
-    return _predicate(input);
-  };
-};
-var string = function string(pattern) {
-  return function (input) {
-    return input.type === String(pattern);
-  };
-};
-var symbol = function symbol(pattern) {
-  return function (input) {
-    return input.type === pattern;
-  };
-};
-var redux_saga_core_esm_wildcard = function wildcard() {
-  return io_c3792963["U" /* k */];
-};
-function redux_saga_core_esm_matcher(pattern) {
-  // prettier-ignore
-  var matcherCreator = pattern === '*' ? redux_saga_core_esm_wildcard : Object(redux_saga_is_esm["k" /* string */])(pattern) ? string : Object(redux_saga_is_esm["a" /* array */])(pattern) ? array : Object(redux_saga_is_esm["l" /* stringableFunc */])(pattern) ? string : Object(redux_saga_is_esm["d" /* func */])(pattern) ? predicate : Object(redux_saga_is_esm["m" /* symbol */])(pattern) ? symbol : null;
-
-  if (matcherCreator === null) {
-    throw new Error("invalid pattern: " + pattern);
-  }
-
-  return matcherCreator(pattern);
-}
-
-var END = {
-  type: redux_saga_symbols_esm["b" /* CHANNEL_END_TYPE */]
-};
-var redux_saga_core_esm_isEnd = function isEnd(a) {
-  return a && a.type === redux_saga_symbols_esm["b" /* CHANNEL_END_TYPE */];
-};
-var CLOSED_CHANNEL_WITH_TAKERS = 'Cannot have a closed channel with pending takers';
-var INVALID_BUFFER = 'invalid buffer passed to channel factory function';
-var UNDEFINED_INPUT_ERROR = "Saga or channel was provided with an undefined action\nHints:\n  - check that your Action Creator returns a non-undefined value\n  - if the Saga was started using runSaga, check that your subscribe source provides the action to its listeners";
-function redux_saga_core_esm_channel(buffer$1) {
-  if (buffer$1 === void 0) {
-    buffer$1 = Object(io_c3792963["O" /* e */])();
-  }
-
-  var closed = false;
-  var takers = [];
-
-  if (false) {}
-
-  function checkForbiddenStates() {
-    if (closed && takers.length) {
-      throw Object(io_c3792963["S" /* i */])(CLOSED_CHANNEL_WITH_TAKERS);
-    }
-
-    if (takers.length && !buffer$1.isEmpty()) {
-      throw Object(io_c3792963["S" /* i */])('Cannot have pending takers with non empty buffer');
-    }
-  }
-
-  function put(input) {
-    if (false) {}
-
-    if (closed) {
-      return;
-    }
-
-    if (takers.length === 0) {
-      return buffer$1.put(input);
-    }
-
-    var cb = takers.shift();
-    cb(input);
-  }
-
-  function take(cb) {
-    if (false) {}
-
-    if (closed && buffer$1.isEmpty()) {
-      cb(END);
-    } else if (!buffer$1.isEmpty()) {
-      cb(buffer$1.take());
-    } else {
-      takers.push(cb);
-
-      cb.cancel = function () {
-        Object(io_c3792963["bb" /* r */])(takers, cb);
-      };
-    }
-  }
-
-  function flush(cb) {
-    if (false) {}
-
-    if (closed && buffer$1.isEmpty()) {
-      cb(END);
-      return;
-    }
-
-    cb(buffer$1.flush());
-  }
-
-  function close() {
-    if (false) {}
-
-    if (closed) {
-      return;
-    }
-
-    closed = true;
-    var arr = takers;
-    takers = [];
-
-    for (var i = 0, len = arr.length; i < len; i++) {
-      var taker = arr[i];
-      taker(END);
-    }
-  }
-
-  return {
-    take: take,
-    put: put,
-    flush: flush,
-    close: close
-  };
-}
-function eventChannel(subscribe, buffer) {
-  if (buffer === void 0) {
-    buffer = Object(io_c3792963["X" /* n */])();
-  }
-
-  var closed = false;
-  var unsubscribe;
-  var chan = redux_saga_core_esm_channel(buffer);
-
-  var close = function close() {
-    if (closed) {
-      return;
-    }
-
-    closed = true;
-
-    if (Object(redux_saga_is_esm["d" /* func */])(unsubscribe)) {
-      unsubscribe();
-    }
-
-    chan.close();
-  };
-
-  unsubscribe = subscribe(function (input) {
-    if (redux_saga_core_esm_isEnd(input)) {
-      close();
-      return;
-    }
-
-    chan.put(input);
-  });
-
-  if (false) {}
-
-  unsubscribe = Object(io_c3792963["Y" /* o */])(unsubscribe);
-
-  if (closed) {
-    unsubscribe();
-  }
-
-  return {
-    take: chan.take,
-    flush: chan.flush,
-    close: close
-  };
-}
-function multicastChannel() {
-  var _ref;
-
-  var closed = false;
-  var currentTakers = [];
-  var nextTakers = currentTakers;
-
-  function checkForbiddenStates() {
-    if (closed && nextTakers.length) {
-      throw Object(io_c3792963["S" /* i */])(CLOSED_CHANNEL_WITH_TAKERS);
-    }
-  }
-
-  var ensureCanMutateNextTakers = function ensureCanMutateNextTakers() {
-    if (nextTakers !== currentTakers) {
-      return;
-    }
-
-    nextTakers = currentTakers.slice();
-  };
-
-  var close = function close() {
-    if (false) {}
-
-    closed = true;
-    var takers = currentTakers = nextTakers;
-    nextTakers = [];
-    takers.forEach(function (taker) {
-      taker(END);
-    });
-  };
-
-  return _ref = {}, _ref[redux_saga_symbols_esm["e" /* MULTICAST */]] = true, _ref.put = function put(input) {
-    if (false) {}
-
-    if (closed) {
-      return;
-    }
-
-    if (redux_saga_core_esm_isEnd(input)) {
-      close();
-      return;
-    }
-
-    var takers = currentTakers = nextTakers;
-
-    for (var i = 0, len = takers.length; i < len; i++) {
-      var taker = takers[i];
-
-      if (taker[redux_saga_symbols_esm["d" /* MATCH */]](input)) {
-        taker.cancel();
-        taker(input);
-      }
-    }
-  }, _ref.take = function take(cb, matcher) {
-    if (matcher === void 0) {
-      matcher = redux_saga_core_esm_wildcard;
-    }
-
-    if (false) {}
-
-    if (closed) {
-      cb(END);
-      return;
-    }
-
-    cb[redux_saga_symbols_esm["d" /* MATCH */]] = matcher;
-    ensureCanMutateNextTakers();
-    nextTakers.push(cb);
-    cb.cancel = Object(io_c3792963["Y" /* o */])(function () {
-      ensureCanMutateNextTakers();
-      Object(io_c3792963["bb" /* r */])(nextTakers, cb);
-    });
-  }, _ref.close = close, _ref;
-}
-function stdChannel() {
-  var chan = multicastChannel();
-  var put = chan.put;
-
-  chan.put = function (input) {
-    if (input[redux_saga_symbols_esm["f" /* SAGA_ACTION */]]) {
-      put(input);
-      return;
-    }
-
-    asap(function () {
-      put(input);
-    });
-  };
-
-  return chan;
-}
-
-var RUNNING = 0;
-var CANCELLED = 1;
-var ABORTED = 2;
-var DONE = 3;
-
-function resolvePromise(promise, cb) {
-  var cancelPromise = promise[redux_saga_symbols_esm["a" /* CANCEL */]];
-
-  if (Object(redux_saga_is_esm["d" /* func */])(cancelPromise)) {
-    cb.cancel = cancelPromise;
-  }
-
-  promise.then(cb, function (error) {
-    cb(error, true);
-  });
-}
-
-var current = 0;
-var nextSagaId = (function () {
-  return ++current;
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-
-var _effectRunnerMap;
-
-function getIteratorMetaInfo(iterator, fn) {
-  if (iterator.isSagaIterator) {
-    return {
-      name: iterator.meta.name
-    };
-  }
-
-  return Object(io_c3792963["T" /* j */])(fn);
-}
-
-function createTaskIterator(_ref) {
-  var context = _ref.context,
-      fn = _ref.fn,
-      args = _ref.args;
-
-  // catch synchronous failures; see #152 and #441
-  try {
-    var result = fn.apply(context, args); // i.e. a generator function returns an iterator
-
-    if (Object(redux_saga_is_esm["e" /* iterator */])(result)) {
-      return result;
-    }
-
-    var resolved = false;
-
-    var next = function next(arg) {
-      if (!resolved) {
-        resolved = true; // Only promises returned from fork will be interpreted. See #1573
-
-        return {
-          value: result,
-          done: !Object(redux_saga_is_esm["j" /* promise */])(result)
-        };
-      } else {
-        return {
-          value: arg,
-          done: true
-        };
-      }
-    };
-
-    return Object(io_c3792963["ab" /* q */])(next);
-  } catch (err) {
-    // do not bubble up synchronous failures for detached forks
-    // instead create a failed task. See #152 and #441
-    return Object(io_c3792963["ab" /* q */])(function () {
-      throw err;
-    });
-  }
-}
-
-function runPutEffect(env, _ref2, cb) {
-  var channel = _ref2.channel,
-      action = _ref2.action,
-      resolve = _ref2.resolve;
-
-  /**
-   Schedule the put in case another saga is holding a lock.
-   The put will be executed atomically. ie nested puts will execute after
-   this put has terminated.
-   **/
-  asap(function () {
-    var result;
-
-    try {
-      result = (channel ? channel.put : env.dispatch)(action);
-    } catch (error) {
-      cb(error, true);
-      return;
-    }
-
-    if (resolve && Object(redux_saga_is_esm["j" /* promise */])(result)) {
-      resolvePromise(result, cb);
-    } else {
-      cb(result);
-    }
-  }); // Put effects are non cancellables
-}
-
-function runTakeEffect(env, _ref3, cb) {
-  var _ref3$channel = _ref3.channel,
-      channel = _ref3$channel === void 0 ? env.channel : _ref3$channel,
-      pattern = _ref3.pattern,
-      maybe = _ref3.maybe;
-
-  var takeCb = function takeCb(input) {
-    if (input instanceof Error) {
-      cb(input, true);
-      return;
-    }
-
-    if (redux_saga_core_esm_isEnd(input) && !maybe) {
-      cb(redux_saga_symbols_esm["k" /* TERMINATE */]);
-      return;
-    }
-
-    cb(input);
-  };
-
-  try {
-    channel.take(takeCb, Object(redux_saga_is_esm["g" /* notUndef */])(pattern) ? redux_saga_core_esm_matcher(pattern) : null);
-  } catch (err) {
-    cb(err, true);
-    return;
-  }
-
-  cb.cancel = takeCb.cancel;
-}
-
-function runCallEffect(env, _ref4, cb, _ref5) {
-  var context = _ref4.context,
-      fn = _ref4.fn,
-      args = _ref4.args;
-  var task = _ref5.task;
-
-  // catch synchronous failures; see #152
-  try {
-    var result = fn.apply(context, args);
-
-    if (Object(redux_saga_is_esm["j" /* promise */])(result)) {
-      resolvePromise(result, cb);
-      return;
-    }
-
-    if (Object(redux_saga_is_esm["e" /* iterator */])(result)) {
-      // resolve iterator
-      proc(env, result, task.context, current, Object(io_c3792963["T" /* j */])(fn),
-      /* isRoot */
-      false, cb);
-      return;
-    }
-
-    cb(result);
-  } catch (error) {
-    cb(error, true);
-  }
-}
-
-function runCPSEffect(env, _ref6, cb) {
-  var context = _ref6.context,
-      fn = _ref6.fn,
-      args = _ref6.args;
-
-  // CPS (ie node style functions) can define their own cancellation logic
-  // by setting cancel field on the cb
-  // catch synchronous failures; see #152
-  try {
-    var cpsCb = function cpsCb(err, res) {
-      if (Object(redux_saga_is_esm["n" /* undef */])(err)) {
-        cb(res);
-      } else {
-        cb(err, true);
-      }
-    };
-
-    fn.apply(context, args.concat(cpsCb));
-
-    if (cpsCb.cancel) {
-      cb.cancel = cpsCb.cancel;
-    }
-  } catch (error) {
-    cb(error, true);
-  }
-}
-
-function runForkEffect(env, _ref7, cb, _ref8) {
-  var context = _ref7.context,
-      fn = _ref7.fn,
-      args = _ref7.args,
-      detached = _ref7.detached;
-  var parent = _ref8.task;
-  var taskIterator = createTaskIterator({
-    context: context,
-    fn: fn,
-    args: args
-  });
-  var meta = getIteratorMetaInfo(taskIterator, fn);
-  immediately(function () {
-    var child = proc(env, taskIterator, parent.context, current, meta, detached, undefined);
-
-    if (detached) {
-      cb(child);
-    } else {
-      if (child.isRunning()) {
-        parent.queue.addTask(child);
-        cb(child);
-      } else if (child.isAborted()) {
-        parent.queue.abort(child.error());
-      } else {
-        cb(child);
-      }
-    }
-  }); // Fork effects are non cancellables
-}
-
-function runJoinEffect(env, taskOrTasks, cb, _ref9) {
-  var task = _ref9.task;
-
-  var joinSingleTask = function joinSingleTask(taskToJoin, cb) {
-    if (taskToJoin.isRunning()) {
-      var joiner = {
-        task: task,
-        cb: cb
-      };
-
-      cb.cancel = function () {
-        if (taskToJoin.isRunning()) Object(io_c3792963["bb" /* r */])(taskToJoin.joiners, joiner);
-      };
-
-      taskToJoin.joiners.push(joiner);
-    } else {
-      if (taskToJoin.isAborted()) {
-        cb(taskToJoin.error(), true);
-      } else {
-        cb(taskToJoin.result());
-      }
-    }
-  };
-
-  if (Object(redux_saga_is_esm["a" /* array */])(taskOrTasks)) {
-    if (taskOrTasks.length === 0) {
-      cb([]);
-      return;
-    }
-
-    var childCallbacks = Object(io_c3792963["V" /* l */])(taskOrTasks, cb);
-    taskOrTasks.forEach(function (t, i) {
-      joinSingleTask(t, childCallbacks[i]);
-    });
-  } else {
-    joinSingleTask(taskOrTasks, cb);
-  }
-}
-
-function cancelSingleTask(taskToCancel) {
-  if (taskToCancel.isRunning()) {
-    taskToCancel.cancel();
-  }
-}
-
-function runCancelEffect(env, taskOrTasks, cb, _ref10) {
-  var task = _ref10.task;
-
-  if (taskOrTasks === redux_saga_symbols_esm["h" /* SELF_CANCELLATION */]) {
-    cancelSingleTask(task);
-  } else if (Object(redux_saga_is_esm["a" /* array */])(taskOrTasks)) {
-    taskOrTasks.forEach(cancelSingleTask);
-  } else {
-    cancelSingleTask(taskOrTasks);
-  }
-
-  cb(); // cancel effects are non cancellables
-}
-
-function runAllEffect(env, effects, cb, _ref11) {
-  var digestEffect = _ref11.digestEffect;
-  var effectId = current;
-  var keys = Object.keys(effects);
-
-  if (keys.length === 0) {
-    cb(Object(redux_saga_is_esm["a" /* array */])(effects) ? [] : {});
-    return;
-  }
-
-  var childCallbacks = Object(io_c3792963["V" /* l */])(effects, cb);
-  keys.forEach(function (key) {
-    digestEffect(effects[key], effectId, childCallbacks[key], key);
-  });
-}
-
-function runRaceEffect(env, effects, cb, _ref12) {
-  var digestEffect = _ref12.digestEffect;
-  var effectId = current;
-  var keys = Object.keys(effects);
-  var response = Object(redux_saga_is_esm["a" /* array */])(effects) ? Object(io_c3792963["W" /* m */])(keys.length) : {};
-  var childCbs = {};
-  var completed = false;
-  keys.forEach(function (key) {
-    var chCbAtKey = function chCbAtKey(res, isErr) {
-      if (completed) {
-        return;
-      }
-
-      if (isErr || Object(io_c3792963["cb" /* s */])(res)) {
-        // Race Auto cancellation
-        cb.cancel();
-        cb(res, isErr);
-      } else {
-        cb.cancel();
-        completed = true;
-        response[key] = res;
-        cb(response);
-      }
-    };
-
-    chCbAtKey.cancel = io_c3792963["db" /* t */];
-    childCbs[key] = chCbAtKey;
-  });
-
-  cb.cancel = function () {
-    // prevents unnecessary cancellation
-    if (!completed) {
-      completed = true;
-      keys.forEach(function (key) {
-        return childCbs[key].cancel();
-      });
-    }
-  };
-
-  keys.forEach(function (key) {
-    if (completed) {
-      return;
-    }
-
-    digestEffect(effects[key], effectId, childCbs[key], key);
-  });
-}
-
-function runSelectEffect(env, _ref13, cb) {
-  var selector = _ref13.selector,
-      args = _ref13.args;
-
-  try {
-    var state = selector.apply(void 0, [env.getState()].concat(args));
-    cb(state);
-  } catch (error) {
-    cb(error, true);
-  }
-}
-
-function runChannelEffect(env, _ref14, cb) {
-  var pattern = _ref14.pattern,
-      buffer = _ref14.buffer;
-  var chan = redux_saga_core_esm_channel(buffer);
-  var match = redux_saga_core_esm_matcher(pattern);
-
-  var taker = function taker(action) {
-    if (!redux_saga_core_esm_isEnd(action)) {
-      env.channel.take(taker, match);
-    }
-
-    chan.put(action);
-  };
-
-  var close = chan.close;
-
-  chan.close = function () {
-    taker.cancel();
-    close();
-  };
-
-  env.channel.take(taker, match);
-  cb(chan);
-}
-
-function runCancelledEffect(env, data, cb, _ref15) {
-  var task = _ref15.task;
-  cb(task.isCancelled());
-}
-
-function runFlushEffect(env, channel, cb) {
-  channel.flush(cb);
-}
-
-function runGetContextEffect(env, prop, cb, _ref16) {
-  var task = _ref16.task;
-  cb(task.context[prop]);
-}
-
-function runSetContextEffect(env, props, cb, _ref17) {
-  var task = _ref17.task;
-  Object(io_c3792963["Z" /* p */])(task.context, props);
-  cb();
-}
-
-var effectRunnerMap = (_effectRunnerMap = {}, _effectRunnerMap[io_c3792963["u" /* T */]] = runTakeEffect, _effectRunnerMap[io_c3792963["q" /* P */]] = runPutEffect, _effectRunnerMap[io_c3792963["b" /* A */]] = runAllEffect, _effectRunnerMap[io_c3792963["s" /* R */]] = runRaceEffect, _effectRunnerMap[io_c3792963["d" /* C */]] = runCallEffect, _effectRunnerMap[io_c3792963["C" /* a */]] = runCPSEffect, _effectRunnerMap[io_c3792963["g" /* F */]] = runForkEffect, _effectRunnerMap[io_c3792963["k" /* J */]] = runJoinEffect, _effectRunnerMap[io_c3792963["L" /* b */]] = runCancelEffect, _effectRunnerMap[io_c3792963["t" /* S */]] = runSelectEffect, _effectRunnerMap[io_c3792963["N" /* d */]] = runChannelEffect, _effectRunnerMap[io_c3792963["P" /* f */]] = runCancelledEffect, _effectRunnerMap[io_c3792963["Q" /* g */]] = runFlushEffect, _effectRunnerMap[io_c3792963["h" /* G */]] = runGetContextEffect, _effectRunnerMap[io_c3792963["R" /* h */]] = runSetContextEffect, _effectRunnerMap);
-
 /**
- Used to track a parent task and its forks
- In the fork model, forked tasks are attached by default to their parent
- We model this using the concept of Parent task && main Task
- main task is the main flow of the current Generator, the parent tasks is the
- aggregation of the main tasks + all its forked tasks.
- Thus the whole model represents an execution tree with multiple branches (vs the
- linear execution tree in sequential (non parallel) programming)
-
- A parent tasks has the following semantics
- - It completes if all its forks either complete or all cancelled
- - If it's cancelled, all forks are cancelled as well
- - It aborts if any uncaught error bubbles up from forks
- - If it completes, the return value is the one returned by the main task
- **/
-
-function forkQueue(mainTask, onAbort, cont) {
-  var tasks = [];
-  var result;
-  var completed = false;
-  addTask(mainTask);
-
-  var getTasks = function getTasks() {
-    return tasks;
-  };
-
-  function abort(err) {
-    onAbort();
-    cancelAll();
-    cont(err, true);
+ * Constants relating to the Peer model.
+ */
+const PEER = exports.PEER = {
+  TRICKLE_ICE: {
+    FULL: 'FULL',
+    HALF: 'HALF',
+    NONE: 'NONE'
+  },
+  // Defined by the RTCPeerConnection.iceGatheringState spec.
+  ICE_GATHERING_STATE: {
+    NEW: 'new',
+    GATHERING: 'gathering',
+    COMPLETE: 'complete'
+  },
+  ENDPOINT: {
+    LOCAL: 'local',
+    REMOTE: 'remote'
   }
 
-  function addTask(task) {
-    tasks.push(task);
-
-    task.cont = function (res, isErr) {
-      if (completed) {
-        return;
-      }
-
-      Object(io_c3792963["bb" /* r */])(tasks, task);
-      task.cont = io_c3792963["db" /* t */];
-
-      if (isErr) {
-        abort(res);
-      } else {
-        if (task === mainTask) {
-          result = res;
-        }
-
-        if (!tasks.length) {
-          completed = true;
-          cont(result);
-        }
-      }
-    };
-  }
-
-  function cancelAll() {
-    if (completed) {
-      return;
-    }
-
-    completed = true;
-    tasks.forEach(function (t) {
-      t.cont = io_c3792963["db" /* t */];
-      t.cancel();
-    });
-    tasks = [];
-  }
-
-  return {
-    addTask: addTask,
-    cancelAll: cancelAll,
-    abort: abort,
-    getTasks: getTasks
-  };
-}
-
-// there can be only a single saga error created at any given moment
-
-function formatLocation(fileName, lineNumber) {
-  return fileName + "?" + lineNumber;
-}
-
-function effectLocationAsString(effect) {
-  var location = Object(io_c3792963["fb" /* v */])(effect);
-
-  if (location) {
-    var code = location.code,
-        fileName = location.fileName,
-        lineNumber = location.lineNumber;
-    var source = code + "  " + formatLocation(fileName, lineNumber);
-    return source;
-  }
-
-  return '';
-}
-
-function sagaLocationAsString(sagaMeta) {
-  var name = sagaMeta.name,
-      location = sagaMeta.location;
-
-  if (location) {
-    return name + "  " + formatLocation(location.fileName, location.lineNumber);
-  }
-
-  return name;
-}
-
-function cancelledTasksAsString(sagaStack) {
-  var cancelledTasks = Object(io_c3792963["eb" /* u */])(function (i) {
-    return i.cancelledTasks;
-  }, sagaStack);
-
-  if (!cancelledTasks.length) {
-    return '';
-  }
-
-  return ['Tasks cancelled due to error:'].concat(cancelledTasks).join('\n');
-}
-
-var crashedEffect = null;
-var redux_saga_core_esm_sagaStack = [];
-var addSagaFrame = function addSagaFrame(frame) {
-  frame.crashedEffect = crashedEffect;
-  redux_saga_core_esm_sagaStack.push(frame);
-};
-var clear = function clear() {
-  crashedEffect = null;
-  redux_saga_core_esm_sagaStack.length = 0;
-}; // this sets crashed effect for the soon-to-be-reported saga frame
-// this slightly streatches the singleton nature of this module into wrong direction
-// as it's even less obvious what's the data flow here, but it is what it is for now
-
-var setCrashedEffect = function setCrashedEffect(effect) {
-  crashedEffect = effect;
-};
-/**
-  @returns {string}
-
-  @example
-  The above error occurred in task errorInPutSaga {pathToFile}
-  when executing effect put({type: 'REDUCER_ACTION_ERROR_IN_PUT'}) {pathToFile}
-      created by fetchSaga {pathToFile}
-      created by rootSaga {pathToFile}
-*/
-
-var redux_saga_core_esm_toString = function toString() {
-  var firstSaga = redux_saga_core_esm_sagaStack[0],
-      otherSagas = redux_saga_core_esm_sagaStack.slice(1);
-  var crashedEffectLocation = firstSaga.crashedEffect ? effectLocationAsString(firstSaga.crashedEffect) : null;
-  var errorMessage = "The above error occurred in task " + sagaLocationAsString(firstSaga.meta) + (crashedEffectLocation ? " \n when executing effect " + crashedEffectLocation : '');
-  return [errorMessage].concat(otherSagas.map(function (s) {
-    return "    created by " + sagaLocationAsString(s.meta);
-  }), [cancelledTasksAsString(redux_saga_core_esm_sagaStack)]).join('\n');
-};
-
-function newTask(env, mainTask, parentContext, parentEffectId, meta, isRoot, cont) {
-  var _task;
-
-  if (cont === void 0) {
-    cont = io_c3792963["db" /* t */];
-  }
-
-  var status = RUNNING;
-  var taskResult;
-  var taskError;
-  var deferredEnd = null;
-  var cancelledDueToErrorTasks = [];
-  var context = Object.create(parentContext);
-  var queue = forkQueue(mainTask, function onAbort() {
-    cancelledDueToErrorTasks.push.apply(cancelledDueToErrorTasks, queue.getTasks().map(function (t) {
-      return t.meta.name;
-    }));
-  }, end);
   /**
-   This may be called by a parent generator to trigger/propagate cancellation
-   cancel all pending tasks (including the main task), then end the current task.
-    Cancellation propagates down to the whole execution tree held by this Parent task
-   It's also propagated to all joiners of this task and their execution tree/joiners
-    Cancellation is noop for terminated/Cancelled tasks tasks
-   **/
-
-  function cancel() {
-    if (status === RUNNING) {
-      // Setting status to CANCELLED does not necessarily mean that the task/iterators are stopped
-      // effects in the iterator's finally block will still be executed
-      status = CANCELLED;
-      queue.cancelAll(); // Ending with a TASK_CANCEL will propagate the Cancellation to all joiners
-
-      end(redux_saga_symbols_esm["j" /* TASK_CANCEL */], false);
-    }
-  }
-
-  function end(result, isErr) {
-    if (!isErr) {
-      // The status here may be RUNNING or CANCELLED
-      // If the status is CANCELLED, then we do not need to change it here
-      if (result === redux_saga_symbols_esm["j" /* TASK_CANCEL */]) {
-        status = CANCELLED;
-      } else if (status !== CANCELLED) {
-        status = DONE;
-      }
-
-      taskResult = result;
-      deferredEnd && deferredEnd.resolve(result);
-    } else {
-      status = ABORTED;
-      addSagaFrame({
-        meta: meta,
-        cancelledTasks: cancelledDueToErrorTasks
-      });
-
-      if (task.isRoot) {
-        var sagaStack = redux_saga_core_esm_toString(); // we've dumped the saga stack to string and are passing it to user's code
-        // we know that it won't be needed anymore and we need to clear it
-
-        clear();
-        env.onError(result, {
-          sagaStack: sagaStack
-        });
-      }
-
-      taskError = result;
-      deferredEnd && deferredEnd.reject(result);
-    }
-
-    task.cont(result, isErr);
-    task.joiners.forEach(function (joiner) {
-      joiner.cb(result, isErr);
-    });
-    task.joiners = null;
-  }
-
-  function setContext(props) {
-    if (false) {}
-
-    Object(io_c3792963["Z" /* p */])(context, props);
-  }
-
-  function toPromise() {
-    if (deferredEnd) {
-      return deferredEnd.promise;
-    }
-
-    deferredEnd = redux_saga_deferred_esm();
-
-    if (status === ABORTED) {
-      deferredEnd.reject(taskError);
-    } else if (status !== RUNNING) {
-      deferredEnd.resolve(taskResult);
-    }
-
-    return deferredEnd.promise;
-  }
-
-  var task = (_task = {}, _task[redux_saga_symbols_esm["i" /* TASK */]] = true, _task.id = parentEffectId, _task.meta = meta, _task.isRoot = isRoot, _task.context = context, _task.joiners = [], _task.queue = queue, _task.cancel = cancel, _task.cont = cont, _task.end = end, _task.setContext = setContext, _task.toPromise = toPromise, _task.isRunning = function isRunning() {
-    return status === RUNNING;
-  }, _task.isCancelled = function isCancelled() {
-    return status === CANCELLED || status === RUNNING && mainTask.status === CANCELLED;
-  }, _task.isAborted = function isAborted() {
-    return status === ABORTED;
-  }, _task.result = function result() {
-    return taskResult;
-  }, _task.error = function error() {
-    return taskError;
-  }, _task);
-  return task;
-}
-
-function proc(env, iterator$1, parentContext, parentEffectId, meta, isRoot, cont) {
-  if (false) {}
-
-  var finalRunEffect = env.finalizeRunEffect(runEffect);
-  /**
-    Tracks the current effect cancellation
-    Each time the generator progresses. calling runEffect will set a new value
-    on it. It allows propagating cancellation to child effects
-  **/
-
-  next.cancel = io_c3792963["db" /* t */];
-  /** Creates a main task to track the main flow */
-
-  var mainTask = {
-    meta: meta,
-    cancel: cancelMain,
-    status: RUNNING
-  };
-  /**
-   Creates a new task descriptor for this generator.
-   A task is the aggregation of it's mainTask and all it's forked tasks.
-   **/
-
-  var task = newTask(env, mainTask, parentContext, parentEffectId, meta, isRoot, cont);
-  var executingContext = {
-    task: task,
-    digestEffect: digestEffect
-  };
-  /**
-    cancellation of the main task. We'll simply resume the Generator with a TASK_CANCEL
-  **/
-
-  function cancelMain() {
-    if (mainTask.status === RUNNING) {
-      mainTask.status = CANCELLED;
-      next(redux_saga_symbols_esm["j" /* TASK_CANCEL */]);
-    }
-  }
-  /**
-    attaches cancellation logic to this task's continuation
-    this will permit cancellation to propagate down the call chain
-  **/
-
-
-  if (cont) {
-    cont.cancel = task.cancel;
-  } // kicks up the generator
-
-
-  next(); // then return the task descriptor to the caller
-
-  return task;
-  /**
-   * This is the generator driver
-   * It's a recursive async/continuation function which calls itself
-   * until the generator terminates or throws
-   * @param {internal commands(TASK_CANCEL | TERMINATE) | any} arg - value, generator will be resumed with.
-   * @param {boolean} isErr - the flag shows if effect finished with an error
-   *
-   * receives either (command | effect result, false) or (any thrown thing, true)
+   * SDP constants for media direction.
+   * @type {Object}
    */
+};const MEDIA_DIR = exports.MEDIA_DIR = {
+  INACTIVE: 'inactive',
+  SEND_ONLY: 'sendonly',
+  RECV_ONLY: 'recvonly',
+  SEND_RECV: 'sendrecv'
 
-  function next(arg, isErr) {
-    try {
-      var result;
+  /**
+   * Reasons for calling the Ice Collection Check function.
+   * @name ICE_COLLECTION_CHECK_REASONS
+   */
+};const ICE_COLLECTION_CHECK_REASONS = exports.ICE_COLLECTION_CHECK_REASONS = {
+  ICE_GATHERING_STATE_CHANGE: 'IceGatheringStateChanged',
+  NEW_CANDIDATE: 'NewCandidate',
+  SCHEDULED: 'Scheduled'
 
-      if (isErr) {
-        result = iterator$1.throw(arg); // user handled the error, we can clear bookkept values
-
-        clear();
-      } else if (Object(io_c3792963["gb" /* y */])(arg)) {
-        /**
-          getting TASK_CANCEL automatically cancels the main task
-          We can get this value here
-           - By cancelling the parent task manually
-          - By joining a Cancelled task
-        **/
-        mainTask.status = CANCELLED;
-        /**
-          Cancels the current effect; this will propagate the cancellation down to any called tasks
-        **/
-
-        next.cancel();
-        /**
-          If this Generator has a `return` method then invokes it
-          This will jump to the finally block
-        **/
-
-        result = Object(redux_saga_is_esm["d" /* func */])(iterator$1.return) ? iterator$1.return(redux_saga_symbols_esm["j" /* TASK_CANCEL */]) : {
-          done: true,
-          value: redux_saga_symbols_esm["j" /* TASK_CANCEL */]
-        };
-      } else if (Object(io_c3792963["hb" /* z */])(arg)) {
-        // We get TERMINATE flag, i.e. by taking from a channel that ended using `take` (and not `takem` used to trap End of channels)
-        result = Object(redux_saga_is_esm["d" /* func */])(iterator$1.return) ? iterator$1.return() : {
-          done: true
-        };
-      } else {
-        result = iterator$1.next(arg);
-      }
-
-      if (!result.done) {
-        digestEffect(result.value, parentEffectId, next);
-      } else {
-        /**
-          This Generator has ended, terminate the main task and notify the fork queue
-        **/
-        if (mainTask.status !== CANCELLED) {
-          mainTask.status = DONE;
-        }
-
-        mainTask.cont(result.value);
-      }
-    } catch (error) {
-      if (mainTask.status === CANCELLED) {
-        throw error;
-      }
-
-      mainTask.status = ABORTED;
-      mainTask.cont(error, true);
-    }
-  }
-
-  function runEffect(effect, effectId, currCb) {
-    /**
-      each effect runner must attach its own logic of cancellation to the provided callback
-      it allows this generator to propagate cancellation downward.
-       ATTENTION! effect runners must setup the cancel logic by setting cb.cancel = [cancelMethod]
-      And the setup must occur before calling the callback
-       This is a sort of inversion of control: called async functions are responsible
-      of completing the flow by calling the provided continuation; while caller functions
-      are responsible for aborting the current flow by calling the attached cancel function
-       Library users can attach their own cancellation logic to promises by defining a
-      promise[CANCEL] method in their returned promises
-      ATTENTION! calling cancel must have no effect on an already completed or cancelled effect
-    **/
-    if (Object(redux_saga_is_esm["j" /* promise */])(effect)) {
-      resolvePromise(effect, currCb);
-    } else if (Object(redux_saga_is_esm["e" /* iterator */])(effect)) {
-      // resolve iterator
-      proc(env, effect, task.context, effectId, meta,
-      /* isRoot */
-      false, currCb);
-    } else if (effect && effect[redux_saga_symbols_esm["c" /* IO */]]) {
-      var effectRunner = effectRunnerMap[effect.type];
-      effectRunner(env, effect.payload, currCb, executingContext);
-    } else {
-      // anything else returned as is
-      currCb(effect);
-    }
-  }
-
-  function digestEffect(effect, parentEffectId, cb, label) {
-    if (label === void 0) {
-      label = '';
-    }
-
-    var effectId = nextSagaId();
-    env.sagaMonitor && env.sagaMonitor.effectTriggered({
-      effectId: effectId,
-      parentEffectId: parentEffectId,
-      label: label,
-      effect: effect
-    });
-    /**
-      completion callback and cancel callback are mutually exclusive
-      We can't cancel an already completed effect
-      And We can't complete an already cancelled effectId
-    **/
-
-    var effectSettled; // Completion callback passed to the appropriate effect runner
-
-    function currCb(res, isErr) {
-      if (effectSettled) {
-        return;
-      }
-
-      effectSettled = true;
-      cb.cancel = io_c3792963["db" /* t */]; // defensive measure
-
-      if (env.sagaMonitor) {
-        if (isErr) {
-          env.sagaMonitor.effectRejected(effectId, res);
-        } else {
-          env.sagaMonitor.effectResolved(effectId, res);
-        }
-      }
-
-      if (isErr) {
-        setCrashedEffect(effect);
-      }
-
-      cb(res, isErr);
-    } // tracks down the current cancel
-
-
-    currCb.cancel = io_c3792963["db" /* t */]; // setup cancellation logic on the parent cb
-
-    cb.cancel = function () {
-      // prevents cancelling an already completed effect
-      if (effectSettled) {
-        return;
-      }
-
-      effectSettled = true;
-      currCb.cancel(); // propagates cancel downward
-
-      currCb.cancel = io_c3792963["db" /* t */]; // defensive measure
-
-      env.sagaMonitor && env.sagaMonitor.effectCancelled(effectId);
-    };
-
-    finalRunEffect(effect, effectId, currCb);
-  }
-}
-
-var RUN_SAGA_SIGNATURE = 'runSaga(options, saga, ...args)';
-var NON_GENERATOR_ERR = RUN_SAGA_SIGNATURE + ": saga argument must be a Generator function!";
-function runSaga(_ref, saga) {
-  var _ref$channel = _ref.channel,
-      channel = _ref$channel === void 0 ? stdChannel() : _ref$channel,
-      dispatch = _ref.dispatch,
-      getState = _ref.getState,
-      _ref$context = _ref.context,
-      context = _ref$context === void 0 ? {} : _ref$context,
-      sagaMonitor = _ref.sagaMonitor,
-      effectMiddlewares = _ref.effectMiddlewares,
-      _ref$onError = _ref.onError,
-      onError = _ref$onError === void 0 ? io_c3792963["c" /* B */] : _ref$onError;
-
-  if (false) {}
-
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var iterator$1 = saga.apply(void 0, args);
-
-  if (false) {}
-
-  var effectId = nextSagaId();
-
-  if (sagaMonitor) {
-    // monitors are expected to have a certain interface, let's fill-in any missing ones
-    sagaMonitor.rootSagaStarted = sagaMonitor.rootSagaStarted || io_c3792963["db" /* t */];
-    sagaMonitor.effectTriggered = sagaMonitor.effectTriggered || io_c3792963["db" /* t */];
-    sagaMonitor.effectResolved = sagaMonitor.effectResolved || io_c3792963["db" /* t */];
-    sagaMonitor.effectRejected = sagaMonitor.effectRejected || io_c3792963["db" /* t */];
-    sagaMonitor.effectCancelled = sagaMonitor.effectCancelled || io_c3792963["db" /* t */];
-    sagaMonitor.actionDispatched = sagaMonitor.actionDispatched || io_c3792963["db" /* t */];
-    sagaMonitor.rootSagaStarted({
-      effectId: effectId,
-      saga: saga,
-      args: args
-    });
-  }
-
-  if (false) { var MIDDLEWARE_TYPE_ERROR; }
-
-  var finalizeRunEffect;
-
-  if (effectMiddlewares) {
-    var middleware = redux["compose"].apply(void 0, effectMiddlewares);
-
-    finalizeRunEffect = function finalizeRunEffect(runEffect) {
-      return function (effect, effectId, currCb) {
-        var plainRunEffect = function plainRunEffect(eff) {
-          return runEffect(eff, effectId, currCb);
-        };
-
-        return middleware(plainRunEffect)(effect);
-      };
-    };
-  } else {
-    finalizeRunEffect = io_c3792963["f" /* E */];
-  }
-
-  var env = {
-    channel: channel,
-    dispatch: Object(io_c3792963["e" /* D */])(dispatch),
-    getState: getState,
-    sagaMonitor: sagaMonitor,
-    onError: onError,
-    finalizeRunEffect: finalizeRunEffect
-  };
-  return immediately(function () {
-    var task = proc(env, iterator$1, context, effectId, Object(io_c3792963["T" /* j */])(saga),
-    /* isRoot */
-    true, undefined);
-
-    if (sagaMonitor) {
-      sagaMonitor.effectResolved(effectId, task);
-    }
-
-    return task;
-  });
-}
-
-function sagaMiddlewareFactory(_temp) {
-  var _ref = _temp === void 0 ? {} : _temp,
-      _ref$context = _ref.context,
-      context = _ref$context === void 0 ? {} : _ref$context,
-      _ref$channel = _ref.channel,
-      channel = _ref$channel === void 0 ? stdChannel() : _ref$channel,
-      sagaMonitor = _ref.sagaMonitor,
-      options = _objectWithoutPropertiesLoose(_ref, ["context", "channel", "sagaMonitor"]);
-
-  var boundRunSaga;
-
-  if (false) {}
-
-  function sagaMiddleware(_ref2) {
-    var getState = _ref2.getState,
-        dispatch = _ref2.dispatch;
-    boundRunSaga = runSaga.bind(null, Object(esm_extends["a" /* default */])({}, options, {
-      context: context,
-      channel: channel,
-      dispatch: dispatch,
-      getState: getState,
-      sagaMonitor: sagaMonitor
-    }));
-    return function (next) {
-      return function (action) {
-        if (sagaMonitor && sagaMonitor.actionDispatched) {
-          sagaMonitor.actionDispatched(action);
-        }
-
-        var result = next(action); // hit reducers
-
-        channel.put(action);
-        return result;
-      };
-    };
-  }
-
-  sagaMiddleware.run = function () {
-    if (false) {}
-
-    return boundRunSaga.apply(void 0, arguments);
-  };
-
-  sagaMiddleware.setContext = function (props) {
-    if (false) {}
-
-    Object(io_c3792963["Z" /* p */])(context, props);
-  };
-
-  return sagaMiddleware;
-}
-
-/* harmony default export */ var redux_saga_core_esm = (sagaMiddlewareFactory);
-
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js
-
-
-
-
-
-/* harmony default export */ var redux_saga_core_npm_proxy_esm = __webpack_exports__["default"] = (redux_saga_core_esm);
-
+  /**
+   * Result types for the Ice Collection Check Function.
+   * @name ICE_COLLECTION_RESULT_TYPES
+   */
+};const ICE_COLLECTION_RESULT_TYPES = exports.ICE_COLLECTION_RESULT_TYPES = {
+  START_CALL: 'StartCall',
+  WAIT: 'Wait',
+  ERROR: 'Error'
+};
 
 /***/ }),
-/* 28 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(47);
+var aFunction = __webpack_require__(46);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -3856,12 +890,12 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 29 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(19);
-var createDesc = __webpack_require__(40);
-module.exports = __webpack_require__(18) ? function (object, key, value) {
+var dP = __webpack_require__(22);
+var createDesc = __webpack_require__(43);
+module.exports = __webpack_require__(21) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -3870,7 +904,7 @@ module.exports = __webpack_require__(18) ? function (object, key, value) {
 
 
 /***/ }),
-/* 30 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var hasOwnProperty = {}.hasOwnProperty;
@@ -3880,13 +914,50 @@ module.exports = function (it, key) {
 
 
 /***/ }),
-/* 31 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(201), __esModule: true };
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.miscActions = exports.mediaActions = exports.sessionActions = exports.trackActions = exports.deviceActions = undefined;
+
+var _devices = __webpack_require__(146);
+
+var deviceActionsImport = _interopRequireWildcard(_devices);
+
+var _tracks = __webpack_require__(207);
+
+var trackActionsImport = _interopRequireWildcard(_tracks);
+
+var _sessions = __webpack_require__(147);
+
+var sessionActionsImport = _interopRequireWildcard(_sessions);
+
+var _media = __webpack_require__(208);
+
+var mediaActionsImport = _interopRequireWildcard(_media);
+
+var _misc = __webpack_require__(209);
+
+var miscActionsImport = _interopRequireWildcard(_misc);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// Apparently the following doesn't work:
+//      export * as newName from './place';
+// So import everything from each file, then re-export.
+const deviceActions = exports.deviceActions = deviceActionsImport;
+const trackActions = exports.trackActions = trackActionsImport;
+const sessionActions = exports.sessionActions = sessionActionsImport;
+const mediaActions = exports.mediaActions = mediaActionsImport;
+const miscActions = exports.miscActions = miscActionsImport;
 
 /***/ }),
-/* 32 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -3899,109 +970,43 @@ module.exports = function (exec) {
 
 
 /***/ }),
-/* 33 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(77);
-var defined = __webpack_require__(78);
+var IObject = __webpack_require__(78);
+var defined = __webpack_require__(79);
 module.exports = function (it) {
   return IObject(defined(it));
 };
 
 
 /***/ }),
-/* 34 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(226), __esModule: true };
+module.exports = { "default": __webpack_require__(218), __esModule: true };
 
 /***/ }),
-/* 35 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(78);
+var defined = __webpack_require__(79);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(208), __esModule: true };
-
-/***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
 /* 40 */
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(104);
-var enumBugKeys = __webpack_require__(82);
-
-module.exports = Object.keys || function keys(O) {
-  return $keys(O, enumBugKeys);
-};
-
+module.exports = { "default": __webpack_require__(198), __esModule: true };
 
 /***/ }),
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isUnifiedPlan = isUnifiedPlan;
-exports.getSdpSemanticsList = getSdpSemanticsList;
-
-var _constants = __webpack_require__(22);
-
-var _fp = __webpack_require__(2);
-
-/**
- * Checks whether the current sdp semantics is unified-plan
- * @method isUnifiedPlan
- * @param {String} sdpSemantics The current sdp semantics being used
- * @return {Boolean}
- */
-function isUnifiedPlan(sdpSemantics) {
-  return sdpSemantics === _constants.PEER.SDP_SEMANTICS.UNIFIED_PLAN;
-}
-
-/**
- * Generates a list of sdp semantics.
- * @method getSdpSemanticsList
- * @return {Array}
- */
-function getSdpSemanticsList() {
-  return (0, _fp.values)(_constants.PEER.SDP_SEMANTICS);
-}
-
-/***/ }),
-/* 44 */
+/* 41 */,
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4665,29 +1670,35 @@ function version_version(uuid) {
 
 
 /***/ }),
-/* 45 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 43 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _extends; });
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
   };
-  return _extends.apply(this, arguments);
-}
+};
+
 
 /***/ }),
-/* 46 */,
-/* 47 */
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys = __webpack_require__(110);
+var enumBugKeys = __webpack_require__(83);
+
+module.exports = Object.keys || function keys(O) {
+  return $keys(O, enumBugKeys);
+};
+
+
+/***/ }),
+/* 45 */,
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -4697,7 +1708,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -4708,33 +1719,33 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = true;
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(19).f;
-var has = __webpack_require__(30);
-var TAG = __webpack_require__(14)('toStringTag');
+var def = __webpack_require__(22).f;
+var has = __webpack_require__(34);
+var TAG = __webpack_require__(16)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -4742,15 +1753,15 @@ module.exports = function (it, tag, stat) {
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__(28);
-var call = __webpack_require__(110);
-var isArrayIter = __webpack_require__(111);
-var anObject = __webpack_require__(24);
-var toLength = __webpack_require__(61);
-var getIterFn = __webpack_require__(112);
+var ctx = __webpack_require__(32);
+var call = __webpack_require__(114);
+var isArrayIter = __webpack_require__(115);
+var anObject = __webpack_require__(27);
+var toLength = __webpack_require__(59);
+var getIterFn = __webpack_require__(116);
 var BREAK = {};
 var RETURN = {};
 var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -4773,13 +1784,24 @@ exports.RETURN = RETURN;
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(181), __esModule: true };
+var parser = __webpack_require__(203);
+var writer = __webpack_require__(204);
+
+exports.write = writer;
+exports.parse = parser.parse;
+exports.parseParams = parser.parseParams;
+exports.parseFmtpConfig = parser.parseFmtpConfig; // Alias of parseParams().
+exports.parsePayloads = parser.parsePayloads;
+exports.parseRemoteCandidates = parser.parseRemoteCandidates;
+exports.parseImageAttributes = parser.parseImageAttributes;
+exports.parseSimulcastStreamList = parser.parseSimulcastStreamList;
+
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4797,17 +1819,17 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '5.10.0';
+  return '6.0.0';
 }
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(189), __esModule: true };
+module.exports = { "default": __webpack_require__(179), __esModule: true };
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4867,14 +1889,157 @@ const logLevels = exports.logLevels = {
 };const timeLevel = exports.timeLevel = logLevels.DEBUG;
 
 /***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getBrowserDetails = undefined;
+exports.getWebRTCSupportCapabilities = getWebRTCSupportCapabilities;
+exports.default = initialize;
+
+var _track = __webpack_require__(128);
+
+var _track2 = _interopRequireDefault(_track);
+
+var _media = __webpack_require__(129);
+
+var _media2 = _interopRequireDefault(_media);
+
+var _Peer = __webpack_require__(130);
+
+var _Peer2 = _interopRequireDefault(_Peer);
+
+var _mediaManager = __webpack_require__(261);
+
+var _mediaManager2 = _interopRequireDefault(_mediaManager);
+
+var _peerManager = __webpack_require__(262);
+
+var _peerManager2 = _interopRequireDefault(_peerManager);
+
+var _sessionManager = __webpack_require__(263);
+
+var _sessionManager2 = _interopRequireDefault(_sessionManager);
+
+var _deviceManager = __webpack_require__(266);
+
+var _deviceManager2 = _interopRequireDefault(_deviceManager);
+
+var _trackManager = __webpack_require__(267);
+
+var _trackManager2 = _interopRequireDefault(_trackManager);
+
+var _webrtcManager = __webpack_require__(268);
+
+var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
+
+var _renderer = __webpack_require__(269);
+
+var _renderer2 = _interopRequireDefault(_renderer);
+
+var _logs = __webpack_require__(17);
+
+var _pipeline = __webpack_require__(67);
+
+var _pipeline2 = _interopRequireDefault(_pipeline);
+
+var _handlers = __webpack_require__(95);
+
+var sdpHandlers = _interopRequireWildcard(_handlers);
+
+var _utils = __webpack_require__(68);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Re-export this function so it can be used directly instead of through the
+//    initialized WebrtcStack. It is renamed because of weird import/export behaviour.
+// Models.
+const getBrowserDetails = exports.getBrowserDetails = _utils.getBrowserDetails;
+
+/**
+ * @returns An dictionary of features that are supported on this platform.
+ */
+
+
+// Utils
+
+
+// SDP helpers.
+
+
+// Managers.
+function getWebRTCSupportCapabilities() {
+  return {
+    mediaDevices: Boolean(navigator.mediaDevices),
+    peerConnection: Boolean(window.RTCPeerConnection)
+  };
+}
+
+function initialize() {
+  const log = _logs.logManager.getLogger('WebRTC');
+
+  const browserDetails = getBrowserDetails();
+  if (browserDetails.version) {
+    log.debug(`Browser details: ${browserDetails.browser}, version ${browserDetails.version}.`);
+  } else {
+    log.debug('Browser details: Not supported by webRTC adapter.');
+  }
+
+  const renderer = new _renderer2.default();
+  const deviceManager = new _deviceManager2.default();
+  const trackManager = new _trackManager2.default();
+  const mediaManager = new _mediaManager2.default({ trackManager });
+  const peerManager = new _peerManager2.default({ trackManager });
+  const sessionManager = new _sessionManager2.default({
+    peerManager,
+    mediaManager,
+    trackManager
+  });
+  const webrtcManager = new _webrtcManager2.default();
+
+  return {
+    models: {
+      Track: _track2.default,
+      Media: _media2.default,
+      Peer: _Peer2.default
+    },
+    // TODO: Make naming consistent.
+    managers: {
+      devices: deviceManager,
+      media: mediaManager,
+      peerManager: peerManager,
+      sessionManager,
+      track: trackManager,
+      // Give access to the Log Manager.
+      // TODO: Don't include it under managers. It's here now because of
+      //    ProxyStack annoyingness.
+      logs: _logs.logManager,
+      webrtcManager,
+      renderer
+    },
+    sdp: {
+      pipeline: _pipeline2.default,
+      handlers: sdpHandlers
+    },
+    // Export this on the webRTC stack for backwards compatibility.
+    getBrowserDetails
+  };
+}
+
+/***/ }),
 /* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(79);
+var toInteger = __webpack_require__(80);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -4882,7 +2047,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 62 */
+/* 60 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -4893,15 +2058,15 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 63 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at = __webpack_require__(171)(true);
+var $at = __webpack_require__(166)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(84)(String, 'String', function (iterated) {
+__webpack_require__(85)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -4917,27 +2082,27 @@ __webpack_require__(84)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 64 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(24);
-var dPs = __webpack_require__(138);
-var enumBugKeys = __webpack_require__(82);
-var IE_PROTO = __webpack_require__(80)('IE_PROTO');
+var anObject = __webpack_require__(27);
+var dPs = __webpack_require__(135);
+var enumBugKeys = __webpack_require__(83);
+var IE_PROTO = __webpack_require__(81)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(75)('iframe');
+  var iframe = __webpack_require__(76)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(108).appendChild(iframe);
+  __webpack_require__(112).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -4964,18 +2129,18 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 65 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(62)('meta');
-var isObject = __webpack_require__(17);
-var has = __webpack_require__(30);
-var setDesc = __webpack_require__(19).f;
+var META = __webpack_require__(60)('meta');
+var isObject = __webpack_require__(19);
+var has = __webpack_require__(34);
+var setDesc = __webpack_require__(22).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(32)(function () {
+var FREEZE = !__webpack_require__(36)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function (it) {
@@ -5023,23 +2188,9 @@ var meta = module.exports = {
 
 
 /***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var parser = __webpack_require__(214);
-var writer = __webpack_require__(215);
-
-exports.write = writer;
-exports.parse = parser.parse;
-exports.parseParams = parser.parseParams;
-exports.parseFmtpConfig = parser.parseFmtpConfig; // Alias of parseParams().
-exports.parsePayloads = parser.parsePayloads;
-exports.parseRemoteCandidates = parser.parseRemoteCandidates;
-exports.parseImageAttributes = parser.parseImageAttributes;
-exports.parseSimulcastStreamList = parser.parseSimulcastStreamList;
-
-
-/***/ }),
+/* 64 */,
+/* 65 */,
+/* 66 */,
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5050,19 +2201,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _freeze = __webpack_require__(130);
+var _freeze = __webpack_require__(102);
 
 var _freeze2 = _interopRequireDefault(_freeze);
 
 exports.runPipeline = runPipeline;
 
-var _sdpTransform = __webpack_require__(66);
+var _sdpTransform = __webpack_require__(53);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
 var _fp = __webpack_require__(2);
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5172,7 +2323,7 @@ exports.mergeValues = mergeValues;
 exports.makeSafeForCSS = makeSafeForCSS;
 exports.getBrowserDetails = getBrowserDetails;
 
-var _adapter = __webpack_require__(266);
+var _adapter = __webpack_require__(258);
 
 var _adapter2 = _interopRequireDefault(_adapter);
 
@@ -5219,38 +2370,6 @@ function getBrowserDetails() {
 /***/ }),
 /* 69 */,
 /* 70 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
-
-
-var MAX_SIGNED_INT = 2147483647;
-function delayP(ms, val) {
-  if (val === void 0) {
-    val = true;
-  }
-
-  // https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value
-  if (false) {}
-
-  var timeoutId;
-  var promise = new Promise(function (resolve) {
-    timeoutId = setTimeout(resolve, Math.min(MAX_SIGNED_INT, ms), val);
-  });
-
-  promise[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* CANCEL */ "a"]] = function () {
-    clearTimeout(timeoutId);
-  };
-
-  return promise;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (delayP);
-
-
-/***/ }),
-/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5271,24 +2390,31 @@ exports.default = function (obj, keys) {
 };
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 73 */,
-/* 74 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(160), __esModule: true };
+module.exports = { "default": __webpack_require__(176), __esModule: true };
 
 /***/ }),
+/* 73 */,
+/* 74 */,
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(17);
-var document = __webpack_require__(11).document;
+module.exports = { "default": __webpack_require__(155), __esModule: true };
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(19);
+var document = __webpack_require__(15).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -5297,11 +2423,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(17);
+var isObject = __webpack_require__(19);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -5315,11 +2441,11 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(48);
+var cof = __webpack_require__(47);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
@@ -5327,7 +2453,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -5338,7 +2464,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -5350,22 +2476,22 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(81)('keys');
-var uid = __webpack_require__(62);
+var shared = __webpack_require__(82)('keys');
+var uid = __webpack_require__(60);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(7);
-var global = __webpack_require__(11);
+var core = __webpack_require__(8);
+var global = __webpack_require__(15);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 
@@ -5373,13 +2499,13 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(49) ? 'pure' : 'global',
+  mode: __webpack_require__(48) ? 'pure' : 'global',
   copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
 });
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -5389,27 +2515,27 @@ module.exports = (
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(49);
-var $export = __webpack_require__(8);
-var redefine = __webpack_require__(107);
-var hide = __webpack_require__(29);
-var Iterators = __webpack_require__(51);
-var $iterCreate = __webpack_require__(172);
-var setToStringTag = __webpack_require__(52);
-var getPrototypeOf = __webpack_require__(97);
-var ITERATOR = __webpack_require__(14)('iterator');
+var LIBRARY = __webpack_require__(48);
+var $export = __webpack_require__(13);
+var redefine = __webpack_require__(111);
+var hide = __webpack_require__(33);
+var Iterators = __webpack_require__(50);
+var $iterCreate = __webpack_require__(167);
+var setToStringTag = __webpack_require__(51);
+var getPrototypeOf = __webpack_require__(98);
+var ITERATOR = __webpack_require__(16)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -5472,14 +2598,14 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(173);
-var global = __webpack_require__(11);
-var hide = __webpack_require__(29);
-var Iterators = __webpack_require__(51);
-var TO_STRING_TAG = __webpack_require__(14)('toStringTag');
+__webpack_require__(168);
+var global = __webpack_require__(15);
+var hide = __webpack_require__(33);
+var Iterators = __webpack_require__(50);
+var TO_STRING_TAG = __webpack_require__(16)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
   'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
@@ -5497,12 +2623,12 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(48);
-var TAG = __webpack_require__(14)('toStringTag');
+var cof = __webpack_require__(47);
+var TAG = __webpack_require__(16)('toStringTag');
 // ES3 wrong here
 var ARG = cof(function () { return arguments; }()) == 'Arguments';
 
@@ -5526,7 +2652,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name, forbiddenField) {
@@ -5537,13 +2663,13 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 25.4.1.5 NewPromiseCapability(C)
-var aFunction = __webpack_require__(47);
+var aFunction = __webpack_require__(46);
 
 function PromiseCapability(C) {
   var resolve, reject;
@@ -5562,10 +2688,10 @@ module.exports.f = function (C) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hide = __webpack_require__(29);
+var hide = __webpack_require__(33);
 module.exports = function (target, src, safe) {
   for (var key in src) {
     if (safe && target[key]) target[key] = src[key];
@@ -5575,7 +2701,7 @@ module.exports = function (target, src, safe) {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5586,15 +2712,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logFormatter = exports.logLevels = undefined;
 
-var _logManager = __webpack_require__(188);
+var _logManager = __webpack_require__(178);
 
 var _logManager2 = _interopRequireDefault(_logManager);
 
-var _logFormatter = __webpack_require__(122);
+var _logFormatter = __webpack_require__(126);
 
 var _logFormatter2 = _interopRequireDefault(_logFormatter);
 
-var _constants = __webpack_require__(57);
+var _constants = __webpack_require__(56);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5613,14 +2739,14 @@ const logLevels = exports.logLevels = _constants.logLevels;
 const logFormatter = exports.logFormatter = _logFormatter2.default;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(11);
-var core = __webpack_require__(7);
-var LIBRARY = __webpack_require__(49);
-var wksExt = __webpack_require__(99);
-var defineProperty = __webpack_require__(19).f;
+var global = __webpack_require__(15);
+var core = __webpack_require__(8);
+var LIBRARY = __webpack_require__(48);
+var wksExt = __webpack_require__(100);
+var defineProperty = __webpack_require__(22).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -5628,7 +2754,7 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5640,7 +2766,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.checkLevel = checkLevel;
 exports.checkHandler = checkHandler;
 
-var _constants = __webpack_require__(57);
+var _constants = __webpack_require__(56);
 
 /**
  * Helper function to validate a "log level" string before its used in the library.
@@ -5678,7 +2804,157 @@ function checkHandler(handler) {
 }
 
 /***/ }),
-/* 93 */
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * The media devices available for use have changed.
+ *
+ * Information about the available media devices can be retrieved using the
+ *    {@link media.getDevices} API.
+ *
+ * @public
+ * @static
+ * @memberof media
+ * @event devices:change
+ * @example
+ * // Listen for changes to available media devices.
+ * client.on('devices:change', function () {
+ *    // Retrieve the latest media device lists.
+ *    const devices = client.media.getDevices()
+ * })
+ */
+const DEVICES_CHANGED = exports.DEVICES_CHANGED = 'devices:change';
+
+/**
+ * An error occurred while trying to access media devices.
+ *
+ * The most common causes of this error are when the browser does not have
+ *    permission from the end-user to access the devices, or when the browser
+ *    cannot find a media device that fulfills the
+ *    {@link call.MediaConstraint MediaConstraint(s)} that was provided.
+ *
+ * @public
+ * @static
+ * @memberof media
+ * @event devices:error
+ * @param {Object} params
+ * @param {Error} params.error The Basic error object.
+ */
+const INITIALIZE_DEVICES_ERROR = exports.INITIALIZE_DEVICES_ERROR = 'devices:error';
+
+/**
+ * The specified Tracks have been muted.
+ *
+ * A Track can be muted using the {@link media.muteTracks} API.
+ * @public
+ * @memberof media
+ * @event media:muted
+ * @param {Object} params
+ * @param {Array<string>} params.tracks The list of Tracks that were muted.
+ */
+const TRACKS_MUTED = exports.TRACKS_MUTED = 'media:muted';
+
+/**
+ * The specified Tracks have been unmuted.
+ *
+ * A Track can be unmuted using the {@link media.unmuteTracks}
+ *    API.
+ * @public
+ * @memberof media
+ * @event media:unmuted
+ * @param {Object} params
+ * @param {Array<string>} params.tracks The list of Tracks that were unmuted.
+ */
+const TRACKS_UNMUTED = exports.TRACKS_UNMUTED = 'media:unmuted';
+
+/**
+ * The specified Track has had its media source muted.
+ *
+ * The Track is still active, but is not receiving media any longer. An audio
+ *    track will be silent and a video track will be a black frame. It is
+ *    possible for the track to start receiving media again (see the
+ *    {@link media.event:media:sourceUnmuted media:sourceUnmuted} event).
+ *
+ * This event is generated outside the control of the SDK. This will predominantely
+ *    happen for a remote track during network issues, where media will lose frames
+ *    and be "choppy". This may also happen for a local track if the browser or
+ *    end-user stops allowing the SDK to access the media device, for example.
+ * @public
+ * @static
+ * @memberof media
+ * @event media:sourceMuted
+ * @param {Object} params
+ * @param {string} params.trackId The track that is affected as a result of media source being muted.
+ */
+const TRACK_SOURCE_MUTED = exports.TRACK_SOURCE_MUTED = 'media:sourceMuted';
+
+/**
+ * The specified Track has started receiving media from its source once again.
+ *
+ * The Track returns to the state before it was muted (see the
+ *    {@link media.event:media:sourceMuted media:sourceMuted} event), and will
+ *    be able to display video or play audio once again.
+ *
+ * This event is generated outside the control of the SDK, when the cause of the
+ *    media source being muted had been undone.
+ * @public
+ * @static
+ * @memberof media
+ * @event media:sourceUnmuted
+ * @param {Object} params
+ * @param {string} params.trackId The track that is affected as a result of media source being unmuted.
+ */
+const TRACK_SOURCE_UNMUTED = exports.TRACK_SOURCE_UNMUTED = 'media:sourceUnmuted';
+
+/**
+ * The specified Track has been rendered into an element.
+ *
+ * @public
+ * @static
+ * @memberof media
+ * @event media:trackRendered
+ * @param {Object} params
+ * @param {Array<string>} params.trackIds The list of track id's that were rendered.
+ * @param {string} params.selector The css selector used to identify the element the track is rendered into.
+ * @param {api.BasicError} [params.error] An error object, if the operation was not successful.
+ */
+const TRACK_RENDERED = exports.TRACK_RENDERED = 'media:trackRendered';
+
+/**
+ * A local Track has ended unexpectedly. The Track may still be part of a Call but
+ *    has become disconnected from its media source and is not recoverable.
+ *
+ * This event is emitted when an action other than an SDK operation stops the
+ *    track. The most comon scenarios are when a device being used for a Call
+ *    disconnects, any local tracks (such as audio from a bluetooth headset's
+ *    microphone or video from a USB camera) from that device will be ended.
+ *    Another scenario is for screensharing, where some browsers provide the
+ *    ability to stop screensharing directly rather than through an SDK operation.
+ *
+ * When a local track ends this way, it will still be part of the Call but will
+ *    not have any media. The track can be removed from the call with the
+ *    {@link call.removeMedia} API so the remote side of the Call knows the track
+ *    has stopped, or the track can be replaced with a new track using the
+ *    {@link call.replaceTrack} API to prevent any interruption.
+ * @public
+ * @static
+ * @memberof media
+ * @event media:trackEnded
+ * @param {Object} params
+ * @param {Object} params.trackId The Track that has ended.
+ * @param {Object} params.callId The ID of the Call the Track is used in.
+ */
+const TRACK_ENDED = exports.TRACK_ENDED = 'media:trackEnded';
+
+/***/ }),
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5688,7 +2964,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _values = __webpack_require__(56);
+var _values = __webpack_require__(55);
 
 var _values2 = _interopRequireDefault(_values);
 
@@ -5697,9 +2973,9 @@ exports.removeBundling = removeBundling;
 exports.changeMediaDirection = changeMediaDirection;
 exports.preventDtlsRoleChange = preventDtlsRoleChange;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5829,794 +3105,67 @@ function preventDtlsRoleChange(newSdp, info, originalSdp) {
 }
 
 /***/ }),
-/* 94 */,
-/* 95 */,
 /* 96 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
+var g;
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "__DO_NOT_USE__ActionTypes", function() { return /* binding */ ActionTypes; });
-__webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return /* binding */ applyMiddleware; });
-__webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return /* binding */ bindActionCreators; });
-__webpack_require__.d(__webpack_exports__, "combineReducers", function() { return /* binding */ combineReducers; });
-__webpack_require__.d(__webpack_exports__, "compose", function() { return /* binding */ compose; });
-__webpack_require__.d(__webpack_exports__, "createStore", function() { return /* binding */ redux_createStore; });
-__webpack_require__.d(__webpack_exports__, "legacy_createStore", function() { return /* binding */ legacy_createStore; });
-
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/typeof.js
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/toPrimitive.js
-
-function _toPrimitive(input, hint) {
-  if (_typeof(input) !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (_typeof(res) !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
-
-
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return _typeof(key) === "symbol" ? key : String(key);
-}
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/defineProperty.js
-
-function _defineProperty(obj, key, value) {
-  key = _toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_master/node_modules/redux/es/redux.js
-
-
-/**
- * Adapted from React: https://github.com/facebook/react/blob/master/packages/shared/formatProdErrorMessage.js
- *
- * Do not require this module directly! Use normal throw error calls. These messages will be replaced with error codes
- * during build.
- * @param {number} code
- */
-function formatProdErrorMessage(code) {
-  return "Minified Redux error #" + code + "; visit https://redux.js.org/Errors?code=" + code + " for the full message or " + 'use the non-minified dev environment for full errors. ';
-}
-
-// Inlined version of the `symbol-observable` polyfill
-var $$observable = (function () {
-  return typeof Symbol === 'function' && Symbol.observable || '@@observable';
+// This works in non-strict mode
+g = (function() {
+	return this;
 })();
 
-/**
- * These are private action types reserved by Redux.
- * For any unknown actions, you must return the current state.
- * If the current state is undefined, you must return the initial state.
- * Do not reference these action types directly in your code.
- */
-var randomString = function randomString() {
-  return Math.random().toString(36).substring(7).split('').join('.');
-};
-
-var ActionTypes = {
-  INIT: "@@redux/INIT" + randomString(),
-  REPLACE: "@@redux/REPLACE" + randomString(),
-  PROBE_UNKNOWN_ACTION: function PROBE_UNKNOWN_ACTION() {
-    return "@@redux/PROBE_UNKNOWN_ACTION" + randomString();
-  }
-};
-
-/**
- * @param {any} obj The object to inspect.
- * @returns {boolean} True if the argument appears to be a plain object.
- */
-function isPlainObject(obj) {
-  if (typeof obj !== 'object' || obj === null) return false;
-  var proto = obj;
-
-  while (Object.getPrototypeOf(proto) !== null) {
-    proto = Object.getPrototypeOf(proto);
-  }
-
-  return Object.getPrototypeOf(obj) === proto;
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
 }
 
-// Inlined / shortened version of `kindOf` from https://github.com/jonschlinkert/kind-of
-function miniKindOf(val) {
-  if (val === void 0) return 'undefined';
-  if (val === null) return 'null';
-  var type = typeof val;
-
-  switch (type) {
-    case 'boolean':
-    case 'string':
-    case 'number':
-    case 'symbol':
-    case 'function':
-      {
-        return type;
-      }
-  }
-
-  if (Array.isArray(val)) return 'array';
-  if (isDate(val)) return 'date';
-  if (isError(val)) return 'error';
-  var constructorName = ctorName(val);
-
-  switch (constructorName) {
-    case 'Symbol':
-    case 'Promise':
-    case 'WeakMap':
-    case 'WeakSet':
-    case 'Map':
-    case 'Set':
-      return constructorName;
-  } // other
-
-
-  return type.slice(8, -1).toLowerCase().replace(/\s/g, '');
-}
-
-function ctorName(val) {
-  return typeof val.constructor === 'function' ? val.constructor.name : null;
-}
-
-function isError(val) {
-  return val instanceof Error || typeof val.message === 'string' && val.constructor && typeof val.constructor.stackTraceLimit === 'number';
-}
-
-function isDate(val) {
-  if (val instanceof Date) return true;
-  return typeof val.toDateString === 'function' && typeof val.getDate === 'function' && typeof val.setDate === 'function';
-}
-
-function kindOf(val) {
-  var typeOfVal = typeof val;
-
-  if (false) {}
-
-  return typeOfVal;
-}
-
-/**
- * @deprecated
- *
- * **We recommend using the `configureStore` method
- * of the `@reduxjs/toolkit` package**, which replaces `createStore`.
- *
- * Redux Toolkit is our recommended approach for writing Redux logic today,
- * including store setup, reducers, data fetching, and more.
- *
- * **For more details, please read this Redux docs page:**
- * **https://redux.js.org/introduction/why-rtk-is-redux-today**
- *
- * `configureStore` from Redux Toolkit is an improved version of `createStore` that
- * simplifies setup and helps avoid common bugs.
- *
- * You should not be using the `redux` core package by itself today, except for learning purposes.
- * The `createStore` method from the core `redux` package will not be removed, but we encourage
- * all users to migrate to using Redux Toolkit for all Redux code.
- *
- * If you want to use `createStore` without this visual deprecation warning, use
- * the `legacy_createStore` import instead:
- *
- * `import { legacy_createStore as createStore} from 'redux'`
- *
- */
-
-function redux_createStore(reducer, preloadedState, enhancer) {
-  var _ref2;
-
-  if (typeof preloadedState === 'function' && typeof enhancer === 'function' || typeof enhancer === 'function' && typeof arguments[3] === 'function') {
-    throw new Error( true ? formatProdErrorMessage(0) : undefined);
-  }
-
-  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
-    enhancer = preloadedState;
-    preloadedState = undefined;
-  }
-
-  if (typeof enhancer !== 'undefined') {
-    if (typeof enhancer !== 'function') {
-      throw new Error( true ? formatProdErrorMessage(1) : undefined);
-    }
-
-    return enhancer(redux_createStore)(reducer, preloadedState);
-  }
-
-  if (typeof reducer !== 'function') {
-    throw new Error( true ? formatProdErrorMessage(2) : undefined);
-  }
-
-  var currentReducer = reducer;
-  var currentState = preloadedState;
-  var currentListeners = [];
-  var nextListeners = currentListeners;
-  var isDispatching = false;
-  /**
-   * This makes a shallow copy of currentListeners so we can use
-   * nextListeners as a temporary list while dispatching.
-   *
-   * This prevents any bugs around consumers calling
-   * subscribe/unsubscribe in the middle of a dispatch.
-   */
-
-  function ensureCanMutateNextListeners() {
-    if (nextListeners === currentListeners) {
-      nextListeners = currentListeners.slice();
-    }
-  }
-  /**
-   * Reads the state tree managed by the store.
-   *
-   * @returns {any} The current state tree of your application.
-   */
-
-
-  function getState() {
-    if (isDispatching) {
-      throw new Error( true ? formatProdErrorMessage(3) : undefined);
-    }
-
-    return currentState;
-  }
-  /**
-   * Adds a change listener. It will be called any time an action is dispatched,
-   * and some part of the state tree may potentially have changed. You may then
-   * call `getState()` to read the current state tree inside the callback.
-   *
-   * You may call `dispatch()` from a change listener, with the following
-   * caveats:
-   *
-   * 1. The subscriptions are snapshotted just before every `dispatch()` call.
-   * If you subscribe or unsubscribe while the listeners are being invoked, this
-   * will not have any effect on the `dispatch()` that is currently in progress.
-   * However, the next `dispatch()` call, whether nested or not, will use a more
-   * recent snapshot of the subscription list.
-   *
-   * 2. The listener should not expect to see all state changes, as the state
-   * might have been updated multiple times during a nested `dispatch()` before
-   * the listener is called. It is, however, guaranteed that all subscribers
-   * registered before the `dispatch()` started will be called with the latest
-   * state by the time it exits.
-   *
-   * @param {Function} listener A callback to be invoked on every dispatch.
-   * @returns {Function} A function to remove this change listener.
-   */
-
-
-  function subscribe(listener) {
-    if (typeof listener !== 'function') {
-      throw new Error( true ? formatProdErrorMessage(4) : undefined);
-    }
-
-    if (isDispatching) {
-      throw new Error( true ? formatProdErrorMessage(5) : undefined);
-    }
-
-    var isSubscribed = true;
-    ensureCanMutateNextListeners();
-    nextListeners.push(listener);
-    return function unsubscribe() {
-      if (!isSubscribed) {
-        return;
-      }
-
-      if (isDispatching) {
-        throw new Error( true ? formatProdErrorMessage(6) : undefined);
-      }
-
-      isSubscribed = false;
-      ensureCanMutateNextListeners();
-      var index = nextListeners.indexOf(listener);
-      nextListeners.splice(index, 1);
-      currentListeners = null;
-    };
-  }
-  /**
-   * Dispatches an action. It is the only way to trigger a state change.
-   *
-   * The `reducer` function, used to create the store, will be called with the
-   * current state tree and the given `action`. Its return value will
-   * be considered the **next** state of the tree, and the change listeners
-   * will be notified.
-   *
-   * The base implementation only supports plain object actions. If you want to
-   * dispatch a Promise, an Observable, a thunk, or something else, you need to
-   * wrap your store creating function into the corresponding middleware. For
-   * example, see the documentation for the `redux-thunk` package. Even the
-   * middleware will eventually dispatch plain object actions using this method.
-   *
-   * @param {Object} action A plain object representing “what changed”. It is
-   * a good idea to keep actions serializable so you can record and replay user
-   * sessions, or use the time travelling `redux-devtools`. An action must have
-   * a `type` property which may not be `undefined`. It is a good idea to use
-   * string constants for action types.
-   *
-   * @returns {Object} For convenience, the same action object you dispatched.
-   *
-   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
-   * return something else (for example, a Promise you can await).
-   */
-
-
-  function dispatch(action) {
-    if (!isPlainObject(action)) {
-      throw new Error( true ? formatProdErrorMessage(7) : undefined);
-    }
-
-    if (typeof action.type === 'undefined') {
-      throw new Error( true ? formatProdErrorMessage(8) : undefined);
-    }
-
-    if (isDispatching) {
-      throw new Error( true ? formatProdErrorMessage(9) : undefined);
-    }
-
-    try {
-      isDispatching = true;
-      currentState = currentReducer(currentState, action);
-    } finally {
-      isDispatching = false;
-    }
-
-    var listeners = currentListeners = nextListeners;
-
-    for (var i = 0; i < listeners.length; i++) {
-      var listener = listeners[i];
-      listener();
-    }
-
-    return action;
-  }
-  /**
-   * Replaces the reducer currently used by the store to calculate the state.
-   *
-   * You might need this if your app implements code splitting and you want to
-   * load some of the reducers dynamically. You might also need this if you
-   * implement a hot reloading mechanism for Redux.
-   *
-   * @param {Function} nextReducer The reducer for the store to use instead.
-   * @returns {void}
-   */
-
-
-  function replaceReducer(nextReducer) {
-    if (typeof nextReducer !== 'function') {
-      throw new Error( true ? formatProdErrorMessage(10) : undefined);
-    }
-
-    currentReducer = nextReducer; // This action has a similiar effect to ActionTypes.INIT.
-    // Any reducers that existed in both the new and old rootReducer
-    // will receive the previous state. This effectively populates
-    // the new state tree with any relevant data from the old one.
-
-    dispatch({
-      type: ActionTypes.REPLACE
-    });
-  }
-  /**
-   * Interoperability point for observable/reactive libraries.
-   * @returns {observable} A minimal observable of state changes.
-   * For more information, see the observable proposal:
-   * https://github.com/tc39/proposal-observable
-   */
-
-
-  function observable() {
-    var _ref;
-
-    var outerSubscribe = subscribe;
-    return _ref = {
-      /**
-       * The minimal observable subscription method.
-       * @param {Object} observer Any object that can be used as an observer.
-       * The observer object should have a `next` method.
-       * @returns {subscription} An object with an `unsubscribe` method that can
-       * be used to unsubscribe the observable from the store, and prevent further
-       * emission of values from the observable.
-       */
-      subscribe: function subscribe(observer) {
-        if (typeof observer !== 'object' || observer === null) {
-          throw new Error( true ? formatProdErrorMessage(11) : undefined);
-        }
-
-        function observeState() {
-          if (observer.next) {
-            observer.next(getState());
-          }
-        }
-
-        observeState();
-        var unsubscribe = outerSubscribe(observeState);
-        return {
-          unsubscribe: unsubscribe
-        };
-      }
-    }, _ref[$$observable] = function () {
-      return this;
-    }, _ref;
-  } // When a store is created, an "INIT" action is dispatched so that every
-  // reducer returns their initial state. This effectively populates
-  // the initial state tree.
-
-
-  dispatch({
-    type: ActionTypes.INIT
-  });
-  return _ref2 = {
-    dispatch: dispatch,
-    subscribe: subscribe,
-    getState: getState,
-    replaceReducer: replaceReducer
-  }, _ref2[$$observable] = observable, _ref2;
-}
-/**
- * Creates a Redux store that holds the state tree.
- *
- * **We recommend using `configureStore` from the
- * `@reduxjs/toolkit` package**, which replaces `createStore`:
- * **https://redux.js.org/introduction/why-rtk-is-redux-today**
- *
- * The only way to change the data in the store is to call `dispatch()` on it.
- *
- * There should only be a single store in your app. To specify how different
- * parts of the state tree respond to actions, you may combine several reducers
- * into a single reducer function by using `combineReducers`.
- *
- * @param {Function} reducer A function that returns the next state tree, given
- * the current state tree and the action to handle.
- *
- * @param {any} [preloadedState] The initial state. You may optionally specify it
- * to hydrate the state from the server in universal apps, or to restore a
- * previously serialized user session.
- * If you use `combineReducers` to produce the root reducer function, this must be
- * an object with the same shape as `combineReducers` keys.
- *
- * @param {Function} [enhancer] The store enhancer. You may optionally specify it
- * to enhance the store with third-party capabilities such as middleware,
- * time travel, persistence, etc. The only store enhancer that ships with Redux
- * is `applyMiddleware()`.
- *
- * @returns {Store} A Redux store that lets you read the state, dispatch actions
- * and subscribe to changes.
- */
-
-var legacy_createStore = redux_createStore;
-
-/**
- * Prints a warning in the console if it exists.
- *
- * @param {String} message The warning message.
- * @returns {void}
- */
-function warning(message) {
-  /* eslint-disable no-console */
-  if (typeof console !== 'undefined' && typeof console.error === 'function') {
-    console.error(message);
-  }
-  /* eslint-enable no-console */
-
-
-  try {
-    // This error was thrown as a convenience so that if you enable
-    // "break on all exceptions" in your console,
-    // it would pause the execution at this line.
-    throw new Error(message);
-  } catch (e) {} // eslint-disable-line no-empty
-
-}
-
-function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
-  var reducerKeys = Object.keys(reducers);
-  var argumentName = action && action.type === ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
-
-  if (reducerKeys.length === 0) {
-    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
-  }
-
-  if (!isPlainObject(inputState)) {
-    return "The " + argumentName + " has unexpected type of \"" + kindOf(inputState) + "\". Expected argument to be an object with the following " + ("keys: \"" + reducerKeys.join('", "') + "\"");
-  }
-
-  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
-  });
-  unexpectedKeys.forEach(function (key) {
-    unexpectedKeyCache[key] = true;
-  });
-  if (action && action.type === ActionTypes.REPLACE) return;
-
-  if (unexpectedKeys.length > 0) {
-    return "Unexpected " + (unexpectedKeys.length > 1 ? 'keys' : 'key') + " " + ("\"" + unexpectedKeys.join('", "') + "\" found in " + argumentName + ". ") + "Expected to find one of the known reducer keys instead: " + ("\"" + reducerKeys.join('", "') + "\". Unexpected keys will be ignored.");
-  }
-}
-
-function assertReducerShape(reducers) {
-  Object.keys(reducers).forEach(function (key) {
-    var reducer = reducers[key];
-    var initialState = reducer(undefined, {
-      type: ActionTypes.INIT
-    });
-
-    if (typeof initialState === 'undefined') {
-      throw new Error( true ? formatProdErrorMessage(12) : undefined);
-    }
-
-    if (typeof reducer(undefined, {
-      type: ActionTypes.PROBE_UNKNOWN_ACTION()
-    }) === 'undefined') {
-      throw new Error( true ? formatProdErrorMessage(13) : undefined);
-    }
-  });
-}
-/**
- * Turns an object whose values are different reducer functions, into a single
- * reducer function. It will call every child reducer, and gather their results
- * into a single state object, whose keys correspond to the keys of the passed
- * reducer functions.
- *
- * @param {Object} reducers An object whose values correspond to different
- * reducer functions that need to be combined into one. One handy way to obtain
- * it is to use ES6 `import * as reducers` syntax. The reducers may never return
- * undefined for any action. Instead, they should return their initial state
- * if the state passed to them was undefined, and the current state for any
- * unrecognized action.
- *
- * @returns {Function} A reducer function that invokes every reducer inside the
- * passed object, and builds a state object with the same shape.
- */
-
-
-function combineReducers(reducers) {
-  var reducerKeys = Object.keys(reducers);
-  var finalReducers = {};
-
-  for (var i = 0; i < reducerKeys.length; i++) {
-    var key = reducerKeys[i];
-
-    if (false) {}
-
-    if (typeof reducers[key] === 'function') {
-      finalReducers[key] = reducers[key];
-    }
-  }
-
-  var finalReducerKeys = Object.keys(finalReducers); // This is used to make sure we don't warn about the same
-  // keys multiple times.
-
-  var unexpectedKeyCache;
-
-  if (false) {}
-
-  var shapeAssertionError;
-
-  try {
-    assertReducerShape(finalReducers);
-  } catch (e) {
-    shapeAssertionError = e;
-  }
-
-  return function combination(state, action) {
-    if (state === void 0) {
-      state = {};
-    }
-
-    if (shapeAssertionError) {
-      throw shapeAssertionError;
-    }
-
-    if (false) { var warningMessage; }
-
-    var hasChanged = false;
-    var nextState = {};
-
-    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
-      var _key = finalReducerKeys[_i];
-      var reducer = finalReducers[_key];
-      var previousStateForKey = state[_key];
-      var nextStateForKey = reducer(previousStateForKey, action);
-
-      if (typeof nextStateForKey === 'undefined') {
-        var actionType = action && action.type;
-        throw new Error( true ? formatProdErrorMessage(14) : undefined);
-      }
-
-      nextState[_key] = nextStateForKey;
-      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
-    }
-
-    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
-    return hasChanged ? nextState : state;
-  };
-}
-
-function bindActionCreator(actionCreator, dispatch) {
-  return function () {
-    return dispatch(actionCreator.apply(this, arguments));
-  };
-}
-/**
- * Turns an object whose values are action creators, into an object with the
- * same keys, but with every function wrapped into a `dispatch` call so they
- * may be invoked directly. This is just a convenience method, as you can call
- * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
- *
- * For convenience, you can also pass an action creator as the first argument,
- * and get a dispatch wrapped function in return.
- *
- * @param {Function|Object} actionCreators An object whose values are action
- * creator functions. One handy way to obtain it is to use ES6 `import * as`
- * syntax. You may also pass a single function.
- *
- * @param {Function} dispatch The `dispatch` function available on your Redux
- * store.
- *
- * @returns {Function|Object} The object mimicking the original object, but with
- * every action creator wrapped into the `dispatch` call. If you passed a
- * function as `actionCreators`, the return value will also be a single
- * function.
- */
-
-
-function bindActionCreators(actionCreators, dispatch) {
-  if (typeof actionCreators === 'function') {
-    return bindActionCreator(actionCreators, dispatch);
-  }
-
-  if (typeof actionCreators !== 'object' || actionCreators === null) {
-    throw new Error( true ? formatProdErrorMessage(16) : undefined);
-  }
-
-  var boundActionCreators = {};
-
-  for (var key in actionCreators) {
-    var actionCreator = actionCreators[key];
-
-    if (typeof actionCreator === 'function') {
-      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
-    }
-  }
-
-  return boundActionCreators;
-}
-
-/**
- * Composes single-argument functions from right to left. The rightmost
- * function can take multiple arguments as it provides the signature for
- * the resulting composite function.
- *
- * @param {...Function} funcs The functions to compose.
- * @returns {Function} A function obtained by composing the argument functions
- * from right to left. For example, compose(f, g, h) is identical to doing
- * (...args) => f(g(h(...args))).
- */
-function compose() {
-  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
-    funcs[_key] = arguments[_key];
-  }
-
-  if (funcs.length === 0) {
-    return function (arg) {
-      return arg;
-    };
-  }
-
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
-
-  return funcs.reduce(function (a, b) {
-    return function () {
-      return a(b.apply(void 0, arguments));
-    };
-  });
-}
-
-/**
- * Creates a store enhancer that applies middleware to the dispatch method
- * of the Redux store. This is handy for a variety of tasks, such as expressing
- * asynchronous actions in a concise manner, or logging every action payload.
- *
- * See `redux-thunk` package as an example of the Redux middleware.
- *
- * Because middleware is potentially asynchronous, this should be the first
- * store enhancer in the composition chain.
- *
- * Note that each middleware will be given the `dispatch` and `getState` functions
- * as named arguments.
- *
- * @param {...Function} middlewares The middleware chain to be applied.
- * @returns {Function} A store enhancer applying the middleware.
- */
-
-function applyMiddleware() {
-  for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
-    middlewares[_key] = arguments[_key];
-  }
-
-  return function (createStore) {
-    return function () {
-      var store = createStore.apply(void 0, arguments);
-
-      var _dispatch = function dispatch() {
-        throw new Error( true ? formatProdErrorMessage(15) : undefined);
-      };
-
-      var middlewareAPI = {
-        getState: store.getState,
-        dispatch: function dispatch() {
-          return _dispatch.apply(void 0, arguments);
-        }
-      };
-      var chain = middlewares.map(function (middleware) {
-        return middleware(middlewareAPI);
-      });
-      _dispatch = compose.apply(void 0, chain)(store.dispatch);
-      return _objectSpread2(_objectSpread2({}, store), {}, {
-        dispatch: _dispatch
-      });
-    };
-  };
-}
-
-
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
 /* 97 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(30);
-var toObject = __webpack_require__(35);
-var IE_PROTO = __webpack_require__(80)('IE_PROTO');
+var has = __webpack_require__(34);
+var toObject = __webpack_require__(39);
+var IE_PROTO = __webpack_require__(81)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -6629,13 +3178,13 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(8);
-var core = __webpack_require__(7);
-var fails = __webpack_require__(32);
+var $export = __webpack_require__(13);
+var core = __webpack_require__(8);
+var fails = __webpack_require__(36);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};
@@ -6645,17 +3194,17 @@ module.exports = function (KEY, exec) {
 
 
 /***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports.f = __webpack_require__(14);
-
-
-/***/ }),
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(17);
+exports.f = __webpack_require__(16);
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(19);
 module.exports = function (it, TYPE) {
   if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
   return it;
@@ -6663,8 +3212,17 @@ module.exports = function (it, TYPE) {
 
 
 /***/ }),
-/* 101 */,
 /* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(238), __esModule: true };
+
+/***/ }),
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6674,7 +3232,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
@@ -6684,51 +3242,51 @@ exports.convertMedia = convertMedia;
 exports.convertSession = convertSession;
 exports.convertLogger = convertLogger;
 
-var _deviceManager = __webpack_require__(566);
+var _deviceManager = __webpack_require__(687);
 
 var _deviceManager2 = _interopRequireDefault(_deviceManager);
 
-var _mediaManager = __webpack_require__(567);
+var _mediaManager = __webpack_require__(688);
 
 var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
-var _sessionManager = __webpack_require__(568);
+var _sessionManager = __webpack_require__(689);
 
 var _sessionManager2 = _interopRequireDefault(_sessionManager);
 
-var _trackManager = __webpack_require__(569);
+var _trackManager = __webpack_require__(690);
 
 var _trackManager2 = _interopRequireDefault(_trackManager);
 
-var _logManager = __webpack_require__(570);
+var _logManager = __webpack_require__(691);
 
 var _logManager2 = _interopRequireDefault(_logManager);
 
-var _webrtcManager = __webpack_require__(571);
+var _webrtcManager = __webpack_require__(692);
 
 var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
 
-var _renderer = __webpack_require__(572);
+var _renderer = __webpack_require__(693);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _media = __webpack_require__(573);
+var _media = __webpack_require__(694);
 
 var _media2 = _interopRequireDefault(_media);
 
-var _session = __webpack_require__(574);
+var _session = __webpack_require__(695);
 
 var _session2 = _interopRequireDefault(_session);
 
-var _track = __webpack_require__(575);
+var _track = __webpack_require__(696);
 
 var _track2 = _interopRequireDefault(_track);
 
-var _logger = __webpack_require__(576);
+var _logger = __webpack_require__(697);
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var _logs = __webpack_require__(4);
+var _logs = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6859,22 +3417,23 @@ function convertLogger(logger) {
 }
 
 /***/ }),
-/* 103 */
+/* 108 */,
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(18) && !__webpack_require__(32)(function () {
-  return Object.defineProperty(__webpack_require__(75)('div'), 'a', { get: function () { return 7; } }).a != 7;
+module.exports = !__webpack_require__(21) && !__webpack_require__(36)(function () {
+  return Object.defineProperty(__webpack_require__(76)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
-/* 104 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(30);
-var toIObject = __webpack_require__(33);
-var arrayIndexOf = __webpack_require__(163)(false);
-var IE_PROTO = __webpack_require__(80)('IE_PROTO');
+var has = __webpack_require__(34);
+var toIObject = __webpack_require__(37);
+var arrayIndexOf = __webpack_require__(158)(false);
+var IE_PROTO = __webpack_require__(81)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -6891,76 +3450,22 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 105 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 107 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(29);
+module.exports = __webpack_require__(33);
 
 
 /***/ }),
-/* 108 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__(11).document;
+var document = __webpack_require__(15).document;
 module.exports = document && document.documentElement;
 
 
 /***/ }),
-/* 109 */
+/* 113 */
 /***/ (function(module, exports) {
 
 module.exports = function (done, value) {
@@ -6969,11 +3474,11 @@ module.exports = function (done, value) {
 
 
 /***/ }),
-/* 110 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(24);
+var anObject = __webpack_require__(27);
 module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -6987,12 +3492,12 @@ module.exports = function (iterator, fn, value, entries) {
 
 
 /***/ }),
-/* 111 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators = __webpack_require__(51);
-var ITERATOR = __webpack_require__(14)('iterator');
+var Iterators = __webpack_require__(50);
+var ITERATOR = __webpack_require__(16)('iterator');
 var ArrayProto = Array.prototype;
 
 module.exports = function (it) {
@@ -7001,13 +3506,13 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 112 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(86);
-var ITERATOR = __webpack_require__(14)('iterator');
-var Iterators = __webpack_require__(51);
-module.exports = __webpack_require__(7).getIteratorMethod = function (it) {
+var classof = __webpack_require__(87);
+var ITERATOR = __webpack_require__(16)('iterator');
+var Iterators = __webpack_require__(50);
+module.exports = __webpack_require__(8).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
@@ -7015,13 +3520,13 @@ module.exports = __webpack_require__(7).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 113 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__(24);
-var aFunction = __webpack_require__(47);
-var SPECIES = __webpack_require__(14)('species');
+var anObject = __webpack_require__(27);
+var aFunction = __webpack_require__(46);
+var SPECIES = __webpack_require__(16)('species');
 module.exports = function (O, D) {
   var C = anObject(O).constructor;
   var S;
@@ -7030,14 +3535,14 @@ module.exports = function (O, D) {
 
 
 /***/ }),
-/* 114 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__(28);
-var invoke = __webpack_require__(176);
-var html = __webpack_require__(108);
-var cel = __webpack_require__(75);
-var global = __webpack_require__(11);
+var ctx = __webpack_require__(32);
+var invoke = __webpack_require__(171);
+var html = __webpack_require__(112);
+var cel = __webpack_require__(76);
+var global = __webpack_require__(15);
 var process = global.process;
 var setTask = global.setImmediate;
 var clearTask = global.clearImmediate;
@@ -7076,7 +3581,7 @@ if (!setTask || !clearTask) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (__webpack_require__(48)(process) == 'process') {
+  if (__webpack_require__(47)(process) == 'process') {
     defer = function (id) {
       process.nextTick(ctx(run, id, 1));
     };
@@ -7120,7 +3625,7 @@ module.exports = {
 
 
 /***/ }),
-/* 115 */
+/* 119 */
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -7133,12 +3638,12 @@ module.exports = function (exec) {
 
 
 /***/ }),
-/* 116 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(24);
-var isObject = __webpack_require__(17);
-var newPromiseCapability = __webpack_require__(88);
+var anObject = __webpack_require__(27);
+var isObject = __webpack_require__(19);
+var newPromiseCapability = __webpack_require__(89);
 
 module.exports = function (C, x) {
   anObject(C);
@@ -7151,16 +3656,16 @@ module.exports = function (C, x) {
 
 
 /***/ }),
-/* 117 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var global = __webpack_require__(11);
-var core = __webpack_require__(7);
-var dP = __webpack_require__(19);
-var DESCRIPTORS = __webpack_require__(18);
-var SPECIES = __webpack_require__(14)('species');
+var global = __webpack_require__(15);
+var core = __webpack_require__(8);
+var dP = __webpack_require__(22);
+var DESCRIPTORS = __webpack_require__(21);
+var SPECIES = __webpack_require__(16)('species');
 
 module.exports = function (KEY) {
   var C = typeof core[KEY] == 'function' ? core[KEY] : global[KEY];
@@ -7172,10 +3677,10 @@ module.exports = function (KEY) {
 
 
 /***/ }),
-/* 118 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ITERATOR = __webpack_require__(14)('iterator');
+var ITERATOR = __webpack_require__(16)('iterator');
 var SAFE_CLOSING = false;
 
 try {
@@ -7200,23 +3705,23 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 119 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(48);
+var cof = __webpack_require__(47);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
 
 /***/ }),
-/* 120 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(104);
-var hiddenKeys = __webpack_require__(82).concat('length', 'prototype');
+var $keys = __webpack_require__(110);
+var hiddenKeys = __webpack_require__(83).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -7224,18 +3729,18 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-/* 121 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(50);
-var createDesc = __webpack_require__(40);
-var toIObject = __webpack_require__(33);
-var toPrimitive = __webpack_require__(76);
-var has = __webpack_require__(30);
-var IE8_DOM_DEFINE = __webpack_require__(103);
+var pIE = __webpack_require__(49);
+var createDesc = __webpack_require__(43);
+var toIObject = __webpack_require__(37);
+var toPrimitive = __webpack_require__(77);
+var has = __webpack_require__(34);
+var IE8_DOM_DEFINE = __webpack_require__(109);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(18) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(21) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -7246,7 +3751,7 @@ exports.f = __webpack_require__(18) ? gOPD : function getOwnPropertyDescriptor(O
 
 
 /***/ }),
-/* 122 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7280,8 +3785,7 @@ function defaultLogFormatter(entry) {
 }
 
 /***/ }),
-/* 123 */,
-/* 124 */
+/* 127 */
 /***/ (function(module, exports) {
 
 var grammar = module.exports = {
@@ -7781,146 +4285,7 @@ Object.keys(grammar).forEach(function (key) {
 
 
 /***/ }),
-/* 125 */,
-/* 126 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getWebRTCSupportCapabilities = getWebRTCSupportCapabilities;
-exports.default = initialize;
-
-var _track = __webpack_require__(127);
-
-var _track2 = _interopRequireDefault(_track);
-
-var _media = __webpack_require__(128);
-
-var _media2 = _interopRequireDefault(_media);
-
-var _Peer = __webpack_require__(129);
-
-var _Peer2 = _interopRequireDefault(_Peer);
-
-var _mediaManager = __webpack_require__(269);
-
-var _mediaManager2 = _interopRequireDefault(_mediaManager);
-
-var _peerManager = __webpack_require__(270);
-
-var _peerManager2 = _interopRequireDefault(_peerManager);
-
-var _sessionManager = __webpack_require__(271);
-
-var _sessionManager2 = _interopRequireDefault(_sessionManager);
-
-var _deviceManager = __webpack_require__(273);
-
-var _deviceManager2 = _interopRequireDefault(_deviceManager);
-
-var _trackManager = __webpack_require__(274);
-
-var _trackManager2 = _interopRequireDefault(_trackManager);
-
-var _webrtcManager = __webpack_require__(275);
-
-var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
-
-var _renderer = __webpack_require__(276);
-
-var _renderer2 = _interopRequireDefault(_renderer);
-
-var _logs = __webpack_require__(15);
-
-var _pipeline = __webpack_require__(67);
-
-var _pipeline2 = _interopRequireDefault(_pipeline);
-
-var _handlers = __webpack_require__(93);
-
-var sdpHandlers = _interopRequireWildcard(_handlers);
-
-var _utils = __webpack_require__(68);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * @returns An dictionary of features that are supported on this platform.
- */
-// Models.
-function getWebRTCSupportCapabilities() {
-  return {
-    mediaDevices: Boolean(navigator.mediaDevices),
-    peerConnection: Boolean(window.RTCPeerConnection)
-  };
-}
-
-// Utils
-
-
-// SDP helpers.
-
-
-// Managers.
-function initialize() {
-  const log = _logs.logManager.getLogger('WebRTC');
-
-  const browserDetails = (0, _utils.getBrowserDetails)();
-  if (browserDetails.version) {
-    log.debug(`Browser details: ${browserDetails.browser}, version ${browserDetails.version}.`);
-  } else {
-    log.debug('Browser details: Not supported by webRTC adapter.');
-  }
-
-  const renderer = new _renderer2.default();
-  const deviceManager = new _deviceManager2.default();
-  const trackManager = new _trackManager2.default();
-  const mediaManager = new _mediaManager2.default({ trackManager });
-  const peerManager = new _peerManager2.default({ trackManager });
-  const sessionManager = new _sessionManager2.default({
-    peerManager,
-    mediaManager,
-    trackManager
-  });
-  const webrtcManager = new _webrtcManager2.default();
-
-  return {
-    models: {
-      Track: _track2.default,
-      Media: _media2.default,
-      Peer: _Peer2.default
-    },
-    // TODO: Make naming consistent.
-    managers: {
-      devices: deviceManager,
-      media: mediaManager,
-      peerManager: peerManager,
-      sessionManager,
-      track: trackManager,
-      // Give access to the Log Manager.
-      // TODO: Don't include it under managers. It's here now because of
-      //    ProxyStack annoyingness.
-      logs: _logs.logManager,
-      webrtcManager,
-      renderer
-    },
-    sdp: {
-      pipeline: _pipeline2.default,
-      handlers: sdpHandlers
-    },
-    // Export this on the webRTC stack for backwards compatibility.
-    getBrowserDetails: _utils.getBrowserDetails
-  };
-}
-
-/***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7931,9 +4296,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Track;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -8141,7 +4506,7 @@ function Track(mediaTrack, mediaStream) {
 // Libraries.
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8151,19 +4516,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(36);
+var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
-var _map = __webpack_require__(34);
+var _map = __webpack_require__(38);
 
 var _map2 = _interopRequireDefault(_map);
 
 exports.default = Media;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -8351,7 +4716,7 @@ function Media(nativeStream, isLocal) {
 // Libraries.
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8361,45 +4726,45 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _set = __webpack_require__(231);
+var _set = __webpack_require__(223);
 
 var _set2 = _interopRequireDefault(_set);
 
-var _keys = __webpack_require__(54);
+var _keys = __webpack_require__(72);
 
 var _keys2 = _interopRequireDefault(_keys);
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = peer;
 
-var _events = __webpack_require__(234);
+var _events = __webpack_require__(226);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _methods = __webpack_require__(241);
+var _methods = __webpack_require__(233);
 
 var _methods2 = _interopRequireDefault(_methods);
 
-var _properties = __webpack_require__(259);
+var _properties = __webpack_require__(251);
 
 var _properties2 = _interopRequireDefault(_properties);
 
 var _utils = __webpack_require__(68);
 
-var _config = __webpack_require__(267);
+var _config = __webpack_require__(259);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
-var _timer = __webpack_require__(268);
+var _timer = __webpack_require__(260);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8575,12 +4940,6 @@ function peer(id, config = {}, trackManager) {
 }
 
 /***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(246), __esModule: true };
-
-/***/ }),
 /* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8617,17 +4976,14 @@ function iceCollectionScheduledCheck(proxyBase) {
 /* 132 */,
 /* 133 */,
 /* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */,
-/* 138 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(19);
-var anObject = __webpack_require__(24);
-var getKeys = __webpack_require__(41);
+var dP = __webpack_require__(22);
+var anObject = __webpack_require__(27);
+var getKeys = __webpack_require__(44);
 
-module.exports = __webpack_require__(18) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(21) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -8639,13 +4995,13 @@ module.exports = __webpack_require__(18) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 139 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(18);
-var getKeys = __webpack_require__(41);
-var toIObject = __webpack_require__(33);
-var isEnum = __webpack_require__(50).f;
+var DESCRIPTORS = __webpack_require__(21);
+var getKeys = __webpack_require__(44);
+var toIObject = __webpack_require__(37);
+var isEnum = __webpack_require__(49).f;
 module.exports = function (isEntries) {
   return function (it) {
     var O = toIObject(it);
@@ -8666,13 +5022,13 @@ module.exports = function (isEntries) {
 
 
 /***/ }),
-/* 140 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(191), __esModule: true };
+module.exports = { "default": __webpack_require__(181), __esModule: true };
 
 /***/ }),
-/* 141 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8683,7 +5039,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.partialDefaultLogActions = exports.defaultOptions = undefined;
 
-var _actionHandler = __webpack_require__(200);
+var _actionHandler = __webpack_require__(190);
 
 var _actionHandler2 = _interopRequireDefault(_actionHandler);
 
@@ -8775,23 +5131,24 @@ const partialDefaultLogActions = exports.partialDefaultLogActions = {
 };
 
 /***/ }),
-/* 142 */
+/* 139 */,
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var dP = __webpack_require__(19).f;
-var create = __webpack_require__(64);
-var redefineAll = __webpack_require__(89);
-var ctx = __webpack_require__(28);
-var anInstance = __webpack_require__(87);
-var forOf = __webpack_require__(53);
-var $iterDefine = __webpack_require__(84);
-var step = __webpack_require__(109);
-var setSpecies = __webpack_require__(117);
-var DESCRIPTORS = __webpack_require__(18);
-var fastKey = __webpack_require__(65).fastKey;
-var validate = __webpack_require__(100);
+var dP = __webpack_require__(22).f;
+var create = __webpack_require__(62);
+var redefineAll = __webpack_require__(90);
+var ctx = __webpack_require__(32);
+var anInstance = __webpack_require__(88);
+var forOf = __webpack_require__(52);
+var $iterDefine = __webpack_require__(85);
+var step = __webpack_require__(113);
+var setSpecies = __webpack_require__(121);
+var DESCRIPTORS = __webpack_require__(21);
+var fastKey = __webpack_require__(63).fastKey;
+var validate = __webpack_require__(101);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function (that, key) {
@@ -8926,24 +5283,24 @@ module.exports = {
 
 
 /***/ }),
-/* 143 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var global = __webpack_require__(11);
-var $export = __webpack_require__(8);
-var meta = __webpack_require__(65);
-var fails = __webpack_require__(32);
-var hide = __webpack_require__(29);
-var redefineAll = __webpack_require__(89);
-var forOf = __webpack_require__(53);
-var anInstance = __webpack_require__(87);
-var isObject = __webpack_require__(17);
-var setToStringTag = __webpack_require__(52);
-var dP = __webpack_require__(19).f;
-var each = __webpack_require__(204)(0);
-var DESCRIPTORS = __webpack_require__(18);
+var global = __webpack_require__(15);
+var $export = __webpack_require__(13);
+var meta = __webpack_require__(63);
+var fails = __webpack_require__(36);
+var hide = __webpack_require__(33);
+var redefineAll = __webpack_require__(90);
+var forOf = __webpack_require__(52);
+var anInstance = __webpack_require__(88);
+var isObject = __webpack_require__(19);
+var setToStringTag = __webpack_require__(51);
+var dP = __webpack_require__(22).f;
+var each = __webpack_require__(194)(0);
+var DESCRIPTORS = __webpack_require__(21);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   var Base = global[NAME];
@@ -8992,12 +5349,12 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 
 /***/ }),
-/* 144 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var classof = __webpack_require__(86);
-var from = __webpack_require__(207);
+var classof = __webpack_require__(87);
+var from = __webpack_require__(197);
 module.exports = function (NAME) {
   return function toJSON() {
     if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
@@ -9007,13 +5364,13 @@ module.exports = function (NAME) {
 
 
 /***/ }),
-/* 145 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(8);
+var $export = __webpack_require__(13);
 
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { of: function of() {
@@ -9026,16 +5383,16 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 146 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(8);
-var aFunction = __webpack_require__(47);
-var ctx = __webpack_require__(28);
-var forOf = __webpack_require__(53);
+var $export = __webpack_require__(13);
+var aFunction = __webpack_require__(46);
+var ctx = __webpack_require__(32);
+var forOf = __webpack_require__(52);
 
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { from: function from(source /* , mapFn, thisArg */) {
@@ -9061,13 +5418,13 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 147 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(211), __esModule: true };
+module.exports = { "default": __webpack_require__(201), __esModule: true };
 
 /***/ }),
-/* 148 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9080,7 +5437,7 @@ exports.devicesChanged = devicesChanged;
 exports.initializeDevice = initializeDevice;
 exports.initializeDeviceFinish = initializeDeviceFinish;
 
-var _actionTypes = __webpack_require__(12);
+var _actionTypes = __webpack_require__(23);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -9115,7 +5472,7 @@ function initializeDeviceFinish({ devices, error }) {
 }
 
 /***/ }),
-/* 149 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9124,396 +5481,141 @@ function initializeDeviceFinish({ devices, error }) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = watchTrackEvents;
-exports.setListeners = setListeners;
 
-var _effects = __webpack_require__(6);
+var _extends2 = __webpack_require__(1);
 
-var _reduxSaga = __webpack_require__(27);
+var _extends3 = _interopRequireDefault(_extends2);
 
-var _actions = __webpack_require__(25);
+exports.sessionAdded = sessionAdded;
+exports.sessionRemoved = sessionRemoved;
+exports.sessionNewTrack = sessionNewTrack;
+exports.sessionTrackEnded = sessionTrackEnded;
+exports.sessionTrackReplaced = sessionTrackReplaced;
+exports.sessionIceConnectionStateChange = sessionIceConnectionStateChange;
+exports.sessionIceGatheringStateChange = sessionIceGatheringStateChange;
+exports.sessionIceCandidateCollected = sessionIceCandidateCollected;
+exports.sessionIceCollectionScheduledCheck = sessionIceCollectionScheduledCheck;
+exports.sessionAudioEnded = sessionAudioEnded;
 
-var _utils = __webpack_require__(13);
+var _actionTypes = __webpack_require__(23);
 
-/**
- * Sets up event listeners for a Track's events.
- * The events are turned into actions and dispatched
- *    to be handled by redux elsewhere.
- * @method watchTrackEvents
- * @param  {Object} track A Track object.
- * @param  {Object} webRTC The webRTC stack.
- */
-// Libraries.
-function* watchTrackEvents(track, webRTC) {
-  /**
-   * Create an event channel between the Track and redux-saga.
-   * This "forces" the Track events into a redux-saga context.
-   */
-  const trackChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(track, emit, _reduxSaga.END);
-  });
-  yield (0, _effects.takeEvery)(trackChannel, _utils.forwardAction);
-}
+var actionTypes = _interopRequireWildcard(_actionTypes);
 
-/**
- * Function to set-up listeners for a Track object's events.
- * Contains the logic for how a webRTC event should be parsed
- *    before being sent elsewhere. Split into a stand-alone
- *    function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   track A Track object.
- * @param  {Function} emit  Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-function setListeners(track, emit, END = 'END') {
-  // Track ended
-  const trackEnded = trackData => {
-    /**
-     * When the track ends, its channel should be ended (via `END`).
-     * The trackManager channel will handle updating state for this event.
-     */
-    emit(END);
-  };
+var _fp = __webpack_require__(2);
 
-  // The track source (which affected the track identified by trackId) was muted.
-  // An example of a track source is a physical media device such as:
-  // microphone or camera.
-  const trackSourceMuted = trackData => {
-    emit(_actions.trackActions.trackSourceMuted([trackData.trackId], { mediaId: trackData.mediaId, isLocal: trackData.isLocal }));
-  };
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-  // The track source (which affected the track identified by trackId) was unmuted.
-  const trackSourceUnmuted = trackData => {
-    emit(_actions.trackActions.trackSourceUnmuted([trackData.trackId], { mediaId: trackData.mediaId, isLocal: trackData.isLocal }));
-  };
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  track.on('ended', trackEnded);
-  track.on('muted', trackSourceMuted);
-  track.on('unmuted', trackSourceUnmuted);
+// Call plugin.
+function sessionActionHelper(type, id, payload = {}, meta = {}) {
+  const action = {
+    type,
+    payload: (0, _extends3.default)({}, payload, {
+      id
+    })
 
-  const unsubscribe = () => {
-    track.off('ended', trackEnded);
-    track.off('muted', trackSourceMuted);
-    track.off('unmuted', trackSourceUnmuted);
-  };
-  return unsubscribe;
-}
-
-/***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = watchMediaEvents;
-exports.setListeners = setListeners;
-
-var _actions = __webpack_require__(25);
-
-var _utils = __webpack_require__(13);
-
-var _effects = __webpack_require__(6);
-
-var _reduxSaga = __webpack_require__(27);
-
-/**
- * Sets up event listeners for a Media's events.
- * The events are turned into actions and dispatched
- *    to be handled by redux elsewhere.
- * @method watchMediaEvents
- * @param  {Object} media A Media object.
- * @param  {Object} webRTC The webRTC stack.
- */
-
-
-// Libraries.
-// Webrtc plugin.
-function* watchMediaEvents(media, webRTC) {
-  /**
-   * Create an event channel between the Media and redux-saga.
-   * This "forces" the Media events into a redux-saga context.
-   */
-  const mediaChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(media, emit, _reduxSaga.END);
-  });
-  yield (0, _effects.takeEvery)(mediaChannel, _utils.forwardAction);
-}
-
-/**
- * Function to set-up listeners for a Media object's events.
- * Contains the logic for how a webRTC event should be parsed
- *    before being sent elsewhere. Split into a stand-alone
- *    function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   media A Media object.
- * @param  {Function} emit  Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-function setListeners(media, emit, END = 'END') {
-  // Media received a new track.
-  const newTrack = ({ mediaId, trackId }) => {
-    /**
-     * When a new track has been added,
-     * update redux state's webrtc.media.tracks array with the new trackId.
-     */
-    emit(_actions.mediaActions.mediaNewTrack(mediaId, { trackId }));
-  };
-
-  const trackEnded = ({ mediaId, trackId }) => {
-    /**
-     * When a track has ended,
-     * update redux state's webrtc.media.tracks array
-     * by removing the specified trackId.
-     */
-    emit(_actions.mediaActions.mediaTrackEnded(mediaId, { trackId }));
-  };
-  const mediaStopped = id => {
-    /**
-     * When the media is stopped, its channel should be ended (via `END`).
-     * The mediaManager channel will handle updating state for this event.
-     */
-    emit(END);
-  };
-
-  media.on('track:new', newTrack);
-  media.on('track:ended', trackEnded);
-  media.on('media:stopped', mediaStopped);
-
-  const unsubscribe = () => {
-    media.off('track:new', newTrack);
-    media.off('track:ended', trackEnded);
-    media.off('media:stopped', mediaStopped);
-  };
-  return unsubscribe;
-}
-
-/***/ }),
-/* 151 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = watchSessionEvents;
-exports.setListeners = setListeners;
-
-var _actions = __webpack_require__(25);
-
-var _utils = __webpack_require__(13);
-
-var _effects = __webpack_require__(6);
-
-var _reduxSaga = __webpack_require__(27);
-
-/**
- * Sets up event listeners for a Session's events.
- * The events are turned into actions and dispatched
- *    to be handled by redux elsewhere.
- * @method watchSessionEvents
- * @param  {Object} session The Session object.
- * @param  {Object} webRTC The webRTC stack.
- */
-
-
-// Libraries.
-// Webrtc plugin.
-function* watchSessionEvents(session, webRTC) {
-  /**
-   * Create an event channel between the Session and redux-saga.
-   * This "forces" the Session events into a redux-saga context.
-   */
-  const sessionChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(session, emit);
-  });
-  // sessionChannel will emit the Session's events as actions, so dispatch
-  //    them to be handled by sagas.
-  // TODO: If the event is "Session gone", should close/unsubscribe the channel.
-  yield (0, _effects.takeEvery)(sessionChannel, _utils.forwardAction);
-}
-
-/**
- * Function to set-up listeners for a Session object's events.
- * Contains the logic for how a webRTC event should be parsed
- *    before being sent elsewhere. Split into a stand-alone
- *    function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   session A Session object.
- * @param  {Function} emit  Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-function setListeners(session, emit, END = 'END') {
-  // Session received a new track.
-  const newTrack = ({ local, trackId }) => {
-    /**
-     * When a new track has been added,
-     * update redux state's webrtc.session.localTracks/remoteTracks array
-     * with the new trackId.
-     * ('local' boolean will determine whether to update localTracks or remoteTracks)
-     */
-    emit(_actions.sessionActions.sessionNewTrack(session.id, {
-      local,
-      trackId
-    }));
-  };
-
-  const trackEnded = ({ local, trackId, isUnsolicited }) => {
-    /**
-     * When a track has ended,
-     * update redux state's webrtc.session.localTracks/remoteTracks array
-     * by removing the specified trackId.
-     * ('local' boolean will determine whether to update localTracks or remoteTracks)
-     */
-    emit(_actions.sessionActions.sessionTrackEnded(session.id, {
-      local,
-      trackId,
-      isUnsolicited
-    }));
-  };
-
-  const trackReplaced = ({ oldTrackId, trackId }) => {
-    emit(_actions.sessionActions.sessionTrackReplaced(session.id, {
-      oldTrackId,
-      trackId
-    }));
-  };
-
-  const iceConnectionStateChange = obj => {
-    emit(_actions.sessionActions.sessionIceConnectionStateChange(session.id, {
-      iceConnectionState: obj.iceConnectionState
-    }));
-  };
-
-  const iceCandidateCollected = obj => {
-    emit(_actions.sessionActions.sessionIceCandidateCollected(session.id, obj));
-  };
-
-  const iceGatheringStateChange = obj => {
-    emit(_actions.sessionActions.sessionIceGatheringStateChange(session.id, obj));
-  };
-
-  const iceCollectionScheduledCheck = obj => {
-    emit(_actions.sessionActions.sessionIceCollectionScheduledCheck(session.id, obj));
-  };
-
-  // Listen for when audio files end (from `insertAudio` API).
-  const audioFileEnded = isSuccess => {
-    emit(_actions.sessionActions.sessionAudioEnded(session.id, { error: !isSuccess }));
-  };
-
-  // Generic "something changed" handler.
-  // TODO: Either use this for other events or remove it.
-  // eslint-disable-next-line no-unused-vars
-  const onChange = () => {
-    const state = session.getState();
-
-    emit(_actions.sessionActions.sessionChange(session.id, {
-      id: state.id,
-      localTracks: state.localTracks.map(track => track.id),
-      remoteTracks: state.remoteTracks.map(track => track.id)
-    }));
-  };
-
-  session.on('new:track', newTrack);
-  session.on('track:ended', trackEnded);
-  session.on('track:replaced', trackReplaced);
-  session.on('peer:iceConnectionStateChange', iceConnectionStateChange);
-  session.on('peer:iceGatheringStateChange', iceGatheringStateChange);
-  session.on('peer:iceCandidateCollected', iceCandidateCollected);
-  session.on('peer:iceCollectionScheduledCheck', iceCollectionScheduledCheck);
-  session.on('audioFileEnded', audioFileEnded);
-
-  const unsubscribe = () => {
-    session.off('new:track', newTrack);
-    session.off('track:ended', trackEnded);
-    session.off('track:replaced', trackReplaced);
-    session.off('peer:iceConnectionStateChange', iceConnectionStateChange);
-    session.off('peer:iceGatheringStateChange', iceGatheringStateChange);
-    session.off('peer:iceCandidateCollected', iceCandidateCollected);
-    session.off('peer:iceCollectionScheduledCheck', iceCollectionScheduledCheck);
-    session.off('audioFileEnded', audioFileEnded);
-  };
-  return unsubscribe;
-}
-
-/***/ }),
-/* 152 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getSdpSessionId = getSdpSessionId;
-/**
- * Extracts the session ID from the SDP.
- * Session ID is located in the o= line.
- * Ref: https://tools.ietf.org/html/rfc4566#section-5.2
- * @method getSdpSessionId
- * @param  {string} sdp A valid SDP string.
- * @return {string} The SDP's session ID.
- */
-function getSdpSessionId(sdp) {
-  const oLine = sdp.match(/o=.*/gm);
-
-  if (oLine && oLine[0]) {
-    return oLine[0].split(' ')[1];
+    // Only have meta and error properties on the action if they're needed.
+  };if (!(0, _fp.isEmpty)(meta)) {
+    action.meta = meta;
   }
+  if (payload.error) {
+    action.error = true;
+  }
+  return action;
+}
+
+// Libraries.
+function sessionAdded(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_ADDED, id, params);
+}
+
+function sessionRemoved(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_REMOVED, id, params);
+}
+
+function sessionNewTrack(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_NEW_TRACK, id, params);
+}
+
+function sessionTrackEnded(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_TRACK_ENDED, id, params);
+}
+
+function sessionTrackReplaced(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_TRACK_REPLACED, id, params);
+}
+
+function sessionIceConnectionStateChange(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_ICE_CONNECTION_STATE_CHANGE, id, params);
+}
+
+function sessionIceGatheringStateChange(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_ICE_GATHERING_STATE_CHANGE, id, params);
+}
+
+function sessionIceCandidateCollected(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_ICE_CANDIDATE_COLLECTED, id, params);
+}
+
+function sessionIceCollectionScheduledCheck(id, params) {
+  return sessionActionHelper(actionTypes.SESSION_ICE_COLLECTION_SCHEDULED_CHECK, id, params);
+}
+
+/*
+ * Action to signify that an audio file has ended. Dispatched at the end of the
+ *    `insertAudio` Session method.
+ */
+function sessionAudioEnded(id, params) {
+  return {
+    type: actionTypes.SESSION_AUDIO_ENDED,
+    payload: (0, _extends3.default)({ id }, params),
+    error: Boolean(params.error)
+  };
 }
 
 /***/ }),
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
 /* 153 */,
 /* 154 */,
-/* 155 */,
-/* 156 */,
-/* 157 */,
-/* 158 */,
-/* 159 */,
-/* 160 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(161);
-module.exports = __webpack_require__(7).Object.assign;
+__webpack_require__(156);
+module.exports = __webpack_require__(8).Object.assign;
 
 
 /***/ }),
-/* 161 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(8);
+var $export = __webpack_require__(13);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(162) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(157) });
 
 
 /***/ }),
-/* 162 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var DESCRIPTORS = __webpack_require__(18);
-var getKeys = __webpack_require__(41);
-var gOPS = __webpack_require__(83);
-var pIE = __webpack_require__(50);
-var toObject = __webpack_require__(35);
-var IObject = __webpack_require__(77);
+var DESCRIPTORS = __webpack_require__(21);
+var getKeys = __webpack_require__(44);
+var gOPS = __webpack_require__(84);
+var pIE = __webpack_require__(49);
+var toObject = __webpack_require__(39);
+var IObject = __webpack_require__(78);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(32)(function () {
+module.exports = !$assign || __webpack_require__(36)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -9543,14 +5645,14 @@ module.exports = !$assign || __webpack_require__(32)(function () {
 
 
 /***/ }),
-/* 163 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(33);
-var toLength = __webpack_require__(61);
-var toAbsoluteIndex = __webpack_require__(164);
+var toIObject = __webpack_require__(37);
+var toLength = __webpack_require__(59);
+var toAbsoluteIndex = __webpack_require__(159);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -9572,10 +5674,10 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 164 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(79);
+var toInteger = __webpack_require__(80);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -9585,7 +5687,7 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 165 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -9729,14 +5831,14 @@ u&&(Z.prototype[t]=function(){var t=this.__wrapped__,o=e?[1]:arguments,f=t insta
 var t=_l[n],r=/^(?:push|sort|unshift)$/.test(n)?"tap":"thru",e=/^(?:pop|shift)$/.test(n);Z.prototype[n]=function(){var n=arguments;if(e&&!this.__chain__){var u=this.value();return t.apply(bh(u)?u:[],n)}return this[r](function(r){return t.apply(bh(r)?r:[],n)})}}),ue(Ct.prototype,function(n,t){var r=Z[t];if(r){var e=r.name+"";bl.call(fs,e)||(fs[e]=[]),fs[e].push({name:t,func:r})}}),fs[Qu(X,vn).name]=[{name:"wrapper",func:X}],Ct.prototype.clone=$t,Ct.prototype.reverse=Yt,Ct.prototype.value=Qt,Z.prototype.at=Qs,
 Z.prototype.chain=tf,Z.prototype.commit=rf,Z.prototype.next=ef,Z.prototype.plant=of,Z.prototype.reverse=ff,Z.prototype.toJSON=Z.prototype.valueOf=Z.prototype.value=cf,Z.prototype.first=Z.prototype.head,Ul&&(Z.prototype[Ul]=uf),Z},be=de(); true?(re._=be,!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(){return be}).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))):undefined}).call(this);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(105), __webpack_require__(106)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(96), __webpack_require__(97)(module)))
 
 /***/ }),
-/* 166 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapping = __webpack_require__(167),
-    fallbackHolder = __webpack_require__(168);
+var mapping = __webpack_require__(162),
+    fallbackHolder = __webpack_require__(163);
 
 /** Built-in value reference. */
 var push = Array.prototype.push;
@@ -10307,7 +6409,7 @@ module.exports = baseConvert;
 
 
 /***/ }),
-/* 167 */
+/* 162 */
 /***/ (function(module, exports) {
 
 /** Used to map aliases to their real names. */
@@ -10671,7 +6773,7 @@ exports.skipRearg = {
 
 
 /***/ }),
-/* 168 */
+/* 163 */
 /***/ (function(module, exports) {
 
 /**
@@ -10683,25 +6785,25 @@ module.exports = {};
 
 
 /***/ }),
-/* 169 */,
-/* 170 */
+/* 164 */,
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(72);
-__webpack_require__(63);
-__webpack_require__(85);
+__webpack_require__(71);
+__webpack_require__(61);
+__webpack_require__(86);
+__webpack_require__(170);
+__webpack_require__(174);
 __webpack_require__(175);
-__webpack_require__(179);
-__webpack_require__(180);
-module.exports = __webpack_require__(7).Promise;
+module.exports = __webpack_require__(8).Promise;
 
 
 /***/ }),
-/* 171 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(79);
-var defined = __webpack_require__(78);
+var toInteger = __webpack_require__(80);
+var defined = __webpack_require__(79);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -10720,18 +6822,18 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 172 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var create = __webpack_require__(64);
-var descriptor = __webpack_require__(40);
-var setToStringTag = __webpack_require__(52);
+var create = __webpack_require__(62);
+var descriptor = __webpack_require__(43);
+var setToStringTag = __webpack_require__(51);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(29)(IteratorPrototype, __webpack_require__(14)('iterator'), function () { return this; });
+__webpack_require__(33)(IteratorPrototype, __webpack_require__(16)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -10740,21 +6842,21 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 173 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(174);
-var step = __webpack_require__(109);
-var Iterators = __webpack_require__(51);
-var toIObject = __webpack_require__(33);
+var addToUnscopables = __webpack_require__(169);
+var step = __webpack_require__(113);
+var Iterators = __webpack_require__(50);
+var toIObject = __webpack_require__(37);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(84)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(85)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -10781,34 +6883,34 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 174 */
+/* 169 */
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
 
 
 /***/ }),
-/* 175 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(49);
-var global = __webpack_require__(11);
-var ctx = __webpack_require__(28);
-var classof = __webpack_require__(86);
-var $export = __webpack_require__(8);
-var isObject = __webpack_require__(17);
-var aFunction = __webpack_require__(47);
-var anInstance = __webpack_require__(87);
-var forOf = __webpack_require__(53);
-var speciesConstructor = __webpack_require__(113);
-var task = __webpack_require__(114).set;
-var microtask = __webpack_require__(177)();
-var newPromiseCapabilityModule = __webpack_require__(88);
-var perform = __webpack_require__(115);
-var userAgent = __webpack_require__(178);
-var promiseResolve = __webpack_require__(116);
+var LIBRARY = __webpack_require__(48);
+var global = __webpack_require__(15);
+var ctx = __webpack_require__(32);
+var classof = __webpack_require__(87);
+var $export = __webpack_require__(13);
+var isObject = __webpack_require__(19);
+var aFunction = __webpack_require__(46);
+var anInstance = __webpack_require__(88);
+var forOf = __webpack_require__(52);
+var speciesConstructor = __webpack_require__(117);
+var task = __webpack_require__(118).set;
+var microtask = __webpack_require__(172)();
+var newPromiseCapabilityModule = __webpack_require__(89);
+var perform = __webpack_require__(119);
+var userAgent = __webpack_require__(173);
+var promiseResolve = __webpack_require__(120);
 var PROMISE = 'Promise';
 var TypeError = global.TypeError;
 var process = global.process;
@@ -10824,7 +6926,7 @@ var USE_NATIVE = !!function () {
   try {
     // correct subclassing with @@species support
     var promise = $Promise.resolve(1);
-    var FakePromise = (promise.constructor = {})[__webpack_require__(14)('species')] = function (exec) {
+    var FakePromise = (promise.constructor = {})[__webpack_require__(16)('species')] = function (exec) {
       exec(empty, empty);
     };
     // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
@@ -10983,7 +7085,7 @@ if (!USE_NATIVE) {
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(89)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(90)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected) {
       var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -11014,9 +7116,9 @@ if (!USE_NATIVE) {
 }
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__(52)($Promise, PROMISE);
-__webpack_require__(117)(PROMISE);
-Wrapper = __webpack_require__(7)[PROMISE];
+__webpack_require__(51)($Promise, PROMISE);
+__webpack_require__(121)(PROMISE);
+Wrapper = __webpack_require__(8)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -11034,7 +7136,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(118)(function (iter) {
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(122)(function (iter) {
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -11081,7 +7183,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(118)(functio
 
 
 /***/ }),
-/* 176 */
+/* 171 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -11103,15 +7205,15 @@ module.exports = function (fn, args, that) {
 
 
 /***/ }),
-/* 177 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(11);
-var macrotask = __webpack_require__(114).set;
+var global = __webpack_require__(15);
+var macrotask = __webpack_require__(118).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
-var isNode = __webpack_require__(48)(process) == 'process';
+var isNode = __webpack_require__(47)(process) == 'process';
 
 module.exports = function () {
   var head, last, notify;
@@ -11178,27 +7280,27 @@ module.exports = function () {
 
 
 /***/ }),
-/* 178 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(11);
+var global = __webpack_require__(15);
 var navigator = global.navigator;
 
 module.exports = navigator && navigator.userAgent || '';
 
 
 /***/ }),
-/* 179 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // https://github.com/tc39/proposal-promise-finally
 
-var $export = __webpack_require__(8);
-var core = __webpack_require__(7);
-var global = __webpack_require__(11);
-var speciesConstructor = __webpack_require__(113);
-var promiseResolve = __webpack_require__(116);
+var $export = __webpack_require__(13);
+var core = __webpack_require__(8);
+var global = __webpack_require__(15);
+var speciesConstructor = __webpack_require__(117);
+var promiseResolve = __webpack_require__(120);
 
 $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
   var C = speciesConstructor(this, core.Promise || global.Promise);
@@ -11215,15 +7317,15 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 
 /***/ }),
-/* 180 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/proposal-promise-try
-var $export = __webpack_require__(8);
-var newPromiseCapability = __webpack_require__(88);
-var perform = __webpack_require__(115);
+var $export = __webpack_require__(13);
+var newPromiseCapability = __webpack_require__(89);
+var perform = __webpack_require__(119);
 
 $export($export.S, 'Promise', { 'try': function (callbackfn) {
   var promiseCapability = newPromiseCapability.f(this);
@@ -11234,22 +7336,22 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 181 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(182);
-module.exports = __webpack_require__(7).Object.keys;
+__webpack_require__(177);
+module.exports = __webpack_require__(8).Object.keys;
 
 
 /***/ }),
-/* 182 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
-var toObject = __webpack_require__(35);
-var $keys = __webpack_require__(41);
+var toObject = __webpack_require__(39);
+var $keys = __webpack_require__(44);
 
-__webpack_require__(98)('keys', function () {
+__webpack_require__(99)('keys', function () {
   return function keys(it) {
     return $keys(toObject(it));
   };
@@ -11257,659 +7359,7 @@ __webpack_require__(98)('keys', function () {
 
 
 /***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-const strictUriEncode = __webpack_require__(184);
-const decodeComponent = __webpack_require__(185);
-const splitOnFirst = __webpack_require__(186);
-const filterObject = __webpack_require__(187);
-
-const isNullOrUndefined = value => value === null || value === undefined;
-
-const encodeFragmentIdentifier = Symbol('encodeFragmentIdentifier');
-
-function encoderForArrayFormat(options) {
-	switch (options.arrayFormat) {
-		case 'index':
-			return key => (result, value) => {
-				const index = result.length;
-
-				if (
-					value === undefined ||
-					(options.skipNull && value === null) ||
-					(options.skipEmptyString && value === '')
-				) {
-					return result;
-				}
-
-				if (value === null) {
-					return [...result, [encode(key, options), '[', index, ']'].join('')];
-				}
-
-				return [
-					...result,
-					[encode(key, options), '[', encode(index, options), ']=', encode(value, options)].join('')
-				];
-			};
-
-		case 'bracket':
-			return key => (result, value) => {
-				if (
-					value === undefined ||
-					(options.skipNull && value === null) ||
-					(options.skipEmptyString && value === '')
-				) {
-					return result;
-				}
-
-				if (value === null) {
-					return [...result, [encode(key, options), '[]'].join('')];
-				}
-
-				return [...result, [encode(key, options), '[]=', encode(value, options)].join('')];
-			};
-
-		case 'colon-list-separator':
-			return key => (result, value) => {
-				if (
-					value === undefined ||
-					(options.skipNull && value === null) ||
-					(options.skipEmptyString && value === '')
-				) {
-					return result;
-				}
-
-				if (value === null) {
-					return [...result, [encode(key, options), ':list='].join('')];
-				}
-
-				return [...result, [encode(key, options), ':list=', encode(value, options)].join('')];
-			};
-
-		case 'comma':
-		case 'separator':
-		case 'bracket-separator': {
-			const keyValueSep = options.arrayFormat === 'bracket-separator' ?
-				'[]=' :
-				'=';
-
-			return key => (result, value) => {
-				if (
-					value === undefined ||
-					(options.skipNull && value === null) ||
-					(options.skipEmptyString && value === '')
-				) {
-					return result;
-				}
-
-				// Translate null to an empty string so that it doesn't serialize as 'null'
-				value = value === null ? '' : value;
-
-				if (result.length === 0) {
-					return [[encode(key, options), keyValueSep, encode(value, options)].join('')];
-				}
-
-				return [[result, encode(value, options)].join(options.arrayFormatSeparator)];
-			};
-		}
-
-		default:
-			return key => (result, value) => {
-				if (
-					value === undefined ||
-					(options.skipNull && value === null) ||
-					(options.skipEmptyString && value === '')
-				) {
-					return result;
-				}
-
-				if (value === null) {
-					return [...result, encode(key, options)];
-				}
-
-				return [...result, [encode(key, options), '=', encode(value, options)].join('')];
-			};
-	}
-}
-
-function parserForArrayFormat(options) {
-	let result;
-
-	switch (options.arrayFormat) {
-		case 'index':
-			return (key, value, accumulator) => {
-				result = /\[(\d*)\]$/.exec(key);
-
-				key = key.replace(/\[\d*\]$/, '');
-
-				if (!result) {
-					accumulator[key] = value;
-					return;
-				}
-
-				if (accumulator[key] === undefined) {
-					accumulator[key] = {};
-				}
-
-				accumulator[key][result[1]] = value;
-			};
-
-		case 'bracket':
-			return (key, value, accumulator) => {
-				result = /(\[\])$/.exec(key);
-				key = key.replace(/\[\]$/, '');
-
-				if (!result) {
-					accumulator[key] = value;
-					return;
-				}
-
-				if (accumulator[key] === undefined) {
-					accumulator[key] = [value];
-					return;
-				}
-
-				accumulator[key] = [].concat(accumulator[key], value);
-			};
-
-		case 'colon-list-separator':
-			return (key, value, accumulator) => {
-				result = /(:list)$/.exec(key);
-				key = key.replace(/:list$/, '');
-
-				if (!result) {
-					accumulator[key] = value;
-					return;
-				}
-
-				if (accumulator[key] === undefined) {
-					accumulator[key] = [value];
-					return;
-				}
-
-				accumulator[key] = [].concat(accumulator[key], value);
-			};
-
-		case 'comma':
-		case 'separator':
-			return (key, value, accumulator) => {
-				const isArray = typeof value === 'string' && value.includes(options.arrayFormatSeparator);
-				const isEncodedArray = (typeof value === 'string' && !isArray && decode(value, options).includes(options.arrayFormatSeparator));
-				value = isEncodedArray ? decode(value, options) : value;
-				const newValue = isArray || isEncodedArray ? value.split(options.arrayFormatSeparator).map(item => decode(item, options)) : value === null ? value : decode(value, options);
-				accumulator[key] = newValue;
-			};
-
-		case 'bracket-separator':
-			return (key, value, accumulator) => {
-				const isArray = /(\[\])$/.test(key);
-				key = key.replace(/\[\]$/, '');
-
-				if (!isArray) {
-					accumulator[key] = value ? decode(value, options) : value;
-					return;
-				}
-
-				const arrayValue = value === null ?
-					[] :
-					value.split(options.arrayFormatSeparator).map(item => decode(item, options));
-
-				if (accumulator[key] === undefined) {
-					accumulator[key] = arrayValue;
-					return;
-				}
-
-				accumulator[key] = [].concat(accumulator[key], arrayValue);
-			};
-
-		default:
-			return (key, value, accumulator) => {
-				if (accumulator[key] === undefined) {
-					accumulator[key] = value;
-					return;
-				}
-
-				accumulator[key] = [].concat(accumulator[key], value);
-			};
-	}
-}
-
-function validateArrayFormatSeparator(value) {
-	if (typeof value !== 'string' || value.length !== 1) {
-		throw new TypeError('arrayFormatSeparator must be single character string');
-	}
-}
-
-function encode(value, options) {
-	if (options.encode) {
-		return options.strict ? strictUriEncode(value) : encodeURIComponent(value);
-	}
-
-	return value;
-}
-
-function decode(value, options) {
-	if (options.decode) {
-		return decodeComponent(value);
-	}
-
-	return value;
-}
-
-function keysSorter(input) {
-	if (Array.isArray(input)) {
-		return input.sort();
-	}
-
-	if (typeof input === 'object') {
-		return keysSorter(Object.keys(input))
-			.sort((a, b) => Number(a) - Number(b))
-			.map(key => input[key]);
-	}
-
-	return input;
-}
-
-function removeHash(input) {
-	const hashStart = input.indexOf('#');
-	if (hashStart !== -1) {
-		input = input.slice(0, hashStart);
-	}
-
-	return input;
-}
-
-function getHash(url) {
-	let hash = '';
-	const hashStart = url.indexOf('#');
-	if (hashStart !== -1) {
-		hash = url.slice(hashStart);
-	}
-
-	return hash;
-}
-
-function extract(input) {
-	input = removeHash(input);
-	const queryStart = input.indexOf('?');
-	if (queryStart === -1) {
-		return '';
-	}
-
-	return input.slice(queryStart + 1);
-}
-
-function parseValue(value, options) {
-	if (options.parseNumbers && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
-		value = Number(value);
-	} else if (options.parseBooleans && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
-		value = value.toLowerCase() === 'true';
-	}
-
-	return value;
-}
-
-function parse(query, options) {
-	options = Object.assign({
-		decode: true,
-		sort: true,
-		arrayFormat: 'none',
-		arrayFormatSeparator: ',',
-		parseNumbers: false,
-		parseBooleans: false
-	}, options);
-
-	validateArrayFormatSeparator(options.arrayFormatSeparator);
-
-	const formatter = parserForArrayFormat(options);
-
-	// Create an object with no prototype
-	const ret = Object.create(null);
-
-	if (typeof query !== 'string') {
-		return ret;
-	}
-
-	query = query.trim().replace(/^[?#&]/, '');
-
-	if (!query) {
-		return ret;
-	}
-
-	for (const param of query.split('&')) {
-		if (param === '') {
-			continue;
-		}
-
-		let [key, value] = splitOnFirst(options.decode ? param.replace(/\+/g, ' ') : param, '=');
-
-		// Missing `=` should be `null`:
-		// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
-		value = value === undefined ? null : ['comma', 'separator', 'bracket-separator'].includes(options.arrayFormat) ? value : decode(value, options);
-		formatter(decode(key, options), value, ret);
-	}
-
-	for (const key of Object.keys(ret)) {
-		const value = ret[key];
-		if (typeof value === 'object' && value !== null) {
-			for (const k of Object.keys(value)) {
-				value[k] = parseValue(value[k], options);
-			}
-		} else {
-			ret[key] = parseValue(value, options);
-		}
-	}
-
-	if (options.sort === false) {
-		return ret;
-	}
-
-	return (options.sort === true ? Object.keys(ret).sort() : Object.keys(ret).sort(options.sort)).reduce((result, key) => {
-		const value = ret[key];
-		if (Boolean(value) && typeof value === 'object' && !Array.isArray(value)) {
-			// Sort object keys, not values
-			result[key] = keysSorter(value);
-		} else {
-			result[key] = value;
-		}
-
-		return result;
-	}, Object.create(null));
-}
-
-exports.extract = extract;
-exports.parse = parse;
-
-exports.stringify = (object, options) => {
-	if (!object) {
-		return '';
-	}
-
-	options = Object.assign({
-		encode: true,
-		strict: true,
-		arrayFormat: 'none',
-		arrayFormatSeparator: ','
-	}, options);
-
-	validateArrayFormatSeparator(options.arrayFormatSeparator);
-
-	const shouldFilter = key => (
-		(options.skipNull && isNullOrUndefined(object[key])) ||
-		(options.skipEmptyString && object[key] === '')
-	);
-
-	const formatter = encoderForArrayFormat(options);
-
-	const objectCopy = {};
-
-	for (const key of Object.keys(object)) {
-		if (!shouldFilter(key)) {
-			objectCopy[key] = object[key];
-		}
-	}
-
-	const keys = Object.keys(objectCopy);
-
-	if (options.sort !== false) {
-		keys.sort(options.sort);
-	}
-
-	return keys.map(key => {
-		const value = object[key];
-
-		if (value === undefined) {
-			return '';
-		}
-
-		if (value === null) {
-			return encode(key, options);
-		}
-
-		if (Array.isArray(value)) {
-			if (value.length === 0 && options.arrayFormat === 'bracket-separator') {
-				return encode(key, options) + '[]';
-			}
-
-			return value
-				.reduce(formatter(key), [])
-				.join('&');
-		}
-
-		return encode(key, options) + '=' + encode(value, options);
-	}).filter(x => x.length > 0).join('&');
-};
-
-exports.parseUrl = (url, options) => {
-	options = Object.assign({
-		decode: true
-	}, options);
-
-	const [url_, hash] = splitOnFirst(url, '#');
-
-	return Object.assign(
-		{
-			url: url_.split('?')[0] || '',
-			query: parse(extract(url), options)
-		},
-		options && options.parseFragmentIdentifier && hash ? {fragmentIdentifier: decode(hash, options)} : {}
-	);
-};
-
-exports.stringifyUrl = (object, options) => {
-	options = Object.assign({
-		encode: true,
-		strict: true,
-		[encodeFragmentIdentifier]: true
-	}, options);
-
-	const url = removeHash(object.url).split('?')[0] || '';
-	const queryFromUrl = exports.extract(object.url);
-	const parsedQueryFromUrl = exports.parse(queryFromUrl, {sort: false});
-
-	const query = Object.assign(parsedQueryFromUrl, object.query);
-	let queryString = exports.stringify(query, options);
-	if (queryString) {
-		queryString = `?${queryString}`;
-	}
-
-	let hash = getHash(object.url);
-	if (object.fragmentIdentifier) {
-		hash = `#${options[encodeFragmentIdentifier] ? encode(object.fragmentIdentifier, options) : object.fragmentIdentifier}`;
-	}
-
-	return `${url}${queryString}${hash}`;
-};
-
-exports.pick = (input, filter, options) => {
-	options = Object.assign({
-		parseFragmentIdentifier: true,
-		[encodeFragmentIdentifier]: false
-	}, options);
-
-	const {url, query, fragmentIdentifier} = exports.parseUrl(input, options);
-	return exports.stringifyUrl({
-		url,
-		query: filterObject(query, filter),
-		fragmentIdentifier
-	}, options);
-};
-
-exports.exclude = (input, filter, options) => {
-	const exclusionFilter = Array.isArray(filter) ? key => !filter.includes(key) : (key, value) => !filter(key, value);
-
-	return exports.pick(input, exclusionFilter, options);
-};
-
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
-
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var token = '%[a-f0-9]{2}';
-var singleMatcher = new RegExp('(' + token + ')|([^%]+?)', 'gi');
-var multiMatcher = new RegExp('(' + token + ')+', 'gi');
-
-function decodeComponents(components, split) {
-	try {
-		// Try to decode the entire string first
-		return [decodeURIComponent(components.join(''))];
-	} catch (err) {
-		// Do nothing
-	}
-
-	if (components.length === 1) {
-		return components;
-	}
-
-	split = split || 1;
-
-	// Split the array in 2 parts
-	var left = components.slice(0, split);
-	var right = components.slice(split);
-
-	return Array.prototype.concat.call([], decodeComponents(left), decodeComponents(right));
-}
-
-function decode(input) {
-	try {
-		return decodeURIComponent(input);
-	} catch (err) {
-		var tokens = input.match(singleMatcher) || [];
-
-		for (var i = 1; i < tokens.length; i++) {
-			input = decodeComponents(tokens, i).join('');
-
-			tokens = input.match(singleMatcher) || [];
-		}
-
-		return input;
-	}
-}
-
-function customDecodeURIComponent(input) {
-	// Keep track of all the replacements and prefill the map with the `BOM`
-	var replaceMap = {
-		'%FE%FF': '\uFFFD\uFFFD',
-		'%FF%FE': '\uFFFD\uFFFD'
-	};
-
-	var match = multiMatcher.exec(input);
-	while (match) {
-		try {
-			// Decode as big chunks as possible
-			replaceMap[match[0]] = decodeURIComponent(match[0]);
-		} catch (err) {
-			var result = decode(match[0]);
-
-			if (result !== match[0]) {
-				replaceMap[match[0]] = result;
-			}
-		}
-
-		match = multiMatcher.exec(input);
-	}
-
-	// Add `%C2` at the end of the map to make sure it does not replace the combinator before everything else
-	replaceMap['%C2'] = '\uFFFD';
-
-	var entries = Object.keys(replaceMap);
-
-	for (var i = 0; i < entries.length; i++) {
-		// Replace all decoded components
-		var key = entries[i];
-		input = input.replace(new RegExp(key, 'g'), replaceMap[key]);
-	}
-
-	return input;
-}
-
-module.exports = function (encodedURI) {
-	if (typeof encodedURI !== 'string') {
-		throw new TypeError('Expected `encodedURI` to be of type `string`, got `' + typeof encodedURI + '`');
-	}
-
-	try {
-		encodedURI = encodedURI.replace(/\+/g, ' ');
-
-		// Try the built in decoder first
-		return decodeURIComponent(encodedURI);
-	} catch (err) {
-		// Fallback to a more advanced decoder
-		return customDecodeURIComponent(encodedURI);
-	}
-};
-
-
-/***/ }),
-/* 186 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = (string, separator) => {
-	if (!(typeof string === 'string' && typeof separator === 'string')) {
-		throw new TypeError('Expected the arguments to be of type `string`');
-	}
-
-	if (separator === '') {
-		return [string];
-	}
-
-	const separatorIndex = string.indexOf(separator);
-
-	if (separatorIndex === -1) {
-		return [string];
-	}
-
-	return [
-		string.slice(0, separatorIndex),
-		string.slice(separatorIndex + separator.length)
-	];
-};
-
-
-/***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-module.exports = function (obj, predicate) {
-	var ret = {};
-	var keys = Object.keys(obj);
-	var isArr = Array.isArray(predicate);
-
-	for (var i = 0; i < keys.length; i++) {
-		var key = keys[i];
-		var val = obj[key];
-
-		if (isArr ? predicate.indexOf(key) !== -1 : predicate(key, val, obj)) {
-			ret[key] = val;
-		}
-	}
-
-	return ret;
-};
-
-
-/***/ }),
-/* 188 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11919,27 +7369,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _values = __webpack_require__(56);
+var _values = __webpack_require__(55);
 
 var _values2 = _interopRequireDefault(_values);
 
-var _symbol = __webpack_require__(140);
+var _symbol = __webpack_require__(137);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
 exports.default = createManager;
 
-var _logger = __webpack_require__(197);
+var _logger = __webpack_require__(187);
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var _logHandler = __webpack_require__(199);
+var _logHandler = __webpack_require__(189);
 
 var _logHandler2 = _interopRequireDefault(_logHandler);
 
-var _constants = __webpack_require__(57);
+var _constants = __webpack_require__(56);
 
-var _validation = __webpack_require__(92);
+var _validation = __webpack_require__(93);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12198,20 +7648,20 @@ function createManager(options = {}) {
 }
 
 /***/ }),
-/* 189 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(190);
-module.exports = __webpack_require__(7).Object.values;
+__webpack_require__(180);
+module.exports = __webpack_require__(8).Object.values;
 
 
 /***/ }),
-/* 190 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
-var $export = __webpack_require__(8);
-var $values = __webpack_require__(139)(false);
+var $export = __webpack_require__(13);
+var $values = __webpack_require__(136)(false);
 
 $export($export.S, 'Object', {
   values: function values(it) {
@@ -12221,50 +7671,50 @@ $export($export.S, 'Object', {
 
 
 /***/ }),
-/* 191 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(192);
-__webpack_require__(72);
-__webpack_require__(195);
-__webpack_require__(196);
-module.exports = __webpack_require__(7).Symbol;
+__webpack_require__(182);
+__webpack_require__(71);
+__webpack_require__(185);
+__webpack_require__(186);
+module.exports = __webpack_require__(8).Symbol;
 
 
 /***/ }),
-/* 192 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // ECMAScript 6 symbols shim
-var global = __webpack_require__(11);
-var has = __webpack_require__(30);
-var DESCRIPTORS = __webpack_require__(18);
-var $export = __webpack_require__(8);
-var redefine = __webpack_require__(107);
-var META = __webpack_require__(65).KEY;
-var $fails = __webpack_require__(32);
-var shared = __webpack_require__(81);
-var setToStringTag = __webpack_require__(52);
-var uid = __webpack_require__(62);
-var wks = __webpack_require__(14);
-var wksExt = __webpack_require__(99);
-var wksDefine = __webpack_require__(91);
-var enumKeys = __webpack_require__(193);
-var isArray = __webpack_require__(119);
-var anObject = __webpack_require__(24);
-var isObject = __webpack_require__(17);
-var toObject = __webpack_require__(35);
-var toIObject = __webpack_require__(33);
-var toPrimitive = __webpack_require__(76);
-var createDesc = __webpack_require__(40);
-var _create = __webpack_require__(64);
-var gOPNExt = __webpack_require__(194);
-var $GOPD = __webpack_require__(121);
-var $GOPS = __webpack_require__(83);
-var $DP = __webpack_require__(19);
-var $keys = __webpack_require__(41);
+var global = __webpack_require__(15);
+var has = __webpack_require__(34);
+var DESCRIPTORS = __webpack_require__(21);
+var $export = __webpack_require__(13);
+var redefine = __webpack_require__(111);
+var META = __webpack_require__(63).KEY;
+var $fails = __webpack_require__(36);
+var shared = __webpack_require__(82);
+var setToStringTag = __webpack_require__(51);
+var uid = __webpack_require__(60);
+var wks = __webpack_require__(16);
+var wksExt = __webpack_require__(100);
+var wksDefine = __webpack_require__(92);
+var enumKeys = __webpack_require__(183);
+var isArray = __webpack_require__(123);
+var anObject = __webpack_require__(27);
+var isObject = __webpack_require__(19);
+var toObject = __webpack_require__(39);
+var toIObject = __webpack_require__(37);
+var toPrimitive = __webpack_require__(77);
+var createDesc = __webpack_require__(43);
+var _create = __webpack_require__(62);
+var gOPNExt = __webpack_require__(184);
+var $GOPD = __webpack_require__(125);
+var $GOPS = __webpack_require__(84);
+var $DP = __webpack_require__(22);
+var $keys = __webpack_require__(44);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -12387,11 +7837,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(120).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(50).f = $propertyIsEnumerable;
+  __webpack_require__(124).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(49).f = $propertyIsEnumerable;
   $GOPS.f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(49)) {
+  if (DESCRIPTORS && !__webpack_require__(48)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -12475,7 +7925,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(29)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(33)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -12485,13 +7935,13 @@ setToStringTag(global.JSON, 'JSON', true);
 
 
 /***/ }),
-/* 193 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(41);
-var gOPS = __webpack_require__(83);
-var pIE = __webpack_require__(50);
+var getKeys = __webpack_require__(44);
+var gOPS = __webpack_require__(84);
+var pIE = __webpack_require__(49);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -12506,12 +7956,12 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 194 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(33);
-var gOPN = __webpack_require__(120).f;
+var toIObject = __webpack_require__(37);
+var gOPN = __webpack_require__(124).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -12531,21 +7981,21 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 
 /***/ }),
-/* 195 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(91)('asyncIterator');
+__webpack_require__(92)('asyncIterator');
 
 
 /***/ }),
-/* 196 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(91)('observable');
+__webpack_require__(92)('observable');
 
 
 /***/ }),
-/* 197 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12555,17 +8005,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = createLogger;
 
-var _constants = __webpack_require__(57);
+var _constants = __webpack_require__(56);
 
-var _validation = __webpack_require__(92);
+var _validation = __webpack_require__(93);
 
-var _timer = __webpack_require__(198);
+var _timer = __webpack_require__(188);
 
 var _timer2 = _interopRequireDefault(_timer);
 
@@ -12721,7 +8171,7 @@ function createLogger(target, options = {}) {
 }
 
 /***/ }),
-/* 198 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12732,7 +8182,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createTimer;
 
-var _validation = __webpack_require__(92);
+var _validation = __webpack_require__(93);
 
 /**
  * Timer factory function.
@@ -12844,7 +8294,7 @@ function createTimer(log, warn) {
 }
 
 /***/ }),
-/* 199 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12855,7 +8305,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = defaultLogHandler;
 
-var _logFormatter = __webpack_require__(122);
+var _logFormatter = __webpack_require__(126);
 
 var _logFormatter2 = _interopRequireDefault(_logFormatter);
 
@@ -12882,7 +8332,7 @@ function defaultLogHandler(entry) {
 }
 
 /***/ }),
-/* 200 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12955,10 +8405,10 @@ function defaultActionHandler(entry) {
 }
 
 /***/ }),
-/* 201 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(7);
+var core = __webpack_require__(8);
 var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
 module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
   return $JSON.stringify.apply($JSON, arguments);
@@ -12966,9 +8416,9 @@ module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 
 
 /***/ }),
-/* 202 */,
-/* 203 */,
-/* 204 */
+/* 192 */,
+/* 193 */,
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 0 -> Array#forEach
@@ -12978,11 +8428,11 @@ module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 // 4 -> Array#every
 // 5 -> Array#find
 // 6 -> Array#findIndex
-var ctx = __webpack_require__(28);
-var IObject = __webpack_require__(77);
-var toObject = __webpack_require__(35);
-var toLength = __webpack_require__(61);
-var asc = __webpack_require__(205);
+var ctx = __webpack_require__(32);
+var IObject = __webpack_require__(78);
+var toObject = __webpack_require__(39);
+var toLength = __webpack_require__(59);
+var asc = __webpack_require__(195);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
@@ -13018,11 +8468,11 @@ module.exports = function (TYPE, $create) {
 
 
 /***/ }),
-/* 205 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(206);
+var speciesConstructor = __webpack_require__(196);
 
 module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
@@ -13030,12 +8480,12 @@ module.exports = function (original, length) {
 
 
 /***/ }),
-/* 206 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(17);
-var isArray = __webpack_require__(119);
-var SPECIES = __webpack_require__(14)('species');
+var isObject = __webpack_require__(19);
+var isArray = __webpack_require__(123);
+var SPECIES = __webpack_require__(16)('species');
 
 module.exports = function (original) {
   var C;
@@ -13052,10 +8502,10 @@ module.exports = function (original) {
 
 
 /***/ }),
-/* 207 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var forOf = __webpack_require__(53);
+var forOf = __webpack_require__(52);
 
 module.exports = function (iter, ITERATOR) {
   var result = [];
@@ -13065,30 +8515,30 @@ module.exports = function (iter, ITERATOR) {
 
 
 /***/ }),
-/* 208 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(63);
-__webpack_require__(209);
-module.exports = __webpack_require__(7).Array.from;
+__webpack_require__(61);
+__webpack_require__(199);
+module.exports = __webpack_require__(8).Array.from;
 
 
 /***/ }),
-/* 209 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ctx = __webpack_require__(28);
-var $export = __webpack_require__(8);
-var toObject = __webpack_require__(35);
-var call = __webpack_require__(110);
-var isArrayIter = __webpack_require__(111);
-var toLength = __webpack_require__(61);
-var createProperty = __webpack_require__(210);
-var getIterFn = __webpack_require__(112);
+var ctx = __webpack_require__(32);
+var $export = __webpack_require__(13);
+var toObject = __webpack_require__(39);
+var call = __webpack_require__(114);
+var isArrayIter = __webpack_require__(115);
+var toLength = __webpack_require__(59);
+var createProperty = __webpack_require__(200);
+var getIterFn = __webpack_require__(116);
 
-$export($export.S + $export.F * !__webpack_require__(118)(function (iter) { Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !__webpack_require__(122)(function (iter) { Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
     var O = toObject(arrayLike);
@@ -13118,13 +8568,13 @@ $export($export.S + $export.F * !__webpack_require__(118)(function (iter) { Arra
 
 
 /***/ }),
-/* 210 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $defineProperty = __webpack_require__(19);
-var createDesc = __webpack_require__(40);
+var $defineProperty = __webpack_require__(22);
+var createDesc = __webpack_require__(43);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -13133,28 +8583,27 @@ module.exports = function (object, index, value) {
 
 
 /***/ }),
-/* 211 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(212);
-var $Object = __webpack_require__(7).Object;
+__webpack_require__(202);
+var $Object = __webpack_require__(8).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 
 /***/ }),
-/* 212 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(8);
+var $export = __webpack_require__(13);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(64) });
+$export($export.S, 'Object', { create: __webpack_require__(62) });
 
 
 /***/ }),
-/* 213 */,
-/* 214 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toIntIfInt = function (v) {
@@ -13193,7 +8642,7 @@ var parseReg = function (obj, location, content) {
   }
 };
 
-var grammar = __webpack_require__(124);
+var grammar = __webpack_require__(127);
 var validLine = RegExp.prototype.test.bind(/^([a-z])=(.*)/);
 
 exports.parse = function (sdp) {
@@ -13284,10 +8733,10 @@ exports.parseSimulcastStreamList = function (str) {
 
 
 /***/ }),
-/* 215 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var grammar = __webpack_require__(124);
+var grammar = __webpack_require__(127);
 
 // customized util.format - discards excess arguments and can void middle ones
 var formatRegExp = /%[sdv%]/g;
@@ -13404,8 +8853,8 @@ module.exports = function (session, opts) {
 
 
 /***/ }),
-/* 216 */,
-/* 217 */
+/* 205 */,
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13415,7 +8864,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = __webpack_require__(74);
+var _assign = __webpack_require__(75);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -13577,7 +9026,7 @@ function eventEmitter(prototype = {}) {
 }
 
 /***/ }),
-/* 218 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13587,7 +9036,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
@@ -13604,7 +9053,7 @@ exports.renderTracksFinish = renderTracksFinish;
 exports.removeTracks = removeTracks;
 exports.removeTracksFinish = removeTracksFinish;
 
-var _actionTypes = __webpack_require__(12);
+var _actionTypes = __webpack_require__(23);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -13647,16 +9096,16 @@ function muteTracks(trackIds) {
   return trackHelper(actionTypes.MUTE_TRACKS, trackIds);
 }
 
-function muteTracksFinish(trackIds) {
-  return trackHelper(actionTypes.MUTE_TRACKS_FINISH, { trackIds: trackIds });
+function muteTracksFinish(trackIds, params) {
+  return trackHelper(actionTypes.MUTE_TRACKS_FINISH, (0, _extends3.default)({ trackIds: trackIds }, params));
 }
 
 function unmuteTracks(trackIds) {
   return trackHelper(actionTypes.UNMUTE_TRACKS, trackIds);
 }
 
-function unmuteTracksFinish(trackIds) {
-  return trackHelper(actionTypes.UNMUTE_TRACKS_FINISH, { trackIds: trackIds });
+function unmuteTracksFinish(trackIds, params) {
+  return trackHelper(actionTypes.UNMUTE_TRACKS_FINISH, (0, _extends3.default)({ trackIds: trackIds }, params));
 }
 
 function trackSourceMuted(trackIds, params) {
@@ -13692,7 +9141,7 @@ function removeTracksFinish(trackIds, params) {
 }
 
 /***/ }),
-/* 219 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13702,115 +9151,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-exports.sessionAdded = sessionAdded;
-exports.sessionRemoved = sessionRemoved;
-exports.sessionNewTrack = sessionNewTrack;
-exports.sessionTrackEnded = sessionTrackEnded;
-exports.sessionChange = sessionChange;
-exports.sessionTrackReplaced = sessionTrackReplaced;
-exports.sessionIceConnectionStateChange = sessionIceConnectionStateChange;
-exports.sessionIceGatheringStateChange = sessionIceGatheringStateChange;
-exports.sessionIceCandidateCollected = sessionIceCandidateCollected;
-exports.sessionIceCollectionScheduledCheck = sessionIceCollectionScheduledCheck;
-exports.sessionAudioEnded = sessionAudioEnded;
-
-var _actionTypes = __webpack_require__(12);
-
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-var _fp = __webpack_require__(2);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Call plugin.
-function sessionActionHelper(type, id, payload = {}, meta = {}) {
-  const action = {
-    type,
-    payload: (0, _extends3.default)({}, payload, {
-      id
-    })
-
-    // Only have meta and error properties on the action if they're needed.
-  };if (!(0, _fp.isEmpty)(meta)) {
-    action.meta = meta;
-  }
-  if (payload.error) {
-    action.error = true;
-  }
-  return action;
-}
-
-// Libraries.
-function sessionAdded(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_ADDED, id, params);
-}
-
-function sessionRemoved(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_REMOVED, id, params);
-}
-
-function sessionNewTrack(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_NEW_TRACK, id, params);
-}
-
-function sessionTrackEnded(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_TRACK_ENDED, id, params);
-}
-
-function sessionChange(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_CHANGE, id, params);
-}
-
-function sessionTrackReplaced(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_TRACK_REPLACED, id, params);
-}
-
-function sessionIceConnectionStateChange(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_ICE_CONNECTION_STATE_CHANGE, id, params);
-}
-
-function sessionIceGatheringStateChange(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_ICE_GATHERING_STATE_CHANGE, id, params);
-}
-
-function sessionIceCandidateCollected(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_ICE_CANDIDATE_COLLECTED, id, params);
-}
-
-function sessionIceCollectionScheduledCheck(id, params) {
-  return sessionActionHelper(actionTypes.SESSION_ICE_COLLECTION_SCHEDULED_CHECK, id, params);
-}
-
-/*
- * Action to signify that an audio file has ended. Dispatched at the end of the
- *    `insertAudio` Session method.
- */
-function sessionAudioEnded(id, params) {
-  return {
-    type: actionTypes.SESSION_AUDIO_ENDED,
-    payload: (0, _extends3.default)({ id }, params),
-    error: Boolean(params.error)
-  };
-}
-
-/***/ }),
-/* 220 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
@@ -13819,7 +9160,7 @@ exports.removedMedia = removedMedia;
 exports.mediaNewTrack = mediaNewTrack;
 exports.mediaTrackEnded = mediaTrackEnded;
 
-var _actionTypes = __webpack_require__(12);
+var _actionTypes = __webpack_require__(23);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -13865,7 +9206,7 @@ function mediaTrackEnded(id, params) {
 }
 
 /***/ }),
-/* 221 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13876,7 +9217,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setBrowserDetails = setBrowserDetails;
 
-var _actionTypes = __webpack_require__(12);
+var _actionTypes = __webpack_require__(23);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -13898,7 +9239,8 @@ function setBrowserDetails(details) {
 } // Webrtc plugin.
 
 /***/ }),
-/* 222 */
+/* 210 */,
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13908,57 +9250,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = watchDeviceEvents;
-exports.setListeners = setListeners;
 
-var _actions = __webpack_require__(25);
+var _actions = __webpack_require__(35);
 
-var _utils = __webpack_require__(13);
+var _eventTypes = __webpack_require__(94);
 
-var _effects = __webpack_require__(6);
+var eventTypes = _interopRequireWildcard(_eventTypes);
 
-var _reduxSaga = __webpack_require__(27);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 /**
- * Listen for events emitted from the webRTC Device Manager.
+ * Sets up listeners for events emitted from the Webrtc-stack's Device Manager.
+ *
+ * Events received from the Webrtc-stack are used to:
+ *    1) Create actions to update SDK state about Webrtc-layer changes.
+ *    2) Sometimes create events to emit to the application to reflect the changes
+ *        to SDK state.
+ *
+ * The actions and events are passed to a "handler" which knows what to do with
+ *    them in the current context (ie. not always direct dispatch/emit).
  * @method watchDeviceEvents
- * @param  {Object} manager The webRTC Device Manager.
+ * @param {Object} manager The WebRTC Device Manager.
+ * @param {Function} handler Function for handling actions and events.
  */
-
-
-// Libraries.
 // Webrtc plugin.
-function* watchDeviceEvents(manager) {
-  /**
-   * Create an event channel between the Device Manager and redux-saga.
-   * This pushes its events into the redux-saga context.
-   * */
-  const managerChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(manager, emit);
-  });
-
-  // managerChannel will emit the Manager's events as actions,
-  //  so they can be directly dispatched.
-  yield (0, _effects.takeEvery)(managerChannel, _utils.forwardAction);
-}
-
-/**
- * Function to set-up listeners for the Device Manager events.
- * Contains the logic for how a webRTC event should be parsed
- *    before being sent elsewhere. Split into a stand-alone
- *    function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   manager The Device Manager.
- * @param  {Function} emit    Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-function setListeners(manager, emit, END = 'END') {
+function watchDeviceEvents(manager, handler) {
   // Manager event handlers.
   const change = () => {
     // Get the latest devices after they changed, then emit the device list
     //  upwards.
     manager.checkDevices().then(devices => {
-      emit(_actions.deviceActions.devicesChanged(devices));
+      const devicesChangedAction = _actions.deviceActions.devicesChanged(devices);
+      const devicesChangedEvent = {
+        type: eventTypes.DEVICES_CHANGED,
+        args: {}
+      };
+      handler(devicesChangedAction, devicesChangedEvent);
     });
   };
 
@@ -13973,7 +9300,7 @@ function setListeners(manager, emit, END = 'END') {
 }
 
 /***/ }),
-/* 223 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13983,76 +9310,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = watchTrackManagerEvents;
-exports.setListeners = setListeners;
 
-var _actions = __webpack_require__(25);
+var _actions = __webpack_require__(35);
 
-var _actionTypes = __webpack_require__(12);
-
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-var _track = __webpack_require__(149);
+var _track = __webpack_require__(213);
 
 var _track2 = _interopRequireDefault(_track);
 
-var _effects = __webpack_require__(6);
-
-var _reduxSaga = __webpack_require__(27);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 /**
  * Sets up event listeners for Track Manager Events.
  * The events are turned into actions and dispatched
- *    to be handled by redux elsewhere.
+ *    to be handled by redux.
  * @method watchTrackManagerEvents
- * @param  {Object} manager The webRTC Track Manager.
+ * @param {Object} manager The webRTC Track Manager.
+ * @param {Object} handler Handler function for handling actions and events.
  */
-
-
-// Libraries.
-function* watchTrackManagerEvents(manager) {
-  /**
-   * Create an event channel between the Track Manager and redux-saga.
-   * This pushes its events into the redux-saga context.
-   * */
-  const managerChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(manager, emit);
-  });
-
-  // https://github.com/redux-saga/redux-saga/issues/684
-  // See user "kuy"'s second comment.
-  // Using takeEvery to handle actions.
-  // That way they are handled in a forked process and other actions don't get dropped.
-  yield (0, _effects.takeEvery)(managerChannel, trackManagerEventsHandler);
-} // Call plugin.
-
-
-function* trackManagerEventsHandler({ track, action }) {
-  // If it is a new Track, watch for its events.
-  if (action.type === actionTypes.TRACK_ADDED) {
-    yield (0, _effects.fork)(_track2.default, track);
-  }
-
-  // Dispatch the action
-  yield (0, _effects.put)(action);
-}
-
-/**
- * Sets up listeners for the Track Manager events.
- * Contains logic for how specific webRTC events should be
- *    parsed before being sent elsewhere. Split into a
- *    stand-alone function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   manager The Track Manager.
- * @param  {Function} emit    Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-function setListeners(manager, emit, END = 'END') {
-  // Handle new Tracks.
+// Call plugin.
+function watchTrackManagerEvents(manager, handler) {
+  // Handler for new tracks
   const trackAdded = id => {
     const track = manager.get(id);
     const state = track.getState();
@@ -14066,39 +9343,288 @@ function setListeners(manager, emit, END = 'END') {
     delete state.enabled;
     delete state.id;
 
-    /**
-     * When a new track is added,
-     * update redux state's webrtc.tracks array by adding track's state into it.
-     */
-    emit({
-      track,
-      action: _actions.trackActions.trackAdded(id, state)
-    });
+    // Set up event listeners for the added track
+    (0, _track2.default)(track, handler);
+
+    // Pass the action to the handler to be handled as appropriate
+    const trackAddedAction = _actions.trackActions.trackAdded(id, state);
+    handler(trackAddedAction);
   };
 
-  // Handle Tracks ending.
+  // Handler for removed/ended tracks
   const trackRemoved = id => {
-    /**
-     * When a track has ended,
-     * update redux state's webrtc.tracks array
-     * by specifying which track to remove by providing a track id.
-     */
-    emit({
-      action: _actions.trackActions.trackRemoved(id)
-    });
+    // Pass the action to the handler to be handled as appropriate
+    const trackRemovedAction = _actions.trackActions.trackRemoved(id);
+    handler(trackRemovedAction);
   };
 
+  // Listen for track add or remove events
   manager.on('add', trackAdded);
   manager.on('remove', trackRemoved);
+
+  // Return an unsubscribe function that removes all event listeners.
   const unsubscribe = () => {
     manager.off('add', trackAdded);
     manager.off('remove', trackRemoved);
+  };
+
+  return unsubscribe;
+}
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = watchTrackEvents;
+
+var _actions = __webpack_require__(35);
+
+var _eventTypes = __webpack_require__(94);
+
+var eventTypes = _interopRequireWildcard(_eventTypes);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/**
+ * Sets up event listeners for a Track object's events.
+ * The events simply dispatch actions to be handled by redux.
+ * @method watchTrackEvents
+ * @param {Object} track A Track object.
+ * @param {Object} handler Handler function for handling actions and events.
+ */
+// Libraries.
+function watchTrackEvents(track, handler) {
+  // The track source (which affected the track identified by trackId) was muted.
+  // An example of a track source is a physical media device such as:
+  // microphone or camera.
+  const trackSourceMuted = trackData => {
+    const trackSourceMutedAction = _actions.trackActions.trackSourceMuted([trackData.trackId], {
+      mediaId: trackData.mediaId,
+      isLocal: trackData.isLocal
+    });
+    const trackSourceMutedEvent = {
+      type: eventTypes.TRACK_SOURCE_MUTED,
+      args: {
+        trackIds: [trackData.trackId],
+        trackId: trackData.trackId,
+        isLocal: trackData.isLocal,
+        id: trackData.mediaId
+      }
+      // Pass the action and event to the handler to be handled as appropriate
+    };handler(trackSourceMutedAction, trackSourceMutedEvent);
+  };
+
+  // The track source (which affected the track identified by trackId) was unmuted.
+  const trackSourceUnmuted = trackData => {
+    const trackSourceUnmutedAction = _actions.trackActions.trackSourceUnmuted([trackData.trackId], {
+      mediaId: trackData.mediaId,
+      isLocal: trackData.isLocal
+    });
+    const trackSourceUnmutedEvent = {
+      type: eventTypes.TRACK_SOURCE_UNMUTED,
+      args: {
+        trackIds: [trackData.trackId],
+        trackId: trackData.trackId,
+        isLocal: trackData.isLocal,
+        id: trackData.mediaId
+      }
+      // Pass the action and event to the handler to be handled as appropriate
+    };handler(trackSourceUnmutedAction, trackSourceUnmutedEvent);
+  };
+
+  const unsubscribe = () => {
+    track.off('ended', unsubscribe);
+    track.off('muted', trackSourceMuted);
+    track.off('unmuted', trackSourceUnmuted);
+  };
+
+  // If the track is ended we will turn off event listeners for the track object.
+  //  The trackManager will handle updating state with the track "remove" event that gets emitted
+  //  following track "ended" events.
+  track.on('ended', unsubscribe);
+  track.on('muted', trackSourceMuted);
+  track.on('unmuted', trackSourceUnmuted);
+
+  return unsubscribe;
+}
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = watchSessionManagerEvents;
+
+var _actions = __webpack_require__(35);
+
+var _session = __webpack_require__(215);
+
+var _session2 = _interopRequireDefault(_session);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Sets up event listeners for Session Manager Events.
+ * The events are turned into actions and dispatched
+ *    to be handled by redux elsewhere.
+ * @method watchSessionManagerEvents
+ * @param {Object} manager The webRTC Session Manager.
+ * @param {Object} handler Handler function for handling actions and events.
+ */
+// Webrtc plugin.
+function watchSessionManagerEvents(manager, handler) {
+  // Handle new Session.
+  const sessionAdded = id => {
+    const session = manager.get(id);
+    const state = session.getState();
+    delete state.id;
+
+    // If it is a new Session, watch for its events.
+    (0, _session2.default)(session, handler);
+
+    // Pass the action to the handler to be handled as appropriate
+    const sessionAddedAction = _actions.sessionActions.sessionAdded(id, state);
+    handler(sessionAddedAction);
+  };
+
+  // Handle Sessions ending.
+  const sessionRemoved = id => {
+    // Pass the action to the handler to be handled as appropriate
+    const sessionRemovedAction = _actions.sessionActions.sessionRemoved(id);
+    handler(sessionRemovedAction);
+  };
+
+  manager.on('session:new', sessionAdded);
+  manager.on('session:removed', sessionRemoved);
+  const unsubscribe = () => {
+    manager.off('session:new', sessionAdded);
+    manager.off('session:removed', sessionRemoved);
   };
   return unsubscribe;
 }
 
 /***/ }),
-/* 224 */
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = watchSessionEvents;
+
+var _actions = __webpack_require__(35);
+
+/**
+ * Sets up event listeners for a Session's events.
+ * The events are turned into actions and dispatched
+ *    to be handled by redux elsewhere.
+ * @method watchSessionEvents
+ * @param {Object} session The Session object.
+ * @param {Object} handler Handler function for handling actions and events.
+ */
+function watchSessionEvents(session, handler) {
+  // Session received a new track.
+  const newTrack = ({ local, trackId }) => {
+    // Pass the action to the handler to be handled as appropriate
+    const newTrackAction = _actions.sessionActions.sessionNewTrack(session.id, {
+      local,
+      trackId
+    });
+    handler(newTrackAction);
+  };
+
+  const trackEnded = ({ local, trackId, isUnsolicited }) => {
+    /**
+     * When a track has ended,
+     * update redux state's webrtc.session.localTracks/remoteTracks array
+     * by removing the specified trackId.
+     * ('local' boolean will determine whether to update localTracks or remoteTracks)
+     */
+    handler(_actions.sessionActions.sessionTrackEnded(session.id, {
+      local,
+      trackId,
+      isUnsolicited
+    }));
+  };
+
+  const trackReplaced = ({ oldTrackId, trackId }) => {
+    // Pass the action to the handler to be handled as appropriate
+    const trackReplacedAction = _actions.sessionActions.sessionTrackReplaced(session.id, {
+      oldTrackId,
+      trackId
+    });
+    handler(trackReplacedAction);
+  };
+
+  const iceConnectionStateChange = obj => {
+    // Pass the action to the handler to be handled as appropriate
+    const iceConnectionStateChangeAction = _actions.sessionActions.sessionIceConnectionStateChange(session.id, {
+      iceConnectionState: obj.iceConnectionState
+    });
+    handler(iceConnectionStateChangeAction);
+  };
+
+  const iceCandidateCollected = obj => {
+    // Pass the action to the handler to be handled as appropriate
+    const iceCandidateCollectedAction = _actions.sessionActions.sessionIceCandidateCollected(session.id, obj);
+    handler(iceCandidateCollectedAction);
+  };
+
+  const iceGatheringStateChange = obj => {
+    // Pass the action to the handler to be handled as appropriate
+    const iceGatheringStateChangeAction = _actions.sessionActions.sessionIceGatheringStateChange(session.id, obj);
+    handler(iceGatheringStateChangeAction);
+  };
+
+  const iceCollectionScheduledCheck = obj => {
+    // Pass the action to the handler to be handled as appropriate
+    const iceCollectionScheduledCheckAction = _actions.sessionActions.sessionIceCollectionScheduledCheck(session.id, obj);
+    handler(iceCollectionScheduledCheckAction);
+  };
+
+  // Listen for when audio files end (from `insertAudio` API).
+  const audioFileEnded = isSuccess => {
+    handler(_actions.sessionActions.sessionAudioEnded(session.id, { error: !isSuccess }));
+  };
+
+  session.on('new:track', newTrack);
+  session.on('track:ended', trackEnded);
+  session.on('track:replaced', trackReplaced);
+  session.on('peer:iceConnectionStateChange', iceConnectionStateChange);
+  session.on('peer:iceGatheringStateChange', iceGatheringStateChange);
+  session.on('peer:iceCandidateCollected', iceCandidateCollected);
+  session.on('peer:iceCollectionScheduledCheck', iceCollectionScheduledCheck);
+  session.on('audioFileEnded', audioFileEnded);
+
+  const unsubscribe = () => {
+    session.off('new:track', newTrack);
+    session.off('track:ended', trackEnded);
+    session.off('track:replaced', trackReplaced);
+    session.off('peer:iceConnectionStateChange', iceConnectionStateChange);
+    session.off('peer:iceGatheringStateChange', iceGatheringStateChange);
+    session.off('peer:iceCandidateCollected', iceCandidateCollected);
+    session.off('peer:iceCollectionScheduledCheck', iceCollectionScheduledCheck);
+    session.off('audioFileEnded', audioFileEnded);
+  };
+  return unsubscribe;
+} // Webrtc plugin.
+
+/***/ }),
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14108,95 +9634,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = watchMediaManagerEvents;
-exports.setListeners = setListeners;
 
-var _actions = __webpack_require__(25);
+var _actions = __webpack_require__(35);
 
-var _actionTypes = __webpack_require__(12);
-
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-var _media = __webpack_require__(150);
+var _media = __webpack_require__(217);
 
 var _media2 = _interopRequireDefault(_media);
 
-var _effects = __webpack_require__(6);
-
-var _reduxSaga = __webpack_require__(27);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 /**
  * Sets up event listeners for Media Manager events. The events are turned into
- *    actions and dispatched to be handled by redux elsewhere.
+ *    actions and dispatched to be handled by redux.
  * @method watchMediaManagerEvents
- * @param  {Object} manager The Media Manager.
+ * @param {Object} manager The Media Manager.
+ * @param {Object} handler Handler function for handling actions and events.
  */
-
-
-// Libraries.
-function* watchMediaManagerEvents(manager) {
-  /**
-   * Create an event channel between the Media Manager and redux-saga.
-   * This pushes its events into the redux-saga context.
-   */
-  const managerChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(manager, emit);
-  });
-
-  yield (0, _effects.takeEvery)(managerChannel, mediaManagerEventsHandler);
-} // Webrtc plugin.
-
-
-function* mediaManagerEventsHandler({ media, action }) {
-  // If it is a new Media, watch for its events.
-  if (action.type === actionTypes.MEDIA_NEW) {
-    yield (0, _effects.fork)(_media2.default, media);
-  }
-
-  // Dispatch the action
-  yield (0, _effects.put)(action);
-}
-
-/**
- * Function to set-up listeners for the Media Manager events.
- * Contains the logic for how a webRTC event should be parsed
- *    before being sent elsewhere. Split into a stand-alone
- *    function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   manager The Media Manager.
- * @param  {Function} emit    Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-function setListeners(manager, emit, END = 'END') {
+// Webrtc plugin.
+function watchMediaManagerEvents(manager, handler) {
   const newMedia = id => {
     const media = manager.get(id);
-    /**
-     * When a new media has been added,
-     * update redux state's webrtc.media array by adding in the new media object
-     * (List of tracks will just be a list of track ids).
-     */
-    emit({
-      media,
-      action: _actions.mediaActions.newMedia(id, {
-        local: media.getState().isLocal,
-        tracks: media.getTracks().map(track => track.id)
-      })
+
+    // If it is a new Media, watch for its events.
+    (0, _media2.default)(media, handler);
+
+    // Pass the action to the handler to be handled as appropriate
+    const newMediaAction = _actions.mediaActions.newMedia(id, {
+      local: media.getState().isLocal,
+      tracks: media.getTracks().map(track => track.id)
     });
+    handler(newMediaAction);
   };
 
   const removedMedia = id => {
-    /**
-     * When a media has been removed,
-     * update redux state's webrtc.media array
-     * by removing the media with the specified media id.
-     */
-    emit({
-      action: _actions.mediaActions.removedMedia(id)
-    });
+    // Pass the action to the handler to be handled as appropriate
+    const removedMediaAction = _actions.mediaActions.removedMedia(id);
+    handler(removedMediaAction);
   };
 
   manager.on('media:new', newMedia);
@@ -14210,7 +9683,7 @@ function setListeners(manager, emit, END = 'END') {
 }
 
 /***/ }),
-/* 225 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14219,127 +9692,74 @@ function setListeners(manager, emit, END = 'END') {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = watchSessionManagerEvents;
-exports.setListeners = setListeners;
+exports.default = watchMediaEvents;
 
-var _actions = __webpack_require__(25);
-
-var _actionTypes = __webpack_require__(12);
-
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-var _session = __webpack_require__(151);
-
-var _session2 = _interopRequireDefault(_session);
-
-var _effects = __webpack_require__(6);
-
-var _reduxSaga = __webpack_require__(27);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _actions = __webpack_require__(35);
 
 /**
- * Sets up event listeners for Session Manager Events.
+ * Sets up event listeners for a Media's events.
  * The events are turned into actions and dispatched
- *    to be handled by redux elsewhere.
- * @method watchSessionManagerEvents
- * @param  {Object} manager The webRTC Session Manager.
- * @param  {Object} webRTC The webRTC stack.
+ *    to be handled by redux.
+ * @method watchMediaEvents
+ * @param {Object} media A Media object.
+ * @param {Object} handler Handler function for handling actions and events.
  */
-
-
-// Libraries.
-function* watchSessionManagerEvents(manager, webRTC) {
-  /**
-   * Create an event channel between the Session Manager and redux-saga.
-   * This pushes its events into the redux-saga context.
-   */
-  const managerChannel = (0, _reduxSaga.eventChannel)(emit => {
-    return setListeners(manager, emit);
-  });
-
-  while (true) {
-    const { session, action } = yield (0, _effects.take)(managerChannel);
-
-    // If it is a new Session, watch for its events.
-    if (action.type === actionTypes.SESSION_ADDED) {
-      yield (0, _effects.fork)(_session2.default, session, webRTC);
-    }
-
-    // Dispatch the action directly.
-    yield (0, _effects.put)(action);
-  }
-}
-
-/**
- * Sets up listeners for the Session Manager events.
- * Contains logic for how specific webRTC events should be
- *    parsed before being sent elsewhere. Split into a
- *    stand-alone function in order to be re-usable.
- * @method setListeners
- * @param  {Object}   manager The Session Manager.
- * @param  {Function} emit    Function that receives the parsed events.
- * @param  {Any}      [END='END'] The "end of lifetime" symbol.
- * @return {Function} The unsubscribe function.
- */
-// Webrtc plugin.
-function setListeners(manager, emit, END = 'END') {
-  // Handle new Session.
-  const sessionAdded = id => {
-    const session = manager.get(id);
-    const state = session.getState();
-    delete state.id;
-
-    emit({
-      session: session,
-      action: _actions.sessionActions.sessionAdded(id, state)
-    });
+function watchMediaEvents(media, handler) {
+  // Media received a new track.
+  const newTrack = ({ mediaId, trackId }) => {
+    // Pass the action to the handler to be handled as appropriate
+    const mediaNewTrackAction = _actions.mediaActions.mediaNewTrack(mediaId, { trackId });
+    handler(mediaNewTrackAction);
   };
 
-  // Handle Sessions ending.
-  const sessionRemoved = id => {
-    emit({
-      action: _actions.sessionActions.sessionRemoved(id)
-    });
+  const trackEnded = ({ mediaId, trackId }) => {
+    // Pass the action to the handler to be handled as appropriate
+    const mediaTrackEndedAction = _actions.mediaActions.mediaTrackEnded(mediaId, { trackId });
+    handler(mediaTrackEndedAction);
   };
 
-  manager.on('session:new', sessionAdded);
-  manager.on('session:removed', sessionRemoved);
   const unsubscribe = () => {
-    manager.off('session:new', sessionAdded);
-    manager.off('session:removed', sessionRemoved);
+    media.off('media:stopped', unsubscribe);
+    media.off('track:new', newTrack);
+    media.off('track:ended', trackEnded);
   };
+
+  // If the media is stopped we will turn off event listeners for this media.
+  //  The Media Manager will handle updating state with the media "remove" event that gets emitted
+  //  following media "stopped" events.
+  media.on('media:stopped', unsubscribe);
+  media.on('track:new', newTrack);
+  media.on('track:ended', trackEnded);
+
   return unsubscribe;
-}
+} // Webrtc plugin.
 
 /***/ }),
-/* 226 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(72);
-__webpack_require__(63);
-__webpack_require__(85);
-__webpack_require__(227);
-__webpack_require__(228);
-__webpack_require__(229);
-__webpack_require__(230);
-module.exports = __webpack_require__(7).Map;
+__webpack_require__(71);
+__webpack_require__(61);
+__webpack_require__(86);
+__webpack_require__(219);
+__webpack_require__(220);
+__webpack_require__(221);
+__webpack_require__(222);
+module.exports = __webpack_require__(8).Map;
 
 
 /***/ }),
-/* 227 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var strong = __webpack_require__(142);
-var validate = __webpack_require__(100);
+var strong = __webpack_require__(140);
+var validate = __webpack_require__(101);
 var MAP = 'Map';
 
 // 23.1 Map Objects
-module.exports = __webpack_require__(143)(MAP, function (get) {
+module.exports = __webpack_require__(141)(MAP, function (get) {
   return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -14355,58 +9775,58 @@ module.exports = __webpack_require__(143)(MAP, function (get) {
 
 
 /***/ }),
-/* 228 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export = __webpack_require__(8);
+var $export = __webpack_require__(13);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(144)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(142)('Map') });
 
 
 /***/ }),
-/* 229 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
-__webpack_require__(145)('Map');
+__webpack_require__(143)('Map');
 
 
 /***/ }),
-/* 230 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
-__webpack_require__(146)('Map');
+__webpack_require__(144)('Map');
 
 
 /***/ }),
-/* 231 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(232), __esModule: true };
+module.exports = { "default": __webpack_require__(224), __esModule: true };
 
 /***/ }),
-/* 232 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(233);
-module.exports = __webpack_require__(7).Reflect.set;
+__webpack_require__(225);
+module.exports = __webpack_require__(8).Reflect.set;
 
 
 /***/ }),
-/* 233 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
-var dP = __webpack_require__(19);
-var gOPD = __webpack_require__(121);
-var getPrototypeOf = __webpack_require__(97);
-var has = __webpack_require__(30);
-var $export = __webpack_require__(8);
-var createDesc = __webpack_require__(40);
-var anObject = __webpack_require__(24);
-var isObject = __webpack_require__(17);
+var dP = __webpack_require__(22);
+var gOPD = __webpack_require__(125);
+var getPrototypeOf = __webpack_require__(98);
+var has = __webpack_require__(34);
+var $export = __webpack_require__(13);
+var createDesc = __webpack_require__(43);
+var anObject = __webpack_require__(27);
+var isObject = __webpack_require__(19);
 
 function set(target, propertyKey, V /* , receiver */) {
   var receiver = arguments.length < 4 ? target : arguments[3];
@@ -14434,7 +9854,7 @@ $export($export.S, 'Reflect', { set: set });
 
 
 /***/ }),
-/* 234 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14444,27 +9864,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _icecandidate = __webpack_require__(235);
+var _icecandidate = __webpack_require__(227);
 
 var _icecandidate2 = _interopRequireDefault(_icecandidate);
 
-var _iceconnectionstatechange = __webpack_require__(236);
+var _iceconnectionstatechange = __webpack_require__(228);
 
 var _iceconnectionstatechange2 = _interopRequireDefault(_iceconnectionstatechange);
 
-var _icegatheringstatechange = __webpack_require__(237);
+var _icegatheringstatechange = __webpack_require__(229);
 
 var _icegatheringstatechange2 = _interopRequireDefault(_icegatheringstatechange);
 
-var _negotiationneeded = __webpack_require__(238);
+var _negotiationneeded = __webpack_require__(230);
 
 var _negotiationneeded2 = _interopRequireDefault(_negotiationneeded);
 
-var _signalingstatechange = __webpack_require__(239);
+var _signalingstatechange = __webpack_require__(231);
 
 var _signalingstatechange2 = _interopRequireDefault(_signalingstatechange);
 
-var _track = __webpack_require__(240);
+var _track = __webpack_require__(232);
 
 var _track2 = _interopRequireDefault(_track);
 
@@ -14480,7 +9900,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 235 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14491,7 +9911,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = onicecandidate;
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 /**
  * Event wrapper for `icecandidate` event.
@@ -14560,7 +9980,7 @@ function onicecandidate(listener) {
 }
 
 /***/ }),
-/* 236 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14589,7 +10009,7 @@ function oniceconnectionstatechange(listener) {
 }
 
 /***/ }),
-/* 237 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14600,7 +10020,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = onicegatheringstatechange;
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 /**
  * Event wrapper for `icegatheringstatechange` event.
@@ -14636,7 +10056,7 @@ function onicegatheringstatechange(listener) {
 }
 
 /***/ }),
-/* 238 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14665,7 +10085,7 @@ function onnegotiationneeded(listener) {
 }
 
 /***/ }),
-/* 239 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14694,7 +10114,7 @@ function onsignalingstatechange(listener) {
 }
 
 /***/ }),
-/* 240 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14754,7 +10174,7 @@ function ontrack(listener) {
 }
 
 /***/ }),
-/* 241 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14764,59 +10184,59 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _addIceCandidate = __webpack_require__(242);
+var _addIceCandidate = __webpack_require__(234);
 
 var _addIceCandidate2 = _interopRequireDefault(_addIceCandidate);
 
-var _addTrack = __webpack_require__(243);
+var _addTrack = __webpack_require__(235);
 
 var _addTrack2 = _interopRequireDefault(_addTrack);
 
-var _close = __webpack_require__(244);
+var _close = __webpack_require__(236);
 
 var _close2 = _interopRequireDefault(_close);
 
-var _createAnswer = __webpack_require__(245);
+var _createAnswer = __webpack_require__(237);
 
 var _createAnswer2 = _interopRequireDefault(_createAnswer);
 
-var _createOffer = __webpack_require__(248);
+var _createOffer = __webpack_require__(240);
 
 var _createOffer2 = _interopRequireDefault(_createOffer);
 
-var _findReusableTransceiver = __webpack_require__(249);
+var _findReusableTransceiver = __webpack_require__(241);
 
 var _findReusableTransceiver2 = _interopRequireDefault(_findReusableTransceiver);
 
-var _getState = __webpack_require__(250);
+var _getState = __webpack_require__(242);
 
 var _getState2 = _interopRequireDefault(_getState);
 
-var _getStats = __webpack_require__(251);
+var _getStats = __webpack_require__(243);
 
 var _getStats2 = _interopRequireDefault(_getStats);
 
-var _removeTrack = __webpack_require__(252);
+var _removeTrack = __webpack_require__(244);
 
 var _removeTrack2 = _interopRequireDefault(_removeTrack);
 
-var _replaceTrack = __webpack_require__(253);
+var _replaceTrack = __webpack_require__(245);
 
 var _replaceTrack2 = _interopRequireDefault(_replaceTrack);
 
-var _sendDTMF = __webpack_require__(254);
+var _sendDTMF = __webpack_require__(246);
 
 var _sendDTMF2 = _interopRequireDefault(_sendDTMF);
 
-var _setLocalDescription = __webpack_require__(255);
+var _setLocalDescription = __webpack_require__(247);
 
 var _setLocalDescription2 = _interopRequireDefault(_setLocalDescription);
 
-var _setRemoteDescription = __webpack_require__(256);
+var _setRemoteDescription = __webpack_require__(248);
 
 var _setRemoteDescription2 = _interopRequireDefault(_setRemoteDescription);
 
-var _setTransceiversDirection = __webpack_require__(257);
+var _setTransceiversDirection = __webpack_require__(249);
 
 var _setTransceiversDirection2 = _interopRequireDefault(_setTransceiversDirection);
 
@@ -14842,7 +10262,7 @@ const methods = {
 exports.default = methods;
 
 /***/ }),
-/* 242 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14882,7 +10302,7 @@ function addIceCandidate(candidate) {
 }
 
 /***/ }),
-/* 243 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14914,7 +10334,7 @@ function addTrack(track) {
 }
 
 /***/ }),
-/* 244 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14942,7 +10362,7 @@ function close() {
 }
 
 /***/ }),
-/* 245 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14958,13 +10378,11 @@ var _promise2 = _interopRequireDefault(_promise);
 
 exports.default = createAnswer;
 
-var _constants = __webpack_require__(22);
-
-var _sdpSemantics = __webpack_require__(43);
+var _constants = __webpack_require__(31);
 
 var _pipeline = __webpack_require__(67);
 
-var _handlers = __webpack_require__(93);
+var _handlers = __webpack_require__(95);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14981,11 +10399,9 @@ function createAnswer(options = {}) {
   const { nativePeer, config, dtlsRole, log } = this;
   log.info('Creating local answer.');
 
-  // If using unified-plan, remove options.mediaDirections.
+  // Remove options.mediaDirections.
   // This is because directions are now set in transceivers.
-  if ((0, _sdpSemantics.isUnifiedPlan)(config.rtcConfig.sdpSemantics)) {
-    delete options.mediaDirections;
-  }
+  delete options.mediaDirections;
 
   return new _promise2.default((resolve, reject) => {
     nativePeer.createAnswer(options).then(answer => {
@@ -15025,22 +10441,22 @@ function createAnswer(options = {}) {
 }
 
 /***/ }),
-/* 246 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(247);
-module.exports = __webpack_require__(7).Object.freeze;
+__webpack_require__(239);
+module.exports = __webpack_require__(8).Object.freeze;
 
 
 /***/ }),
-/* 247 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
-var isObject = __webpack_require__(17);
-var meta = __webpack_require__(65).onFreeze;
+var isObject = __webpack_require__(19);
+var meta = __webpack_require__(63).onFreeze;
 
-__webpack_require__(98)('freeze', function ($freeze) {
+__webpack_require__(99)('freeze', function ($freeze) {
   return function freeze(it) {
     return $freeze && isObject(it) ? $freeze(meta(it)) : it;
   };
@@ -15048,7 +10464,7 @@ __webpack_require__(98)('freeze', function ($freeze) {
 
 
 /***/ }),
-/* 248 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15064,13 +10480,11 @@ var _promise2 = _interopRequireDefault(_promise);
 
 exports.default = createOffer;
 
-var _constants = __webpack_require__(22);
-
-var _sdpSemantics = __webpack_require__(43);
+var _constants = __webpack_require__(31);
 
 var _pipeline = __webpack_require__(67);
 
-var _handlers = __webpack_require__(93);
+var _handlers = __webpack_require__(95);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15087,11 +10501,9 @@ function createOffer(options = {}) {
   const { nativePeer, config, log } = this;
   log.info('Creating local offer.');
 
-  // If using unified-plan, remove options.mediaDirections.
+  // Remove options.mediaDirections.
   // This is because directions are now set in transceivers.
-  if ((0, _sdpSemantics.isUnifiedPlan)(config.rtcConfig.sdpSemantics)) {
-    delete options.mediaDirections;
-  }
+  delete options.mediaDirections;
 
   return new _promise2.default((resolve, reject) => {
     nativePeer.createOffer(options).then(offer => {
@@ -15123,7 +10535,7 @@ function createOffer(options = {}) {
 }
 
 /***/ }),
-/* 249 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15133,9 +10545,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = findReusableTransceiver;
-
-var _sdpSemantics = __webpack_require__(43);
-
 /**
  * Finds a transceiver that can be reused.
  * A transceiver can be reused if it satisfies the following conditions:
@@ -15147,17 +10556,15 @@ var _sdpSemantics = __webpack_require__(43);
  * @returns {Object} Transceiver object that matches kind, has no sender track, and has currentDirection. Otherwise undefined.
  */
 function findReusableTransceiver(kind) {
-  const { proxyPeer, config } = this;
+  const { proxyPeer } = this;
 
-  if ((0, _sdpSemantics.isUnifiedPlan)(config.rtcConfig.sdpSemantics)) {
-    const transceivers = proxyPeer.getTransceivers();
-    return transceivers.find(transceiver => transceiver.sender.track == null && transceiver.receiver && transceiver.receiver.track && transceiver.receiver.track.kind === kind && transceiver.currentDirection // If this has been set, then transceiver has been used before.
-    );
-  }
+  const transceivers = proxyPeer.getTransceivers();
+  return transceivers.find(transceiver => transceiver.sender.track == null && transceiver.receiver && transceiver.receiver.track && transceiver.receiver.track.kind === kind && transceiver.currentDirection // If this has been set, then transceiver has been used before.
+  );
 }
 
 /***/ }),
-/* 250 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15187,7 +10594,7 @@ function getState() {
 }
 
 /***/ }),
-/* 251 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15238,7 +10645,7 @@ function getStats(trackId) {
 }
 
 /***/ }),
-/* 252 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15272,7 +10679,7 @@ function removeTrack(trackId) {
 }
 
 /***/ }),
-/* 253 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15288,8 +10695,6 @@ var _promise2 = _interopRequireDefault(_promise);
 
 exports.default = replaceTrack;
 
-var _sdpSemantics = __webpack_require__(43);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -15301,19 +10706,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @return {Object} A Promise object which is fulfilled once the track has been replaced
  */
 function replaceTrack(newTrack, options) {
-  const { proxyPeer, config, log } = this;
+  const { proxyPeer, log } = this;
   log.info(`Replacing track ${options.trackId} with new ${newTrack.kind} track.`);
 
   return new _promise2.default((resolve, reject) => {
-    let sender;
-    if ((0, _sdpSemantics.isUnifiedPlan)(config.rtcConfig.sdpSemantics)) {
-      // Find the transceiver related to the provided track ID.
-      const targetTransceiver = proxyPeer.getTransceivers().find(transceiver => transceiver.sender.track && transceiver.sender.track.id === options.trackId);
+    // Find the transceiver related to the provided track ID.
+    const targetTransceiver = proxyPeer.getTransceivers().find(transceiver => transceiver.sender.track && transceiver.sender.track.id === options.trackId);
 
-      sender = targetTransceiver ? targetTransceiver.sender : undefined;
-    } else {
-      sender = proxyPeer.getSenders().find(sender => sender.track.id === options.trackId);
-    }
+    const sender = targetTransceiver ? targetTransceiver.sender : undefined;
 
     if (sender) {
       sender.replaceTrack(newTrack).then(resolve).catch(error => {
@@ -15328,7 +10728,7 @@ function replaceTrack(newTrack, options) {
 }
 
 /***/ }),
-/* 254 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15428,7 +10828,7 @@ function insertDTMF(sender, tone, duration, intertoneGap, callback, log) {
 }
 
 /***/ }),
-/* 255 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15444,7 +10844,7 @@ var _promise2 = _interopRequireDefault(_promise);
 
 exports.default = setLocalDescription;
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 var _iceCollectionScheduledCheck = __webpack_require__(131);
 
@@ -15539,7 +10939,7 @@ function setLocalDescription(desc) {
 // Utils.
 
 /***/ }),
-/* 256 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15603,7 +11003,7 @@ function setRemoteDescription(desc) {
 }
 
 /***/ }),
-/* 257 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15616,9 +11016,7 @@ exports.default = setTransceiversDirection;
 
 var _fp = __webpack_require__(2);
 
-var _sdpSemantics = __webpack_require__(43);
-
-var _transceiverUtils = __webpack_require__(258);
+var _transceiverUtils = __webpack_require__(250);
 
 /**
  * Sets the direction of transceivers.
@@ -15629,38 +11027,31 @@ var _transceiverUtils = __webpack_require__(258);
  * @return {Object} An object containing an `error` flag and  an array `failures` of transceivers whose directions weren't changed.
  */
 function setTransceiversDirection(targetDirection, options = {}) {
-  const { proxyPeer, config, log } = this;
+  const { proxyPeer, log } = this;
   log.info(`Setting transceiver direction to ${targetDirection}.`);
 
-  if ((0, _sdpSemantics.isUnifiedPlan)(config.rtcConfig.sdpSemantics)) {
-    let transceivers = proxyPeer.getTransceivers();
+  let transceivers = proxyPeer.getTransceivers();
 
-    if (options.trackIds) {
-      transceivers = transceivers.filter(transceiver => {
-        return options.trackIds.includes((0, _fp.get)(['sender', 'track', 'id'], transceiver)) || options.trackIds.includes((0, _fp.get)(['receiver', 'track', 'id'], transceiver));
-      });
-    }
-
-    const failures = [];
-    transceivers.forEach(transceiver => {
-      if (!(0, _transceiverUtils.setTransceiverDirection)(transceiver, targetDirection)) {
-        failures.push(transceiver);
-      }
+  if (options.trackIds) {
+    transceivers = transceivers.filter(transceiver => {
+      return options.trackIds.includes((0, _fp.get)(['sender', 'track', 'id'], transceiver)) || options.trackIds.includes((0, _fp.get)(['receiver', 'track', 'id'], transceiver));
     });
-    return {
-      error: failures.length !== 0,
-      failures
-    };
-  } else {
-    log.info('Transceiver direction modification is only available in unified-plan.');
-    return {
-      error: true
-    };
   }
+
+  const failures = [];
+  transceivers.forEach(transceiver => {
+    if (!(0, _transceiverUtils.setTransceiverDirection)(transceiver, targetDirection)) {
+      failures.push(transceiver);
+    }
+  });
+  return {
+    error: failures.length !== 0,
+    failures
+  };
 }
 
 /***/ }),
-/* 258 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15671,11 +11062,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setTransceiverDirection = setTransceiverDirection;
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 var _fp = __webpack_require__(2);
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
 const log = _logs.logManager.getLogger('SdpPipeline');
 
@@ -15705,7 +11096,7 @@ function setTransceiverDirection(transceiver, targetDirection) {
 }
 
 /***/ }),
-/* 259 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15715,27 +11106,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _localDescription = __webpack_require__(260);
+var _localDescription = __webpack_require__(252);
 
 var _localDescription2 = _interopRequireDefault(_localDescription);
 
-var _localTracks = __webpack_require__(261);
+var _localTracks = __webpack_require__(253);
 
 var _localTracks2 = _interopRequireDefault(_localTracks);
 
-var _remoteDescription = __webpack_require__(262);
+var _remoteDescription = __webpack_require__(254);
 
 var _remoteDescription2 = _interopRequireDefault(_remoteDescription);
 
-var _remoteTracksActive = __webpack_require__(263);
+var _remoteTracksActive = __webpack_require__(255);
 
 var _remoteTracksActive2 = _interopRequireDefault(_remoteTracksActive);
 
-var _remoteTracks = __webpack_require__(264);
+var _remoteTracks = __webpack_require__(256);
 
 var _remoteTracks2 = _interopRequireDefault(_remoteTracks);
 
-var _senderTracks = __webpack_require__(265);
+var _senderTracks = __webpack_require__(257);
 
 var _senderTracks2 = _interopRequireDefault(_senderTracks);
 
@@ -15744,7 +11135,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = { localDescription: _localDescription2.default, localTracks: _localTracks2.default, remoteDescription: _remoteDescription2.default, remoteTracks: _remoteTracksActive2.default, remoteTracksAll: _remoteTracks2.default, senderTracks: _senderTracks2.default };
 
 /***/ }),
-/* 260 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15778,7 +11169,7 @@ function getLocalDescription() {
 }
 
 /***/ }),
-/* 261 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15814,7 +11205,7 @@ function localTracks() {
 }
 
 /***/ }),
-/* 262 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15848,7 +11239,7 @@ function getRemoteDescription() {
 }
 
 /***/ }),
-/* 263 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15884,7 +11275,7 @@ function getRemoteTracks() {
 }
 
 /***/ }),
-/* 264 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15919,7 +11310,7 @@ function getRemoteTracks() {
 }
 
 /***/ }),
-/* 265 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15954,7 +11345,7 @@ function senderTracks() {
 }
 
 /***/ }),
-/* 266 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;(function(f){if(true){module.exports=f()}else { var g; }})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return require(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
@@ -17199,7 +12590,7 @@ function shimRTCIceCandidate(window) {
     // Remove the a= which shouldn't be part of the candidate string.
     if ((typeof args === 'undefined' ? 'undefined' : _typeof(args)) === 'object' && args.candidate && args.candidate.indexOf('a=') === 0) {
       args = JSON.parse(JSON.stringify(args));
-      args.candidate = args.candidate.substr(2);
+      args.candidate = args.candidate.substring(2);
     }
 
     if (args.candidate && args.candidate.length) {
@@ -17341,7 +12732,7 @@ function shimMaxMessageSize(window, browserDetails) {
 
     var match = _sdp2.default.matchPrefix(description.sdp, 'a=max-message-size:');
     if (match.length > 0) {
-      maxMessageSize = parseInt(match[0].substr(19), 10);
+      maxMessageSize = parseInt(match[0].substring(19), 10);
     } else if (browserDetails.browser === 'firefox' && remoteIsFirefox !== -1) {
       // If the maximum message size is not present in the remote SDP and
       // both local and remote are Firefox, the remote peer can receive
@@ -18336,7 +13727,7 @@ function shimRTCIceServerUrls(window) {
       var newIceServers = [];
       for (var i = 0; i < pcConfig.iceServers.length; i++) {
         var server = pcConfig.iceServers[i];
-        if (!server.hasOwnProperty('urls') && server.hasOwnProperty('url')) {
+        if (server.urls === undefined && server.url) {
           utils.deprecated('RTCIceServer.url', 'RTCIceServer.urls');
           server = JSON.parse(JSON.stringify(server));
           server.urls = server.url;
@@ -18721,7 +14112,7 @@ var SDPUtils = {};
 // Generate an alphanumeric identifier for cname or mids.
 // TODO: use UUIDs instead? https://gist.github.com/jed/982883
 SDPUtils.generateIdentifier = function () {
-  return Math.random().toString(36).substr(2, 10);
+  return Math.random().toString(36).substring(2, 12);
 };
 
 // The RTCP CNAME used by all peerconnections from the same JS.
@@ -18855,13 +14246,13 @@ SDPUtils.writeCandidate = function (candidate) {
 // Sample input:
 // a=ice-options:foo bar
 SDPUtils.parseIceOptions = function (line) {
-  return line.substr(14).split(' ');
+  return line.substring(14).split(' ');
 };
 
 // Parses a rtpmap line, returns RTCRtpCoddecParameters. Sample input:
 // a=rtpmap:111 opus/48000/2
 SDPUtils.parseRtpMap = function (line) {
-  var parts = line.substr(9).split(' ');
+  var parts = line.substring(9).split(' ');
   var parsed = {
     payloadType: parseInt(parts.shift(), 10) // was: id
   };
@@ -18891,18 +14282,19 @@ SDPUtils.writeRtpMap = function (codec) {
 // a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
 // a=extmap:2/sendonly urn:ietf:params:rtp-hdrext:toffset
 SDPUtils.parseExtmap = function (line) {
-  var parts = line.substr(9).split(' ');
+  var parts = line.substring(9).split(' ');
   return {
     id: parseInt(parts[0], 10),
     direction: parts[0].indexOf('/') > 0 ? parts[0].split('/')[1] : 'sendrecv',
-    uri: parts[1]
+    uri: parts[1],
+    attributes: parts.slice(2).join(' ')
   };
 };
 
 // Generates an extmap line from RTCRtpHeaderExtensionParameters or
 // RTCRtpHeaderExtension.
 SDPUtils.writeExtmap = function (headerExtension) {
-  return 'a=extmap:' + (headerExtension.id || headerExtension.preferredId) + (headerExtension.direction && headerExtension.direction !== 'sendrecv' ? '/' + headerExtension.direction : '') + ' ' + headerExtension.uri + '\r\n';
+  return 'a=extmap:' + (headerExtension.id || headerExtension.preferredId) + (headerExtension.direction && headerExtension.direction !== 'sendrecv' ? '/' + headerExtension.direction : '') + ' ' + headerExtension.uri + (headerExtension.attributes ? ' ' + headerExtension.attributes : '') + '\r\n';
 };
 
 // Parses a fmtp line, returns dictionary. Sample input:
@@ -18911,7 +14303,7 @@ SDPUtils.writeExtmap = function (headerExtension) {
 SDPUtils.parseFmtp = function (line) {
   var parsed = {};
   var kv = void 0;
-  var parts = line.substr(line.indexOf(' ') + 1).split(';');
+  var parts = line.substring(line.indexOf(' ') + 1).split(';');
   for (var j = 0; j < parts.length; j++) {
     kv = parts[j].trim().split('=');
     parsed[kv[0].trim()] = kv[1];
@@ -18943,7 +14335,7 @@ SDPUtils.writeFmtp = function (codec) {
 // Parses a rtcp-fb line, returns RTCPRtcpFeedback object. Sample input:
 // a=rtcp-fb:98 nack rpsi
 SDPUtils.parseRtcpFb = function (line) {
-  var parts = line.substr(line.indexOf(' ') + 1).split(' ');
+  var parts = line.substring(line.indexOf(' ') + 1).split(' ');
   return {
     type: parts.shift(),
     parameter: parts.join(' ')
@@ -18971,14 +14363,14 @@ SDPUtils.writeRtcpFb = function (codec) {
 SDPUtils.parseSsrcMedia = function (line) {
   var sp = line.indexOf(' ');
   var parts = {
-    ssrc: parseInt(line.substr(7, sp - 7), 10)
+    ssrc: parseInt(line.substring(7, sp), 10)
   };
   var colon = line.indexOf(':', sp);
   if (colon > -1) {
-    parts.attribute = line.substr(sp + 1, colon - sp - 1);
-    parts.value = line.substr(colon + 1);
+    parts.attribute = line.substring(sp + 1, colon);
+    parts.value = line.substring(colon + 1);
   } else {
-    parts.attribute = line.substr(sp + 1);
+    parts.attribute = line.substring(sp + 1);
   }
   return parts;
 };
@@ -18986,7 +14378,7 @@ SDPUtils.parseSsrcMedia = function (line) {
 // Parse a ssrc-group line (see RFC 5576). Sample input:
 // a=ssrc-group:semantics 12 34
 SDPUtils.parseSsrcGroup = function (line) {
-  var parts = line.substr(13).split(' ');
+  var parts = line.substring(13).split(' ');
   return {
     semantics: parts.shift(),
     ssrcs: parts.map(function (ssrc) {
@@ -19000,13 +14392,13 @@ SDPUtils.parseSsrcGroup = function (line) {
 SDPUtils.getMid = function (mediaSection) {
   var mid = SDPUtils.matchPrefix(mediaSection, 'a=mid:')[0];
   if (mid) {
-    return mid.substr(6);
+    return mid.substring(6);
   }
 };
 
 // Parses a fingerprint line for DTLS-SRTP.
 SDPUtils.parseFingerprint = function (line) {
-  var parts = line.substr(14).split(' ');
+  var parts = line.substring(14).split(' ');
   return {
     algorithm: parts[0].toLowerCase(), // algorithm is case-sensitive in Edge.
     value: parts[1].toUpperCase() // the definition is upper-case in RFC 4572.
@@ -19037,7 +14429,7 @@ SDPUtils.writeDtlsParameters = function (params, setupType) {
 // Parses a=crypto lines into
 //   https://rawgit.com/aboba/edgertc/master/msortc-rs4.html#dictionary-rtcsrtpsdesparameters-members
 SDPUtils.parseCryptoLine = function (line) {
-  var parts = line.substr(9).split(' ');
+  var parts = line.substring(9).split(' ');
   return {
     tag: parseInt(parts[0], 10),
     cryptoSuite: parts[1],
@@ -19056,7 +14448,7 @@ SDPUtils.parseCryptoKeyParams = function (keyParams) {
   if (keyParams.indexOf('inline:') !== 0) {
     return null;
   }
-  var parts = keyParams.substr(7).split('|');
+  var parts = keyParams.substring(7).split('|');
   return {
     keyMethod: 'inline',
     keySalt: parts[0],
@@ -19086,8 +14478,8 @@ SDPUtils.getIceParameters = function (mediaSection, sessionpart) {
     return null;
   }
   return {
-    usernameFragment: ufrag.substr(12),
-    password: pwd.substr(10)
+    usernameFragment: ufrag.substring(12),
+    password: pwd.substring(10)
   };
 };
 
@@ -19110,6 +14502,7 @@ SDPUtils.parseRtpParameters = function (mediaSection) {
   };
   var lines = SDPUtils.splitLines(mediaSection);
   var mline = lines[0].split(' ');
+  description.profile = mline[2];
   for (var i = 3; i < mline.length; i++) {
     // find all codecs from mline[3..]
     var pt = mline[i];
@@ -19136,6 +14529,17 @@ SDPUtils.parseRtpParameters = function (mediaSection) {
   SDPUtils.matchPrefix(mediaSection, 'a=extmap:').forEach(function (line) {
     description.headerExtensions.push(SDPUtils.parseExtmap(line));
   });
+  var wildcardRtcpFb = SDPUtils.matchPrefix(mediaSection, 'a=rtcp-fb:* ').map(SDPUtils.parseRtcpFb);
+  description.codecs.forEach(function (codec) {
+    wildcardRtcpFb.forEach(function (fb) {
+      var duplicate = codec.rtcpFeedback.find(function (existingFeedback) {
+        return existingFeedback.type === fb.type && existingFeedback.parameter === fb.parameter;
+      });
+      if (!duplicate) {
+        codec.rtcpFeedback.push(fb);
+      }
+    });
+  });
   // FIXME: parse rtcp.
   return description;
 };
@@ -19148,7 +14552,7 @@ SDPUtils.writeRtpDescription = function (kind, caps) {
   // Build the mline.
   sdp += 'm=' + kind + ' ';
   sdp += caps.codecs.length > 0 ? '9' : '0'; // reject if no codecs.
-  sdp += ' UDP/TLS/RTP/SAVPF ';
+  sdp += ' ' + (caps.profile || 'UDP/TLS/RTP/SAVPF') + ' ';
   sdp += caps.codecs.map(function (codec) {
     if (codec.preferredPayloadType !== undefined) {
       return codec.preferredPayloadType;
@@ -19202,7 +14606,7 @@ SDPUtils.parseRtpEncodingParameters = function (mediaSection) {
   var secondarySsrc = void 0;
 
   var flows = SDPUtils.matchPrefix(mediaSection, 'a=ssrc-group:FID').map(function (line) {
-    var parts = line.substr(17).split(' ');
+    var parts = line.substring(17).split(' ');
     return parts.map(function (part) {
       return parseInt(part, 10);
     });
@@ -19241,10 +14645,10 @@ SDPUtils.parseRtpEncodingParameters = function (mediaSection) {
   var bandwidth = SDPUtils.matchPrefix(mediaSection, 'b=');
   if (bandwidth.length) {
     if (bandwidth[0].indexOf('b=TIAS:') === 0) {
-      bandwidth = parseInt(bandwidth[0].substr(7), 10);
+      bandwidth = parseInt(bandwidth[0].substring(7), 10);
     } else if (bandwidth[0].indexOf('b=AS:') === 0) {
       // use formula from JSEP to convert b=AS to TIAS value.
-      bandwidth = parseInt(bandwidth[0].substr(5), 10) * 1000 * 0.95 - 50 * 40 * 8;
+      bandwidth = parseInt(bandwidth[0].substring(5), 10) * 1000 * 0.95 - 50 * 40 * 8;
     } else {
       bandwidth = undefined;
     }
@@ -19305,7 +14709,7 @@ SDPUtils.parseMsid = function (mediaSection) {
   var parts = void 0;
   var spec = SDPUtils.matchPrefix(mediaSection, 'a=msid:');
   if (spec.length === 1) {
-    parts = spec[0].substr(7).split(' ');
+    parts = spec[0].substring(7).split(' ');
     return { stream: parts[0], track: parts[1] };
   }
   var planB = SDPUtils.matchPrefix(mediaSection, 'a=ssrc:').map(function (line) {
@@ -19327,7 +14731,7 @@ SDPUtils.parseSctpDescription = function (mediaSection) {
   var maxSizeLine = SDPUtils.matchPrefix(mediaSection, 'a=max-message-size:');
   var maxMessageSize = void 0;
   if (maxSizeLine.length > 0) {
-    maxMessageSize = parseInt(maxSizeLine[0].substr(19), 10);
+    maxMessageSize = parseInt(maxSizeLine[0].substring(19), 10);
   }
   if (isNaN(maxMessageSize)) {
     maxMessageSize = 65536;
@@ -19335,14 +14739,14 @@ SDPUtils.parseSctpDescription = function (mediaSection) {
   var sctpPort = SDPUtils.matchPrefix(mediaSection, 'a=sctp-port:');
   if (sctpPort.length > 0) {
     return {
-      port: parseInt(sctpPort[0].substr(12), 10),
+      port: parseInt(sctpPort[0].substring(12), 10),
       protocol: mline.fmt,
       maxMessageSize: maxMessageSize
     };
   }
   var sctpMapLines = SDPUtils.matchPrefix(mediaSection, 'a=sctpmap:');
   if (sctpMapLines.length > 0) {
-    var parts = sctpMapLines[0].substr(10).split(' ');
+    var parts = sctpMapLines[0].substring(10).split(' ');
     return {
       port: parseInt(parts[0], 10),
       protocol: parts[1],
@@ -19374,7 +14778,7 @@ SDPUtils.writeSctpDescription = function (media, sctp) {
 // recommends using a cryptographically random +ve 64-bit value
 // but right now this should be acceptable and within the right range
 SDPUtils.generateSessionId = function () {
-  return Math.random().toString().substr(2, 21);
+  return Math.random().toString().substr(2, 22);
 };
 
 // Write boiler plate for start of SDP
@@ -19405,7 +14809,7 @@ SDPUtils.getDirection = function (mediaSection, sessionpart) {
       case 'a=sendonly':
       case 'a=recvonly':
       case 'a=inactive':
-        return lines[i].substr(2);
+        return lines[i].substring(2);
       default:
       // FIXME: What should happen here?
     }
@@ -19419,7 +14823,7 @@ SDPUtils.getDirection = function (mediaSection, sessionpart) {
 SDPUtils.getKind = function (mediaSection) {
   var lines = SDPUtils.splitLines(mediaSection);
   var mline = lines[0].split(' ');
-  return mline[0].substr(2);
+  return mline[0].substring(2);
 };
 
 SDPUtils.isRejected = function (mediaSection) {
@@ -19428,7 +14832,7 @@ SDPUtils.isRejected = function (mediaSection) {
 
 SDPUtils.parseMLine = function (mediaSection) {
   var lines = SDPUtils.splitLines(mediaSection);
-  var parts = lines[0].substr(2).split(' ');
+  var parts = lines[0].substring(2).split(' ');
   return {
     kind: parts[0],
     port: parseInt(parts[1], 10),
@@ -19439,7 +14843,7 @@ SDPUtils.parseMLine = function (mediaSection) {
 
 SDPUtils.parseOLine = function (mediaSection) {
   var line = SDPUtils.matchPrefix(mediaSection, 'o=')[0];
-  var parts = line.substr(2).split(' ');
+  var parts = line.substring(2).split(' ');
   return {
     username: parts[0],
     sessionId: parts[1],
@@ -19474,7 +14878,7 @@ if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object'
 
 
 /***/ }),
-/* 267 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19484,7 +14888,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 /**
  * Configuration object for a Peer.
@@ -19495,9 +14899,6 @@ var _constants = __webpack_require__(22);
  * @property {Function} [halfTrickleThreshold] Function that determines whether the threshold has been met when in HALF trickle mode.
  */
 exports.default = {
-  rtcConfig: {
-    sdpSemantics: _constants.PEER.SDP_SEMANTICS.UNIFIED_PLAN
-  },
   trickleIceMode: _constants.PEER.TRICKLE_ICE.FULL,
   removeBundling: false,
   halfTrickleThreshold: isPassedHalfTrickleThreshold
@@ -19519,7 +14920,7 @@ function isPassedHalfTrickleThreshold({ sdp, iceCandidate, time }) {
 }
 
 /***/ }),
-/* 268 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19529,7 +14930,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _create = __webpack_require__(147);
+var _create = __webpack_require__(145);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -19598,7 +14999,7 @@ function createTimer() {
 }
 
 /***/ }),
-/* 269 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19608,7 +15009,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(36);
+var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -19616,19 +15017,19 @@ var _promise = __webpack_require__(10);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _map = __webpack_require__(34);
+var _map = __webpack_require__(38);
 
 var _map2 = _interopRequireDefault(_map);
 
 exports.default = MediaManager;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _media = __webpack_require__(128);
+var _media = __webpack_require__(129);
 
 var _media2 = _interopRequireDefault(_media);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -19925,7 +15326,7 @@ function MediaManager(managers) {
 // Libraries.
 
 /***/ }),
-/* 270 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19935,25 +15336,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(36);
+var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
-var _map = __webpack_require__(34);
+var _map = __webpack_require__(38);
 
 var _map2 = _interopRequireDefault(_map);
 
 exports.default = PeerManager;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _Peer = __webpack_require__(129);
+var _Peer = __webpack_require__(130);
 
 var _Peer2 = _interopRequireDefault(_Peer);
 
-var _uuid = __webpack_require__(44);
+var _uuid = __webpack_require__(42);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -20049,7 +15450,7 @@ function PeerManager(managers) {
 }
 
 /***/ }),
-/* 271 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20059,25 +15460,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(36);
+var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
-var _map = __webpack_require__(34);
+var _map = __webpack_require__(38);
 
 var _map2 = _interopRequireDefault(_map);
 
 exports.default = SessionManager;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _session = __webpack_require__(272);
+var _session = __webpack_require__(264);
 
 var _session2 = _interopRequireDefault(_session);
 
-var _uuid = __webpack_require__(44);
+var _uuid = __webpack_require__(42);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -20164,7 +15565,7 @@ function SessionManager(managers) {
 }
 
 /***/ }),
-/* 272 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20174,7 +15575,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
@@ -20182,23 +15583,21 @@ var _promise = __webpack_require__(10);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _map = __webpack_require__(34);
+var _map = __webpack_require__(38);
 
 var _map2 = _interopRequireDefault(_map);
 
 exports.default = Session;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _constants = __webpack_require__(22);
+var _constants = __webpack_require__(31);
 
 var _pipeline = __webpack_require__(67);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
-var _sdpSemantics = __webpack_require__(43);
-
-var _extractors = __webpack_require__(152);
+var _extractors = __webpack_require__(265);
 
 var _utils = __webpack_require__(68);
 
@@ -20206,7 +15605,7 @@ var _iceCollectionScheduledCheck = __webpack_require__(131);
 
 var _iceCollectionScheduledCheck2 = _interopRequireDefault(_iceCollectionScheduledCheck);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -20220,7 +15619,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // General Utils.
 
 
-// Helpers.
+// SDP Helpers.
 const unfixedDebounce = _fp.debounce.convert({ fixed: false });
 
 /**
@@ -20232,12 +15631,10 @@ const unfixedDebounce = _fp.debounce.convert({ fixed: false });
  */
 
 
-// SDP Helpers.
+// Helpers.
 function Session(id, managers, config = {}) {
   const log = _logs.logManager.getLogger('Session', id);
   log.info('Creating new Session.');
-  const sdpSemantics = config.peer && config.peer.rtcConfig && config.peer.rtcConfig.sdpSemantics;
-  log.debug(`Session configured for ${sdpSemantics || 'default'} SDP semantics.`);
 
   // Internal variables.
   const sessionId = id;
@@ -20359,7 +15756,7 @@ function Session(id, managers, config = {}) {
           const reusableTransceiver = peer.findReusableTransceiver(track.track.kind);
 
           // If we can find a reusable transceiver, reuse it.
-          if ((0, _sdpSemantics.isUnifiedPlan)(config.peer.rtcConfig.sdpSemantics) && reusableTransceiver) {
+          if (reusableTransceiver) {
             reusableTransceiver.sender
             // Replace the dummy track on the Sender with the actual track we want to send.
             .replaceTrack(track.track).then(() => {
@@ -20446,13 +15843,11 @@ function Session(id, managers, config = {}) {
         reject(new Error(`Peer not found in Session ${sessionId}.`));
       }
 
-      // If using unified-plan, remove options.mediaDirections.
+      // Remove options.mediaDirections.
       // This is because directions are now set in transceivers.
-      if ((0, _sdpSemantics.isUnifiedPlan)(config.peer.rtcConfig.sdpSemantics)) {
-        if (options.mediaDirections) {
-          setLocalAndRemoteTransceiversDirection(options.mediaDirections);
-          delete options.mediaDirections;
-        }
+      if (options.mediaDirections) {
+        setLocalAndRemoteTransceiversDirection(options.mediaDirections);
+        delete options.mediaDirections;
       }
 
       peer.createOffer(options).then(offer => {
@@ -20683,13 +16078,8 @@ function Session(id, managers, config = {}) {
    * @return {Object} An object containing an `error` flag and  an array `failures` of transceiver "mid"s whose directions weren't changed.
    */
   function setTransceiversDirection(targetDirection, options = {}) {
-    if ((0, _sdpSemantics.isUnifiedPlan)(config.peer.rtcConfig.sdpSemantics)) {
-      const peer = peerManager.get(peerId);
-      return peer.setTransceiversDirection(targetDirection, options);
-    } else {
-      log.info('Transceiver direction modification is only available in unified-plan.');
-      return { error: true };
-    }
+    const peer = peerManager.get(peerId);
+    return peer.setTransceiversDirection(targetDirection, options);
   }
 
   /**
@@ -20774,13 +16164,11 @@ function Session(id, managers, config = {}) {
         reject(new Error(`Peer not found in Session ${sessionId}.`));
       }
 
-      // If using unified-plan, remove options.mediaDirections.
+      // Remove options.mediaDirections.
       // This is because directions are now set in transceivers.
-      if ((0, _sdpSemantics.isUnifiedPlan)(config.peer.rtcConfig.sdpSemantics)) {
-        if (options.mediaDirections) {
-          setLocalAndRemoteTransceiversDirection(options.mediaDirections);
-          delete options.mediaDirections;
-        }
+      if (options.mediaDirections) {
+        setLocalAndRemoteTransceiversDirection(options.mediaDirections);
+        delete options.mediaDirections;
       }
 
       // Set the dtlsRole here if the following are true:
@@ -21413,7 +16801,34 @@ function Session(id, managers, config = {}) {
 }
 
 /***/ }),
-/* 273 */
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSdpSessionId = getSdpSessionId;
+/**
+ * Extracts the session ID from the SDP.
+ * Session ID is located in the o= line.
+ * Ref: https://tools.ietf.org/html/rfc4566#section-5.2
+ * @method getSdpSessionId
+ * @param  {string} sdp A valid SDP string.
+ * @return {string} The SDP's session ID.
+ */
+function getSdpSessionId(sdp) {
+  const oLine = sdp.match(/o=.*/gm);
+
+  if (oLine && oLine[0]) {
+    return oLine[0].split(' ')[1];
+  }
+}
+
+/***/ }),
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21430,9 +16845,9 @@ var _promise2 = _interopRequireDefault(_promise);
 
 exports.default = DeviceManager;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -21581,7 +16996,7 @@ function DeviceManager() {
 }
 
 /***/ }),
-/* 274 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21591,21 +17006,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(36);
+var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
-var _map = __webpack_require__(34);
+var _map = __webpack_require__(38);
 
 var _map2 = _interopRequireDefault(_map);
 
 exports.default = TrackManager;
 
-var _track = __webpack_require__(127);
+var _track = __webpack_require__(128);
 
 var _track2 = _interopRequireDefault(_track);
 
-var _eventemitter = __webpack_require__(26);
+var _eventemitter = __webpack_require__(30);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
@@ -21739,7 +17154,7 @@ function TrackManager() {
 // Libraries.
 
 /***/ }),
-/* 275 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21772,7 +17187,7 @@ function WebRTCManager(managers) {
 }
 
 /***/ }),
-/* 276 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21783,7 +17198,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Renderer;
 
-var _logs = __webpack_require__(15);
+var _logs = __webpack_require__(17);
 
 var _utils = __webpack_require__(68);
 
@@ -21956,7 +17371,7 @@ function Renderer() {
 }
 
 /***/ }),
-/* 277 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21970,14 +17385,14 @@ var _promise = __webpack_require__(10);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _stringify = __webpack_require__(31);
+var _stringify = __webpack_require__(29);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
 exports.jsonChannel = jsonChannel;
 exports.replyChannel = replyChannel;
 
-var _logs = __webpack_require__(4);
+var _logs = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22156,6 +17571,13 @@ function replyChannel(channel) {
 }
 
 /***/ }),
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
 /* 278 */,
 /* 279 */,
 /* 280 */,
@@ -22442,31 +17864,152 @@ function replyChannel(channel) {
 /* 561 */,
 /* 562 */,
 /* 563 */,
-/* 564 */
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */,
+/* 574 */,
+/* 575 */,
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */,
+/* 590 */,
+/* 591 */,
+/* 592 */,
+/* 593 */,
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */,
+/* 657 */,
+/* 658 */,
+/* 659 */,
+/* 660 */,
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */,
+/* 670 */,
+/* 671 */,
+/* 672 */,
+/* 673 */,
+/* 674 */,
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _objectWithoutProperties2 = __webpack_require__(71);
+var _objectWithoutProperties2 = __webpack_require__(70);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _clientProxy = __webpack_require__(565);
+var _clientProxy = __webpack_require__(686);
 
 var _clientProxy2 = _interopRequireDefault(_clientProxy);
 
-var _media = __webpack_require__(578);
+var _media = __webpack_require__(699);
 
 var mediaApis = _interopRequireWildcard(_media);
 
-var _events = __webpack_require__(579);
+var _events = __webpack_require__(700);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _logs = __webpack_require__(4);
+var _logs = __webpack_require__(7);
 
-var _version = __webpack_require__(55);
+var _version = __webpack_require__(54);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -22566,7 +18109,7 @@ remoteClient.create = remoteClient;
 module.exports = remoteClient;
 
 /***/ }),
-/* 565 */
+/* 686 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22577,23 +18120,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = clientProxy;
 
-var _converters = __webpack_require__(102);
+var _converters = __webpack_require__(107);
 
 var _converters2 = _interopRequireDefault(_converters);
 
-var _webrtcEvents = __webpack_require__(577);
+var _webrtcEvents = __webpack_require__(698);
 
 var _webrtcEvents2 = _interopRequireDefault(_webrtcEvents);
 
-var _channel = __webpack_require__(277);
+var _channel = __webpack_require__(270);
 
-var _logs = __webpack_require__(4);
+var _logs = __webpack_require__(7);
 
-var _version = __webpack_require__(55);
+var _version = __webpack_require__(54);
 
-var _uuid = __webpack_require__(44);
+var _uuid = __webpack_require__(42);
 
-var _kandyWebrtc = __webpack_require__(126);
+var _kandyWebrtc = __webpack_require__(57);
 
 var _kandyWebrtc2 = _interopRequireDefault(_kandyWebrtc);
 
@@ -22704,15 +18247,22 @@ function clientProxy() {
 
         base.isReady = true;
 
-        // Setup listeners for events from the webRTC stack.
-        (0, _webrtcEvents2.default)(base.webRTC, action => {
+        /*
+         * Setup listeners for events from the Webrtc-stack. If the events are
+         *    actions (and events), we need to send them across the channel to
+         *    be handled by the SDK. The function passed-in is the "remote side"
+         *    of the `contextHelper` for how the SDK should handle Webrtc-stack
+         *    events. The "local side" of this handler is defined in the
+         *    WebrtcProxy operations.
+         */
+        (0, _webrtcEvents2.default)(base.webRTC, (action, event) => {
           // When an event is received (and has already been parsed into an
           //    action), send it over the channel.
           if (typeof action === 'object' && action.type) {
             // Make sure that the action is an actual action, though.
             log.info(`Sending event over channel: ${action.type}.`);
             const messageId = (0, _uuid.v4)().substring(0, 8);
-            base.channel.send(messageId, { event: action });
+            base.channel.send(messageId, { action, event });
           } else {
             log.debug('Proxy event listeners received unexpected format; ignoring.', action);
           }
@@ -22795,7 +18345,7 @@ function isWebrtcCommand(data) {
 }
 
 /***/ }),
-/* 566 */
+/* 687 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22805,7 +18355,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
@@ -22844,7 +18394,7 @@ exports.default = async function deviceManager(webRTC, command) {
 };
 
 /***/ }),
-/* 567 */
+/* 688 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22854,11 +18404,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _index = __webpack_require__(102);
+var _index = __webpack_require__(107);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22913,7 +18463,7 @@ exports.default = async function mediaManager(webRTC, command) {
 };
 
 /***/ }),
-/* 568 */
+/* 689 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22923,7 +18473,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(102);
+var _index = __webpack_require__(107);
 
 /**
  * Session Manager "converter".
@@ -22957,7 +18507,7 @@ exports.default = async function sessionManager(webRTC, command) {
 };
 
 /***/ }),
-/* 569 */
+/* 690 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22967,7 +18517,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(102);
+var _index = __webpack_require__(107);
 
 /**
  * Track Manager "converter".
@@ -22998,7 +18548,7 @@ exports.default = async function trackManager(webRTC, command) {
 };
 
 /***/ }),
-/* 570 */
+/* 691 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23008,7 +18558,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(102);
+var _index = __webpack_require__(107);
 
 /**
  * Log Manager "converter".
@@ -23048,7 +18598,7 @@ exports.default = async function logManager(webRTC, command) {
 };
 
 /***/ }),
-/* 571 */
+/* 692 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23076,7 +18626,7 @@ exports.default = async function webrtcManager(webRTC, command) {
 };
 
 /***/ }),
-/* 572 */
+/* 693 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23113,7 +18663,7 @@ exports.default = async function rendererManager(webRTC, command) {
 };
 
 /***/ }),
-/* 573 */
+/* 694 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23123,7 +18673,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(102);
+var _index = __webpack_require__(107);
 
 /**
  * Media "converter".
@@ -23154,7 +18704,7 @@ exports.default = async function media(webRTC, command) {
 };
 
 /***/ }),
-/* 574 */
+/* 695 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23164,7 +18714,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = __webpack_require__(36);
+var _from = __webpack_require__(40);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -23207,7 +18757,7 @@ exports.default = async function session(webRTC, command) {
 };
 
 /***/ }),
-/* 575 */
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23246,7 +18796,7 @@ exports.default = async function track(webRTC, command) {
 };
 
 /***/ }),
-/* 576 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23256,7 +18806,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _logs = __webpack_require__(4);
+var _logs = __webpack_require__(7);
 
 /**
  * Logger "converter".
@@ -23293,7 +18843,7 @@ exports.default = async function logger(webRTC, command) {
 };
 
 /***/ }),
-/* 577 */
+/* 698 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23304,84 +18854,48 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = setupListeners;
 
-var _mediaManager = __webpack_require__(224);
+var _mediaManager = __webpack_require__(216);
 
-var _media = __webpack_require__(150);
+var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
-var _sessionManager = __webpack_require__(225);
+var _sessionManager = __webpack_require__(214);
 
-var _session = __webpack_require__(151);
+var _sessionManager2 = _interopRequireDefault(_sessionManager);
 
-var _trackManager = __webpack_require__(223);
+var _trackManager = __webpack_require__(212);
 
-var _track = __webpack_require__(149);
+var _trackManager2 = _interopRequireDefault(_trackManager);
 
-var _devices = __webpack_require__(222);
+var _devices = __webpack_require__(211);
 
-var _actionTypes = __webpack_require__(12);
+var _devices2 = _interopRequireDefault(_devices);
 
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Sets up event listeners for webRTC events. The events are turned into
- *    actions and emitted to be handled elsewhere.
+ * Function that connects the Webrtc-stack's events to the ProxyStack.
+ *
+ * Sets up all of the "manager channels" to listen for Webrtc-stack events
+ *   and passes in a "handler" for what the manager channels should do with
+ *   actions/events generated from the Webrtc-stack events.
+ *
+ * This function is the Proxy-version of the Webrtc plugin's `watchManagers`
+ *    function (/webrtc/channels/index.js).
  * @method setupListeners
  * @param  {Object} webRTC The webRTC stack.
- * @param  {Function} emit Function that receives the parsed events.
+ * @param  {Function} handler Function that receives the parsed actions and events.
  */
 // Webrtc plugin.
-function setupListeners(webRTC, emit) {
-  // How to handle a Media Manager event.
-  const mediaManagerHandler = ({ action, media }) => {
-    // If it is a new Media, watch for its events.
-    if (action.type === actionTypes.MEDIA_NEW) {
-      // Handle session events by emitting them directly.
-      (0, _media.setListeners)(media, emit);
-    }
-
-    // Dispatch the action directly.
-    emit(action);
-  };
-
-  // How to handle a Session Manager event.
-  const sessionManagerHandler = ({ action, session }) => {
-    // If it is a new Session, watch for its events.
-    if (action.type === actionTypes.SESSION_ADDED) {
-      // Handle session events by emitting them directly.
-      (0, _session.setListeners)(session, emit);
-    }
-
-    // Dispatch the action directly.
-    emit(action);
-  };
-
-  // How to handle a Track Manager event.
-  const trackManagerHandler = ({ action, track }) => {
-    // If it is a new Track, watch for its events.
-    if (action.type === actionTypes.TRACK_ADDED) {
-      // Handle track events by emitting them directly.
-      (0, _track.setListeners)(track, emit);
-    }
-
-    // Dispatch the action directly.
-    emit(action);
-  };
-
-  // How to handle a Device Manager event.
-  //    ...just emit them directly.
-  const devicesHandler = emit;
-
-  // Setup listeners for each Manager.
-  (0, _mediaManager.setListeners)(webRTC.managers.media, mediaManagerHandler);
-  (0, _sessionManager.setListeners)(webRTC.managers.sessionManager, sessionManagerHandler);
-  (0, _trackManager.setListeners)(webRTC.managers.track, trackManagerHandler);
-  (0, _devices.setListeners)(webRTC.managers.devices, devicesHandler);
+function setupListeners(webRTC, handler) {
+  // Setup listeners for each Manager and pass the action and event handler.
+  (0, _mediaManager2.default)(webRTC.managers.media, handler);
+  (0, _sessionManager2.default)(webRTC.managers.sessionManager, handler);
+  (0, _trackManager2.default)(webRTC.managers.track, handler);
+  (0, _devices2.default)(webRTC.managers.devices, handler);
 }
 
 /***/ }),
-/* 578 */
+/* 699 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23397,7 +18911,7 @@ exports.getTrackById = getTrackById;
 exports.renderTracks = renderTracks;
 exports.removeTracks = removeTracks;
 
-var _logs = __webpack_require__(4);
+var _logs = __webpack_require__(7);
 
 const log = _logs.logManager.getLogger('PROXY');
 
@@ -23564,7 +19078,7 @@ function removeTracks(webRTC, trackIds, cssSelector) {
 }
 
 /***/ }),
-/* 579 */
+/* 700 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23574,13 +19088,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(3);
+var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = setupEvents;
 
-var _eventEmitter = __webpack_require__(217);
+var _eventEmitter = __webpack_require__(206);
 
 var _eventEmitter2 = _interopRequireDefault(_eventEmitter);
 

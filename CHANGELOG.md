@@ -1,9 +1,88 @@
+[copyright © 2023 ribbon communications operating company, inc. all rights reserved]: #
+
 # Change Log
 
 Ribbon WebRTC SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+
+## 6.0.0 - 2023-06-30
+
+### Removed
+
+- Removed support for the `Plan-B` SDP Semantic for Calls. `KJS-1412`
+  - Browsers only support the `Unified-Plan` SDP Semantic, and the WebRTC JS SDK is aligning with WebRTC specification.
+  - The removal of the `Plan-B` configuration was announced in v4.29.0 (2021-06-25).
+  - The `call.defaultPeerConfig.sdpSemantics` configuration is no longer changeable from the default `Unified-Plan`.
+- Removed deprecated authentication APIs `connect` and `disconnect`. `KJS-422`
+  - These APIs were announced as deprecated in v4.21.0 (2020-10-30).
+  - The replacement APIs are `setCredentials` and `services.subscribe`/`services.unsubscribe`. Please see the `User Connect` tutorial for information about how they are to be used.
+- Removed backwards-compatibility support for deprecated authentication configurations format. `KJS-422`
+  - Please see the `configs` API documentation or the `User Connect` tutorial for information about the latest format for the authentication and subscription configurations.
+- Removed backwards-compatibility support for the following call configurations: `iceserver`, `iceServers`, and `sdpSemanatics`.
+  - Please see the `configs` API documentation or the `Voice and Video Calls` tutorial for information about the format for the call configurations.
+- Removed the Call configuration `call.removeH264Codecs`. `KJS-839`
+  - Call codecs should be removed using the `call.sdpHandlers` configuration with the `createCodecRemover` helper.
+  - This is a breaking change: H264 codecs will not be removed by default any longer. Please see the Migration section below for more information.
+- Removed the `users.fetchSelfInfo` API. `KJS-1538`
+  - This functionality was not working as intended and caused conflicts with the data returned by the `users.fetch` API. It is being removed to fix the issues with the `users.fetch` functionality, to be re-implemented in the future.
+
+### Changed
+
+- Changed the rest of tutorial trails to use the same approach in handling subscription errors (as outlined in `Handling Subscription Errors` trail). `KJS-918`
+- The Proxy configuration `config.common.allowProxy` has been removed. The Proxy features are now enabled by default. `KJS-1478`
+  - This was previously undocumented, preventing applications from using Proxy features without an explanation as to why.
+
+### Fixed
+
+- Fixed a Call issue where a `call.reject` API would succeed but the call would not change to `Ended` state in some scenarios.
+- Fixed a SIP Events issue where an event associated with an on-going call would not include the ID for the call.
+
+### Migration
+
+#### Codec Removal
+
+The `call.removeH264Codecs` configuration is being removed since it overlaps with the preferred `call.sdpHandlers` and `createCodecRemover` functionality. They perform the same behaviour but allow for more control and ability in choosing specifically which codecs should be removed.
+
+Below is a comparison of how the H264 codecs can be removed using both methods. For more information about the `createCodecRemover`, please see the `sdpHandlers.createCodecRemover` function and `CodecSelector` type in the documentation.
+
+_Note_: The `call.removeH264Codecs` configuration was `true` by default, meaning the SDK would remove H264 codecs unless specified not to. With the removal of `call.removeH264Codecs`, H264 codecs will not be removed unless specified to.
+
+```javascript
+// Example SDK initialization with a codec-remover for H264.
+// Only available prior to v6.0 changes.
+import { create } from '@rbbn/webrtc-js-sdk'
+const client = create({
+  call: {
+    removeH264Codecs: true
+  }
+})
+
+// Example SDK initialization with a codec-remover for H264.
+// Available in both v5.0 and v6.0.
+import { create, sdpHandlers } from '@rbbn/webrtc-js-sdk'
+const codecRemover = sdpHandlers.createCodecRemover(['H264'])
+const client = create({
+  call: {
+    sdpHandlers: [codecRemover]
+  }
+})
+
+// Example codec-remover for more specific H264 codecs.
+const codecRemover = sdpHandlers.createCodecRemover([
+  {
+    name: 'H264',
+    fmtpParams: ['profile-level-id=4d0032', 'packetization-mode=1']
+  }
+])
+```
+
+### Other Changes
+
+The v6.0 release also includes changes to a few other parts of the SDK, similar to what our v5.0 release included. These changes should not be noticeable to an application, but are worth mentioning for awareness. A number of features of the SDK have had their codebase renewed to better support the direction of the SDK going forward. This will translate to a better developer experience in the future.
+
+The following features have been updated internally: Calls, Proxy, SIP Events. They do not require any application changes as part of v6.0, as the changes are backwards-compatible. As always, if you encounter an issue with a release change, please report the issue to us.
 
 ## 5.10.0 - 2023-05-26
 
@@ -1360,3 +1439,5 @@ Our reactive approach to this new version of the SDK puts more responsibility on
 
 - Completely new unified API that replaces both FCS and Kandy.js 2.x. See the reference documentation.
 - New documentation portal with all new documentation and quick starts for 3.0.
+
+[copyright © 2023 ribbon communications operating company, inc. all rights reserved]: #
