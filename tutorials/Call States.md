@@ -1,11 +1,4 @@
 [COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
----
-layout: page
-categories: quickstarts-javascript
-title: Call States
-permalink: /quickstarts/javascript/link/Call%20States
-position: 2
----
 
 # Call States
 

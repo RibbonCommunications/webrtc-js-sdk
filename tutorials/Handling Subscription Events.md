@@ -1,9 +1,3 @@
----
-layout: page
-categories: quickstarts-javascript
-title: Handling Subscription Events
-permalink: /quickstarts/javascript/link/Handling%20Events
----
 <style scoped>
   table, td, th {
     font-size: 11px;

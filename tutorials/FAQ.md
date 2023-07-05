@@ -1,10 +1,4 @@
 [COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
----
-layout: page
-categories: quickstarts-javascript
-title: FAQ
-permalink: /quickstarts/javascript/link/FAQ
----
 
 # FAQ
 

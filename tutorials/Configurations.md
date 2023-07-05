@@ -1,10 +1,4 @@
 [COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
----
-layout: page
-categories: quickstarts-javascript
-title: Configurations
-permalink: /quickstarts/javascript/link/Configurations
----
 
 # The WebRTC JS SDK Configurations
 

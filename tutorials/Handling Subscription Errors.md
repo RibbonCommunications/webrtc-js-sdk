@@ -1,10 +1,4 @@
 [COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
----
-layout: page
-categories: quickstarts-javascript
-title: Handling Subscription Errors
-permalink: /quickstarts/javascript/link/Handling%20Subscription%20Errors
----
 
 # Subscription Errors
 
