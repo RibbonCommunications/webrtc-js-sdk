@@ -40,5 +40,6 @@ When reporting an SDK issue, please include the following information:
 - Steps to reproduce the problem. I.e. What's the code using the SDK that's failing?
 - Expected result and actual results.
 - Whether this has worked before.
+
 [COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
 

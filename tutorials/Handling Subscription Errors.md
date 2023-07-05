@@ -95,3 +95,30 @@ Additional recommendations for the timers:
 
 The following code snippet shows a very basic example of re-trying subscription using the above timer recommendations.
 
+```javascript
+// Create a short timer of 30 seconds and a long timer of 300 seconds
+//  Also add an an element of randomness to both timers
+const SHORT_TIMER = 30000 * 0.8 + 3000 * 0.4 * Math.random()
+const LONG_TIMER = 300000 * 0.8 + 300000 * 0.4 * Math.random()
+let shortTimerAttempts = 0
+
+function subscribe (service) {
+  client.services.subscribe([service])
+}
+
+client.on('subscription:error', function (params) {
+  const { code, message } = params.error
+  if (message.toLowerCase().includes('status code: 54')) {
+    if (shortTimerAttempts === 5) {
+      // Switch to a long timer after 5 short timer re-tries
+      setTimeout(() => subscribe('call'), LONG_TIMER)
+    } else {
+      // Decay the next subscription re-try by 15 seconds
+      setTimeout(() => subscribe('call'), SHORT_TIMER + 15000)
+    }
+  }
+})
+```
+
+[COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
+
