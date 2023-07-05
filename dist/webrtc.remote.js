@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.1.0-beta.1074
+ * Version: 6.1.0-beta.1075
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -98,7 +98,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 693);
+/******/ 	return __webpack_require__(__webpack_require__.s = 692);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1827,7 +1827,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.1.0-beta.1074';
+  return '6.1.0-beta.1075';
 }
 
 /***/ }),
@@ -1916,31 +1916,31 @@ var _Peer = __webpack_require__(132);
 
 var _Peer2 = _interopRequireDefault(_Peer);
 
-var _mediaManager = __webpack_require__(262);
+var _mediaManager = __webpack_require__(260);
 
 var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
-var _peerManager = __webpack_require__(263);
+var _peerManager = __webpack_require__(261);
 
 var _peerManager2 = _interopRequireDefault(_peerManager);
 
-var _sessionManager = __webpack_require__(264);
+var _sessionManager = __webpack_require__(262);
 
 var _sessionManager2 = _interopRequireDefault(_sessionManager);
 
-var _deviceManager = __webpack_require__(267);
+var _deviceManager = __webpack_require__(266);
 
 var _deviceManager2 = _interopRequireDefault(_deviceManager);
 
-var _trackManager = __webpack_require__(268);
+var _trackManager = __webpack_require__(267);
 
 var _trackManager2 = _interopRequireDefault(_trackManager);
 
-var _webrtcManager = __webpack_require__(269);
+var _webrtcManager = __webpack_require__(268);
 
 var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
 
-var _renderer = __webpack_require__(270);
+var _renderer = __webpack_require__(269);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
@@ -2299,7 +2299,7 @@ exports.mergeValues = mergeValues;
 exports.makeSafeForCSS = makeSafeForCSS;
 exports.getBrowserDetails = getBrowserDetails;
 
-var _adapter = __webpack_require__(256);
+var _adapter = __webpack_require__(254);
 
 var _adapter2 = _interopRequireDefault(_adapter);
 
@@ -3236,47 +3236,47 @@ exports.convertMedia = convertMedia;
 exports.convertSession = convertSession;
 exports.convertLogger = convertLogger;
 
-var _deviceManager = __webpack_require__(695);
+var _deviceManager = __webpack_require__(694);
 
 var _deviceManager2 = _interopRequireDefault(_deviceManager);
 
-var _mediaManager = __webpack_require__(696);
+var _mediaManager = __webpack_require__(695);
 
 var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
-var _sessionManager = __webpack_require__(697);
+var _sessionManager = __webpack_require__(696);
 
 var _sessionManager2 = _interopRequireDefault(_sessionManager);
 
-var _trackManager = __webpack_require__(698);
+var _trackManager = __webpack_require__(697);
 
 var _trackManager2 = _interopRequireDefault(_trackManager);
 
-var _logManager = __webpack_require__(699);
+var _logManager = __webpack_require__(698);
 
 var _logManager2 = _interopRequireDefault(_logManager);
 
-var _webrtcManager = __webpack_require__(700);
+var _webrtcManager = __webpack_require__(699);
 
 var _webrtcManager2 = _interopRequireDefault(_webrtcManager);
 
-var _renderer = __webpack_require__(701);
+var _renderer = __webpack_require__(700);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _media = __webpack_require__(702);
+var _media = __webpack_require__(701);
 
 var _media2 = _interopRequireDefault(_media);
 
-var _session = __webpack_require__(703);
+var _session = __webpack_require__(702);
 
 var _session2 = _interopRequireDefault(_session);
 
-var _track = __webpack_require__(704);
+var _track = __webpack_require__(703);
 
 var _track2 = _interopRequireDefault(_track);
 
-var _logger = __webpack_require__(705);
+var _logger = __webpack_require__(704);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -4749,13 +4749,13 @@ var _methods = __webpack_require__(231);
 
 var _methods2 = _interopRequireDefault(_methods);
 
-var _properties = __webpack_require__(249);
+var _properties = __webpack_require__(247);
 
 var _properties2 = _interopRequireDefault(_properties);
 
 var _utils = __webpack_require__(68);
 
-var _config = __webpack_require__(257);
+var _config = __webpack_require__(255);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -4765,7 +4765,7 @@ var _eventemitter = __webpack_require__(31);
 
 var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
-var _timer = __webpack_require__(258);
+var _timer = __webpack_require__(256);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10210,10 +10210,6 @@ var _setRemoteDescription = __webpack_require__(246);
 
 var _setRemoteDescription2 = _interopRequireDefault(_setRemoteDescription);
 
-var _setTransceiversDirection = __webpack_require__(247);
-
-var _setTransceiversDirection2 = _interopRequireDefault(_setTransceiversDirection);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const methods = {
@@ -10229,8 +10225,7 @@ const methods = {
   replaceTrack: _replaceTrack2.default,
   sendDTMF: _sendDTMF2.default,
   setLocalDescription: _setLocalDescription2.default,
-  setRemoteDescription: _setRemoteDescription2.default,
-  setTransceiversDirection: _setTransceiversDirection2.default
+  setRemoteDescription: _setRemoteDescription2.default
 };
 
 exports.default = methods;
@@ -10986,121 +10981,28 @@ function setRemoteDescription(desc) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = setTransceiversDirection;
 
-var _fp = __webpack_require__(2);
-
-var _transceiverUtils = __webpack_require__(248);
-
-/**
- * Sets the direction of transceivers.
- * @method setTransceiversDirection
- * @param {string} targetDirection The desired direction to set the transceivers to.
- * @param {Object} [options] Options for specifying which transceivers should be affected. They are ordered by priority.
- * @param {Array} [options.trackIds] The optional list of track ids whose transceivers we want to set the direction of.
- * @return {Object} An object containing an `error` flag and  an array `failures` of transceivers whose directions weren't changed.
- */
-function setTransceiversDirection(targetDirection, options = {}) {
-  const { proxyPeer, log } = this;
-  log.info(`Setting transceiver direction to ${targetDirection}.`);
-
-  let transceivers = proxyPeer.getTransceivers();
-
-  if (options.trackIds) {
-    transceivers = transceivers.filter(transceiver => {
-      return options.trackIds.includes((0, _fp.get)(['sender', 'track', 'id'], transceiver)) || options.trackIds.includes((0, _fp.get)(['receiver', 'track', 'id'], transceiver));
-    });
-  }
-
-  const failures = [];
-  transceivers.forEach(transceiver => {
-    if (!(0, _transceiverUtils.setTransceiverDirection)(transceiver, targetDirection)) {
-      failures.push(transceiver);
-    }
-  });
-  return {
-    error: failures.length !== 0,
-    failures
-  };
-}
-
-/***/ }),
-/* 248 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setTransceiverDirection = setTransceiverDirection;
-
-var _constants = __webpack_require__(32);
-
-var _fp = __webpack_require__(2);
-
-var _logs = __webpack_require__(18);
-
-const log = _logs.logManager.getLogger('SdpPipeline');
-
-/**
- * Sets a transceiver's direction.
- * Checks that the desired direction is a valid one.
- * @method setTransceiverDirection
- * @param {Object} transceiver The transceiver that we want to modify.
- * @param {String} targetDirection The desired direction we want to change to.
- * @return {Boolean} Indicator on whether the transceiver direction was successfully changed.
- */
-function setTransceiverDirection(transceiver, targetDirection) {
-  if (!(0, _fp.includes)(targetDirection, (0, _fp.values)(_constants.MEDIA_DIR))) {
-    log.info(`Invalid direction "${targetDirection}"`);
-    return false;
-  }
-
-  // Only in Safari:
-  //  - has transceiver.setDirection
-  //  - transceiver.direction is readOnly
-  if (transceiver.setDirection) {
-    transceiver.setDirection(targetDirection);
-  } else {
-    transceiver.direction = targetDirection;
-  }
-  return true;
-}
-
-/***/ }),
-/* 249 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _localDescription = __webpack_require__(250);
+var _localDescription = __webpack_require__(248);
 
 var _localDescription2 = _interopRequireDefault(_localDescription);
 
-var _localTracks = __webpack_require__(251);
+var _localTracks = __webpack_require__(249);
 
 var _localTracks2 = _interopRequireDefault(_localTracks);
 
-var _remoteDescription = __webpack_require__(252);
+var _remoteDescription = __webpack_require__(250);
 
 var _remoteDescription2 = _interopRequireDefault(_remoteDescription);
 
-var _remoteTracksActive = __webpack_require__(253);
+var _remoteTracksActive = __webpack_require__(251);
 
 var _remoteTracksActive2 = _interopRequireDefault(_remoteTracksActive);
 
-var _remoteTracks = __webpack_require__(254);
+var _remoteTracks = __webpack_require__(252);
 
 var _remoteTracks2 = _interopRequireDefault(_remoteTracks);
 
-var _senderTracks = __webpack_require__(255);
+var _senderTracks = __webpack_require__(253);
 
 var _senderTracks2 = _interopRequireDefault(_senderTracks);
 
@@ -11109,7 +11011,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = { localDescription: _localDescription2.default, localTracks: _localTracks2.default, remoteDescription: _remoteDescription2.default, remoteTracks: _remoteTracksActive2.default, remoteTracksAll: _remoteTracks2.default, senderTracks: _senderTracks2.default };
 
 /***/ }),
-/* 250 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11143,7 +11045,7 @@ function getLocalDescription() {
 }
 
 /***/ }),
-/* 251 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11179,7 +11081,7 @@ function localTracks() {
 }
 
 /***/ }),
-/* 252 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11213,7 +11115,7 @@ function getRemoteDescription() {
 }
 
 /***/ }),
-/* 253 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11249,7 +11151,7 @@ function getRemoteTracks() {
 }
 
 /***/ }),
-/* 254 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11284,7 +11186,7 @@ function getRemoteTracks() {
 }
 
 /***/ }),
-/* 255 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11319,7 +11221,7 @@ function senderTracks() {
 }
 
 /***/ }),
-/* 256 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;(function(f){if(true){module.exports=f()}else { var g; }})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return require(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
@@ -14852,7 +14754,7 @@ if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object'
 
 
 /***/ }),
-/* 257 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14894,7 +14796,7 @@ function isPassedHalfTrickleThreshold({ sdp, iceCandidate, time }) {
 }
 
 /***/ }),
-/* 258 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14904,7 +14806,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _create = __webpack_require__(259);
+var _create = __webpack_require__(257);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -14973,16 +14875,16 @@ function createTimer() {
 }
 
 /***/ }),
-/* 259 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(260), __esModule: true };
+module.exports = { "default": __webpack_require__(258), __esModule: true };
 
 /***/ }),
-/* 260 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(261);
+__webpack_require__(259);
 var $Object = __webpack_require__(8).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
@@ -14990,7 +14892,7 @@ module.exports = function create(P, D) {
 
 
 /***/ }),
-/* 261 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(14);
@@ -14999,7 +14901,7 @@ $export($export.S, 'Object', { create: __webpack_require__(63) });
 
 
 /***/ }),
-/* 262 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15326,7 +15228,7 @@ function MediaManager(managers) {
 // Libraries.
 
 /***/ }),
-/* 263 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15450,7 +15352,7 @@ function PeerManager(managers) {
 }
 
 /***/ }),
-/* 264 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15472,7 +15374,7 @@ exports.default = SessionManager;
 
 var _logs = __webpack_require__(18);
 
-var _session = __webpack_require__(265);
+var _session = __webpack_require__(263);
 
 var _session2 = _interopRequireDefault(_session);
 
@@ -15565,7 +15467,7 @@ function SessionManager(managers) {
 }
 
 /***/ }),
-/* 265 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15591,13 +15493,15 @@ exports.default = Session;
 
 var _logs = __webpack_require__(18);
 
+var _transceiverUtils = __webpack_require__(264);
+
 var _constants = __webpack_require__(32);
 
 var _pipeline = __webpack_require__(67);
 
 var _pipeline2 = _interopRequireDefault(_pipeline);
 
-var _extractors = __webpack_require__(266);
+var _extractors = __webpack_require__(265);
 
 var _utils = __webpack_require__(68);
 
@@ -15846,7 +15750,7 @@ function Session(id, managers, config = {}) {
       // Remove options.mediaDirections.
       // This is because directions are now set in transceivers.
       if (options.mediaDirections) {
-        setLocalAndRemoteTransceiversDirection(options.mediaDirections);
+        setTransceiversDirection(options.mediaDirections);
         delete options.mediaDirections;
       }
 
@@ -16071,51 +15975,20 @@ function Session(id, managers, config = {}) {
   /**
    * Sets the direction of transceivers.
    * @method setTransceiversDirection
-   * @param {String} targetDirection The desired direction to set the transceivers to.
-   * @param {Object} [options] Options for specifying which transceivers should be affected.
-   *  trackIds option has priority
-   * @param {Array} [options.trackIds] The optional list of track ids whose transceivers we want to set the direction of.
-   * @return {Object} An object containing an `error` flag and  an array `failures` of transceiver "mid"s whose directions weren't changed.
-   */
-  function setTransceiversDirection(targetDirection, options = {}) {
-    const peer = peerManager.get(peerId);
-    return peer.setTransceiversDirection(targetDirection, options);
-  }
-
-  /**
-   * Sets the direction of transceivers by checking both the local and remote track IDs
-   * @method setLocalAndRemoteTransceiversDirection
    * @param {Object} mediaDirections Options for specifying the directions we want to set for certain medias (i.e., audio and video)
    * @param {Array} [mediaDirections.audio] The direction we want to set of the transceivers with audio tracks
    * @param {Array} [mediaDirections.video] The direction we want to set of the transceivers with video tracks
-   * @return {Object} An object containing an `error` flag and  an array `failures` of transceiver "mid"s whose directions weren't changed.
+   * @return {undefined}
    */
-  function setLocalAndRemoteTransceiversDirection(mediaDirections) {
+  function setTransceiversDirection(mediaDirections) {
     const peer = peerManager.get(peerId);
 
-    if (mediaDirections.audio) {
-      const localAudioTrackIds = peer.localTracks.filter(track => track.track.kind === 'audio').map(track => track.id);
-      const remoteAudioTrackIds = peer.remoteTracksAll.filter(track => track.track.kind === 'audio').map(track => track.id);
-
-      const audioResult = peer.setTransceiversDirection(mediaDirections.audio, {
-        trackIds: [...localAudioTrackIds, ...remoteAudioTrackIds]
-      });
-      if (audioResult.error) {
-        log.info(`Failed to process the following transceivers: ${audioResult.failures}`);
-      }
-    }
-
-    if (mediaDirections.video) {
-      const localVideoTrackIds = peer.localTracks.filter(track => track.track.kind === 'video').map(track => track.id);
-      const remoteVideoTrackIds = peer.remoteTracksAll.filter(track => track.track.kind === 'video').map(track => track.id);
-
-      const videoResult = peer.setTransceiversDirection(mediaDirections.video, {
-        trackIds: [...localVideoTrackIds, ...remoteVideoTrackIds]
-      });
-      if (videoResult.error) {
-        log.info(`Failed to process the following transceivers: ${videoResult.failures}`);
-      }
-    }
+    // Set EVERY Transceiver's direction. This includes those with active tracks
+    //    and those without.
+    peer.getTransceivers().forEach(transceiver => {
+      const kind = transceiver.receiver.track.kind;
+      (0, _transceiverUtils.setTransceiverDirection)(transceiver, mediaDirections[kind]);
+    });
   }
 
   /**
@@ -16167,7 +16040,7 @@ function Session(id, managers, config = {}) {
       // Remove options.mediaDirections.
       // This is because directions are now set in transceivers.
       if (options.mediaDirections) {
-        setLocalAndRemoteTransceiversDirection(options.mediaDirections);
+        setTransceiversDirection(options.mediaDirections);
         delete options.mediaDirections;
       }
 
@@ -16767,7 +16640,6 @@ function Session(id, managers, config = {}) {
     removeTracks,
     replaceTrack,
     setTransceiversDirection,
-    setLocalAndRemoteTransceiversDirection,
     // Negotiation APIs.
     createOffer,
     createAnswer,
@@ -16801,7 +16673,52 @@ function Session(id, managers, config = {}) {
 }
 
 /***/ }),
-/* 266 */
+/* 264 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setTransceiverDirection = setTransceiverDirection;
+
+var _constants = __webpack_require__(32);
+
+var _fp = __webpack_require__(2);
+
+var _logs = __webpack_require__(18);
+
+const log = _logs.logManager.getLogger('SdpPipeline');
+
+/**
+ * Sets a transceiver's direction.
+ * Checks that the desired direction is a valid one.
+ * @method setTransceiverDirection
+ * @param {Object} transceiver The transceiver that we want to modify.
+ * @param {String} targetDirection The desired direction we want to change to.
+ * @return {Boolean} Indicator on whether the transceiver direction was successfully changed.
+ */
+function setTransceiverDirection(transceiver, targetDirection) {
+  if (!(0, _fp.includes)(targetDirection, (0, _fp.values)(_constants.MEDIA_DIR))) {
+    log.info(`Invalid direction "${targetDirection}"`);
+    return false;
+  }
+
+  // Only in Safari:
+  //  - has transceiver.setDirection
+  //  - transceiver.direction is readOnly
+  if (transceiver.setDirection) {
+    transceiver.setDirection(targetDirection);
+  } else {
+    transceiver.direction = targetDirection;
+  }
+  return true;
+}
+
+/***/ }),
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16828,7 +16745,7 @@ function getSdpSessionId(sdp) {
 }
 
 /***/ }),
-/* 267 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16996,7 +16913,7 @@ function DeviceManager() {
 }
 
 /***/ }),
-/* 268 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17154,7 +17071,7 @@ function TrackManager() {
 // Libraries.
 
 /***/ }),
-/* 269 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17187,7 +17104,7 @@ function WebRTCManager(managers) {
 }
 
 /***/ }),
-/* 270 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17371,7 +17288,7 @@ function Renderer() {
 }
 
 /***/ }),
-/* 271 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17571,6 +17488,7 @@ function replyChannel(channel) {
 }
 
 /***/ }),
+/* 271 */,
 /* 272 */,
 /* 273 */,
 /* 274 */,
@@ -17991,8 +17909,7 @@ function replyChannel(channel) {
 /* 689 */,
 /* 690 */,
 /* 691 */,
-/* 692 */,
-/* 693 */
+/* 692 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18002,15 +17919,15 @@ var _objectWithoutProperties2 = __webpack_require__(70);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _clientProxy = __webpack_require__(694);
+var _clientProxy = __webpack_require__(693);
 
 var _clientProxy2 = _interopRequireDefault(_clientProxy);
 
-var _media = __webpack_require__(707);
+var _media = __webpack_require__(706);
 
 var mediaApis = _interopRequireWildcard(_media);
 
-var _events = __webpack_require__(708);
+var _events = __webpack_require__(707);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -18116,7 +18033,7 @@ remoteClient.create = remoteClient;
 module.exports = remoteClient;
 
 /***/ }),
-/* 694 */
+/* 693 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18131,11 +18048,11 @@ var _converters = __webpack_require__(108);
 
 var _converters2 = _interopRequireDefault(_converters);
 
-var _webrtcEvents = __webpack_require__(706);
+var _webrtcEvents = __webpack_require__(705);
 
 var _webrtcEvents2 = _interopRequireDefault(_webrtcEvents);
 
-var _channel = __webpack_require__(271);
+var _channel = __webpack_require__(270);
 
 var _logs = __webpack_require__(7);
 
@@ -18352,7 +18269,7 @@ function isWebrtcCommand(data) {
 }
 
 /***/ }),
-/* 695 */
+/* 694 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18401,7 +18318,7 @@ exports.default = async function deviceManager(webRTC, command) {
 };
 
 /***/ }),
-/* 696 */
+/* 695 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18470,7 +18387,7 @@ exports.default = async function mediaManager(webRTC, command) {
 };
 
 /***/ }),
-/* 697 */
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18514,7 +18431,7 @@ exports.default = async function sessionManager(webRTC, command) {
 };
 
 /***/ }),
-/* 698 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18555,7 +18472,7 @@ exports.default = async function trackManager(webRTC, command) {
 };
 
 /***/ }),
-/* 699 */
+/* 698 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18605,7 +18522,7 @@ exports.default = async function logManager(webRTC, command) {
 };
 
 /***/ }),
-/* 700 */
+/* 699 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18633,7 +18550,7 @@ exports.default = async function webrtcManager(webRTC, command) {
 };
 
 /***/ }),
-/* 701 */
+/* 700 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18670,7 +18587,7 @@ exports.default = async function rendererManager(webRTC, command) {
 };
 
 /***/ }),
-/* 702 */
+/* 701 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18711,7 +18628,7 @@ exports.default = async function media(webRTC, command) {
 };
 
 /***/ }),
-/* 703 */
+/* 702 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18764,7 +18681,7 @@ exports.default = async function session(webRTC, command) {
 };
 
 /***/ }),
-/* 704 */
+/* 703 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18803,7 +18720,7 @@ exports.default = async function track(webRTC, command) {
 };
 
 /***/ }),
-/* 705 */
+/* 704 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18850,7 +18767,7 @@ exports.default = async function logger(webRTC, command) {
 };
 
 /***/ }),
-/* 706 */
+/* 705 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18902,7 +18819,7 @@ function setupListeners(webRTC, handler) {
 }
 
 /***/ }),
-/* 707 */
+/* 706 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19085,7 +19002,7 @@ function removeTracks(webRTC, trackIds, cssSelector) {
 }
 
 /***/ }),
-/* 708 */
+/* 707 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
