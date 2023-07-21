@@ -21,6 +21,7 @@ Ribbon WebRTC SDK change log.
 
 ### Fixed
 
+- Fixed a Proxy Call issue where handling an incoming call in proxy-mode would fail.
 - Fixed a Call issue where the `call:operation` event was not consistently emitted during consultative transfer and join operations.
   - The `call:operation` event will now be emitted for all calls involved in the operations at each step, rather than only the primary call.
 - Fixed a Call issue where a remote hold operation would not be interpreted properly in specific scenarios, causing the call not to be put On Hold. `KJS-1605`
