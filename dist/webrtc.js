@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.1.0-beta.1088
+ * Version: 6.1.0-beta.1089
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5796,7 +5796,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.1.0-beta.1088';
+  return '6.1.0-beta.1089';
 }
 
 /***/ }),
@@ -29125,6 +29125,7 @@ function createMakeResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants2.REPORTER_EVENTS.PROCESS_RESPONSE);
+    processResponseEvent.addData('operation', _constants2.REPORTER_OPERATION_EVENTS_MAP.MAKE);
 
     // Handle the remote answer SDP.
     try {
@@ -68023,6 +68024,7 @@ function setupOutgoingSessionOperation(container) {
      *    then set it as the Session's local description.
      */
     const setLocalDescriptionEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION);
+    setLocalDescriptionEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.MAKE);
     try {
       let offer = await session.createOffer();
       // Run the SDP through the Pipeline before we set it locally.
@@ -68598,6 +68600,9 @@ function createSlowAnswerResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants2.REPORTER_EVENTS.PROCESS_RESPONSE);
+    // Add two metadata properties providing more context to this event.
+    processResponseEvent.addData('operation', _constants2.REPORTER_OPERATION_EVENTS_MAP.ANSWER);
+    processResponseEvent.addData('isSlowStart', call.isSlowStart);
 
     // Handle the remote answer SDP.
     try {
@@ -68790,7 +68795,7 @@ function answerWebrtcSessionOperation(container) {
     let answer, callConfigOptions;
 
     const setLocalDescriptionEvent = answerEvent.addEvent(_constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION);
-
+    setLocalDescriptionEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.ANSWER);
     try {
       answer = await session.createAnswer();
 
@@ -69647,6 +69652,7 @@ function webrtcAddMediaOperation(container) {
     //    renegotiation operation.
     const callConfigOptions = (0, _selectors.getOptions)(context.getState());
     const setLocalDescriptionEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION);
+    setLocalDescriptionEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.ADD_MEDIA);
     let newSdp;
     try {
       let offer = await session.createOffer();
@@ -69954,6 +69960,7 @@ function createAddMediaResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.PROCESS_RESPONSE);
+    processResponseEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.ADD_MEDIA);
 
     // Handle the remote answer SDP.
     try {
@@ -70356,6 +70363,7 @@ function createHoldResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.PROCESS_RESPONSE);
+    processResponseEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.HOLD);
 
     // Handle the remote answer SDP.
     try {
@@ -70764,6 +70772,7 @@ function createUnholdResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.PROCESS_RESPONSE);
+    processResponseEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.UNHOLD);
 
     // Handle the remote answer SDP.
     try {
@@ -71203,6 +71212,7 @@ function webrtcRemoveMediaOperation(container) {
     //    renegotiation operation.
     const callConfigOptions = (0, _selectors.getOptions)(context.getState());
     const setLocalDescriptionEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION);
+    setLocalDescriptionEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.REMOVE_MEDIA);
     let newSdp;
     try {
       let offer = await session.createOffer();
@@ -71464,6 +71474,7 @@ function createRemoveMediaResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.PROCESS_RESPONSE);
+    processResponseEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.REMOVE_MEDIA);
 
     // Handle the remote answer SDP.
     try {
@@ -72508,6 +72519,7 @@ function createMediaRestartResponse(container) {
     // Start the process reseponse event
     const operationEvent = callReport.getEvent(call.localOp.eventId);
     const processResponseEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.PROCESS_RESPONSE);
+    processResponseEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.MEDIA_RESTART);
 
     const mediaState = (0, _state.getMediaState)(call);
     log.debug(`Current call info; State: ${call.state}, MediaState: ${mediaState}.`);
@@ -73561,7 +73573,7 @@ function callIceCollectionCheckOperation(container) {
       }
     }
 
-    if (iceCollectionEvent) {
+    if (iceCollectionEvent && (result.type === _constants.ICE_COLLECTION_RESULT_TYPES.START_CALL || result.type === _constants.ICE_COLLECTION_RESULT_TYPES.ERROR)) {
       iceCollectionEvent.endEvent();
     }
 
@@ -78325,7 +78337,7 @@ function generateOfferOperation(container) {
     const eventId = call.localOp ? call.localOp.eventId : call.remoteOp.eventId;
     const operationEvent = callReport.getEvent(eventId);
     const setLocalDescriptionEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION);
-
+    setLocalDescriptionEvent.addData('operation', operationEvent.type);
     /*
      * Create the local SDP offer, run it through any provided SDP handlers,
      *    then set it as the Session's local description.
@@ -78468,6 +78480,7 @@ function handleOfferOperation(container) {
       setRemoteDescriptionEvent.endEvent();
 
       setLocalDescriptionEvent = operationEvent.addEvent(_constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION);
+      setLocalDescriptionEvent.addData('operation', operationEvent.type);
 
       /*
        * Create the local SDP answer, run it through any provided SDP handlers,
@@ -79616,7 +79629,10 @@ function durationHandler(metric, startEvents, autoUnregister = true) {
   return function (callReport, event) {
     // First search for the event in the timeline of the report
     // i.e. see if it's a top-level event
-    const startEvent = callReport.timeline.find(event => {
+    // We need to find the last type of that event because in the case of
+    // mutiple HOLD/UNHOLD operations, the metric calculated for it needs to
+    // use the last entry.
+    const startEvent = callReport.timeline.findLast(event => {
       if (startEvents.includes(event.type)) {
         return true;
       }
@@ -79627,6 +79643,12 @@ function durationHandler(metric, startEvents, autoUnregister = true) {
     });
 
     if (startEvent) {
+      if (event.type === _constants.REPORTER_EVENTS.PROCESS_RESPONSE && metric === 'MAKE_CALL_REMOTE_SETUP' && event.getData('operation') !== 'MAKE') {
+        // PROCESS_RESPONSE event is triggered as part of many SDK operations and on both sides of the call.
+        // But we don't want to add a 'MAKE_CALL_REMOTE_SETUP' metric for the callee side,
+        // because it only makes sense for caller side.
+        return;
+      }
       // We found the start event, so save its associated metric containing the measurement.
       callReport.addMetric(metric, event.end - startEvent.start);
       if (autoUnregister) {
@@ -79706,7 +79728,10 @@ function relayCandidatesHandler() {
       });
       // Only need to add metric if there will be any data...
       if (collectedCandidates.length) {
-        callReport.addMetric(_constants.REPORTER_METRICS.TIME_TO_RELAY_CANDIDATES, [...collectedCandidates]);
+        callReport.addMetric(_constants.REPORTER_METRICS.TIME_TO_RELAY_CANDIDATES, {
+          operation: event.getData('operation'),
+          candidates: [...collectedCandidates]
+        });
       }
       collectedCandidates.length = 0;
     }
@@ -79750,10 +79775,10 @@ function registerAllMetricHandlers(callReport) {
   callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_IGNORE, [_constants.REPORTER_EVENTS.IGNORE], durationHandler(_constants.REPORTER_METRICS.TIME_TO_IGNORE, [_constants.REPORTER_EVENTS.IGNORE]));
 
   // Register the time-to-add-media handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA, _constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA, [_constants.REPORTER_OPERATION_EVENTS_MAP.ADD_MEDIA]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA, _constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA, [_constants.REPORTER_OPERATION_EVENTS_MAP.ADD_MEDIA], false));
 
   // Register the time-to-add-remote-media handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA_REMOTE, _constants.REPORTER_EVENTS.SET_REMOTE_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA_REMOTE, [_constants.REPORTER_OPERATION_EVENTS_MAP.ADD_MEDIA_REMOTE]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA_REMOTE, _constants.REPORTER_EVENTS.SET_REMOTE_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_ADD_MEDIA_REMOTE, [_constants.REPORTER_OPERATION_EVENTS_MAP.ADD_MEDIA_REMOTE], false));
 
   // Register the time-to-hold-local handler
   callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_HOLD_LOCAL, [_constants.REPORTER_EVENTS.HOLD_LOCAL], durationHandler(_constants.REPORTER_METRICS.TIME_TO_HOLD_LOCAL, [_constants.REPORTER_EVENTS.HOLD_LOCAL], false));
@@ -79762,19 +79787,19 @@ function registerAllMetricHandlers(callReport) {
   callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_HOLD_REMOTE, [_constants.REPORTER_EVENTS.HOLD_REMOTE], durationHandler(_constants.REPORTER_METRICS.TIME_TO_HOLD_REMOTE, [_constants.REPORTER_EVENTS.HOLD_REMOTE], false));
 
   // Register the time-to-unhold-local handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_LOCAL, [_constants.REPORTER_EVENTS.UNHOLD_LOCAL], durationHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_LOCAL, [_constants.REPORTER_EVENTS.UNHOLD_LOCAL]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_LOCAL, [_constants.REPORTER_EVENTS.UNHOLD_LOCAL], durationHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_LOCAL, [_constants.REPORTER_EVENTS.UNHOLD_LOCAL], false));
 
   // Register the time-to-unhold-remote handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_REMOTE, [_constants.REPORTER_EVENTS.UNHOLD_REMOTE], durationHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_REMOTE, [_constants.REPORTER_EVENTS.UNHOLD_REMOTE]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_REMOTE, [_constants.REPORTER_EVENTS.UNHOLD_REMOTE], durationHandler(_constants.REPORTER_METRICS.TIME_TO_UNHOLD_REMOTE, [_constants.REPORTER_EVENTS.UNHOLD_REMOTE], false));
 
   // Register the time-to-remove-media handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA, _constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA, [_constants.REPORTER_OPERATION_EVENTS_MAP.REMOVE_MEDIA]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA, _constants.REPORTER_EVENTS.SET_LOCAL_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA, [_constants.REPORTER_OPERATION_EVENTS_MAP.REMOVE_MEDIA], false));
 
   // Register the time-to-remove-media-remote handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA_REMOTE, _constants.REPORTER_EVENTS.SET_REMOTE_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA_REMOTE, [_constants.REPORTER_OPERATION_EVENTS_MAP.REMOVE_MEDIA_REMOTE]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA_REMOTE, _constants.REPORTER_EVENTS.SET_REMOTE_DESCRIPTION, durationHandler(_constants.REPORTER_METRICS.TIME_TO_REMOVE_MEDIA_REMOTE, [_constants.REPORTER_OPERATION_EVENTS_MAP.REMOVE_MEDIA_REMOTE], false));
 
   // Register the time-to-restart-media handler
-  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_RESTART_MEDIA, _constants.REPORTER_OPERATION_EVENTS_MAP.MEDIA_RESTART, durationHandler(_constants.REPORTER_METRICS.TIME_TO_RESTART_MEDIA, [_constants.REPORTER_OPERATION_EVENTS_MAP.MEDIA_RESTART]));
+  callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_RESTART_MEDIA, _constants.REPORTER_OPERATION_EVENTS_MAP.MEDIA_RESTART, durationHandler(_constants.REPORTER_METRICS.TIME_TO_RESTART_MEDIA, [_constants.REPORTER_OPERATION_EVENTS_MAP.MEDIA_RESTART], false));
 
   // Register the time-to-send-custom-paramters handler
   callReport.registerMetricHandler(_constants.REPORTER_METRICS.TIME_TO_SEND_CUSTOM_PARAMETERS, _constants.REPORTER_OPERATION_EVENTS_MAP.SEND_CUSTOM_PARAMETERS, durationHandler(_constants.REPORTER_METRICS.TIME_TO_SEND_CUSTOM_PARAMETERS, [_constants.REPORTER_OPERATION_EVENTS_MAP.SEND_CUSTOM_PARAMETERS]));
