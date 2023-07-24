@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.1.0-beta.1090
+ * Version: 6.1.0-beta.1091
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5796,7 +5796,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.1.0-beta.1090';
+  return '6.1.0-beta.1091';
 }
 
 /***/ }),
@@ -39218,7 +39218,7 @@ function createOperations(container) {
     }
 
     // set value on the Proxy stack
-    const result = ProxyStack.setProxyMode(value);
+    const result = await ProxyStack.setProxyMode(value);
 
     const response = { value
 
@@ -39245,7 +39245,7 @@ function createOperations(container) {
 
     // After Proxy mode is changed, manually update devices to ensure they are
     //    from the correct machine.
-    const devices = ProxyStack.managers.devices.checkDevices();
+    const devices = await ProxyStack.managers.devices.checkDevices();
 
     if (devices.microphone && devices.camera && devices.speaker) {
       log.debug('Updating available media devices based on proxy mode change.', devices);
