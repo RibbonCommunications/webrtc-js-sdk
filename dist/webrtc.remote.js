@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.1.0-beta.1092
+ * Version: 6.1.0-beta.1093
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1006,7 +1006,7 @@ __webpack_require__.d(__webpack_exports__, "validate", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "stringify", function() { return /* reexport */ esm_browser_stringify; });
 __webpack_require__.d(__webpack_exports__, "parse", function() { return /* reexport */ esm_browser_parse; });
 
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/rng.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/rng.js
 // Unique ID creation requires a high quality random # generator. In the browser we therefore
 // require the crypto API and do not support built-in fallback to lower quality random number
 // generators (like Math.random()).
@@ -1025,9 +1025,9 @@ function rng() {
 
   return getRandomValues(rnds8);
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/regex.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/regex.js
 /* harmony default export */ var regex = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/validate.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/validate.js
 
 
 function validate(uuid) {
@@ -1035,7 +1035,7 @@ function validate(uuid) {
 }
 
 /* harmony default export */ var esm_browser_validate = (validate);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/stringify.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/stringify.js
 
 /**
  * Convert array of 16 byte values to UUID string format of the form:
@@ -1069,7 +1069,7 @@ function stringify(arr, offset = 0) {
 }
 
 /* harmony default export */ var esm_browser_stringify = (stringify);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/v1.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/v1.js
 
  // **`v1()` - Generate time-based UUID**
 //
@@ -1165,7 +1165,7 @@ function v1(options, buf, offset) {
 }
 
 /* harmony default export */ var esm_browser_v1 = (v1);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/parse.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/parse.js
 
 
 function parse(uuid) {
@@ -1201,7 +1201,7 @@ function parse(uuid) {
 }
 
 /* harmony default export */ var esm_browser_parse = (parse);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/v35.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/v35.js
 
 
 
@@ -1268,7 +1268,7 @@ function v35(name, version, hashfunc) {
   generateUUID.URL = URL;
   return generateUUID;
 }
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/md5.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/md5.js
 /*
  * Browser-compatible JavaScript MD5
  *
@@ -1484,17 +1484,17 @@ function md5ii(a, b, c, d, x, s, t) {
 }
 
 /* harmony default export */ var esm_browser_md5 = (md5);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/v3.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/v3.js
 
 
 const v3 = v35('v3', 0x30, esm_browser_md5);
 /* harmony default export */ var esm_browser_v3 = (v3);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/native.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/native.js
 const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
 /* harmony default export */ var esm_browser_native = ({
   randomUUID
 });
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/v4.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/v4.js
 
 
 
@@ -1524,7 +1524,7 @@ function v4(options, buf, offset) {
 }
 
 /* harmony default export */ var esm_browser_v4 = (v4);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/sha1.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/sha1.js
 // Adapted from Chris Veness' SHA1 code at
 // http://www.movable-type.co.uk/scripts/sha1.html
 function f(s, x, y, z) {
@@ -1621,14 +1621,14 @@ function sha1(bytes) {
 }
 
 /* harmony default export */ var esm_browser_sha1 = (sha1);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/v5.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/v5.js
 
 
 const v5 = v35('v5', 0x50, esm_browser_sha1);
 /* harmony default export */ var esm_browser_v5 = (v5);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/nil.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/nil.js
 /* harmony default export */ var nil = ('00000000-0000-0000-0000-000000000000');
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/version.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/version.js
 
 
 function version_version(uuid) {
@@ -1640,7 +1640,7 @@ function version_version(uuid) {
 }
 
 /* harmony default export */ var esm_browser_version = (version_version);
-// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta@2/node_modules/uuid/dist/esm-browser/index.js
+// CONCATENATED MODULE: /var/jenkins_home/workspace/Kandy.js_beta/node_modules/uuid/dist/esm-browser/index.js
 
 
 
@@ -1827,7 +1827,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.1.0-beta.1092';
+  return '6.1.0-beta.1093';
 }
 
 /***/ }),
