@@ -27646,8 +27646,18 @@
             },
             {
               "title": "property",
-              "description": "The amount of time it takes from when the `answer call` operation starts until it has finished.",
+              "description": "The amount of time it takes from when the `make call` operation starts until it has finished.",
               "lineNumber": 30,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "TIME_TO_MAKE_OPERATION"
+            },
+            {
+              "title": "property",
+              "description": "The amount of time it takes from when the `answer call` operation starts until it has finished.",
+              "lineNumber": 31,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27657,7 +27667,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `make call` operation starts up until right before we set local description.",
-              "lineNumber": 31,
+              "lineNumber": 32,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27667,7 +27677,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `answer call` operation starts up until right before we set local description.",
-              "lineNumber": 32,
+              "lineNumber": 33,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27677,7 +27687,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `answer call` operation starts until it is setup locally.",
-              "lineNumber": 33,
+              "lineNumber": 34,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27691,18 +27701,18 @@
               "column": 0
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 79,
+                "line": 80,
                 "column": 0
               },
               "end": {
-                "line": 109,
+                "line": 111,
                 "column": 1
               }
             },
@@ -28232,8 +28242,39 @@
             },
             {
               "title": "property",
-              "name": "TIME_TO_ANSWER_OPERATION",
+              "name": "TIME_TO_MAKE_OPERATION",
               "lineNumber": 30,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The amount of time it takes from when the "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "make call"
+                      },
+                      {
+                        "type": "text",
+                        "value": " operation starts until it has finished."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            },
+            {
+              "title": "property",
+              "name": "TIME_TO_ANSWER_OPERATION",
+              "lineNumber": 31,
               "description": {
                 "type": "root",
                 "children": [
@@ -28264,7 +28305,7 @@
             {
               "title": "property",
               "name": "MAKE_CALL_PRE_LOCAL_SETUP",
-              "lineNumber": 31,
+              "lineNumber": 32,
               "description": {
                 "type": "root",
                 "children": [
@@ -28295,7 +28336,7 @@
             {
               "title": "property",
               "name": "ANSWER_CALL_PRE_LOCAL_SETUP",
-              "lineNumber": 32,
+              "lineNumber": 33,
               "description": {
                 "type": "root",
                 "children": [
@@ -28326,7 +28367,7 @@
             {
               "title": "property",
               "name": "ANSWER_CALL_LOCAL_SETUP",
-              "lineNumber": 33,
+              "lineNumber": 34,
               "description": {
                 "type": "root",
                 "children": [
@@ -28735,22 +28776,22 @@
           ],
           "loc": {
             "start": {
-              "line": 111,
+              "line": 113,
               "column": 0
             },
             "end": {
-              "line": 149,
+              "line": 151,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 150,
+                "line": 152,
                 "column": 0
               },
               "end": {
-                "line": 189,
+                "line": 191,
                 "column": 1
               }
             },
