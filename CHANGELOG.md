@@ -25,6 +25,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Call issue where the `call:operation` event was not consistently emitted during consultative transfer and join operations.
   - The `call:operation` event will now be emitted for all calls involved in the operations at each step, rather than only the primary call.
 - Fixed a Call issue where a remote hold operation would not be interpreted properly in specific scenarios, causing the call not to be put On Hold. `KJS-1605`
+- Fixed the dual hold scenario where the initial holder unholds the call first and is put into `Connected` state when it should be in `On Hold (remote)` state. `KJS-1554`
 - Fixed a Call issue where an error when handling a remote midcall operation was not being reported to the application.
 
 ## 6.0.0 - 2023-06-30
