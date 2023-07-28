@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.1.0-beta.1106
+ * Version: 6.1.0-beta.1107
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2325,12 +2325,15 @@ const REPORTER_REQUESTS = exports.REPORTER_REQUESTS = {
   END_SESSION: 'END_SESSION'
 
   /**
-   * Call report metrics
+   * List of metrics available as part of a Call Report.
    *
-   * Metrics that are computed and recorded in a call report.
+   * As a call progresses, timings are calculated for the duration of operations and
+   *    other events. They are recorded in a call report that can be retrieved via
+   *    the {@link call.getReport} API.
    *
    * @public
    * @static
+   * @name metrics
    * @memberof call
    * @requires callMe
    * @requires call
@@ -2359,6 +2362,10 @@ const REPORTER_REQUESTS = exports.REPORTER_REQUESTS = {
    * @property {string} MAKE_CALL_PRE_LOCAL_SETUP The amount of time it takes from when the `make call` operation starts up until right before we set local description.
    * @property {string} ANSWER_CALL_PRE_LOCAL_SETUP The amount of time it takes from when the `answer call` operation starts up until right before we set local description.
    * @property {string} ANSWER_CALL_LOCAL_SETUP The amount of time it takes from when the `answer call` operation starts until it is setup locally.
+   * @example
+   * const report = client.call.getReport(callId)
+   * const callDuration = report.metrics.find(metric => metric.type === client.call.metrics.CALL_DURATION)
+   * log(`Call duration was ${callDuration.data}ms.`)
    */
 };const REPORTER_METRICS = exports.REPORTER_METRICS = {
   CALL_DURATION: 'CALL_DURATION',
@@ -5812,7 +5819,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.1.0-beta.1106';
+  return '6.1.0-beta.1107';
 }
 
 /***/ }),
@@ -63136,12 +63143,15 @@ exports.default = createAPI;
 
 var _constants = __webpack_require__(6);
 
+var _constants2 = __webpack_require__(21);
+
 /**
  * Call Constant APIs factory function.
  * @method createAPI
  * @param  {Object} container The bottle container.
  * @return {Object} Constants API.
  */
+// Call plugin.
 function createAPI() {
   /**
    * Possible states that a Call can be in.
@@ -63272,11 +63282,15 @@ function createAPI() {
    */
   const mediaConnectionStates = _constants.CALL_MEDIA_CONNECTION_STATES;
 
+  /* Documentation attached to the constant definitions. */
+  const metrics = _constants2.REPORTER_METRICS;
+
   return {
     states,
-    mediaConnectionStates
+    mediaConnectionStates,
+    metrics
   };
-} // Call plugin.
+}
 
 /***/ }),
 /* 435 */
