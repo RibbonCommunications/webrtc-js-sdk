@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.1.0-beta.1100
+ * Version: 6.1.0-beta.1101
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5802,7 +5802,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.1.0-beta.1100';
+  return '6.1.0-beta.1101';
 }
 
 /***/ }),
@@ -79998,7 +79998,7 @@ function createReporter() {
    */
   function getReport(id) {
     if (!id || !(0, _fp.isString)(id)) {
-      console.error(`${API_TAG}reporter.getReport: Invalid id ${typeof id} (must be of type string).`);
+      console.info(`${API_TAG}reporter.getReport: Invalid id ${typeof id} (must be of type string).`);
       return undefined;
     }
     return reports[id];
@@ -80016,7 +80016,7 @@ function createReporter() {
       throw new Error(`${API_TAG}reporter.deleteReport: Invalid id ${typeof id} (must be of type string).`);
     }
     if (!reports.hasOwnProperty(id)) {
-      console.warn(`No report was found for id: ${id}`);
+      console.info(`No report was found for id: ${id}`);
       return;
     }
     delete reports[id];
@@ -80099,7 +80099,7 @@ function reportFactory(type, id) {
     }
     reportData[type] = data;
     if (data === undefined) {
-      console.warn(`${API_TAG}report.addData: No actual data provided. Only ${type} key was saved.`);
+      console.debug(`${API_TAG}report.addData: No actual data provided. Only ${type} key was saved.`);
     }
   }
 
@@ -80131,7 +80131,7 @@ function reportFactory(type, id) {
     }
     metrics.push({ type, data });
     if (!data) {
-      console.warn(`${API_TAG}report.addMetric: No actual data provided. Only ${type} key was saved.`);
+      console.debug(`${API_TAG}report.addMetric: No actual data provided. Only ${type} key was saved.`);
     }
   }
 
@@ -80160,7 +80160,7 @@ function reportFactory(type, id) {
     const metric = metrics.find(metric => metric.type === type);
 
     if (!metric) {
-      console.warn(`${API_TAG}report.addEventIdToMetric: No metric found for type: ${type}`);
+      console.info(`${API_TAG}report.addEventIdToMetric: No metric found for type: ${type}`);
       return;
     }
     if (!metric.eventIds) {
@@ -80400,7 +80400,7 @@ function createTimelineEvent(type, onEventEnded) {
     // Add data to parent event (event if parent event has been marked as ended)
     eventData[type] = data;
     if (data === undefined) {
-      console.warn(`${API_TAG}eventTimeline.addData: No actual data provided. Only ${type} key was saved.`);
+      console.debug(`${API_TAG}eventTimeline.addData: No actual data provided. Only ${type} key was saved.`);
     }
   }
 
@@ -80432,7 +80432,7 @@ function createTimelineEvent(type, onEventEnded) {
     }
     metrics.push({ type, data });
     if (!data) {
-      console.warn(`${API_TAG}timelineEvent.addMetric: No actual data provided. Only ${type} key was saved.`);
+      console.debug(`${API_TAG}timelineEvent.addMetric: No actual data provided. Only ${type} key was saved.`);
     }
   }
 
