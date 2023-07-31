@@ -27508,8 +27508,18 @@
             },
             {
               "title": "property",
-              "description": "The amount of time it takes from when a call is made until the SDK receives and processes the remote response.",
+              "description": "For outgoing calls, the time for the `make` operation to complete.",
               "lineNumber": 17,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "TIME_TO_MAKE"
+            },
+            {
+              "title": "property",
+              "description": "For incoming calls, the time for the `answer` operation to complete.",
+              "lineNumber": 18,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27518,18 +27528,18 @@
             },
             {
               "title": "property",
-              "description": "The amount of time it takes from answering an incoming call until media is connected.",
-              "lineNumber": 18,
+              "description": "For incoming calls, the time from the call first being received until it has been answered. Includes call processing and setup, as well as time for the answer API to have been called.",
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
               },
-              "name": "TIME_TO_MEDIA_DURATION"
+              "name": "TIME_FROM_RECEIVE_TO_ANSWER"
             },
             {
               "title": "property",
-              "description": "The amount of time it takes from when the SDK recieves an incoming call notification until media is connected. This includes the answer operation.",
-              "lineNumber": 19,
+              "description": "For incoming calls, the time from the call first being received until media is connected. Similar to `TIME_FROM_RECEIVE_TO_ANSWER`, but without the `answer` REST request.",
+              "lineNumber": 20,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27538,8 +27548,18 @@
             },
             {
               "title": "property",
+              "description": "The amount of time it takes from answering an incoming call until media is connected.",
+              "lineNumber": 21,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "TIME_TO_MEDIA_DURATION"
+            },
+            {
+              "title": "property",
               "description": "The amount of time it takes for the ignore call to complete.",
-              "lineNumber": 20,
+              "lineNumber": 22,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27549,7 +27569,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes for the reject call to complete.",
-              "lineNumber": 21,
+              "lineNumber": 23,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27559,7 +27579,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when a call is made until the SDK recieves the remote ringing notification.",
-              "lineNumber": 22,
+              "lineNumber": 24,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27569,7 +27589,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `remove media` operation starts until the local description has been set.",
-              "lineNumber": 23,
+              "lineNumber": 25,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27579,7 +27599,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `remove media` notification handling starts until the remote description has been set.",
-              "lineNumber": 24,
+              "lineNumber": 26,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27589,7 +27609,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `add media` operation starts until the local description has been set.",
-              "lineNumber": 25,
+              "lineNumber": 27,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27599,7 +27619,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `add media` notification handling starts until the remote description has been set.",
-              "lineNumber": 26,
+              "lineNumber": 28,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27609,7 +27629,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `restart media` operation starts until media has been restarted.",
-              "lineNumber": 27,
+              "lineNumber": 29,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27619,7 +27639,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `ice collection` operation starts until each relay candidate has been recieved.",
-              "lineNumber": 28,
+              "lineNumber": 30,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27629,7 +27649,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `send custom parameters` operation starts until it has finished.",
-              "lineNumber": 29,
+              "lineNumber": 31,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27639,7 +27659,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `forward call` operation starts until it has finished.",
-              "lineNumber": 30,
+              "lineNumber": 32,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27649,7 +27669,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `direct transfer` operation starts until it has finished.",
-              "lineNumber": 31,
+              "lineNumber": 33,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -27659,32 +27679,12 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `join call` operation starts until it has finished.",
-              "lineNumber": 32,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "TIME_TO_JOIN"
-            },
-            {
-              "title": "property",
-              "description": "The amount of time it takes from when the `make call` operation starts until it has finished.",
-              "lineNumber": 33,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "TIME_TO_MAKE_OPERATION"
-            },
-            {
-              "title": "property",
-              "description": "The amount of time it takes from when the `answer call` operation starts until it has finished.",
               "lineNumber": 34,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
               },
-              "name": "TIME_TO_ANSWER_OPERATION"
+              "name": "TIME_TO_JOIN"
             },
             {
               "title": "property",
@@ -27825,7 +27825,7 @@
             },
             {
               "title": "property",
-              "name": "TIME_TO_ANSWER",
+              "name": "TIME_TO_MAKE",
               "lineNumber": 17,
               "description": {
                 "type": "root",
@@ -27835,7 +27835,108 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "The amount of time it takes from when a call is made until the SDK receives and processes the remote response."
+                        "value": "For outgoing calls, the time for the "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "make"
+                      },
+                      {
+                        "type": "text",
+                        "value": " operation to complete."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            },
+            {
+              "title": "property",
+              "name": "TIME_TO_ANSWER",
+              "lineNumber": 18,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "For incoming calls, the time for the "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "answer"
+                      },
+                      {
+                        "type": "text",
+                        "value": " operation to complete."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            },
+            {
+              "title": "property",
+              "name": "TIME_FROM_RECEIVE_TO_ANSWER",
+              "lineNumber": 19,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "For incoming calls, the time from the call first being received until it has been answered. Includes call processing and setup, as well as time for the answer API to have been called."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            },
+            {
+              "title": "property",
+              "name": "TIME_TO_CALL_SETUP_DURATION",
+              "lineNumber": 20,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "For incoming calls, the time from the call first being received until media is connected. Similar to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "TIME_FROM_RECEIVE_TO_ANSWER"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", but without the "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "answer"
+                      },
+                      {
+                        "type": "text",
+                        "value": " REST request."
                       }
                     ]
                   }
@@ -27849,7 +27950,7 @@
             {
               "title": "property",
               "name": "TIME_TO_MEDIA_DURATION",
-              "lineNumber": 18,
+              "lineNumber": 21,
               "description": {
                 "type": "root",
                 "children": [
@@ -27871,31 +27972,8 @@
             },
             {
               "title": "property",
-              "name": "TIME_TO_CALL_SETUP_DURATION",
-              "lineNumber": 19,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The amount of time it takes from when the SDK recieves an incoming call notification until media is connected. This includes the answer operation."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            },
-            {
-              "title": "property",
               "name": "TIME_TO_IGNORE",
-              "lineNumber": 20,
+              "lineNumber": 22,
               "description": {
                 "type": "root",
                 "children": [
@@ -27918,7 +27996,7 @@
             {
               "title": "property",
               "name": "TIME_TO_REJECT",
-              "lineNumber": 21,
+              "lineNumber": 23,
               "description": {
                 "type": "root",
                 "children": [
@@ -27941,7 +28019,7 @@
             {
               "title": "property",
               "name": "TIME_TO_RINGING",
-              "lineNumber": 22,
+              "lineNumber": 24,
               "description": {
                 "type": "root",
                 "children": [
@@ -27964,7 +28042,7 @@
             {
               "title": "property",
               "name": "TIME_TO_REMOVE_MEDIA",
-              "lineNumber": 23,
+              "lineNumber": 25,
               "description": {
                 "type": "root",
                 "children": [
@@ -27995,7 +28073,7 @@
             {
               "title": "property",
               "name": "TIME_TO_REMOVE_MEDIA_REMOTE",
-              "lineNumber": 24,
+              "lineNumber": 26,
               "description": {
                 "type": "root",
                 "children": [
@@ -28026,7 +28104,7 @@
             {
               "title": "property",
               "name": "TIME_TO_ADD_MEDIA",
-              "lineNumber": 25,
+              "lineNumber": 27,
               "description": {
                 "type": "root",
                 "children": [
@@ -28057,7 +28135,7 @@
             {
               "title": "property",
               "name": "TIME_TO_ADD_MEDIA_REMOTE",
-              "lineNumber": 26,
+              "lineNumber": 28,
               "description": {
                 "type": "root",
                 "children": [
@@ -28088,7 +28166,7 @@
             {
               "title": "property",
               "name": "TIME_TO_RESTART_MEDIA",
-              "lineNumber": 27,
+              "lineNumber": 29,
               "description": {
                 "type": "root",
                 "children": [
@@ -28119,7 +28197,7 @@
             {
               "title": "property",
               "name": "TIME_TO_RELAY_CANDIDATES",
-              "lineNumber": 28,
+              "lineNumber": 30,
               "description": {
                 "type": "root",
                 "children": [
@@ -28150,7 +28228,7 @@
             {
               "title": "property",
               "name": "TIME_TO_SEND_CUSTOM_PARAMETERS",
-              "lineNumber": 29,
+              "lineNumber": 31,
               "description": {
                 "type": "root",
                 "children": [
@@ -28181,7 +28259,7 @@
             {
               "title": "property",
               "name": "TIME_TO_FORWARD",
-              "lineNumber": 30,
+              "lineNumber": 32,
               "description": {
                 "type": "root",
                 "children": [
@@ -28212,7 +28290,7 @@
             {
               "title": "property",
               "name": "TIME_TO_DIRECT_TRANSFER",
-              "lineNumber": 31,
+              "lineNumber": 33,
               "description": {
                 "type": "root",
                 "children": [
@@ -28243,68 +28321,6 @@
             {
               "title": "property",
               "name": "TIME_TO_JOIN",
-              "lineNumber": 32,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The amount of time it takes from when the "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "join call"
-                      },
-                      {
-                        "type": "text",
-                        "value": " operation starts until it has finished."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            },
-            {
-              "title": "property",
-              "name": "TIME_TO_MAKE_OPERATION",
-              "lineNumber": 33,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The amount of time it takes from when the "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "make call"
-                      },
-                      {
-                        "type": "text",
-                        "value": " operation starts until it has finished."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            },
-            {
-              "title": "property",
-              "name": "TIME_TO_ANSWER_OPERATION",
               "lineNumber": 34,
               "description": {
                 "type": "root",
@@ -28318,7 +28334,7 @@
                       },
                       {
                         "type": "inlineCode",
-                        "value": "answer call"
+                        "value": "join call"
                       },
                       {
                         "type": "text",
