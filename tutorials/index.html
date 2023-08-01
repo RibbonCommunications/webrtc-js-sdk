@@ -37,6 +37,11 @@
           },
         
           {
+            title: 'Handling Subscription Events',
+            link: 'Handling Subscription Events'
+          },
+        
+          {
             title: 'Handling Subscription Errors',
             link: 'Handling Subscription Errors'
           },
@@ -64,6 +69,11 @@
           {
             title: 'Call Statistics',
             link: 'Call Statistics'
+          },
+        
+          {
+            title: 'Call Reports',
+            link: 'Call Reports'
           },
         
           {
@@ -101,12 +111,6 @@
         sidebar,
         plugins: [
           docuteMermaid(),
-          {
-            name: 'Hide Front Matter',
-            extend(api) {
-              api.processMarkdown(md => md.replace(/---([^]*?)---/m, ''))
-            }
-          },
           {
             name: 'Convert RIBBONFQDN',
             extend(api) {

@@ -7,6 +7,27 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.1.0 - 2023-08-01
+
+### Added
+
+- A new API has been added that allows for the collection of various metrics during a call.
+  - These metrics include `time to media`, `ice collection duration` and `time to answer` among others.
+  - Specific events during a call are also collected and included in the call report.
+  - A call report can be obtained by calling the `call.getReport` API function. This will return a JSON formatted object containing all call events and computed metrics relating to that call.
+  - For more information, please see the [API documentation](https://ribboncommunications.github.io/webrtc-js-sdk/docs/#callgetreport).
+  - Try the tutorial: [Get Report tutorial](https://ribboncommunications.github.io/webrtc-js-sdk/tutorials/?config=blue#/Call%20Reports).
+- Added a new `Handling Subscription Events` section within our tutorials. It covers the authentication, subscription and connectivity events. `KJS-1461`
+
+### Fixed
+
+- Fixed a Proxy Call issue where handling an incoming call in proxy-mode would fail.
+- Fixed a Call issue where the `call:operation` event was not consistently emitted during consultative transfer and join operations.
+  - The `call:operation` event will now be emitted for all calls involved in the operations at each step, rather than only the primary call.
+- Fixed a Call issue where a remote hold operation would not be interpreted properly in specific scenarios, causing the call not to be put On Hold. `KJS-1605`
+- Fixed the dual hold scenario where the initial holder unholds the call first and is put into `Connected` state when it should be in `On Hold (remote)` state. `KJS-1554`
+- Fixed a Call issue where an error when handling a remote midcall operation was not being reported to the application.
+
 ## 6.0.0 - 2023-06-30
 
 ### Removed
