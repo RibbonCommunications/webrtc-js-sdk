@@ -15,6 +15,7 @@ Ribbon WebRTC SDK change log.
   - The list of devices from the `media.getDevices` API is now correct when the `media:trackEnded` event is emitted.
 - Fixed a Call issue where the `call:operation` event was not always emitted for midcall operations.
 - Fixed a Call issue where an incoming call could become out-of-sync with the Gateway if rejecting the call fails. `KJS-1044`
+- Fixed an issue with the call reports where the `event` objects in the timeline were missing the `end` property.
 
 ## 6.1.0 - 2023-08-01
 

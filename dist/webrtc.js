@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.2.0-beta.1118
+ * Version: 6.2.0-beta.1119
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5850,7 +5850,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0-beta.1118';
+  return '6.2.0-beta.1119';
 }
 
 /***/ }),
@@ -76017,6 +76017,8 @@ var _constants2 = __webpack_require__(9);
 
 var _state = __webpack_require__(108);
 
+var _actions = __webpack_require__(12);
+
 var _selectors = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -76025,8 +76027,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Bottle wrapper for handleUpdateRequest call operation.
  * @return {Function}
  */
+// Call plugin.
 function handleUpdateRequestOperation(container) {
-  const { context, logManager, CallRequests, CallstackSDP, CallstackWebrtc, WebRTC, emitEvent } = container;
+  const {
+    context,
+    logManager,
+    CallReporter,
+    CallRequests,
+    CallstackSDP,
+    CallstackWebrtc,
+    WebRTC,
+    emitEvent
+  } = container;
 
   /**
    * A "call update request" has been received and needs to be handled.
@@ -76050,11 +76062,11 @@ function handleUpdateRequestOperation(container) {
    *    3. Respond to the request.
    *    4. Update call state (via redux action).
    * @method handleUpdateRequest
-   * @param {Object}   targetCall    The call being acted on.
-   * @param {Object}   params        Parameters of the update request.
-   * @param {string}   params.sdp          A remote offer SDP.
+   * @param {Object}   targetCall The call being acted on.
+   * @param {Object}   params Parameters of the update request.
+   * @param {string}   params.sdp A remote offer SDP.
    * @param {string}   params.remoteNumber Number of the remote participant.
-   * @param {string}   params.remoteName   Name of the remote participant.
+   * @param {string}   params.remoteName Name of the remote participant.
    * @param {Object}   opInfo
    * @param {string}   opInfo.remoteOp The interpreted remote operation type.
    * @param {Object}   opInfo.mediaDiff A comparison of media sections based on previous/new SDP.
@@ -76143,6 +76155,10 @@ function handleUpdateRequestOperation(container) {
       answer = await CallstackWebrtc.handleOffer(sdp, targetCall.webrtcSessionId, targetCall.bandwidth);
     } catch (error) {
       log.debug('Failed to receive offer SDP.', error);
+
+      // End the report event with an error
+      const callReport = CallReporter.getReport(targetCall.id);
+      const operationEvent = callReport.getEvent(targetCall.remoteOp.eventId);
       operationEvent.setError(error);
       operationEvent.endEvent();
 
@@ -76156,8 +76172,8 @@ function handleUpdateRequestOperation(container) {
       const currentState = context.getState();
 
       // Update call state to indicate the operation is finished, since it failed.
-      context.dispatch(actions.operationUpdate(targetCall.Id, remoteOp, false, {
-        transition: OP_TRANSITIONS.FINISH
+      context.dispatch(_actions.callActions.operationUpdate(targetCall.Id, remoteOp, false, {
+        transition: _constants2.OP_TRANSITIONS.FINISH
       }));
 
       if (eventFns) {
@@ -76263,7 +76279,6 @@ function handleUpdateRequestOperation(container) {
 }
 
 // Other plugins
-// Call plugin.
 
 /***/ }),
 /* 560 */
@@ -79439,7 +79454,7 @@ function createHandlers(container) {
    * @return {undefined}
    */
   async function negotiationOffer(wrtcsSessionId, params) {
-    const call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
+    let call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     const log = logManager.getLogger('CALL', call.id);
     log.info('Received new update call request; handling.', { wrtcsSessionId });
 
@@ -79476,6 +79491,8 @@ function createHandlers(container) {
           previous: undefined
         });
 
+        // Get the new call state after starting the remote operation
+        call = (0, _selectors.getCallById)(context.getState(), call.id);
         try {
           await Callstack.notifications.handleUpdateRequest(call, params, opInfo);
         } catch (err) {
@@ -80534,7 +80551,6 @@ var _uuid = __webpack_require__(40);
 function createTimelineEvent(type, onEventEnded) {
   const currentDate = new Date();
   const start = currentDate.getTime();
-  let end;
   const id = (0, _uuid.v4)();
   //  this will hold any sub-events for this event
   const timeline = [];
@@ -80542,8 +80558,6 @@ function createTimelineEvent(type, onEventEnded) {
   const eventData = {};
   // Computed metrics
   const metrics = [];
-  // Any encountered error during the event, `undefined` if there is no error to report
-  let error;
 
   const API_TAG = 'API invoked: ';
   /**
@@ -80554,7 +80568,7 @@ function createTimelineEvent(type, onEventEnded) {
    * @return {TimelineEvent} A new TimelineEvent.
    */
   function addEvent(type) {
-    if (end) {
+    if (this.end) {
       // iF event was marked as ended, we cannot add further sub-events to it.
       throw new Error(`${API_TAG}timelineEvent.addEvent: Cannot add further sub-events. Event has been marked as ended.`);
     }
@@ -80676,16 +80690,14 @@ function createTimelineEvent(type, onEventEnded) {
    * @return {undefined}
    */
   function endEvent(err) {
-    if (end) {
+    if (this.end) {
       // We already marked this event as ended.
       return;
     }
     if (err) {
-      event.error = err;
+      this.error = err;
     }
-    const currentDate = new Date();
-    event.end = currentDate.getTime();
-
+    this.end = currentDate.getTime();
     onEventEnded(event);
   }
 
@@ -80695,7 +80707,7 @@ function createTimelineEvent(type, onEventEnded) {
    * @return {boolean}
    */
   function isEnded() {
-    return !!end;
+    return !!this.end;
   }
 
   /**
@@ -80706,10 +80718,10 @@ function createTimelineEvent(type, onEventEnded) {
    * @return {undefined}
    */
   function setError(err) {
-    if (end) {
+    if (this.end) {
       throw new Error("Can't set error on an event that has already ended.");
     }
-    error = err;
+    this.error = err;
   }
 
   /**
@@ -80718,7 +80730,7 @@ function createTimelineEvent(type, onEventEnded) {
    * @return {Error|undefined}
    */
   function getError() {
-    return error;
+    return this.error;
   }
 
   /**
@@ -80735,8 +80747,8 @@ function createTimelineEvent(type, onEventEnded) {
       data: eventData,
       metrics,
       start,
-      end,
-      error
+      end: this.end,
+      error: this.error
     };
   }
 
@@ -80746,8 +80758,6 @@ function createTimelineEvent(type, onEventEnded) {
     timeline,
     metrics,
     start,
-    end,
-    error,
     addEvent,
     isEnded,
     getEvent,
