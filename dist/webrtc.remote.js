@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.2.0-beta.1120
+ * Version: 6.2.0-beta.1121
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1697,8 +1697,7 @@ module.exports = { "default": __webpack_require__(198), __esModule: true };
 
 /***/ }),
 /* 45 */,
-/* 46 */,
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parser = __webpack_require__(201);
@@ -1715,6 +1714,7 @@ exports.parseSimulcastStreamList = parser.parseSimulcastStreamList;
 
 
 /***/ }),
+/* 47 */,
 /* 48 */,
 /* 49 */
 /***/ (function(module, exports) {
@@ -1827,7 +1827,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0-beta.1120';
+  return '6.2.0-beta.1121';
 }
 
 /***/ }),
@@ -2184,7 +2184,7 @@ var _freeze2 = _interopRequireDefault(_freeze);
 
 exports.runPipeline = runPipeline;
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -16630,6 +16630,95 @@ function Session(id, managers, config = {}) {
   }
 
   /**
+   * Special-case method that combines getUserMedia and adding the tracks to
+   *    the Session.
+   * The goal of combining these methods is for Proxy-mode, to reduce the number
+   *    of times messages need to cross the channel. This function reduces the
+   *    trips from 3 (createLocal, getTracks, addTracks) to 1 (addNewMedia).
+   * @method addNewMedia
+   * @param {Object} mediaConstraints
+   * @return {Promise}
+   */
+  function addNewMedia(constraints) {
+    /*
+     * Helper method that wraps the getUserMedia functions on the MediaManager.
+     *    The wrapper is to prevent them from rejecting, so even a failure will
+     *    resolve the promise returned by this function. This allows the calling
+     *    function to wait for all promises to settle, so that media can be
+     *    cleaned-up if need be. (For some reason Promise.allSettled was causing
+     *    errors...)
+     * @method getMedia
+     */
+    function getMedia(constraints) {
+      const { audio, video, screen } = constraints;
+
+      return new _promise2.default(resolve => {
+        if (audio || video) {
+          mediaManager.createLocal({ audio, video }).then(media => {
+            resolve({ status: 'fulfilled', value: media });
+          }).catch(err => {
+            resolve({ status: 'rejected', value: err });
+          });
+        } else if (screen) {
+          mediaManager.createLocalScreen({ screen }).then(media => {
+            resolve({ status: 'fulfilled', value: media });
+          }).catch(err => {
+            resolve({ status: 'rejected', value: err });
+          });
+        }
+      });
+    }
+
+    return new _promise2.default((resolve, reject) => {
+      const { audio, video, screen } = constraints;
+      let mediaProm, screenProm;
+
+      if (audio || video) {
+        mediaProm = getMedia({ audio, video });
+      }
+      if (screen) {
+        screenProm = getMedia({ screen });
+      }
+
+      _promise2.default.all([mediaProm, screenProm]).then(results => {
+        if (results.some(result => result && result.status === 'rejected')) {
+          // At least one promise rejected. Clean-up any successful media, then
+          //    reject the original promise.
+          const medias = results.filter(result => result && result.status === 'fulfilled').map(result => result.value);
+
+          _promise2.default.all(medias.map(media => media.stop)).then(() => {
+            const err = results.find(result => result.status === 'rejected').value;
+
+            let errMessage;
+            if (err.name === 'OverconstrainedError') {
+              errMessage = `Failed to get media due to constraint: ${err.constraint}.`;
+            } else {
+              errMessage = `Failed to get media => Name: ${err.name}; Error Message :${err.message}.`;
+            }
+            log.info(errMessage);
+
+            const newErr = new Error(errMessage);
+            newErr.name = err.name;
+            reject(newErr);
+          });
+        } else {
+          // All media was gathered successfully.
+          const tracks = results.reduce((acc, cur) => {
+            // Add the tracks from the current media object to the accumulator.
+            //    If cur is undefined, just return the accumulator.
+            return cur ? acc.concat(cur.value.getTracks()) : acc;
+          }, []);
+
+          addTracks(tracks).then(() => {
+            const medias = results.filter(result => result && result.value).map(result => result.value);
+            resolve(medias);
+          }).catch(reject);
+        }
+      });
+    });
+  }
+
+  /**
    * The exposed API.
    */
   return {
@@ -16679,6 +16768,7 @@ function Session(id, managers, config = {}) {
     getIncomingRemoteTrackIds,
     getActiveRemoteTrackIds,
     insertAudio,
+    addNewMedia,
     // Event APIs.
     on,
     once,

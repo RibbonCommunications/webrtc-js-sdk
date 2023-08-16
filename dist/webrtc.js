@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.2.0-beta.1120
+ * Version: 6.2.0-beta.1121
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5190,6 +5190,23 @@ function getBrowserDetails(state) {
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var parser = __webpack_require__(201);
+var writer = __webpack_require__(202);
+
+exports.write = writer;
+exports.parse = parser.parse;
+exports.parseParams = parser.parseParams;
+exports.parseFmtpConfig = parser.parseFmtpConfig; // Alias of parseParams().
+exports.parsePayloads = parser.parsePayloads;
+exports.parseRemoteCandidates = parser.parseRemoteCandidates;
+exports.parseImageAttributes = parser.parseImageAttributes;
+exports.parseSimulcastStreamList = parser.parseSimulcastStreamList;
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -5527,23 +5544,6 @@ function checkBandwidthControls(bandwidthControls) {
 }
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var parser = __webpack_require__(201);
-var writer = __webpack_require__(202);
-
-exports.write = writer;
-exports.parse = parser.parse;
-exports.parseParams = parser.parseParams;
-exports.parseFmtpConfig = parser.parseFmtpConfig; // Alias of parseParams().
-exports.parsePayloads = parser.parsePayloads;
-exports.parseRemoteCandidates = parser.parseRemoteCandidates;
-exports.parseImageAttributes = parser.parseImageAttributes;
-exports.parseSimulcastStreamList = parser.parseSimulcastStreamList;
-
-
-/***/ }),
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5850,7 +5850,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0-beta.1120';
+  return '6.2.0-beta.1121';
 }
 
 /***/ }),
@@ -6421,7 +6421,7 @@ var _freeze2 = _interopRequireDefault(_freeze);
 
 exports.runPipeline = runPipeline;
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -23125,6 +23125,95 @@ function Session(id, managers, config = {}) {
   }
 
   /**
+   * Special-case method that combines getUserMedia and adding the tracks to
+   *    the Session.
+   * The goal of combining these methods is for Proxy-mode, to reduce the number
+   *    of times messages need to cross the channel. This function reduces the
+   *    trips from 3 (createLocal, getTracks, addTracks) to 1 (addNewMedia).
+   * @method addNewMedia
+   * @param {Object} mediaConstraints
+   * @return {Promise}
+   */
+  function addNewMedia(constraints) {
+    /*
+     * Helper method that wraps the getUserMedia functions on the MediaManager.
+     *    The wrapper is to prevent them from rejecting, so even a failure will
+     *    resolve the promise returned by this function. This allows the calling
+     *    function to wait for all promises to settle, so that media can be
+     *    cleaned-up if need be. (For some reason Promise.allSettled was causing
+     *    errors...)
+     * @method getMedia
+     */
+    function getMedia(constraints) {
+      const { audio, video, screen } = constraints;
+
+      return new _promise2.default(resolve => {
+        if (audio || video) {
+          mediaManager.createLocal({ audio, video }).then(media => {
+            resolve({ status: 'fulfilled', value: media });
+          }).catch(err => {
+            resolve({ status: 'rejected', value: err });
+          });
+        } else if (screen) {
+          mediaManager.createLocalScreen({ screen }).then(media => {
+            resolve({ status: 'fulfilled', value: media });
+          }).catch(err => {
+            resolve({ status: 'rejected', value: err });
+          });
+        }
+      });
+    }
+
+    return new _promise2.default((resolve, reject) => {
+      const { audio, video, screen } = constraints;
+      let mediaProm, screenProm;
+
+      if (audio || video) {
+        mediaProm = getMedia({ audio, video });
+      }
+      if (screen) {
+        screenProm = getMedia({ screen });
+      }
+
+      _promise2.default.all([mediaProm, screenProm]).then(results => {
+        if (results.some(result => result && result.status === 'rejected')) {
+          // At least one promise rejected. Clean-up any successful media, then
+          //    reject the original promise.
+          const medias = results.filter(result => result && result.status === 'fulfilled').map(result => result.value);
+
+          _promise2.default.all(medias.map(media => media.stop)).then(() => {
+            const err = results.find(result => result.status === 'rejected').value;
+
+            let errMessage;
+            if (err.name === 'OverconstrainedError') {
+              errMessage = `Failed to get media due to constraint: ${err.constraint}.`;
+            } else {
+              errMessage = `Failed to get media => Name: ${err.name}; Error Message :${err.message}.`;
+            }
+            log.info(errMessage);
+
+            const newErr = new Error(errMessage);
+            newErr.name = err.name;
+            reject(newErr);
+          });
+        } else {
+          // All media was gathered successfully.
+          const tracks = results.reduce((acc, cur) => {
+            // Add the tracks from the current media object to the accumulator.
+            //    If cur is undefined, just return the accumulator.
+            return cur ? acc.concat(cur.value.getTracks()) : acc;
+          }, []);
+
+          addTracks(tracks).then(() => {
+            const medias = results.filter(result => result && result.value).map(result => result.value);
+            resolve(medias);
+          }).catch(reject);
+        }
+      });
+    });
+  }
+
+  /**
    * The exposed API.
    */
   return {
@@ -23174,6 +23263,7 @@ function Session(id, managers, config = {}) {
     getIncomingRemoteTrackIds,
     getActiveRemoteTrackIds,
     insertAudio,
+    addNewMedia,
     // Event APIs.
     on,
     once,
@@ -25232,7 +25322,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = hasMediaFlowing;
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -29724,7 +29814,7 @@ var _stringify = __webpack_require__(30);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -36559,7 +36649,7 @@ exports.iceCollectionCheckFunction = iceCollectionCheckFunction;
 
 var _constants = __webpack_require__(6);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -67276,7 +67366,7 @@ var _constants = __webpack_require__(6);
 
 var _actions = __webpack_require__(12);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _eventTypes = __webpack_require__(15);
 
@@ -67636,7 +67726,7 @@ var _eventTypes = __webpack_require__(15);
 
 var _selectors = __webpack_require__(3);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _constants = __webpack_require__(6);
 
@@ -68111,7 +68201,7 @@ var _selectors = __webpack_require__(3);
 
 var _media = __webpack_require__(303);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _errors = __webpack_require__(4);
 
@@ -68358,7 +68448,7 @@ var _selectors = __webpack_require__(3);
 
 var _constants = __webpack_require__(6);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _remoteTracks = __webpack_require__(95);
 
@@ -68571,7 +68661,7 @@ var _selectors = __webpack_require__(3);
 
 var _constants = __webpack_require__(6);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _errors = __webpack_require__(4);
 
@@ -68908,8 +68998,6 @@ var _selectors = __webpack_require__(3);
 
 var _constants = __webpack_require__(21);
 
-var _call = __webpack_require__(46);
-
 var _errors = __webpack_require__(4);
 
 var _errors2 = _interopRequireDefault(_errors);
@@ -68920,10 +69008,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Bottle wrapper for "answer session" operation.
  * @return {Function}
  */
-
-
-// Utils
-// Call plugin.
 function answerWebrtcSessionOperation(container) {
   const { context, logManager, CallstackSDP, WebRTC } = container;
 
@@ -68943,8 +69027,8 @@ function answerWebrtcSessionOperation(container) {
    * @return {string} Object.mediaId an identifier for media
    */
   async function answerWebrtcSession(mediaConstraints, sessionOptions) {
-    const { CallstackWebrtc, CallReporter } = container;
-    const { sessionId, bandwidth, dscpControls, callId } = sessionOptions;
+    const { CallReporter } = container;
+    const { sessionId, bandwidth, callId } = sessionOptions;
 
     const log = logManager.getLogger('CALL', callId);
     log.info('Setting up local WebRTC portions of call.');
@@ -68962,38 +69046,20 @@ function answerWebrtcSessionOperation(container) {
     const report = CallReporter.getReport(callId);
     const answerEvent = report.getEvent(eventId);
 
+    const gumEvent = answerEvent.addEvent(_constants.REPORT_EVENTS.GET_USER_MEDIA);
+    gumEvent.addData('mediaConstraints', mediaConstraints);
     let medias;
     try {
-      medias = await CallstackWebrtc.createLocal(mediaConstraints, callId);
-    } catch (error) {
-      log.debug('Failed to get media requested for the call.');
-      throw error;
-    }
-
-    let screen = [];
-    let audio = [];
-    let video = [];
-    let allTracks = [];
-
-    for (const eachMedia of medias) {
-      const tracks = await eachMedia.media.getTracks();
-      if (eachMedia.type === 'screen') {
-        screen = [...screen, ...tracks];
-      } else if (eachMedia.type === 'audio') {
-        audio = [...audio, ...tracks];
-      } else if (eachMedia.type === 'video') {
-        video = [...video, ...tracks];
-      }
-      allTracks = [...allTracks, ...tracks];
-    }
-
-    const dscpTrackMapping = (0, _call.getTrackDscpMapping)({ audio, video, screen }, dscpControls);
-    // eslint-disable-next-line no-useless-catch
-    try {
-      await session.addTracks(allTracks, dscpTrackMapping);
-    } catch (error) {
-      // Follow-up / TODO
-      throw new _errors2.default(error);
+      medias = await session.addNewMedia(mediaConstraints);
+      gumEvent.endEvent();
+    } catch (err) {
+      log.debug('Failed to get and add new media to call.');
+      const errorObj = new _errors2.default({
+        message: err.message,
+        code: _errors.callCodes.USER_MEDIA_ERROR
+      });
+      gumEvent.endEvent(errorObj);
+      throw errorObj;
     }
 
     /*
@@ -69047,7 +69113,7 @@ function answerWebrtcSessionOperation(container) {
     return {
       error: false,
       answerSDP: newSdp,
-      mediaIds: medias.map(media => media.media.id)
+      mediaIds: medias.map(media => media.id)
     };
   }
 
@@ -69055,6 +69121,7 @@ function answerWebrtcSessionOperation(container) {
 }
 
 // Other plugins.
+// Call plugin.
 
 /***/ }),
 /* 484 */
@@ -69218,7 +69285,7 @@ var _constants2 = __webpack_require__(6);
 
 var _eventTypes = __webpack_require__(15);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 /**
  * Bottle wrapper for "call status ended" notification handler.
@@ -69803,7 +69870,7 @@ var _selectors = __webpack_require__(3);
 
 var _constants = __webpack_require__(21);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _media = __webpack_require__(303);
 
@@ -70952,7 +71019,7 @@ var _selectors = __webpack_require__(3);
 
 var _selectors2 = __webpack_require__(45);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -71577,7 +71644,7 @@ var _errors = __webpack_require__(4);
 
 var _errors2 = _interopRequireDefault(_errors);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _constants = __webpack_require__(6);
 
@@ -72465,7 +72532,7 @@ exports.default = iceRestartOperation;
 
 var _selectors = __webpack_require__(3);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _constants = __webpack_require__(6);
 
@@ -73281,7 +73348,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = hasTelephoneEvent;
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -75273,7 +75340,7 @@ var _constants2 = __webpack_require__(9);
 
 var _eventTypes = __webpack_require__(15);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 /**
  * Bottle wrapper for "session status ended" notification handler.
@@ -75816,7 +75883,7 @@ var _hasMediaFlowing = __webpack_require__(280);
 
 var _hasMediaFlowing2 = _interopRequireDefault(_hasMediaFlowing);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _remoteOperation = __webpack_require__(305);
 
@@ -76007,7 +76074,7 @@ var _setMediaInactive = __webpack_require__(560);
 
 var _setMediaInactive2 = _interopRequireDefault(_setMediaInactive);
 
-var _call = __webpack_require__(46);
+var _call = __webpack_require__(47);
 
 var _webrtc = __webpack_require__(561);
 
@@ -76424,7 +76491,7 @@ var _compareSummary2 = _interopRequireDefault(_compareSummary);
 
 var _constants = __webpack_require__(279);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -76938,7 +77005,7 @@ exports.default = runPipelineDefault;
 
 var _utils = __webpack_require__(306);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -77004,7 +77071,7 @@ exports.default = runPipelineYaml;
 
 var _utils = __webpack_require__(306);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
@@ -78872,7 +78939,7 @@ var _negotiations2 = _interopRequireDefault(_negotiations);
 
 var _uuid = __webpack_require__(40);
 
-var _sdpTransform = __webpack_require__(47);
+var _sdpTransform = __webpack_require__(46);
 
 var _sdpTransform2 = _interopRequireDefault(_sdpTransform);
 
