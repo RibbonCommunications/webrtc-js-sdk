@@ -3,7 +3,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.2.0-beta.1121
+ * Version: 6.2.0-beta.1122
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2199,7 +2199,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /***/ (function(module, exports, __webpack_require__) {
 
 var store = __webpack_require__(81)('wks');
-var uid = __webpack_require__(62);
+var uid = __webpack_require__(63);
 var Symbol = __webpack_require__(16).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
@@ -5658,7 +5658,7 @@ var ctx = __webpack_require__(33);
 var call = __webpack_require__(116);
 var isArrayIter = __webpack_require__(117);
 var anObject = __webpack_require__(28);
-var toLength = __webpack_require__(61);
+var toLength = __webpack_require__(62);
 var getIterFn = __webpack_require__(118);
 var BREAK = {};
 var RETURN = {};
@@ -5850,7 +5850,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0-beta.1121';
+  return '6.2.0-beta.1122';
 }
 
 /***/ }),
@@ -5915,6 +5915,85 @@ const logLevels = exports.logLevels = {
 
 /***/ }),
 /* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.update = update;
+exports.setSdpHandlers = setSdpHandlers;
+
+var _actionTypes = __webpack_require__(290);
+
+var actionTypes = _interopRequireWildcard(_actionTypes);
+
+var _sanitizeSdesFromSdp = __webpack_require__(366);
+
+var _modifySdpBandwidth = __webpack_require__(367);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/**
+ * Add or update a specific key within the store.config.
+ *
+ * @param {Object} values The values that will be placed in the store.
+ * @param {string} [pluginName] The plugin name of the config being set.
+ * @return {Action} action A redux action.
+ */
+function update(values, pluginName = '') {
+  var payload;
+  // Use the plugin name as a substate key, if present.
+  if (pluginName) {
+    payload = {
+      [pluginName]: values
+    };
+  } else {
+    payload = values;
+  }
+
+  return {
+    type: actionTypes.CONFIG_UPDATE,
+    payload: payload
+  };
+}
+
+/**
+ * Updates the SDP Handlers in the call plugin configs
+ *
+ * @method setSdpHandlers
+ * @param {Array<call.SdpHandlerFunction>} sdpHandlers The list of SDP handler to set in the config.
+ * @returns {Object} A flux standard action.
+ */
+function setSdpHandlers(sdpHandlers) {
+  /*
+   * Set SDP handlers to be used for every operation:
+   *
+   * 1. Application provided SDP handlers.
+   *
+   * 2. Disable DTLS-SDES crypto method (ie. delete the line) if there's a better
+   *    crypto method enabled. WebRTC only allows one method to be enabled.
+   *    This is needed for interoperability with non-browser endpoints that include
+   *    SDES as a fallback method.
+   *
+   *
+   * 3. Modify sdp and add bandwidth limits on it if bandwidth controls are provided.
+   */
+  sdpHandlers.push(_sanitizeSdesFromSdp.sanitizeSdesFromSdp);
+  sdpHandlers.push(_modifySdpBandwidth.modifySdpBandwidth);
+
+  return {
+    type: actionTypes.SET_SDP_HANDLERS,
+    payload: {
+      sdpHandlers
+    }
+  };
+}
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6060,7 +6139,7 @@ function initialize() {
 }
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
@@ -6072,7 +6151,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -6083,7 +6162,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
@@ -6130,10 +6209,10 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(62)('meta');
+var META = __webpack_require__(63)('meta');
 var isObject = __webpack_require__(20);
 var has = __webpack_require__(35);
 var setDesc = __webpack_require__(22).f;
@@ -6187,85 +6266,6 @@ var meta = module.exports = {
   onFreeze: onFreeze
 };
 
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.update = update;
-exports.setSdpHandlers = setSdpHandlers;
-
-var _actionTypes = __webpack_require__(290);
-
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-var _sanitizeSdesFromSdp = __webpack_require__(366);
-
-var _modifySdpBandwidth = __webpack_require__(367);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-/**
- * Add or update a specific key within the store.config.
- *
- * @param {Object} values The values that will be placed in the store.
- * @param {string} [pluginName] The plugin name of the config being set.
- * @return {Action} action A redux action.
- */
-function update(values, pluginName = '') {
-  var payload;
-  // Use the plugin name as a substate key, if present.
-  if (pluginName) {
-    payload = {
-      [pluginName]: values
-    };
-  } else {
-    payload = values;
-  }
-
-  return {
-    type: actionTypes.CONFIG_UPDATE,
-    payload: payload
-  };
-}
-
-/**
- * Updates the SDP Handlers in the call plugin configs
- *
- * @method setSdpHandlers
- * @param {Array<call.SdpHandlerFunction>} sdpHandlers The list of SDP handler to set in the config.
- * @returns {Object} A flux standard action.
- */
-function setSdpHandlers(sdpHandlers) {
-  /*
-   * Set SDP handlers to be used for every operation:
-   *
-   * 1. Application provided SDP handlers.
-   *
-   * 2. Disable DTLS-SDES crypto method (ie. delete the line) if there's a better
-   *    crypto method enabled. WebRTC only allows one method to be enabled.
-   *    This is needed for interoperability with non-browser endpoints that include
-   *    SDES as a fallback method.
-   *
-   *
-   * 3. Modify sdp and add bandwidth limits on it if bandwidth controls are provided.
-   */
-  sdpHandlers.push(_sanitizeSdesFromSdp.sanitizeSdesFromSdp);
-  sdpHandlers.push(_modifySdpBandwidth.modifySdpBandwidth);
-
-  return {
-    type: actionTypes.SET_SDP_HANDLERS,
-    payload: {
-      sdpHandlers
-    }
-  };
-}
 
 /***/ }),
 /* 66 */
@@ -6885,7 +6885,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var shared = __webpack_require__(81)('keys');
-var uid = __webpack_require__(62);
+var uid = __webpack_require__(63);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
@@ -10224,7 +10224,7 @@ const HANDLERS_CHANGE = exports.HANDLERS_CHANGE = prefix + 'HANDLERS_CHANGE';
 "use strict";
 
 var dP = __webpack_require__(22).f;
-var create = __webpack_require__(63);
+var create = __webpack_require__(64);
 var redefineAll = __webpack_require__(88);
 var ctx = __webpack_require__(33);
 var anInstance = __webpack_require__(86);
@@ -10233,7 +10233,7 @@ var $iterDefine = __webpack_require__(84);
 var step = __webpack_require__(115);
 var setSpecies = __webpack_require__(123);
 var DESCRIPTORS = __webpack_require__(23);
-var fastKey = __webpack_require__(64).fastKey;
+var fastKey = __webpack_require__(65).fastKey;
 var validate = __webpack_require__(102);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
@@ -10376,7 +10376,7 @@ module.exports = {
 
 var global = __webpack_require__(16);
 var $export = __webpack_require__(14);
-var meta = __webpack_require__(64);
+var meta = __webpack_require__(65);
 var fails = __webpack_require__(37);
 var hide = __webpack_require__(34);
 var redefineAll = __webpack_require__(88);
@@ -11788,7 +11788,7 @@ module.exports = !$assign || __webpack_require__(37)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(38);
-var toLength = __webpack_require__(61);
+var toLength = __webpack_require__(62);
 var toAbsoluteIndex = __webpack_require__(157);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
@@ -12973,7 +12973,7 @@ module.exports = function (TO_STRING) {
 
 "use strict";
 
-var create = __webpack_require__(63);
+var create = __webpack_require__(64);
 var descriptor = __webpack_require__(42);
 var setToStringTag = __webpack_require__(54);
 var IteratorPrototype = {};
@@ -13864,11 +13864,11 @@ var has = __webpack_require__(35);
 var DESCRIPTORS = __webpack_require__(23);
 var $export = __webpack_require__(14);
 var redefine = __webpack_require__(113);
-var META = __webpack_require__(64).KEY;
+var META = __webpack_require__(65).KEY;
 var $fails = __webpack_require__(37);
 var shared = __webpack_require__(81);
 var setToStringTag = __webpack_require__(54);
-var uid = __webpack_require__(62);
+var uid = __webpack_require__(63);
 var wks = __webpack_require__(17);
 var wksExt = __webpack_require__(125);
 var wksDefine = __webpack_require__(91);
@@ -13880,7 +13880,7 @@ var toObject = __webpack_require__(41);
 var toIObject = __webpack_require__(38);
 var toPrimitive = __webpack_require__(76);
 var createDesc = __webpack_require__(42);
-var _create = __webpack_require__(63);
+var _create = __webpack_require__(64);
 var gOPNExt = __webpack_require__(184);
 var $GOPD = __webpack_require__(128);
 var $GOPS = __webpack_require__(83);
@@ -14720,7 +14720,7 @@ function getTypes(state) {
 var ctx = __webpack_require__(33);
 var IObject = __webpack_require__(77);
 var toObject = __webpack_require__(41);
-var toLength = __webpack_require__(61);
+var toLength = __webpack_require__(62);
 var asc = __webpack_require__(195);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1;
@@ -14823,7 +14823,7 @@ var $export = __webpack_require__(14);
 var toObject = __webpack_require__(41);
 var call = __webpack_require__(116);
 var isArrayIter = __webpack_require__(117);
-var toLength = __webpack_require__(61);
+var toLength = __webpack_require__(62);
 var createProperty = __webpack_require__(200);
 var getIterFn = __webpack_require__(118);
 
@@ -16919,7 +16919,7 @@ module.exports = __webpack_require__(8).Object.freeze;
 
 // 19.1.2.5 Object.freeze(O)
 var isObject = __webpack_require__(20);
-var meta = __webpack_require__(64).onFreeze;
+var meta = __webpack_require__(65).onFreeze;
 
 __webpack_require__(101)('freeze', function ($freeze) {
   return function freeze(it) {
@@ -21393,7 +21393,7 @@ module.exports = function create(P, D) {
 
 var $export = __webpack_require__(14);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(63) });
+$export($export.S, 'Object', { create: __webpack_require__(64) });
 
 
 /***/ }),
@@ -29503,7 +29503,7 @@ var _errors = __webpack_require__(4);
 
 var _errors2 = _interopRequireDefault(_errors);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35303,7 +35303,7 @@ var _actions2 = __webpack_require__(362);
 
 var _actions3 = _interopRequireDefault(_actions2);
 
-var _actions4 = __webpack_require__(65);
+var _actions4 = __webpack_require__(60);
 
 var _utils = __webpack_require__(29);
 
@@ -36515,7 +36515,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = api;
 
-var _actions = __webpack_require__(65);
+var _actions = __webpack_require__(60);
 
 var actions = _interopRequireWildcard(_actions);
 
@@ -37217,7 +37217,7 @@ var _logs3 = __webpack_require__(7);
 
 var _selectors = __webpack_require__(193);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 var _kandyWebrtc2 = _interopRequireDefault(_kandyWebrtc);
 
@@ -38603,7 +38603,7 @@ var _proxyStack2 = _interopRequireDefault(_proxyStack);
 
 var _logs = __webpack_require__(7);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 var _kandyWebrtc2 = _interopRequireDefault(_kandyWebrtc);
 
@@ -56950,7 +56950,7 @@ var _events2 = _interopRequireDefault(_events);
 
 var _actions = __webpack_require__(66);
 
-var _actions2 = __webpack_require__(65);
+var _actions2 = __webpack_require__(60);
 
 var _utils = __webpack_require__(29);
 
@@ -58844,7 +58844,7 @@ var _actions = __webpack_require__(66);
 
 var _interface = __webpack_require__(419);
 
-var _actions2 = __webpack_require__(65);
+var _actions2 = __webpack_require__(60);
 
 var _utils = __webpack_require__(29);
 
@@ -60448,9 +60448,9 @@ var _callstack = __webpack_require__(465);
 
 var _callstack2 = _interopRequireDefault(_callstack);
 
-var _actions = __webpack_require__(65);
+var _actions = __webpack_require__(60);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -62906,6 +62906,8 @@ var _eventTypes = __webpack_require__(15);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
+var _actions2 = __webpack_require__(60);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -62917,6 +62919,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param  {Object} container.context The factory context.
  * @return {Object} Misc API.
  */
+// Call plugin.
 function createAPI(container) {
   const { context, CallManager, CallReporter, emitEvent, logManager, API_LOG_TAG } = container;
   const log = logManager.getLogger('CALL');
@@ -63297,7 +63300,34 @@ function createAPI(container) {
     return report ? report.getSerializable() : report;
   }
 
-  async function setSdpHandlers() {}
+  /**
+   * Set {@link call.SdpHandlerFunction SDP Handler Functions} that will be run as part of a pipeline for all future calls.
+   *  This will replace any SDP Handlers that were previously set.
+   *
+   * SDP handlers can be used to make modifications to the SDP (e.g., removing certain codecs)
+   *  before they are processed or sent to the other side.
+   *
+   * This is an advanced feature, changing the SDP handlers mid-call may cause
+   *  unexpected behaviour in future call operations for that call.
+   *
+   * @method setSdpHandlers
+   * @public
+   * @static
+   * @memberof call
+   * @requires call
+   * @requires callMe
+   * @param {Array<call.SdpHandlerFunction>} sdpHandlers The list of SDP handler functions to modify SDP.
+   * @return {undefined}
+   */
+  function setSdpHandlers(sdpHandlers) {
+    log.debug(`${API_LOG_TAG}call.setSdpHandlers, sdpHandlers:`, sdpHandlers);
+
+    const config = (0, _selectors.getOptions)(context.getState());
+    const options = {
+      removeH264Codecs: config.removeH264Codecs
+    };
+    context.dispatch((0, _actions2.setSdpHandlers)(sdpHandlers, options));
+  }
 
   /**
    * Changes the camera and/or microphone used for a Call's media input.
@@ -63389,7 +63419,9 @@ function createAPI(container) {
     getAvailableCodecs,
     setSdpHandlers
   };
-} // Call plugin.
+}
+
+// Other plugins
 
 /***/ }),
 /* 435 */
@@ -70376,7 +70408,7 @@ var _actions = __webpack_require__(12);
 
 var _selectors = __webpack_require__(3);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 var _errors = __webpack_require__(4);
 
@@ -70773,7 +70805,7 @@ var _actions = __webpack_require__(12);
 
 var _selectors = __webpack_require__(3);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 var _errors = __webpack_require__(4);
 
@@ -71252,7 +71284,7 @@ var _selectors = __webpack_require__(3);
 
 var _fp = __webpack_require__(2);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 var _errors = __webpack_require__(4);
 
@@ -73960,7 +73992,7 @@ var _errors = __webpack_require__(4);
 
 var _errors2 = _interopRequireDefault(_errors);
 
-var _kandyWebrtc = __webpack_require__(60);
+var _kandyWebrtc = __webpack_require__(61);
 
 var _version = __webpack_require__(58);
 
@@ -82670,7 +82702,7 @@ var _events2 = _interopRequireDefault(_events);
 
 var _sagas = __webpack_require__(626);
 
-var _actions = __webpack_require__(65);
+var _actions = __webpack_require__(60);
 
 var _actions2 = __webpack_require__(66);
 
@@ -83768,7 +83800,7 @@ var _events2 = _interopRequireDefault(_events);
 
 var _actions = __webpack_require__(66);
 
-var _actions2 = __webpack_require__(65);
+var _actions2 = __webpack_require__(60);
 
 var _logs = __webpack_require__(7);
 
@@ -86206,7 +86238,7 @@ var _middleware2 = _interopRequireDefault(_middleware);
 
 var _actions = __webpack_require__(66);
 
-var _actions2 = __webpack_require__(65);
+var _actions2 = __webpack_require__(60);
 
 var _effects = __webpack_require__(26);
 
@@ -98124,7 +98156,7 @@ var _requestModule2 = _interopRequireDefault(_requestModule);
 
 var _interface = __webpack_require__(691);
 
-var _actions = __webpack_require__(65);
+var _actions = __webpack_require__(60);
 
 var _actions2 = __webpack_require__(66);
 
