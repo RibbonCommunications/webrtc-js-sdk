@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.2.0-beta.1125
+ * Version: 6.2.0-beta.1126
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5859,7 +5859,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0-beta.1125';
+  return '6.2.0-beta.1126';
 }
 
 /***/ }),
@@ -80657,8 +80657,7 @@ var _uuid = __webpack_require__(40);
  */
 // Utils
 function createTimelineEvent(type, onEventEnded) {
-  const currentDate = new Date();
-  const start = currentDate.getTime();
+  const start = new Date().getTime();
   const id = (0, _uuid.v4)();
   //  this will hold any sub-events for this event
   const timeline = [];
@@ -80805,7 +80804,7 @@ function createTimelineEvent(type, onEventEnded) {
     if (err) {
       this.error = err;
     }
-    this.end = currentDate.getTime();
+    this.end = new Date().getTime();
     onEventEnded(event);
   }
 
