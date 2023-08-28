@@ -1,4 +1,4 @@
-# Kandy Link JavaScript SDK
+# Ribbon's WebRTC JavaScript SDK
 
 ## Install
 
@@ -10,12 +10,12 @@
 
 To install a particular build branch or beta branch with the Github URL, run:
 
-`$ npm install https://github.com/Kandy-IO/webrtc-js-sdk#<build number or "beta"> --save`
+`$ npm install https://github.com/RibbonCommunications/webrtc-js-sdk#<build number or "beta"> --save`
 
 ### In the browser :
 ```html
 <script src="https://unpkg.com/@rbbn/webrtc-js-sdk@4.41.3/dist/kandy.js"
-  integrity="sha384-qqNMPREEo2p7r1s9b+eNZYxG4IWD5Q/xZ1inXlbW78IBcUSTPAsLjL/hppaOTQTf"
+  integrity="sha384-gk2GiQd85yE2FhKiqUSGPBd25GZL4Vn0KHjvB/ELn/6Xx1zs2j32PAu6JyNh6eoz"
   crossorigin="anonymous">
 </script>
 ```
@@ -23,7 +23,7 @@ To install a particular build branch or beta branch with the Github URL, run:
 
 The information about tutorials and documents can be found in the links below
 
-* `Documents`: [docs](https://kandy-io.github.io/webrtc-js-sdk/docs)
+* `Documents`: [docs](https://RibbonCommunications.github.io/webrtc-js-sdk/docs)
 
 ## Compatibility
 
