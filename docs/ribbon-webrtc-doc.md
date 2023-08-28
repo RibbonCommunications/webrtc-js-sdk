@@ -13,7 +13,7 @@ The SDK instance will be referred as 'api' throughout the rest of the documentat
 
 ```javascript
 // Instantiate the SDK.
-import { create } from 'kandy'
+import { create } from 'WebRTC'
 const client = create({
     authentication: { ... },
     logs: { ... },
@@ -213,7 +213,7 @@ so as not to interfere with any ongoing events.
 
 ```javascript
 // Instantiate the SDK.
-import { create } from 'kandy'
+import { create } from 'WebRTC'
 const config = {
     authentication: { ... },
     logs: { ... },
@@ -3913,7 +3913,7 @@ parameter. They can also be set after the SDK's creation by using the
 ### Examples
 
 ```javascript
-import { create, sdpHandlers } from 'kandy';
+import { create, sdpHandlers } from 'WebRTC';
 const codecRemover = sdpHandlers.createCodecRemover(['VP8', 'VP9'])
 const client = create({
   call: {
@@ -3960,7 +3960,7 @@ for their application.
 #### Examples
 
 ```javascript
-import { create, sdpHandlers } from 'kandy';
+import { create, sdpHandlers } from 'WebRTC';
 
 const codecRemover = sdpHandlers.createCodecRemover([
   // Remove all VP8 and VP9 codecs.

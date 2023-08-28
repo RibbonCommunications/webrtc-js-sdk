@@ -1,9 +1,17 @@
 # Change Log
 
-Kandy.js change log.
+WebRTC.js change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+
+## 4.41.4 - 2023-08-28
+
+### Fixed
+
+- Fixed a Proxy issue where, after changing proxy mode, the media devices available would not update to reflect the new available devices until after a short delay. `KJS-1680`
+  - The `devices:change` event will now be emitted before the `proxy:change` event when changing proxy mode.
+- Fixed a Proxy issue where it was possible to receive a `devices:change` event for local devices while in Proxy mode. `KJS-1673`
 
 ## 4.41.3 - 2022-09-27
 
