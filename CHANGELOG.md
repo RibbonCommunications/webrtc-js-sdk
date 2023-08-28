@@ -16,6 +16,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Call issue where the `call:operation` event was not always emitted for midcall operations.
 - Fixed a Call issue where an incoming call could become out-of-sync with the Gateway if rejecting the call fails. `KJS-1044`
 - Fixed an issue with the call reports where the `event` objects in the timeline were missing the `end` property.
+- Fixed a Proxy issue where it was possible to receive a `devices:change` event for local devices while in Proxy mode. `KJS-1673`
 
 ## 6.1.0 - 2023-08-01
 

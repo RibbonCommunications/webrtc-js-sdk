@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.2.0-beta.1127
+ * Version: 6.2.0-beta.1128
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5859,7 +5859,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0-beta.1127';
+  return '6.2.0-beta.1128';
 }
 
 /***/ }),
@@ -23414,12 +23414,16 @@ function DeviceManager() {
   });
 
   // Check devices whenever they change.
+  let isListening = true;
   let recentDeviceChange = false;
   navigator.mediaDevices.addEventListener('devicechange', () => {
     log.info('Media device change detected.');
+
     // A physical device change results in one event per
-    // device "kind". Group the events together.
-    if (!recentDeviceChange) {
+    //    device "kind". Group the events together.
+    // Only emit an event if the Manager is supposed to
+    //    be listening for changes.
+    if (!recentDeviceChange && isListening) {
       recentDeviceChange = true;
       setTimeout(() => {
         recentDeviceChange = false;
@@ -23430,6 +23434,18 @@ function DeviceManager() {
       }, 50);
     }
   });
+
+  /**
+   * Sets the Manager to watch or ignore the "device change"
+   *    events from the browser.
+   * @method setListening
+   * @param {Boolean} flag Whether to watch for events.
+   * @return {undefined}
+   */
+  function setListening(flag) {
+    log.debug(`Listening for device changes: ${flag}`);
+    isListening = flag;
+  }
 
   /**
    * Updates the stored device lists with the latest devices.
@@ -23469,7 +23485,6 @@ function DeviceManager() {
    * @param browserConstraints
    * @return {Object}
    */
-
   function setupDeviceInitialization(browserConstraints) {
     return new _promise2.default((resolve, reject) => {
       navigator.mediaDevices.getUserMedia(browserConstraints).then(mediaStream => {
@@ -23515,6 +23530,7 @@ function DeviceManager() {
    * The exposed API.
    */
   return {
+    setListening,
     checkDevices,
     setupDeviceInitialization,
     get,
@@ -38917,6 +38933,12 @@ function initializeProxy(webRTC) {
     for (const manProxy in base.managers) {
       base.managers[manProxy].proxyMode = value;
     }
+
+    // While in Proxy mode, stop the local DeviceManager from
+    //    listening for device change events from the browser.
+    // Start listening again when taken out of Proxy mode.
+    webRTC.managers.devices.setListening(!value);
+
     return true;
   };
 
