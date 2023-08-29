@@ -5,11 +5,19 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 5.10.1 - 2023-08-29
+
+### Fixed
+
+- Fixed a Proxy issue where, after changing proxy mode, the media devices available would not update to reflect the new available devices until after a short delay. `KJS-1680`
+  - The `devices:change` event will now be emitted before the `proxy:change` event when changing proxy mode.
+- Fixed a Proxy issue where it was possible to receive a `devices:change` event for local devices while in Proxy mode. `KJS-1673`
+
 ## 5.10.0 - 2023-05-26
 
 ### Fixed
 
-- Fixed the API documentation & Tutotial sections to use the correct event `call:tracksAdded`, instead of the obsoleted one (`call:newTrack`) `KJS-1513`
+- Fixed the API documentation & Tutorial sections to use the correct event `call:tracksAdded`, instead of the obsoleted one (`call:newTrack`) `KJS-1513`
 
 ## 5.9.0 - 2023-04-28
 
