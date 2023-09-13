@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.3.0-beta.1137
+ * Version: 6.3.0-beta.1138
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5859,7 +5859,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.3.0-beta.1137';
+  return '6.3.0-beta.1138';
 }
 
 /***/ }),
@@ -68486,7 +68486,8 @@ function setupOutgoingSessionOperation(container) {
      *    then set it as the Session's local description.
      */
     const setLocalDescriptionEvent = operationEvent.addEvent(_constants.REPORT_EVENTS.SET_LOCAL_DESCRIPTION);
-    setLocalDescriptionEvent.addData('operation', _constants.REPORTER_OPERATION_EVENTS_MAP.MAKE);
+    const slowAnswer = call.isSlowStart && call.localOp.operation === _constants.REPORTER_OPERATION_EVENTS_MAP.ANSWER;
+    setLocalDescriptionEvent.addData('operation', slowAnswer ? _constants.REPORTER_OPERATION_EVENTS_MAP.ANSWER : _constants.REPORTER_OPERATION_EVENTS_MAP.MAKE);
     try {
       let offer = await session.createOffer();
       // Run the SDP through the Pipeline before we set it locally.
