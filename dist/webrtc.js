@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.3.0-beta.1135
+ * Version: 6.3.0-beta.1137
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5859,7 +5859,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.3.0-beta.1135';
+  return '6.3.0-beta.1137';
 }
 
 /***/ }),
@@ -28479,7 +28479,15 @@ function getAvailableCodecs(params, deferred) {
 }
 
 function availableCodecsRetrieved(params) {
-  return callActionHelper(actionTypes.AVAILABLE_CODECS_RETRIEVED, undefined, params);
+  const action = {
+    type: actionTypes.AVAILABLE_CODECS_RETRIEVED,
+    payload: (0, _extends3.default)({}, params)
+  };
+
+  if (params.error) {
+    action.error = true;
+  }
+  return action;
 }
 
 /*
@@ -60533,6 +60541,54 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
+ * Configuration options for the call feature.
+ * @public
+ * @name config.call
+ * @memberof config
+ * @instance
+ * @param {Object} call The call configuration object.
+ * @param {call.RTCPeerConnectionConfig} [call.defaultPeerConfig] A key-value dictionary that corresponds
+ *    to the available RTCPeerConfiguration which is normally passed when creating an RTCPeerConnection.
+ *    See {@link https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters RTCPeerConnection's configuration parameters} for more information.
+ *    This is the recommended way of setting ICE servers and other RTCPeerConnection-related configuration.
+ * @param {number} [call.iceCollectionIdealTimeout=1000] The amount of time to wait for an ideal candidate in milliseconds.
+ *    The default is 1000ms. An ideal list of candidates is a complete list of candidates considering the RTCPeerConnection configuration.
+ *    Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and
+ *    any timeouts must be handled by the custom function.
+ * @param {number} [call.iceCollectionMaxTimeout=3000] The maximum amount of time to wait for ICE collection in milliseconds.
+ *    The default is 3000ms. After this time has been reached, the call will proceed with the currently gathered candidates.
+ *    Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and
+ *    any timeouts must be handled by the custom function.
+ * @param {Function} [call.iceCollectionCheckFunction] Override the default IceCollectionCheckFunction to manually decide when
+ *    to proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing
+ *    the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return
+ *    a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}
+ *    object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for
+ *    more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.
+ * @param {boolean} [call.serverTurnCredentials=true] Whether server-provided TURN credentials should be used.
+ * @param {Array<call.SdpHandlerFunction>} [call.sdpHandlers] List of SDP handler functions to modify SDP. Advanced usage.
+ * @param {boolean} [call.removeH264Codecs=true] Whether to remove "H264" codec lines from incoming and outgoing SDP messages.
+ * @param {boolean} [call.earlyMedia=false] Whether early media should be supported for calls. Not supported on Firefox.
+ * @param {boolean} [call.resyncOnConnect=false] Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+).
+ * @param {boolean} [call.mediaBrokerOnly=false] Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode.
+ * @param {boolean} [call.removeBundling=false] Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages.
+ * @param {string} [call.ringingFeedbackMode='auto'] The mode for sending ringing feedback to the Caller ('auto', 'manual').
+ *    By default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application
+ *    must initiate the feedback being sent. See the `call.sendRingingFeedback` API for more info.
+ * @param {number} [call.callAuditTimer=25000] Time interval, in milliseconds between call audits.
+ * @param {number} [call.mediaConnectionRetryDelay=3000] Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection.
+ * @param {boolean} [call.normalizeDestination=true] Specifies whether or not SIP address normalization will be applied.
+ */
+
+/**
+ * @private
+ * @name config.call
+ * @memberof config
+ * @instance
+ * @param {string} [trickleIceMode='NONE'] The Trickle ICE method to use for calls. Currently, no mode is supported.
+ */
+
+/**
  * Call plugin factory for Link platform.
  * @method linkCallFactory
  */
@@ -62997,7 +63053,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 // Call plugin.
 function createAPI(container) {
-  const { context, CallManager, CallReporter, emitEvent, logManager, API_LOG_TAG } = container;
+  const { context, CallManager, Callstack, CallReporter, emitEvent, logManager, API_LOG_TAG } = container;
   const log = logManager.getLogger('CALL');
 
   /**
@@ -63322,7 +63378,7 @@ function createAPI(container) {
     context.dispatch(_actions.callActions.getAvailableCodecs({ kind }, { promise: {} }));
     let codecs;
     try {
-      codecs = await CallManager.getAvailableCodecs(kind);
+      codecs = await Callstack.operations.getAvailableCodecs(kind);
 
       // Final action dispatched, for backwards compatibility
       context.dispatch(_actions.callActions.availableCodecsRetrieved({
