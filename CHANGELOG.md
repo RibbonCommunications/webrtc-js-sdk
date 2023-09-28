@@ -13,6 +13,7 @@ Ribbon WebRTC SDK change log.
 
 - Fixed an issue where we were incorrectly setting the call operation to `MAKE` instead of `ANSWER` for call metrics `TIME_TO_COLLECT_ICE_CANDIDATES` and `TIME_TO_RELAY_CANDIDATES` when answering a slow start call. `KJS-1737`
 - Fixed an issue with invoking `call.getAvailableCodecs` API after a call has been initiated. `KJS-1735`
+- Fixed a Call issue where following a 'send ringing feedback' operation the `previous` property of the `call:stateChange` event was incorrect. `KJS-1768`
 
 ### Removed
 

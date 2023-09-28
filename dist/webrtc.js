@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.3.0-beta.1139
+ * Version: 6.3.0-beta.1140
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -5858,7 +5858,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.3.0-beta.1139';
+  return '6.3.0-beta.1140';
 }
 
 /***/ }),
@@ -63121,6 +63121,8 @@ function createAPI(container) {
 
     // Dispatch this action for backwards compatibility
     context.dispatch(_actions.callActions.sendRingingFeedback(callId));
+    // Get the call state now for the call state change event previous state
+    const call = (0, _selectors.getCallById)(context.getState(), callId);
 
     let error;
     try {
@@ -63131,7 +63133,6 @@ function createAPI(container) {
 
     context.dispatch(_actions.callActions.sendRingingFeedbackFinish(callId, { error }));
 
-    const call = (0, _selectors.getCallById)(context.getState(), callId);
     emitEvent(eventTypes.CALL_STATE_CHANGE, {
       callId,
       previous: {
