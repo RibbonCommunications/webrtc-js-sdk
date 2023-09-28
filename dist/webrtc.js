@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.3.0-beta.1140
+ * Version: 6.3.0-beta.1141
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1767,74 +1767,6 @@ createSymbol('LOCATION');
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(16);
-var core = __webpack_require__(8);
-var ctx = __webpack_require__(33);
-var hide = __webpack_require__(34);
-var has = __webpack_require__(35);
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && has(exports, key)) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -2190,6 +2122,74 @@ const MEDIA_CONNECTION_CHANGE = exports.MEDIA_CONNECTION_CHANGE = 'call:mediaCon
  * })
  */
 const MEDIA_RESTART = exports.MEDIA_RESTART = 'call:mediaRestart';
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__(16);
+var core = __webpack_require__(8);
+var ctx = __webpack_require__(33);
+var hide = __webpack_require__(34);
+var has = __webpack_require__(35);
+var PROTOTYPE = 'prototype';
+
+var $export = function (type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var IS_WRAP = type & $export.W;
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE];
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
+  var key, own, out;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    if (own && has(exports, key)) continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? (function (C) {
+      var F = function (a, b, c) {
+        if (this instanceof C) {
+          switch (arguments.length) {
+            case 0: return new C();
+            case 1: return new C(a);
+            case 2: return new C(a, b);
+          } return new C(a, b, c);
+        } return C.apply(this, arguments);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+    // make static versions for prototype methods
+    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+    if (IS_PROTO) {
+      (exports.virtual || (exports.virtual = {}))[key] = out;
+      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
+    }
+  }
+};
+// type bitmap
+$export.F = 1;   // forced
+$export.G = 2;   // global
+$export.S = 4;   // static
+$export.P = 8;   // proto
+$export.B = 16;  // bind
+$export.W = 32;  // wrap
+$export.U = 64;  // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
 
 /***/ }),
 /* 16 */
@@ -5237,7 +5237,7 @@ var _selectors = __webpack_require__(3);
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -5858,7 +5858,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.3.0-beta.1140';
+  return '6.3.0-beta.1141';
 }
 
 /***/ }),
@@ -6947,7 +6947,7 @@ exports.f = Object.getOwnPropertySymbols;
 "use strict";
 
 var LIBRARY = __webpack_require__(51);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var redefine = __webpack_require__(113);
 var hide = __webpack_require__(34);
 var Iterators = __webpack_require__(53);
@@ -7855,7 +7855,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var core = __webpack_require__(8);
 var fails = __webpack_require__(37);
 module.exports = function (KEY, exec) {
@@ -10383,7 +10383,7 @@ module.exports = {
 "use strict";
 
 var global = __webpack_require__(16);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var meta = __webpack_require__(65);
 var fails = __webpack_require__(37);
 var hide = __webpack_require__(34);
@@ -10464,7 +10464,7 @@ module.exports = function (NAME) {
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { of: function of() {
@@ -10483,7 +10483,7 @@ module.exports = function (COLLECTION) {
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var aFunction = __webpack_require__(49);
 var ctx = __webpack_require__(33);
 var forOf = __webpack_require__(55);
@@ -11739,7 +11739,7 @@ module.exports = __webpack_require__(8).Object.assign;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(155) });
 
@@ -13072,7 +13072,7 @@ var LIBRARY = __webpack_require__(51);
 var global = __webpack_require__(16);
 var ctx = __webpack_require__(33);
 var classof = __webpack_require__(86);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var isObject = __webpack_require__(20);
 var aFunction = __webpack_require__(49);
 var anInstance = __webpack_require__(87);
@@ -13469,7 +13469,7 @@ module.exports = navigator && navigator.userAgent || '';
 "use strict";
 // https://github.com/tc39/proposal-promise-finally
 
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var core = __webpack_require__(8);
 var global = __webpack_require__(16);
 var speciesConstructor = __webpack_require__(119);
@@ -13496,7 +13496,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 "use strict";
 
 // https://github.com/tc39/proposal-promise-try
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var newPromiseCapability = __webpack_require__(88);
 var perform = __webpack_require__(121);
 
@@ -13833,7 +13833,7 @@ module.exports = __webpack_require__(8).Object.values;
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var $values = __webpack_require__(137)(false);
 
 $export($export.S, 'Object', {
@@ -13870,7 +13870,7 @@ module.exports = __webpack_require__(8).Symbol;
 var global = __webpack_require__(16);
 var has = __webpack_require__(35);
 var DESCRIPTORS = __webpack_require__(23);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var redefine = __webpack_require__(113);
 var META = __webpack_require__(65).KEY;
 var $fails = __webpack_require__(37);
@@ -14827,7 +14827,7 @@ module.exports = __webpack_require__(8).Array.from;
 "use strict";
 
 var ctx = __webpack_require__(33);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var toObject = __webpack_require__(41);
 var call = __webpack_require__(116);
 var isArrayIter = __webpack_require__(117);
@@ -16257,7 +16257,7 @@ module.exports = __webpack_require__(141)(MAP, function (get) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(142)('Map') });
 
@@ -16301,7 +16301,7 @@ var dP = __webpack_require__(22);
 var gOPD = __webpack_require__(128);
 var getPrototypeOf = __webpack_require__(99);
 var has = __webpack_require__(35);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var createDesc = __webpack_require__(42);
 var anObject = __webpack_require__(28);
 var isObject = __webpack_require__(20);
@@ -21399,7 +21399,7 @@ module.exports = function create(P, D) {
 /* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(64) });
 
@@ -27781,7 +27781,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getAssociatedCallEvent;
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _selectors = __webpack_require__(3);
 
@@ -28663,7 +28663,7 @@ exports.default = createMakeResponse;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -29553,7 +29553,7 @@ var _constants = __webpack_require__(6);
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _selectors = __webpack_require__(3);
 
@@ -36067,7 +36067,7 @@ module.exports = __webpack_require__(141)(SET, function (get) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(142)('Set') });
 
@@ -39299,7 +39299,7 @@ module.exports = __webpack_require__(8).Object.entries;
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var $entries = __webpack_require__(137)(true);
 
 $export($export.S, 'Object', {
@@ -61263,7 +61263,7 @@ var _actions = __webpack_require__(12);
 
 var _selectors = __webpack_require__(3);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -61947,7 +61947,7 @@ exports.default = createAPI;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -62720,7 +62720,7 @@ var _actions = __webpack_require__(12);
 
 var _selectors = __webpack_require__(3);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -63033,7 +63033,7 @@ var _selectors = __webpack_require__(3);
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -67532,7 +67532,7 @@ var _actions = __webpack_require__(12);
 
 var _call = __webpack_require__(47);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -67886,7 +67886,7 @@ exports.default = createMakeOperation;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _selectors = __webpack_require__(3);
 
@@ -68075,7 +68075,7 @@ var _actions = __webpack_require__(12);
 
 var _selectors = __webpack_require__(3);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _constants = __webpack_require__(10);
 
@@ -68607,7 +68607,7 @@ exports.default = answerOperation;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _selectors = __webpack_require__(3);
 
@@ -69020,7 +69020,7 @@ exports.default = createSlowAnswerResponse;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -69343,7 +69343,7 @@ var _errors = __webpack_require__(4);
 
 var _errors2 = _interopRequireDefault(_errors);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -69444,7 +69444,7 @@ var _constants = __webpack_require__(10);
 
 var _constants2 = __webpack_require__(6);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _call = __webpack_require__(47);
 
@@ -70358,7 +70358,7 @@ exports.default = createAddMediaResponse;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -70762,7 +70762,7 @@ exports.default = createHoldResponse;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -71168,7 +71168,7 @@ exports.default = createUnholdResponse;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -71407,7 +71407,7 @@ exports.default = removeMediaOperation;
 
 var _constants = __webpack_require__(6);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _actions = __webpack_require__(12);
 
@@ -71903,7 +71903,7 @@ exports.default = createRemoveMediaResponse;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -72380,7 +72380,7 @@ var _actions = __webpack_require__(12);
 
 var _selectors = __webpack_require__(3);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -72948,7 +72948,7 @@ var _state = __webpack_require__(108);
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -73582,7 +73582,7 @@ var _selectors = __webpack_require__(3);
 
 var _constants = __webpack_require__(6);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -73773,7 +73773,7 @@ var _selectors = __webpack_require__(3);
 
 var _constants = __webpack_require__(6);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -73957,6 +73957,12 @@ var _constants = __webpack_require__(6);
 
 var _constants2 = __webpack_require__(21);
 
+var _eventTypes = __webpack_require__(14);
+
+var _errors = __webpack_require__(4);
+
+var _errors2 = _interopRequireDefault(_errors);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -73965,7 +73971,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 // Call plugin.
 function callIceCollectionCheckOperation(container) {
-  const { CallReporter, context, logManager, WebRTC } = container;
+  const { CallReporter, context, emitEvent, logManager, WebRTC } = container;
 
   /**
    * Add the necessary information to the ice collection info object and call the
@@ -74052,15 +74058,30 @@ function callIceCollectionCheckOperation(container) {
     // If the result is neither 'StartCall' or 'Wait', then it is either an error or an undefined result type.
     //   In either case, the session will cleanup the WebRTC portions of the call so just cleanup the state here.
     if (result.type !== _constants.ICE_COLLECTION_RESULT_TYPES.START_CALL && result.type !== _constants.ICE_COLLECTION_RESULT_TYPES.WAIT) {
+      const error = new _errors2.default({
+        message: result.error && result.error.message || result.error || `Unexpected result type returned from ice collection check function: ${result.type}`
+      });
       context.dispatch(_actions.callActions.endCallFinish(currentCall.id, {
         isLocal: true,
-        error: result.error || true
+        error
       }));
+
+      emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+        callId: currentCall.id,
+        previous: {
+          state: currentCall.state,
+          localHold: currentCall.localHold,
+          remoteHold: currentCall.remoteHold
+        },
+        error
+      });
     }
   }
 
   return callIceCollectionCheck;
 }
+
+// Other plugins.
 
 /***/ }),
 /* 535 */
@@ -74339,7 +74360,7 @@ var _sessions = __webpack_require__(146);
 
 var sessionActions = _interopRequireWildcard(_sessions);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -74483,7 +74504,7 @@ var _constants = __webpack_require__(6);
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -75107,7 +75128,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = callCancelOperation;
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _constants = __webpack_require__(6);
 
@@ -75209,7 +75230,7 @@ exports.default = callStatusRingingOperation;
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _selectors = __webpack_require__(3);
 
@@ -75341,7 +75362,7 @@ var _constants2 = __webpack_require__(6);
 
 var _selectors = __webpack_require__(3);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -75501,7 +75522,7 @@ var _constants = __webpack_require__(6);
 
 var _constants2 = __webpack_require__(10);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _call = __webpack_require__(47);
 
@@ -75714,7 +75735,7 @@ var _selectors = __webpack_require__(3);
 
 var _remoteTracks = __webpack_require__(95);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var _constants = __webpack_require__(6);
 
@@ -79086,7 +79107,7 @@ var _constants2 = __webpack_require__(6);
 
 var _actions = __webpack_require__(12);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 
@@ -79639,7 +79660,7 @@ var _actionTypes = __webpack_require__(57);
 
 var actionTypes = _interopRequireWildcard(_actionTypes);
 
-var _eventTypes = __webpack_require__(15);
+var _eventTypes = __webpack_require__(14);
 
 var eventTypes = _interopRequireWildcard(_eventTypes);
 

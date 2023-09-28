@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.3.0-beta.1140
+ * Version: 6.3.0-beta.1141
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -209,7 +209,8 @@ module.exports = { "default": __webpack_require__(163), __esModule: true };
 /* 11 */,
 /* 12 */,
 /* 13 */,
-/* 14 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(16);
@@ -277,7 +278,6 @@ module.exports = $export;
 
 
 /***/ }),
-/* 15 */,
 /* 16 */
 /***/ (function(module, exports) {
 
@@ -1836,7 +1836,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.3.0-beta.1140';
+  return '6.3.0-beta.1141';
 }
 
 /***/ }),
@@ -2532,7 +2532,7 @@ exports.f = Object.getOwnPropertySymbols;
 "use strict";
 
 var LIBRARY = __webpack_require__(51);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var redefine = __webpack_require__(113);
 var hide = __webpack_require__(34);
 var Iterators = __webpack_require__(53);
@@ -3193,7 +3193,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var core = __webpack_require__(8);
 var fails = __webpack_require__(37);
 module.exports = function (KEY, exec) {
@@ -5275,7 +5275,7 @@ module.exports = {
 "use strict";
 
 var global = __webpack_require__(16);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var meta = __webpack_require__(65);
 var fails = __webpack_require__(37);
 var hide = __webpack_require__(34);
@@ -5356,7 +5356,7 @@ module.exports = function (NAME) {
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { of: function of() {
@@ -5375,7 +5375,7 @@ module.exports = function (COLLECTION) {
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var aFunction = __webpack_require__(49);
 var ctx = __webpack_require__(33);
 var forOf = __webpack_require__(55);
@@ -5573,7 +5573,7 @@ module.exports = __webpack_require__(8).Object.assign;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(155) });
 
@@ -6897,7 +6897,7 @@ var LIBRARY = __webpack_require__(51);
 var global = __webpack_require__(16);
 var ctx = __webpack_require__(33);
 var classof = __webpack_require__(86);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var isObject = __webpack_require__(20);
 var aFunction = __webpack_require__(49);
 var anInstance = __webpack_require__(87);
@@ -7294,7 +7294,7 @@ module.exports = navigator && navigator.userAgent || '';
 "use strict";
 // https://github.com/tc39/proposal-promise-finally
 
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var core = __webpack_require__(8);
 var global = __webpack_require__(16);
 var speciesConstructor = __webpack_require__(119);
@@ -7321,7 +7321,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 "use strict";
 
 // https://github.com/tc39/proposal-promise-try
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var newPromiseCapability = __webpack_require__(88);
 var perform = __webpack_require__(121);
 
@@ -7658,7 +7658,7 @@ module.exports = __webpack_require__(8).Object.values;
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var $values = __webpack_require__(137)(false);
 
 $export($export.S, 'Object', {
@@ -7695,7 +7695,7 @@ module.exports = __webpack_require__(8).Symbol;
 var global = __webpack_require__(16);
 var has = __webpack_require__(35);
 var DESCRIPTORS = __webpack_require__(23);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var redefine = __webpack_require__(113);
 var META = __webpack_require__(65).KEY;
 var $fails = __webpack_require__(37);
@@ -8534,7 +8534,7 @@ module.exports = __webpack_require__(8).Array.from;
 "use strict";
 
 var ctx = __webpack_require__(33);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var toObject = __webpack_require__(41);
 var call = __webpack_require__(116);
 var isArrayIter = __webpack_require__(117);
@@ -9763,7 +9763,7 @@ module.exports = __webpack_require__(141)(MAP, function (get) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(142)('Map') });
 
@@ -9807,7 +9807,7 @@ var dP = __webpack_require__(22);
 var gOPD = __webpack_require__(128);
 var getPrototypeOf = __webpack_require__(99);
 var has = __webpack_require__(35);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var createDesc = __webpack_require__(42);
 var anObject = __webpack_require__(28);
 var isObject = __webpack_require__(20);
@@ -14905,7 +14905,7 @@ module.exports = function create(P, D) {
 /* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(64) });
 
