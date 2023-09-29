@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.2.0
+ * Version: 6.3.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -107,7 +107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 695);
+/******/ 	return __webpack_require__(__webpack_require__.s = 696);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -199,17 +199,18 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
 /***/ }),
-/* 9 */,
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(163), __esModule: true };
 
 /***/ }),
+/* 10 */,
 /* 11 */,
 /* 12 */,
 /* 13 */,
-/* 14 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(16);
@@ -277,7 +278,6 @@ module.exports = $export;
 
 
 /***/ }),
-/* 15 */,
 /* 16 */
 /***/ (function(module, exports) {
 
@@ -293,7 +293,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(81)('wks');
+var store = __webpack_require__(82)('wks');
 var uid = __webpack_require__(63);
 var Symbol = __webpack_require__(16).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
@@ -344,7 +344,7 @@ module.exports = function (it) {
 
 var anObject = __webpack_require__(28);
 var IE8_DOM_DEFINE = __webpack_require__(111);
-var toPrimitive = __webpack_require__(76);
+var toPrimitive = __webpack_require__(77);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(23) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -983,8 +983,8 @@ module.exports = function (exec) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(77);
-var defined = __webpack_require__(78);
+var IObject = __webpack_require__(78);
+var defined = __webpack_require__(79);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -1665,7 +1665,7 @@ function version_version(uuid) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(78);
+var defined = __webpack_require__(79);
 module.exports = function (it) {
   return Object(defined(it));
 };
@@ -1691,7 +1691,7 @@ module.exports = function (bitmap, value) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(112);
-var enumBugKeys = __webpack_require__(82);
+var enumBugKeys = __webpack_require__(83);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -1836,7 +1836,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.2.0';
+  return '6.3.0';
 }
 
 /***/ }),
@@ -2051,7 +2051,7 @@ function initialize() {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(79);
+var toInteger = __webpack_require__(80);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -2076,15 +2076,15 @@ module.exports = function (key) {
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(28);
 var dPs = __webpack_require__(166);
-var enumBugKeys = __webpack_require__(82);
-var IE_PROTO = __webpack_require__(80)('IE_PROTO');
+var enumBugKeys = __webpack_require__(83);
+var IE_PROTO = __webpack_require__(81)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(75)('iframe');
+  var iframe = __webpack_require__(76)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -2390,7 +2390,7 @@ exports.default = function (obj, keys) {
 var $at = __webpack_require__(164)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(84)(String, 'String', function (iterated) {
+__webpack_require__(85)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -2406,9 +2406,15 @@ __webpack_require__(84)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 73 */,
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(175), __esModule: true };
+
+/***/ }),
 /* 74 */,
-/* 75 */
+/* 75 */,
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(20);
@@ -2421,7 +2427,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -2439,7 +2445,7 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -2451,7 +2457,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -2462,7 +2468,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -2474,10 +2480,10 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(81)('keys');
+var shared = __webpack_require__(82)('keys');
 var uid = __webpack_require__(63);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
@@ -2485,7 +2491,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(8);
@@ -2503,7 +2509,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -2513,20 +2519,20 @@ module.exports = (
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var LIBRARY = __webpack_require__(51);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var redefine = __webpack_require__(113);
 var hide = __webpack_require__(34);
 var Iterators = __webpack_require__(53);
@@ -2596,7 +2602,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
@@ -2625,7 +2631,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name, forbiddenField) {
@@ -2636,7 +2642,7 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2661,7 +2667,7 @@ module.exports.f = function (C) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var hide = __webpack_require__(34);
@@ -2672,12 +2678,6 @@ module.exports = function (target, src, safe) {
   } return target;
 };
 
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(175), __esModule: true };
 
 /***/ }),
 /* 90 */
@@ -3151,7 +3151,7 @@ module.exports = function(module) {
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(35);
 var toObject = __webpack_require__(41);
-var IE_PROTO = __webpack_require__(80)('IE_PROTO');
+var IE_PROTO = __webpack_require__(81)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -3193,7 +3193,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var core = __webpack_require__(8);
 var fails = __webpack_require__(37);
 module.exports = function (KEY, exec) {
@@ -3247,11 +3247,11 @@ exports.convertMedia = convertMedia;
 exports.convertSession = convertSession;
 exports.convertLogger = convertLogger;
 
-var _deviceManager = __webpack_require__(697);
+var _deviceManager = __webpack_require__(698);
 
 var _deviceManager2 = _interopRequireDefault(_deviceManager);
 
-var _mediaManager = __webpack_require__(698);
+var _mediaManager = __webpack_require__(332);
 
 var _mediaManager2 = _interopRequireDefault(_mediaManager);
 
@@ -3427,7 +3427,7 @@ function convertLogger(logger) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(23) && !__webpack_require__(37)(function () {
-  return Object.defineProperty(__webpack_require__(75)('div'), 'a', { get: function () { return 7; } }).a != 7;
+  return Object.defineProperty(__webpack_require__(76)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
@@ -3438,7 +3438,7 @@ module.exports = !__webpack_require__(23) && !__webpack_require__(37)(function (
 var has = __webpack_require__(35);
 var toIObject = __webpack_require__(38);
 var arrayIndexOf = __webpack_require__(156)(false);
-var IE_PROTO = __webpack_require__(80)('IE_PROTO');
+var IE_PROTO = __webpack_require__(81)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -3514,7 +3514,7 @@ module.exports = function (it) {
 /* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(85);
+var classof = __webpack_require__(86);
 var ITERATOR = __webpack_require__(17)('iterator');
 var Iterators = __webpack_require__(53);
 module.exports = __webpack_require__(8).getIteratorMethod = function (it) {
@@ -3546,7 +3546,7 @@ module.exports = function (O, D) {
 var ctx = __webpack_require__(33);
 var invoke = __webpack_require__(170);
 var html = __webpack_require__(114);
-var cel = __webpack_require__(75);
+var cel = __webpack_require__(76);
 var global = __webpack_require__(16);
 var process = global.process;
 var setTask = global.setImmediate;
@@ -3648,7 +3648,7 @@ module.exports = function (exec) {
 
 var anObject = __webpack_require__(28);
 var isObject = __webpack_require__(20);
-var newPromiseCapability = __webpack_require__(87);
+var newPromiseCapability = __webpack_require__(88);
 
 module.exports = function (C, x) {
   anObject(C);
@@ -3733,7 +3733,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(112);
-var hiddenKeys = __webpack_require__(82).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(83).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -3747,7 +3747,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 var pIE = __webpack_require__(52);
 var createDesc = __webpack_require__(42);
 var toIObject = __webpack_require__(38);
-var toPrimitive = __webpack_require__(76);
+var toPrimitive = __webpack_require__(77);
 var has = __webpack_require__(35);
 var IE8_DOM_DEFINE = __webpack_require__(111);
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -4742,7 +4742,7 @@ var _set = __webpack_require__(221);
 
 var _set2 = _interopRequireDefault(_set);
 
-var _keys = __webpack_require__(89);
+var _keys = __webpack_require__(73);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -5125,11 +5125,11 @@ const partialDefaultLogActions = exports.partialDefaultLogActions = {
 
 var dP = __webpack_require__(22).f;
 var create = __webpack_require__(64);
-var redefineAll = __webpack_require__(88);
+var redefineAll = __webpack_require__(89);
 var ctx = __webpack_require__(33);
-var anInstance = __webpack_require__(86);
+var anInstance = __webpack_require__(87);
 var forOf = __webpack_require__(55);
-var $iterDefine = __webpack_require__(84);
+var $iterDefine = __webpack_require__(85);
 var step = __webpack_require__(115);
 var setSpecies = __webpack_require__(123);
 var DESCRIPTORS = __webpack_require__(23);
@@ -5275,13 +5275,13 @@ module.exports = {
 "use strict";
 
 var global = __webpack_require__(16);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var meta = __webpack_require__(65);
 var fails = __webpack_require__(37);
 var hide = __webpack_require__(34);
-var redefineAll = __webpack_require__(88);
+var redefineAll = __webpack_require__(89);
 var forOf = __webpack_require__(55);
-var anInstance = __webpack_require__(86);
+var anInstance = __webpack_require__(87);
 var isObject = __webpack_require__(20);
 var setToStringTag = __webpack_require__(54);
 var dP = __webpack_require__(22).f;
@@ -5339,7 +5339,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var classof = __webpack_require__(85);
+var classof = __webpack_require__(86);
 var from = __webpack_require__(197);
 module.exports = function (NAME) {
   return function toJSON() {
@@ -5356,7 +5356,7 @@ module.exports = function (NAME) {
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { of: function of() {
@@ -5375,7 +5375,7 @@ module.exports = function (COLLECTION) {
 "use strict";
 
 // https://tc39.github.io/proposal-setmap-offrom/
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var aFunction = __webpack_require__(49);
 var ctx = __webpack_require__(33);
 var forOf = __webpack_require__(55);
@@ -5573,7 +5573,7 @@ module.exports = __webpack_require__(8).Object.assign;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(155) });
 
@@ -5587,10 +5587,10 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(155) });
 // 19.1.2.1 Object.assign(target, source, ...)
 var DESCRIPTORS = __webpack_require__(23);
 var getKeys = __webpack_require__(43);
-var gOPS = __webpack_require__(83);
+var gOPS = __webpack_require__(84);
 var pIE = __webpack_require__(52);
 var toObject = __webpack_require__(41);
-var IObject = __webpack_require__(77);
+var IObject = __webpack_require__(78);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -5656,7 +5656,7 @@ module.exports = function (IS_INCLUDES) {
 /* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(79);
+var toInteger = __webpack_require__(80);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -6781,8 +6781,8 @@ module.exports = __webpack_require__(8).Promise;
 /* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(79);
-var defined = __webpack_require__(78);
+var toInteger = __webpack_require__(80);
+var defined = __webpack_require__(79);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -6854,7 +6854,7 @@ var toIObject = __webpack_require__(38);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(84)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(85)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -6896,16 +6896,16 @@ module.exports = function () { /* empty */ };
 var LIBRARY = __webpack_require__(51);
 var global = __webpack_require__(16);
 var ctx = __webpack_require__(33);
-var classof = __webpack_require__(85);
-var $export = __webpack_require__(14);
+var classof = __webpack_require__(86);
+var $export = __webpack_require__(15);
 var isObject = __webpack_require__(20);
 var aFunction = __webpack_require__(49);
-var anInstance = __webpack_require__(86);
+var anInstance = __webpack_require__(87);
 var forOf = __webpack_require__(55);
 var speciesConstructor = __webpack_require__(119);
 var task = __webpack_require__(120).set;
 var microtask = __webpack_require__(171)();
-var newPromiseCapabilityModule = __webpack_require__(87);
+var newPromiseCapabilityModule = __webpack_require__(88);
 var perform = __webpack_require__(121);
 var userAgent = __webpack_require__(172);
 var promiseResolve = __webpack_require__(122);
@@ -7083,7 +7083,7 @@ if (!USE_NATIVE) {
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(88)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(89)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected) {
       var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -7294,7 +7294,7 @@ module.exports = navigator && navigator.userAgent || '';
 "use strict";
 // https://github.com/tc39/proposal-promise-finally
 
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var core = __webpack_require__(8);
 var global = __webpack_require__(16);
 var speciesConstructor = __webpack_require__(119);
@@ -7321,8 +7321,8 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 "use strict";
 
 // https://github.com/tc39/proposal-promise-try
-var $export = __webpack_require__(14);
-var newPromiseCapability = __webpack_require__(87);
+var $export = __webpack_require__(15);
+var newPromiseCapability = __webpack_require__(88);
 var perform = __webpack_require__(121);
 
 $export($export.S, 'Promise', { 'try': function (callbackfn) {
@@ -7658,7 +7658,7 @@ module.exports = __webpack_require__(8).Object.values;
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var $values = __webpack_require__(137)(false);
 
 $export($export.S, 'Object', {
@@ -7695,11 +7695,11 @@ module.exports = __webpack_require__(8).Symbol;
 var global = __webpack_require__(16);
 var has = __webpack_require__(35);
 var DESCRIPTORS = __webpack_require__(23);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var redefine = __webpack_require__(113);
 var META = __webpack_require__(65).KEY;
 var $fails = __webpack_require__(37);
-var shared = __webpack_require__(81);
+var shared = __webpack_require__(82);
 var setToStringTag = __webpack_require__(54);
 var uid = __webpack_require__(63);
 var wks = __webpack_require__(17);
@@ -7711,12 +7711,12 @@ var anObject = __webpack_require__(28);
 var isObject = __webpack_require__(20);
 var toObject = __webpack_require__(41);
 var toIObject = __webpack_require__(38);
-var toPrimitive = __webpack_require__(76);
+var toPrimitive = __webpack_require__(77);
 var createDesc = __webpack_require__(42);
 var _create = __webpack_require__(64);
 var gOPNExt = __webpack_require__(184);
 var $GOPD = __webpack_require__(128);
-var $GOPS = __webpack_require__(83);
+var $GOPS = __webpack_require__(84);
 var $DP = __webpack_require__(22);
 var $keys = __webpack_require__(43);
 var gOPD = $GOPD.f;
@@ -7944,7 +7944,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 // all enumerable object keys, includes symbols
 var getKeys = __webpack_require__(43);
-var gOPS = __webpack_require__(83);
+var gOPS = __webpack_require__(84);
 var pIE = __webpack_require__(52);
 module.exports = function (it) {
   var result = getKeys(it);
@@ -8433,7 +8433,7 @@ module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 // 5 -> Array#find
 // 6 -> Array#findIndex
 var ctx = __webpack_require__(33);
-var IObject = __webpack_require__(77);
+var IObject = __webpack_require__(78);
 var toObject = __webpack_require__(41);
 var toLength = __webpack_require__(62);
 var asc = __webpack_require__(195);
@@ -8534,7 +8534,7 @@ module.exports = __webpack_require__(8).Array.from;
 "use strict";
 
 var ctx = __webpack_require__(33);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var toObject = __webpack_require__(41);
 var call = __webpack_require__(116);
 var isArrayIter = __webpack_require__(117);
@@ -9763,7 +9763,7 @@ module.exports = __webpack_require__(141)(MAP, function (get) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(142)('Map') });
 
@@ -9807,7 +9807,7 @@ var dP = __webpack_require__(22);
 var gOPD = __webpack_require__(128);
 var getPrototypeOf = __webpack_require__(99);
 var has = __webpack_require__(35);
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 var createDesc = __webpack_require__(42);
 var anObject = __webpack_require__(28);
 var isObject = __webpack_require__(20);
@@ -10251,7 +10251,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -10351,7 +10351,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -10453,7 +10453,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -10583,7 +10583,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -10668,7 +10668,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -10817,7 +10817,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -10928,7 +10928,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -14905,7 +14905,7 @@ module.exports = function create(P, D) {
 /* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(14);
+var $export = __webpack_require__(15);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(64) });
 
@@ -14925,7 +14925,7 @@ var _from = __webpack_require__(44);
 
 var _from2 = _interopRequireDefault(_from);
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -15372,6 +15372,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _promise = __webpack_require__(9);
+
+var _promise2 = _interopRequireDefault(_promise);
+
 var _from = __webpack_require__(44);
 
 var _from2 = _interopRequireDefault(_from);
@@ -15451,6 +15455,27 @@ function SessionManager(managers) {
     return (0, _from2.default)(sessions.values());
   }
 
+  /**
+   * Get an existing Session object, and add media to it before returning.
+   *    This method is an optimization. It combines `sessionManager.get` and
+   *    `session.addWithMedia` into a single method instead of two.
+   * @method getWithMedia
+   * @return {Promise} Resolves with the Session and Media objects.
+   */
+  function getWithMedia(sessionId, mediaConstrants) {
+    const session = sessions.get(sessionId);
+    if (!session) {
+      log.debug(`No session found with ID: ${sessionId}.`);
+      return;
+    }
+
+    return new _promise2.default((resolve, reject) => {
+      session.addNewMedia(mediaConstrants).then(medias => {
+        resolve({ session, medias });
+      }).catch(reject);
+    });
+  }
+
   function on(...args) {
     return emitter.on(...args);
   }
@@ -15470,6 +15495,7 @@ function SessionManager(managers) {
     create,
     get,
     getAll,
+    getWithMedia,
     on,
     once,
     off
@@ -15491,7 +15517,7 @@ var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -16869,7 +16895,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.WEBRTC_DEVICE_KINDS = undefined;
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -17432,7 +17458,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(10);
+var _promise = __webpack_require__(9);
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -17683,7 +17709,77 @@ function replyChannel(channel) {
 /* 329 */,
 /* 330 */,
 /* 331 */,
-/* 332 */,
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = __webpack_require__(1);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+exports.stringifyError = stringifyError;
+
+var _index = __webpack_require__(109);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function stringifyError(err) {
+  // Convert the Error into a format that can be stringified for the channel.
+  //    This will need to be reconstructed on the other side.
+  let error = { name: err.name, message: err.message };
+  if (err.name === 'OverconstrainedError' && err.constraint) {
+    error = (0, _extends3.default)({}, error, { constraint: err.constraint });
+  }
+  return { error };
+}
+
+/**
+ * Media Manager "converter".
+ * Receives a webRTC command intended for the Media Manager, performs the webRTC
+ *    operation and returns/resolves a proxy response.
+ * @method mediaManager
+ * @param {Object} webRTC The local webRTC stack.
+ * @param {Object} command A webRTC command.
+ * @return {Promise} Resolves when the webRTC operation has completed.
+ */
+
+exports.default = async function mediaManager(webRTC, command) {
+  const { operation, params } = command;
+  const manager = webRTC.managers.media;
+
+  // Handle different APIs differently, depending on what they return.
+  if (operation === 'get') {
+    const media = manager.get(...params);
+    return (0, _index.convertMedia)(media);
+  } else if (operation === 'createLocal') {
+    try {
+      const media = await manager.createLocal(...params);
+      return (0, _index.convertMedia)(media);
+    } catch (err) {
+      console.debug('Failed to create local media: ', err);
+      return stringifyError(err);
+    }
+  } else if (operation === 'createLocalScreen') {
+    try {
+      const media = await manager.createLocalScreen(...params);
+      return (0, _index.convertMedia)(media);
+    } catch (err) {
+      console.debug('Failed to create local screen: ', err);
+      return stringifyError(err);
+    }
+  } else {
+    // General case: Don't convert the return.
+    return manager[operation](...params);
+  }
+};
+
+/***/ }),
 /* 333 */,
 /* 334 */,
 /* 335 */,
@@ -18046,7 +18142,8 @@ function replyChannel(channel) {
 /* 692 */,
 /* 693 */,
 /* 694 */,
-/* 695 */
+/* 695 */,
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18056,7 +18153,7 @@ var _objectWithoutProperties2 = __webpack_require__(70);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _clientProxy = __webpack_require__(696);
+var _clientProxy = __webpack_require__(697);
 
 var _clientProxy2 = _interopRequireDefault(_clientProxy);
 
@@ -18170,7 +18267,7 @@ remoteClient.create = remoteClient;
 module.exports = remoteClient;
 
 /***/ }),
-/* 696 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18406,7 +18503,7 @@ function isWebrtcCommand(data) {
 }
 
 /***/ }),
-/* 697 */
+/* 698 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18455,75 +18552,6 @@ exports.default = async function deviceManager(webRTC, command) {
 };
 
 /***/ }),
-/* 698 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = __webpack_require__(1);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _index = __webpack_require__(109);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function stringifyError(err) {
-  // Convert the Error into a format that can be stringified for the channel.
-  //    This will need to be reconstructed on the other side.
-  let error = { name: err.name, message: err.message };
-  if (err.name === 'OverconstrainedError' && err.constraint) {
-    error = (0, _extends3.default)({}, error, { constraint: err.constraint });
-  }
-  return { error };
-}
-
-/**
- * Media Manager "converter".
- * Receives a webRTC command intended for the Media Manager, performs the webRTC
- *    operation and returns/resolves a proxy response.
- * @method mediaManager
- * @param {Object} webRTC The local webRTC stack.
- * @param {Object} command A webRTC command.
- * @return {Promise} Resolves when the webRTC operation has completed.
- */
-
-exports.default = async function mediaManager(webRTC, command) {
-  const { operation, params } = command;
-  const manager = webRTC.managers.media;
-
-  // Handle different APIs differently, depending on what they return.
-  if (operation === 'get') {
-    const media = manager.get(...params);
-    return (0, _index.convertMedia)(media);
-  } else if (operation === 'createLocal') {
-    try {
-      const media = await manager.createLocal(...params);
-      return (0, _index.convertMedia)(media);
-    } catch (err) {
-      console.debug('Failed to create local media: ', err);
-      return stringifyError(err);
-    }
-  } else if (operation === 'createLocalScreen') {
-    try {
-      const media = await manager.createLocalScreen(...params);
-      return (0, _index.convertMedia)(media);
-    } catch (err) {
-      console.debug('Failed to create local screen: ', err);
-      return stringifyError(err);
-    }
-  } else {
-    // General case: Don't convert the return.
-    return manager[operation](...params);
-  }
-};
-
-/***/ }),
 /* 699 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18535,6 +18563,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _index = __webpack_require__(109);
+
+var _mediaManager = __webpack_require__(332);
 
 /**
  * Session Manager "converter".
@@ -18561,6 +18591,18 @@ exports.default = async function sessionManager(webRTC, command) {
   } else if (operation === 'getAll') {
     const sessions = manager.getAll(...params);
     return sessions.map(_index.convertSession);
+  } else if (operation === 'getWithMedia') {
+    try {
+      const objs = await manager.getWithMedia(...params);
+      return {
+        type: 'multiple',
+        session: (0, _index.convertSession)(objs.session),
+        medias: objs.medias.map(_index.convertMedia)
+      };
+    } catch (err) {
+      console.debug('Failed to get and add media to session: ', err);
+      return (0, _mediaManager.stringifyError)(err);
+    }
   } else {
     // General case: Don't convert the return.
     return manager[operation](...params);
