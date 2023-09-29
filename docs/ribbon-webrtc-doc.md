@@ -2890,8 +2890,8 @@ Returns **[Array][19]<[conversation.Conversation][100]>** An array of conversati
 
 ### Conversation
 
-A Conversation object represents a conversation between either two users, or a
-user and a group. A Conversation can create messages via the conversation's
+A Conversation object represents a conversation between two users.
+A Conversation can create messages via the conversation's
 [createMessage()][101] function.
 
 Type: [Object][7]
@@ -2968,16 +2968,6 @@ Subscribe to this conversations messages array.
 
 Returns **[Function][15]** The unsubscribe function.
 
-#### fetchMessages
-
-Allows the user to fetch messages associated with a specific conversation from the server.
-When the operation is complete, a NEW_MESSAGE event will be emitted.
-Messages can then be retrieved using getMessages.
-
-##### Parameters
-
-*   `amount` **[number][12]** An amount of messages to fetch. (optional, default `50`)
-
 ### Message
 
 A Message object is a means by which a sender can deliver information to a recipient.
@@ -2986,7 +2976,7 @@ Creating and sending a message:
 
 A message object can be obtained through the [Conversation.createMessage][101] API on an existing conversation.
 
-Messages have Parts which represent pieces of a message, such as a text part, a json object part or a file part.
+Messages have Parts which represent pieces of a message. Currently, only a 'text' part is suported.
 Once all the desired parts have been added to the message using the [Message.addPart][103] function,
 the message can then be sent using the [Message.send][104] function.
 
@@ -3007,7 +2997,7 @@ Type: [Object][7]
 *   `timestamp` **[number][12]** A Unix timestamp in seconds marking the time when the message was created by sender.
 *   `parts` **[Array][19]\<conversation.Part>** An array of Part Objects.
 *   `sender` **[string][8]** The primary contact address of the sender.
-*   `destination` **[Array][19]<[string][8]>** An array of primary contact addresses associated with various destinations to which the message is meant to be delivered.
+*   `destination` **[Array][19]<[string][8]>** An array of primary contact addresses associated with various destinations to which the message is meant to be delivered. Currently, only one destination is supported.
 *   `messageId` **[string][8]** The unique id of the message. The message object (stored in sender's state) has a different id
     than the one associated with the message object stored in recipient's state.
 *   `type` **[string][8]** The type of message that was sent. See [conversation.chatTypes][107] for valid types.
@@ -3030,7 +3020,7 @@ A change has occurred in the conversation list.
 *   `params` **[Array][19]** An array of objects containing information about the conversations that have changed
 
     *   `params.destination` **[Array][19]** The destination for messages created in this conversation.
-    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms" or "group"
+    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms".
 
 ### messages:change
 
@@ -3043,7 +3033,7 @@ as part of the event argument.
 *   `params` **[Object][7]** 
 
     *   `params.destination` **[string][8]** The destination for messages created in this conversation.
-    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms" or "group"
+    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms".
     *   `params.messageId` **[string][8]?** The ID of the message affected.
     *   `params.sender` **[string][8]?** The username of the sender of the message which caused the `messages:change` event to be triggered.
 
