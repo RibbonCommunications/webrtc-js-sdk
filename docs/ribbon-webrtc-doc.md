@@ -121,7 +121,7 @@ Configuration options for the call feature.
         Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and
         any timeouts must be handled by the custom function. (optional, default `3000`)
     *   `call.iceCollectionCheckFunction` **[Function][15]?** Override the default IceCollectionCheckFunction to manually decide when
-        to proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing
+        to proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing
         the ice collection info. See [IceCollectionInfo][16] for more details. The function must return
         a results object with details on how to proceed with the ICE collection check or operatiaon. See [IceCollectionResult][17]
         object for details on the format of the return object. See [IceCollectionCheckFunction][18] for

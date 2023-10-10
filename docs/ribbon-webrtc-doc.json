@@ -1516,7 +1516,7 @@
             },
             {
               "title": "param",
-              "description": "Override the default IceCollectionCheckFunction to manually decide when\n   to proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing\n   the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return\n   a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}\n   object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for\n   more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.",
+              "description": "Override the default IceCollectionCheckFunction to manually decide when\n   to proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\n   the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return\n   a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}\n   object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for\n   more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.",
               "lineNumber": 19,
               "type": {
                 "type": "OptionalType",
@@ -1858,7 +1858,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "Override the default IceCollectionCheckFunction to manually decide when\nto proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing\nthe ice collection info. See "
+                            "value": "Override the default IceCollectionCheckFunction to manually decide when\nto proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\nthe ice collection info. See "
                           },
                           {
                             "type": "link",
