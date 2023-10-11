@@ -15,7 +15,7 @@ To install a particular build branch or beta branch with the Github URL, run:
 ### In the browser :
 ```html
 <script src="https://unpkg.com/@rbbn/webrtc-js-sdk@6.4.0/dist/webrtc.js"
-  integrity="sha384-QQQGCVdVBGhlgPNQFJibruYkxOK16JruIvP12NaTfjZFe09+alDSnmgQxcU+LaaX"
+  integrity="sha384-BRsjHphFgJSXK03TUOo98u3fHqcQv3ZzlKfjXK2raR3rLff1NuKaFPz7iX4WWmKO"
   crossorigin="anonymous">
 </script>
 ```
