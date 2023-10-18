@@ -15,12 +15,12 @@ import { create } from WebRTC
 const configuration = {
     authentication: {
       server: {
-        base: '$SUBSCRIPTIONFQDN$'
+        base: 'webrtc-blue.rbbn.com'
       }
     },
     subscription: {
       websocket: {
-        server: '$WEBSOCKETFQDN$',
+        server: 'webrtc-blue.rbbn.com',
       },
     },
     call: {
@@ -35,10 +35,10 @@ const configuration = {
           // parameter in the query section and STUN urls must not specify any query section.
           iceServers:[
               {
-                  url: '$RIBBONTURN1$'
+                  url: 'turns:turn-blue.rbbn.com:443?transport=tcp'
               },
               {
-                  url: '$RIBBONSTUN1$'
+                  url: 'stun:turn-blue.rbbn.com:3478'
               }
           ]
         },
@@ -63,26 +63,26 @@ In most cases, the default values will suffice for an application, but specifyin
 To get you started more quickly, we provide some default configurations which can be used as a starting point and make configuration easier. See [WebRTC JS SDK Support Library](https://github.com/RibbonCommunications/webrtc-js-support).
 
 Note that each default configuration is based on a targeted geographical area.
-See [this config]($DEFAULTCONFIGURL$) which applies for this particular tutorial.
+See [this config](https://unpkg.com/@kandy-io/link-config-us@2.0.0/dist/index.umd.js) which applies for this particular tutorial.
 
 To use a default configuration, the first step is install the configuration library as a project dependency.
 
 via npm:
 
 ```bash
-npm install '$DEFAULTCONFIGNAME$'
+npm install '@kandy-io/webrtc-js-config-blue'
 ```
 
 via yarn:
 
 ```bash
-yarn add '$DEFAULTCONFIGNAME$'
+yarn add '@kandy-io/webrtc-js-config-blue'
 ```
 
 And then use it:
 
 ```javascript
-import { config } from '$DEFAULTCONFIGNAME$'
+import { config } from '@kandy-io/webrtc-js-config-blue'
 import { create } from '@rbbn/webrtc-js-sdk'
 
 const client = create(config)
@@ -94,7 +94,7 @@ Furthermore, this default configuration object can also be used as a base for fu
 customization, by modifying its content.
 
 ```javascript
-import { config as defaultConfig } from '$DEFAULTCONFIGNAME$'
+import { config as defaultConfig } from '@kandy-io/webrtc-js-config-blue'
 import { create } from '@rbbn/webrtc-js-sdk'
 
 const config = {
@@ -168,7 +168,7 @@ Note: It is important to always include these configurations.
 ```javascript
 authentication: {
   server: {
-    base: '$SUBSCRIPTIONFQDN$'
+    base: 'webrtc-blue.rbbn.com'
   }
 }
 ```
@@ -182,7 +182,7 @@ Note: It is important to always include these configurations.
 ```javascript
 subscription: {
   websocket: {
-    server: '$WEBSOCKETFQDN$',
+    server: 'webrtc-blue.rbbn.com',
   },
 }
 ```
