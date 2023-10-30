@@ -121,14 +121,13 @@ Configuration options for the call feature.
         Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and
         any timeouts must be handled by the custom function. (optional, default `3000`)
     *   `call.iceCollectionCheckFunction` **[Function][15]?** Override the default IceCollectionCheckFunction to manually decide when
-        to proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing
+        to proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing
         the ice collection info. See [IceCollectionInfo][16] for more details. The function must return
         a results object with details on how to proceed with the ICE collection check or operatiaon. See [IceCollectionResult][17]
         object for details on the format of the return object. See [IceCollectionCheckFunction][18] for
         more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.
     *   `call.serverTurnCredentials` **[boolean][11]** Whether server-provided TURN credentials should be used. (optional, default `true`)
     *   `call.sdpHandlers` **[Array][19]<[call.SdpHandlerFunction][20]>?** List of SDP handler functions to modify SDP. Advanced usage.
-    *   `call.removeH264Codecs` **[boolean][11]** Whether to remove "H264" codec lines from incoming and outgoing SDP messages. (optional, default `true`)
     *   `call.earlyMedia` **[boolean][11]** Whether early media should be supported for calls. Not supported on Firefox. (optional, default `false`)
     *   `call.resyncOnConnect` **[boolean][11]** Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+). (optional, default `false`)
     *   `call.mediaBrokerOnly` **[boolean][11]** Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode. (optional, default `false`)
@@ -2890,8 +2889,8 @@ Returns **[Array][19]<[conversation.Conversation][100]>** An array of conversati
 
 ### Conversation
 
-A Conversation object represents a conversation between either two users, or a
-user and a group. A Conversation can create messages via the conversation's
+A Conversation object represents a conversation between two users.
+A Conversation can create messages via the conversation's
 [createMessage()][101] function.
 
 Type: [Object][7]
@@ -2968,16 +2967,6 @@ Subscribe to this conversations messages array.
 
 Returns **[Function][15]** The unsubscribe function.
 
-#### fetchMessages
-
-Allows the user to fetch messages associated with a specific conversation from the server.
-When the operation is complete, a NEW_MESSAGE event will be emitted.
-Messages can then be retrieved using getMessages.
-
-##### Parameters
-
-*   `amount` **[number][12]** An amount of messages to fetch. (optional, default `50`)
-
 ### Message
 
 A Message object is a means by which a sender can deliver information to a recipient.
@@ -2986,7 +2975,7 @@ Creating and sending a message:
 
 A message object can be obtained through the [Conversation.createMessage][101] API on an existing conversation.
 
-Messages have Parts which represent pieces of a message, such as a text part, a json object part or a file part.
+Messages have Parts which represent pieces of a message. Currently, only a 'text' part is suported.
 Once all the desired parts have been added to the message using the [Message.addPart][103] function,
 the message can then be sent using the [Message.send][104] function.
 
@@ -3007,7 +2996,7 @@ Type: [Object][7]
 *   `timestamp` **[number][12]** A Unix timestamp in seconds marking the time when the message was created by sender.
 *   `parts` **[Array][19]\<conversation.Part>** An array of Part Objects.
 *   `sender` **[string][8]** The primary contact address of the sender.
-*   `destination` **[Array][19]<[string][8]>** An array of primary contact addresses associated with various destinations to which the message is meant to be delivered.
+*   `destination` **[Array][19]<[string][8]>** An array of primary contact addresses associated with various destinations to which the message is meant to be delivered. Currently, only one destination is supported.
 *   `messageId` **[string][8]** The unique id of the message. The message object (stored in sender's state) has a different id
     than the one associated with the message object stored in recipient's state.
 *   `type` **[string][8]** The type of message that was sent. See [conversation.chatTypes][107] for valid types.
@@ -3030,7 +3019,7 @@ A change has occurred in the conversation list.
 *   `params` **[Array][19]** An array of objects containing information about the conversations that have changed
 
     *   `params.destination` **[Array][19]** The destination for messages created in this conversation.
-    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms" or "group"
+    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms".
 
 ### messages:change
 
@@ -3043,7 +3032,7 @@ as part of the event argument.
 *   `params` **[Object][7]** 
 
     *   `params.destination` **[string][8]** The destination for messages created in this conversation.
-    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms" or "group"
+    *   `params.type` **[string][8]** The type of conversation to create. Can be one of "chat", "im", "sms".
     *   `params.messageId` **[string][8]?** The ID of the message affected.
     *   `params.sender` **[string][8]?** The username of the sender of the message which caused the `messages:change` event to be triggered.
 

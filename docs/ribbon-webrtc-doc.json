@@ -1516,7 +1516,7 @@
             },
             {
               "title": "param",
-              "description": "Override the default IceCollectionCheckFunction to manually decide when\n   to proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing\n   the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return\n   a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}\n   object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for\n   more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.",
+              "description": "Override the default IceCollectionCheckFunction to manually decide when\n   to proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\n   the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return\n   a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}\n   object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for\n   more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.",
               "lineNumber": 19,
               "type": {
                 "type": "OptionalType",
@@ -1565,22 +1565,8 @@
             },
             {
               "title": "param",
-              "description": "Whether to remove \"H264\" codec lines from incoming and outgoing SDP messages.",
-              "lineNumber": 27,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.removeH264Codecs",
-              "default": "true"
-            },
-            {
-              "title": "param",
               "description": "Whether early media should be supported for calls. Not supported on Firefox.",
-              "lineNumber": 28,
+              "lineNumber": 27,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1594,7 +1580,7 @@
             {
               "title": "param",
               "description": "Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+).",
-              "lineNumber": 29,
+              "lineNumber": 28,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1608,7 +1594,7 @@
             {
               "title": "param",
               "description": "Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode.",
-              "lineNumber": 30,
+              "lineNumber": 29,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1622,7 +1608,7 @@
             {
               "title": "param",
               "description": "Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages.",
-              "lineNumber": 31,
+              "lineNumber": 30,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1636,7 +1622,7 @@
             {
               "title": "param",
               "description": "The mode for sending ringing feedback to the Caller ('auto', 'manual').\n   By default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application\n   must initiate the feedback being sent. See the `call.sendRingingFeedback` API for more info.",
-              "lineNumber": 32,
+              "lineNumber": 31,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1650,7 +1636,7 @@
             {
               "title": "param",
               "description": "Time interval, in milliseconds between call audits.",
-              "lineNumber": 35,
+              "lineNumber": 34,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1664,7 +1650,7 @@
             {
               "title": "param",
               "description": "Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection.",
-              "lineNumber": 36,
+              "lineNumber": 35,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1678,7 +1664,7 @@
             {
               "title": "param",
               "description": "Specifies whether or not SIP address normalization will be applied.",
-              "lineNumber": 37,
+              "lineNumber": 36,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1696,18 +1682,18 @@
               "column": 0
             },
             "end": {
-              "line": 55,
+              "line": 54,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 69,
+                "line": 68,
                 "column": 0
               },
               "end": {
-                "line": 155,
+                "line": 154,
                 "column": 1
               }
             },
@@ -1858,7 +1844,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "Override the default IceCollectionCheckFunction to manually decide when\nto proceed with operations, error out, or wait for the appropriate states and candidates. The function will an object containing\nthe ice collection info. See "
+                            "value": "Override the default IceCollectionCheckFunction to manually decide when\nto proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\nthe ice collection info. See "
                           },
                           {
                             "type": "link",
@@ -1981,32 +1967,8 @@
                 },
                 {
                   "title": "param",
-                  "name": "call.removeH264Codecs",
-                  "lineNumber": 27,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether to remove \"H264\" codec lines from incoming and outgoing SDP messages."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "true"
-                },
-                {
-                  "title": "param",
                   "name": "call.earlyMedia",
-                  "lineNumber": 28,
+                  "lineNumber": 27,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2030,7 +1992,7 @@
                 {
                   "title": "param",
                   "name": "call.resyncOnConnect",
-                  "lineNumber": 29,
+                  "lineNumber": 28,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2054,7 +2016,7 @@
                 {
                   "title": "param",
                   "name": "call.mediaBrokerOnly",
-                  "lineNumber": 30,
+                  "lineNumber": 29,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2078,7 +2040,7 @@
                 {
                   "title": "param",
                   "name": "call.removeBundling",
-                  "lineNumber": 31,
+                  "lineNumber": 30,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2102,7 +2064,7 @@
                 {
                   "title": "param",
                   "name": "call.ringingFeedbackMode",
-                  "lineNumber": 32,
+                  "lineNumber": 31,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2134,7 +2096,7 @@
                 {
                   "title": "param",
                   "name": "call.callAuditTimer",
-                  "lineNumber": 35,
+                  "lineNumber": 34,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2158,7 +2120,7 @@
                 {
                   "title": "param",
                   "name": "call.mediaConnectionRetryDelay",
-                  "lineNumber": 36,
+                  "lineNumber": 35,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2182,7 +2144,7 @@
                 {
                   "title": "param",
                   "name": "call.normalizeDestination",
-                  "lineNumber": 37,
+                  "lineNumber": 36,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2870,23 +2832,23 @@
           ],
           "loc": {
             "start": {
-              "line": 19,
-              "column": 0
+              "line": 25,
+              "column": 2
             },
             "end": {
-              "line": 33,
-              "column": 3
+              "line": 39,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 35,
-                "column": 0
+                "line": 41,
+                "column": 2
               },
               "end": {
-                "line": 38,
-                "column": 1
+                "line": 44,
+                "column": 3
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/notifications/link/index.js"
@@ -3527,22 +3489,22 @@
           ],
           "loc": {
             "start": {
-              "line": 282,
+              "line": 257,
               "column": 4
             },
             "end": {
-              "line": 288,
+              "line": 263,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 289,
+                "line": 264,
                 "column": 4
               },
               "end": {
-                "line": 291,
+                "line": 266,
                 "column": 5
               }
             },
@@ -3622,22 +3584,22 @@
           ],
           "loc": {
             "start": {
-              "line": 294,
+              "line": 269,
               "column": 4
             },
             "end": {
-              "line": 320,
+              "line": 295,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 321,
+                "line": 296,
                 "column": 4
               },
               "end": {
-                "line": 347,
+                "line": 322,
                 "column": 5
               }
             },
@@ -3736,22 +3698,22 @@
           ],
           "loc": {
             "start": {
-              "line": 15,
+              "line": 22,
               "column": 4
             },
             "end": {
-              "line": 24,
+              "line": 31,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 25,
+                "line": 32,
                 "column": 4
               },
               "end": {
-                "line": 28,
+                "line": 35,
                 "column": 5
               }
             },
@@ -3934,22 +3896,22 @@
           ],
           "loc": {
             "start": {
-              "line": 30,
+              "line": 37,
               "column": 4
             },
             "end": {
-              "line": 64,
+              "line": 71,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 65,
+                "line": 72,
                 "column": 4
               },
               "end": {
-                "line": 80,
+                "line": 87,
                 "column": 5
               }
             },
@@ -4974,22 +4936,22 @@
           ],
           "loc": {
             "start": {
-              "line": 19,
+              "line": 18,
               "column": 4
             },
             "end": {
-              "line": 30,
+              "line": 29,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 63,
+                "line": 62,
                 "column": 4
               },
               "end": {
-                "line": 68,
+                "line": 67,
                 "column": 5
               }
             },
@@ -5185,22 +5147,22 @@
           ],
           "loc": {
             "start": {
-              "line": 47,
+              "line": 46,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 61,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 63,
+                "line": 62,
                 "column": 4
               },
               "end": {
-                "line": 68,
+                "line": 67,
                 "column": 5
               }
             },
@@ -5378,22 +5340,22 @@
           ],
           "loc": {
             "start": {
-              "line": 89,
+              "line": 88,
               "column": 4
             },
             "end": {
-              "line": 99,
+              "line": 98,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 100,
+                "line": 99,
                 "column": 4
               },
               "end": {
-                "line": 103,
+                "line": 102,
                 "column": 5
               }
             },
@@ -5586,22 +5548,22 @@
           ],
           "loc": {
             "start": {
-              "line": 198,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 215,
+              "line": 184,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 296,
+                "line": 247,
                 "column": 4
               },
               "end": {
-                "line": 311,
+                "line": 262,
                 "column": 5
               }
             },
@@ -5867,22 +5829,22 @@
           ],
           "loc": {
             "start": {
-              "line": 216,
+              "line": 185,
               "column": 4
             },
             "end": {
-              "line": 243,
+              "line": 212,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 296,
+                "line": 247,
                 "column": 4
               },
               "end": {
-                "line": 311,
+                "line": 262,
                 "column": 5
               }
             },
@@ -6074,22 +6036,22 @@
           ],
           "loc": {
             "start": {
-              "line": 244,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 229,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 296,
+                "line": 247,
                 "column": 4
               },
               "end": {
-                "line": 311,
+                "line": 262,
                 "column": 5
               }
             },
@@ -6281,22 +6243,22 @@
           ],
           "loc": {
             "start": {
-              "line": 279,
+              "line": 230,
               "column": 4
             },
             "end": {
-              "line": 295,
+              "line": 246,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 296,
+                "line": 247,
                 "column": 4
               },
               "end": {
-                "line": 311,
+                "line": 262,
                 "column": 5
               }
             },
@@ -6645,11 +6607,11 @@
     "context": {
       "loc": {
         "start": {
-          "line": 488,
+          "line": 459,
           "column": 0
         },
         "end": {
-          "line": 498,
+          "line": 469,
           "column": 1
         }
       },
@@ -11118,22 +11080,22 @@
           ],
           "loc": {
             "start": {
-              "line": 46,
+              "line": 17,
               "column": 0
             },
             "end": {
-              "line": 76,
+              "line": 47,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -11833,22 +11795,22 @@
           ],
           "loc": {
             "start": {
-              "line": 97,
+              "line": 68,
               "column": 0
             },
             "end": {
-              "line": 131,
+              "line": 102,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -12015,22 +11977,22 @@
           ],
           "loc": {
             "start": {
-              "line": 133,
+              "line": 104,
               "column": 0
             },
             "end": {
-              "line": 143,
+              "line": 114,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -12211,22 +12173,22 @@
           ],
           "loc": {
             "start": {
-              "line": 145,
+              "line": 116,
               "column": 0
             },
             "end": {
-              "line": 165,
+              "line": 136,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -12450,22 +12412,22 @@
           ],
           "loc": {
             "start": {
-              "line": 167,
+              "line": 138,
               "column": 0
             },
             "end": {
-              "line": 179,
+              "line": 150,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -12773,22 +12735,22 @@
           ],
           "loc": {
             "start": {
-              "line": 181,
+              "line": 152,
               "column": 0
             },
             "end": {
-              "line": 199,
+              "line": 170,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -13105,22 +13067,22 @@
           ],
           "loc": {
             "start": {
-              "line": 201,
+              "line": 172,
               "column": 0
             },
             "end": {
-              "line": 211,
+              "line": 182,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -13425,22 +13387,22 @@
           ],
           "loc": {
             "start": {
-              "line": 213,
+              "line": 184,
               "column": 0
             },
             "end": {
-              "line": 234,
+              "line": 205,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -14158,22 +14120,22 @@
           ],
           "loc": {
             "start": {
-              "line": 236,
+              "line": 207,
               "column": 0
             },
             "end": {
-              "line": 294,
+              "line": 265,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -14433,22 +14395,22 @@
           ],
           "loc": {
             "start": {
-              "line": 296,
+              "line": 267,
               "column": 0
             },
             "end": {
-              "line": 310,
+              "line": 281,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -14679,22 +14641,22 @@
           ],
           "loc": {
             "start": {
-              "line": 312,
+              "line": 283,
               "column": 0
             },
             "end": {
-              "line": 323,
+              "line": 294,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -14916,22 +14878,22 @@
           ],
           "loc": {
             "start": {
-              "line": 325,
+              "line": 296,
               "column": 0
             },
             "end": {
-              "line": 335,
+              "line": 306,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -15152,22 +15114,22 @@
           ],
           "loc": {
             "start": {
-              "line": 337,
+              "line": 308,
               "column": 0
             },
             "end": {
-              "line": 348,
+              "line": 319,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -15453,22 +15415,22 @@
           ],
           "loc": {
             "start": {
-              "line": 350,
+              "line": 321,
               "column": 0
             },
             "end": {
-              "line": 371,
+              "line": 342,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -15855,22 +15817,22 @@
           ],
           "loc": {
             "start": {
-              "line": 373,
+              "line": 344,
               "column": 0
             },
             "end": {
-              "line": 383,
+              "line": 354,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -16097,22 +16059,22 @@
           ],
           "loc": {
             "start": {
-              "line": 385,
+              "line": 356,
               "column": 0
             },
             "end": {
-              "line": 396,
+              "line": 367,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -16527,22 +16489,22 @@
           ],
           "loc": {
             "start": {
-              "line": 398,
+              "line": 369,
               "column": 0
             },
             "end": {
-              "line": 438,
+              "line": 409,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 488,
+                "line": 459,
                 "column": 0
               },
               "end": {
-                "line": 498,
+                "line": 469,
                 "column": 1
               }
             },
@@ -17128,22 +17090,22 @@
           ],
           "loc": {
             "start": {
-              "line": 90,
+              "line": 28,
               "column": 2
             },
             "end": {
-              "line": 152,
+              "line": 90,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 164,
+                "line": 102,
                 "column": 2
               },
               "end": {
-                "line": 241,
+                "line": 179,
                 "column": 3
               }
             },
@@ -18172,22 +18134,22 @@
           ],
           "loc": {
             "start": {
-              "line": 291,
+              "line": 181,
               "column": 2
             },
             "end": {
-              "line": 338,
+              "line": 228,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 351,
+                "line": 241,
                 "column": 2
               },
               "end": {
-                "line": 386,
+                "line": 276,
                 "column": 3
               }
             },
@@ -18874,22 +18836,22 @@
           ],
           "loc": {
             "start": {
-              "line": 388,
+              "line": 278,
               "column": 2
             },
             "end": {
-              "line": 407,
+              "line": 297,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 408,
+                "line": 298,
                 "column": 2
               },
               "end": {
-                "line": 436,
+                "line": 326,
                 "column": 3
               }
             },
@@ -19070,22 +19032,22 @@
           ],
           "loc": {
             "start": {
-              "line": 438,
+              "line": 328,
               "column": 2
             },
             "end": {
-              "line": 456,
+              "line": 346,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 457,
+                "line": 347,
                 "column": 2
               },
               "end": {
-                "line": 484,
+                "line": 374,
                 "column": 3
               }
             },
@@ -19285,22 +19247,22 @@
           ],
           "loc": {
             "start": {
-              "line": 486,
+              "line": 376,
               "column": 2
             },
             "end": {
-              "line": 505,
+              "line": 395,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 526,
+                "line": 396,
                 "column": 2
               },
               "end": {
-                "line": 559,
+                "line": 429,
                 "column": 3
               }
             },
@@ -19551,22 +19513,22 @@
           ],
           "loc": {
             "start": {
-              "line": 561,
+              "line": 431,
               "column": 2
             },
             "end": {
-              "line": 584,
+              "line": 454,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 585,
+                "line": 455,
                 "column": 2
               },
               "end": {
-                "line": 616,
+                "line": 486,
                 "column": 3
               }
             },
@@ -23995,11 +23957,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 78,
+                "line": 50,
                 "column": 2
               },
               "end": {
-                "line": 106,
+                "line": 78,
                 "column": 3
               }
             },
@@ -24238,22 +24200,22 @@
           ],
           "loc": {
             "start": {
-              "line": 108,
+              "line": 80,
               "column": 2
             },
             "end": {
-              "line": 135,
+              "line": 107,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 165,
+                "line": 108,
                 "column": 2
               },
               "end": {
-                "line": 191,
+                "line": 134,
                 "column": 3
               }
             },
@@ -24467,22 +24429,22 @@
           ],
           "loc": {
             "start": {
-              "line": 193,
+              "line": 136,
               "column": 2
             },
             "end": {
-              "line": 219,
+              "line": 162,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 248,
+                "line": 163,
                 "column": 2
               },
               "end": {
-                "line": 280,
+                "line": 195,
                 "column": 3
               }
             },
@@ -26920,7 +26882,7 @@
                 "column": 2
               },
               "end": {
-                "line": 428,
+                "line": 424,
                 "column": 3
               }
             },
@@ -27105,22 +27067,22 @@
           ],
           "loc": {
             "start": {
-              "line": 430,
+              "line": 426,
               "column": 2
             },
             "end": {
-              "line": 467,
+              "line": 463,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 508,
+                "line": 504,
                 "column": 2
               },
               "end": {
-                "line": 519,
+                "line": 515,
                 "column": 3
               }
             },
@@ -27281,22 +27243,22 @@
           ],
           "loc": {
             "start": {
-              "line": 469,
+              "line": 465,
               "column": 2
             },
             "end": {
-              "line": 506,
+              "line": 502,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 508,
+                "line": 504,
                 "column": 2
               },
               "end": {
-                "line": 519,
+                "line": 515,
                 "column": 3
               }
             },
@@ -31269,11 +31231,11 @@
           ],
           "loc": {
             "start": {
-              "line": 29,
+              "line": 10,
               "column": 0
             },
             "end": {
-              "line": 37,
+              "line": 18,
               "column": 3
             }
           },
@@ -31284,7 +31246,7 @@
                 "column": 0
               },
               "end": {
-                "line": 58,
+                "line": 29,
                 "column": 0
               }
             },
@@ -31380,11 +31342,11 @@
           ],
           "loc": {
             "start": {
-              "line": 49,
+              "line": 20,
               "column": 0
             },
             "end": {
-              "line": 57,
+              "line": 28,
               "column": 3
             }
           },
@@ -31395,7 +31357,7 @@
                 "column": 0
               },
               "end": {
-                "line": 58,
+                "line": 29,
                 "column": 0
               }
             },
@@ -35672,11 +35634,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 61,
+                "line": 41,
                 "column": 4
               },
               "end": {
-                "line": 74,
+                "line": 54,
                 "column": 5
               }
             },
@@ -36154,22 +36116,22 @@
           ],
           "loc": {
             "start": {
-              "line": 76,
+              "line": 56,
               "column": 4
             },
             "end": {
-              "line": 84,
+              "line": 64,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 85,
+                "line": 65,
                 "column": 4
               },
               "end": {
-                "line": 88,
+                "line": 68,
                 "column": 5
               }
             },
@@ -36299,22 +36261,22 @@
           ],
           "loc": {
             "start": {
-              "line": 90,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 77,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 98,
+                "line": 78,
                 "column": 4
               },
               "end": {
-                "line": 101,
+                "line": 81,
                 "column": 5
               }
             },
@@ -36419,22 +36381,22 @@
           ],
           "loc": {
             "start": {
-              "line": 103,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 90,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 111,
+                "line": 91,
                 "column": 4
               },
               "end": {
-                "line": 123,
+                "line": 103,
                 "column": 5
               }
             },
@@ -36527,22 +36489,22 @@
           ],
           "loc": {
             "start": {
-              "line": 125,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 113,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 134,
+                "line": 114,
                 "column": 4
               },
               "end": {
-                "line": 146,
+                "line": 126,
                 "column": 5
               }
             },
@@ -36841,22 +36803,22 @@
           ],
           "loc": {
             "start": {
-              "line": 148,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 171,
+              "line": 151,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 192,
+                "line": 152,
                 "column": 4
               },
               "end": {
-                "line": 203,
+                "line": 163,
                 "column": 5
               }
             },
@@ -37333,22 +37295,22 @@
           ],
           "loc": {
             "start": {
-              "line": 205,
+              "line": 165,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 173,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 214,
+                "line": 174,
                 "column": 4
               },
               "end": {
-                "line": 225,
+                "line": 185,
                 "column": 5
               }
             },
@@ -37653,7 +37615,7 @@
             },
             {
               "title": "param",
-              "description": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\" or \"group\"",
+              "description": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\".",
               "lineNumber": 8,
               "type": {
                 "type": "NameExpression",
@@ -37747,7 +37709,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\" or \"group\""
+                            "value": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\"."
                           }
                         ]
                       }
@@ -37852,7 +37814,7 @@
             },
             {
               "title": "param",
-              "description": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\" or \"group\"",
+              "description": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\".",
               "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
@@ -37958,7 +37920,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\" or \"group\""
+                            "value": "The type of conversation to create. Can be one of \"chat\", \"im\", \"sms\"."
                           }
                         ]
                       }
@@ -38303,22 +38265,22 @@
           ],
           "loc": {
             "start": {
-              "line": 45,
+              "line": 30,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 46,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 94,
+                "line": 63,
                 "column": 4
               },
               "end": {
-                "line": 130,
+                "line": 99,
                 "column": 5
               }
             },
@@ -38523,22 +38485,22 @@
           ],
           "loc": {
             "start": {
-              "line": 170,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 137,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 180,
+                "line": 138,
                 "column": 4
               },
               "end": {
-                "line": 186,
+                "line": 144,
                 "column": 5
               }
             },
@@ -38617,7 +38579,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "A Conversation object represents a conversation between either two users, or a\nuser and a group. A Conversation can create messages via the conversation's\n"
+                    "value": "A Conversation object represents a conversation between two users.\nA Conversation can create messages via the conversation's\n"
                   },
                   {
                     "type": "link",
@@ -38685,23 +38647,23 @@
           ],
           "loc": {
             "start": {
-              "line": 16,
+              "line": 4,
               "column": 0
             },
             "end": {
-              "line": 26,
+              "line": 14,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 64,
+                "line": 52,
                 "column": 0
               },
               "end": {
-                "line": 64,
-                "column": 51
+                "line": 52,
+                "column": 41
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -38848,23 +38810,23 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 163,
-                    "column": 4
+                    "line": 102,
+                    "column": 6
                   },
                   "end": {
-                    "line": 177,
-                    "column": 7
+                    "line": 116,
+                    "column": 9
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 178,
-                      "column": 4
+                      "line": 117,
+                      "column": 6
                     },
                     "end": {
-                      "line": 191,
-                      "column": 5
+                      "line": 130,
+                      "column": 7
                     }
                   },
                   "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -39048,23 +39010,23 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 193,
-                    "column": 4
+                    "line": 132,
+                    "column": 6
                   },
                   "end": {
-                    "line": 199,
-                    "column": 7
+                    "line": 138,
+                    "column": 9
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 200,
-                      "column": 4
+                      "line": 139,
+                      "column": 6
                     },
                     "end": {
-                      "line": 202,
-                      "column": 5
+                      "line": 145,
+                      "column": 7
                     }
                   },
                   "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -39234,23 +39196,23 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 204,
-                    "column": 4
+                    "line": 147,
+                    "column": 6
                   },
                   "end": {
-                    "line": 219,
-                    "column": 7
+                    "line": 162,
+                    "column": 9
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 220,
-                      "column": 4
+                      "line": 163,
+                      "column": 6
                     },
                     "end": {
-                      "line": 237,
-                      "column": 5
+                      "line": 190,
+                      "column": 7
                     }
                   },
                   "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -39554,23 +39516,23 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 239,
-                    "column": 4
+                    "line": 192,
+                    "column": 6
                   },
                   "end": {
-                    "line": 247,
-                    "column": 7
+                    "line": 200,
+                    "column": 9
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 248,
-                      "column": 4
+                      "line": 201,
+                      "column": 6
                     },
                     "end": {
-                      "line": 270,
-                      "column": 5
+                      "line": 230,
+                      "column": 7
                     }
                   },
                   "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -39735,23 +39697,23 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 304,
-                    "column": 4
+                    "line": 232,
+                    "column": 6
                   },
                   "end": {
-                    "line": 314,
-                    "column": 7
+                    "line": 242,
+                    "column": 9
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 315,
-                      "column": 4
+                      "line": 243,
+                      "column": 6
                     },
                     "end": {
-                      "line": 332,
-                      "column": 5
+                      "line": 260,
+                      "column": 7
                     }
                   },
                   "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -39889,147 +39851,6 @@
                   }
                 ],
                 "namespace": "conversation.Conversation.subscribe"
-              },
-              {
-                "description": {
-                  "type": "root",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Allows the user to fetch messages associated with a specific conversation from the server.\nWhen the operation is complete, a NEW_MESSAGE event will be emitted.\nMessages can then be retrieved using getMessages."
-                        }
-                      ]
-                    }
-                  ]
-                },
-                "tags": [
-                  {
-                    "title": "public",
-                    "description": null,
-                    "lineNumber": 5,
-                    "type": null
-                  },
-                  {
-                    "title": "static",
-                    "description": null,
-                    "lineNumber": 6
-                  },
-                  {
-                    "title": "memberof",
-                    "description": "conversation.Conversation",
-                    "lineNumber": 7
-                  },
-                  {
-                    "title": "method",
-                    "description": null,
-                    "lineNumber": 8,
-                    "name": "fetchMessages"
-                  },
-                  {
-                    "title": "param",
-                    "description": "An amount of messages to fetch.",
-                    "lineNumber": 9,
-                    "type": {
-                      "type": "OptionalType",
-                      "expression": {
-                        "type": "NameExpression",
-                        "name": "number"
-                      }
-                    },
-                    "name": "amount",
-                    "default": "50"
-                  }
-                ],
-                "loc": {
-                  "start": {
-                    "line": 351,
-                    "column": 4
-                  },
-                  "end": {
-                    "line": 361,
-                    "column": 7
-                  }
-                },
-                "context": {
-                  "loc": {
-                    "start": {
-                      "line": 362,
-                      "column": 4
-                    },
-                    "end": {
-                      "line": 364,
-                      "column": 5
-                    }
-                  },
-                  "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
-                },
-                "augments": [],
-                "examples": [],
-                "implements": [],
-                "params": [
-                  {
-                    "title": "param",
-                    "name": "amount",
-                    "lineNumber": 9,
-                    "description": {
-                      "type": "root",
-                      "children": [
-                        {
-                          "type": "paragraph",
-                          "children": [
-                            {
-                              "type": "text",
-                              "value": "An amount of messages to fetch."
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    "type": {
-                      "type": "NameExpression",
-                      "name": "number"
-                    },
-                    "default": "50"
-                  }
-                ],
-                "properties": [],
-                "returns": [],
-                "sees": [],
-                "throws": [],
-                "todos": [],
-                "yields": [],
-                "access": "public",
-                "scope": "static",
-                "memberof": "conversation.Conversation",
-                "kind": "function",
-                "name": "fetchMessages",
-                "members": {
-                  "global": [],
-                  "inner": [],
-                  "instance": [],
-                  "events": [],
-                  "static": []
-                },
-                "path": [
-                  {
-                    "name": "conversation",
-                    "kind": "namespace"
-                  },
-                  {
-                    "name": "Conversation",
-                    "kind": "typedef",
-                    "scope": "static"
-                  },
-                  {
-                    "name": "fetchMessages",
-                    "kind": "function",
-                    "scope": "static"
-                  }
-                ],
-                "namespace": "conversation.Conversation.fetchMessages"
               }
             ]
           },
@@ -40098,7 +39919,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Messages have Parts which represent pieces of a message, such as a text part, a json object part or a file part.\nOnce all the desired parts have been added to the message using the "
+                    "value": "Messages have Parts which represent pieces of a message. Currently, only a 'text' part is suported.\nOnce all the desired parts have been added to the message using the "
                   },
                   {
                     "type": "link",
@@ -40246,7 +40067,7 @@
             },
             {
               "title": "property",
-              "description": "An array of primary contact addresses associated with various destinations to which the message is meant to be delivered.",
+              "description": "An array of primary contact addresses associated with various destinations to which the message is meant to be delivered. Currently, only one destination is supported.",
               "lineNumber": 24,
               "type": {
                 "type": "TypeApplication",
@@ -40312,23 +40133,23 @@
           ],
           "loc": {
             "start": {
-              "line": 28,
+              "line": 16,
               "column": 0
             },
             "end": {
-              "line": 62,
+              "line": 50,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 64,
+                "line": 52,
                 "column": 0
               },
               "end": {
-                "line": 64,
-                "column": 51
+                "line": 52,
+                "column": 41
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -40428,7 +40249,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "An array of primary contact addresses associated with various destinations to which the message is meant to be delivered."
+                        "value": "An array of primary contact addresses associated with various destinations to which the message is meant to be delivered. Currently, only one destination is supported."
                       }
                     ]
                   }
@@ -40572,23 +40393,23 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 392,
-                    "column": 4
+                    "line": 292,
+                    "column": 6
                   },
                   "end": {
-                    "line": 399,
-                    "column": 7
+                    "line": 299,
+                    "column": 9
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 400,
-                      "column": 4
+                      "line": 300,
+                      "column": 6
                     },
                     "end": {
-                      "line": 405,
-                      "column": 5
+                      "line": 316,
+                      "column": 7
                     }
                   },
                   "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/messaging/interface/mixins.js"
@@ -40761,22 +40582,22 @@
     ],
     "loc": {
       "start": {
-        "line": 6,
+        "line": 4,
         "column": 0
       },
       "end": {
-        "line": 34,
+        "line": 32,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 36,
+          "line": 40,
           "column": 0
         },
         "end": {
-          "line": 181,
+          "line": 202,
           "column": 1
         }
       },
@@ -40965,22 +40786,22 @@
           ],
           "loc": {
             "start": {
-              "line": 40,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 73,
+              "line": 78,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 74,
+                "line": 79,
                 "column": 4
               },
               "end": {
-                "line": 80,
+                "line": 85,
                 "column": 5
               }
             },
@@ -41881,22 +41702,22 @@
     ],
     "loc": {
       "start": {
-        "line": 78,
+        "line": 49,
         "column": 0
       },
       "end": {
-        "line": 95,
+        "line": 66,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 488,
+          "line": 459,
           "column": 0
         },
         "end": {
-          "line": 498,
+          "line": 469,
           "column": 1
         }
       },
@@ -45585,22 +45406,22 @@
           ],
           "loc": {
             "start": {
-              "line": 27,
+              "line": 26,
               "column": 4
             },
             "end": {
-              "line": 36,
+              "line": 35,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 37,
+                "line": 36,
                 "column": 4
               },
               "end": {
-                "line": 40,
+                "line": 42,
                 "column": 5
               }
             },
@@ -45831,22 +45652,22 @@
           ],
           "loc": {
             "start": {
-              "line": 42,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 65,
+              "line": 67,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 66,
+                "line": 68,
                 "column": 4
               },
               "end": {
-                "line": 94,
+                "line": 101,
                 "column": 5
               }
             },
@@ -46225,22 +46046,22 @@
           ],
           "loc": {
             "start": {
-              "line": 96,
+              "line": 103,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 122,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 116,
+                "line": 123,
                 "column": 4
               },
               "end": {
-                "line": 133,
+                "line": 144,
                 "column": 5
               }
             },
@@ -46498,22 +46319,22 @@
           ],
           "loc": {
             "start": {
-              "line": 135,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 156,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 146,
+                "line": 157,
                 "column": 4
               },
               "end": {
-                "line": 152,
+                "line": 163,
                 "column": 5
               }
             },
@@ -46659,22 +46480,22 @@
           ],
           "loc": {
             "start": {
-              "line": 154,
+              "line": 165,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 175,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 165,
+                "line": 176,
                 "column": 4
               },
               "end": {
-                "line": 171,
+                "line": 182,
                 "column": 5
               }
             },
@@ -46811,22 +46632,22 @@
           ],
           "loc": {
             "start": {
-              "line": 173,
+              "line": 184,
               "column": 4
             },
             "end": {
-              "line": 181,
+              "line": 192,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 182,
+                "line": 193,
                 "column": 4
               },
               "end": {
-                "line": 189,
+                "line": 213,
                 "column": 5
               }
             },
@@ -53563,22 +53384,22 @@
           ],
           "loc": {
             "start": {
-              "line": 30,
+              "line": 18,
               "column": 0
             },
             "end": {
-              "line": 66,
+              "line": 54,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 67,
+                "line": 55,
                 "column": 0
               },
               "end": {
-                "line": 67,
+                "line": 55,
                 "column": 45
               }
             },
@@ -53739,22 +53560,22 @@
           ],
           "loc": {
             "start": {
-              "line": 69,
+              "line": 57,
               "column": 0
             },
             "end": {
-              "line": 82,
+              "line": 70,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 83,
+                "line": 71,
                 "column": 0
               },
               "end": {
-                "line": 83,
+                "line": 71,
                 "column": 45
               }
             },
@@ -54482,22 +54303,22 @@
           ],
           "loc": {
             "start": {
-              "line": 125,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 115,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 150,
+                "line": 116,
                 "column": 4
               },
               "end": {
-                "line": 176,
+                "line": 142,
                 "column": 5
               }
             },
@@ -54800,22 +54621,22 @@
           ],
           "loc": {
             "start": {
-              "line": 178,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 197,
+              "line": 163,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 198,
+                "line": 164,
                 "column": 4
               },
               "end": {
-                "line": 206,
+                "line": 172,
                 "column": 5
               }
             },
@@ -55022,22 +54843,22 @@
           ],
           "loc": {
             "start": {
-              "line": 220,
+              "line": 186,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 213,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 248,
+                "line": 214,
                 "column": 4
               },
               "end": {
-                "line": 255,
+                "line": 221,
                 "column": 5
               }
             },
@@ -59420,11 +59241,11 @@
           ],
           "loc": {
             "start": {
-              "line": 20,
+              "line": 1,
               "column": 0
             },
             "end": {
-              "line": 27,
+              "line": 8,
               "column": 3
             }
           },
@@ -59435,7 +59256,7 @@
                 "column": 0
               },
               "end": {
-                "line": 58,
+                "line": 29,
                 "column": 0
               }
             },
