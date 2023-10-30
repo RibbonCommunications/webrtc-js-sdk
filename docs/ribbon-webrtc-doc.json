@@ -1263,23 +1263,23 @@
           ],
           "loc": {
             "start": {
-              "line": 25,
-              "column": 0
+              "line": 32,
+              "column": 2
             },
             "end": {
-              "line": 36,
-              "column": 3
+              "line": 43,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 38,
-                "column": 0
+                "line": 45,
+                "column": 2
               },
               "end": {
-                "line": 45,
-                "column": 1
+                "line": 52,
+                "column": 3
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_beta/packages/kandy/src/auth/link/index.js"
@@ -1565,22 +1565,8 @@
             },
             {
               "title": "param",
-              "description": "Whether to remove \"H264\" codec lines from incoming and outgoing SDP messages.",
-              "lineNumber": 27,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.removeH264Codecs",
-              "default": "true"
-            },
-            {
-              "title": "param",
               "description": "Whether early media should be supported for calls. Not supported on Firefox.",
-              "lineNumber": 28,
+              "lineNumber": 27,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1594,7 +1580,7 @@
             {
               "title": "param",
               "description": "Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+).",
-              "lineNumber": 29,
+              "lineNumber": 28,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1608,7 +1594,7 @@
             {
               "title": "param",
               "description": "Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode.",
-              "lineNumber": 30,
+              "lineNumber": 29,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1622,7 +1608,7 @@
             {
               "title": "param",
               "description": "Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages.",
-              "lineNumber": 31,
+              "lineNumber": 30,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1636,7 +1622,7 @@
             {
               "title": "param",
               "description": "The mode for sending ringing feedback to the Caller ('auto', 'manual').\n   By default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application\n   must initiate the feedback being sent. See the `call.sendRingingFeedback` API for more info.",
-              "lineNumber": 32,
+              "lineNumber": 31,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1650,7 +1636,7 @@
             {
               "title": "param",
               "description": "Time interval, in milliseconds between call audits.",
-              "lineNumber": 35,
+              "lineNumber": 34,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1664,7 +1650,7 @@
             {
               "title": "param",
               "description": "Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection.",
-              "lineNumber": 36,
+              "lineNumber": 35,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1678,7 +1664,7 @@
             {
               "title": "param",
               "description": "Specifies whether or not SIP address normalization will be applied.",
-              "lineNumber": 37,
+              "lineNumber": 36,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -1696,18 +1682,18 @@
               "column": 0
             },
             "end": {
-              "line": 55,
+              "line": 54,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 69,
+                "line": 68,
                 "column": 0
               },
               "end": {
-                "line": 155,
+                "line": 154,
                 "column": 1
               }
             },
@@ -1981,32 +1967,8 @@
                 },
                 {
                   "title": "param",
-                  "name": "call.removeH264Codecs",
-                  "lineNumber": 27,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether to remove \"H264\" codec lines from incoming and outgoing SDP messages."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "true"
-                },
-                {
-                  "title": "param",
                   "name": "call.earlyMedia",
-                  "lineNumber": 28,
+                  "lineNumber": 27,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2030,7 +1992,7 @@
                 {
                   "title": "param",
                   "name": "call.resyncOnConnect",
-                  "lineNumber": 29,
+                  "lineNumber": 28,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2054,7 +2016,7 @@
                 {
                   "title": "param",
                   "name": "call.mediaBrokerOnly",
-                  "lineNumber": 30,
+                  "lineNumber": 29,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2078,7 +2040,7 @@
                 {
                   "title": "param",
                   "name": "call.removeBundling",
-                  "lineNumber": 31,
+                  "lineNumber": 30,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2102,7 +2064,7 @@
                 {
                   "title": "param",
                   "name": "call.ringingFeedbackMode",
-                  "lineNumber": 32,
+                  "lineNumber": 31,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2134,7 +2096,7 @@
                 {
                   "title": "param",
                   "name": "call.callAuditTimer",
-                  "lineNumber": 35,
+                  "lineNumber": 34,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2158,7 +2120,7 @@
                 {
                   "title": "param",
                   "name": "call.mediaConnectionRetryDelay",
-                  "lineNumber": 36,
+                  "lineNumber": 35,
                   "description": {
                     "type": "root",
                     "children": [
@@ -2182,7 +2144,7 @@
                 {
                   "title": "param",
                   "name": "call.normalizeDestination",
-                  "lineNumber": 37,
+                  "lineNumber": 36,
                   "description": {
                     "type": "root",
                     "children": [
@@ -3527,22 +3489,22 @@
           ],
           "loc": {
             "start": {
-              "line": 257,
+              "line": 236,
               "column": 4
             },
             "end": {
-              "line": 263,
+              "line": 242,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 264,
+                "line": 243,
                 "column": 4
               },
               "end": {
-                "line": 266,
+                "line": 245,
                 "column": 5
               }
             },
@@ -3622,22 +3584,22 @@
           ],
           "loc": {
             "start": {
-              "line": 269,
+              "line": 248,
               "column": 4
             },
             "end": {
-              "line": 295,
+              "line": 274,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 296,
+                "line": 275,
                 "column": 4
               },
               "end": {
-                "line": 322,
+                "line": 301,
                 "column": 5
               }
             },
@@ -4974,22 +4936,22 @@
           ],
           "loc": {
             "start": {
-              "line": 18,
+              "line": 17,
               "column": 4
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 62,
+                "line": 61,
                 "column": 4
               },
               "end": {
-                "line": 67,
+                "line": 68,
                 "column": 5
               }
             },
@@ -5185,22 +5147,22 @@
           ],
           "loc": {
             "start": {
-              "line": 46,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 60,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 62,
+                "line": 61,
                 "column": 4
               },
               "end": {
-                "line": 67,
+                "line": 68,
                 "column": 5
               }
             },
@@ -5378,22 +5340,22 @@
           ],
           "loc": {
             "start": {
-              "line": 88,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 80,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 99,
+                "line": 81,
                 "column": 4
               },
               "end": {
-                "line": 102,
+                "line": 84,
                 "column": 5
               }
             },
@@ -5586,22 +5548,22 @@
           ],
           "loc": {
             "start": {
-              "line": 167,
+              "line": 149,
               "column": 4
             },
             "end": {
-              "line": 184,
+              "line": 166,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 247,
+                "line": 229,
                 "column": 4
               },
               "end": {
-                "line": 262,
+                "line": 246,
                 "column": 5
               }
             },
@@ -5867,22 +5829,22 @@
           ],
           "loc": {
             "start": {
-              "line": 185,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 194,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 247,
+                "line": 229,
                 "column": 4
               },
               "end": {
-                "line": 262,
+                "line": 246,
                 "column": 5
               }
             },
@@ -6074,22 +6036,22 @@
           ],
           "loc": {
             "start": {
-              "line": 213,
+              "line": 195,
               "column": 4
             },
             "end": {
-              "line": 229,
+              "line": 211,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 247,
+                "line": 229,
                 "column": 4
               },
               "end": {
-                "line": 262,
+                "line": 246,
                 "column": 5
               }
             },
@@ -6281,22 +6243,22 @@
           ],
           "loc": {
             "start": {
-              "line": 230,
+              "line": 212,
               "column": 4
             },
             "end": {
-              "line": 246,
+              "line": 228,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 247,
+                "line": 229,
                 "column": 4
               },
               "end": {
-                "line": 262,
+                "line": 246,
                 "column": 5
               }
             },
@@ -26920,7 +26882,7 @@
                 "column": 2
               },
               "end": {
-                "line": 428,
+                "line": 424,
                 "column": 3
               }
             },
@@ -27105,22 +27067,22 @@
           ],
           "loc": {
             "start": {
-              "line": 430,
+              "line": 426,
               "column": 2
             },
             "end": {
-              "line": 467,
+              "line": 463,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 508,
+                "line": 504,
                 "column": 2
               },
               "end": {
-                "line": 519,
+                "line": 515,
                 "column": 3
               }
             },
@@ -27281,22 +27243,22 @@
           ],
           "loc": {
             "start": {
-              "line": 469,
+              "line": 465,
               "column": 2
             },
             "end": {
-              "line": 506,
+              "line": 502,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 508,
+                "line": 504,
                 "column": 2
               },
               "end": {
-                "line": 519,
+                "line": 515,
                 "column": 3
               }
             },
@@ -45444,22 +45406,22 @@
           ],
           "loc": {
             "start": {
-              "line": 26,
+              "line": 25,
               "column": 4
             },
             "end": {
-              "line": 35,
+              "line": 34,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 36,
+                "line": 35,
                 "column": 4
               },
               "end": {
-                "line": 42,
+                "line": 41,
                 "column": 5
               }
             },
@@ -45690,22 +45652,22 @@
           ],
           "loc": {
             "start": {
-              "line": 44,
+              "line": 43,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 66,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 68,
+                "line": 67,
                 "column": 4
               },
               "end": {
-                "line": 101,
+                "line": 100,
                 "column": 5
               }
             },
@@ -46084,22 +46046,22 @@
           ],
           "loc": {
             "start": {
-              "line": 103,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 121,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 123,
+                "line": 122,
                 "column": 4
               },
               "end": {
-                "line": 144,
+                "line": 143,
                 "column": 5
               }
             },
@@ -46357,22 +46319,22 @@
           ],
           "loc": {
             "start": {
-              "line": 146,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 156,
+              "line": 155,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 157,
+                "line": 156,
                 "column": 4
               },
               "end": {
-                "line": 163,
+                "line": 162,
                 "column": 5
               }
             },
@@ -46518,22 +46480,22 @@
           ],
           "loc": {
             "start": {
-              "line": 165,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 175,
+              "line": 174,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 176,
+                "line": 175,
                 "column": 4
               },
               "end": {
-                "line": 182,
+                "line": 181,
                 "column": 5
               }
             },
@@ -46670,22 +46632,22 @@
           ],
           "loc": {
             "start": {
-              "line": 184,
+              "line": 183,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 191,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 193,
+                "line": 192,
                 "column": 4
               },
               "end": {
-                "line": 213,
+                "line": 212,
                 "column": 5
               }
             },
