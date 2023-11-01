@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.5.0-beta.1173
+ * Version: 6.5.0-beta.1174
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2374,7 +2374,7 @@ root.sdpHandlers = {
 
 /***/ }),
 
-/***/ 78236:
+/***/ 75009:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2392,7 +2392,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0-beta.1173';
+  return '6.5.0-beta.1174';
 }
 
 /***/ }),
@@ -3165,80 +3165,6 @@ const AUTH_CREDENTIALS_SET = exports.AUTH_CREDENTIALS_SET = 'auth:credentialsSet
 
 /***/ }),
 
-/***/ 75681:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var _eventTypes = __webpack_require__(30915);
-
-var eventTypes = _interopRequireWildcard(_eventTypes);
-
-var _actionTypes = __webpack_require__(42910);
-
-var actionTypes = _interopRequireWildcard(_actionTypes);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function authChangedEvent(action) {
-  return {
-    type: action.error ? eventTypes.AUTH_ERROR : eventTypes.AUTH_CHANGE,
-    args: action.error ? { error: action.payload } : {}
-  };
-}
-
-const eventsMap = {};
-
-eventsMap[actionTypes.CONNECT_FINISHED] = authChangedEvent;
-eventsMap[actionTypes.USER_DETAILS_RECEIVED] = authChangedEvent;
-eventsMap[actionTypes.CONNECT] = authChangedEvent;
-eventsMap[actionTypes.DISCONNECT] = authChangedEvent;
-eventsMap[actionTypes.REFRESH_TOKENS_FINISHED] = authChangedEvent;
-eventsMap[actionTypes.SET_CREDENTIALS_FINISH] = authChangedEvent;
-
-eventsMap[actionTypes.DISCONNECT_FINISHED] = function (action) {
-  const discEvent = authChangedEvent(action);
-  if (action.payload.reason === 'GONE') {
-    discEvent.args.forced = true;
-  }
-  if (action.payload.retryAfter) {
-    discEvent.args.retryAfter = action.payload.retryAfter;
-  }
-
-  discEvent.args.reason = action.payload.reason;
-  return discEvent;
-};
-
-eventsMap[actionTypes.RESUBSCRIPTION_FINISHED] = function (action) {
-  const resubEvent = {
-    type: eventTypes.AUTH_RESUB,
-    args: {
-      attemptNum: action.payload.attemptNum,
-      isFailure: action.error || false
-    }
-  };
-
-  if (action.error) {
-    resubEvent.args.error = action.payload;
-  }
-  return resubEvent;
-};
-
-eventsMap[actionTypes.SET_CONNECTION_INFO] = function (action) {
-  return {
-    type: eventTypes.AUTH_CREDENTIALS_SET
-  };
-};
-
-exports["default"] = eventsMap;
-
-/***/ }),
-
 /***/ 98061:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -3720,23 +3646,7 @@ function getRequestInfo(state, platform) {
       baseURL: `${server.protocol}://${server.base}:${server.port}`,
       version: server.version,
       username: userInfo.username
-
-      /*
-       * If the requested platform was Link but the platform set in state is
-       *    UC, and so we're using UC but making a request for SPiDR.
-       * Change the requestInfo provided to ensure the URL will be valid for
-       *    SPiDR and authentication will be valid for CIM.
-       */
-    };const setPlatform = getPlatform(state);
-    if (setPlatform === _constants2.platforms.UC) {
-      requestInfo.version = '1';
-
-      const connInfo = getConnectionInfo(state, setPlatform);
-      if (connInfo && connInfo.requestOptions) {
-        requestInfo.requestOptions = connInfo.requestOptions;
-      }
-      return requestInfo;
-    }
+    };
   } else {
     // Platform is not supported
     return {};
@@ -3763,27 +3673,19 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = authFactory;
 
-var _events = __webpack_require__(75681);
-
-var _events2 = _interopRequireDefault(_events);
-
-var _actions = __webpack_require__(64525);
-
 var _interface = __webpack_require__(98061);
 
 var _operations = __webpack_require__(62888);
 
 var initOperations = _interopRequireWildcard(_operations);
 
-var _actions2 = __webpack_require__(25456);
+var _actions = __webpack_require__(25456);
 
 var _utils = __webpack_require__(84980);
 
 var _validation = __webpack_require__(52868);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * On link authentication implementation factory.
@@ -3846,8 +3748,7 @@ function authFactory(options = {}, bottle) {
     const { context } = container;
     // Send the provided options to the store.
     // This will be `state.config[name]`.
-    context.dispatch((0, _actions2.update)(options, _interface.name));
-    context.dispatch((0, _actions.mapEvents)(_events2.default));
+    context.dispatch((0, _actions.update)(options, _interface.name));
   }
 
   // Register the component factory functions to the bottle.
@@ -3872,10 +3773,7 @@ function authFactory(options = {}, bottle) {
 
 
 // State setters.
-
-
 // The interface to follow.
-// Events
 
 /***/ }),
 
@@ -8951,7 +8849,7 @@ var _errors2 = _interopRequireDefault(_errors);
 
 var _kandyWebrtc = __webpack_require__(25865);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
 
 var _sdkId = __webpack_require__(59026);
 
@@ -20525,7 +20423,7 @@ var _logs = __webpack_require__(89839);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
 
 var _defaults = __webpack_require__(82914);
 
@@ -33950,7 +33848,11 @@ var _bottlejs2 = _interopRequireDefault(_bottlejs);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
+
+var _intervalFactory = __webpack_require__(3614);
+
+var _intervalFactory2 = _interopRequireDefault(_intervalFactory);
 
 var _logs = __webpack_require__(89839);
 
@@ -33959,13 +33861,13 @@ var _validation = __webpack_require__(52868);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Plugins.
+const log = _logs.logManager.getLogger('FACTORY');
+
+// Parse and/or Validate
 
 
 // Helpers.
 // Libraries.
-const log = _logs.logManager.getLogger('FACTORY');
-
-// Parse and/or Validate
 
 
 const factoryDefaults = {
@@ -34042,6 +33944,9 @@ function factory(pluginFactories, sdkOptions = {}) {
 
   // Add the context to the container so plugins can access it.
   bottle.value('context', context);
+
+  // Add the interval helper, used to create intervals.
+  bottle.value('createInterval', _intervalFactory2.default);
 
   // Special case middleware for logging.
   var loggerMiddleware;
@@ -42091,7 +41996,7 @@ var _sagas = __webpack_require__(89869);
 
 var _selectors = __webpack_require__(53960);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
 
 var _utils = __webpack_require__(84980);
 
@@ -42255,7 +42160,7 @@ var _utils = __webpack_require__(86128);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
 
 var _effects = __webpack_require__(27422);
 
@@ -42357,7 +42262,7 @@ var _selectors2 = __webpack_require__(53960);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
 
 var _utils = __webpack_require__(84980);
 
@@ -52132,7 +52037,7 @@ var _channel = __webpack_require__(49607);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(78236);
+var _version = __webpack_require__(75009);
 
 var _uuid = __webpack_require__(60130);
 
@@ -93427,7 +93332,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 69896:
+/***/ 85315:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -93868,7 +93773,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(69896));
+var _version = _interopRequireDefault(__webpack_require__(85315));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
