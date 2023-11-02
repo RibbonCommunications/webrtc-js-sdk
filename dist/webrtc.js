@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.5.0-beta.1174
+ * Version: 6.5.0-beta.1175
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2374,7 +2374,7 @@ root.sdpHandlers = {
 
 /***/ }),
 
-/***/ 75009:
+/***/ 19046:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2392,7 +2392,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0-beta.1174';
+  return '6.5.0-beta.1175';
 }
 
 /***/ }),
@@ -8849,7 +8849,7 @@ var _errors2 = _interopRequireDefault(_errors);
 
 var _kandyWebrtc = __webpack_require__(25865);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _sdkId = __webpack_require__(59026);
 
@@ -20423,7 +20423,7 @@ var _logs = __webpack_require__(89839);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _defaults = __webpack_require__(82914);
 
@@ -33848,7 +33848,7 @@ var _bottlejs2 = _interopRequireDefault(_bottlejs);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _intervalFactory = __webpack_require__(3614);
 
@@ -41996,7 +41996,7 @@ var _sagas = __webpack_require__(89869);
 
 var _selectors = __webpack_require__(53960);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _utils = __webpack_require__(84980);
 
@@ -42160,7 +42160,7 @@ var _utils = __webpack_require__(86128);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _effects = __webpack_require__(27422);
 
@@ -42262,7 +42262,7 @@ var _selectors2 = __webpack_require__(53960);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _utils = __webpack_require__(84980);
 
@@ -52037,7 +52037,7 @@ var _channel = __webpack_require__(49607);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(75009);
+var _version = __webpack_require__(19046);
 
 var _uuid = __webpack_require__(60130);
 
@@ -93332,7 +93332,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 85315:
+/***/ 87218:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -93773,7 +93773,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(85315));
+var _version = _interopRequireDefault(__webpack_require__(87218));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
