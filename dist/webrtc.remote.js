@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.5.0-beta.1177
+ * Version: 6.5.0-beta.1178
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2159:
+/***/ 8725:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0-beta.1177';
+  return '6.5.0-beta.1178';
 }
 
 /***/ }),
@@ -418,8 +418,6 @@ var _kandyLogger2 = _interopRequireDefault(_kandyLogger);
 
 var _config = __webpack_require__(6467);
 
-var _config2 = _interopRequireDefault(_config);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Logs generated as a result of invoking the public API will contain this tag
@@ -435,7 +433,7 @@ const API_LOG_TAG = exports.API_LOG_TAG = 'API invoked: ';
  * loggers created at the global scope. Multiple instances of the SDK would end up sharing
  * the log manager and therefore loggers.
  */
-const manager = (0, _kandyLogger2.default)(_config2.default);
+const manager = (0, _kandyLogger2.default)(_config.defaultOptions);
 const logManager = exports.logManager = manager;
 
 /***/ }),
@@ -2531,7 +2529,7 @@ var _channel = __webpack_require__(9607);
 
 var _logs = __webpack_require__(9839);
 
-var _version = __webpack_require__(2159);
+var _version = __webpack_require__(8725);
 
 var _uuid = __webpack_require__(130);
 
@@ -2880,7 +2878,7 @@ var _events2 = _interopRequireDefault(_events);
 
 var _logs = __webpack_require__(9839);
 
-var _version = __webpack_require__(2159);
+var _version = __webpack_require__(8725);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14382,7 +14380,7 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 1110:
+/***/ 4074:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -14484,7 +14482,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(3940));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(1110));
+var _version = _interopRequireDefault(__webpack_require__(4074));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
