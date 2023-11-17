@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 6.5.0 - beta
 
+### Fixed
+
+- Fixed the issue of a missing channel value by providing a default one, when calling `notifications.process` API. `KJS-1858`
+
 ### Other Changes
 
 This release also includes changes to a few other parts of the SDK. These changes should not be noticeable to an application, but are worth mentioning for awareness. A number of features of the SDK have had their codebase renewed to better support the direction of the SDK going forward. This will translate to a better developer experience in the future.
