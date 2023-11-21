@@ -12,6 +12,9 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed the issue of a missing channel value by providing a default one, when calling `notifications.process` API. `KJS-1858`
+- Fixed two issues with `call:stateChange` event:
+  - during local hold, when the event payload contained wrong 'previous' call state parameters.
+  - during call hang up, when the event did not contain a reason text & status code. This applies to the peer that got notified for the call that ended. `KJS-1844`
 
 ### Other Changes
 

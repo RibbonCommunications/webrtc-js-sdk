@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.5.0-beta.1179
+ * Version: 6.5.0-beta.1180
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2374,7 +2374,7 @@ root.sdpHandlers = {
 
 /***/ }),
 
-/***/ 40033:
+/***/ 9952:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2392,7 +2392,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0-beta.1179';
+  return '6.5.0-beta.1180';
 }
 
 /***/ }),
@@ -8175,7 +8175,7 @@ function callStatusEndedOperation(container) {
 
     emitEvent(_eventTypes.CALL_STATE_CHANGE, {
       callId: currentCall.id,
-      transition: { prevState: prevCall.state },
+      transition: { reasonText, statusCode },
       previous: {
         state: prevCall.state,
         localHold: prevCall.localHold,
@@ -8836,7 +8836,7 @@ var _errors2 = _interopRequireDefault(_errors);
 
 var _kandyWebrtc = __webpack_require__(25865);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _sdkId = __webpack_require__(59026);
 
@@ -15892,9 +15892,6 @@ function createUnholdResponse(container) {
       remoteTracks: affectedRemoteTracks
     })));
 
-    // Get an updated call object
-    call = (0, _selectors.getCallById)(context.getState(), call.id);
-
     // Tell the application that tracks have been added.
     if ([...affectedLocalTracks, ...affectedRemoteTracks].length > 0) {
       emitEvent(eventTypes.CALL_TRACKS_ADDED, {
@@ -15904,6 +15901,9 @@ function createUnholdResponse(container) {
     }
 
     // Tell the application that call state has changed.
+    // We use the original 'call' object that was passed to this operation
+    // (as previous call representation) because after triggering
+    // 'unholdCallFinish' action (above), call state already changed.
     emitEvent(eventTypes.CALL_STATE_CHANGE, {
       callId: call.id,
       previous: {
@@ -20410,7 +20410,7 @@ var _logs = __webpack_require__(89839);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _defaults = __webpack_require__(82914);
 
@@ -24389,7 +24389,7 @@ const CALL_INCOMING = exports.CALL_INCOMING = 'call:receive';
  * @param {string} params.callId The ID of the Media object that was operated on.
  * @param {Object} params.previous The call's properties before the operation changed it.
  * @param {string} params.previous.state The previous state of the call.
- * @param {Object} [params.transition]
+ * @param {Object} [params.transition] Contains more detailed information about the state change.
  * @param {number} [params.transition.statusCode] The status code associated with the particular state change's reason.
  * @param {string} [params.transition.reasonText] The reason for the state change.
  * @param {boolean} [params.previous.localHold] The previous local hold state. Present when the state change was a hold/unhold operation.
@@ -33835,7 +33835,7 @@ var _bottlejs2 = _interopRequireDefault(_bottlejs);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _intervalFactory = __webpack_require__(3614);
 
@@ -41982,7 +41982,7 @@ var _sagas = __webpack_require__(89869);
 
 var _selectors = __webpack_require__(53960);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _utils = __webpack_require__(84980);
 
@@ -42146,7 +42146,7 @@ var _utils = __webpack_require__(86128);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _effects = __webpack_require__(27422);
 
@@ -42248,7 +42248,7 @@ var _selectors2 = __webpack_require__(53960);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _utils = __webpack_require__(84980);
 
@@ -52017,7 +52017,7 @@ var _channel = __webpack_require__(49607);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(40033);
+var _version = __webpack_require__(9952);
 
 var _uuid = __webpack_require__(60130);
 
@@ -93312,7 +93312,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 3413:
+/***/ 98531:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -93753,7 +93753,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(3413));
+var _version = _interopRequireDefault(__webpack_require__(98531));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
