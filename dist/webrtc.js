@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.5.0-beta.1180
+ * Version: 6.5.0-beta.1181
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2374,7 +2374,7 @@ root.sdpHandlers = {
 
 /***/ }),
 
-/***/ 9952:
+/***/ 60069:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2392,7 +2392,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0-beta.1180';
+  return '6.5.0-beta.1181';
 }
 
 /***/ }),
@@ -8836,7 +8836,7 @@ var _errors2 = _interopRequireDefault(_errors);
 
 var _kandyWebrtc = __webpack_require__(25865);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _sdkId = __webpack_require__(59026);
 
@@ -20410,7 +20410,7 @@ var _logs = __webpack_require__(89839);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _defaults = __webpack_require__(82914);
 
@@ -33835,7 +33835,7 @@ var _bottlejs2 = _interopRequireDefault(_bottlejs);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _intervalFactory = __webpack_require__(3614);
 
@@ -41982,7 +41982,7 @@ var _sagas = __webpack_require__(89869);
 
 var _selectors = __webpack_require__(53960);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _utils = __webpack_require__(84980);
 
@@ -42146,7 +42146,7 @@ var _utils = __webpack_require__(86128);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _effects = __webpack_require__(27422);
 
@@ -42248,7 +42248,7 @@ var _selectors2 = __webpack_require__(53960);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _utils = __webpack_require__(84980);
 
@@ -47050,8 +47050,9 @@ reducers[actionTypes.FETCH_USER_FINISH] = {
     const user = action.payload;
     return (0, _extends3.default)({}, state, {
       users: (0, _extends3.default)({}, state.users, {
-        [user.userId]: user
-      })
+        [user.primaryContact]: user
+      }),
+      isPending: false
     });
   },
   throw(state, action) {
@@ -47066,7 +47067,7 @@ reducers[actionTypes.SEARCH_DIRECTORY_FINISH] = {
   next(state, action) {
     const users = {};
     for (const user of action.payload) {
-      users[user.userId] = user;
+      users[user.primaryContact] = user;
     }
     return (0, _extends3.default)({}, state, {
       users: (0, _extends3.default)({}, state.users, users),
@@ -47187,9 +47188,8 @@ function usersFactory(options = {}, bottle) {
   bottle.factory('UsersOperations', _operations2.default);
   bottle.factory('UsersRequests', _requests2.default);
 
-  const capabilities = ['addContactAsFriend', 'limitedSearch'];
   return {
-    capabilities,
+    capabilities: ['addContactAsFriend', 'limitedSearch'],
     name: _interface.name,
     reducer: _interface.reducer
   };
@@ -52017,7 +52017,7 @@ var _channel = __webpack_require__(49607);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(9952);
+var _version = __webpack_require__(60069);
 
 var _uuid = __webpack_require__(60130);
 
@@ -93312,7 +93312,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 98531:
+/***/ 14337:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -93753,7 +93753,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(98531));
+var _version = _interopRequireDefault(__webpack_require__(14337));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 

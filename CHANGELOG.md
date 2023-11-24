@@ -15,6 +15,7 @@ Ribbon WebRTC SDK change log.
 - Fixed two issues with `call:stateChange` event:
   - during local hold, when the event payload contained wrong 'previous' call state parameters.
   - during call hang up, when the event did not contain a reason text & status code. This applies to the peer that got notified for the call that ended. `KJS-1844`
+- Fixed an issue relating to how Directory/Address Book users are stored and retrieved. `KJS-466`
 
 ### Other Changes
 
