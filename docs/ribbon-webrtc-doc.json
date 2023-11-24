@@ -954,23 +954,23 @@
           ],
           "loc": {
             "start": {
-              "line": 29,
-              "column": 0
+              "line": 42,
+              "column": 2
             },
             "end": {
-              "line": 43,
-              "column": 3
+              "line": 56,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 44,
-                "column": 0
+                "line": 57,
+                "column": 2
               },
               "end": {
-                "line": 51,
-                "column": 1
+                "line": 64,
+                "column": 3
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_beta/packages/kandy/src/subscription/link/index.js"
@@ -2224,7 +2224,18 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "For more information on keepalive see here: https://en.wikipedia.org/wiki/Keepalive"
+                    "value": "For more information on keepalive see here: "
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://en.wikipedia.org/wiki/Keepalive",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "https://en.wikipedia.org/wiki/Keepalive"
+                      }
+                    ]
                   }
                 ]
               }
@@ -10300,7 +10311,23 @@
                   },
                   {
                     "type": "text",
-                    "value": " property of the call.\nSee {@link call.mediaConnectionStates} for the list of possible values and descriptions."
+                    "value": " property of the call.\nSee "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#callmediaconnectionstates",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "call.mediaConnectionStates"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " for the list of possible values and descriptions."
                   }
                 ]
               }
@@ -22028,7 +22055,23 @@
                   },
                   {
                     "type": "text",
-                    "value": ". {@link call.addMedia} is a general-purpose API\nfor adding media to a call, which covers the same functionality as\n"
+                    "value": ". "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#calladdmedia",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "call.addMedia"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " is a general-purpose API\nfor adding media to a call, which covers the same functionality as\n"
                   },
                   {
                     "type": "inlineCode",
@@ -22220,7 +22263,23 @@
                   },
                   {
                     "type": "text",
-                    "value": ". {@link call.removeMedia} is a\ngeneral-purpose API for removing media from a call, which covers the\nsame functionality as "
+                    "value": ". "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#callremovemedia",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "call.removeMedia"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " is a\ngeneral-purpose API for removing media from a call, which covers the\nsame functionality as "
                   },
                   {
                     "type": "inlineCode",
@@ -23094,7 +23153,23 @@
                   },
                   {
                     "type": "text",
-                    "value": " (via a\n{@link call.event:call:mediaConnectionChange call:mediaConnectionChange}\nevent) to signify the re-establishment. It will then transition to either\n"
+                    "value": " (via a\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "#calleventcallmediaconnectionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "call:mediaConnectionChange"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent) to signify the re-establishment. It will then transition to either\n"
                   },
                   {
                     "type": "inlineCode",
@@ -31203,7 +31278,18 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The SIP URI ie: sip:joe@domain.com"
+                    "value": "The SIP URI ie: sip:"
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "mailto:joe@domain.com",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "joe@domain.com"
+                      }
+                    ]
                   }
                 ]
               }
@@ -53381,7 +53467,7 @@
               "title": "requires",
               "description": null,
               "lineNumber": 32,
-              "name": "link_subscription"
+              "name": "subscription"
             },
             {
               "title": "event",
@@ -54233,7 +54319,7 @@
               "title": "requires",
               "description": null,
               "lineNumber": 14,
-              "name": "link_subscription"
+              "name": "subscription"
             },
             {
               "title": "method",
@@ -54323,29 +54409,37 @@
               "name": "options.clientCorrelator"
             },
             {
+              "title": "return",
+              "description": null,
+              "lineNumber": 21,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
               "title": "example",
               "description": "// Subscribe for chat and SMS services.\nclient.services.subscribe(['call', 'IM'], {forceLogOut: true, clientCorrelator: 'abc123'})",
-              "lineNumber": 21
+              "lineNumber": 22
             }
           ],
           "loc": {
             "start": {
-              "line": 91,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 119,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 116,
+                "line": 120,
                 "column": 4
               },
               "end": {
-                "line": 142,
+                "line": 174,
                 "column": 5
               }
             },
@@ -54506,7 +54600,18 @@
             }
           ],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
@@ -54648,22 +54753,22 @@
           ],
           "loc": {
             "start": {
-              "line": 144,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 163,
+              "line": 195,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 164,
+                "line": 196,
                 "column": 4
               },
               "end": {
-                "line": 172,
+                "line": 224,
                 "column": 5
               }
             },
@@ -54870,22 +54975,22 @@
           ],
           "loc": {
             "start": {
-              "line": 186,
+              "line": 226,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 253,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 214,
+                "line": 254,
                 "column": 4
               },
               "end": {
-                "line": 221,
+                "line": 261,
                 "column": 5
               }
             },
@@ -59226,7 +59331,22 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The ID of a User (e.g. joe@domain.com)"
+                    "value": "The ID of a User (e.g. "
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "mailto:joe@domain.com",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "joe@domain.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ")"
                   }
                 ]
               }
