@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.5.0-beta.1181
+ * Version: 6.5.0-beta.1182
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2178:
+/***/ 5319:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0-beta.1181';
+  return '6.5.0-beta.1182';
 }
 
 /***/ }),
@@ -2529,7 +2529,7 @@ var _channel = __webpack_require__(9607);
 
 var _logs = __webpack_require__(9839);
 
-var _version = __webpack_require__(2178);
+var _version = __webpack_require__(5319);
 
 var _uuid = __webpack_require__(130);
 
@@ -2878,7 +2878,7 @@ var _events2 = _interopRequireDefault(_events);
 
 var _logs = __webpack_require__(9839);
 
-var _version = __webpack_require__(2178);
+var _version = __webpack_require__(5319);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14380,7 +14380,7 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 6144:
+/***/ 7463:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -14482,7 +14482,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(3940));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(6144));
+var _version = _interopRequireDefault(__webpack_require__(7463));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
