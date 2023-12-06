@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.6.0-beta.1190
+ * Version: 6.6.0-beta.1191
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 66470:
+/***/ 46878:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.6.0-beta.1190';
+  return '6.6.0-beta.1191';
 }
 
 /***/ }),
@@ -4960,12 +4960,16 @@ function callManager(container) {
   } = container;
   const callFlows = (0, _flows.default)(container);
   const manager = {};
+  const makeOperations = [_constants.OPERATIONS.MAKE, _constants.OPERATIONS.MAKE_ANONYMOUS];
+  makeOperations.forEach(opName => {
+    const stackMethod = _operationMap.operationMap[opName];
 
-  // CallManager method for making a new, outgoing call.
-  manager[_operationMap.operationMap[_constants.OPERATIONS.MAKE]] = async (callId, ...params) => {
-    const operation = Callstack.operations.make;
-    return await callFlows.newOutgoing(callId, operation, params);
-  };
+    // Create the operation API on the Call Manager.
+    manager[stackMethod] = async (callId, ...params) => {
+      const operation = Callstack.operations[stackMethod];
+      return await callFlows.newOutgoing(callId, operation, params);
+    };
+  });
 
   // CallManager method for receiving a new, incoming call.
   manager.establishOffer = async (wrtcsSessionId, params, channel) => {
@@ -8891,7 +8895,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -19935,7 +19939,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -32243,7 +32247,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -39960,7 +39964,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40114,7 +40118,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40202,7 +40206,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -42692,7 +42696,10 @@ exports.getSubscriptions = getSubscriptions;
 exports.getWebsocketConfig = getWebsocketConfig;
 exports.getWebsocketId = getWebsocketId;
 var _fp = __webpack_require__(90193);
+var _selectors = __webpack_require__(46942);
 var _utils = __webpack_require__(25189);
+// Auth selectors for backwards compatibility.
+
 // Utilities.
 
 /**
@@ -42761,6 +42768,12 @@ function getSubscribedServices(state, type) {
 function getSubscriptionInfo(state) {
   if (state.subscription) {
     return (0, _fp.cloneDeep)(state.subscription.subscriptions);
+  } else {
+    // For backwards compatibility, also check if the authentication substate
+    //    has subscription info. It will have the info when the oldAuth plugin
+    //    is being used (eg. Link v3.X).
+    // Warning: This returns an object, unlike the above which returns an array.
+    return (0, _fp.cloneDeep)((0, _selectors.getSubscriptionInfo)(state));
   }
 }
 
@@ -50290,7 +50303,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(66470);
+var _version = __webpack_require__(46878);
 var _uuid = __webpack_require__(60130);
 // Proxy plugin.
 
@@ -88730,7 +88743,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 85226:
+/***/ 96520:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89171,7 +89184,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(85226));
+var _version = _interopRequireDefault(__webpack_require__(96520));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
