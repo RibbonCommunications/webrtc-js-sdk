@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.5.0
+ * Version: 6.5.1
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2374,7 +2374,7 @@ root.sdpHandlers = {
 
 /***/ }),
 
-/***/ 1639:
+/***/ 45239:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2392,7 +2392,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.5.0';
+  return '6.5.1';
 }
 
 /***/ }),
@@ -3916,7 +3916,7 @@ function createOperation(container) {
       connection
     }, platform));
 
-    emitEvent(eventTypes.AUTH_CHANGE);
+    emitEvent(eventTypes.AUTH_CHANGE, {});
   }
 
   return setCredentials;
@@ -3987,7 +3987,7 @@ function createOperation(container) {
       }
     }, platform));
 
-    emitEvent(eventTypes.AUTH_CHANGE);
+    emitEvent(eventTypes.AUTH_CHANGE, {});
   }
 
   return updateToken;
@@ -8836,7 +8836,7 @@ var _errors2 = _interopRequireDefault(_errors);
 
 var _kandyWebrtc = __webpack_require__(25865);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _sdkId = __webpack_require__(59026);
 
@@ -20410,7 +20410,7 @@ var _logs = __webpack_require__(89839);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _defaults = __webpack_require__(82914);
 
@@ -33835,7 +33835,7 @@ var _bottlejs2 = _interopRequireDefault(_bottlejs);
 
 var _utils = __webpack_require__(84980);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _intervalFactory = __webpack_require__(3614);
 
@@ -41982,7 +41982,7 @@ var _sagas = __webpack_require__(89869);
 
 var _selectors = __webpack_require__(53960);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _utils = __webpack_require__(84980);
 
@@ -42146,7 +42146,7 @@ var _utils = __webpack_require__(86128);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _effects = __webpack_require__(27422);
 
@@ -42248,7 +42248,7 @@ var _selectors2 = __webpack_require__(53960);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _utils = __webpack_require__(84980);
 
@@ -52017,7 +52017,7 @@ var _channel = __webpack_require__(49607);
 
 var _logs = __webpack_require__(89839);
 
-var _version = __webpack_require__(1639);
+var _version = __webpack_require__(45239);
 
 var _uuid = __webpack_require__(60130);
 
@@ -53319,7 +53319,13 @@ function reportFactory(type, id) {
    * @return {TimelineEvent} The last event matching the provided type.
    */
   function findLastOngoingEvent(type) {
-    return timeline.findLast(event => {
+    // KJS-1898: Using an alternative way for `findLast` as that prototype method is not supported in Chrome versions prior to M97.
+    // TODO: Revert back to using `findLast` once our babel strategy is finalized.
+
+    // Make a copy first, since `reverse()` will do a mutation on original array, which we don't want
+    // for the rest of operatins within this report.
+    const copiedTimeline = [...timeline];
+    return copiedTimeline.reverse().find(event => {
       // If no type is provided return the latest ongoing event
       // If an array is provided, find the last ongoing event that is part of the array
       // If a string is provided, find that particular last ongoing event
@@ -53622,7 +53628,13 @@ function createTimelineEvent(type, onEventEnded) {
    * @return {TimelineEvent} The last event matching the provided type.
    */
   function findLastOngoingEvent(type) {
-    return timeline.findLast(event => {
+    // KJS-1898: Using an alternative way for `findLast` as that prototype method is not supported in Chrome versions prior to M97.
+    // TODO: Revert back to using `findLast` once our babel strategy is finalized.
+
+    // Make a copy first, since `reverse()` will do a mutation on original array, which we don't want
+    // for the rest of operatins within this report.
+    const copiedTimeline = [...timeline];
+    return copiedTimeline.reverse().find(event => {
       if (event.type === type && !event.isEnded()) {
         return event;
       }
@@ -93312,7 +93324,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 49339:
+/***/ 51584:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -93753,7 +93765,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(49339));
+var _version = _interopRequireDefault(__webpack_require__(51584));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
