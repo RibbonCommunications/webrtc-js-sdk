@@ -1,6 +1,6 @@
 /**
  * COPYRIGHT © 2023 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED.
- * This publication and the information contained herein is the property of Ribbon
+ * This publication and the information contained herein is the property of the Ribbon
  * and may not be copied, reproduced or distributed in any form or by any means without
  * the prior written permission of Ribbon.
  *
@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.6.0-beta.1193
+ * Version: 6.6.0-beta.1194
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 38306:
+/***/ 55048:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.6.0-beta.1193';
+  return '6.6.0-beta.1194';
 }
 
 /***/ }),
@@ -4701,11 +4701,6 @@ function createFlow(container) {
       return;
     }
 
-    // If this isn't a slow start operation we can end the event here.
-    if (!isSlowStart) {
-      operationEvent.endEvent();
-    }
-
     // Regular operations are finished now, but slow-start are not.
     const opTransition = isSlowStart ? _constants2.OP_TRANSITIONS.UPDATE : _constants2.OP_TRANSITIONS.FINISH;
     context.dispatch(_actions.callActions.operationUpdate(call.id, opInfo.remoteOp, false, {
@@ -4846,9 +4841,8 @@ exports["default"] = createFlow;
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
-var _constants2 = __webpack_require__(60683);
 var _selectors = __webpack_require__(11430);
-var _constants3 = __webpack_require__(42750);
+var _constants2 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
@@ -4869,24 +4863,17 @@ function createFlow(container) {
   return async function remoteOnly(wrtcsSessionId, handler, params) {
     let call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     let notificationEvent;
-
     // TODO: Handle all notifications instead of only the ones the reporter knows about.
-    // If the call exists (in the sense that is both valid as an object AND it's state is not ended)
-    if (call && call.state !== _constants2.CALL_STATES.ENDED) {
-      if (call.localOp && call.localOp.eventId && _constants3.REPORTER_OPERATION_EVENTS_MAP.hasOwnProperty(handler.name)) {
-        // if call has an on-going local operation, then the
-        // notification is part of that operation.
-
-        // Get the local main event
-        const operationEvent = CallReporter.getReport(call.id).getEvent(call.localOp.eventId);
-        // create & add a local sub-event
-        notificationEvent = operationEvent.addEvent(_constants3.REPORTER_OPERATION_EVENTS_MAP[handler.name]);
-      } else if (_constants3.REPORTER_OPERATION_EVENTS_MAP.hasOwnProperty(handler.name)) {
-        // Otherwise, if the call exists (but there isn't an on-going local operation),
-        //    the notification is part of a new remote operation.
-        const report = CallReporter.getReport(call.id);
-        notificationEvent = report.addEvent(_constants3.REPORTER_OPERATION_EVENTS_MAP[handler.name]);
-      }
+    if (call && call.localOp && call.localOp.eventId && _constants2.REPORTER_OPERATION_EVENTS_MAP.hasOwnProperty(handler.name)) {
+      // If the call exists and has an on-going local operation, then the
+      //    notification is part of that operation.
+      const operationEvent = CallReporter.getReport(call.id).getEvent(call.localOp.eventId);
+      notificationEvent = operationEvent.addEvent(_constants2.REPORTER_OPERATION_EVENTS_MAP[handler.name]);
+    } else if (call && _constants2.REPORTER_OPERATION_EVENTS_MAP.hasOwnProperty(handler.name)) {
+      // Otherwise, if the call exists (but there isn't an on-going local operation),
+      //    the notification is part of a new remote operation.
+      const report = CallReporter.getReport(call.id);
+      notificationEvent = report.addEvent(_constants2.REPORTER_OPERATION_EVENTS_MAP[handler.name]);
     } else {
       // If the call doesn't exist, can't add anything to its report. TODO.
     }
@@ -4960,16 +4947,12 @@ function callManager(container) {
   } = container;
   const callFlows = (0, _flows.default)(container);
   const manager = {};
-  const makeOperations = [_constants.OPERATIONS.MAKE, _constants.OPERATIONS.MAKE_ANONYMOUS];
-  makeOperations.forEach(opName => {
-    const stackMethod = _operationMap.operationMap[opName];
 
-    // Create the operation API on the Call Manager.
-    manager[stackMethod] = async (callId, ...params) => {
-      const operation = Callstack.operations[stackMethod];
-      return await callFlows.newOutgoing(callId, operation, params);
-    };
-  });
+  // CallManager method for making a new, outgoing call.
+  manager[_operationMap.operationMap[_constants.OPERATIONS.MAKE]] = async (callId, ...params) => {
+    const operation = Callstack.operations.make;
+    return await callFlows.newOutgoing(callId, operation, params);
+  };
 
   // CallManager method for receiving a new, incoming call.
   manager.establishOffer = async (wrtcsSessionId, params, channel) => {
@@ -8895,7 +8878,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -15753,19 +15736,12 @@ function createUnholdHandler(container) {
      *    the session doesn't change for stop MOH because it was a remote complex
      *    operation. The Peer needs to be recreated again otherwise local tracks
      *    will not be properly added back the call (because of how `recreatePeer` works).
-     * Exception: If client has set the call option 'mediaBrokerOnly' to true, then
-     *    we don't need to recreate the call's PeerConnection.
      * Reference: KJS-934
      */
-    const {
-      mediaBrokerOnly
-    } = (0, _selectors.getOptions)(context.getState());
     const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
-    if (sameSession && call.hasMOH && !mediaBrokerOnly) {
+    if (sameSession && call.hasMOH) {
       log.debug(`Received offer SDP is both an unhold and stop MoH on the same session. Recreating Peer for call ${call.id}.`);
       await session.recreatePeer();
-    } else {
-      log.debug('Not recreating PeerConnection as mediaBrokerOnly is set to true in configuration.');
     }
 
     /**
@@ -16515,7 +16491,6 @@ const ICE_COLLECTION_OPERATIONS = exports.ICE_COLLECTION_OPERATIONS = {
   JOIN: 'JOIN',
   HOLD: 'HOLD_LOCAL',
   UNHOLD: 'UNHOLD_LOCAL',
-  UNHOLD_REMOTE: 'UNHOLD_REMOTE',
   ADD_MEDIA: 'ADD_MEDIA_LOCAL',
   ADD_BASIC_MEDIA: 'ADD_BASIC_MEDIA_LOCAL',
   REMOVE_MEDIA: 'REMOVE_MEDIA_LOCAL',
@@ -19939,7 +19914,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -24241,45 +24216,37 @@ callReducers[actionTypes.CALL_CANCELLED] = {
   }
 };
 
-// End the call if the ignore operation was successful, otherwise ignore this request.
-callReducers[actionTypes.IGNORE_CALL_FINISH] = {
-  next: (state, action) => {
-    // The call being ignored means it was not completed. Ensure there are times
-    //    in state, and they reflect that the call was not completed.
-    // TODO: Better call times.
-    const now = Date.now();
-    return _objectSpread(_objectSpread({}, state), {}, {
-      startTime: now,
-      endTime: now,
-      state: _constants.CALL_STATES.ENDED
-    });
-  },
-  throw: (state, action) => {
-    return state;
-  }
+// Handle success and error scenarios the same for ignore finish. The call is
+//    always ended.
+callReducers[actionTypes.IGNORE_CALL_FINISH] = (state, action) => {
+  // The call being ignored means it was not completed. Ensure there are times
+  //    in state, and they reflect that the call was not completed.
+  // TODO: Better call times.
+  const now = Date.now();
+  return _objectSpread(_objectSpread({}, state), {}, {
+    startTime: now,
+    endTime: now,
+    state: _constants.CALL_STATES.ENDED
+  });
 };
 
-// End the call if the reject operation was successful, otherwise ignore this request.
-callReducers[actionTypes.REJECT_CALL_FINISH] = {
-  next: (state, action) => {
-    // The call being rejected means it was not completed. Ensure there are
-    //    times in state, and they reflect that the call was not completed.
-    // TODO: Better call times.
-    const now = Date.now();
-    const newState = _objectSpread(_objectSpread({}, state), {}, {
-      startTime: now,
-      endTime: now,
-      state: _constants.CALL_STATES.ENDED
-    });
+// Handle success and error scenarios the same for reject finish. The call is
+//    always ended.
+callReducers[actionTypes.REJECT_CALL_FINISH] = (state, action) => {
+  // The call being rejected means it was not completed. Ensure there are
+  //    times in state, and they reflect that the call was not completed.
+  // TODO: Better call times.
+  const now = Date.now();
+  const newState = _objectSpread(_objectSpread({}, state), {}, {
+    startTime: now,
+    endTime: now,
+    state: _constants.CALL_STATES.ENDED
+  });
 
-    // After the reject operation finishes, remove the flag that indicates we
-    //    were handling the call.
-    delete newState.isHandling;
-    return newState;
-  },
-  throw: (state, action) => {
-    return state;
-  }
+  // After the reject operation finishes, remove the flag that indicates we
+  //    were handling the call.
+  delete newState.isHandling;
+  return newState;
 };
 callReducers[actionTypes.SESSION_CREATED] = {
   next(state, action) {
@@ -32247,7 +32214,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -39964,7 +39931,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40118,7 +40085,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40206,7 +40173,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -42696,10 +42663,7 @@ exports.getSubscriptions = getSubscriptions;
 exports.getWebsocketConfig = getWebsocketConfig;
 exports.getWebsocketId = getWebsocketId;
 var _fp = __webpack_require__(90193);
-var _selectors = __webpack_require__(46942);
 var _utils = __webpack_require__(25189);
-// Auth selectors for backwards compatibility.
-
 // Utilities.
 
 /**
@@ -42768,12 +42732,6 @@ function getSubscribedServices(state, type) {
 function getSubscriptionInfo(state) {
   if (state.subscription) {
     return (0, _fp.cloneDeep)(state.subscription.subscriptions);
-  } else {
-    // For backwards compatibility, also check if the authentication substate
-    //    has subscription info. It will have the info when the oldAuth plugin
-    //    is being used (eg. Link v3.X).
-    // Warning: This returns an object, unlike the above which returns an array.
-    return (0, _fp.cloneDeep)((0, _selectors.getSubscriptionInfo)(state));
   }
 }
 
@@ -50303,7 +50261,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(38306);
+var _version = __webpack_require__(55048);
 var _uuid = __webpack_require__(60130);
 // Proxy plugin.
 
@@ -51543,13 +51501,7 @@ function reportFactory(type, id) {
    * @return {TimelineEvent} The last event matching the provided type.
    */
   function findLastOngoingEvent(type) {
-    // KJS-1898: Using an alternative way for `findLast` as that prototype method is not supported in Chrome versions prior to M97.
-    // TODO: Revert back to using `findLast` once our babel strategy is finalized.
-
-    // Make a copy first, since `reverse()` will do a mutation on original array, which we don't want
-    // for the rest of operatins within this report.
-    const copiedTimeline = [...timeline];
-    return copiedTimeline.reverse().find(event => {
+    return timeline.findLast(event => {
       // If no type is provided return the latest ongoing event
       // If an array is provided, find the last ongoing event that is part of the array
       // If a string is provided, find that particular last ongoing event
@@ -51711,11 +51663,9 @@ var _uuid = __webpack_require__(60130);
  * @param {string} The type of event being created.
  * @return {TimelineEvent}
  */
-function createTimelineEvent(type, onEventEnded, pId) {
+function createTimelineEvent(type, onEventEnded) {
   const start = new Date().getTime();
   const id = (0, _uuid.v4)();
-  // The id of this events parent (if one exists)
-  const parentId = pId;
   //  this will hold any sub-events for this event
   const timeline = [];
   // this will hold associated data for this event, indexed by type
@@ -51738,7 +51688,7 @@ function createTimelineEvent(type, onEventEnded, pId) {
     if (!type || !(0, _fp.isString)(type)) {
       throw new Error(`${API_TAG}timelineEvent.addEvent: Invalid type (${typeof type}), must be of type string.`);
     }
-    const newSubEvent = createTimelineEvent(type, onEventEnded, id);
+    const newSubEvent = createTimelineEvent(type, onEventEnded);
 
     // Store the sub-event in the timeline beloging to parent event
     timeline.push(newSubEvent);
@@ -51839,13 +51789,7 @@ function createTimelineEvent(type, onEventEnded, pId) {
    * @return {TimelineEvent} The last event matching the provided type.
    */
   function findLastOngoingEvent(type) {
-    // KJS-1898: Using an alternative way for `findLast` as that prototype method is not supported in Chrome versions prior to M97.
-    // TODO: Revert back to using `findLast` once our babel strategy is finalized.
-
-    // Make a copy first, since `reverse()` will do a mutation on original array, which we don't want
-    // for the rest of operatins within this report.
-    const copiedTimeline = [...timeline];
-    return copiedTimeline.reverse().find(event => {
+    return timeline.findLast(event => {
       if (event.type === type && !event.isEnded()) {
         return event;
       }
@@ -51913,7 +51857,6 @@ function createTimelineEvent(type, onEventEnded, pId) {
     return {
       type,
       id,
-      parentId,
       timeline: timeline.map(event => event.getSerializable()),
       data: eventData,
       metrics,
@@ -51925,7 +51868,6 @@ function createTimelineEvent(type, onEventEnded, pId) {
   const event = {
     type,
     id,
-    parentId,
     timeline,
     metrics,
     start,
@@ -88755,7 +88697,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 53541:
+/***/ 95111:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89196,7 +89138,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(53541));
+var _version = _interopRequireDefault(__webpack_require__(95111));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
