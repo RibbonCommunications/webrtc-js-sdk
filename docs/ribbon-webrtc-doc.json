@@ -28633,23 +28633,23 @@
             },
             {
               "title": "property",
-              "description": "Starts when the local description is to be set, and ends when the offer is set and ice collection completes.",
+              "description": "Starts when the local media begins processing, and ends when the offer is set and ice collection completes.",
               "lineNumber": 23,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
               },
-              "name": "SET_LOCAL_DESCRIPTION"
+              "name": "PROCESS_MEDIA_LOCAL"
             },
             {
               "title": "property",
-              "description": "Starts when the remote description is to be set, and ends when the remote description is set.",
+              "description": "Starts when the remote response is received, and ends when the remote media is set.",
               "lineNumber": 24,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
               },
-              "name": "SET_REMOTE_DESCRIPTION"
+              "name": "PROCESS_MEDIA_REMOTE"
             },
             {
               "title": "property",
@@ -28853,18 +28853,8 @@
             },
             {
               "title": "property",
-              "description": "Starts when a notification is received to an update request and ends when the response is handled.",
-              "lineNumber": 45,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "PROCESS_RESPONSE"
-            },
-            {
-              "title": "property",
               "description": "Starts when the play audio operation starts. Ends when the play audio operation finishes.",
-              "lineNumber": 46,
+              "lineNumber": 45,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28874,7 +28864,7 @@
             {
               "title": "property",
               "description": "Starts when the start music on hold operation starts. Ends when the start music on hold operation finishes.",
-              "lineNumber": 47,
+              "lineNumber": 46,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28884,7 +28874,7 @@
             {
               "title": "property",
               "description": "Starts when the stop music on hold operation starts. Ends when the stop music on hold operation finishes.",
-              "lineNumber": 48,
+              "lineNumber": 47,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28894,7 +28884,7 @@
             {
               "title": "property",
               "description": "Starts when the send custom parameters operation starts. Ends send custom parameters operation finishes.",
-              "lineNumber": 49,
+              "lineNumber": 48,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28904,7 +28894,7 @@
             {
               "title": "property",
               "description": "Starts when the get stats operation starts. Ends when the get stats operation finishes.",
-              "lineNumber": 50,
+              "lineNumber": 49,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28914,7 +28904,7 @@
             {
               "title": "property",
               "description": "Starts when the send DTMF operation starts. Ends when the DTMF operation finishes.",
-              "lineNumber": 51,
+              "lineNumber": 50,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28924,7 +28914,7 @@
             {
               "title": "property",
               "description": "Starts when the resync operation starts. Ends when the resync operation finishes.",
-              "lineNumber": 52,
+              "lineNumber": 51,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28934,7 +28924,7 @@
             {
               "title": "property",
               "description": "Starts when the direct transfer operation starts. Ends when the direct transfer operation finishes.",
-              "lineNumber": 53,
+              "lineNumber": 52,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28944,7 +28934,7 @@
             {
               "title": "property",
               "description": "Starts when the consultative transfer operation starts. Ends when the consultative transfer operation finishes.",
-              "lineNumber": 54,
+              "lineNumber": 53,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28954,7 +28944,7 @@
             {
               "title": "property",
               "description": "Starts when the join operation starts. Ends when the join operation finishes.",
-              "lineNumber": 55,
+              "lineNumber": 54,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28964,7 +28954,7 @@
             {
               "title": "property",
               "description": "Starts when the get available codecs operation starts. Ends when the get available codecs operation finishes.",
-              "lineNumber": 56,
+              "lineNumber": 55,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28974,7 +28964,7 @@
             {
               "title": "property",
               "description": "Starts when the slow start operation starts. Ends when the slow stop operation finishes.",
-              "lineNumber": 57,
+              "lineNumber": 56,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -28984,7 +28974,7 @@
             {
               "title": "example",
               "description": "const report = client.call.getReport('callId')\nconst getAvailableCodecsEvent = report.timeline.find(event => event.type === client.call.reportEvents.GET_AVAILABLE_CODECS)\nlog(`Took ${getAvailableCodecsEvent.end - getAvailableCodecsEvent.start}ms to get available codecs.`)",
-              "lineNumber": 58
+              "lineNumber": 57
             }
           ],
           "loc": {
@@ -28993,18 +28983,18 @@
               "column": 0
             },
             "end": {
-              "line": 63,
+              "line": 62,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 64,
+                "line": 63,
                 "column": 0
               },
               "end": {
-                "line": 107,
+                "line": 105,
                 "column": 1
               }
             },
@@ -29145,7 +29135,7 @@
             },
             {
               "title": "property",
-              "name": "SET_LOCAL_DESCRIPTION",
+              "name": "PROCESS_MEDIA_LOCAL",
               "lineNumber": 23,
               "description": {
                 "type": "root",
@@ -29155,7 +29145,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "Starts when the local description is to be set, and ends when the offer is set and ice collection completes."
+                        "value": "Starts when the local media begins processing, and ends when the offer is set and ice collection completes."
                       }
                     ]
                   }
@@ -29168,7 +29158,7 @@
             },
             {
               "title": "property",
-              "name": "SET_REMOTE_DESCRIPTION",
+              "name": "PROCESS_MEDIA_REMOTE",
               "lineNumber": 24,
               "description": {
                 "type": "root",
@@ -29178,7 +29168,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "Starts when the remote description is to be set, and ends when the remote description is set."
+                        "value": "Starts when the remote response is received, and ends when the remote media is set."
                       }
                     ]
                   }
@@ -29651,31 +29641,8 @@
             },
             {
               "title": "property",
-              "name": "PROCESS_RESPONSE",
-              "lineNumber": 45,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Starts when a notification is received to an update request and ends when the response is handled."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            },
-            {
-              "title": "property",
               "name": "PLAY_AUDIO",
-              "lineNumber": 46,
+              "lineNumber": 45,
               "description": {
                 "type": "root",
                 "children": [
@@ -29698,7 +29665,7 @@
             {
               "title": "property",
               "name": "START_MOH",
-              "lineNumber": 47,
+              "lineNumber": 46,
               "description": {
                 "type": "root",
                 "children": [
@@ -29721,7 +29688,7 @@
             {
               "title": "property",
               "name": "STOP_MOH",
-              "lineNumber": 48,
+              "lineNumber": 47,
               "description": {
                 "type": "root",
                 "children": [
@@ -29744,7 +29711,7 @@
             {
               "title": "property",
               "name": "SEND_CUSTOM_PARAMETERS",
-              "lineNumber": 49,
+              "lineNumber": 48,
               "description": {
                 "type": "root",
                 "children": [
@@ -29767,7 +29734,7 @@
             {
               "title": "property",
               "name": "GET_STATS",
-              "lineNumber": 50,
+              "lineNumber": 49,
               "description": {
                 "type": "root",
                 "children": [
@@ -29790,7 +29757,7 @@
             {
               "title": "property",
               "name": "SEND_DTMF",
-              "lineNumber": 51,
+              "lineNumber": 50,
               "description": {
                 "type": "root",
                 "children": [
@@ -29813,7 +29780,7 @@
             {
               "title": "property",
               "name": "RESYNC",
-              "lineNumber": 52,
+              "lineNumber": 51,
               "description": {
                 "type": "root",
                 "children": [
@@ -29836,7 +29803,7 @@
             {
               "title": "property",
               "name": "DIRECT_TRANSFER",
-              "lineNumber": 53,
+              "lineNumber": 52,
               "description": {
                 "type": "root",
                 "children": [
@@ -29859,7 +29826,7 @@
             {
               "title": "property",
               "name": "CONSULTATIVE_TRANSFER",
-              "lineNumber": 54,
+              "lineNumber": 53,
               "description": {
                 "type": "root",
                 "children": [
@@ -29882,7 +29849,7 @@
             {
               "title": "property",
               "name": "JOIN",
-              "lineNumber": 55,
+              "lineNumber": 54,
               "description": {
                 "type": "root",
                 "children": [
@@ -29905,7 +29872,7 @@
             {
               "title": "property",
               "name": "GET_AVAILABLE_CODECS",
-              "lineNumber": 56,
+              "lineNumber": 55,
               "description": {
                 "type": "root",
                 "children": [
@@ -29928,7 +29895,7 @@
             {
               "title": "property",
               "name": "SLOW_START",
-              "lineNumber": 57,
+              "lineNumber": 56,
               "description": {
                 "type": "root",
                 "children": [
@@ -30363,22 +30330,22 @@
           ],
           "loc": {
             "start": {
-              "line": 121,
+              "line": 119,
               "column": 0
             },
             "end": {
-              "line": 169,
+              "line": 167,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 170,
+                "line": 168,
                 "column": 0
               },
               "end": {
-                "line": 200,
+                "line": 198,
                 "column": 1
               }
             },
