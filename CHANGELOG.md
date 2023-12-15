@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 6.6.0 - beta
 
+### Added
+
+- Added `REST_REQUEST` sub-event to the main operation event in the generated call report, for all the complex operations (join, direct/consultative transfer) as well as for any other miscelaneous requests that did not record such sub-event. Also added this sub-event to the `update session` main event, triggered when a Peer performs a local operation (e.g. hold, unholds, restart ice collection). `KJS-1514`
+
 ### Fixed
 
 - Fixed a Call issue where the `call.mediaBrokerOnly` configuration was ignored when being taken off remote hold after receiving music-on-hold. `KJS-1742`
