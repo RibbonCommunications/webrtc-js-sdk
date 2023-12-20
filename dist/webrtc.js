@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.6.0-beta.1201
+ * Version: 6.6.0-beta.1202
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 98891:
+/***/ 15669:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.6.0-beta.1201';
+  return '6.6.0-beta.1202';
 }
 
 /***/ }),
@@ -7217,6 +7217,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _call = __webpack_require__(12442);
 var _remoteTracks = __webpack_require__(45294);
+var _constants2 = __webpack_require__(42750);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _selectors2 = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -7274,6 +7275,7 @@ function answerOperation(container) {
     context,
     Callstack,
     CallRequests,
+    CallReporter,
     emitEvent,
     logManager,
     WebRTC
@@ -7400,6 +7402,18 @@ function answerOperation(container) {
       });
     } catch (error) {
       log.info('Failed to answer call.');
+
+      // If the call has been answered already by the same user logged into a different client then
+      // we should let our resync call operation figure it out and put the call in the correct state
+      // (Cancelled)
+      if (error.code === 55) {
+        const callReport = CallReporter.getReport(callId);
+        // Start the call resync event
+        const operationEvent = callReport.getEvent(incomingCall.localOp.eventId);
+        const resyncEvent = operationEvent.addEvent(_constants2.REPORT_EVENTS.RESYNC);
+        await Callstack.operations.resyncCallState(callId);
+        resyncEvent.endEvent();
+      }
       throw error;
     }
   }
@@ -7742,6 +7756,7 @@ var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _call = __webpack_require__(12442);
+var _constants2 = __webpack_require__(42750);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -7798,6 +7813,7 @@ function answerOperation(container) {
     context,
     Callstack,
     CallRequests,
+    CallReporter,
     logManager
   } = container;
   const {
@@ -7911,6 +7927,18 @@ function answerOperation(container) {
       }));
     } catch (error) {
       log.info('Failed to answer call.');
+
+      // If the call has been answered already by the same user logged into a different client then
+      // we should let our resync call operation figure it out and put the call in the correct state
+      // (Cancelled)
+      if (error.code === 55) {
+        const callReport = CallReporter.getReport(callId);
+        // Start the call resync event
+        const operationEvent = callReport.getEvent(call.localOp.eventId);
+        const resyncEvent = operationEvent.addEvent(_constants2.REPORT_EVENTS.RESYNC);
+        await Callstack.operations.resyncCallState(callId);
+        resyncEvent.endEvent();
+      }
       throw error;
     }
   }
@@ -8905,7 +8933,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -19960,7 +19988,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -32392,7 +32420,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40114,7 +40142,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40268,7 +40296,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40356,7 +40384,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -50453,7 +50481,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(98891);
+var _version = __webpack_require__(15669);
 var _uuid = __webpack_require__(60130);
 // Proxy plugin.
 
@@ -88905,7 +88933,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 83828:
+/***/ 53539:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89346,7 +89374,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(83828));
+var _version = _interopRequireDefault(__webpack_require__(53539));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 

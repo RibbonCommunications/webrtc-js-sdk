@@ -20,6 +20,7 @@ Ribbon WebRTC SDK change log.
 - Fixed an issue where the we weren't ending remote events in the call report that were using regular signalling flow (not slow-start) as wel as checking for remote unhold operations when checking for ice collection. `KJS-1880`
 - Fixed issue where anonymous calls were trying to make a call even if they failed subscription. `KJS-1903`
 - Fixed the way SDK searches for data (within a given call report) by making use of an API that is supported by a wider range of Chrome browsers. `KJS-1898`
+- Fixed issue where if a user is logged into more than one client and an incoming call is answered by one, the other clients will resync call state to `Cancelled` rather than leaving it in `Ringing` state. `KJS-1857`
 - Fixed an issue during call hang up in Proxy mode, where its Channel would timeout and thus affecting the normal sequence of ending the call on both sides. `KJS-1884`
 
 ### Changed
