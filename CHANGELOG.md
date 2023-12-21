@@ -12,6 +12,7 @@ Ribbon WebRTC SDK change log.
 ### Added
 
 - Added `REST_REQUEST` sub-event to the main operation event in the generated call report, for all the complex operations (join, direct/consultative transfer) as well as for any other miscelaneous requests that did not record such sub-event. Also added this sub-event to the `update session` main event, triggered when a Peer performs a local operation (e.g. hold, unholds, restart ice collection). `KJS-1514`
+- Added extra validation during the answering of a regular call: answering a call will fail if attempting to offer one (or more) media(s) that have not been offered by the caller. `KJS-1765`
 
 ### Fixed
 
