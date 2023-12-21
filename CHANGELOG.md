@@ -23,6 +23,7 @@ Ribbon WebRTC SDK change log.
 - Fixed issue where if a user is logged into more than one client and an incoming call is answered by one, the other clients will resync call state to `Cancelled` rather than leaving it in `Ringing` state. `KJS-1857`
 - Fixed an issue during call hang up in Proxy mode, where its Channel would timeout and thus affecting the normal sequence of ending the call on both sides. `KJS-1884`
 - Fixed an issue where the SDK was trying to process a midcall operation notification on a call in the incorrect state. `KJS-1857`
+- Fixed an issue where call audit was still kept alive even after call has been cancelled by backend. `KJS-1892`
 
 ### Changed
 
