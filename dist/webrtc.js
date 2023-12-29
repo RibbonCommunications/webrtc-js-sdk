@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.6.0-beta.1207
+ * Version: 6.7.0-beta.1208
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 81599:
+/***/ 44593:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.6.0-beta.1207';
+  return '6.7.0-beta.1208';
 }
 
 /***/ }),
@@ -8959,7 +8959,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -20014,7 +20014,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -32453,7 +32453,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40175,7 +40175,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40329,7 +40329,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40417,7 +40417,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -50514,7 +50514,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(81599);
+var _version = __webpack_require__(44593);
 var _uuid = __webpack_require__(60130);
 // Proxy plugin.
 
@@ -52475,6 +52475,7 @@ exports["default"] = ontrack;
  */
 function ontrack(listener) {
   const {
+    proxyPeer,
     nativePeer,
     trackManager,
     log
@@ -52489,9 +52490,14 @@ function ontrack(listener) {
     // event object contains transceiver which already has track attached to its receiver
     const {
       track: nativeTrack,
-      streams
+      streams,
+      transceiver
     } = event;
     log.debug(`Peer received ${nativeTrack.kind} Track ${nativeTrack.id}.`);
+    if (!proxyPeer.transceivers.find(tran => tran.mid === transceiver.mid)) {
+      // If we are not already tracking this Transceiver in the Peer model, then add it.
+      proxyPeer.transceivers.push(transceiver);
+    }
 
     /*
      * When the remote side adds a track, it should have an associated MediaStream
@@ -52589,6 +52595,7 @@ function peer(id, config = {}, trackManager) {
    * @property {EventEmitter}      emitter
    * @property {Array<RTCIceCandidate>} iceCandidates Gathered candidates.
    * @property {timeoutID} [iceLoop] Reference to the on-going ICE collection loop.
+   * @property {Array<RTCRtpTransceiver>} transceivers List of transceivers on the peer.
    */
   const base = {
     nativePeer,
@@ -52601,7 +52608,8 @@ function peer(id, config = {}, trackManager) {
     iceTimer,
     emitter,
     iceCandidates: [],
-    iceLoop: undefined
+    iceLoop: undefined,
+    transceivers: []
   };
 
   /**
@@ -52770,6 +52778,7 @@ exports["default"] = addTransceiver;
  */
 function addTransceiver(track) {
   const {
+    proxyPeer,
     nativePeer,
     log
   } = this;
@@ -52780,6 +52789,8 @@ function addTransceiver(track) {
       direction: 'sendrecv',
       streams: [track.getStream()]
     });
+    // Store the reference to the Transceiver on our Peer as well.
+    proxyPeer.transceivers.push(transceiver);
   } catch (err) {
     // TODO: Better error handling.
     log.info(`Failed to add track: ${err.message}`);
@@ -53072,6 +53083,34 @@ function getStats(trackId) {
 
 /***/ }),
 
+/***/ 5667:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = getTransceivers;
+/**
+ * Retrieve the list of Transceivers on the Peer.
+ * @method getTransceivers
+ * @return {Array<RTCRtpTransceiver>}
+ */
+function getTransceivers() {
+  const {
+    proxyPeer
+  } = this;
+
+  // Return our Peer's saved list of transceivers instead of using the native
+  //    getTransceivers API. This is for "proxied webrtc" mode, where a native
+  //    API call causes delays.
+  return proxyPeer.transceivers;
+}
+
+/***/ }),
+
 /***/ 60424:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -53091,6 +53130,7 @@ var _createOffer = _interopRequireDefault(__webpack_require__(38978));
 var _findReusableTransceiver = _interopRequireDefault(__webpack_require__(76040));
 var _getState = _interopRequireDefault(__webpack_require__(69964));
 var _getStats = _interopRequireDefault(__webpack_require__(53326));
+var _getTransceivers = _interopRequireDefault(__webpack_require__(5667));
 var _removeTrack = _interopRequireDefault(__webpack_require__(16045));
 var _replaceTrack = _interopRequireDefault(__webpack_require__(26956));
 var _sendDTMF = _interopRequireDefault(__webpack_require__(14869));
@@ -53105,6 +53145,7 @@ const methods = {
   findReusableTransceiver: _findReusableTransceiver.default,
   getState: _getState.default,
   getStats: _getStats.default,
+  getTransceivers: _getTransceivers.default,
   removeTrack: _removeTrack.default,
   replaceTrack: _replaceTrack.default,
   sendDTMF: _sendDTMF.default,
@@ -88966,7 +89007,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 90282:
+/***/ 61157:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89407,7 +89448,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(90282));
+var _version = _interopRequireDefault(__webpack_require__(61157));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
