@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.7.0-beta.1208
+ * Version: 6.7.0-beta.1209
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 44593:
+/***/ 23692:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.7.0-beta.1208';
+  return '6.7.0-beta.1209';
 }
 
 /***/ }),
@@ -8959,7 +8959,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -20014,7 +20014,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -31675,7 +31675,11 @@ const webrtcCodes = exports.webrtcCodes = {
 const proxyCodes = exports.proxyCodes = {
   INVALID_PARAM: 'proxy:1',
   SET_PROXY_CHANNEL_FAIL: 'proxy:2',
-  IN_ACTIVE_CALL: 'proxy:3'
+  IN_ACTIVE_CALL: 'proxy:3',
+  VERSION_MISMATCH: 'proxy:4',
+  INVALID_STATE: 'proxy:5',
+  TIMEOUT: 'proxy:6',
+  UNKNOWN: 'proxy:7'
 };
 
 /***/ }),
@@ -31743,6 +31747,12 @@ Object.defineProperty(exports, "presenceCodes", ({
   enumerable: true,
   get: function () {
     return _codes.presenceCodes;
+  }
+}));
+Object.defineProperty(exports, "proxyCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.proxyCodes;
   }
 }));
 Object.defineProperty(exports, "sipEventCodes", ({
@@ -32453,7 +32463,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40175,7 +40185,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40329,7 +40339,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40417,7 +40427,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -49599,6 +49609,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 /**
  * The 'proxy' namespace allows for a secondary mode for making calls: proxy mode.
  * When proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel.
+ *
  * This is an advanced feature that enables support for Calls in particular scenarios that would otherwise not support them.
  *
  * @public
@@ -49672,14 +49683,46 @@ function createAPI(container) {
   const log = logManager.getLogger('PROXY');
   const proxyApi = {
     /**
-     * Sets the mode for the Proxy Plugin.
-     * When enabled, webRTC operations will be proxied over a channel. Enabling
-     *    proxy mode requires a channel to have been set. See `setChannel` API.
-     * When disabled, webRTC operation will occur as normal on the local machine.
+     * Sets whether Call functionality should be proxied to the Remote SDK or not.
+     *    When set to `true`, WebRTC operations will be proxied over a channel. When
+     *    set to `false`, WebRTC operation will occur as normal on the local machine.
+     *
+     * Setting proxy mode is a required step for being able to use the Proxy
+     *    functionality. This is the last step, after setting a channel and initializing
+     *    the remote endpoint. Proxy mode cannot be changed if there is an on-going
+     *    call.
+     *
+     * On completion, this API will trigger a {@link proxy.event:proxy:change proxy:change}
+     *    event on success. The {@link proxy.getProxyMode} or {@link proxy.getInfo}
+     *    APIs can be used to verify that proxy mode has been changed. If an error
+     *    is encountered, this API will trigger a {@link proxy.event:proxy:error proxy:error}
+     *    event.
      * @public
+     * @static
      * @memberof proxy
      * @method setProxyMode
      * @param {boolean} value Whether proxy mode should be enabled.
+     * @example
+     * // On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.
+     * client.on('proxy:change', params => {
+     *    const isProxied = client.proxy.getProxyMode()
+     *    log(`Proxy mode set to ${isProxied}.`)
+     * })
+     * // On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.
+     * client.on('proxy:error', params => {
+     *    const { code, message } = params.error
+     *    log(`Failed to set proxy mode due to ${code}: ${message}.`)
+     * })
+     *
+     * // Get the current proxy state to ensure we can set proxy mode to `true`.
+     * const { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()
+     * if (
+     *    hasChannel === true && // A channel was previously provided.
+     *    remoteInitialized === true && // The Remote SDK is ready.
+     *    proxyMode === false && // Proxy mode is not already `true`.
+     * ) {
+     *    client.proxy.setProxyMode(true)
+     * }
      */
     async setProxyMode(value) {
       log.debug(API_LOG_TAG + 'proxy.setProxyMode: ', value);
@@ -49694,8 +49737,13 @@ function createAPI(container) {
       emitEvent(eventTypes.PROXY_CHANGE);
     },
     /**
-     * Retrieves the current mode of the Proxy Plugin.
+     * Retrieves the current mode for Proxy behaviour.
+     *
+     * When set to `true`, WebRTC operations will be proxied over a channel. When
+     *    set to `false`, WebRTC operation will occur as normal on the local machine.
+     *    See the {@link proxy.setProxyMode} API for more information.
      * @public
+     * @static
      * @memberof proxy
      * @method getProxyMode
      * @return {boolean} Whether proxy mode is currently enabled.
@@ -49708,15 +49756,16 @@ function createAPI(container) {
       return (0, _selectors.getProxyState)(getState()).proxyMode;
     },
     /**
-     * Retrieve information about the proxy.
+     * Retrieves information about the proxy.
      * @public
+     * @static
      * @memberof proxy
      * @method getInfo
-     * @returns {Object} [proxy] Object containing information about the proxy.
-     * @returns {boolean} [proxy.proxyMode] Current operating mode.
-     * @returns {boolean} [proxy.hasChannel] Proxy has a channel associated with it.
-     * @returns {boolean} [proxy.remoteInitialized] Proxy initialization state.
-     * @returns {Object} [proxy.browser] Details for the browser the proxy is using.
+     * @returns {Object} proxy Object containing information about the proxy.
+     * @returns {boolean} proxy.proxyMode Current operating mode.
+     * @returns {boolean} proxy.hasChannel Proxy has a channel associated with it.
+     * @returns {boolean} proxy.remoteInitialized Proxy initialization state.
+     * @returns {Object} proxy.browser Details for the browser the proxy is using.
      * @example
      * const proxy = client.proxy.getInfo()
      *
@@ -49734,6 +49783,7 @@ function createAPI(container) {
      * Browser information being defined indicates that the browser supports
      *    basic webRTC scenarios.
      * @public
+     * @static
      * @memberof proxy
      * @method getProxyDetails
      * @return {Object} Object containing `browser` and `version` information.
@@ -49751,10 +49801,33 @@ function createAPI(container) {
     },
     /**
      * Sets the channel to be used while proxy mode is enabled.
+     *
+     * Providing a channel is a required step for being able to use the Proxy
+     *    functionality. This is the first step, before initializing the
+     *    remote endpoint and setting proxy mode.
+     *
+     * On completion, this API will trigger a {@link proxy.event:proxy:change proxy:change}
+     *    event on success. The {@link proxy.getInfo} API can be used to verify
+     *    that a channel has been set. If an error is encountered, this API will
+     *    trigger a {@link proxy.event:proxy:error proxy:error} event. A channel
+     *    cannot be set if there is an on-going call.
      * @public
+     * @static
      * @memberof proxy
      * @method setChannel
      * @param {proxy.Channel} channel See the `Channel` module for information.
+     * @example
+     * client.on('proxy:change', () => {
+     *    const { hasChannel } = client.proxy.getInfo()
+     *    log(`A channel ${hasChannel ? 'has': 'has not'} been set.`)
+     * })
+     * client.on('proxy:error', params => {
+     *    const { code, message } = params.error
+     *    log(`Encountered error ${code}: ${message}.`)
+     * })
+     *
+     * const appChannel = ...
+     * client.proxy.setChannel(appChannel)
      */
     async setChannel(channel) {
       log.debug(API_LOG_TAG + 'proxy.setChannel: ', channel);
@@ -49771,12 +49844,32 @@ function createAPI(container) {
     /**
      * Sends an initialization message over the channel with webRTC configurations.
      *
-     * The version of the SDK and the Remote SDK must be the same, otherwise
-     *    initialization will fail.
+     * Initializing the Remote SDK is a required step before being able to use the
+     *    Proxy functionality. This step requires a channel having been set previously
+     *    (see the {@link proxy.setChannel API}). After the Remote SDK is initialized,
+     *    proxy mode can be changed (see the {@link proxy.setProxyMode} API).
+     *
+     * On completion, this API will trigger a {@link proxy.event:proxy:change proxy:change}
+     *    event on success. The {@link proxy.getInfo} API can be used to verify
+     *    that the remote endpoint is initialized. If an error is encountered, this
+     *    API will trigger a {@link proxy.event:proxy:error proxy:error} event.
+     *
+     * This API will perform a version-check between this SDK and the Remote SDK.
+     *    Their versions must be the same, otherwise initialization will fail.
      * @public
+     * @static
      * @memberof proxy
      * @method initializeRemote
      * @param  {Object} config
+     * @example
+     * // Get the current proxy state to ensure we can initialize the Remote SDK.
+     * const { hasChannel, remoteInitialized } = client.proxy.getInfo()
+     * if (
+     *    hasChannel === true && // A channel was previously provided.
+     *    remoteInitialized === false // The Remote SDK was not previously initializted.
+     * ) {
+     *    client.proxy.initializeRemote()
+     * }
      */
     async initializeRemote(config) {
       log.debug(API_LOG_TAG + 'proxy.initializeRemote: ', config);
@@ -49811,8 +49904,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.PROXY_ERROR = exports.PROXY_CHANGE = void 0;
 /**
- * The Proxy state has changed.
- * Indicates either a change in the mode or the channel.
+ * A Proxy API has completed and changed the proxy state.
+ *
+ * The {@link proxy.getInfo} API can be used to retrieve the current proxy state.
  * @public
  * @memberof proxy
  * @event proxy:change
@@ -49820,12 +49914,14 @@ exports.PROXY_ERROR = exports.PROXY_CHANGE = void 0;
 const PROXY_CHANGE = exports.PROXY_CHANGE = 'proxy:change';
 
 /**
- * An error has occurred with a Proxy operation.
+ * A Proxy API has resulted in an error.
+ *
+ * The {@link proxy.getInfo} API can be used to retrieve the current proxy state.
  * @public
  * @memberof proxy
  * @event proxy:error
  * @param {Object} params
- * @param {Object} params.error An error object.
+ * @param {BasicError} params.error An error with `code` and `message` information.
  */
 const PROXY_ERROR = exports.PROXY_ERROR = 'proxy:error';
 
@@ -49953,19 +50049,17 @@ function getProxyState(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperations;
 var _selectors = __webpack_require__(11430);
-var _errors = _interopRequireDefault(__webpack_require__(83437));
+var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _devices = __webpack_require__(61547);
 var proxyActions = _interopRequireWildcard(__webpack_require__(50561));
 var webrtcEvents = _interopRequireWildcard(__webpack_require__(46215));
 var _selectors2 = __webpack_require__(13751);
 var _selectors3 = __webpack_require__(21590);
-var _codes = __webpack_require__(87772);
 var _lodash = __webpack_require__(76635);
 var _channels = __webpack_require__(59720);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -50023,18 +50117,47 @@ function createOperations(container) {
 
     // Check to see if there are any on-going calls.
     const calls = (0, _selectors.getActiveCalls)(context.getState());
+    const proxyState = (0, _selectors3.getProxyState)(context.getState());
     if (calls.length > 0) {
       log.info('Cannot change proxy mode while there are on-going calls.');
-
-      // TODO: set a proper error code
       const error = new _errors.default({
-        code: 'proxy:3',
+        code: _errors.proxyCodes.IN_ACTIVE_CALL,
         message: 'Cannot change proxy mode while there are on-going calls.'
       });
       dispatch(proxyActions.setProxyModeFinish({
         error
       }));
       // Throw the error, so it makes it back to the API.
+      throw error;
+    } else if (!proxyState.hasChannel) {
+      log.info('Cannot change proxy mode without a communication channel.');
+      const error = new _errors.default({
+        code: _errors.proxyCodes.INVALID_STATE,
+        message: 'Cannot change proxy mode without a communication channel.'
+      });
+      dispatch(proxyActions.setProxyModeFinish({
+        error
+      }));
+      throw error;
+    } else if (!proxyState.remoteInitialized) {
+      log.info('Cannot change proxy mode if remote endpoint is not initialized.');
+      const error = new _errors.default({
+        code: _errors.proxyCodes.INVALID_STATE,
+        message: 'Cannot change proxy mode if remote endpoint is not initialized.'
+      });
+      dispatch(proxyActions.setProxyModeFinish({
+        error
+      }));
+      throw error;
+    } else if (proxyState.proxyMode === value) {
+      log.info('Proxy mode already set to provided value.');
+      const error = new _errors.default({
+        code: _errors.proxyCodes.INVALID_PARAM,
+        message: 'Proxy mode already set to provided value.'
+      });
+      dispatch(proxyActions.setProxyModeFinish({
+        error
+      }));
       throw error;
     }
 
@@ -50097,7 +50220,7 @@ function createOperations(container) {
     if (!channel || (0, _lodash.isEmpty)(channel)) {
       log.info('Could not set channel; Invalid input.');
       const error = new _errors.default({
-        code: _codes.proxyCodes.INVALID_PARAM,
+        code: _errors.proxyCodes.INVALID_PARAM,
         message: 'Could not set channel; Invalid input.'
       });
       dispatch(proxyActions.setChannelFinish({
@@ -50110,7 +50233,7 @@ function createOperations(container) {
     if (calls.length > 0) {
       log.info('Cannot set channel while there are on-going calls.');
       const error = new _errors.default({
-        code: _codes.proxyCodes.IN_ACTIVE_CALL,
+        code: _errors.proxyCodes.IN_ACTIVE_CALL,
         message: 'Cannot set channel while there are on-going calls.'
       });
       dispatch(proxyActions.setChannelFinish({
@@ -50127,7 +50250,7 @@ function createOperations(container) {
     if (!result) {
       log.info('Failed to set channel for proxy mode.');
       const error = new _errors.default({
-        code: _codes.proxyCodes.SET_PROXY_CHANNEL_FAIL,
+        code: _errors.proxyCodes.SET_PROXY_CHANNEL_FAIL,
         message: 'Failed to set proxy channel.'
       });
       response.error = error;
@@ -50514,8 +50637,11 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(44593);
+var _version = __webpack_require__(23692);
+var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Proxy plugin.
 
 // Other plugins.
@@ -50612,10 +50738,6 @@ function initializeProxy(webRTC) {
     for (const manProxy in base.managers) {
       base.managers[manProxy].channel = wrappedChannel;
     }
-
-    // TODO: Have an API for this.
-    // setTimeout(initialize, 1000)
-
     return true;
   };
 
@@ -50649,27 +50771,93 @@ function initializeProxy(webRTC) {
     // Version of the local SDK.
     const version = (0, _version.getVersion)();
     return new Promise(resolve => {
-      if (!base.clientReady && base.channel) {
+      /*
+       * Validation checks:
+       *    - we have not already initialized the Remote SDK,
+       *    - we have a Proxy channel for sending messages.
+       */
+      if (base.clientReady) {
+        log.debug('Cannot initialize remote: Already initialized.');
+        resolve({
+          error: new _errors.default({
+            message: 'Remote SDK has already been initialized.',
+            code: _errors.proxyCodes.INVALID_STATE
+          })
+        });
+      } else if (!base.channel) {
+        log.debug('Cannot initialize remote: Proxy channel not found.');
+        resolve({
+          error: new _errors.default({
+            message: 'Proxy channel not found.',
+            code: _errors.proxyCodes.INVALID_STATE
+          })
+        });
+      } else {
+        // Send the "initialize" message to the Remote SDK.
+
         const callback = (data, error) => {
           log.debug('Received initialize response.', data);
           if (error) {
+            // Error Scenario: The channel itself encountered an error.
+            const isTimeout = error.message.includes('timed-out');
             resolve({
-              error
+              error: new _errors.default({
+                message: error.message,
+                code: isTimeout ? _errors.proxyCodes.TIMEOUT : _errors.proxyCodes.UNKNOWN
+              })
             });
-          } else if (data.initialized && data.remoteVersion === version) {
-            // The Client is now ready.
-            base.clientReady = true;
-            resolve({
-              browser: data.browser
-            });
-          } else if (data.remoteVersion !== version) {
-            log.error('SDK and Remote SDK have different versions.');
-            resolve({
-              error: new Error('Remote end has different version.')
-            });
+          } else if (data.error) {
+            // Convert the stringified error into a BasicError instance.
+            const error = new _errors.default(data.error);
+            /*
+             * Error scenarios:
+             *    - remote SDK was already initialized,
+             *    - SDK versions do not match,
+             *    - generic error; should not happen.
+             */
+            if (error.code === _errors.proxyCodes.INVALID_STATE && data.initialized) {
+              log.warn('Remote SDK responded as already initialized.');
+              resolve({
+                error
+              });
+            } else if (error.code === _errors.proxyCodes.VERSION_MISMATCH) {
+              log.error('Remote SDK responded with a version mismatch error.');
+              resolve({
+                error
+              });
+            } else {
+              log.info('Remote SDK responded with an error.');
+              resolve({
+                error
+              });
+            }
+          } else if (data.initialized) {
+            if (data.remoteVersion === version) {
+              // The Client is now ready.
+              base.clientReady = true;
+              resolve({
+                browser: data.browser
+              });
+            } else {
+              // Error Scenario: Remote SDK initialized, but with a version
+              //    mismatch?
+              log.error('Remote SDK responded with a version mismatch error.');
+              resolve({
+                error: new _errors.default({
+                  code: _errors.proxyCodes.VERSION_MISMATCH,
+                  message: 'Remote SDK version does not match; initialization failed.'
+                })
+              });
+            }
           } else {
+            // Error scenario: Message had no error, but also did not initialize
+            //    the Remote SDK?
+            log.debug('Remote SDK responded with an unhandled message.');
             resolve({
-              error: new Error('Remote end not initialized.')
+              error: new _errors.default({
+                message: 'Unknown error; could not process response.',
+                code: _errors.proxyCodes.INVALID_STATE
+              })
             });
           }
         };
@@ -50680,11 +50868,6 @@ function initializeProxy(webRTC) {
           config,
           logLevels
         }, callback);
-      } else {
-        log.debug('Cannot initialize remote: either Client is already ready or no channel to use.');
-        resolve({
-          error: new Error('Either Client is already ready or no channel to use.')
-        });
       }
     });
   };
@@ -89007,7 +89190,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 61157:
+/***/ 29156:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89448,7 +89631,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(61157));
+var _version = _interopRequireDefault(__webpack_require__(29156));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
