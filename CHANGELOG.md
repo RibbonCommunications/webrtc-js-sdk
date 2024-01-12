@@ -11,6 +11,7 @@ Ribbon WebRTC SDK change log.
 
 ### Fixed
 
+- Fixed an issue where the SDK wasn't adding local media tracks to a joined call. `KJS-1864`
 - Fixed a Proxy issue where error information was missing from the `proxy:error` event in several scenarios. `KJS-1792`
   - All `proxy:error` events will now have a clearer human-readable message and error code.
   - The `proxy:error` events triggered from the `proxy.initializeRemote` API will more clearly describe the cause of the error.
