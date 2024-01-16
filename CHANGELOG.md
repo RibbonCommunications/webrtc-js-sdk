@@ -17,6 +17,8 @@ Ribbon WebRTC SDK change log.
   - The `proxy:error` events triggered from the `proxy.initializeRemote` API will more clearly describe the cause of the error.
   - Documentation for the Proxy APIs have been updated to be clearer about expected error scenarios.
 - Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
+- Fixed a Call issue where `devices:change` events were emitted when a call ended even though no device changed. `KJS-1953`
+- Fixed a Call issue where two `devices:change` events were emitted when a media device was disconnected instead of only one. `KJS-1953`
 
 ## 6.6.0 - 2023-12-29
 

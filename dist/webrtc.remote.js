@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.7.0-beta.1215
+ * Version: 6.7.0-beta.1216
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 5200:
+/***/ 1859:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.7.0-beta.1215';
+  return '6.7.0-beta.1216';
 }
 
 /***/ }),
@@ -751,12 +751,16 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  */
 function watchDeviceEvents(manager, handler) {
   // Manager event handlers.
-  const change = () => {
+  /**
+   * @method change
+   * @param {boolean} [actionOnly] True if this event should not be emitted to the application.
+   */
+  const change = actionOnly => {
     // Get the latest devices after they changed, then emit the device list
     //  upwards.
     manager.checkDevices().then(devices => {
       const devicesChangedAction = _actions.deviceActions.devicesChanged(devices);
-      const devicesChangedEvent = {
+      const devicesChangedEvent = actionOnly ? undefined : {
         type: eventTypes.DEVICES_CHANGED,
         args: {}
       };
@@ -2684,7 +2688,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(5200);
+var _version = __webpack_require__(1859);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3070,7 +3074,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(5200);
+var _version = __webpack_require__(1859);
 const _excluded = ["onInit"]; // Other plugins.
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -7499,13 +7503,21 @@ function Session(id, managers, config = {}) {
                 //    immediately. Otherwise another operation will remove it.
                 if (!isUnsolicited) {
                   peer.removeTrack(track.id);
-                }
 
-                // In the event this track ending was due to a device change
-                // we should update our device list before notifying the client that
-                // the track ended so they don't try to use a removed device
-                deviceManager.checkDevices().then(() => {
-                  deviceManager.emit('change');
+                  // Bubble the event upwards to event listeners.
+                  emitter.emit('track:ended', {
+                    local: true,
+                    trackId: track.id,
+                    isUnsolicited
+                  });
+                } else {
+                  // In the event this track ending was due to a device change
+                  // we should update our device list before notifying the client that
+                  // the track ended so they don't try to use a removed device
+                  // `true` --> Tell the SDK to _not_ bubble this event to the
+                  //    application; only update state. The device disconnection
+                  //    will trigger it's own "device change" event.
+                  deviceManager.emit('change', true);
 
                   // Wait 50ms before emitting `track:ended` to allow the SDK
                   // a chance to update the device list in state
@@ -7516,7 +7528,7 @@ function Session(id, managers, config = {}) {
                       isUnsolicited
                     });
                   }, 50);
-                });
+                }
 
                 // Remove track from session dscp settings
                 if (settings.dscpControls.hasOwnProperty(track.id)) {
@@ -11372,7 +11384,7 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 5808:
+/***/ 5066:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -11474,7 +11486,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(3940));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(5808));
+var _version = _interopRequireDefault(__webpack_require__(5066));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
