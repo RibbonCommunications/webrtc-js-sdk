@@ -3892,9 +3892,9 @@ When set to `true`, WebRTC operations will be proxied over a channel. When
 set to `false`, WebRTC operation will occur as normal on the local machine.
 
 Setting proxy mode is a required step for being able to use the Proxy
-functionality. This is the last step, after setting a channel and initializing
-the remote endpoint. Proxy mode cannot be changed if there is an on-going
-call.
+functionality. It is recommended that this is the last step, after setting
+a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
+is an on-going call.
 
 On completion, this API will trigger a [proxy:change][134]
 event on success. The [proxy.getProxyMode][135] or [proxy.getInfo][136]
@@ -3984,7 +3984,7 @@ Returns **[Object][7]** Object containing `browser` and `version` information.
 Sets the channel to be used while proxy mode is enabled.
 
 Providing a channel is a required step for being able to use the Proxy
-functionality. This is the first step, before initializing the
+functionality. This should be the first step, before initializing the
 remote endpoint and setting proxy mode.
 
 On completion, this API will trigger a [proxy:change][134]
@@ -4019,8 +4019,8 @@ Sends an initialization message over the channel with webRTC configurations.
 
 Initializing the Remote SDK is a required step before being able to use the
 Proxy functionality. This step requires a channel having been set previously
-(see the [API][140]). After the Remote SDK is initialized,
-proxy mode can be changed (see the [proxy.setProxyMode][138] API).
+(see the [API][140]). It is recommended to perform this
+step before setting the proxy mode (see the [proxy.setProxyMode][138] API).
 
 On completion, this API will trigger a [proxy:change][134]
 event on success. The [proxy.getInfo][136] API can be used to verify

@@ -50961,7 +50961,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Setting proxy mode is a required step for being able to use the Proxy\nfunctionality. This is the last step, after setting a channel and initializing\nthe remote endpoint. Proxy mode cannot be changed if there is an on-going\ncall."
+                    "value": "Setting proxy mode is a required step for being able to use the Proxy\nfunctionality. It is recommended that this is the last step, after setting\na channel and initializing the remote endpoint. Proxy mode cannot be changed if there\nis an on-going call."
                   }
                 ]
               },
@@ -51762,7 +51762,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Providing a channel is a required step for being able to use the Proxy\nfunctionality. This is the first step, before initializing the\nremote endpoint and setting proxy mode."
+                    "value": "Providing a channel is a required step for being able to use the Proxy\nfunctionality. This should be the first step, before initializing the\nremote endpoint and setting proxy mode."
                   }
                 ]
               },
@@ -51992,7 +51992,7 @@
                   },
                   {
                     "type": "text",
-                    "value": "). After the Remote SDK is initialized,\nproxy mode can be changed (see the "
+                    "value": "). It is recommended to perform this\nstep before setting the proxy mode (see the "
                   },
                   {
                     "type": "link",

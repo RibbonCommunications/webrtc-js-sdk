@@ -16,8 +16,6 @@ Ribbon WebRTC SDK change log.
   - All `proxy:error` events will now have a clearer human-readable message and error code.
   - The `proxy:error` events triggered from the `proxy.initializeRemote` API will more clearly describe the cause of the error.
   - Documentation for the Proxy APIs have been updated to be clearer about expected error scenarios.
-- Fixed a Proxy issue where proxy mode could be enabled when the remote endpoint has not been initialized yet. `KJS-1931`
-  - The `proxy.initializeRemote` API is now a prerequisite of the `proxy.setProxyMode` API.
 - Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
 
 ## 6.6.0 - 2023-12-29

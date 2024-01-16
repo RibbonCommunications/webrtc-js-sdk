@@ -22032,9 +22032,9 @@ This function should receive all messages sent from the remote side of the chann
 When set to <code>true</code>, WebRTC operations will be proxied over a channel. When
 set to <code>false</code>, WebRTC operation will occur as normal on the local machine.</p>
 <p>Setting proxy mode is a required step for being able to use the Proxy
-functionality. This is the last step, after setting a channel and initializing
-the remote endpoint. Proxy mode cannot be changed if there is an on-going
-call.</p>
+functionality. It is recommended that this is the last step, after setting
+a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
+is an on-going call.</p>
 <p>On completion, this API will trigger a <a href="#proxyeventproxychange">proxy:change</a>
 event on success. The <a href="#proxygetproxymode">proxy.getProxyMode</a> or <a href="#proxygetinfo">proxy.getInfo</a>
 APIs can be used to verify that proxy mode has been changed. If an error
@@ -22347,7 +22347,7 @@ log(<span class="hljs-string">`Proxy Browser in use: <span class="hljs-subst">${
 
   <p>Sets the channel to be used while proxy mode is enabled.</p>
 <p>Providing a channel is a required step for being able to use the Proxy
-functionality. This is the first step, before initializing the
+functionality. This should be the first step, before initializing the
 remote endpoint and setting proxy mode.</p>
 <p>On completion, this API will trigger a <a href="#proxyeventproxychange">proxy:change</a>
 event on success. The <a href="#proxygetinfo">proxy.getInfo</a> API can be used to verify
@@ -22434,8 +22434,8 @@ client.proxy.setChannel(appChannel)</pre>
   <p>Sends an initialization message over the channel with webRTC configurations.</p>
 <p>Initializing the Remote SDK is a required step before being able to use the
 Proxy functionality. This step requires a channel having been set previously
-(see the <a href="#proxysetchannel">API</a>). After the Remote SDK is initialized,
-proxy mode can be changed (see the <a href="#proxysetproxymode">proxy.setProxyMode</a> API).</p>
+(see the <a href="#proxysetchannel">API</a>). It is recommended to perform this
+step before setting the proxy mode (see the <a href="#proxysetproxymode">proxy.setProxyMode</a> API).</p>
 <p>On completion, this API will trigger a <a href="#proxyeventproxychange">proxy:change</a>
 event on success. The <a href="#proxygetinfo">proxy.getInfo</a> API can be used to verify
 that the remote endpoint is initialized. If an error is encountered, this

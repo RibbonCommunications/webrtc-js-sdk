@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.7.0-beta.1214
+ * Version: 6.7.0-beta.1215
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 80934:
+/***/ 41311:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.7.0-beta.1214';
+  return '6.7.0-beta.1215';
 }
 
 /***/ }),
@@ -8959,7 +8959,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -20026,7 +20026,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -32476,7 +32476,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40198,7 +40198,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40352,7 +40352,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40440,7 +40440,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -49701,9 +49701,9 @@ function createAPI(container) {
      *    set to `false`, WebRTC operation will occur as normal on the local machine.
      *
      * Setting proxy mode is a required step for being able to use the Proxy
-     *    functionality. This is the last step, after setting a channel and initializing
-     *    the remote endpoint. Proxy mode cannot be changed if there is an on-going
-     *    call.
+     *    functionality. It is recommended that this is the last step, after setting
+     *    a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
+     *    is an on-going call.
      *
      * On completion, this API will trigger a {@link proxy.event:proxy:change proxy:change}
      *    event on success. The {@link proxy.getProxyMode} or {@link proxy.getInfo}
@@ -49816,7 +49816,7 @@ function createAPI(container) {
      * Sets the channel to be used while proxy mode is enabled.
      *
      * Providing a channel is a required step for being able to use the Proxy
-     *    functionality. This is the first step, before initializing the
+     *    functionality. This should be the first step, before initializing the
      *    remote endpoint and setting proxy mode.
      *
      * On completion, this API will trigger a {@link proxy.event:proxy:change proxy:change}
@@ -49859,8 +49859,8 @@ function createAPI(container) {
      *
      * Initializing the Remote SDK is a required step before being able to use the
      *    Proxy functionality. This step requires a channel having been set previously
-     *    (see the {@link proxy.setChannel API}). After the Remote SDK is initialized,
-     *    proxy mode can be changed (see the {@link proxy.setProxyMode} API).
+     *    (see the {@link proxy.setChannel API}). It is recommended to perform this
+     *    step before setting the proxy mode (see the {@link proxy.setProxyMode} API).
      *
      * On completion, this API will trigger a {@link proxy.event:proxy:change proxy:change}
      *    event on success. The {@link proxy.getInfo} API can be used to verify
@@ -50130,7 +50130,6 @@ function createOperations(container) {
 
     // Check to see if there are any on-going calls.
     const calls = (0, _selectors.getActiveCalls)(context.getState());
-    const proxyState = (0, _selectors3.getProxyState)(context.getState());
     if (calls.length > 0) {
       log.info('Cannot change proxy mode while there are on-going calls.');
       const error = new _errors.default({
@@ -50141,36 +50140,6 @@ function createOperations(container) {
         error
       }));
       // Throw the error, so it makes it back to the API.
-      throw error;
-    } else if (!proxyState.hasChannel) {
-      log.info('Cannot change proxy mode without a communication channel.');
-      const error = new _errors.default({
-        code: _errors.proxyCodes.INVALID_STATE,
-        message: 'Cannot change proxy mode without a communication channel.'
-      });
-      dispatch(proxyActions.setProxyModeFinish({
-        error
-      }));
-      throw error;
-    } else if (!proxyState.remoteInitialized) {
-      log.info('Cannot change proxy mode if remote endpoint is not initialized.');
-      const error = new _errors.default({
-        code: _errors.proxyCodes.INVALID_STATE,
-        message: 'Cannot change proxy mode if remote endpoint is not initialized.'
-      });
-      dispatch(proxyActions.setProxyModeFinish({
-        error
-      }));
-      throw error;
-    } else if (proxyState.proxyMode === value) {
-      log.info('Proxy mode already set to provided value.');
-      const error = new _errors.default({
-        code: _errors.proxyCodes.INVALID_PARAM,
-        message: 'Proxy mode already set to provided value.'
-      });
-      dispatch(proxyActions.setProxyModeFinish({
-        error
-      }));
       throw error;
     }
 
@@ -50198,6 +50167,13 @@ function createOperations(container) {
       log.info(`Finished setting proxy mode to ${value}.`);
     }
     dispatch(proxyActions.setProxyModeFinish(response));
+    const proxyState = (0, _selectors3.getProxyState)(context.getState());
+    if (value && !proxyState.remoteInitialized) {
+      log.warn('Proxy mode has been enabled, but the Remote SDK has not been inititalized yet. Call functionality will fail in this state.');
+      // Return now to prevent the rest of the operation. The "device check" message
+      //    will fail and throw an error to the application.
+      return;
+    }
 
     // After Proxy mode is changed, manually update devices to ensure they are
     //    from the correct machine.
@@ -50650,7 +50626,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(80934);
+var _version = __webpack_require__(41311);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -89203,7 +89179,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 77668:
+/***/ 31375:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89644,7 +89620,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(77668));
+var _version = _interopRequireDefault(__webpack_require__(31375));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
