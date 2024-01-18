@@ -19,6 +19,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
 - Fixed a Call issue where `devices:change` events were emitted when a call ended even though no device changed. `KJS-1953`
 - Fixed a Call issue where two `devices:change` events were emitted when a media device was disconnected instead of only one. `KJS-1953`
+- Fixed the configuration sample used in video calling for the `Voice and Video Calls` tutorial trail, since video call was failing. `KJS-1957`
 
 ## 6.6.0 - 2023-12-29
 
