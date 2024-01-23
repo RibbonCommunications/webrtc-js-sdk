@@ -5,7 +5,6 @@
 The first step for any application is to initialize the SDK. When doing this, you can customize certain features by providing a configurations object.
 
 The WebRTC JS SDK's configuration object is separated by feature, and is provided to the WebRTC Factory as seen in the example below, as a sample.
-To use an alternative configuration (e.g. a default one), or to further modify any of its properties, see the 'Example Configurations' section, below.
 
 ```javascript 
 // Initialize an instance of the SDK.
@@ -57,58 +56,6 @@ const client = create(configuration)
 In most cases, the default values will suffice for an application, but specifying your own configurations allows you to customize certain behaviours. The exception is the authentication configurations, which are always required. This quickstart will showcase a few samples of why you may want to use certain configurations. For a full list of the possible configurations, see the documentation for `configuration` API.
 
 ## Example Configurations
-
-### Default configurations
-
-To get you started more quickly, we provide some default configurations which can be used as a starting point and make configuration easier. See [WebRTC JS SDK Support Library](https://github.com/RibbonCommunications/webrtc-js-support).
-
-Note that each default configuration is based on a targeted geographical area.
-See [this config](https://unpkg.com/@kandy-io/link-config-us@2.0.0/dist/index.umd.js) which applies for this particular tutorial.
-
-To use a default configuration, the first step is install the configuration library as a project dependency.
-
-via npm:
-
-```bash
-npm install '@kandy-io/webrtc-js-config-blue'
-```
-
-via yarn:
-
-```bash
-yarn add '@kandy-io/webrtc-js-config-blue'
-```
-
-And then use it:
-
-```javascript
-import { config } from '@kandy-io/webrtc-js-config-blue'
-import { create } from '@rbbn/webrtc-js-sdk'
-
-const client = create(config)
-
-// Use the SDK.
-```
-
-Furthermore, this default configuration object can also be used as a base for further
-customization, by modifying its content.
-
-```javascript
-import { config as defaultConfig } from '@kandy-io/webrtc-js-config-blue'
-import { create } from '@rbbn/webrtc-js-sdk'
-
-const config = {
-  ...defaultConfig,
-  // Now override some of the default configs properties, such as the 'logs'.
-  logs: {
-    logLevel: 'debug'
-  }
-}
-
-const client = create(config)
-
-// Use the SDK.
-```
 
 The following sections describe various properties within the configuration object in more detail.
 
@@ -186,32 +133,6 @@ subscription: {
   },
 }
 ```
-
-Examples of the WebRTC Gateway Systems include:
-
-NA:
-
-- RESTURL: webrtc-na.kandy.io port 443
-- WebSocketURL: webrtc-na.kandy.io port 443
-- iceServers:
-  - turn-na-1.kandy.io port 3478 for STUN and 443 for TURNS
-  - turn-na-2.kandy.io port 3478 for STUN and 443 for TURNS
-
-EMEA:
-
-- RESTURL: webrtc-em.kandy.io port 443
-- WebSocketURL: webrtc-em.kandy.io port 443
-- iceServers:
-  - turn-em-1.kandy.io port 3478 for STUN and 443 for TURNS
-  - turn-em-2.kandy.io port 3478 for STUN and 443 for TURNS
-
-APAC:
-
-- RESTURL: webrtc-ap.kandy.io port 443
-- WebSocketURL: webrtc-ap.kandy.io port 443
-- iceServers:
-  - turn-ap-1.kandy.io port 3478 for STUN and 443 for TURNS
-  - turn-ap-2.kandy.io port 3478 for STUN and 443 for TURNS
 
 Besides the `websocket` parameter, the user can also specify the maximum number of times a client will retry in order to subscribe for a given service, while getting 'Service Unavailable' from backend. This is done by using the `serviceUnavailableMaxRetries` parameter. If not provided, its default value is `3`.
 Likewise, the user can specify the amount of time (in seconds) for which to keep subscription up and alive. This is done by using the `expires` parameter. If not provided, its default value is `3600`.
