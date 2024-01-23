@@ -20,6 +20,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Call issue where `devices:change` events were emitted when a call ended even though no device changed. `KJS-1953`
 - Fixed a Call issue where two `devices:change` events were emitted when a media device was disconnected instead of only one. `KJS-1953`
 - Fixed the configuration sample used in video calling for the `Voice and Video Calls` tutorial trail, since video call was failing. `KJS-1957`
+- Fixed a Call issue where the `sendRingingFeedback` API would always encounter an error when calling it manually. `KJS-1970`
 
 ## 6.6.0 - 2023-12-29
 
