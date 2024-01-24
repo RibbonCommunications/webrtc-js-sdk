@@ -27,7 +27,9 @@ Ribbon WebRTC SDK change log.
 ### Added
 
 - Added `REST_REQUEST` sub-event to the main operation event in the generated call report, for all the complex operations (join, direct/consultative transfer) as well as for any other miscelaneous requests that did not record such sub-event. Also added this sub-event to the `update session` main event, triggered when a Peer performs a local operation (e.g. hold, unholds, restart ice collection). `KJS-1514`
-- Added extra validation during the answering of a regular call: answering a call will fail if attempting to offer one (or more) media(s) that have not been offered by the caller. `KJS-1765`
+- Added extra validation during the answering of non-slow-start calls. `KJS-1765`
+  - Attempting to answer an incoming audio-only call with video will result in the answer operation failing.
+  - When answering a call, the `call.mediaOffered` property indicates the media being offered. Please see the API documentation for `CallObject` and `MediaOffered` for more information.
 
 ### Fixed
 
@@ -52,7 +54,7 @@ This is a hotfix release.
 
 ### Fixed
 
-- Fixed an issue where we weren't including an object in the `auth:change` event. In certain cases this object contains properties relevent to the event that could if missing could break a client. `KJS-1897`
+- Fixed an Authentication issue where the `auth:change` event was missing parameters. `KJS-1897`
 - Fixed a Call issue related to the new Call Reports feature where calls would fail on earlier versions of Chrome browsers. `KJS-1898`
 
 ## 6.5.0 - 2023-11-24
