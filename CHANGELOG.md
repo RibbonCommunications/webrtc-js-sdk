@@ -7,12 +7,29 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.7.0 - 2024-01-26
+
+### Fixed
+
+- Fixed an issue where the SDK wasn't adding local media tracks to a joined call. `KJS-1864`
+- Fixed a Proxy issue where error information was missing from the `proxy:error` event in several scenarios. `KJS-1792`
+  - All `proxy:error` events will now have a clearer human-readable message and error code.
+  - The `proxy:error` events triggered from the `proxy.initializeRemote` API will more clearly describe the cause of the error.
+  - Documentation for the Proxy APIs have been updated to be clearer about expected error scenarios.
+- Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
+- Fixed a Call issue where `devices:change` events were emitted when a call ended even though no device changed. `KJS-1953`
+- Fixed a Call issue where two `devices:change` events were emitted when a media device was disconnected instead of only one. `KJS-1953`
+- Fixed the configuration sample used in video calling for the `Voice and Video Calls` tutorial trail, since video call was failing. `KJS-1957`
+- Fixed a Call issue where the `sendRingingFeedback` API would always encounter an error when calling it manually. `KJS-1970`
+
 ## 6.6.0 - 2023-12-29
 
 ### Added
 
 - Added `REST_REQUEST` sub-event to the main operation event in the generated call report, for all the complex operations (join, direct/consultative transfer) as well as for any other miscelaneous requests that did not record such sub-event. Also added this sub-event to the `update session` main event, triggered when a Peer performs a local operation (e.g. hold, unholds, restart ice collection). `KJS-1514`
-- Added extra validation during the answering of a regular call: answering a call will fail if attempting to offer one (or more) media(s) that have not been offered by the caller. `KJS-1765`
+- Added extra validation during the answering of non-slow-start calls. `KJS-1765`
+  - Attempting to answer an incoming audio-only call with video will result in the answer operation failing.
+  - When answering a call, the `call.mediaOffered` property indicates the media being offered. Please see the API documentation for `CallObject` and `MediaOffered` for more information.
 
 ### Fixed
 
@@ -37,7 +54,7 @@ This is a hotfix release.
 
 ### Fixed
 
-- Fixed an issue where we weren't including an object in the `auth:change` event. In certain cases this object contains properties relevent to the event that could if missing could break a client. `KJS-1897`
+- Fixed an Authentication issue where the `auth:change` event was missing parameters. `KJS-1897`
 - Fixed a Call issue related to the new Call Reports feature where calls would fail on earlier versions of Chrome browsers. `KJS-1898`
 
 ## 6.5.0 - 2023-11-24

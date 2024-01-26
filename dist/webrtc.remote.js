@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.6.0
+ * Version: 6.7.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 9297:
+/***/ 5129:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,8 +45,314 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.6.0';
+  return '6.7.0';
 }
+
+/***/ }),
+
+/***/ 7772:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.webrtcCodes = exports.usersCodes = exports.subscriptionCodes = exports.sipEventCodes = exports.proxyCodes = exports.presenceCodes = exports.mwiCodes = exports.messagingCodes = exports.groupsCodes = exports.connectivityCodes = exports.clickToCallCodes = exports.callHistoryCodes = exports.callCodes = exports.bridgeCodes = exports.authCodes = void 0;
+/**
+ * Error codes for the Auth plugin.
+ * @name authCodes
+ */
+const authCodes = exports.authCodes = {
+  INVALID_CREDENTIALS: 'authentication:1',
+  CONNECT_FAIL_WS_ERROR: 'authentication:2',
+  LINK_UNSUBSCRIBE_FAIL: 'authentication:3',
+  LINK_SUBSCRIBE_FAIL: 'authentication:4',
+  LINK_EXTEND_SUBSCRIPTION_FAIL: 'authentication:5',
+  LINK_UPDATE_SUBSCRIPTION_FAIL: 'authentication:6',
+  MISSING_SERVICE: 'authentication:12',
+  LINK_SUBSCRIBE_UNAVAILABLE: 'authentication:13'
+};
+
+/**
+ * Error codes for the Call plugin.
+ * @name callCodes
+ */
+const callCodes = exports.callCodes = {
+  UNKNOWN_ERROR: 'call:1',
+  GENERIC_ERROR: 'call:2',
+  INIT_MEDIA_FAILED: 'call:3',
+  USER_MEDIA_ERROR: 'call:4',
+  NOT_SUPPORTED: 'call:5',
+  // The call is in the wrong state.
+  INVALID_STATE: 'call:6',
+  // A provided parameter is not valid.
+  INVALID_PARAM: 'call:7',
+  // There is a desync between components' state.
+  STATE_DESYNC: 'call:8',
+  // Offer could not be generated
+  INVALID_OFFER: 'call:9',
+  // No ICE candidates found
+  NO_ICE_CANDIDATES: 'call:10',
+  // Failed to recieve answer due to media mismatch
+  SESSION_MISMATCH: 'call:11'
+};
+
+/**
+ * Error codes for the Call History plugin.
+ * @name callHistoryCodes
+ */
+const callHistoryCodes = exports.callHistoryCodes = {
+  UNKNOWN_ERROR: 'callHistory:1',
+  BAD_REQUEST: 'callHistory:2',
+  NOT_FOUND: 'callHistory:3',
+  NOT_AUTHENTICATED: 'callHistory:4',
+  FORBIDDEN: 'callHistory:5'
+};
+/**
+ * @name clickToCallCodes
+ */
+const clickToCallCodes = exports.clickToCallCodes = {
+  MISSING_ARGS: 'clickToCall:1',
+  RESPONSE_ERROR: 'clickToCall:2'
+};
+/**
+ * Error codes for the Groups plugin.
+ * @name groupsCodes
+ */
+const groupsCodes = exports.groupsCodes = {
+  UNKNOWN_ERROR: 'groups:1',
+  GENERIC_ERROR: 'groups:2',
+  MISSING_PARAMETERS: 'groups:3'
+};
+
+/**
+ * Error codes for the Message plugin.
+ * @name messagingCodes
+ */
+const messagingCodes = exports.messagingCodes = {
+  SEND_MESSAGE_FAIL: 'messaging:5'
+};
+
+/**
+ * Error codes for the Message Waiting Indicator plugin.
+ * @name mwiCodes
+ */
+const mwiCodes = exports.mwiCodes = {
+  FETCH_MWI_FAIL: 'mwi:1'
+};
+
+/**
+ * Error codes from the Sip Events plugin.
+ * @name sipEventCodes
+ */
+const sipEventCodes = exports.sipEventCodes = {
+  UNKNOWN_ERROR: 'sipEvents:1',
+  // The user did not subscribe/connect for the specified sip event service.
+  NOT_PROVISIONED: 'sipEvents:2',
+  // The user is not subscribed for the specified sip event.
+  NOT_SUBSCRIBED: 'sipEvents:3'
+};
+
+/**
+ * Error codes for the audio bridge portion of the call plugin.
+ * @name bridgeCodes
+ */
+const bridgeCodes = exports.bridgeCodes = {
+  UNKNOWN_ERROR: 'audioBridge:1',
+  // TODO: Make "invalid input" (and others) a generic code.
+  INVALID_INPUT: 'audioBridge:2',
+  ALREADY_EXISTS: 'audioBridge:3',
+  NOT_FOUND: 'audioBridge:4',
+  NOT_SUPPORTED: 'audioBridge:5',
+  MEDIA_NOT_FOUND: 'audioBridge:6',
+  INVALID_STATE: 'audioBridge:7'
+};
+
+/**
+ * Error codes for the subscription plugin.
+ * @name subscriptionCodes
+ */
+const subscriptionCodes = exports.subscriptionCodes = {
+  WS_CONNECTION_ERROR: 'subscription:1',
+  NO_SERVICE_PROVIDED: 'subscription:2',
+  GENERIC_ERROR: 'subscription:3'
+};
+
+/**
+ * Error codes for the connectivity plugin
+ * @name connectivityCodes
+ */
+const connectivityCodes = exports.connectivityCodes = {
+  WS_MESSAGE_ERROR: 'connectivity:1'
+};
+
+/**
+ * Error codes for the Presence plugin.
+ * @name presenceCodes
+ */
+const presenceCodes = exports.presenceCodes = {
+  INVALID_STATUS: 'presence:1',
+  INVALID_ACTIVITY: 'presence:2',
+  INVALID_REQUEST: 'presence:3',
+  INVALID_PARAM: 'presence:4'
+};
+
+/**
+ * Error codes for the Users plugin
+ * @name usersCodes
+ */
+const usersCodes = exports.usersCodes = {
+  UNKNOWN: 'users:1',
+  REFRESH_CONTACTS_FAIL: 'users:2',
+  DIRECTORY_REQUEST_FAIL: 'users:3',
+  INVALID_PARAM: 'users:4'
+};
+
+/**
+ * Error codes for the Webrtc plugin
+ * @name webrtcCodes
+ */
+const webrtcCodes = exports.webrtcCodes = {
+  INVALID_PARAM: 'webrtc:1'
+};
+
+/**
+ * Error codes for the Proxy plugin
+ * @name proxyCodes
+ */
+const proxyCodes = exports.proxyCodes = {
+  INVALID_PARAM: 'proxy:1',
+  SET_PROXY_CHANNEL_FAIL: 'proxy:2',
+  IN_ACTIVE_CALL: 'proxy:3',
+  VERSION_MISMATCH: 'proxy:4',
+  INVALID_STATE: 'proxy:5',
+  TIMEOUT: 'proxy:6',
+  UNKNOWN: 'proxy:7'
+};
+
+/***/ }),
+
+/***/ 3437:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.NO_CODE = void 0;
+Object.defineProperty(exports, "authCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.authCodes;
+  }
+}));
+Object.defineProperty(exports, "bridgeCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.bridgeCodes;
+  }
+}));
+Object.defineProperty(exports, "callCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.callCodes;
+  }
+}));
+Object.defineProperty(exports, "callHistoryCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.callHistoryCodes;
+  }
+}));
+Object.defineProperty(exports, "clickToCallCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.clickToCallCodes;
+  }
+}));
+exports["default"] = void 0;
+Object.defineProperty(exports, "groupsCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.groupsCodes;
+  }
+}));
+Object.defineProperty(exports, "messagingCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.messagingCodes;
+  }
+}));
+Object.defineProperty(exports, "mwiCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.mwiCodes;
+  }
+}));
+Object.defineProperty(exports, "presenceCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.presenceCodes;
+  }
+}));
+Object.defineProperty(exports, "proxyCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.proxyCodes;
+  }
+}));
+Object.defineProperty(exports, "sipEventCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.sipEventCodes;
+  }
+}));
+Object.defineProperty(exports, "subscriptionCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.subscriptionCodes;
+  }
+}));
+Object.defineProperty(exports, "usersCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.usersCodes;
+  }
+}));
+Object.defineProperty(exports, "webrtcCodes", ({
+  enumerable: true,
+  get: function () {
+    return _codes.webrtcCodes;
+  }
+}));
+var _codes = __webpack_require__(7772);
+const NO_CODE = exports.NO_CODE = 'NO_CODE';
+
+/**
+ * The Basic Error object. Provides information about an error that occurred in the SDK.
+ * @public
+ * @static
+ * @typedef {Object} BasicError
+ * @memberof api
+ * @property {string} code The code of the error. If no code is known, this will be 'NO_CODE'.
+ * @property {string} message A human-readable message to describe the error. If no message is known, this will be 'An error occurred'.
+ */
+
+class BasicError {
+  constructor({
+    message,
+    code
+  }) {
+    this.name = 'BasicError';
+    this.code = code || NO_CODE;
+    this.message = message ? `${message}` : 'An error occurred.';
+  }
+}
+exports["default"] = BasicError;
 
 /***/ }),
 
@@ -445,12 +751,16 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  */
 function watchDeviceEvents(manager, handler) {
   // Manager event handlers.
-  const change = () => {
+  /**
+   * @method change
+   * @param {boolean} [actionOnly] True if this event should not be emitted to the application.
+   */
+  const change = actionOnly => {
     // Get the latest devices after they changed, then emit the device list
     //  upwards.
     manager.checkDevices().then(devices => {
       const devicesChangedAction = _actions.deviceActions.devicesChanged(devices);
-      const devicesChangedEvent = {
+      const devicesChangedEvent = actionOnly ? undefined : {
         type: eventTypes.DEVICES_CHANGED,
         args: {}
       };
@@ -2378,9 +2688,12 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(9297);
+var _version = __webpack_require__(5129);
+var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Proxy Plugin.
 
 // Other plugins.
@@ -2460,97 +2773,136 @@ function clientProxy() {
     const remoteVersion = (0, _version.getVersion)();
     base.channel = (0, _channel.replyChannel)((0, _channel.jsonChannel)(channel));
     base.channel.receive = (id, data) => {
-      if (!base.isReady && data.initialize) {
-        log.info('Initializing local webRTC stack.', data.config);
-        log.info(`SDK version received from remote end: ${data.version}.`);
-        if (data.version !== remoteVersion) {
-          // Make sure the two SDKs have the same version.
-          log.error('SDK versions do not match; initialization failed.');
+      /*
+       * Expected message types:
+       *    - initialize command
+       *    - webrtc command
+       */
+      if (data.initialize) {
+        /*
+         * Initialization message received.
+         *    - if Remote SDK is already initialized, then respond with an error.
+         *    - if Remote SDK is not initialized, then initialize it.
+         */
+        if (base.isReady) {
+          log.warn('Local WebRTC stack is already initialized; responding as error.');
           const response = {
-            initialized: false,
-            remoteVersion
+            initialized: true,
+            error: new _errors.default({
+              code: _errors.proxyCodes.INVALID_STATE,
+              message: 'Remote SDK has already been initialized.'
+            })
           };
           base.channel.reply(id, response);
-          return;
-        }
-        base.webRTC = base.webRTC(data.config);
-
-        // Set the initial log levels if they were provided.
-        if (data.logLevels) {
-          const {
-            WEBRTC,
-            PROXY,
-            CHANNEL
-          } = data.logLevels;
-          // Set the log level in the WebRTC stack's Log Manager.
-          base.webRTC.managers.logs.setLevel(WEBRTC);
-          // Also set the log level in the Remote SDK's PROXY logger.
-          log.setLevel(PROXY);
-          // Also also set the log level in the Remote SDK's CHANNEL logger.
-          _logs.logManager.getLogger('CHANNEL').setLevel(CHANNEL);
-        }
-        base.isReady = true;
-
-        /*
-         * Setup listeners for events from the Webrtc-stack. If the events are
-         *    actions (and events), we need to send them across the channel to
-         *    be handled by the SDK. The function passed-in is the "remote side"
-         *    of the `contextHelper` for how the SDK should handle Webrtc-stack
-         *    events. The "local side" of this handler is defined in the
-         *    WebrtcProxy operations.
-         */
-        (0, _webrtcEvents.default)(base.webRTC, (action, event) => {
-          // When an event is received (and has already been parsed into an
-          //    action), send it over the channel.
-          if (typeof action === 'object' && action.type) {
-            // Make sure that the action is an actual action, though.
-            log.info(`Sending event over channel: ${action.type}.`);
-            const messageId = (0, _uuid.v4)().substring(0, 8);
-            base.channel.send(messageId, {
-              action,
-              event
-            });
-          } else {
-            log.debug('Proxy event listeners received unexpected format; ignoring.', action);
+        } else {
+          log.info('Initializing local webRTC stack.', data.config);
+          log.info(`SDK version received from remote end: ${data.version}.`);
+          if (data.version !== remoteVersion) {
+            // Make sure the two SDKs have the same version.
+            log.error('SDK versions do not match; initialization failed.');
+            const response = {
+              initialized: false,
+              remoteVersion,
+              error: new _errors.default({
+                code: _errors.proxyCodes.VERSION_MISMATCH,
+                message: 'SDK versions do not match; initialization failed.'
+              })
+            };
+            base.channel.reply(id, response);
+            return;
           }
-        });
+          base.webRTC = base.webRTC(data.config);
 
-        // When responding to the initialize command, include browser details.
-        const browser = base.webRTC.getBrowserDetails();
-        log.info(`Browser details: ${browser.browser}, version ${browser.version}.`);
-        if (api.onInit) {
-          api.onInit(base.webRTC);
+          // Set the initial log levels if they were provided.
+          if (data.logLevels) {
+            const {
+              WEBRTC,
+              PROXY,
+              CHANNEL
+            } = data.logLevels;
+            // Set the log level in the WebRTC stack's Log Manager.
+            base.webRTC.managers.logs.setLevel(WEBRTC);
+            // Also set the log level in the Remote SDK's PROXY logger.
+            log.setLevel(PROXY);
+            // Also also set the log level in the Remote SDK's CHANNEL logger.
+            _logs.logManager.getLogger('CHANNEL').setLevel(CHANNEL);
+          }
+          base.isReady = true;
+
+          /*
+           * Setup listeners for events from the Webrtc-stack. If the events are
+           *    actions (and events), we need to send them across the channel to
+           *    be handled by the SDK. The function passed-in is the "remote side"
+           *    of the `contextHelper` for how the SDK should handle Webrtc-stack
+           *    events. The "local side" of this handler is defined in the
+           *    WebrtcProxy operations.
+           */
+          (0, _webrtcEvents.default)(base.webRTC, (action, event) => {
+            // When an event is received (and has already been parsed into an
+            //    action), send it over the channel.
+            if (typeof action === 'object' && action.type) {
+              // Make sure that the action is an actual action, though.
+              log.info(`Sending event over channel: ${action.type}.`);
+              const messageId = (0, _uuid.v4)().substring(0, 8);
+              base.channel.send(messageId, {
+                action,
+                event
+              });
+            } else {
+              log.debug('Proxy event listeners received unexpected format; ignoring.', action);
+            }
+          });
+
+          // When responding to the initialize command, include browser details.
+          const browser = base.webRTC.getBrowserDetails();
+          log.info(`Browser details: ${browser.browser}, version ${browser.version}.`);
+          if (api.onInit) {
+            api.onInit(base.webRTC);
+          }
+          base.channel.reply(id, {
+            initialized: true,
+            browser,
+            remoteVersion
+          });
+          log.info('Finished initializing local webRTC stack.');
         }
-        base.channel.reply(id, {
-          initialized: true,
-          browser,
-          remoteVersion
-        });
-        log.info('Finished initializing local webRTC stack.');
-      } else if (!base.isReady) {
-        // If we received a (non-initialize) message, but haven't yet initialized
-        //    the local WebRTC stack, reply that this side is not ready yet.
-        log.info('Client not ready! Still needs to be initialized.');
-        base.channel.reply(id, {
-          initialized: false
-        });
       } else if (isWebrtcCommand(data)) {
-        log.info(`Received ${data.type} ${data.operation} operation, performing...`);
-        // WebRTC operations may be async. Need to ensure that
-        //    they finish before replying to the command.
-        (0, _converters.default)(base.webRTC, data).then(result => {
-          log.info(`Finished ${data.type} ${data.operation} operation, replying with result.`);
-          base.channel.reply(id, result);
-        });
+        /*
+         * Webrtc command received.
+         *    - if Remote SDK is initialized, process it.
+         *    - if not inititalized, respond with an error.
+         */
+        if (base.isReady) {
+          log.info(`Received ${data.type} ${data.operation} operation, performing...`);
+          // WebRTC operations may be async. Need to ensure that
+          //    they finish before replying to the command.
+          (0, _converters.default)(base.webRTC, data).then(result => {
+            log.info(`Finished ${data.type} ${data.operation} operation, replying with result.`);
+            base.channel.reply(id, result);
+          });
+        } else {
+          log.info('Client not ready! Still needs to be initialized.');
+          base.channel.reply(id, {
+            initialized: false,
+            error: new _errors.default({
+              code: _errors.proxyCodes.INVALID_STATE,
+              message: 'Remote client not initialized.'
+            })
+          });
+        }
       } else {
+        /*
+         * Unknown message received. Respond with an error.
+         */
         log.error('Unknown data format; ignoring.', data);
-        // TODO: Reply with a (better?) error.
-        const response = {
-          error: 'Unknown format.',
+        base.channel.reply(id, {
           data,
-          remoteVersion
-        };
-        base.channel.reply(id, response);
+          remoteVersion,
+          error: new _errors.default({
+            message: 'Unknown format.',
+            code: _errors.proxyCodes.UNKNOWN
+          })
+        });
       }
     };
   };
@@ -2722,7 +3074,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(9297);
+var _version = __webpack_require__(5129);
 const _excluded = ["onInit"]; // Other plugins.
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -4117,6 +4469,7 @@ exports["default"] = ontrack;
  */
 function ontrack(listener) {
   const {
+    proxyPeer,
     nativePeer,
     trackManager,
     log
@@ -4131,9 +4484,14 @@ function ontrack(listener) {
     // event object contains transceiver which already has track attached to its receiver
     const {
       track: nativeTrack,
-      streams
+      streams,
+      transceiver
     } = event;
     log.debug(`Peer received ${nativeTrack.kind} Track ${nativeTrack.id}.`);
+    if (!proxyPeer.transceivers.find(tran => tran.mid === transceiver.mid)) {
+      // If we are not already tracking this Transceiver in the Peer model, then add it.
+      proxyPeer.transceivers.push(transceiver);
+    }
 
     /*
      * When the remote side adds a track, it should have an associated MediaStream
@@ -4231,6 +4589,7 @@ function peer(id, config = {}, trackManager) {
    * @property {EventEmitter}      emitter
    * @property {Array<RTCIceCandidate>} iceCandidates Gathered candidates.
    * @property {timeoutID} [iceLoop] Reference to the on-going ICE collection loop.
+   * @property {Array<RTCRtpTransceiver>} transceivers List of transceivers on the peer.
    */
   const base = {
     nativePeer,
@@ -4243,7 +4602,8 @@ function peer(id, config = {}, trackManager) {
     iceTimer,
     emitter,
     iceCandidates: [],
-    iceLoop: undefined
+    iceLoop: undefined,
+    transceivers: []
   };
 
   /**
@@ -4412,6 +4772,7 @@ exports["default"] = addTransceiver;
  */
 function addTransceiver(track) {
   const {
+    proxyPeer,
     nativePeer,
     log
   } = this;
@@ -4422,6 +4783,8 @@ function addTransceiver(track) {
       direction: 'sendrecv',
       streams: [track.getStream()]
     });
+    // Store the reference to the Transceiver on our Peer as well.
+    proxyPeer.transceivers.push(transceiver);
   } catch (err) {
     // TODO: Better error handling.
     log.info(`Failed to add track: ${err.message}`);
@@ -4714,6 +5077,34 @@ function getStats(trackId) {
 
 /***/ }),
 
+/***/ 5667:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = getTransceivers;
+/**
+ * Retrieve the list of Transceivers on the Peer.
+ * @method getTransceivers
+ * @return {Array<RTCRtpTransceiver>}
+ */
+function getTransceivers() {
+  const {
+    proxyPeer
+  } = this;
+
+  // Return our Peer's saved list of transceivers instead of using the native
+  //    getTransceivers API. This is for "proxied webrtc" mode, where a native
+  //    API call causes delays.
+  return proxyPeer.transceivers;
+}
+
+/***/ }),
+
 /***/ 424:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -4733,6 +5124,7 @@ var _createOffer = _interopRequireDefault(__webpack_require__(8978));
 var _findReusableTransceiver = _interopRequireDefault(__webpack_require__(6040));
 var _getState = _interopRequireDefault(__webpack_require__(2936));
 var _getStats = _interopRequireDefault(__webpack_require__(3326));
+var _getTransceivers = _interopRequireDefault(__webpack_require__(5667));
 var _removeTrack = _interopRequireDefault(__webpack_require__(6045));
 var _replaceTrack = _interopRequireDefault(__webpack_require__(6956));
 var _sendDTMF = _interopRequireDefault(__webpack_require__(4869));
@@ -4747,6 +5139,7 @@ const methods = {
   findReusableTransceiver: _findReusableTransceiver.default,
   getState: _getState.default,
   getStats: _getStats.default,
+  getTransceivers: _getTransceivers.default,
   removeTrack: _removeTrack.default,
   replaceTrack: _replaceTrack.default,
   sendDTMF: _sendDTMF.default,
@@ -5720,13 +6113,12 @@ function DeviceManager() {
   let isListening = true;
   let recentDeviceChange = false;
   navigator.mediaDevices.addEventListener('devicechange', () => {
-    log.info('Media device change detected.');
-
     // A physical device change results in one event per
     //    device "kind". Group the events together.
     // Only emit an event if the Manager is supposed to
     //    be listening for changes.
     if (!recentDeviceChange && isListening) {
+      log.info('Media device change detected.');
       recentDeviceChange = true;
       setTimeout(() => {
         recentDeviceChange = false;
@@ -5735,6 +6127,8 @@ function DeviceManager() {
           emitter.emit('change');
         });
       }, 50);
+    } else {
+      log.info(`Media device change detected, but ${!isListening ? 'ignoring' : 'throttling'}.`);
     }
   });
 
@@ -7110,13 +7504,21 @@ function Session(id, managers, config = {}) {
                 //    immediately. Otherwise another operation will remove it.
                 if (!isUnsolicited) {
                   peer.removeTrack(track.id);
-                }
 
-                // In the event this track ending was due to a device change
-                // we should update our device list before notifying the client that
-                // the track ended so they don't try to use a removed device
-                deviceManager.checkDevices().then(() => {
-                  deviceManager.emit('change');
+                  // Bubble the event upwards to event listeners.
+                  emitter.emit('track:ended', {
+                    local: true,
+                    trackId: track.id,
+                    isUnsolicited
+                  });
+                } else {
+                  // In the event this track ending was due to a device change
+                  // we should update our device list before notifying the client that
+                  // the track ended so they don't try to use a removed device
+                  // `true` --> Tell the SDK to _not_ bubble this event to the
+                  //    application; only update state. The device disconnection
+                  //    will trigger it's own "device change" event.
+                  deviceManager.emit('change', true);
 
                   // Wait 50ms before emitting `track:ended` to allow the SDK
                   // a chance to update the device list in state
@@ -7127,7 +7529,7 @@ function Session(id, managers, config = {}) {
                       isUnsolicited
                     });
                   }, 50);
-                });
+                }
 
                 // Remove track from session dscp settings
                 if (settings.dscpControls.hasOwnProperty(track.id)) {
@@ -10983,7 +11385,7 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 795:
+/***/ 7013:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -11085,7 +11487,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(3940));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(795));
+var _version = _interopRequireDefault(__webpack_require__(7013));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 

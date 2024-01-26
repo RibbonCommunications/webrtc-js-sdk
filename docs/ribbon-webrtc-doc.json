@@ -6464,7 +6464,7 @@
                 "column": 0
               },
               "end": {
-                "line": 27,
+                "line": 28,
                 "column": 16
               }
             },
@@ -50170,7 +50170,16 @@
           "children": [
             {
               "type": "text",
-              "value": "The 'proxy' namespace allows for a secondary mode for making calls: proxy mode.\nWhen proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel.\nThis is an advanced feature that enables support for Calls in particular scenarios that would otherwise not support them."
+              "value": "The 'proxy' namespace allows for a secondary mode for making calls: proxy mode.\nWhen proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This is an advanced feature that enables support for Calls in particular scenarios that would otherwise not support them."
             }
           ]
         }
@@ -50180,13 +50189,13 @@
       {
         "title": "public",
         "description": null,
-        "lineNumber": 5,
+        "lineNumber": 6,
         "type": null
       },
       {
         "title": "namespace",
         "description": null,
-        "lineNumber": 6,
+        "lineNumber": 7,
         "type": null,
         "name": "proxy"
       }
@@ -50197,18 +50206,18 @@
         "column": 0
       },
       "end": {
-        "line": 8,
+        "line": 9,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 59,
+          "line": 60,
           "column": 0
         },
         "end": {
-          "line": 59,
+          "line": 60,
           "column": 43
         }
       },
@@ -50241,7 +50250,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The Proxy state has changed.\nIndicates either a change in the mode or the channel."
+                    "value": "A Proxy API has completed and changed the proxy state."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxygetinfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.getInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API can be used to retrieve the current proxy state."
                   }
                 ]
               }
@@ -50251,18 +50285,18 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 3,
+              "lineNumber": 4,
               "type": null
             },
             {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 4
+              "lineNumber": 5
             },
             {
               "title": "event",
               "description": "proxy:change",
-              "lineNumber": 5
+              "lineNumber": 6
             }
           ],
           "loc": {
@@ -50271,18 +50305,18 @@
               "column": 0
             },
             "end": {
-              "line": 7,
+              "line": 8,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 8,
+                "line": 9,
                 "column": 0
               },
               "end": {
-                "line": 8,
+                "line": 9,
                 "column": 42
               }
             },
@@ -50330,7 +50364,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "An error has occurred with a Proxy operation."
+                    "value": "A Proxy API has resulted in an error."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxygetinfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.getInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API can be used to retrieve the current proxy state."
                   }
                 ]
               }
@@ -50340,23 +50399,23 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 2,
+              "lineNumber": 4,
               "type": null
             },
             {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 3
+              "lineNumber": 5
             },
             {
               "title": "event",
               "description": "proxy:error",
-              "lineNumber": 4
+              "lineNumber": 6
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 7,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -50365,33 +50424,33 @@
             },
             {
               "title": "param",
-              "description": "An error object.",
-              "lineNumber": 6,
+              "description": "An error with `code` and `message` information.",
+              "lineNumber": 8,
               "type": {
                 "type": "NameExpression",
-                "name": "Object"
+                "name": "BasicError"
               },
               "name": "params.error"
             }
           ],
           "loc": {
             "start": {
-              "line": 10,
+              "line": 11,
               "column": 0
             },
             "end": {
-              "line": 17,
+              "line": 20,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 18,
+                "line": 21,
                 "column": 0
               },
               "end": {
-                "line": 18,
+                "line": 21,
                 "column": 40
               }
             },
@@ -50404,7 +50463,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 5,
+              "lineNumber": 7,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -50413,7 +50472,7 @@
                 {
                   "title": "param",
                   "name": "params.error",
-                  "lineNumber": 6,
+                  "lineNumber": 8,
                   "description": {
                     "type": "root",
                     "children": [
@@ -50422,7 +50481,23 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "An error object."
+                            "value": "An error with "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "code"
+                          },
+                          {
+                            "type": "text",
+                            "value": " and "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "message"
+                          },
+                          {
+                            "type": "text",
+                            "value": " information."
                           }
                         ]
                       }
@@ -50430,7 +50505,7 @@
                   },
                   "type": {
                     "type": "NameExpression",
-                    "name": "Object"
+                    "name": "BasicError"
                   }
                 }
               ]
@@ -50517,22 +50592,22 @@
           ],
           "loc": {
             "start": {
-              "line": 10,
+              "line": 11,
               "column": 0
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 59,
+                "line": 60,
                 "column": 0
               },
               "end": {
-                "line": 59,
+                "line": 60,
                 "column": 43
               }
             },
@@ -50619,22 +50694,22 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 39,
+                    "line": 40,
                     "column": 0
                   },
                   "end": {
-                    "line": 46,
+                    "line": 47,
                     "column": 3
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 59,
+                      "line": 60,
                       "column": 0
                     },
                     "end": {
-                      "line": 59,
+                      "line": 60,
                       "column": 43
                     }
                   },
@@ -50754,22 +50829,22 @@
                 ],
                 "loc": {
                   "start": {
-                    "line": 48,
+                    "line": 49,
                     "column": 0
                   },
                   "end": {
-                    "line": 56,
+                    "line": 57,
                     "column": 3
                   }
                 },
                 "context": {
                   "loc": {
                     "start": {
-                      "line": 59,
+                      "line": 60,
                       "column": 0
                     },
                     "end": {
-                      "line": 59,
+                      "line": 60,
                       "column": 43
                     }
                   },
@@ -50861,15 +50936,105 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Sets the mode for the Proxy Plugin.\nWhen enabled, webRTC operations will be proxied over a channel. Enabling\nproxy mode requires a channel to have been set. See "
+                    "value": "Sets whether Call functionality should be proxied to the Remote SDK or not.\nWhen set to "
                   },
                   {
                     "type": "inlineCode",
-                    "value": "setChannel"
+                    "value": "true"
                   },
                   {
                     "type": "text",
-                    "value": " API.\nWhen disabled, webRTC operation will occur as normal on the local machine."
+                    "value": ", WebRTC operations will be proxied over a channel. When\nset to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "false"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", WebRTC operation will occur as normal on the local machine."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Setting proxy mode is a required step for being able to use the Proxy\nfunctionality. It is recommended that this is the last step, after setting\na channel and initializing the remote endpoint. Proxy mode cannot be changed if there\nis an on-going call."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "On completion, this API will trigger a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxyeventproxychange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent on success. The "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxygetproxymode",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.getProxyMode"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " or "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxygetinfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.getInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nAPIs can be used to verify that proxy mode has been changed. If an error\nis encountered, this API will trigger a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxyeventproxyerror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent."
                   }
                 ]
               }
@@ -50879,62 +51044,76 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 15,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 16
             },
             {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 6
+              "lineNumber": 17
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 18,
               "name": "setProxyMode"
             },
             {
               "title": "param",
               "description": "Whether proxy mode should be enabled.",
-              "lineNumber": 8,
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "boolean"
               },
               "name": "value"
+            },
+            {
+              "title": "example",
+              "description": "// On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.\nclient.on('proxy:change', params => {\n   const isProxied = client.proxy.getProxyMode()\n   log(`Proxy mode set to ${isProxied}.`)\n})\n// On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.\nclient.on('proxy:error', params => {\n   const { code, message } = params.error\n   log(`Failed to set proxy mode due to ${code}: ${message}.`)\n})\n\n// Get the current proxy state to ensure we can set proxy mode to `true`.\nconst { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()\nif (\n   hasChannel === true && // A channel was previously provided.\n   remoteInitialized === true && // The Remote SDK is ready.\n   proxyMode === false && // Proxy mode is not already `true`.\n) {\n   client.proxy.setProxyMode(true)\n}",
+              "lineNumber": 20
             }
           ],
           "loc": {
             "start": {
-              "line": 73,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 115,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 83,
+                "line": 116,
                 "column": 4
               },
               "end": {
-                "line": 93,
+                "line": 126,
                 "column": 5
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "// On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.\nclient.on('proxy:change', params => {\n   const isProxied = client.proxy.getProxyMode()\n   log(`Proxy mode set to ${isProxied}.`)\n})\n// On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.\nclient.on('proxy:error', params => {\n   const { code, message } = params.error\n   log(`Failed to set proxy mode due to ${code}: ${message}.`)\n})\n\n// Get the current proxy state to ensure we can set proxy mode to `true`.\nconst { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()\nif (\n   hasChannel === true && // A channel was previously provided.\n   remoteInitialized === true && // The Remote SDK is ready.\n   proxyMode === false && // Proxy mode is not already `true`.\n) {\n   client.proxy.setProxyMode(true)\n}"
+            }
+          ],
           "implements": [],
           "params": [
             {
               "title": "param",
               "name": "value",
-              "lineNumber": 8,
+              "lineNumber": 19,
               "description": {
                 "type": "root",
                 "children": [
@@ -50962,6 +51141,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "proxy",
           "kind": "function",
           "name": "setProxyMode",
@@ -50979,10 +51159,11 @@
             },
             {
               "name": "setProxyMode",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "proxysetProxyMode"
+          "namespace": "proxy.setProxyMode"
         },
         {
           "description": {
@@ -50993,7 +51174,48 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Retrieves the current mode of the Proxy Plugin."
+                    "value": "Retrieves the current mode for Proxy behaviour."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "When set to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", WebRTC operations will be proxied over a channel. When\nset to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "false"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", WebRTC operation will occur as normal on the local machine.\nSee the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxysetproxymode",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.setProxyMode"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API for more information."
                   }
                 ]
               }
@@ -51003,24 +51225,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 2,
+              "lineNumber": 6,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 7
             },
             {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 3
+              "lineNumber": 8
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 4,
+              "lineNumber": 9,
               "name": "getProxyMode"
             },
             {
               "title": "return",
               "description": "Whether proxy mode is currently enabled.",
-              "lineNumber": 5,
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "boolean"
@@ -51029,22 +51256,22 @@
           ],
           "loc": {
             "start": {
-              "line": 95,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 139,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 102,
+                "line": 140,
                 "column": 4
               },
               "end": {
-                "line": 106,
+                "line": 144,
                 "column": 5
               }
             },
@@ -51083,6 +51310,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "proxy",
           "kind": "function",
           "name": "getProxyMode",
@@ -51100,10 +51328,11 @@
             },
             {
               "name": "getProxyMode",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "proxygetProxyMode"
+          "namespace": "proxy.getProxyMode"
         },
         {
           "description": {
@@ -51114,7 +51343,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Retrieve information about the proxy."
+                    "value": "Retrieves information about the proxy."
                   }
                 ]
               }
@@ -51128,20 +51357,25 @@
               "type": null
             },
             {
+              "title": "static",
+              "description": null,
+              "lineNumber": 3
+            },
+            {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 3
+              "lineNumber": 4
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 4,
+              "lineNumber": 5,
               "name": "getInfo"
             },
             {
               "title": "returns",
-              "description": "[proxy] Object containing information about the proxy.",
-              "lineNumber": 5,
+              "description": "proxy Object containing information about the proxy.",
+              "lineNumber": 6,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51149,16 +51383,7 @@
             },
             {
               "title": "returns",
-              "description": "[proxy.proxyMode] Current operating mode.",
-              "lineNumber": 6,
-              "type": {
-                "type": "NameExpression",
-                "name": "boolean"
-              }
-            },
-            {
-              "title": "returns",
-              "description": "[proxy.hasChannel] Proxy has a channel associated with it.",
+              "description": "proxy.proxyMode Current operating mode.",
               "lineNumber": 7,
               "type": {
                 "type": "NameExpression",
@@ -51167,7 +51392,7 @@
             },
             {
               "title": "returns",
-              "description": "[proxy.remoteInitialized] Proxy initialization state.",
+              "description": "proxy.hasChannel Proxy has a channel associated with it.",
               "lineNumber": 8,
               "type": {
                 "type": "NameExpression",
@@ -51176,8 +51401,17 @@
             },
             {
               "title": "returns",
-              "description": "[proxy.browser] Details for the browser the proxy is using.",
+              "description": "proxy.remoteInitialized Proxy initialization state.",
               "lineNumber": 9,
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            },
+            {
+              "title": "returns",
+              "description": "proxy.browser Details for the browser the proxy is using.",
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51186,27 +51420,27 @@
             {
               "title": "example",
               "description": "const proxy = client.proxy.getInfo()\n\nlog(`Proxy Browser in use: ${proxy.browser}, mode: ${proxy.proxyMode}, channel: ${proxy.hasChannel}, initialized: ${proxy.remoteInitialized}.`)",
-              "lineNumber": 10
+              "lineNumber": 11
             }
           ],
           "loc": {
             "start": {
-              "line": 108,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 161,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 123,
+                "line": 162,
                 "column": 4
               },
               "end": {
-                "line": 127,
+                "line": 166,
                 "column": 5
               }
             },
@@ -51231,7 +51465,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "[proxy] Object containing information about the proxy."
+                        "value": "proxy Object containing information about the proxy."
                       }
                     ]
                   }
@@ -51252,7 +51486,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "[proxy.proxyMode] Current operating mode."
+                        "value": "proxy.proxyMode Current operating mode."
                       }
                     ]
                   }
@@ -51273,7 +51507,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "[proxy.hasChannel] Proxy has a channel associated with it."
+                        "value": "proxy.hasChannel Proxy has a channel associated with it."
                       }
                     ]
                   }
@@ -51294,7 +51528,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "[proxy.remoteInitialized] Proxy initialization state."
+                        "value": "proxy.remoteInitialized Proxy initialization state."
                       }
                     ]
                   }
@@ -51315,7 +51549,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "[proxy.browser] Details for the browser the proxy is using."
+                        "value": "proxy.browser Details for the browser the proxy is using."
                       }
                     ]
                   }
@@ -51333,6 +51567,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "proxy",
           "kind": "function",
           "name": "getInfo",
@@ -51350,10 +51585,11 @@
             },
             {
               "name": "getInfo",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "proxygetInfo"
+          "namespace": "proxy.getInfo"
         },
         {
           "description": {
@@ -51378,20 +51614,25 @@
               "type": null
             },
             {
+              "title": "static",
+              "description": null,
+              "lineNumber": 5
+            },
+            {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 5
+              "lineNumber": 6
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 6,
+              "lineNumber": 7,
               "name": "getProxyDetails"
             },
             {
               "title": "return",
               "description": "Object containing `browser` and `version` information.",
-              "lineNumber": 7,
+              "lineNumber": 8,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51400,27 +51641,27 @@
             {
               "title": "example",
               "description": "const details = client.proxy.getProxyDetails()\n\nlog(`Proxy Browser in use: ${details.browser}, version ${details.version}.`)",
-              "lineNumber": 8
+              "lineNumber": 9
             }
           ],
           "loc": {
             "start": {
-              "line": 129,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 181,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 142,
+                "line": 182,
                 "column": 4
               },
               "end": {
-                "line": 146,
+                "line": 186,
                 "column": 5
               }
             },
@@ -51479,6 +51720,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "proxy",
           "kind": "function",
           "name": "getProxyDetails",
@@ -51496,10 +51738,11 @@
             },
             {
               "name": "getProxyDetails",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "proxygetProxyDetails"
+          "namespace": "proxy.getProxyDetails"
         },
         {
           "description": {
@@ -51513,6 +51756,72 @@
                     "value": "Sets the channel to be used while proxy mode is enabled."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Providing a channel is a required step for being able to use the Proxy\nfunctionality. This should be the first step, before initializing the\nremote endpoint and setting proxy mode."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "On completion, this API will trigger a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxyeventproxychange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent on success. The "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxygetinfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.getInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API can be used to verify\nthat a channel has been set. If an error is encountered, this API will\ntrigger a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxyeventproxyerror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event. A channel\ncannot be set if there is an on-going call."
+                  }
+                ]
               }
             ]
           },
@@ -51520,62 +51829,76 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 2,
+              "lineNumber": 12,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 13
             },
             {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 3
+              "lineNumber": 14
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 4,
+              "lineNumber": 15,
               "name": "setChannel"
             },
             {
               "title": "param",
               "description": "See the `Channel` module for information.",
-              "lineNumber": 5,
+              "lineNumber": 16,
               "type": {
                 "type": "NameExpression",
                 "name": "proxy.Channel"
               },
               "name": "channel"
+            },
+            {
+              "title": "example",
+              "description": "client.on('proxy:change', () => {\n   const { hasChannel } = client.proxy.getInfo()\n   log(`A channel ${hasChannel ? 'has': 'has not'} been set.`)\n})\nclient.on('proxy:error', params => {\n   const { code, message } = params.error\n   log(`Encountered error ${code}: ${message}.`)\n})\n\nconst appChannel = ...\nclient.proxy.setChannel(appChannel)",
+              "lineNumber": 17
             }
           ],
           "loc": {
             "start": {
-              "line": 148,
+              "line": 188,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 217,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 155,
+                "line": 218,
                 "column": 4
               },
               "end": {
-                "line": 164,
+                "line": 227,
                 "column": 5
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "client.on('proxy:change', () => {\n   const { hasChannel } = client.proxy.getInfo()\n   log(`A channel ${hasChannel ? 'has': 'has not'} been set.`)\n})\nclient.on('proxy:error', params => {\n   const { code, message } = params.error\n   log(`Encountered error ${code}: ${message}.`)\n})\n\nconst appChannel = ...\nclient.proxy.setChannel(appChannel)"
+            }
+          ],
           "implements": [],
           "params": [
             {
               "title": "param",
               "name": "channel",
-              "lineNumber": 5,
+              "lineNumber": 16,
               "description": {
                 "type": "root",
                 "children": [
@@ -51611,6 +51934,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "proxy",
           "kind": "function",
           "name": "setChannel",
@@ -51628,10 +51952,11 @@
             },
             {
               "name": "setChannel",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "proxysetChannel"
+          "namespace": "proxy.setChannel"
         },
         {
           "description": {
@@ -51651,7 +51976,105 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The version of the SDK and the Remote SDK must be the same, otherwise\ninitialization will fail."
+                    "value": "Initializing the Remote SDK is a required step before being able to use the\nProxy functionality. This step requires a channel having been set previously\n(see the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxysetchannel",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "API"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "). It is recommended to perform this\nstep before setting the proxy mode (see the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxysetproxymode",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.setProxyMode"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "On completion, this API will trigger a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxyeventproxychange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent on success. The "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxygetinfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy.getInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API can be used to verify\nthat the remote endpoint is initialized. If an error is encountered, this\nAPI will trigger a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#proxyeventproxyerror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "proxy:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This API will perform a version-check between this SDK and the Remote SDK.\nTheir versions must be the same, otherwise initialization will fail."
                   }
                 ]
               }
@@ -51661,62 +52084,76 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 15,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 16
             },
             {
               "title": "memberof",
               "description": "proxy",
-              "lineNumber": 6
+              "lineNumber": 17
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 18,
               "name": "initializeRemote"
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
               },
               "name": "config"
+            },
+            {
+              "title": "example",
+              "description": "// Get the current proxy state to ensure we can initialize the Remote SDK.\nconst { hasChannel, remoteInitialized } = client.proxy.getInfo()\nif (\n   hasChannel === true && // A channel was previously provided.\n   remoteInitialized === false // The Remote SDK was not previously initializted.\n) {\n   client.proxy.initializeRemote()\n}",
+              "lineNumber": 20
             }
           ],
           "loc": {
             "start": {
-              "line": 166,
+              "line": 229,
               "column": 4
             },
             "end": {
-              "line": 175,
+              "line": 258,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 176,
+                "line": 259,
                 "column": 4
               },
               "end": {
-                "line": 185,
+                "line": 268,
                 "column": 5
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "// Get the current proxy state to ensure we can initialize the Remote SDK.\nconst { hasChannel, remoteInitialized } = client.proxy.getInfo()\nif (\n   hasChannel === true && // A channel was previously provided.\n   remoteInitialized === false // The Remote SDK was not previously initializted.\n) {\n   client.proxy.initializeRemote()\n}"
+            }
+          ],
           "implements": [],
           "params": [
             {
               "title": "param",
               "name": "config",
-              "lineNumber": 8,
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51730,6 +52167,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "proxy",
           "kind": "function",
           "name": "initializeRemote",
@@ -51747,10 +52185,11 @@
             },
             {
               "name": "initializeRemote",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "proxyinitializeRemote"
+          "namespace": "proxy.initializeRemote"
         }
       ]
     },

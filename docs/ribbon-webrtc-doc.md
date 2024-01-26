@@ -3835,6 +3835,7 @@ An error occurred with presence.
 
 The 'proxy' namespace allows for a secondary mode for making calls: proxy mode.
 When proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel.
+
 This is an advanced feature that enables support for Calls in particular scenarios that would otherwise not support them.
 
 ### Channel
@@ -3886,24 +3887,63 @@ This function should receive all messages sent from the remote side of the chann
 
 ### setProxyMode
 
-Sets the mode for the Proxy Plugin.
-When enabled, webRTC operations will be proxied over a channel. Enabling
-proxy mode requires a channel to have been set. See `setChannel` API.
-When disabled, webRTC operation will occur as normal on the local machine.
+Sets whether Call functionality should be proxied to the Remote SDK or not.
+When set to `true`, WebRTC operations will be proxied over a channel. When
+set to `false`, WebRTC operation will occur as normal on the local machine.
+
+Setting proxy mode is a required step for being able to use the Proxy
+functionality. It is recommended that this is the last step, after setting
+a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
+is an on-going call.
+
+On completion, this API will trigger a [proxy:change][134]
+event on success. The [proxy.getProxyMode][135] or [proxy.getInfo][136]
+APIs can be used to verify that proxy mode has been changed. If an error
+is encountered, this API will trigger a [proxy:error][137]
+event.
 
 #### Parameters
 
 *   `value` **[boolean][11]** Whether proxy mode should be enabled.
 
+#### Examples
+
+```javascript
+// On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.
+client.on('proxy:change', params => {
+   const isProxied = client.proxy.getProxyMode()
+   log(`Proxy mode set to ${isProxied}.`)
+})
+// On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.
+client.on('proxy:error', params => {
+   const { code, message } = params.error
+   log(`Failed to set proxy mode due to ${code}: ${message}.`)
+})
+
+// Get the current proxy state to ensure we can set proxy mode to `true`.
+const { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()
+if (
+   hasChannel === true && // A channel was previously provided.
+   remoteInitialized === true && // The Remote SDK is ready.
+   proxyMode === false && // Proxy mode is not already `true`.
+) {
+   client.proxy.setProxyMode(true)
+}
+```
+
 ### getProxyMode
 
-Retrieves the current mode of the Proxy Plugin.
+Retrieves the current mode for Proxy behaviour.
+
+When set to `true`, WebRTC operations will be proxied over a channel. When
+set to `false`, WebRTC operation will occur as normal on the local machine.
+See the [proxy.setProxyMode][138] API for more information.
 
 Returns **[boolean][11]** Whether proxy mode is currently enabled.
 
 ### getInfo
 
-Retrieve information about the proxy.
+Retrieves information about the proxy.
 
 #### Examples
 
@@ -3913,15 +3953,15 @@ const proxy = client.proxy.getInfo()
 log(`Proxy Browser in use: ${proxy.browser}, mode: ${proxy.proxyMode}, channel: ${proxy.hasChannel}, initialized: ${proxy.remoteInitialized}.`)
 ```
 
-Returns **[Object][7]** \[proxy] Object containing information about the proxy.
+Returns **[Object][7]** proxy Object containing information about the proxy.
 
-Returns **[boolean][11]** \[proxy.proxyMode] Current operating mode.
+Returns **[boolean][11]** proxy.proxyMode Current operating mode.
 
-Returns **[boolean][11]** \[proxy.hasChannel] Proxy has a channel associated with it.
+Returns **[boolean][11]** proxy.hasChannel Proxy has a channel associated with it.
 
-Returns **[boolean][11]** \[proxy.remoteInitialized] Proxy initialization state.
+Returns **[boolean][11]** proxy.remoteInitialized Proxy initialization state.
 
-Returns **[Object][7]** \[proxy.browser] Details for the browser the proxy is using.
+Returns **[Object][7]** proxy.browser Details for the browser the proxy is using.
 
 ### getProxyDetails
 
@@ -3943,35 +3983,87 @@ Returns **[Object][7]** Object containing `browser` and `version` information.
 
 Sets the channel to be used while proxy mode is enabled.
 
+Providing a channel is a required step for being able to use the Proxy
+functionality. This should be the first step, before initializing the
+remote endpoint and setting proxy mode.
+
+On completion, this API will trigger a [proxy:change][134]
+event on success. The [proxy.getInfo][136] API can be used to verify
+that a channel has been set. If an error is encountered, this API will
+trigger a [proxy:error][137] event. A channel
+cannot be set if there is an on-going call.
+
 #### Parameters
 
-*   `channel` **[proxy.Channel][134]** See the `Channel` module for information.
+*   `channel` **[proxy.Channel][139]** See the `Channel` module for information.
+
+#### Examples
+
+```javascript
+client.on('proxy:change', () => {
+   const { hasChannel } = client.proxy.getInfo()
+   log(`A channel ${hasChannel ? 'has': 'has not'} been set.`)
+})
+client.on('proxy:error', params => {
+   const { code, message } = params.error
+   log(`Encountered error ${code}: ${message}.`)
+})
+
+const appChannel = ...
+client.proxy.setChannel(appChannel)
+```
 
 ### initializeRemote
 
 Sends an initialization message over the channel with webRTC configurations.
 
-The version of the SDK and the Remote SDK must be the same, otherwise
-initialization will fail.
+Initializing the Remote SDK is a required step before being able to use the
+Proxy functionality. This step requires a channel having been set previously
+(see the [API][140]). It is recommended to perform this
+step before setting the proxy mode (see the [proxy.setProxyMode][138] API).
+
+On completion, this API will trigger a [proxy:change][134]
+event on success. The [proxy.getInfo][136] API can be used to verify
+that the remote endpoint is initialized. If an error is encountered, this
+API will trigger a [proxy:error][137] event.
+
+This API will perform a version-check between this SDK and the Remote SDK.
+Their versions must be the same, otherwise initialization will fail.
 
 #### Parameters
 
 *   `config` **[Object][7]** 
 
+#### Examples
+
+```javascript
+// Get the current proxy state to ensure we can initialize the Remote SDK.
+const { hasChannel, remoteInitialized } = client.proxy.getInfo()
+if (
+   hasChannel === true && // A channel was previously provided.
+   remoteInitialized === false // The Remote SDK was not previously initializted.
+) {
+   client.proxy.initializeRemote()
+}
+```
+
 ### proxy:change
 
-The Proxy state has changed.
-Indicates either a change in the mode or the channel.
+A Proxy API has completed and changed the proxy state.
+
+The [proxy.getInfo][136] API can be used to retrieve the current proxy state.
 
 ### proxy:error
 
-An error has occurred with a Proxy operation.
+A Proxy API has resulted in an error.
+
+The [proxy.getInfo][136] API can be used to retrieve the current proxy state.
 
 #### Parameters
 
 *   `params` **[Object][7]** 
 
-    *   `params.error` **[Object][7]** An error object.
+    *   `params.error` **BasicError** An error with `code` and `message` information.
 
 ## request
 
@@ -3980,7 +4072,7 @@ The 'request' namespace (within the 'api' type) is used to make network requests
 ### fetch
 
 Send a request to the underlying REST service with the appropriate configuration and authentication.
-This is a wrapper on top of the browser's [fetch API][135]
+This is a wrapper on top of the browser's [fetch API][141]
 and behaves very similarly but using SDK configuration for the base URL and authentication as well
 as SDK logging.
 
@@ -3988,7 +4080,7 @@ as SDK logging.
 
 *   `resource` **[string][8]** The full path of the resource to fetch from the underlying service. This should include any REST version
     or user information. This path will be appended to the base URL according to SDK configuration.
-*   `init` **RequestInit** An object containing any custom settings that you want to apply to the request. See [fetch API][135]
+*   `init` **RequestInit** An object containing any custom settings that you want to apply to the request. See [fetch API][141]
     for a full description and defaults.
 
 #### Examples
@@ -4008,7 +4100,7 @@ const requestOptions = {
 const response = await client.request.fetch('/rest/version/1/user/xyz@test.com/externalnotification', requestOptions)
 ```
 
-Returns **[Promise][75]<[Response][136]>** A promise for a [Response][137] object.
+Returns **[Promise][75]<[Response][142]>** A promise for a [Response][143] object.
 
 ## sdpHandlers
 
@@ -4019,7 +4111,7 @@ environments and/or scenarios.
 Note that SDP handlers are exposed on the entry point of the SDK. They can be added during
 initialization of the SDK using the [config.call.sdpHandlers][39] configuration
 parameter. They can also be set after the SDK's creation by using the
-[call.setSdpHandlers][138] function.
+[call.setSdpHandlers][144] function.
 
 ### Examples
 
@@ -4104,8 +4196,8 @@ fully functional.
 
 The services an application can subscribe to are based on the features
 included in the SDK. The list of available services can be retrieved
-using the [services.getSubscriptions][139] API. These values can be used
-with the [services.subscribe][140] API.
+using the [services.getSubscriptions][145] API. These values can be used
+with the [services.subscribe][146] API.
 
 The channel used for subscriptions is the method for receiving the service
 updates. The recommended channel is `websocket`, where the SDK is able to
@@ -4116,7 +4208,7 @@ websocket cannot be used, will be available in the future.
 
 The ServiceDescriptor type defines the format for specifying how to subscribe for a certain service.
 This is the service configuration object that needs to be passed (as part of an array of configuration objects) when calling
-the [services.subscribe][140] function.
+the [services.subscribe][146] function.
 Only some plugins (`call`, `messaging` and `presence`) support such configuration object that needs to be passed
 to the subscribe function.
 
@@ -4143,7 +4235,7 @@ client.services.subscribe([
 ### SmsInboundServiceParams
 
 The SmsInboundServiceParams type defines the additional information when subscribing to SMS inbound service.
-This is the configuration object that needs to be passed as the value for the [ServiceDescriptor.params][141] property.
+This is the configuration object that needs to be passed as the value for the [ServiceDescriptor.params][147] property.
 
 Type: [Object][7]
 
@@ -4168,14 +4260,14 @@ Subscribes to platform notifications for an SDK service.
 Extra configuration can be provide as an additional object parameter.
 Currently only a "forceLogOut" flag can be supplied in this object.
 
-For push notifications on link, please see [notifications.registerPush][142]
+For push notifications on link, please see [notifications.registerPush][148]
 
 The SDK currently only supports the `websocket` channel as a subscription
 type.
 
 #### Parameters
 
-*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][143])>** A list of service configurations.
+*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][149])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
     *   `options.forceLogOut` **[boolean][11]?** Force the oldest connection to log out if too many simultaneous connections. Link only.
@@ -4196,7 +4288,7 @@ Returns **[undefined][86]**
 Cancels existing subscriptions for platform notifications.
 
 Existing subscriptions can be retrieved using the
-[services.getSubscriptions][139] API. The `subscribed` values are the
+[services.getSubscriptions][145] API. The `subscribed` values are the
 services that can be unsubscribed from.
 
 #### Parameters
@@ -4224,7 +4316,7 @@ requires a subscription to its service in order to be fully functional.
 
 The `subscribed` values are the SDK's services that the application has
 an active subscription for. Services are subscribed to using the
-[services.subscribe][140] API.
+[services.subscribe][146] API.
 
 #### Examples
 
@@ -4248,7 +4340,7 @@ Returns **[Object][7]** Lists of subscribed and available services.
 Subscription information has changed.
 
 The updated subscription information can be retrieved using the
-[services.getSubscriptions][139] API.
+[services.getSubscriptions][145] API.
 
 #### Parameters
 
@@ -4265,7 +4357,7 @@ The updated subscription information can be retrieved using the
 An error occurred during a subscription operation.
 
 The subscription information can be retrieved using the
-[services.getSubscriptions][139] API.
+[services.getSubscriptions][145] API.
 
 Below are some common errors related to service subscriptions.
 
@@ -4332,7 +4424,7 @@ specific users.
 
 A SIP event may either be solicited or unsolicited. Solicited events, such as the "presence"
 example above, requires the application to subscribe for the event. See the
-[sip.subscribe API][144] for more information about solicited events.
+[sip.subscribe API][150] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
 ### subscribe
@@ -4341,18 +4433,18 @@ Creates a subscription for a SIP event.
 
 A subscription is required to receive SIP notifications for solicited events. Before
 creating a SIP subscription, the service for the event type must have been
-provisioned as part of the user subscription using the [services.subscribe][140]
+provisioned as part of the user subscription using the [services.subscribe][146]
 API.
 
 Only one SIP subscription per event type can exist at a time. A subscription can
 watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][145] API at any time.
+from a subscription using the [sip.update][151] API at any time.
 
-The SDK will emit a [sip:subscriptionChange][146]
-event when the operations completes. The [sip.getDetails][147] API can be used
+The SDK will emit a [sip:subscriptionChange][152]
+event when the operations completes. The [sip.getDetails][153] API can be used
 to retrieve the current information about a subscription.
 
-The SDK will emit a [sip:eventsChange][148] event when
+The SDK will emit a [sip:eventsChange][154] event when
 a SIP event is received.
 
 #### Parameters
@@ -4388,8 +4480,8 @@ Updates an existing SIP event subscription.
 Allows for adding or removing users from the subscription, and for changing the
 custom parameters of the subscription.
 
-The SDK will emit a [sip:subscriptionChange][146]
-event when the operations completes. The [sip.getDetails][147] API can be used
+The SDK will emit a [sip:subscriptionChange][152]
+event when the operations completes. The [sip.getDetails][153] API can be used
 to retrieve the current information about a subscription.
 
 #### Parameters
@@ -4422,10 +4514,10 @@ client.sip.update('event:presence', userLists)
 
 Deletes an existing SIP event subscription.
 
-The SDK will emit a [sip:subscriptionChange][146]
+The SDK will emit a [sip:subscriptionChange][152]
 event when the operations completes.
 
-Subscription details will no longer be available using the [sip.getDetails][147]
+Subscription details will no longer be available using the [sip.getDetails][153]
 API after it has been unsubscribed from.
 
 #### Parameters
@@ -4469,16 +4561,16 @@ return an object namespaced by event types.
 
 A change has occurred to a SIP subscription.
 
-This event can be emitted when a new SIP subscription is created ([sip.subscribe][144]
-API), an existing subscription is updated ([sip.update][145] API), or has been
-deleted ([sip.unsubscribe][149] API). The `change` parameter on the event indicates
+This event can be emitted when a new SIP subscription is created ([sip.subscribe][150]
+API), an existing subscription is updated ([sip.update][151] API), or has been
+deleted ([sip.unsubscribe][155] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
 When users are added or removed from a subscription through a new subscription or an update,
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][147] API can be used to retrieve the current information about
+The [sip.getDetails][153] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -4572,12 +4664,12 @@ Type: [Object][7]
 
 Fetches information about a User.
 
-The SDK will emit a [users:change][150]
+The SDK will emit a [users:change][156]
 event after the operation completes. The User's information will then
 be available.
 
 Information about an available User can be retrieved using the
-[user.get][151] API.
+[user.get][157] API.
 
 #### Parameters
 
@@ -4587,23 +4679,23 @@ Information about an available User can be retrieved using the
 
 Retrieves information about a User, if available.
 
-See the [user.fetch][152] and [user.search][153] APIs for details about
+See the [user.fetch][158] and [user.search][159] APIs for details about
 making Users' information available.
 
 #### Parameters
 
 *   `userId` **[user.UserID][28]** The User ID of the user.
 
-Returns **[user.User][154]** The User object for the specified user.
+Returns **[user.User][160]** The User object for the specified user.
 
 ### getAll
 
 Retrieves information about all available Users.
 
-See the [user.fetch][152] and [user.search][153] APIs for details about
+See the [user.fetch][158] and [user.search][159] APIs for details about
 making Users' information available.
 
-Returns **[Array][19]<[user.User][154]>** An array of all the User objects.
+Returns **[Array][19]<[user.User][160]>** An array of all the User objects.
 
 ### search
 
@@ -4612,10 +4704,10 @@ Searches the domain's directory for Users.
 Directory searching only supports one filter. If multiple filters are provided, only one of the filters will be used for the search.
 A search with no filters provided will return all users.
 
-The SDK will emit a [directory:change][155]
+The SDK will emit a [directory:change][161]
 event after the operation completes. The search results will be
 provided as part of the event, and will also be available using the
-[user.get][151] and [user.getAll][156] APIs.
+[user.get][157] and [user.getAll][162] APIs.
 
 #### Parameters
 
@@ -4642,7 +4734,7 @@ The directory has changed.
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][154]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][160]>** The Users' information returned by the
         operation.
 
 ### directory:error
@@ -4663,7 +4755,7 @@ A change has occurred in the users list
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][154]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][160]>** The Users' information returned by the
         operation.
 
 ### users:error
@@ -4687,7 +4779,7 @@ Voicemail functions are all part of this namespace.
 
 Attempts to retrieve voicemail information from the server.
 
-A [voicemail:change][157] event is
+A [voicemail:change][163] event is
 emitted upon completion.
 
 ### get
@@ -4986,50 +5078,62 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [133]: #presenceupdate
 
-[134]: #proxychannel
+[134]: #proxyeventproxychange
 
-[135]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
+[135]: #proxygetproxymode
 
-[136]: https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5
+[136]: #proxygetinfo
 
-[137]: https://developer.mozilla.org/en-US/docs/Web/API/Response
+[137]: #proxyeventproxyerror
 
-[138]: #callsetsdphandlers
+[138]: #proxysetproxymode
 
-[139]: #servicesgetsubscriptions
+[139]: #proxychannel
 
-[140]: #servicessubscribe
+[140]: #proxysetchannel
 
-[141]: #servicesservicedescriptor
+[141]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
 
-[142]: notifications.registerPush
+[142]: https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5
 
-[143]: #servicesservicedescriptor
+[143]: https://developer.mozilla.org/en-US/docs/Web/API/Response
 
-[144]: #sipsubscribe
+[144]: #callsetsdphandlers
 
-[145]: #sipupdate
+[145]: #servicesgetsubscriptions
 
-[146]: #sipeventsipsubscriptionchange
+[146]: #servicessubscribe
 
-[147]: #sipgetdetails
+[147]: #servicesservicedescriptor
 
-[148]: #sipeventsipeventschange
+[148]: notifications.registerPush
 
-[149]: #sipunsubscribe
+[149]: #servicesservicedescriptor
 
-[150]: #usereventuserschange
+[150]: #sipsubscribe
 
-[151]: #userget
+[151]: #sipupdate
 
-[152]: #userfetch
+[152]: #sipeventsipsubscriptionchange
 
-[153]: #usersearch
+[153]: #sipgetdetails
 
-[154]: #useruser
+[154]: #sipeventsipeventschange
 
-[155]: #usereventdirectorychange
+[155]: #sipunsubscribe
 
-[156]: #usergetall
+[156]: #usereventuserschange
 
-[157]: #voicemaileventvoicemailchange
+[157]: #userget
+
+[158]: #userfetch
+
+[159]: #usersearch
+
+[160]: #useruser
+
+[161]: #usereventdirectorychange
+
+[162]: #usergetall
+
+[163]: #voicemaileventvoicemailchange

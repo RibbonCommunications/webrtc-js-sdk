@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>webrtc-js-sdk 6.6.0 | Documentation</title>
+  <title>webrtc-js-sdk 6.7.0 | Documentation</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' type='text/css' rel='stylesheet' />
   <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>webrtc-js-sdk</h3>
-          <div class='mb1'><code>6.6.0</code></div>
+          <div class='mb1'><code>6.7.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -21774,8 +21774,8 @@ API.</p>
   
 
   <p>The 'proxy' namespace allows for a secondary mode for making calls: proxy mode.
-When proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel.
-This is an advanced feature that enables support for Calls in particular scenarios that would otherwise not support them.</p>
+When proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel.</p>
+<p>This is an advanced feature that enables support for Calls in particular scenarios that would otherwise not support them.</p>
 
 
   <div class='pre p1 fill-light mt0'>proxy</div>
@@ -22028,10 +22028,18 @@ This function should receive all messages sent from the remote side of the chann
 
   
 
-  <p>Sets the mode for the Proxy Plugin.
-When enabled, webRTC operations will be proxied over a channel. Enabling
-proxy mode requires a channel to have been set. See <code>setChannel</code> API.
-When disabled, webRTC operation will occur as normal on the local machine.</p>
+  <p>Sets whether Call functionality should be proxied to the Remote SDK or not.
+When set to <code>true</code>, WebRTC operations will be proxied over a channel. When
+set to <code>false</code>, WebRTC operation will occur as normal on the local machine.</p>
+<p>Setting proxy mode is a required step for being able to use the Proxy
+functionality. It is recommended that this is the last step, after setting
+a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
+is an on-going call.</p>
+<p>On completion, this API will trigger a <a href="#proxyeventproxychange">proxy:change</a>
+event on success. The <a href="#proxygetproxymode">proxy.getProxyMode</a> or <a href="#proxygetinfo">proxy.getInfo</a>
+APIs can be used to verify that proxy mode has been changed. If an error
+is encountered, this API will trigger a <a href="#proxyeventproxyerror">proxy:error</a>
+event.</p>
 
 
   <div class='pre p1 fill-light mt0'>setProxyMode(value: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
@@ -22068,6 +22076,31 @@ When disabled, webRTC operation will occur as normal on the local machine.</p>
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.</span>
+client.on(<span class="hljs-string">&#x27;proxy:change&#x27;</span>, <span class="hljs-function"><span class="hljs-params">params</span> =&gt;</span> {
+   <span class="hljs-keyword">const</span> isProxied = client.proxy.getProxyMode()
+   log(<span class="hljs-string">`Proxy mode set to <span class="hljs-subst">${isProxied}</span>.`</span>)
+})
+<span class="hljs-comment">// On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.</span>
+client.on(<span class="hljs-string">&#x27;proxy:error&#x27;</span>, <span class="hljs-function"><span class="hljs-params">params</span> =&gt;</span> {
+   <span class="hljs-keyword">const</span> { code, message } = params.error
+   log(<span class="hljs-string">`Failed to set proxy mode due to <span class="hljs-subst">${code}</span>: <span class="hljs-subst">${message}</span>.`</span>)
+})
+
+<span class="hljs-comment">// Get the current proxy state to ensure we can set proxy mode to `true`.</span>
+<span class="hljs-keyword">const</span> { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()
+<span class="hljs-keyword">if</span> (
+   hasChannel === <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-comment">// A channel was previously provided.</span>
+   remoteInitialized === <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-comment">// The Remote SDK is ready.</span>
+   proxyMode === <span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-comment">// Proxy mode is not already `true`.</span>
+) {
+   client.proxy.setProxyMode(<span class="hljs-literal">true</span>)
+}</pre>
+    
+  
 
   
 
@@ -22091,7 +22124,10 @@ When disabled, webRTC operation will occur as normal on the local machine.</p>
 
   
 
-  <p>Retrieves the current mode of the Proxy Plugin.</p>
+  <p>Retrieves the current mode for Proxy behaviour.</p>
+<p>When set to <code>true</code>, WebRTC operations will be proxied over a channel. When
+set to <code>false</code>, WebRTC operation will occur as normal on the local machine.
+See the <a href="#proxysetproxymode">proxy.setProxyMode</a> API for more information.</p>
 
 
   <div class='pre p1 fill-light mt0'>getProxyMode(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
@@ -22147,7 +22183,7 @@ When disabled, webRTC operation will occur as normal on the local machine.</p>
 
   
 
-  <p>Retrieve information about the proxy.</p>
+  <p>Retrieves information about the proxy.</p>
 
 
   <div class='pre p1 fill-light mt0'>getInfo(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
@@ -22170,35 +22206,35 @@ When disabled, webRTC operation will occur as normal on the local machine.</p>
     
       <div>
         <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-          [proxy] Object containing information about the proxy.
+          proxy Object containing information about the proxy.
 
         
       </div>
     
       <div>
         <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-          [proxy.proxyMode] Current operating mode.
+          proxy.proxyMode Current operating mode.
 
         
       </div>
     
       <div>
         <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-          [proxy.hasChannel] Proxy has a channel associated with it.
+          proxy.hasChannel Proxy has a channel associated with it.
 
         
       </div>
     
       <div>
         <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-          [proxy.remoteInitialized] Proxy initialization state.
+          proxy.remoteInitialized Proxy initialization state.
 
         
       </div>
     
       <div>
         <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-          [proxy.browser] Details for the browser the proxy is using.
+          proxy.browser Details for the browser the proxy is using.
 
         
       </div>
@@ -22310,6 +22346,14 @@ log(<span class="hljs-string">`Proxy Browser in use: <span class="hljs-subst">${
   
 
   <p>Sets the channel to be used while proxy mode is enabled.</p>
+<p>Providing a channel is a required step for being able to use the Proxy
+functionality. This should be the first step, before initializing the
+remote endpoint and setting proxy mode.</p>
+<p>On completion, this API will trigger a <a href="#proxyeventproxychange">proxy:change</a>
+event on success. The <a href="#proxygetinfo">proxy.getInfo</a> API can be used to verify
+that a channel has been set. If an error is encountered, this API will
+trigger a <a href="#proxyeventproxyerror">proxy:error</a> event. A channel
+cannot be set if there is an on-going call.</p>
 
 
   <div class='pre p1 fill-light mt0'>setChannel(channel: <a href="#proxychannel">proxy.Channel</a>)</div>
@@ -22348,6 +22392,22 @@ log(<span class="hljs-string">`Proxy Browser in use: <span class="hljs-subst">${
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>client.on(<span class="hljs-string">&#x27;proxy:change&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+   <span class="hljs-keyword">const</span> { hasChannel } = client.proxy.getInfo()
+   log(<span class="hljs-string">`A channel <span class="hljs-subst">${hasChannel ? <span class="hljs-string">&#x27;has&#x27;</span>: <span class="hljs-string">&#x27;has not&#x27;</span>}</span> been set.`</span>)
+})
+client.on(<span class="hljs-string">&#x27;proxy:error&#x27;</span>, <span class="hljs-function"><span class="hljs-params">params</span> =&gt;</span> {
+   <span class="hljs-keyword">const</span> { code, message } = params.error
+   log(<span class="hljs-string">`Encountered error <span class="hljs-subst">${code}</span>: <span class="hljs-subst">${message}</span>.`</span>)
+})
+
+<span class="hljs-keyword">const</span> appChannel = ...
+client.proxy.setChannel(appChannel)</pre>
+    
+  
 
   
 
@@ -22372,8 +22432,16 @@ log(<span class="hljs-string">`Proxy Browser in use: <span class="hljs-subst">${
   
 
   <p>Sends an initialization message over the channel with webRTC configurations.</p>
-<p>The version of the SDK and the Remote SDK must be the same, otherwise
-initialization will fail.</p>
+<p>Initializing the Remote SDK is a required step before being able to use the
+Proxy functionality. This step requires a channel having been set previously
+(see the <a href="#proxysetchannel">API</a>). It is recommended to perform this
+step before setting the proxy mode (see the <a href="#proxysetproxymode">proxy.setProxyMode</a> API).</p>
+<p>On completion, this API will trigger a <a href="#proxyeventproxychange">proxy:change</a>
+event on success. The <a href="#proxygetinfo">proxy.getInfo</a> API can be used to verify
+that the remote endpoint is initialized. If an error is encountered, this
+API will trigger a <a href="#proxyeventproxyerror">proxy:error</a> event.</p>
+<p>This API will perform a version-check between this SDK and the Remote SDK.
+Their versions must be the same, otherwise initialization will fail.</p>
 
 
   <div class='pre p1 fill-light mt0'>initializeRemote(config: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
@@ -22409,6 +22477,19 @@ initialization will fail.</p>
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Get the current proxy state to ensure we can initialize the Remote SDK.</span>
+<span class="hljs-keyword">const</span> { hasChannel, remoteInitialized } = client.proxy.getInfo()
+<span class="hljs-keyword">if</span> (
+   hasChannel === <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-comment">// A channel was previously provided.</span>
+   remoteInitialized === <span class="hljs-literal">false</span> <span class="hljs-comment">// The Remote SDK was not previously initializted.</span>
+) {
+   client.proxy.initializeRemote()
+}</pre>
+    
+  
 
   
 
@@ -22443,8 +22524,8 @@ initialization will fail.</p>
 
   
 
-  <p>The Proxy state has changed.
-Indicates either a change in the mode or the channel.</p>
+  <p>A Proxy API has completed and changed the proxy state.</p>
+<p>The <a href="#proxygetinfo">proxy.getInfo</a> API can be used to retrieve the current proxy state.</p>
 
 
   <div class='pre p1 fill-light mt0'>proxy:change</div>
@@ -22490,7 +22571,8 @@ Indicates either a change in the mode or the channel.</p>
 
   
 
-  <p>An error has occurred with a Proxy operation.</p>
+  <p>A Proxy API has resulted in an error.</p>
+<p>The <a href="#proxygetinfo">proxy.getInfo</a> API can be used to retrieve the current proxy state.</p>
 
 
   <div class='pre p1 fill-light mt0'>proxy:error</div>
@@ -22528,9 +22610,13 @@ Indicates either a change in the mode or the channel.</p>
             <tbody class='mt1'>
               
                 <tr>
-  <td class='break-word'><span class='code bold'>params.error</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
+  <td class='break-word'><span class='code bold'>params.error</span> <code class='quiet'>BasicError</code>
   </td>
-  <td class='break-word'><span>An error object.
+  <td class='break-word'><span>An error with 
+<code>code</code>
+ and 
+<code>message</code>
+ information.
 </span></td>
 </tr>
 
