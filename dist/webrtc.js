@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.7.0
+ * Version: 6.7.1
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2362,7 +2362,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 15074:
+/***/ 22689:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2380,7 +2380,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.7.0';
+  return '6.7.1';
 }
 
 /***/ }),
@@ -8959,7 +8959,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -20027,7 +20027,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -32477,7 +32477,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40199,7 +40199,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40353,7 +40353,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -40441,7 +40441,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -42407,6 +42407,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 function createAPI(container) {
   const {
     context,
+    SubscriptionIntervals,
     SubscriptionOperations: operations,
     logManager,
     API_LOG_TAG,
@@ -42479,6 +42480,10 @@ function createAPI(container) {
               reason: result.reason
             };
             emitEvent(eventTypes.SUB_CHANGE, payload);
+
+            // We have a sucessful subscription, so start the resubscription interval
+            // so that we automatically update our subscription, when it expires.
+            SubscriptionIntervals.resubInterval.startResubInterval();
           } else {
             const error = new _errors.default({
               message: 'Failed user subscription.',
@@ -42532,13 +42537,26 @@ function createAPI(container) {
           reason: undefined
         });
         try {
+          // Compare the current services against what is being unsubscribe to figure out if partial or full.
+          const activeServices = (0, _selectors.getSubscribedServices)(context.getState());
+          const remainingServices = activeServices.filter(serv => !services.includes(serv));
+          const isPartial = remainingServices.length > 0;
+
           // The flow will call one of the two operations: unsubscribe OR updateSubscription
           // There is no extected result returned to API
-          await operations.subscriptionFlow(services);
+          const result = await operations.subscriptionFlow(services);
           const platform = (0, _selectors.getSubscriptionPlatform)(context.getState());
-          // If we reached this far, operation suceeded.
-          // Dispatch action + event, for backwards compatibility
-          context.dispatch(actions.unsubscribeFinished({}, platform));
+          // Depending if it was a partial or full unsubscribe, we need to update state differently.
+          // TODO: Have the `unsubscribeFinished` action be able to handle both partial&full scenarios.
+          if (isPartial) {
+            context.dispatch(actions.subscribeFinished({
+              subscriptions: result.subscriptions
+            }, result.platform));
+          } else {
+            //We successfuly unsubscribed from all services, so stop the resubscription interval.
+            SubscriptionIntervals.resubInterval.stopResubInterval();
+            context.dispatch(actions.unsubscribeFinished({}, platform));
+          }
           emitEvent(eventTypes.SUB_CHANGE, {});
           log.info('Successfully unsubscribed from all services.');
         } catch (error) {
@@ -43279,7 +43297,6 @@ function createOperation(container) {
     logManager,
     SubscriptionOperations: operations,
     SubscriptionRequests: requests,
-    SubscriptionIntervals,
     Notifications
     //, emitEvent
   } = container;
@@ -43447,8 +43464,7 @@ function createOperation(container) {
       log.info(`Subscribed to the following services: ${subscription.service}`);
 
       // SUBSCRIBE_FINISHED action (with no error) will be invoked once this operation returns,
-      // so start the resubscription interval
-      SubscriptionIntervals.resubInterval.startResubInterval();
+      // so return the subscription object
       return {
         subscriptions: [subscription],
         platform
@@ -43882,9 +43898,10 @@ function createOperation(container) {
    *   will be used in requesting a service update on the backend.
    *   If false, then the subscription update request will be made only for these new services.
    *   Therefore, if there were existinging subscribed services that are not part of new set, then subscription for those services will be discarded.
-   * @return {undefined}
+   * @return {Object}
    */
   async function updateSubscription(newServices, addService = true) {
+    log.info('Updating subscription using new services: ', newServices);
     const connection = (0, _selectors2.getConnectionInfo)(context.getState());
     const subscription = (0, _selectors.getSubscriptionInfo)(context.getState());
     const services = newServices.map(subscription => subscription.service);
@@ -43902,6 +43919,7 @@ function createOperation(container) {
         url: response.subscription
       });
       log.info(`Subscribed to the following services: ${subscription[0].service}`);
+
       // Upon returning this to subscriptionFlow (which returns it to API),
       // the API will then trigger the associated action & event
       return {
@@ -44308,7 +44326,7 @@ exports["default"] = createInterval;
 var _selectors = __webpack_require__(48944);
 var actions = _interopRequireWildcard(__webpack_require__(44295));
 var _selectors2 = __webpack_require__(46942);
-var _eventTypes = __webpack_require__(71430);
+var _eventTypes = __webpack_require__(36826);
 var _constants = __webpack_require__(49833);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -44413,7 +44431,7 @@ function createInterval(container) {
         context.dispatch(actions.resubscribeFinished({
           attemptNum
         }, _constants.platforms.LINK));
-        emitEvent(_eventTypes.RESUBSCRIPTION_FINISHED, {
+        emitEvent(_eventTypes.SUB_RESUB, {
           attemptNum,
           isFailure: false
         });
@@ -44422,7 +44440,7 @@ function createInterval(container) {
           error,
           attemptNum
         }, _constants.platforms.LINK));
-        emitEvent(_eventTypes.RESUBSCRIPTION_FINISHED, {
+        emitEvent(_eventTypes.SUB_RESUB, {
           attemptNum,
           isFailure: true
         });
@@ -44783,7 +44801,7 @@ function createOperation(container) {
           });
 
           // Fork off the 'updateSubscription' operation
-          operations.updateSubscription(info, false);
+          return await operations.updateSubscription(info, false);
         }
       } else {
         // No subscription found
@@ -50631,7 +50649,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(15074);
+var _version = __webpack_require__(22689);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -89193,7 +89211,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 17773:
+/***/ 44309:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89634,7 +89652,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(17773));
+var _version = _interopRequireDefault(__webpack_require__(44309));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
