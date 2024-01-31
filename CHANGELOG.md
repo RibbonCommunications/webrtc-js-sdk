@@ -28,6 +28,13 @@ Ribbon WebRTC SDK change log.
 - The previous CallObject properties for operation tracking, `call.localOp` and `call.remoteOp`, are being deprecated and will be removed in a future major release. `KJS-1853`
   - If you were using either of these call properties, please use the new `call.currentOperations` property instead.
 
+## 6.7.1 - 2024-01-31
+
+### Fixed
+
+- Fixed a Subscription issue where user subscriptions would not be automatically extended when nearing expiration. `KJS-1983`
+  - This issue was introduced in the v6.6.0 release.
+
 ## 6.7.0 - 2024-01-26
 
 ### Fixed
@@ -68,6 +75,12 @@ Ribbon WebRTC SDK change log.
   - `SET_LOCAL_DESCRIPTION` renamed to `PROCESS_MEDIA_LOCAL`
   - `SET_REMOTE_DESCRIPTION` renamed to `PROCESS_MEDIA_REMOTE`
   - `PROCESS_RESPONSE` replaced by `PROCESS_MEDIA_REMOTE`
+
+### Other Changes
+
+This release also includes changes to a few other parts of the SDK. These changes should not be noticeable to an application, but are worth mentioning for awareness. A number of features of the SDK have had their codebase renewed to better support the direction of the SDK going forward. This will translate to a better developer experience in the future.
+
+The following features have been updated internally: Subscriptions. They do not require any application changes as part of the release, as the changes are backwards-compatible. As always, if you encounter an issue with a release change, please report the issue to us.
 
 ## 6.5.1 - 2023-12-07
 
