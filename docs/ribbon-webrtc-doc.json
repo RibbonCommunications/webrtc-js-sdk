@@ -9379,7 +9379,7 @@
             },
             {
               "title": "example",
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport Map.\n   params.result.forEach(stat => {\n     ...\n   })\n})",
+              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport Map.\n   // Handle the data on its own or collate with previously gathered stats\n   //    for analysis.\n   params.result.forEach(stat => {\n     ...\n   })\n})",
               "lineNumber": 13
             }
           ],
@@ -9389,18 +9389,18 @@
               "column": 0
             },
             "end": {
-              "line": 245,
+              "line": 247,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 246,
+                "line": 248,
                 "column": 0
               },
               "end": {
-                "line": 246,
+                "line": 248,
                 "column": 50
               }
             },
@@ -9409,7 +9409,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport Map.\n   params.result.forEach(stat => {\n     ...\n   })\n})"
+              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport Map.\n   // Handle the data on its own or collate with previously gathered stats\n   //    for analysis.\n   params.result.forEach(stat => {\n     ...\n   })\n})"
             }
           ],
           "implements": [],
@@ -9709,22 +9709,22 @@
           ],
           "loc": {
             "start": {
-              "line": 248,
+              "line": 250,
               "column": 0
             },
             "end": {
-              "line": 277,
+              "line": 279,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 278,
+                "line": 280,
                 "column": 0
               },
               "end": {
-                "line": 278,
+                "line": 280,
                 "column": 55
               }
             },
@@ -9985,22 +9985,22 @@
           ],
           "loc": {
             "start": {
-              "line": 280,
+              "line": 282,
               "column": 0
             },
             "end": {
-              "line": 292,
+              "line": 294,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 293,
+                "line": 295,
                 "column": 0
               },
               "end": {
-                "line": 293,
+                "line": 295,
                 "column": 56
               }
             },
@@ -10201,33 +10201,42 @@
                 ]
               },
               "name": "params.codecs"
+            },
+            {
+              "title": "example",
+              "description": "client.on('call:availableCodecs', function (codecs) {\n   // Iterate over each codec.\n   codecs.forEach(codec => {\n       // Handle the data by analysing its properties.\n       // Some codec instances may have the same name, but different characteristics.\n       // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))\n       ...\n   })\n})",
+              "lineNumber": 11
             }
           ],
           "loc": {
             "start": {
-              "line": 295,
+              "line": 297,
               "column": 0
             },
             "end": {
-              "line": 306,
+              "line": 318,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 307,
+                "line": 319,
                 "column": 0
               },
               "end": {
-                "line": 307,
+                "line": 319,
                 "column": 54
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "client.on('call:availableCodecs', function (codecs) {\n   // Iterate over each codec.\n   codecs.forEach(codec => {\n       // Handle the data by analysing its properties.\n       // Some codec instances may have the same name, but different characteristics.\n       // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))\n       ...\n   })\n})"
+            }
+          ],
           "implements": [],
           "params": [
             {
@@ -10459,22 +10468,22 @@
           ],
           "loc": {
             "start": {
-              "line": 309,
+              "line": 321,
               "column": 0
             },
             "end": {
-              "line": 325,
+              "line": 337,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 326,
+                "line": 338,
                 "column": 0
               },
               "end": {
-                "line": 326,
+                "line": 338,
                 "column": 67
               }
             },
@@ -10740,22 +10749,22 @@
           ],
           "loc": {
             "start": {
-              "line": 328,
+              "line": 340,
               "column": 0
             },
             "end": {
-              "line": 359,
+              "line": 371,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 360,
+                "line": 372,
                 "column": 0
               },
               "end": {
-                "line": 360,
+                "line": 372,
                 "column": 48
               }
             },
@@ -26351,7 +26360,7 @@
             },
             {
               "title": "example",
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport.\n   params.result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n})\n\n// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\ntry {\n   // The API will return a promise that resolves with the stats.\n   const result = await client.call.getStats(callId)\n   result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}",
+              "description": "// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\ntry {\n   // The API will return a promise that resolves with the stats.\n   const result = await client.call.getStats(callId)\n   result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}",
               "lineNumber": 32
             }
           ],
@@ -26361,18 +26370,18 @@
               "column": 2
             },
             "end": {
-              "line": 296,
+              "line": 287,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 297,
+                "line": 288,
                 "column": 2
               },
               "end": {
-                "line": 329,
+                "line": 320,
                 "column": 3
               }
             },
@@ -26381,7 +26390,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport.\n   params.result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n})\n\n// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\ntry {\n   // The API will return a promise that resolves with the stats.\n   const result = await client.call.getStats(callId)\n   result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}"
+              "description": "// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\ntry {\n   // The API will return a promise that resolves with the stats.\n   const result = await client.call.getStats(callId)\n   result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}"
             }
           ],
           "implements": [],
@@ -26549,7 +26558,7 @@
                   },
                   {
                     "type": "text",
-                    "value": ".\nFirefox browser does not currently support this method. Therefore, this API will not work on Firefox."
+                    "value": "."
                   }
                 ]
               }
@@ -26559,35 +26568,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 10,
+              "lineNumber": 9,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 11
+              "lineNumber": 10
             },
             {
               "title": "memberof",
               "description": "call",
-              "lineNumber": 12
+              "lineNumber": 11
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 13,
+              "lineNumber": 12,
               "name": "call"
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 14,
+              "lineNumber": 13,
               "name": "callMe"
             },
             {
               "title": "param",
               "description": "The kind of media, i.e., 'audio' or 'video', to get the list of available codecs of.",
-              "lineNumber": 15,
+              "lineNumber": 14,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -26596,45 +26605,54 @@
             },
             {
               "title": "return",
-              "description": "An object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.\n        If there was an error, it will return undefined.",
-              "lineNumber": 16,
+              "description": "A promise that will resolve with an object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.\n        If there was an error, it will return undefined.",
+              "lineNumber": 15,
               "type": {
                 "type": "NameExpression",
-                "name": "Object"
+                "name": "Promise"
               }
+            },
+            {
+              "title": "example",
+              "description": "try {\n   // The API will return a promise that resolves with the codecs.\n   const result = await client.call.getAvailableCodecs('audio')\n   result.forEach(codec => {\n       // Inspect the codec supported by browser by looking at its properties.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}",
+              "lineNumber": 17
             }
           ],
           "loc": {
             "start": {
-              "line": 331,
+              "line": 322,
               "column": 2
             },
             "end": {
-              "line": 349,
+              "line": 352,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 350,
+                "line": 353,
                 "column": 2
               },
               "end": {
-                "line": 381,
+                "line": 384,
                 "column": 3
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "try {\n   // The API will return a promise that resolves with the codecs.\n   const result = await client.call.getAvailableCodecs('audio')\n   result.forEach(codec => {\n       // Inspect the codec supported by browser by looking at its properties.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}"
+            }
+          ],
           "implements": [],
           "params": [
             {
               "title": "param",
               "name": "kind",
-              "lineNumber": 15,
+              "lineNumber": 14,
               "description": {
                 "type": "root",
                 "children": [
@@ -26666,7 +26684,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "An object containing the available codecs, along with the "
+                        "value": "A promise that will resolve with an object containing the available codecs, along with the "
                       },
                       {
                         "type": "inlineCode",
@@ -26683,7 +26701,7 @@
               "title": "returns",
               "type": {
                 "type": "NameExpression",
-                "name": "Object"
+                "name": "Promise"
               }
             }
           ],
@@ -26857,22 +26875,22 @@
           ],
           "loc": {
             "start": {
-              "line": 383,
+              "line": 386,
               "column": 2
             },
             "end": {
-              "line": 405,
+              "line": 408,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 406,
+                "line": 409,
                 "column": 2
               },
               "end": {
-                "line": 411,
+                "line": 414,
                 "column": 3
               }
             },
@@ -27073,22 +27091,22 @@
           ],
           "loc": {
             "start": {
-              "line": 413,
+              "line": 416,
               "column": 2
             },
             "end": {
-              "line": 431,
+              "line": 434,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 432,
+                "line": 435,
                 "column": 2
               },
               "end": {
-                "line": 436,
+                "line": 439,
                 "column": 3
               }
             },
@@ -27273,22 +27291,22 @@
           ],
           "loc": {
             "start": {
-              "line": 438,
+              "line": 441,
               "column": 2
             },
             "end": {
-              "line": 475,
+              "line": 478,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 516,
+                "line": 519,
                 "column": 2
               },
               "end": {
-                "line": 527,
+                "line": 530,
                 "column": 3
               }
             },
@@ -27449,22 +27467,22 @@
           ],
           "loc": {
             "start": {
-              "line": 477,
+              "line": 480,
               "column": 2
             },
             "end": {
-              "line": 514,
+              "line": 517,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 516,
+                "line": 519,
                 "column": 2
               },
               "end": {
-                "line": 527,
+                "line": 530,
                 "column": 3
               }
             },

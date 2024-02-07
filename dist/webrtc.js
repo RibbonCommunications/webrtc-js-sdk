@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.8.0-beta.1245
+ * Version: 6.8.0-beta.1246
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2384,7 +2384,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 72550:
+/***/ 48588:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2402,7 +2402,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.8.0-beta.1245';
+  return '6.8.0-beta.1246';
 }
 
 /***/ }),
@@ -9179,7 +9179,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -20520,7 +20520,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -23910,15 +23910,6 @@ function createAPI(container) {
    *    provided, RTCStatsReport is generated for the Call itself.
    * @return {Promise} A promise that will resolve with the stats report or an error if it fails.
    * @example
-   * client.on('call:statsReceived', function (params) {
-   *    // Iterate over each individual statistic inside the RTCPStatsReport.
-   *    params.result.forEach(stats => {
-   *        // Handle the data on its own or collate with previously gathered stats
-   *        //    for analysis.
-   *        ...
-   *    })
-   * })
-   *
    * // Get a snapshot of the Call's stats.
    * //   This may be done on a regular interval to collect data over time.
    * try {
@@ -23974,7 +23965,6 @@ function createAPI(container) {
    *  upon retrieving that list of codecs.
    *
    * This API is a wrapper for the static method {@link https://w3c.github.io/webrtc-pc/#dom-rtcrtpsender-getcapabilities RTCRtpSender.getCapabilities()}.
-   *  Firefox browser does not currently support this method. Therefore, this API will not work on Firefox.
    *
    * @public
    * @static
@@ -23982,8 +23972,21 @@ function createAPI(container) {
    * @requires call
    * @requires callMe
    * @param {string} kind The kind of media, i.e., 'audio' or 'video', to get the list of available codecs of.
-   * @return {Object} An object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.
+   * @return {Promise} A promise that will resolve with an object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.
    *         If there was an error, it will return undefined.
+   * @example
+   * try {
+   *    // The API will return a promise that resolves with the codecs.
+   *    const result = await client.call.getAvailableCodecs('audio')
+   *    result.forEach(codec => {
+   *        // Inspect the codec supported by browser by looking at its properties.
+   *        ...
+   *    })
+   * } catch (err) {
+   *    // Handle the error.
+   *    const { code, message } = err
+   *    ...
+   * }
    */
   async function getAvailableCodecs(kind) {
     log.debug(`${API_LOG_TAG}call.getAvailableCodecs, kind: ${kind}`);
@@ -24506,6 +24509,8 @@ const CALL_TRACKS_REMOVED = exports.CALL_TRACKS_REMOVED = 'call:tracksRemoved';
  * @example
  * client.on('call:statsReceived', function (params) {
  *    // Iterate over each individual statistic inside the RTCPStatsReport Map.
+ *    // Handle the data on its own or collate with previously gathered stats
+ *    //    for analysis.
  *    params.result.forEach(stat => {
  *      ...
  *    })
@@ -24571,6 +24576,16 @@ const CUSTOM_PARAMETERS = exports.CUSTOM_PARAMETERS = 'call:customParameters';
  * @param {Object} params
  * @param {string} params.kind The kind of media the codecs are for.
  * @param {Array<Object>} params.codecs The list of codecs.
+ * @example
+ * client.on('call:availableCodecs', function (codecs) {
+ *    // Iterate over each codec.
+ *    codecs.forEach(codec => {
+ *        // Handle the data by analysing its properties.
+ *        // Some codec instances may have the same name, but different characteristics.
+ *        // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))
+ *        ...
+ *    })
+ * })
  */
 const AVAILABLE_CODECS = exports.AVAILABLE_CODECS = 'call:availableCodecs';
 
@@ -33103,7 +33118,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40821,7 +40836,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -40975,7 +40990,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -41063,7 +41078,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -51276,7 +51291,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(72550);
+var _version = __webpack_require__(48588);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -89835,7 +89850,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 8659:
+/***/ 69187:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -90276,7 +90291,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(8659));
+var _version = _interopRequireDefault(__webpack_require__(69187));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 

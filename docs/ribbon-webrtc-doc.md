@@ -1741,15 +1741,6 @@ the operation completes, that has the report.
 #### Examples
 
 ```javascript
-client.on('call:statsReceived', function (params) {
-   // Iterate over each individual statistic inside the RTCPStatsReport.
-   params.result.forEach(stats => {
-       // Handle the data on its own or collate with previously gathered stats
-       //    for analysis.
-       ...
-   })
-})
-
 // Get a snapshot of the Call's stats.
 //   This may be done on a regular interval to collect data over time.
 try {
@@ -1778,13 +1769,29 @@ In addition, the SDK emits a [call:availableCodecs][81] event
 upon retrieving that list of codecs.
 
 This API is a wrapper for the static method [RTCRtpSender.getCapabilities()][82].
-Firefox browser does not currently support this method. Therefore, this API will not work on Firefox.
 
 #### Parameters
 
 *   `kind` **[string][8]** The kind of media, i.e., 'audio' or 'video', to get the list of available codecs of.
 
-Returns **[Object][7]** An object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.
+#### Examples
+
+```javascript
+try {
+   // The API will return a promise that resolves with the codecs.
+   const result = await client.call.getAvailableCodecs('audio')
+   result.forEach(codec => {
+       // Inspect the codec supported by browser by looking at its properties.
+       ...
+   })
+} catch (err) {
+   // Handle the error.
+   const { code, message } = err
+   ...
+}
+```
+
+Returns **[Promise][75]** A promise that will resolve with an object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.
 If there was an error, it will return undefined.
 
 ### getReport
@@ -2420,6 +2427,8 @@ See the [call.getStats][94] API for more information.
 ```javascript
 client.on('call:statsReceived', function (params) {
    // Iterate over each individual statistic inside the RTCPStatsReport Map.
+   // Handle the data on its own or collate with previously gathered stats
+   //    for analysis.
    params.result.forEach(stat => {
      ...
    })
@@ -2489,6 +2498,20 @@ information.
 
     *   `params.kind` **[string][8]** The kind of media the codecs are for.
     *   `params.codecs` **[Array][19]<[Object][7]>** The list of codecs.
+
+#### Examples
+
+```javascript
+client.on('call:availableCodecs', function (codecs) {
+   // Iterate over each codec.
+   codecs.forEach(codec => {
+       // Handle the data by analysing its properties.
+       // Some codec instances may have the same name, but different characteristics.
+       // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))
+       ...
+   })
+})
+```
 
 ### call:mediaConnectionChange
 
