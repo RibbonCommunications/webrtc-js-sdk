@@ -23443,6 +23443,9 @@ Currently only a "forceLogOut" flag can be supplied in this object.</p>
 <p>For push notifications on link, please see <a href="notifications.registerPush">notifications.registerPush</a></p>
 <p>The SDK currently only supports the <code>websocket</code> channel as a subscription
 type.</p>
+<p>When calling this API, SDK emits a <a href="#serviceseventsubscriptionchange">subscription:change</a> event, each time there is a change in subscriptions.</p>
+<p>Upon getting such event, existing subscriptions can be retrieved using the
+<a href="#servicesgetsubscriptions">services.getSubscriptions</a> API.</p>
 
 
   <div class='pre p1 fill-light mt0'>subscribe(services: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="#servicesservicedescriptor">services.ServiceDescriptor</a>)>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
@@ -23573,7 +23576,8 @@ client.services.subscribe([<span class="hljs-string">&#x27;call&#x27;</span>, <s
   
 
   <p>Cancels existing subscriptions for platform notifications.</p>
-<p>Existing subscriptions can be retrieved using the
+<p>When calling this API, SDK emits a <a href="#serviceseventsubscriptionchange">subscription:change</a> event, each time there is a change in subscriptions.</p>
+<p>Upon getting such event, existing subscriptions can be retrieved using the
 <a href="#servicesgetsubscriptions">services.getSubscriptions</a> API. The <code>subscribed</code> values are the
 services that can be unsubscribed from.</p>
 
@@ -23655,7 +23659,11 @@ client.services.unsubscribe(services)</pre>
 
   
 
-  <p>Retrieves information about currently subscribed services and available services.</p>
+  <p>Retrieves information about currently subscribed services and available services.
+The data returned by this API is a snapshot of the SDK's current local subscription state.
+The data does indicate whether there was an ongoing subscription at the time this API was called.
+If a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete.</p>
+<p>To be notified when any subscription(s) did change/complete, listen for <a href="#serviceseventsubscriptionchange">subscription:change</a> events.</p>
 <p>The <code>available</code> values are the SDK's services that an application can
 subscribe to receive notifications about. A feature generally
 requires a subscription to its service in order to be fully functional.</p>
@@ -23700,13 +23708,17 @@ an active subscription for. Services are subscribed to using the
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Get the lists of services.</span>
 <span class="hljs-keyword">const</span> services = client.services.getSubscriptions()
 
-<span class="hljs-comment">// Figure out which available services don&#x27;t have a subscription.</span>
-<span class="hljs-keyword">const</span> notSubscribed = services.available.filter(<span class="hljs-function"><span class="hljs-params">service</span> =&gt;</span> {
-   <span class="hljs-keyword">return</span> !services.subscribed.includes(service)
-})
+<span class="hljs-comment">// Ensure that there were no pending subscriptions at the time</span>
+<span class="hljs-comment">// we called getSubscriptions API.</span>
+<span class="hljs-keyword">if</span> (!services.isPending) {
+  <span class="hljs-comment">// Figure out which available services don&#x27;t have a subscription.</span>
+  <span class="hljs-keyword">const</span> notSubscribed = services.available.filter(<span class="hljs-function"><span class="hljs-params">service</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> !services.subscribed.includes(service)
+  })
 
-<span class="hljs-comment">// Subscribe for all not-yet-subscribed services.</span>
-client.services.subscribe(notSubscribed)</pre>
+  <span class="hljs-comment">// Subscribe for all not-yet-subscribed services.</span>
+  client.services.subscribe(notSubscribed)
+}</pre>
     
   
 

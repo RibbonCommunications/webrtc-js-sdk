@@ -4316,9 +4316,14 @@ For push notifications on link, please see [notifications.registerPush][148]
 The SDK currently only supports the `websocket` channel as a subscription
 type.
 
+When calling this API, SDK emits a [subscription:change][149] event, each time there is a change in subscriptions.
+
+Upon getting such event, existing subscriptions can be retrieved using the
+[services.getSubscriptions][145] API.
+
 #### Parameters
 
-*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][149])>** A list of service configurations.
+*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][150])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
     *   `options.forceLogOut` **[boolean][11]?** Force the oldest connection to log out if too many simultaneous connections. Link only.
@@ -4338,7 +4343,9 @@ Returns **[undefined][86]**
 
 Cancels existing subscriptions for platform notifications.
 
-Existing subscriptions can be retrieved using the
+When calling this API, SDK emits a [subscription:change][149] event, each time there is a change in subscriptions.
+
+Upon getting such event, existing subscriptions can be retrieved using the
 [services.getSubscriptions][145] API. The `subscribed` values are the
 services that can be unsubscribed from.
 
@@ -4360,6 +4367,11 @@ client.services.unsubscribe(services)
 ### getSubscriptions
 
 Retrieves information about currently subscribed services and available services.
+The data returned by this API is a snapshot of the SDK's current local subscription state.
+The data does indicate whether there was an ongoing subscription at the time this API was called.
+If a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete.
+
+To be notified when any subscription(s) did change/complete, listen for [subscription:change][149] events.
 
 The `available` values are the SDK's services that an application can
 subscribe to receive notifications about. A feature generally
@@ -4375,13 +4387,17 @@ an active subscription for. Services are subscribed to using the
 // Get the lists of services.
 const services = client.services.getSubscriptions()
 
-// Figure out which available services don't have a subscription.
-const notSubscribed = services.available.filter(service => {
-   return !services.subscribed.includes(service)
-})
+// Ensure that there were no pending subscriptions at the time
+// we called getSubscriptions API.
+if (!services.isPending) {
+  // Figure out which available services don't have a subscription.
+  const notSubscribed = services.available.filter(service => {
+    return !services.subscribed.includes(service)
+  })
 
-// Subscribe for all not-yet-subscribed services.
-client.services.subscribe(notSubscribed)
+  // Subscribe for all not-yet-subscribed services.
+  client.services.subscribe(notSubscribed)
+}
 ```
 
 Returns **[Object][7]** Lists of subscribed and available services.
@@ -4475,7 +4491,7 @@ specific users.
 
 A SIP event may either be solicited or unsolicited. Solicited events, such as the "presence"
 example above, requires the application to subscribe for the event. See the
-[sip.subscribe API][150] for more information about solicited events.
+[sip.subscribe API][151] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
 ### subscribe
@@ -4489,13 +4505,13 @@ API.
 
 Only one SIP subscription per event type can exist at a time. A subscription can
 watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][151] API at any time.
+from a subscription using the [sip.update][152] API at any time.
 
-The SDK will emit a [sip:subscriptionChange][152]
-event when the operations completes. The [sip.getDetails][153] API can be used
+The SDK will emit a [sip:subscriptionChange][153]
+event when the operations completes. The [sip.getDetails][154] API can be used
 to retrieve the current information about a subscription.
 
-The SDK will emit a [sip:eventsChange][154] event when
+The SDK will emit a [sip:eventsChange][155] event when
 a SIP event is received.
 
 #### Parameters
@@ -4531,8 +4547,8 @@ Updates an existing SIP event subscription.
 Allows for adding or removing users from the subscription, and for changing the
 custom parameters of the subscription.
 
-The SDK will emit a [sip:subscriptionChange][152]
-event when the operations completes. The [sip.getDetails][153] API can be used
+The SDK will emit a [sip:subscriptionChange][153]
+event when the operations completes. The [sip.getDetails][154] API can be used
 to retrieve the current information about a subscription.
 
 #### Parameters
@@ -4565,10 +4581,10 @@ client.sip.update('event:presence', userLists)
 
 Deletes an existing SIP event subscription.
 
-The SDK will emit a [sip:subscriptionChange][152]
+The SDK will emit a [sip:subscriptionChange][153]
 event when the operations completes.
 
-Subscription details will no longer be available using the [sip.getDetails][153]
+Subscription details will no longer be available using the [sip.getDetails][154]
 API after it has been unsubscribed from.
 
 #### Parameters
@@ -4612,16 +4628,16 @@ return an object namespaced by event types.
 
 A change has occurred to a SIP subscription.
 
-This event can be emitted when a new SIP subscription is created ([sip.subscribe][150]
-API), an existing subscription is updated ([sip.update][151] API), or has been
-deleted ([sip.unsubscribe][155] API). The `change` parameter on the event indicates
+This event can be emitted when a new SIP subscription is created ([sip.subscribe][151]
+API), an existing subscription is updated ([sip.update][152] API), or has been
+deleted ([sip.unsubscribe][156] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
 When users are added or removed from a subscription through a new subscription or an update,
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][153] API can be used to retrieve the current information about
+The [sip.getDetails][154] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -4715,12 +4731,12 @@ Type: [Object][7]
 
 Fetches information about a User.
 
-The SDK will emit a [users:change][156]
+The SDK will emit a [users:change][157]
 event after the operation completes. The User's information will then
 be available.
 
 Information about an available User can be retrieved using the
-[user.get][157] API.
+[user.get][158] API.
 
 #### Parameters
 
@@ -4730,23 +4746,23 @@ Information about an available User can be retrieved using the
 
 Retrieves information about a User, if available.
 
-See the [user.fetch][158] and [user.search][159] APIs for details about
+See the [user.fetch][159] and [user.search][160] APIs for details about
 making Users' information available.
 
 #### Parameters
 
 *   `userId` **[user.UserID][28]** The User ID of the user.
 
-Returns **[user.User][160]** The User object for the specified user.
+Returns **[user.User][161]** The User object for the specified user.
 
 ### getAll
 
 Retrieves information about all available Users.
 
-See the [user.fetch][158] and [user.search][159] APIs for details about
+See the [user.fetch][159] and [user.search][160] APIs for details about
 making Users' information available.
 
-Returns **[Array][19]<[user.User][160]>** An array of all the User objects.
+Returns **[Array][19]<[user.User][161]>** An array of all the User objects.
 
 ### search
 
@@ -4755,10 +4771,10 @@ Searches the domain's directory for Users.
 Directory searching only supports one filter. If multiple filters are provided, only one of the filters will be used for the search.
 A search with no filters provided will return all users.
 
-The SDK will emit a [directory:change][161]
+The SDK will emit a [directory:change][162]
 event after the operation completes. The search results will be
 provided as part of the event, and will also be available using the
-[user.get][157] and [user.getAll][162] APIs.
+[user.get][158] and [user.getAll][163] APIs.
 
 #### Parameters
 
@@ -4785,7 +4801,7 @@ The directory has changed.
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][160]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][161]>** The Users' information returned by the
         operation.
 
 ### directory:error
@@ -4806,7 +4822,7 @@ A change has occurred in the users list
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][160]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][161]>** The Users' information returned by the
         operation.
 
 ### users:error
@@ -4830,7 +4846,7 @@ Voicemail functions are all part of this namespace.
 
 Attempts to retrieve voicemail information from the server.
 
-A [voicemail:change][163] event is
+A [voicemail:change][164] event is
 emitted upon completion.
 
 ### get
@@ -5159,32 +5175,34 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [148]: notifications.registerPush
 
-[149]: #servicesservicedescriptor
+[149]: #serviceseventsubscriptionchange
 
-[150]: #sipsubscribe
+[150]: #servicesservicedescriptor
 
-[151]: #sipupdate
+[151]: #sipsubscribe
 
-[152]: #sipeventsipsubscriptionchange
+[152]: #sipupdate
 
-[153]: #sipgetdetails
+[153]: #sipeventsipsubscriptionchange
 
-[154]: #sipeventsipeventschange
+[154]: #sipgetdetails
 
-[155]: #sipunsubscribe
+[155]: #sipeventsipeventschange
 
-[156]: #usereventuserschange
+[156]: #sipunsubscribe
 
-[157]: #userget
+[157]: #usereventuserschange
 
-[158]: #userfetch
+[158]: #userget
 
-[159]: #usersearch
+[159]: #userfetch
 
-[160]: #useruser
+[160]: #usersearch
 
-[161]: #usereventdirectorychange
+[161]: #useruser
 
-[162]: #usergetall
+[162]: #usereventdirectorychange
 
-[163]: #voicemaileventvoicemailchange
+[163]: #usergetall
+
+[164]: #voicemaileventvoicemailchange

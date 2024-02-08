@@ -16,6 +16,7 @@ Ribbon WebRTC SDK change log.
   - The `call:operation` event indicates when an operation on this property has been updated.
 - Added a new parameter to the `call:operation` event: `operationId`. KJS-1853
   - This parameter is a unique ID for the operation triggering the event. It matches the ID of the operation object stored in the `call.currentOperations` property.
+- Added further info to `services.getSubscriptions` API documentation to make it more clear. `KJS-1414`
 
 ### Fixed
 

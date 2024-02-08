@@ -54836,6 +54836,56 @@
                     "value": " channel as a subscription\ntype."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "When calling this API, SDK emits a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event, each time there is a change in subscriptions."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Upon getting such event, existing subscriptions can be retrieved using the\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "#servicesgetsubscriptions",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "services.getSubscriptions"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
               }
             ]
           },
@@ -54843,35 +54893,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 11,
+              "lineNumber": 16,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 12
+              "lineNumber": 17
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 13
+              "lineNumber": 18
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 14,
+              "lineNumber": 19,
               "name": "subscription"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 15,
+              "lineNumber": 20,
               "name": "subscribe"
             },
             {
               "title": "param",
               "description": "A list of service configurations.",
-              "lineNumber": 16,
+              "lineNumber": 21,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -54899,7 +54949,7 @@
             {
               "title": "param",
               "description": "The options object for non-credential options.",
-              "lineNumber": 17,
+              "lineNumber": 22,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54912,7 +54962,7 @@
             {
               "title": "param",
               "description": "Force the oldest connection to log out if too many simultaneous connections. Link only.",
-              "lineNumber": 18,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54925,7 +54975,7 @@
             {
               "title": "param",
               "description": "The method of how to receive service updates.",
-              "lineNumber": 19,
+              "lineNumber": 24,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54939,7 +54989,7 @@
             {
               "title": "param",
               "description": "Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device.",
-              "lineNumber": 20,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54952,7 +55002,7 @@
             {
               "title": "return",
               "description": null,
-              "lineNumber": 21,
+              "lineNumber": 26,
               "type": {
                 "type": "UndefinedLiteral"
               }
@@ -54960,7 +55010,7 @@
             {
               "title": "example",
               "description": "// Subscribe for chat and SMS services.\nclient.services.subscribe(['call', 'IM'], {forceLogOut: true, clientCorrelator: 'abc123'})",
-              "lineNumber": 22
+              "lineNumber": 27
             }
           ],
           "loc": {
@@ -54969,18 +55019,18 @@
               "column": 4
             },
             "end": {
-              "line": 126,
+              "line": 131,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 127,
+                "line": 132,
                 "column": 4
               },
               "end": {
-                "line": 185,
+                "line": 190,
                 "column": 5
               }
             },
@@ -54997,7 +55047,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 16,
+              "lineNumber": 21,
               "description": {
                 "type": "root",
                 "children": [
@@ -55038,7 +55088,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 17,
+              "lineNumber": 22,
               "description": {
                 "type": "root",
                 "children": [
@@ -55064,7 +55114,7 @@
                 {
                   "title": "param",
                   "name": "options.forceLogOut",
-                  "lineNumber": 18,
+                  "lineNumber": 23,
                   "description": {
                     "type": "root",
                     "children": [
@@ -55090,7 +55140,7 @@
                 {
                   "title": "param",
                   "name": "options.type",
-                  "lineNumber": 19,
+                  "lineNumber": 24,
                   "description": {
                     "type": "root",
                     "children": [
@@ -55114,7 +55164,7 @@
                 {
                   "title": "param",
                   "name": "options.clientCorrelator",
-                  "lineNumber": 20,
+                  "lineNumber": 25,
                   "description": {
                     "type": "root",
                     "children": [
@@ -55200,7 +55250,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Existing subscriptions can be retrieved using the\n"
+                    "value": "When calling this API, SDK emits a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event, each time there is a change in subscriptions."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Upon getting such event, existing subscriptions can be retrieved using the\n"
                   },
                   {
                     "type": "link",
@@ -55234,29 +55309,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 9,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 8
+              "lineNumber": 10
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 9
+              "lineNumber": 11
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 10,
+              "lineNumber": 12,
               "name": "unsubscribe"
             },
             {
               "title": "param",
               "description": "A list of subscribed service names.",
-              "lineNumber": 11,
+              "lineNumber": 13,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -55275,7 +55350,7 @@
             {
               "title": "param",
               "description": "The method of how the service updates\n   are being received.",
-              "lineNumber": 12,
+              "lineNumber": 14,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -55289,27 +55364,27 @@
             {
               "title": "example",
               "description": "// Unsubscribe from chat and SMS services.\nconst services = [ 'chat', 'smsinbound' ]\n\nclient.services.unsubscribe(services)",
-              "lineNumber": 14
+              "lineNumber": 16
             }
           ],
           "loc": {
             "start": {
-              "line": 187,
+              "line": 192,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 213,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 207,
+                "line": 214,
                 "column": 4
               },
               "end": {
-                "line": 246,
+                "line": 253,
                 "column": 5
               }
             },
@@ -55326,7 +55401,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 11,
+              "lineNumber": 13,
               "description": {
                 "type": "root",
                 "children": [
@@ -55358,7 +55433,7 @@
             {
               "title": "param",
               "name": "type",
-              "lineNumber": 12,
+              "lineNumber": 14,
               "description": {
                 "type": "root",
                 "children": [
@@ -55420,7 +55495,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Retrieves information about currently subscribed services and available services."
+                    "value": "Retrieves information about currently subscribed services and available services.\nThe data returned by this API is a snapshot of the SDK's current local subscription state.\nThe data does indicate whether there was an ongoing subscription at the time this API was called.\nIf a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "To be notified when any subscription(s) did change/complete, listen for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " events."
                   }
                 ]
               },
@@ -55480,29 +55580,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 11,
+              "lineNumber": 16,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 12
+              "lineNumber": 17
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 13
+              "lineNumber": 18
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 14,
+              "lineNumber": 19,
               "name": "getSubscriptions"
             },
             {
               "title": "return",
               "description": "Lists of subscribed and available services.",
-              "lineNumber": 15,
+              "lineNumber": 20,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -55510,28 +55610,28 @@
             },
             {
               "title": "example",
-              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Figure out which available services don't have a subscription.\nconst notSubscribed = services.available.filter(service => {\n   return !services.subscribed.includes(service)\n})\n\n// Subscribe for all not-yet-subscribed services.\nclient.services.subscribe(notSubscribed)",
-              "lineNumber": 16
+              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Ensure that there were no pending subscriptions at the time\n// we called getSubscriptions API.\nif (!services.isPending) {\n  // Figure out which available services don't have a subscription.\n  const notSubscribed = services.available.filter(service => {\n    return !services.subscribed.includes(service)\n  })\n\n  // Subscribe for all not-yet-subscribed services.\n  client.services.subscribe(notSubscribed)\n}",
+              "lineNumber": 21
             }
           ],
           "loc": {
             "start": {
-              "line": 248,
+              "line": 255,
               "column": 4
             },
             "end": {
-              "line": 275,
+              "line": 292,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 276,
+                "line": 293,
                 "column": 4
               },
               "end": {
-                "line": 283,
+                "line": 300,
                 "column": 5
               }
             },
@@ -55540,7 +55640,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Figure out which available services don't have a subscription.\nconst notSubscribed = services.available.filter(service => {\n   return !services.subscribed.includes(service)\n})\n\n// Subscribe for all not-yet-subscribed services.\nclient.services.subscribe(notSubscribed)"
+              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Ensure that there were no pending subscriptions at the time\n// we called getSubscriptions API.\nif (!services.isPending) {\n  // Figure out which available services don't have a subscription.\n  const notSubscribed = services.available.filter(service => {\n    return !services.subscribed.includes(service)\n  })\n\n  // Subscribe for all not-yet-subscribed services.\n  client.services.subscribe(notSubscribed)\n}"
             }
           ],
           "implements": [],
