@@ -26,6 +26,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Subscription issue where user subscriptions would not be automatically extended when nearing expiration. `KJS-1983`
 - Fixed the API documentation for `call.getAvailableCodecs` to contain up-to-date information, as this API is currently supported in the latest Firefox browser.
 - Fixed an issue during the ending of a call (at transferor side) for both direct & consultative transfers. `KJS-1991`
+- Fixed a Subscription issue where attempts to extend the subscription would continue even after it was knowingly lost. `KJS-1997`
 
 ### Deprecated
 

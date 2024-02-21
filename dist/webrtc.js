@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.8.0-beta.1255
+ * Version: 6.8.0-beta.1256
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2384,7 +2384,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 99399:
+/***/ 68043:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2402,7 +2402,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.8.0-beta.1255';
+  return '6.8.0-beta.1256';
 }
 
 /***/ }),
@@ -9179,7 +9179,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -20532,7 +20532,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -33132,7 +33132,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40850,7 +40850,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -41004,7 +41004,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -41092,7 +41092,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -44992,9 +44992,10 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createInterval;
 var _selectors = __webpack_require__(48944);
 var actions = _interopRequireWildcard(__webpack_require__(44295));
+var _constants = __webpack_require__(43265);
 var _selectors2 = __webpack_require__(46942);
 var _eventTypes = __webpack_require__(36826);
-var _constants = __webpack_require__(49833);
+var _constants2 = __webpack_require__(49833);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Subscription plugin.
@@ -45097,16 +45098,36 @@ function createInterval(container) {
         await SubscriptionRequests.resubscribe(conn, subscription);
         context.dispatch(actions.resubscribeFinished({
           attemptNum
-        }, _constants.platforms.LINK));
+        }, _constants2.platforms.LINK));
         emitEvent(_eventTypes.SUB_RESUB, {
           attemptNum,
           isFailure: false
         });
       } catch (error) {
+        if (error.code === 39) {
+          // Server replied with 'no resource available' so outstanding subscription is no longer valid.
+          // Therefore, no point into continuing with automatic re-subscription.
+          stop();
+
+          // If we got this error code, for all purposes we can consider that we're NOT subscribed,
+          // so trigger the unsubscribe action.
+          // This action should clear the subscriptions array in state.
+          context.dispatch(actions.unsubscribeFinished({
+            reason: _constants.DISCONNECT_REASONS.GONE
+          }, _constants2.platforms.LINK));
+          emitEvent(_eventTypes.SUB_CHANGE, {
+            isFailure: true,
+            reason: _constants.DISCONNECT_REASONS.GONE
+          });
+          return;
+        }
+
+        // It is just a temporary error during re-subscription,
+        // so we'll try again to resubscribe when interval expires.
         context.dispatch(actions.resubscribeFinished({
           error,
           attemptNum
-        }, _constants.platforms.LINK));
+        }, _constants2.platforms.LINK));
         emitEvent(_eventTypes.SUB_RESUB, {
           attemptNum,
           isFailure: true
@@ -45117,7 +45138,7 @@ function createInterval(container) {
       }
     }
 
-    // Start the interval
+    // Start the interval as long as we have an existing subscription
     if (subscription.length > 0) {
       start(update, subscription[0].expires);
     }
@@ -45167,9 +45188,12 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 function createOperation(container) {
   const {
     context,
-    emitEvent
+    emitEvent,
+    SubscriptionIntervals
   } = container;
   async function handleLossOfConnection() {
+    // Stop the automatic re-subscription interval.
+    SubscriptionIntervals.resubInterval.stopResubInterval();
     context.dispatch(actions.unsubscribeFinished({
       reason: _constants.DISCONNECT_REASONS.LOST_CONNECTION
     }));
@@ -45221,7 +45245,8 @@ function createOperation(container) {
   const {
     context,
     emitEvent,
-    Notifications
+    Notifications,
+    SubscriptionIntervals
   } = container;
 
   // This is an Link plugin.
@@ -45253,6 +45278,10 @@ function createOperation(container) {
     if (pendingOperation && pendingOperation.operation === _constants.OPERATIONS.UNSUBSCRIBE) {
       return;
     }
+    // Stop the automatic re-subscription interval, since any further attempts will fail,
+    //  as server side no longer keeps the old subscription reference.
+    // User will have to manually re-subscribe at this time.
+    SubscriptionIntervals.resubInterval.stopResubInterval();
     const content = notificationMessage && notificationMessage.retryAfter ? {
       reason: _constants.DISCONNECT_REASONS.GONE,
       retryAfter: notificationMessage.retryAfter
@@ -45306,7 +45335,8 @@ function createOperation(container) {
   const {
     context,
     emitEvent,
-    Notifications
+    Notifications,
+    SubscriptionIntervals
   } = container;
 
   // This is an Link plugin.
@@ -45331,6 +45361,9 @@ function createOperation(container) {
       // was triggered (or the WS_ERROR action). i.e. the promise was fullfilled.
       await promise;
     }
+
+    // Stop the automatic re-subscription interval.
+    SubscriptionIntervals.resubInterval.stopResubInterval();
 
     // Dispatch a disconnect finished action to trigger "user disconnected" logic.
     context.dispatch(actions.unsubscribeFinished({
@@ -51322,7 +51355,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(99399);
+var _version = __webpack_require__(68043);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -89881,7 +89914,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 67922:
+/***/ 19237:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -90322,7 +90355,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(67922));
+var _version = _interopRequireDefault(__webpack_require__(19237));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
