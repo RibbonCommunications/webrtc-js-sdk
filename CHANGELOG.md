@@ -18,6 +18,7 @@ Ribbon WebRTC SDK change log.
   - This parameter is a unique ID for the operation triggering the event. It matches the ID of the operation object stored in the `call.currentOperations` property.
 - Added further info to `services.getSubscriptions` API documentation to make it more clear. `KJS-1414`
 - Added a missing `PROCESS_MEDIA_REMOTE` sub-event in the call report, in the case of a Slow Start call operation. `KJS-1973`
+- Fixed the Call documentation for the `call:statsReceived` event not indicating that the `result` parameter is present only on success. `KJS-1999`
 
 ### Fixed
 
