@@ -27,6 +27,7 @@ Ribbon WebRTC SDK change log.
 - Fixed the API documentation for `call.getAvailableCodecs` to contain up-to-date information, as this API is currently supported in the latest Firefox browser.
 - Fixed an issue during the ending of a call (at transferor side) for both direct & consultative transfers. `KJS-1991`
 - Fixed a Subscription issue where attempts to extend the subscription would continue even after it was knowingly lost. `KJS-1997`
+- Fixed issue with call reports that was blocking several call establishment operations while making an anonymous call. `KJS-2000`
 
 ### Deprecated
 
