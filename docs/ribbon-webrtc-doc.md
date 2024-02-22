@@ -4419,11 +4419,13 @@ The updated subscription information can be retrieved using the
 
 *   `params` **[Object][7]** 
 
-    *   `params.reason` **[string][8]?** When unsolicited, the reason for the change.
-        Reason can have (but not limited to) these values:
+    *   `params.reason` **[string][8]?** When unsolicited, the reason for the change is provided.
+        Reason can be one of the following values:
         'GONE' - When Connection was terminated by the server.
         'LOST_CONNECTION' - When internet connection was lost.
-        'WS_OVERRIDDEN' - When websocket was overridden by the server.
+        'WS_OVERRIDDEN' - When websocket was overridden by the server.If the `reason` parameter is provided, this means the subscription has been lost unexpectedly
+        and the application will need to handle the next steps.
+        The `reason` will explain why the subscription has been lost so that the scenario can be handled appropriately.
 
 ### subscription:error
 

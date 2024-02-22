@@ -53489,7 +53489,7 @@
             },
             {
               "title": "param",
-              "description": "When unsolicited, the reason for the change.\n  Reason can have (but not limited to) these values:\n  'GONE' - When Connection was terminated by the server.\n  'LOST_CONNECTION' - When internet connection was lost.\n  'WS_OVERRIDDEN' - When websocket was overridden by the server.",
+              "description": "When unsolicited, the reason for the change is provided.\n  Reason can be one of the following values:\n  'GONE' - When Connection was terminated by the server.\n  'LOST_CONNECTION' - When internet connection was lost.\n  'WS_OVERRIDDEN' - When websocket was overridden by the server.\n\nIf the `reason` parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe `reason` will explain why the subscription has been lost so that the scenario can be handled appropriately.",
               "lineNumber": 9,
               "type": {
                 "type": "OptionalType",
@@ -53507,18 +53507,18 @@
               "column": 0
             },
             "end": {
-              "line": 15,
+              "line": 19,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 16,
+                "line": 20,
                 "column": 0
               },
               "end": {
-                "line": 16,
+                "line": 20,
                 "column": 47
               }
             },
@@ -53549,7 +53549,32 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "When unsolicited, the reason for the change.\nReason can have (but not limited to) these values:\n'GONE' - When Connection was terminated by the server.\n'LOST_CONNECTION' - When internet connection was lost.\n'WS_OVERRIDDEN' - When websocket was overridden by the server."
+                            "value": "When unsolicited, the reason for the change is provided.\nReason can be one of the following values:\n'GONE' - When Connection was terminated by the server.\n'LOST_CONNECTION' - When internet connection was lost.\n'WS_OVERRIDDEN' - When websocket was overridden by the server."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "If the "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "reason"
+                          },
+                          {
+                            "type": "text",
+                            "value": " parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "reason"
+                          },
+                          {
+                            "type": "text",
+                            "value": " will explain why the subscription has been lost so that the scenario can be handled appropriately."
                           }
                         ]
                       }
@@ -54044,22 +54069,22 @@
           ],
           "loc": {
             "start": {
-              "line": 18,
+              "line": 22,
               "column": 0
             },
             "end": {
-              "line": 54,
+              "line": 58,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 55,
+                "line": 59,
                 "column": 0
               },
               "end": {
-                "line": 55,
+                "line": 59,
                 "column": 45
               }
             },
@@ -54220,22 +54245,22 @@
           ],
           "loc": {
             "start": {
-              "line": 57,
+              "line": 61,
               "column": 0
             },
             "end": {
-              "line": 70,
+              "line": 74,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 71,
+                "line": 75,
                 "column": 0
               },
               "end": {
-                "line": 71,
+                "line": 75,
                 "column": 45
               }
             },
