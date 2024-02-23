@@ -7,6 +7,12 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.9.0 - beta
+
+### Fixed
+
+- Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
+
 ## 6.8.0 - 2024-02-23
 
 ### Added
@@ -51,7 +57,6 @@ Ribbon WebRTC SDK change log.
   - All `proxy:error` events will now have a clearer human-readable message and error code.
   - The `proxy:error` events triggered from the `proxy.initializeRemote` API will more clearly describe the cause of the error.
   - Documentation for the Proxy APIs have been updated to be clearer about expected error scenarios.
-- Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
 - Fixed a Call issue where `devices:change` events were emitted when a call ended even though no device changed. `KJS-1953`
 - Fixed a Call issue where two `devices:change` events were emitted when a media device was disconnected instead of only one. `KJS-1953`
 - Fixed the configuration sample used in video calling for the `Voice and Video Calls` tutorial trail, since video call was failing. `KJS-1957`
