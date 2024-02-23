@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.8.0-beta.1260
+ * Version: 6.8.0-beta.1261
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2384,7 +2384,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 5175:
+/***/ 93374:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2402,7 +2402,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.8.0-beta.1260';
+  return '6.8.0-beta.1261';
 }
 
 /***/ }),
@@ -9180,7 +9180,7 @@ exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -20550,7 +20550,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -33156,7 +33156,7 @@ var _fp = __webpack_require__(90193);
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -40874,7 +40874,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _utils = __webpack_require__(25189);
 var _fp = __webpack_require__(90193);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -41028,7 +41028,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -41116,7 +41116,7 @@ exports.sanitizeRequest = sanitizeRequest;
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 var _fp = __webpack_require__(90193);
@@ -45066,9 +45066,10 @@ function createInterval(container) {
    * @method start
    */
   function start(update, expires) {
-    // Set the delay to be halfway between now and when the subscription expires.
+    // Set the delay to 50% of the interval between now and when the subscription expires for the first attempt,
+    // 25% for the second attempt, etc
     let resubDelay = expires * 1000 / Math.pow(2, attemptNum);
-    // Don't try to resub more often than every 5 minutes.
+    // Don't try to resub more often than every 30 seconds.
     resubDelay = resubDelay > 30000 ? resubDelay : 30000;
 
     // Create a randomized version for 'resubDelay' value (each time we resubscribe) and
@@ -45077,7 +45078,7 @@ function createInterval(container) {
     // the final chosen value will be a random value between (0.8 * x) and (1.2 * x)
     const lowerLimit = resubDelay * 0.8;
     const upperLimit = resubDelay * 1.2;
-    // Random between 1 & (upper - lower)
+    // Random between 1 and (upper - lower)
     const randomVal = Math.floor(Math.random() * (upperLimit - lowerLimit) + 1);
     resubInterval = createInterval(update, lowerLimit + randomVal);
     resubInterval.start();
@@ -51383,7 +51384,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(5175);
+var _version = __webpack_require__(93374);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -89942,7 +89943,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 33381:
+/***/ 88056:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -90383,7 +90384,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(13940));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(33381));
+var _version = _interopRequireDefault(__webpack_require__(88056));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
