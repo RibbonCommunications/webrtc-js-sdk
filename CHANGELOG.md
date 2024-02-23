@@ -7,7 +7,7 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
-## 6.8.0 - beta
+## 6.8.0 - 2024-02-23
 
 ### Added
 
@@ -26,7 +26,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Call issue where multiple, unrelated call operations occurring at the same time would conflict with each other in some scenarios. `KJS-1682`, `KJS-1975`
 - Fixed a Call issue where the `call.getStats` API was not providing a clear error object on failure. `KJS-1977`
 - Fixed a Subscription issue where user subscriptions would not be automatically extended when nearing expiration. `KJS-1983`
-- Fixed the API documentation for `call.getAvailableCodecs` to contain up-to-date information, as this API is currently supported in the latest Firefox browser.
+- Fixed the API documentation for `call.getAvailableCodecs` to contain up-to-date information, as this API is currently supported in the latest Firefox browser. `KJS-1984`
 - Fixed an issue during the ending of a call (at transferor side) for both direct & consultative transfers. `KJS-1991`
 - Fixed a Subscription issue where attempts to extend the subscription would continue even after it was knowingly lost. `KJS-1997`
 
