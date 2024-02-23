@@ -6618,11 +6618,11 @@
     "context": {
       "loc": {
         "start": {
-          "line": 459,
+          "line": 460,
           "column": 0
         },
         "end": {
-          "line": 469,
+          "line": 470,
           "column": 1
         }
       },
@@ -6664,23 +6664,23 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Information about ongoing call operations are stored with the call\ninformation (see the "
+                    "value": "Information about ongoing call operations are stored on the\n"
                   },
                   {
                     "type": "link",
-                    "url": "#callgetbyid",
+                    "url": "#callcallobject",
                     "title": null,
                     "jsdoc": true,
                     "children": [
                       {
                         "type": "text",
-                        "value": "call.getById"
+                        "value": "CallObject"
                       }
                     ]
                   },
                   {
                     "type": "text",
-                    "value": " API). This event indicates that\nan operation's information has been changed."
+                    "value": ". This event indicates that an operation's\ninformation has changed."
                   }
                 ]
               },
@@ -6689,16 +6689,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Local call operations will be tracked from start to finish. An operation may\nbe updated as it progresses, based on the status of the operation. The\noperation status may be ongoing or pending, depending if the operation is\nwaiting on activity on the local or remote end of the call, respectively."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Except in the case of slow-start operations, remote operations will only be\ntracked as a \"finish\", to indicate that it occurred."
+                    "value": "The status of an operation indicates whether the local or remote side of the\ncall is currently processing it, with values being 'ONGOING' or 'PENDING',\nrespectively. All operations will begin as 'ONGOING' status with an event\nindicating the 'START' transition. Operations that require a response from\nthe remote side will have an 'UPDATE' transition to the 'PENDING' status once\nit starts to wait for the response. Once complete, an event will indicate\na 'FINISH' transition and the operation will be removed from the call state."
                   }
                 ]
               }
@@ -6733,8 +6724,18 @@
             },
             {
               "title": "param",
-              "description": "The call operation causing this event.",
+              "description": "The ID for the call being operated on.",
               "lineNumber": 18,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "params.callId"
+            },
+            {
+              "title": "param",
+              "description": "The type of operation causing this event.",
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -6743,8 +6744,18 @@
             },
             {
               "title": "param",
+              "description": "The unique ID of the call operation.",
+              "lineNumber": 20,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "params.operationId"
+            },
+            {
+              "title": "param",
               "description": "The transition reason for the operation change.",
-              "lineNumber": 19,
+              "lineNumber": 21,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -6754,7 +6765,7 @@
             {
               "title": "param",
               "description": "Flag indicating whether the operation was local or not.",
-              "lineNumber": 20,
+              "lineNumber": 22,
               "type": {
                 "type": "NameExpression",
                 "name": "boolean"
@@ -6764,7 +6775,7 @@
             {
               "title": "param",
               "description": "The operation information before this change.\n   If the transition is to \"start\" the operation, there will be no previous information.",
-              "lineNumber": 21,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -6777,7 +6788,7 @@
             {
               "title": "param",
               "description": "The operation that was ongoing.",
-              "lineNumber": 23,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -6790,7 +6801,7 @@
             {
               "title": "param",
               "description": "The operation status before this change.",
-              "lineNumber": 24,
+              "lineNumber": 26,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -6803,7 +6814,7 @@
             {
               "title": "param",
               "description": "An error object, if the operation was not successful.",
-              "lineNumber": 25,
+              "lineNumber": 27,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -6812,6 +6823,11 @@
                 }
               },
               "name": "params.error"
+            },
+            {
+              "title": "example",
+              "description": "client.on('call:operation', (params) => {\n   const { callId, operationId } = params\n\n   // Get the operation from the call's state that this event is about.\n   const call = client.call.getById(callId)\n   const operation = call.currentOperations.find(op => op.id === operationId)\n   log(`${operation.type} operation is now ${operation.status} for call ${callId}.`)\n})",
+              "lineNumber": 28
             }
           ],
           "loc": {
@@ -6820,25 +6836,29 @@
               "column": 0
             },
             "end": {
-              "line": 27,
+              "line": 38,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 28,
+                "line": 39,
                 "column": 0
               },
               "end": {
-                "line": 28,
+                "line": 39,
                 "column": 46
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "client.on('call:operation', (params) => {\n   const { callId, operationId } = params\n\n   // Get the operation from the call's state that this event is about.\n   const call = client.call.getById(callId)\n   const operation = call.currentOperations.find(op => op.id === operationId)\n   log(`${operation.type} operation is now ${operation.status} for call ${callId}.`)\n})"
+            }
+          ],
           "implements": [],
           "params": [
             {
@@ -6852,7 +6872,7 @@
               "properties": [
                 {
                   "title": "param",
-                  "name": "params.operation",
+                  "name": "params.callId",
                   "lineNumber": 18,
                   "description": {
                     "type": "root",
@@ -6862,7 +6882,53 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "The call operation causing this event."
+                            "value": "The ID for the call being operated on."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "string"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "params.operation",
+                  "lineNumber": 19,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The type of operation causing this event."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "string"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "params.operationId",
+                  "lineNumber": 20,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The unique ID of the call operation."
                           }
                         ]
                       }
@@ -6876,7 +6942,7 @@
                 {
                   "title": "param",
                   "name": "params.transition",
-                  "lineNumber": 19,
+                  "lineNumber": 21,
                   "description": {
                     "type": "root",
                     "children": [
@@ -6899,7 +6965,7 @@
                 {
                   "title": "param",
                   "name": "params.isLocal",
-                  "lineNumber": 20,
+                  "lineNumber": 22,
                   "description": {
                     "type": "root",
                     "children": [
@@ -6922,7 +6988,7 @@
                 {
                   "title": "param",
                   "name": "params.previous",
-                  "lineNumber": 21,
+                  "lineNumber": 23,
                   "description": {
                     "type": "root",
                     "children": [
@@ -6948,7 +7014,7 @@
                     {
                       "title": "param",
                       "name": "params.previous.operation",
-                      "lineNumber": 23,
+                      "lineNumber": 25,
                       "description": {
                         "type": "root",
                         "children": [
@@ -6974,7 +7040,7 @@
                     {
                       "title": "param",
                       "name": "params.previous.status",
-                      "lineNumber": 24,
+                      "lineNumber": 26,
                       "description": {
                         "type": "root",
                         "children": [
@@ -7002,7 +7068,7 @@
                 {
                   "title": "param",
                   "name": "params.error",
-                  "lineNumber": 25,
+                  "lineNumber": 27,
                   "description": {
                     "type": "root",
                     "children": [
@@ -7150,22 +7216,22 @@
           ],
           "loc": {
             "start": {
-              "line": 30,
+              "line": 41,
               "column": 0
             },
             "end": {
-              "line": 42,
+              "line": 53,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 43,
+                "line": 54,
                 "column": 0
               },
               "end": {
-                "line": 43,
+                "line": 54,
                 "column": 40
               }
             },
@@ -7364,22 +7430,22 @@
           ],
           "loc": {
             "start": {
-              "line": 45,
+              "line": 56,
               "column": 0
             },
             "end": {
-              "line": 58,
+              "line": 69,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 59,
+                "line": 70,
                 "column": 0
               },
               "end": {
-                "line": 59,
+                "line": 70,
                 "column": 36
               }
             },
@@ -7577,22 +7643,22 @@
           ],
           "loc": {
             "start": {
-              "line": 61,
+              "line": 72,
               "column": 0
             },
             "end": {
-              "line": 78,
+              "line": 89,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 79,
+                "line": 90,
                 "column": 0
               },
               "end": {
-                "line": 79,
+                "line": 90,
                 "column": 43
               }
             },
@@ -7879,22 +7945,22 @@
           ],
           "loc": {
             "start": {
-              "line": 81,
+              "line": 92,
               "column": 0
             },
             "end": {
-              "line": 115,
+              "line": 126,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 116,
+                "line": 127,
                 "column": 0
               },
               "end": {
-                "line": 116,
+                "line": 127,
                 "column": 51
               }
             },
@@ -8263,22 +8329,22 @@
           ],
           "loc": {
             "start": {
-              "line": 118,
+              "line": 129,
               "column": 0
             },
             "end": {
-              "line": 128,
+              "line": 139,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 129,
+                "line": 140,
                 "column": 0
               },
               "end": {
-                "line": 129,
+                "line": 140,
                 "column": 47
               }
             },
@@ -8496,22 +8562,22 @@
           ],
           "loc": {
             "start": {
-              "line": 131,
+              "line": 142,
               "column": 0
             },
             "end": {
-              "line": 140,
+              "line": 151,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 141,
+                "line": 152,
                 "column": 0
               },
               "end": {
-                "line": 141,
+                "line": 152,
                 "column": 53
               }
             },
@@ -8794,22 +8860,22 @@
           ],
           "loc": {
             "start": {
-              "line": 143,
+              "line": 154,
               "column": 0
             },
             "end": {
-              "line": 177,
+              "line": 188,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 178,
+                "line": 189,
                 "column": 0
               },
               "end": {
-                "line": 178,
+                "line": 189,
                 "column": 51
               }
             },
@@ -9073,22 +9139,22 @@
           ],
           "loc": {
             "start": {
-              "line": 180,
+              "line": 191,
               "column": 0
             },
             "end": {
-              "line": 211,
+              "line": 222,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 212,
+                "line": 223,
                 "column": 0
               },
               "end": {
-                "line": 212,
+                "line": 223,
                 "column": 55
               }
             },
@@ -9293,8 +9359,11 @@
               "description": "The RTCStatsReport.",
               "lineNumber": 11,
               "type": {
-                "type": "NameExpression",
-                "name": "Map"
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Map"
+                }
               },
               "name": "params.result"
             },
@@ -9313,28 +9382,28 @@
             },
             {
               "title": "example",
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport Map.\n   params.result.forEach(stat => {\n     ...\n   })\n})",
+              "description": "client.on('call:statsReceived', function (params) {\n   if (params.error) {\n     // Handle the error from the operation.\n     const { code, message } = params.error\n     ...\n   } else {\n     // Iterate over each individual statistic inside the RTCPStatsReport Map.\n     // Handle the data on its own or collate with previously gathered stats\n     //    for analysis.\n     params.result.forEach(stat => {\n       ...\n     })\n   }\n})",
               "lineNumber": 13
             }
           ],
           "loc": {
             "start": {
-              "line": 214,
+              "line": 225,
               "column": 0
             },
             "end": {
-              "line": 234,
+              "line": 253,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 235,
+                "line": 254,
                 "column": 0
               },
               "end": {
-                "line": 235,
+                "line": 254,
                 "column": 50
               }
             },
@@ -9343,7 +9412,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport Map.\n   params.result.forEach(stat => {\n     ...\n   })\n})"
+              "description": "client.on('call:statsReceived', function (params) {\n   if (params.error) {\n     // Handle the error from the operation.\n     const { code, message } = params.error\n     ...\n   } else {\n     // Iterate over each individual statistic inside the RTCPStatsReport Map.\n     // Handle the data on its own or collate with previously gathered stats\n     //    for analysis.\n     params.result.forEach(stat => {\n       ...\n     })\n   }\n})"
             }
           ],
           "implements": [],
@@ -9425,8 +9494,11 @@
                     ]
                   },
                   "type": {
-                    "type": "NameExpression",
-                    "name": "Map"
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Map"
+                    }
                   }
                 },
                 {
@@ -9643,22 +9715,22 @@
           ],
           "loc": {
             "start": {
-              "line": 237,
+              "line": 256,
               "column": 0
             },
             "end": {
-              "line": 266,
+              "line": 285,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 267,
+                "line": 286,
                 "column": 0
               },
               "end": {
-                "line": 267,
+                "line": 286,
                 "column": 55
               }
             },
@@ -9919,22 +9991,22 @@
           ],
           "loc": {
             "start": {
-              "line": 269,
+              "line": 288,
               "column": 0
             },
             "end": {
-              "line": 281,
+              "line": 300,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 282,
+                "line": 301,
                 "column": 0
               },
               "end": {
-                "line": 282,
+                "line": 301,
                 "column": 56
               }
             },
@@ -10135,33 +10207,42 @@
                 ]
               },
               "name": "params.codecs"
+            },
+            {
+              "title": "example",
+              "description": "client.on('call:availableCodecs', function (codecs) {\n   // Iterate over each codec.\n   codecs.forEach(codec => {\n       // Handle the data by analysing its properties.\n       // Some codec instances may have the same name, but different characteristics.\n       // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))\n       ...\n   })\n})",
+              "lineNumber": 11
             }
           ],
           "loc": {
             "start": {
-              "line": 284,
+              "line": 303,
               "column": 0
             },
             "end": {
-              "line": 295,
+              "line": 324,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 296,
+                "line": 325,
                 "column": 0
               },
               "end": {
-                "line": 296,
+                "line": 325,
                 "column": 54
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "client.on('call:availableCodecs', function (codecs) {\n   // Iterate over each codec.\n   codecs.forEach(codec => {\n       // Handle the data by analysing its properties.\n       // Some codec instances may have the same name, but different characteristics.\n       // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))\n       ...\n   })\n})"
+            }
+          ],
           "implements": [],
           "params": [
             {
@@ -10393,22 +10474,22 @@
           ],
           "loc": {
             "start": {
-              "line": 298,
+              "line": 327,
               "column": 0
             },
             "end": {
-              "line": 314,
+              "line": 343,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 315,
+                "line": 344,
                 "column": 0
               },
               "end": {
-                "line": 315,
+                "line": 344,
                 "column": 67
               }
             },
@@ -10674,22 +10755,22 @@
           ],
           "loc": {
             "start": {
-              "line": 317,
+              "line": 346,
               "column": 0
             },
             "end": {
-              "line": 348,
+              "line": 377,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 349,
+                "line": 378,
                 "column": 0
               },
               "end": {
-                "line": 349,
+                "line": 378,
                 "column": 48
               }
             },
@@ -11117,6 +11198,25 @@
                 }
               },
               "name": "endTime"
+            },
+            {
+              "title": "property",
+              "description": "The list of operations curently on-going for the call.",
+              "lineNumber": 30,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              },
+              "name": "currentOperations"
             }
           ],
           "loc": {
@@ -11125,18 +11225,18 @@
               "column": 0
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -11633,6 +11733,38 @@
                   "name": "number"
                 }
               }
+            },
+            {
+              "title": "property",
+              "name": "currentOperations",
+              "lineNumber": 30,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The list of operations curently on-going for the call."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              }
             }
           ],
           "returns": [],
@@ -11836,22 +11968,22 @@
           ],
           "loc": {
             "start": {
-              "line": 68,
+              "line": 69,
               "column": 0
             },
             "end": {
-              "line": 102,
+              "line": 103,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -12018,22 +12150,22 @@
           ],
           "loc": {
             "start": {
-              "line": 104,
+              "line": 105,
               "column": 0
             },
             "end": {
-              "line": 114,
+              "line": 115,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -12214,22 +12346,22 @@
           ],
           "loc": {
             "start": {
-              "line": 116,
+              "line": 117,
               "column": 0
             },
             "end": {
-              "line": 136,
+              "line": 137,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -12453,22 +12585,22 @@
           ],
           "loc": {
             "start": {
-              "line": 138,
+              "line": 139,
               "column": 0
             },
             "end": {
-              "line": 150,
+              "line": 151,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -12776,22 +12908,22 @@
           ],
           "loc": {
             "start": {
-              "line": 152,
+              "line": 153,
               "column": 0
             },
             "end": {
-              "line": 170,
+              "line": 171,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -13108,22 +13240,22 @@
           ],
           "loc": {
             "start": {
-              "line": 172,
+              "line": 173,
               "column": 0
             },
             "end": {
-              "line": 182,
+              "line": 183,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -13428,22 +13560,22 @@
           ],
           "loc": {
             "start": {
-              "line": 184,
+              "line": 185,
               "column": 0
             },
             "end": {
-              "line": 205,
+              "line": 206,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -14161,22 +14293,22 @@
           ],
           "loc": {
             "start": {
-              "line": 207,
+              "line": 208,
               "column": 0
             },
             "end": {
-              "line": 265,
+              "line": 266,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -14436,22 +14568,22 @@
           ],
           "loc": {
             "start": {
-              "line": 267,
+              "line": 268,
               "column": 0
             },
             "end": {
-              "line": 281,
+              "line": 282,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -14682,22 +14814,22 @@
           ],
           "loc": {
             "start": {
-              "line": 283,
+              "line": 284,
               "column": 0
             },
             "end": {
-              "line": 294,
+              "line": 295,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -14919,22 +15051,22 @@
           ],
           "loc": {
             "start": {
-              "line": 296,
+              "line": 297,
               "column": 0
             },
             "end": {
-              "line": 306,
+              "line": 307,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -15155,22 +15287,22 @@
           ],
           "loc": {
             "start": {
-              "line": 308,
+              "line": 309,
               "column": 0
             },
             "end": {
-              "line": 319,
+              "line": 320,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -15456,22 +15588,22 @@
           ],
           "loc": {
             "start": {
-              "line": 321,
+              "line": 322,
               "column": 0
             },
             "end": {
-              "line": 342,
+              "line": 343,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -15858,22 +15990,22 @@
           ],
           "loc": {
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 0
             },
             "end": {
-              "line": 354,
+              "line": 355,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -16100,22 +16232,22 @@
           ],
           "loc": {
             "start": {
-              "line": 356,
+              "line": 357,
               "column": 0
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -16530,22 +16662,22 @@
           ],
           "loc": {
             "start": {
-              "line": 369,
+              "line": 370,
               "column": 0
             },
             "end": {
-              "line": 409,
+              "line": 410,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 459,
+                "line": 460,
                 "column": 0
               },
               "end": {
-                "line": 469,
+                "line": 470,
                 "column": 1
               }
             },
@@ -26115,7 +26247,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "A Track ID can optionally be provided to get a report for a specific\nTrack of the Call."
+                    "value": "A Track ID can optionally be provided to get a report for a specific local\nTrack of the Call."
                   }
                 ]
               },
@@ -26212,7 +26344,7 @@
             },
             {
               "title": "param",
-              "description": "ID of a Track being used by the Call. If not\n   provided, RTCStatsReport is generated for the Call itself.",
+              "description": "ID of a local Track being used by the Call. If not\n   provided, RTCStatsReport is generated for the Call itself.",
               "lineNumber": 29,
               "type": {
                 "type": "OptionalType",
@@ -26234,7 +26366,7 @@
             },
             {
               "title": "example",
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport.\n   params.result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n})\n\n// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\nclient.call.getStats(callId)",
+              "description": "// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\ntry {\n   // The API will return a promise that resolves with the stats.\n   const result = await client.call.getStats(callId)\n   result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}",
               "lineNumber": 32
             }
           ],
@@ -26244,18 +26376,18 @@
               "column": 2
             },
             "end": {
-              "line": 284,
+              "line": 287,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 285,
+                "line": 288,
                 "column": 2
               },
               "end": {
-                "line": 317,
+                "line": 320,
                 "column": 3
               }
             },
@@ -26264,7 +26396,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "client.on('call:statsReceived', function (params) {\n   // Iterate over each individual statistic inside the RTCPStatsReport.\n   params.result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n})\n\n// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\nclient.call.getStats(callId)"
+              "description": "// Get a snapshot of the Call's stats.\n//   This may be done on a regular interval to collect data over time.\ntry {\n   // The API will return a promise that resolves with the stats.\n   const result = await client.call.getStats(callId)\n   result.forEach(stats => {\n       // Handle the data on its own or collate with previously gathered stats\n       //    for analysis.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}"
             }
           ],
           "implements": [],
@@ -26304,7 +26436,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "ID of a Track being used by the Call. If not\nprovided, RTCStatsReport is generated for the Call itself."
+                        "value": "ID of a local Track being used by the Call. If not\nprovided, RTCStatsReport is generated for the Call itself."
                       }
                     ]
                   }
@@ -26432,7 +26564,7 @@
                   },
                   {
                     "type": "text",
-                    "value": ".\nFirefox browser does not currently support this method. Therefore, this API will not work on Firefox."
+                    "value": "."
                   }
                 ]
               }
@@ -26442,35 +26574,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 10,
+              "lineNumber": 9,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 11
+              "lineNumber": 10
             },
             {
               "title": "memberof",
               "description": "call",
-              "lineNumber": 12
+              "lineNumber": 11
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 13,
+              "lineNumber": 12,
               "name": "call"
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 14,
+              "lineNumber": 13,
               "name": "callMe"
             },
             {
               "title": "param",
               "description": "The kind of media, i.e., 'audio' or 'video', to get the list of available codecs of.",
-              "lineNumber": 15,
+              "lineNumber": 14,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -26479,45 +26611,54 @@
             },
             {
               "title": "return",
-              "description": "An object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.\n        If there was an error, it will return undefined.",
-              "lineNumber": 16,
+              "description": "A promise that will resolve with an object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.\n        If there was an error, it will return undefined.",
+              "lineNumber": 15,
               "type": {
                 "type": "NameExpression",
-                "name": "Object"
+                "name": "Promise"
               }
+            },
+            {
+              "title": "example",
+              "description": "try {\n   // The API will return a promise that resolves with the codecs.\n   const result = await client.call.getAvailableCodecs('audio')\n   result.forEach(codec => {\n       // Inspect the codec supported by browser by looking at its properties.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}",
+              "lineNumber": 17
             }
           ],
           "loc": {
             "start": {
-              "line": 319,
+              "line": 322,
               "column": 2
             },
             "end": {
-              "line": 337,
+              "line": 352,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 338,
+                "line": 353,
                 "column": 2
               },
               "end": {
-                "line": 369,
+                "line": 384,
                 "column": 3
               }
             },
             "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
-          "examples": [],
+          "examples": [
+            {
+              "description": "try {\n   // The API will return a promise that resolves with the codecs.\n   const result = await client.call.getAvailableCodecs('audio')\n   result.forEach(codec => {\n       // Inspect the codec supported by browser by looking at its properties.\n       ...\n   })\n} catch (err) {\n   // Handle the error.\n   const { code, message } = err\n   ...\n}"
+            }
+          ],
           "implements": [],
           "params": [
             {
               "title": "param",
               "name": "kind",
-              "lineNumber": 15,
+              "lineNumber": 14,
               "description": {
                 "type": "root",
                 "children": [
@@ -26549,7 +26690,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "An object containing the available codecs, along with the "
+                        "value": "A promise that will resolve with an object containing the available codecs, along with the "
                       },
                       {
                         "type": "inlineCode",
@@ -26566,7 +26707,7 @@
               "title": "returns",
               "type": {
                 "type": "NameExpression",
-                "name": "Object"
+                "name": "Promise"
               }
             }
           ],
@@ -26740,22 +26881,22 @@
           ],
           "loc": {
             "start": {
-              "line": 371,
+              "line": 386,
               "column": 2
             },
             "end": {
-              "line": 393,
+              "line": 408,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 394,
+                "line": 409,
                 "column": 2
               },
               "end": {
-                "line": 399,
+                "line": 414,
                 "column": 3
               }
             },
@@ -26956,22 +27097,22 @@
           ],
           "loc": {
             "start": {
-              "line": 401,
+              "line": 416,
               "column": 2
             },
             "end": {
-              "line": 419,
+              "line": 434,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 420,
+                "line": 435,
                 "column": 2
               },
               "end": {
-                "line": 424,
+                "line": 439,
                 "column": 3
               }
             },
@@ -27156,22 +27297,22 @@
           ],
           "loc": {
             "start": {
-              "line": 426,
+              "line": 441,
               "column": 2
             },
             "end": {
-              "line": 463,
+              "line": 478,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 504,
+                "line": 519,
                 "column": 2
               },
               "end": {
-                "line": 515,
+                "line": 530,
                 "column": 3
               }
             },
@@ -27332,22 +27473,22 @@
           ],
           "loc": {
             "start": {
-              "line": 465,
+              "line": 480,
               "column": 2
             },
             "end": {
-              "line": 502,
+              "line": 517,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 504,
+                "line": 519,
                 "column": 2
               },
               "end": {
-                "line": 515,
+                "line": 530,
                 "column": 3
               }
             },
@@ -41769,22 +41910,22 @@
     ],
     "loc": {
       "start": {
-        "line": 49,
+        "line": 50,
         "column": 0
       },
       "end": {
-        "line": 66,
+        "line": 67,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 459,
+          "line": 460,
           "column": 0
         },
         "end": {
-          "line": 469,
+          "line": 470,
           "column": 1
         }
       },
@@ -53348,7 +53489,7 @@
             },
             {
               "title": "param",
-              "description": "When unsolicited, the reason for the change.\n  Reason can have (but not limited to) these values:\n  'GONE' - When Connection was terminated by the server.\n  'LOST_CONNECTION' - When internet connection was lost.\n  'WS_OVERRIDDEN' - When websocket was overridden by the server.",
+              "description": "When unsolicited, the reason for the change is provided.\n  Reason can be one of the following values:\n  'GONE' - When Connection was terminated by the server.\n  'LOST_CONNECTION' - When internet connection was lost.\n  'WS_OVERRIDDEN' - When websocket was overridden by the server.\n\nIf the `reason` parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe `reason` will explain why the subscription has been lost so that the scenario can be handled appropriately.",
               "lineNumber": 9,
               "type": {
                 "type": "OptionalType",
@@ -53366,18 +53507,18 @@
               "column": 0
             },
             "end": {
-              "line": 15,
+              "line": 19,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 16,
+                "line": 20,
                 "column": 0
               },
               "end": {
-                "line": 16,
+                "line": 20,
                 "column": 47
               }
             },
@@ -53408,7 +53549,32 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "When unsolicited, the reason for the change.\nReason can have (but not limited to) these values:\n'GONE' - When Connection was terminated by the server.\n'LOST_CONNECTION' - When internet connection was lost.\n'WS_OVERRIDDEN' - When websocket was overridden by the server."
+                            "value": "When unsolicited, the reason for the change is provided.\nReason can be one of the following values:\n'GONE' - When Connection was terminated by the server.\n'LOST_CONNECTION' - When internet connection was lost.\n'WS_OVERRIDDEN' - When websocket was overridden by the server."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "If the "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "reason"
+                          },
+                          {
+                            "type": "text",
+                            "value": " parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "reason"
+                          },
+                          {
+                            "type": "text",
+                            "value": " will explain why the subscription has been lost so that the scenario can be handled appropriately."
                           }
                         ]
                       }
@@ -53903,22 +54069,22 @@
           ],
           "loc": {
             "start": {
-              "line": 18,
+              "line": 22,
               "column": 0
             },
             "end": {
-              "line": 54,
+              "line": 58,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 55,
+                "line": 59,
                 "column": 0
               },
               "end": {
-                "line": 55,
+                "line": 59,
                 "column": 45
               }
             },
@@ -54079,22 +54245,22 @@
           ],
           "loc": {
             "start": {
-              "line": 57,
+              "line": 61,
               "column": 0
             },
             "end": {
-              "line": 70,
+              "line": 74,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 71,
+                "line": 75,
                 "column": 0
               },
               "end": {
-                "line": 71,
+                "line": 75,
                 "column": 45
               }
             },
@@ -54701,6 +54867,56 @@
                     "value": " channel as a subscription\ntype."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "When calling this API, SDK emits a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event, each time there is a change in subscriptions."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Upon getting such event, existing subscriptions can be retrieved using the\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "#servicesgetsubscriptions",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "services.getSubscriptions"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
               }
             ]
           },
@@ -54708,35 +54924,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 11,
+              "lineNumber": 16,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 12
+              "lineNumber": 17
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 13
+              "lineNumber": 18
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 14,
+              "lineNumber": 19,
               "name": "subscription"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 15,
+              "lineNumber": 20,
               "name": "subscribe"
             },
             {
               "title": "param",
               "description": "A list of service configurations.",
-              "lineNumber": 16,
+              "lineNumber": 21,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -54764,7 +54980,7 @@
             {
               "title": "param",
               "description": "The options object for non-credential options.",
-              "lineNumber": 17,
+              "lineNumber": 22,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54777,7 +54993,7 @@
             {
               "title": "param",
               "description": "Force the oldest connection to log out if too many simultaneous connections. Link only.",
-              "lineNumber": 18,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54790,7 +55006,7 @@
             {
               "title": "param",
               "description": "The method of how to receive service updates.",
-              "lineNumber": 19,
+              "lineNumber": 24,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54804,7 +55020,7 @@
             {
               "title": "param",
               "description": "Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device.",
-              "lineNumber": 20,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -54817,7 +55033,7 @@
             {
               "title": "return",
               "description": null,
-              "lineNumber": 21,
+              "lineNumber": 26,
               "type": {
                 "type": "UndefinedLiteral"
               }
@@ -54825,7 +55041,7 @@
             {
               "title": "example",
               "description": "// Subscribe for chat and SMS services.\nclient.services.subscribe(['call', 'IM'], {forceLogOut: true, clientCorrelator: 'abc123'})",
-              "lineNumber": 22
+              "lineNumber": 27
             }
           ],
           "loc": {
@@ -54834,18 +55050,18 @@
               "column": 4
             },
             "end": {
-              "line": 126,
+              "line": 131,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 127,
+                "line": 132,
                 "column": 4
               },
               "end": {
-                "line": 185,
+                "line": 190,
                 "column": 5
               }
             },
@@ -54862,7 +55078,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 16,
+              "lineNumber": 21,
               "description": {
                 "type": "root",
                 "children": [
@@ -54903,7 +55119,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 17,
+              "lineNumber": 22,
               "description": {
                 "type": "root",
                 "children": [
@@ -54929,7 +55145,7 @@
                 {
                   "title": "param",
                   "name": "options.forceLogOut",
-                  "lineNumber": 18,
+                  "lineNumber": 23,
                   "description": {
                     "type": "root",
                     "children": [
@@ -54955,7 +55171,7 @@
                 {
                   "title": "param",
                   "name": "options.type",
-                  "lineNumber": 19,
+                  "lineNumber": 24,
                   "description": {
                     "type": "root",
                     "children": [
@@ -54979,7 +55195,7 @@
                 {
                   "title": "param",
                   "name": "options.clientCorrelator",
-                  "lineNumber": 20,
+                  "lineNumber": 25,
                   "description": {
                     "type": "root",
                     "children": [
@@ -55065,7 +55281,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Existing subscriptions can be retrieved using the\n"
+                    "value": "When calling this API, SDK emits a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event, each time there is a change in subscriptions."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Upon getting such event, existing subscriptions can be retrieved using the\n"
                   },
                   {
                     "type": "link",
@@ -55099,29 +55340,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 9,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 8
+              "lineNumber": 10
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 9
+              "lineNumber": 11
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 10,
+              "lineNumber": 12,
               "name": "unsubscribe"
             },
             {
               "title": "param",
               "description": "A list of subscribed service names.",
-              "lineNumber": 11,
+              "lineNumber": 13,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -55140,7 +55381,7 @@
             {
               "title": "param",
               "description": "The method of how the service updates\n   are being received.",
-              "lineNumber": 12,
+              "lineNumber": 14,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -55154,27 +55395,27 @@
             {
               "title": "example",
               "description": "// Unsubscribe from chat and SMS services.\nconst services = [ 'chat', 'smsinbound' ]\n\nclient.services.unsubscribe(services)",
-              "lineNumber": 14
+              "lineNumber": 16
             }
           ],
           "loc": {
             "start": {
-              "line": 187,
+              "line": 192,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 213,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 207,
+                "line": 214,
                 "column": 4
               },
               "end": {
-                "line": 246,
+                "line": 253,
                 "column": 5
               }
             },
@@ -55191,7 +55432,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 11,
+              "lineNumber": 13,
               "description": {
                 "type": "root",
                 "children": [
@@ -55223,7 +55464,7 @@
             {
               "title": "param",
               "name": "type",
-              "lineNumber": 12,
+              "lineNumber": 14,
               "description": {
                 "type": "root",
                 "children": [
@@ -55285,7 +55526,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Retrieves information about currently subscribed services and available services."
+                    "value": "Retrieves information about currently subscribed services and available services.\nThe data returned by this API is a snapshot of the SDK's current local subscription state.\nThe data does indicate whether there was an ongoing subscription at the time this API was called.\nIf a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "To be notified when any subscription(s) did change/complete, listen for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " events."
                   }
                 ]
               },
@@ -55345,29 +55611,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 11,
+              "lineNumber": 16,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 12
+              "lineNumber": 17
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 13
+              "lineNumber": 18
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 14,
+              "lineNumber": 19,
               "name": "getSubscriptions"
             },
             {
               "title": "return",
               "description": "Lists of subscribed and available services.",
-              "lineNumber": 15,
+              "lineNumber": 20,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -55375,28 +55641,28 @@
             },
             {
               "title": "example",
-              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Figure out which available services don't have a subscription.\nconst notSubscribed = services.available.filter(service => {\n   return !services.subscribed.includes(service)\n})\n\n// Subscribe for all not-yet-subscribed services.\nclient.services.subscribe(notSubscribed)",
-              "lineNumber": 16
+              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Ensure that there were no pending subscriptions at the time\n// we called getSubscriptions API.\nif (!services.isPending) {\n  // Figure out which available services don't have a subscription.\n  const notSubscribed = services.available.filter(service => {\n    return !services.subscribed.includes(service)\n  })\n\n  // Subscribe for all not-yet-subscribed services.\n  client.services.subscribe(notSubscribed)\n}",
+              "lineNumber": 21
             }
           ],
           "loc": {
             "start": {
-              "line": 248,
+              "line": 255,
               "column": 4
             },
             "end": {
-              "line": 275,
+              "line": 292,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 276,
+                "line": 293,
                 "column": 4
               },
               "end": {
-                "line": 283,
+                "line": 300,
                 "column": 5
               }
             },
@@ -55405,7 +55671,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Figure out which available services don't have a subscription.\nconst notSubscribed = services.available.filter(service => {\n   return !services.subscribed.includes(service)\n})\n\n// Subscribe for all not-yet-subscribed services.\nclient.services.subscribe(notSubscribed)"
+              "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Ensure that there were no pending subscriptions at the time\n// we called getSubscriptions API.\nif (!services.isPending) {\n  // Figure out which available services don't have a subscription.\n  const notSubscribed = services.available.filter(service => {\n    return !services.subscribed.includes(service)\n  })\n\n  // Subscribe for all not-yet-subscribed services.\n  client.services.subscribe(notSubscribed)\n}"
             }
           ],
           "implements": [],

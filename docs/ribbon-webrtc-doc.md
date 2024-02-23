@@ -543,6 +543,7 @@ Type: [Object][7]
 *   `customParameters` **[Array][19]<[call.CustomParameter][33]>** The locally set Custom Parameters for the call.
 *   `startTime` **[number][12]** The start time of the call in milliseconds since the epoch.
 *   `endTime` **[number][12]?** The end time of the call in milliseconds since the epoch.
+*   `currentOperations` **[Array][19]<[Object][7]>** The list of operations curently on-going for the call.
 
 ### MediaConstraint
 
@@ -1720,7 +1721,7 @@ period of time would allow a low-level analysis of the Call for that
 period. As an example, this could be done to determine the media quality
 during the Call.
 
-A Track ID can optionally be provided to get a report for a specific
+A Track ID can optionally be provided to get a report for a specific local
 Track of the Call.
 
 This API will return a promise which, when resolved, will contain the report of the particular call.
@@ -1734,24 +1735,27 @@ the operation completes, that has the report.
 #### Parameters
 
 *   `callId` **[string][8]** The ID of the Call to retrieve the report.
-*   `trackId` **[string][8]?** ID of a Track being used by the Call. If not
+*   `trackId` **[string][8]?** ID of a local Track being used by the Call. If not
     provided, RTCStatsReport is generated for the Call itself.
 
 #### Examples
 
 ```javascript
-client.on('call:statsReceived', function (params) {
-   // Iterate over each individual statistic inside the RTCPStatsReport.
-   params.result.forEach(stats => {
+// Get a snapshot of the Call's stats.
+//   This may be done on a regular interval to collect data over time.
+try {
+   // The API will return a promise that resolves with the stats.
+   const result = await client.call.getStats(callId)
+   result.forEach(stats => {
        // Handle the data on its own or collate with previously gathered stats
        //    for analysis.
        ...
    })
-})
-
-// Get a snapshot of the Call's stats.
-//   This may be done on a regular interval to collect data over time.
-client.call.getStats(callId)
+} catch (err) {
+   // Handle the error.
+   const { code, message } = err
+   ...
+}
 ```
 
 Returns **[Promise][75]** A promise that will resolve with the stats report or an error if it fails.
@@ -1765,13 +1769,29 @@ In addition, the SDK emits a [call:availableCodecs][81] event
 upon retrieving that list of codecs.
 
 This API is a wrapper for the static method [RTCRtpSender.getCapabilities()][82].
-Firefox browser does not currently support this method. Therefore, this API will not work on Firefox.
 
 #### Parameters
 
 *   `kind` **[string][8]** The kind of media, i.e., 'audio' or 'video', to get the list of available codecs of.
 
-Returns **[Object][7]** An object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.
+#### Examples
+
+```javascript
+try {
+   // The API will return a promise that resolves with the codecs.
+   const result = await client.call.getAvailableCodecs('audio')
+   result.forEach(codec => {
+       // Inspect the codec supported by browser by looking at its properties.
+       ...
+   })
+} catch (err) {
+   // Handle the error.
+   const { code, message } = err
+   ...
+}
+```
+
+Returns **[Promise][75]** A promise that will resolve with an object containing the available codecs, along with the `kind` parameter, that was supplied in the first place.
 If there was an error, it will return undefined.
 
 ### getReport
@@ -2148,23 +2168,25 @@ Type: [string][8]
 
 A call operation has either started, been updated, or finished.
 
-Information about ongoing call operations are stored with the call
-information (see the [call.getById][27] API). This event indicates that
-an operation's information has been changed.
+Information about ongoing call operations are stored on the
+[CallObject][49]. This event indicates that an operation's
+information has changed.
 
-Local call operations will be tracked from start to finish. An operation may
-be updated as it progresses, based on the status of the operation. The
-operation status may be ongoing or pending, depending if the operation is
-waiting on activity on the local or remote end of the call, respectively.
-
-Except in the case of slow-start operations, remote operations will only be
-tracked as a "finish", to indicate that it occurred.
+The status of an operation indicates whether the local or remote side of the
+call is currently processing it, with values being 'ONGOING' or 'PENDING',
+respectively. All operations will begin as 'ONGOING' status with an event
+indicating the 'START' transition. Operations that require a response from
+the remote side will have an 'UPDATE' transition to the 'PENDING' status once
+it starts to wait for the response. Once complete, an event will indicate
+a 'FINISH' transition and the operation will be removed from the call state.
 
 #### Parameters
 
 *   `params` **[Object][7]** 
 
-    *   `params.operation` **[string][8]** The call operation causing this event.
+    *   `params.callId` **[string][8]** The ID for the call being operated on.
+    *   `params.operation` **[string][8]** The type of operation causing this event.
+    *   `params.operationId` **[string][8]** The unique ID of the call operation.
     *   `params.transition` **[string][8]** The transition reason for the operation change.
     *   `params.isLocal` **[boolean][11]** Flag indicating whether the operation was local or not.
     *   `params.previous` **[Object][7]?** The operation information before this change.
@@ -2173,6 +2195,19 @@ tracked as a "finish", to indicate that it occurred.
         *   `params.previous.operation` **[string][8]?** The operation that was ongoing.
         *   `params.previous.status` **[string][8]?** The operation status before this change.
     *   `params.error` **[api.BasicError][25]?** An error object, if the operation was not successful.
+
+#### Examples
+
+```javascript
+client.on('call:operation', (params) => {
+   const { callId, operationId } = params
+
+   // Get the operation from the call's state that this event is about.
+   const call = client.call.getById(callId)
+   const operation = call.currentOperations.find(op => op.id === operationId)
+   log(`${operation.type} operation is now ${operation.status} for call ${callId}.`)
+})
+```
 
 ### call:start
 
@@ -2384,17 +2419,25 @@ See the [call.getStats][94] API for more information.
 
     *   `params.callId` **[string][8]** The ID of the Call to retrieve stats for.
     *   `params.trackId` **[string][8]?** The ID of the Track to retrieve stats for.
-    *   `params.result` **[Map][95]** The RTCStatsReport.
+    *   `params.result` **[Map][95]?** The RTCStatsReport.
     *   `params.error` **[api.BasicError][25]?** An error object, if the operation was not successful.
 
 #### Examples
 
 ```javascript
 client.on('call:statsReceived', function (params) {
-   // Iterate over each individual statistic inside the RTCPStatsReport Map.
-   params.result.forEach(stat => {
+   if (params.error) {
+     // Handle the error from the operation.
+     const { code, message } = params.error
      ...
-   })
+   } else {
+     // Iterate over each individual statistic inside the RTCPStatsReport Map.
+     // Handle the data on its own or collate with previously gathered stats
+     //    for analysis.
+     params.result.forEach(stat => {
+       ...
+     })
+   }
 })
 ```
 
@@ -2461,6 +2504,20 @@ information.
 
     *   `params.kind` **[string][8]** The kind of media the codecs are for.
     *   `params.codecs` **[Array][19]<[Object][7]>** The list of codecs.
+
+#### Examples
+
+```javascript
+client.on('call:availableCodecs', function (codecs) {
+   // Iterate over each codec.
+   codecs.forEach(codec => {
+       // Handle the data by analysing its properties.
+       // Some codec instances may have the same name, but different characteristics.
+       // (i.e. for a given audio codec, the number of suported channels may differ (e.g. mono versus stereo))
+       ...
+   })
+})
+```
 
 ### call:mediaConnectionChange
 
@@ -4265,9 +4322,14 @@ For push notifications on link, please see [notifications.registerPush][148]
 The SDK currently only supports the `websocket` channel as a subscription
 type.
 
+When calling this API, SDK emits a [subscription:change][149] event, each time there is a change in subscriptions.
+
+Upon getting such event, existing subscriptions can be retrieved using the
+[services.getSubscriptions][145] API.
+
 #### Parameters
 
-*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][149])>** A list of service configurations.
+*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][150])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
     *   `options.forceLogOut` **[boolean][11]?** Force the oldest connection to log out if too many simultaneous connections. Link only.
@@ -4287,7 +4349,9 @@ Returns **[undefined][86]**
 
 Cancels existing subscriptions for platform notifications.
 
-Existing subscriptions can be retrieved using the
+When calling this API, SDK emits a [subscription:change][149] event, each time there is a change in subscriptions.
+
+Upon getting such event, existing subscriptions can be retrieved using the
 [services.getSubscriptions][145] API. The `subscribed` values are the
 services that can be unsubscribed from.
 
@@ -4309,6 +4373,11 @@ client.services.unsubscribe(services)
 ### getSubscriptions
 
 Retrieves information about currently subscribed services and available services.
+The data returned by this API is a snapshot of the SDK's current local subscription state.
+The data does indicate whether there was an ongoing subscription at the time this API was called.
+If a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete.
+
+To be notified when any subscription(s) did change/complete, listen for [subscription:change][149] events.
 
 The `available` values are the SDK's services that an application can
 subscribe to receive notifications about. A feature generally
@@ -4324,13 +4393,17 @@ an active subscription for. Services are subscribed to using the
 // Get the lists of services.
 const services = client.services.getSubscriptions()
 
-// Figure out which available services don't have a subscription.
-const notSubscribed = services.available.filter(service => {
-   return !services.subscribed.includes(service)
-})
+// Ensure that there were no pending subscriptions at the time
+// we called getSubscriptions API.
+if (!services.isPending) {
+  // Figure out which available services don't have a subscription.
+  const notSubscribed = services.available.filter(service => {
+    return !services.subscribed.includes(service)
+  })
 
-// Subscribe for all not-yet-subscribed services.
-client.services.subscribe(notSubscribed)
+  // Subscribe for all not-yet-subscribed services.
+  client.services.subscribe(notSubscribed)
+}
 ```
 
 Returns **[Object][7]** Lists of subscribed and available services.
@@ -4346,11 +4419,13 @@ The updated subscription information can be retrieved using the
 
 *   `params` **[Object][7]** 
 
-    *   `params.reason` **[string][8]?** When unsolicited, the reason for the change.
-        Reason can have (but not limited to) these values:
+    *   `params.reason` **[string][8]?** When unsolicited, the reason for the change is provided.
+        Reason can be one of the following values:
         'GONE' - When Connection was terminated by the server.
         'LOST_CONNECTION' - When internet connection was lost.
-        'WS_OVERRIDDEN' - When websocket was overridden by the server.
+        'WS_OVERRIDDEN' - When websocket was overridden by the server.If the `reason` parameter is provided, this means the subscription has been lost unexpectedly
+        and the application will need to handle the next steps.
+        The `reason` will explain why the subscription has been lost so that the scenario can be handled appropriately.
 
 ### subscription:error
 
@@ -4424,7 +4499,7 @@ specific users.
 
 A SIP event may either be solicited or unsolicited. Solicited events, such as the "presence"
 example above, requires the application to subscribe for the event. See the
-[sip.subscribe API][150] for more information about solicited events.
+[sip.subscribe API][151] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
 ### subscribe
@@ -4438,13 +4513,13 @@ API.
 
 Only one SIP subscription per event type can exist at a time. A subscription can
 watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][151] API at any time.
+from a subscription using the [sip.update][152] API at any time.
 
-The SDK will emit a [sip:subscriptionChange][152]
-event when the operations completes. The [sip.getDetails][153] API can be used
+The SDK will emit a [sip:subscriptionChange][153]
+event when the operations completes. The [sip.getDetails][154] API can be used
 to retrieve the current information about a subscription.
 
-The SDK will emit a [sip:eventsChange][154] event when
+The SDK will emit a [sip:eventsChange][155] event when
 a SIP event is received.
 
 #### Parameters
@@ -4480,8 +4555,8 @@ Updates an existing SIP event subscription.
 Allows for adding or removing users from the subscription, and for changing the
 custom parameters of the subscription.
 
-The SDK will emit a [sip:subscriptionChange][152]
-event when the operations completes. The [sip.getDetails][153] API can be used
+The SDK will emit a [sip:subscriptionChange][153]
+event when the operations completes. The [sip.getDetails][154] API can be used
 to retrieve the current information about a subscription.
 
 #### Parameters
@@ -4514,10 +4589,10 @@ client.sip.update('event:presence', userLists)
 
 Deletes an existing SIP event subscription.
 
-The SDK will emit a [sip:subscriptionChange][152]
+The SDK will emit a [sip:subscriptionChange][153]
 event when the operations completes.
 
-Subscription details will no longer be available using the [sip.getDetails][153]
+Subscription details will no longer be available using the [sip.getDetails][154]
 API after it has been unsubscribed from.
 
 #### Parameters
@@ -4561,16 +4636,16 @@ return an object namespaced by event types.
 
 A change has occurred to a SIP subscription.
 
-This event can be emitted when a new SIP subscription is created ([sip.subscribe][150]
-API), an existing subscription is updated ([sip.update][151] API), or has been
-deleted ([sip.unsubscribe][155] API). The `change` parameter on the event indicates
+This event can be emitted when a new SIP subscription is created ([sip.subscribe][151]
+API), an existing subscription is updated ([sip.update][152] API), or has been
+deleted ([sip.unsubscribe][156] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
 When users are added or removed from a subscription through a new subscription or an update,
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][153] API can be used to retrieve the current information about
+The [sip.getDetails][154] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -4664,12 +4739,12 @@ Type: [Object][7]
 
 Fetches information about a User.
 
-The SDK will emit a [users:change][156]
+The SDK will emit a [users:change][157]
 event after the operation completes. The User's information will then
 be available.
 
 Information about an available User can be retrieved using the
-[user.get][157] API.
+[user.get][158] API.
 
 #### Parameters
 
@@ -4679,23 +4754,23 @@ Information about an available User can be retrieved using the
 
 Retrieves information about a User, if available.
 
-See the [user.fetch][158] and [user.search][159] APIs for details about
+See the [user.fetch][159] and [user.search][160] APIs for details about
 making Users' information available.
 
 #### Parameters
 
 *   `userId` **[user.UserID][28]** The User ID of the user.
 
-Returns **[user.User][160]** The User object for the specified user.
+Returns **[user.User][161]** The User object for the specified user.
 
 ### getAll
 
 Retrieves information about all available Users.
 
-See the [user.fetch][158] and [user.search][159] APIs for details about
+See the [user.fetch][159] and [user.search][160] APIs for details about
 making Users' information available.
 
-Returns **[Array][19]<[user.User][160]>** An array of all the User objects.
+Returns **[Array][19]<[user.User][161]>** An array of all the User objects.
 
 ### search
 
@@ -4704,10 +4779,10 @@ Searches the domain's directory for Users.
 Directory searching only supports one filter. If multiple filters are provided, only one of the filters will be used for the search.
 A search with no filters provided will return all users.
 
-The SDK will emit a [directory:change][161]
+The SDK will emit a [directory:change][162]
 event after the operation completes. The search results will be
 provided as part of the event, and will also be available using the
-[user.get][157] and [user.getAll][162] APIs.
+[user.get][158] and [user.getAll][163] APIs.
 
 #### Parameters
 
@@ -4734,7 +4809,7 @@ The directory has changed.
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][160]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][161]>** The Users' information returned by the
         operation.
 
 ### directory:error
@@ -4755,7 +4830,7 @@ A change has occurred in the users list
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][160]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][161]>** The Users' information returned by the
         operation.
 
 ### users:error
@@ -4779,7 +4854,7 @@ Voicemail functions are all part of this namespace.
 
 Attempts to retrieve voicemail information from the server.
 
-A [voicemail:change][163] event is
+A [voicemail:change][164] event is
 emitted upon completion.
 
 ### get
@@ -5108,32 +5183,34 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [148]: notifications.registerPush
 
-[149]: #servicesservicedescriptor
+[149]: #serviceseventsubscriptionchange
 
-[150]: #sipsubscribe
+[150]: #servicesservicedescriptor
 
-[151]: #sipupdate
+[151]: #sipsubscribe
 
-[152]: #sipeventsipsubscriptionchange
+[152]: #sipupdate
 
-[153]: #sipgetdetails
+[153]: #sipeventsipsubscriptionchange
 
-[154]: #sipeventsipeventschange
+[154]: #sipgetdetails
 
-[155]: #sipunsubscribe
+[155]: #sipeventsipeventschange
 
-[156]: #usereventuserschange
+[156]: #sipunsubscribe
 
-[157]: #userget
+[157]: #usereventuserschange
 
-[158]: #userfetch
+[158]: #userget
 
-[159]: #usersearch
+[159]: #userfetch
 
-[160]: #useruser
+[160]: #usersearch
 
-[161]: #usereventdirectorychange
+[161]: #useruser
 
-[162]: #usergetall
+[162]: #usereventdirectorychange
 
-[163]: #voicemaileventvoicemailchange
+[163]: #usergetall
+
+[164]: #voicemaileventvoicemailchange
