@@ -30098,7 +30098,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "List of metrics available as part of a Call Report."
+                    "value": "List of metrics available as part of a Call Report.\nMetrics are calculated only for the successful scenarios."
                   }
                 ]
               },
@@ -30133,41 +30133,41 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 8,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 8
+              "lineNumber": 9
             },
             {
               "title": "name",
               "description": null,
-              "lineNumber": 9,
+              "lineNumber": 10,
               "name": "metrics"
             },
             {
               "title": "memberof",
               "description": "call",
-              "lineNumber": 10
-            },
-            {
-              "title": "requires",
-              "description": null,
-              "lineNumber": 11,
-              "name": "callMe"
+              "lineNumber": 11
             },
             {
               "title": "requires",
               "description": null,
               "lineNumber": 12,
+              "name": "callMe"
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 13,
               "name": "call"
             },
             {
               "title": "type",
               "description": null,
-              "lineNumber": 13,
+              "lineNumber": 14,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -30176,7 +30176,7 @@
             {
               "title": "property",
               "description": "The duration of a completed call starting from the make call API call or incoming call notification until the call ends.",
-              "lineNumber": 14,
+              "lineNumber": 15,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30186,7 +30186,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `make call` operation starts up until right before we set local description.",
-              "lineNumber": 15,
+              "lineNumber": 16,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30196,7 +30196,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when a call is made until the call is setup locally. This does not include any remote session creation.",
-              "lineNumber": 16,
+              "lineNumber": 17,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30206,7 +30206,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the create session request is sent until the SDK processes the response.",
-              "lineNumber": 17,
+              "lineNumber": 18,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30216,7 +30216,7 @@
             {
               "title": "property",
               "description": "For outgoing calls, the time for the `make` operation to complete.",
-              "lineNumber": 18,
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30226,7 +30226,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `answer call` operation starts until it is setup locally.\n  (i.e. from the time an incoming call is answered until media is connected)",
-              "lineNumber": 19,
+              "lineNumber": 20,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30236,7 +30236,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `answer call` operation starts up until right before we set local description.",
-              "lineNumber": 21,
+              "lineNumber": 22,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30246,7 +30246,7 @@
             {
               "title": "property",
               "description": "For incoming calls, the time for the `answer` operation to complete.",
-              "lineNumber": 22,
+              "lineNumber": 23,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30256,7 +30256,7 @@
             {
               "title": "property",
               "description": "For incoming calls, the time from the call first being received until it has been answered. Includes call processing and setup, as well as time for the answer API to have been called.",
-              "lineNumber": 23,
+              "lineNumber": 24,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30266,7 +30266,7 @@
             {
               "title": "property",
               "description": "For incoming calls, the time from the call first being received until media is connected. Similar to `TIME_FROM_RECEIVE_TO_ANSWER`, but without the `answer` REST request.",
-              "lineNumber": 24,
+              "lineNumber": 25,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30276,7 +30276,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when a call is made until the SDK recieves the remote ringing notification.",
-              "lineNumber": 25,
+              "lineNumber": 26,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30286,7 +30286,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes for the ignore call to complete.",
-              "lineNumber": 26,
+              "lineNumber": 27,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30296,7 +30296,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes for the reject call to complete.",
-              "lineNumber": 27,
+              "lineNumber": 28,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30306,7 +30306,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the local `add media` operation starts until it has finished.",
-              "lineNumber": 28,
+              "lineNumber": 29,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30316,7 +30316,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the SDK receives a remote `add media` notification until it is handled and operation completes.",
-              "lineNumber": 29,
+              "lineNumber": 30,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30326,7 +30326,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the local `remove media` operation starts until it has finished.",
-              "lineNumber": 30,
+              "lineNumber": 31,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30336,7 +30336,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the SDK receives a remote `remove media` notification until it is handled and operation completes.",
-              "lineNumber": 31,
+              "lineNumber": 32,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30346,7 +30346,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `restart media` operation starts until it has finished.",
-              "lineNumber": 32,
+              "lineNumber": 33,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30356,7 +30356,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the local `hold` operation starts until it has finished.",
-              "lineNumber": 33,
+              "lineNumber": 34,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30366,7 +30366,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the SDK receives a remote `hold` notification until it is handled and operation completes.",
-              "lineNumber": 34,
+              "lineNumber": 35,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30376,7 +30376,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the local `unhold` operation starts until it has finished.",
-              "lineNumber": 35,
+              "lineNumber": 36,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30386,7 +30386,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the SDK receives a remote `unhold` notification until it is handled and operation completes.",
-              "lineNumber": 36,
+              "lineNumber": 37,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30396,7 +30396,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the local description is set to when all ICE candidates have been collected.",
-              "lineNumber": 37,
+              "lineNumber": 38,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30406,7 +30406,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `ice collection` operation starts until each relay candidate has been recieved.",
-              "lineNumber": 38,
+              "lineNumber": 39,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30416,7 +30416,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `send custom parameters` operation starts until it has finished.",
-              "lineNumber": 39,
+              "lineNumber": 40,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30426,7 +30426,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `forward call` operation starts until it has finished.",
-              "lineNumber": 40,
+              "lineNumber": 41,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30436,7 +30436,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `direct transfer` operation starts until it has finished.",
-              "lineNumber": 41,
+              "lineNumber": 42,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30446,7 +30446,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `consultative transfer` operation starts until it has finished.",
-              "lineNumber": 42,
+              "lineNumber": 43,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30456,7 +30456,7 @@
             {
               "title": "property",
               "description": "The amount of time it takes from when the `join call` operation starts until it has finished.",
-              "lineNumber": 43,
+              "lineNumber": 44,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -30466,7 +30466,7 @@
             {
               "title": "example",
               "description": "const report = client.call.getReport(callId)\nconst callDuration = report.metrics.find(metric => metric.type === client.call.metrics.CALL_DURATION)\nlog(`Call duration was ${callDuration.data}ms.`)",
-              "lineNumber": 44
+              "lineNumber": 45
             }
           ],
           "loc": {
@@ -30475,18 +30475,18 @@
               "column": 0
             },
             "end": {
-              "line": 171,
+              "line": 172,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 172,
+                "line": 173,
                 "column": 0
               },
               "end": {
-                "line": 202,
+                "line": 203,
                 "column": 1
               }
             },
@@ -30504,7 +30504,7 @@
             {
               "title": "property",
               "name": "CALL_DURATION",
-              "lineNumber": 14,
+              "lineNumber": 15,
               "description": {
                 "type": "root",
                 "children": [
@@ -30527,7 +30527,7 @@
             {
               "title": "property",
               "name": "MAKE_CALL_PRE_LOCAL_SETUP",
-              "lineNumber": 15,
+              "lineNumber": 16,
               "description": {
                 "type": "root",
                 "children": [
@@ -30558,7 +30558,7 @@
             {
               "title": "property",
               "name": "MAKE_CALL_LOCAL_SETUP",
-              "lineNumber": 16,
+              "lineNumber": 17,
               "description": {
                 "type": "root",
                 "children": [
@@ -30581,7 +30581,7 @@
             {
               "title": "property",
               "name": "MAKE_CALL_REMOTE_SETUP",
-              "lineNumber": 17,
+              "lineNumber": 18,
               "description": {
                 "type": "root",
                 "children": [
@@ -30604,7 +30604,7 @@
             {
               "title": "property",
               "name": "TIME_TO_MAKE",
-              "lineNumber": 18,
+              "lineNumber": 19,
               "description": {
                 "type": "root",
                 "children": [
@@ -30635,7 +30635,7 @@
             {
               "title": "property",
               "name": "ANSWER_CALL_LOCAL_SETUP",
-              "lineNumber": 19,
+              "lineNumber": 20,
               "description": {
                 "type": "root",
                 "children": [
@@ -30666,7 +30666,7 @@
             {
               "title": "property",
               "name": "ANSWER_CALL_PRE_LOCAL_SETUP",
-              "lineNumber": 21,
+              "lineNumber": 22,
               "description": {
                 "type": "root",
                 "children": [
@@ -30697,7 +30697,7 @@
             {
               "title": "property",
               "name": "TIME_TO_ANSWER",
-              "lineNumber": 22,
+              "lineNumber": 23,
               "description": {
                 "type": "root",
                 "children": [
@@ -30728,7 +30728,7 @@
             {
               "title": "property",
               "name": "TIME_FROM_RECEIVE_TO_ANSWER",
-              "lineNumber": 23,
+              "lineNumber": 24,
               "description": {
                 "type": "root",
                 "children": [
@@ -30751,7 +30751,7 @@
             {
               "title": "property",
               "name": "TIME_TO_CALL_SETUP_DURATION",
-              "lineNumber": 24,
+              "lineNumber": 25,
               "description": {
                 "type": "root",
                 "children": [
@@ -30790,7 +30790,7 @@
             {
               "title": "property",
               "name": "TIME_TO_RINGING",
-              "lineNumber": 25,
+              "lineNumber": 26,
               "description": {
                 "type": "root",
                 "children": [
@@ -30813,7 +30813,7 @@
             {
               "title": "property",
               "name": "TIME_TO_IGNORE",
-              "lineNumber": 26,
+              "lineNumber": 27,
               "description": {
                 "type": "root",
                 "children": [
@@ -30836,7 +30836,7 @@
             {
               "title": "property",
               "name": "TIME_TO_REJECT",
-              "lineNumber": 27,
+              "lineNumber": 28,
               "description": {
                 "type": "root",
                 "children": [
@@ -30859,7 +30859,7 @@
             {
               "title": "property",
               "name": "TIME_TO_ADD_MEDIA",
-              "lineNumber": 28,
+              "lineNumber": 29,
               "description": {
                 "type": "root",
                 "children": [
@@ -30890,7 +30890,7 @@
             {
               "title": "property",
               "name": "TIME_TO_ADD_MEDIA_REMOTE",
-              "lineNumber": 29,
+              "lineNumber": 30,
               "description": {
                 "type": "root",
                 "children": [
@@ -30921,7 +30921,7 @@
             {
               "title": "property",
               "name": "TIME_TO_REMOVE_MEDIA",
-              "lineNumber": 30,
+              "lineNumber": 31,
               "description": {
                 "type": "root",
                 "children": [
@@ -30952,7 +30952,7 @@
             {
               "title": "property",
               "name": "TIME_TO_REMOVE_MEDIA_REMOTE",
-              "lineNumber": 31,
+              "lineNumber": 32,
               "description": {
                 "type": "root",
                 "children": [
@@ -30983,7 +30983,7 @@
             {
               "title": "property",
               "name": "TIME_TO_RESTART_MEDIA",
-              "lineNumber": 32,
+              "lineNumber": 33,
               "description": {
                 "type": "root",
                 "children": [
@@ -31014,7 +31014,7 @@
             {
               "title": "property",
               "name": "TIME_TO_HOLD_LOCAL",
-              "lineNumber": 33,
+              "lineNumber": 34,
               "description": {
                 "type": "root",
                 "children": [
@@ -31045,7 +31045,7 @@
             {
               "title": "property",
               "name": "TIME_TO_HOLD_REMOTE",
-              "lineNumber": 34,
+              "lineNumber": 35,
               "description": {
                 "type": "root",
                 "children": [
@@ -31076,7 +31076,7 @@
             {
               "title": "property",
               "name": "TIME_TO_UNHOLD_LOCAL",
-              "lineNumber": 35,
+              "lineNumber": 36,
               "description": {
                 "type": "root",
                 "children": [
@@ -31107,7 +31107,7 @@
             {
               "title": "property",
               "name": "TIME_TO_UNHOLD_REMOTE",
-              "lineNumber": 36,
+              "lineNumber": 37,
               "description": {
                 "type": "root",
                 "children": [
@@ -31138,7 +31138,7 @@
             {
               "title": "property",
               "name": "TIME_TO_COLLECT_ICE_CANDIDATES",
-              "lineNumber": 37,
+              "lineNumber": 38,
               "description": {
                 "type": "root",
                 "children": [
@@ -31161,7 +31161,7 @@
             {
               "title": "property",
               "name": "TIME_TO_RELAY_CANDIDATES",
-              "lineNumber": 38,
+              "lineNumber": 39,
               "description": {
                 "type": "root",
                 "children": [
@@ -31192,7 +31192,7 @@
             {
               "title": "property",
               "name": "TIME_TO_SEND_CUSTOM_PARAMETERS",
-              "lineNumber": 39,
+              "lineNumber": 40,
               "description": {
                 "type": "root",
                 "children": [
@@ -31223,7 +31223,7 @@
             {
               "title": "property",
               "name": "TIME_TO_FORWARD",
-              "lineNumber": 40,
+              "lineNumber": 41,
               "description": {
                 "type": "root",
                 "children": [
@@ -31254,7 +31254,7 @@
             {
               "title": "property",
               "name": "TIME_TO_DIRECT_TRANSFER",
-              "lineNumber": 41,
+              "lineNumber": 42,
               "description": {
                 "type": "root",
                 "children": [
@@ -31285,7 +31285,7 @@
             {
               "title": "property",
               "name": "TIME_TO_CONSULTATIVE_TRANSFER",
-              "lineNumber": 42,
+              "lineNumber": 43,
               "description": {
                 "type": "root",
                 "children": [
@@ -31316,7 +31316,7 @@
             {
               "title": "property",
               "name": "TIME_TO_JOIN",
-              "lineNumber": 43,
+              "lineNumber": 44,
               "description": {
                 "type": "root",
                 "children": [

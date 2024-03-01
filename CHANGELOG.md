@@ -13,6 +13,10 @@ Ribbon WebRTC SDK change log.
 
 - Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
 
+### Changed
+
+- Changed call metrics logic so that call metrics are only added into the report as part of a successful call event. This way, the metric value will only measure the duration of a successful operation. `KJS-1972`
+
 ## 6.8.0 - 2024-02-23
 
 ### Added
