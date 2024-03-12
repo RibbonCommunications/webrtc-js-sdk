@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 6.9.0 - beta
 
+### Added
+
+- Added extra validation on `sendCustomParameters` API to ensure parameters are set on the Call, before calling this API. `KJS-2047`
+
 ### Fixed
 
 - Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
