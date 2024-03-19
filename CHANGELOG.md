@@ -1,4 +1,4 @@
-[copyright © 2023 ribbon communications operating company, inc. all rights reserved]: #
+[copyright © 2024 ribbon communications operating company, inc. all rights reserved]: #
 
 # Change Log
 
@@ -1623,4 +1623,4 @@ Our reactive approach to this new version of the SDK puts more responsibility on
 - Completely new unified API that replaces both FCS and Kandy.js 2.x. See the reference documentation.
 - New documentation portal with all new documentation and quick starts for 3.0.
 
-[copyright © 2023 ribbon communications operating company, inc. all rights reserved]: #
+[copyright © 2024 ribbon communications operating company, inc. all rights reserved]: #
