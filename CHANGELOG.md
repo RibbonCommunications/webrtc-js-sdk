@@ -12,6 +12,7 @@ Ribbon WebRTC SDK change log.
 ### Added
 
 - Added extra validation on `sendCustomParameters` API to ensure parameters are set on the Call, before calling this API. `KJS-2047`
+- Added extra validation to `setCredentials` API to ensure user does not attempt to change credentials while being subscribed to services under different credentials. `KJS-2088`
 
 ### Fixed
 

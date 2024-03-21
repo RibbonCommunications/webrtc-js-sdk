@@ -3217,19 +3217,24 @@
               "type": null
             },
             {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 4
+              "lineNumber": 5
             },
             {
               "title": "event",
               "description": "auth:change",
-              "lineNumber": 5
+              "lineNumber": 6
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 6,
+              "lineNumber": 7,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -3243,18 +3248,18 @@
               "column": 0
             },
             "end": {
-              "line": 8,
+              "line": 9,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 9,
+                "line": 10,
                 "column": 0
               },
               "end": {
-                "line": 9,
+                "line": 10,
                 "column": 40
               }
             },
@@ -3267,7 +3272,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 6,
+              "lineNumber": 7,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -3281,6 +3286,7 @@
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "api",
           "kind": "event",
           "name": "auth:change",
@@ -3298,10 +3304,162 @@
             },
             {
               "name": "auth:change",
-              "kind": "event"
+              "kind": "event",
+              "scope": "static"
             }
           ],
           "namespace": "api.event:auth:change"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "There was an error with authentication."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "memberof",
+              "description": "api",
+              "lineNumber": 5
+            },
+            {
+              "title": "event",
+              "description": "auth:error",
+              "lineNumber": 6
+            },
+            {
+              "title": "param",
+              "description": null,
+              "lineNumber": 7,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "params"
+            },
+            {
+              "title": "param",
+              "description": "The Basic error object.",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "api.BasicError"
+              },
+              "name": "params.error"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 0
+            },
+            "end": {
+              "line": 22,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 0
+              },
+              "end": {
+                "line": 23,
+                "column": 38
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_beta/packages/kandy/src/auth/interface/eventTypes.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "params",
+              "lineNumber": 7,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "params.error",
+                  "lineNumber": 8,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The Basic error object."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "api.BasicError"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "api",
+          "kind": "event",
+          "name": "auth:error",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "api",
+              "kind": "module"
+            },
+            {
+              "name": "auth:error",
+              "kind": "event",
+              "scope": "static"
+            }
+          ],
+          "namespace": "api.event:auth:error"
         },
         {
           "description": {
@@ -5481,6 +5639,31 @@
                     "value": "Sets the user credentials necessary to make requests to the platform."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If credentials has previously been set, they cannot be set again if there is an active\nsubscription. An "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventautherror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " will be emitted in\nthis scenario."
+                  }
+                ]
               }
             ]
           },
@@ -5488,30 +5671,30 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 3,
+              "lineNumber": 7,
               "type": null
             },
             {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 4
+              "lineNumber": 8
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 9,
               "name": "userCredentialsAuth"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 6,
+              "lineNumber": 10,
               "name": "setCredentials"
             },
             {
               "title": "param",
               "description": "The credentials object.",
-              "lineNumber": 7,
+              "lineNumber": 11,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -5521,7 +5704,7 @@
             {
               "title": "param",
               "description": "The username including the application's domain.",
-              "lineNumber": 8,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5531,7 +5714,7 @@
             {
               "title": "param",
               "description": "The user's password.",
-              "lineNumber": 9,
+              "lineNumber": 13,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5541,7 +5724,7 @@
             {
               "title": "param",
               "description": "The user's authorization name.",
-              "lineNumber": 10,
+              "lineNumber": 14,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -5554,7 +5737,7 @@
             {
               "title": "example",
               "description": "client.setCredentials({\n  username: 'alfred@example.com',\n  password: '********'\n  authname: '********'\n});",
-              "lineNumber": 11
+              "lineNumber": 15
             }
           ],
           "loc": {
@@ -5563,18 +5746,18 @@
               "column": 4
             },
             "end": {
-              "line": 166,
+              "line": 170,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 229,
+                "line": 233,
                 "column": 4
               },
               "end": {
-                "line": 246,
+                "line": 250,
                 "column": 5
               }
             },
@@ -5591,7 +5774,7 @@
             {
               "title": "param",
               "name": "credentials",
-              "lineNumber": 7,
+              "lineNumber": 11,
               "description": {
                 "type": "root",
                 "children": [
@@ -5614,7 +5797,7 @@
                 {
                   "title": "param",
                   "name": "credentials.username",
-                  "lineNumber": 8,
+                  "lineNumber": 12,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5637,7 +5820,7 @@
                 {
                   "title": "param",
                   "name": "credentials.password",
-                  "lineNumber": 9,
+                  "lineNumber": 13,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5660,7 +5843,7 @@
                 {
                   "title": "param",
                   "name": "credentials.authname",
-                  "lineNumber": 10,
+                  "lineNumber": 14,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5840,22 +6023,22 @@
           ],
           "loc": {
             "start": {
-              "line": 167,
+              "line": 171,
               "column": 4
             },
             "end": {
-              "line": 194,
+              "line": 198,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 229,
+                "line": 233,
                 "column": 4
               },
               "end": {
-                "line": 246,
+                "line": 250,
                 "column": 5
               }
             },
@@ -6047,22 +6230,22 @@
           ],
           "loc": {
             "start": {
-              "line": 195,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 211,
+              "line": 215,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 229,
+                "line": 233,
                 "column": 4
               },
               "end": {
-                "line": 246,
+                "line": 250,
                 "column": 5
               }
             },
@@ -6254,22 +6437,22 @@
           ],
           "loc": {
             "start": {
-              "line": 212,
+              "line": 216,
               "column": 4
             },
             "end": {
-              "line": 228,
+              "line": 232,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 229,
+                "line": 233,
                 "column": 4
               },
               "end": {
-                "line": 246,
+                "line": 250,
                 "column": 5
               }
             },

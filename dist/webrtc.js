@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.9.0-beta.1277
+ * Version: 6.9.0-beta.1278
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 33770:
+/***/ 18091:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.9.0-beta.1277';
+  return '6.9.0-beta.1278';
 }
 
 /***/ }),
@@ -3113,6 +3113,10 @@ function createAPI(container) {
     /**
      * Sets the user credentials necessary to make requests to the platform.
      *
+     * If credentials has previously been set, they cannot be set again if there is an active
+     * subscription. An {@link api.event:auth:error auth:error} will be emitted in
+     * this scenario.
+     *
      * @public
      * @memberof api
      * @requires userCredentialsAuth
@@ -3241,6 +3245,7 @@ exports.AUTH_RESUB = exports.AUTH_ERROR = exports.AUTH_CREDENTIALS_SET = exports
  * The authentication credentials have been set. You can check the set user details with the `getUserInfo` API.
  *
  * @public
+ * @static
  * @memberof api
  * @event auth:change
  * @param {Object} params
@@ -3251,8 +3256,8 @@ const AUTH_CHANGE = exports.AUTH_CHANGE = 'auth:change';
  * There was an error with authentication.
  *
  * @public
+ * @static
  * @memberof api
- * @requires connect
  * @event auth:error
  * @param {Object} params
  * @param {api.BasicError} params.error The Basic error object.
@@ -3267,6 +3272,7 @@ const AUTH_ERROR = exports.AUTH_ERROR = 'auth:error';
  * resubscription attempts will be made, but may become disconnected if the
  * session expires.
  * @public
+ * @static
  * @memberof api
  * @requires connect
  * @event auth:resub
@@ -3281,6 +3287,7 @@ const AUTH_RESUB = exports.AUTH_RESUB = 'auth:resub';
  * The information (credentials) needed for connecting have been set.
  *
  * @public
+ * @static
  * @memberof api
  * @requires connect
  * @event auth:credentialsSet
@@ -3907,14 +3914,17 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createOperation;
 var actions = _interopRequireWildcard(__webpack_require__(35770));
 var eventTypes = _interopRequireWildcard(__webpack_require__(71430));
+var _selectors = __webpack_require__(48944);
 var _constants = __webpack_require__(49833);
-var _selectors = __webpack_require__(46942);
+var _selectors2 = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _base = _interopRequireDefault(__webpack_require__(21166));
 var _utf = _interopRequireDefault(__webpack_require__(35050));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Auth
+
+// Subscription plugin
 
 // Constants
 
@@ -3943,8 +3953,29 @@ function createOperation(container) {
       bearerAccessToken,
       accessToken
     } = _ref;
+    const {
+      username: existingUsername,
+      token: existingToken
+    } = (0, _selectors2.getUserInfo)(context.getState());
+    const activeServices = (0, _selectors.getSubscribedServices)(context.getState());
+    if ((existingUsername !== username || existingToken !== accessToken) && activeServices.length > 0) {
+      // User wants to change credentials while SDK is already subscribed to some services, under different credentials.
+      // Tell user to first unsubscribe.
+      const error = new _errors.default({
+        message: 'Cannot change credentials while previous user has an active subscription.',
+        code: _errors.authCodes.INVALID_STATE
+      });
+      context.dispatch(actions.setCredentialsFinished({
+        error
+      }, platform));
+      emitEvent(eventTypes.AUTH_ERROR, {
+        error
+      });
+      return;
+    }
+
     // Retrieve the connection info.
-    const config = (0, _selectors.getAuthConfig)(context.getState());
+    const config = (0, _selectors2.getAuthConfig)(context.getState());
 
     // Common request options, to be used for all subsequent requests after connect.
     const requestOptions = {
@@ -9744,7 +9775,7 @@ exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -21542,7 +21573,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -33289,6 +33320,7 @@ const authCodes = exports.authCodes = {
   LINK_SUBSCRIBE_FAIL: 'authentication:4',
   LINK_EXTEND_SUBSCRIPTION_FAIL: 'authentication:5',
   LINK_UPDATE_SUBSCRIPTION_FAIL: 'authentication:6',
+  INVALID_STATE: 'authentication:7',
   MISSING_SERVICE: 'authentication:12',
   LINK_SUBSCRIBE_UNAVAILABLE: 'authentication:13'
 };
@@ -34249,7 +34281,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -42034,7 +42066,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(10714));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _sagas = __webpack_require__(22939);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _utils = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -42188,7 +42220,7 @@ var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _utils = __webpack_require__(70720);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _effects = __webpack_require__(27422);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -42278,7 +42310,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -52645,7 +52677,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(33770);
+var _version = __webpack_require__(18091);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -85443,7 +85475,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 1386:
+/***/ 54670:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -85884,7 +85916,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(1386));
+var _version = _interopRequireDefault(__webpack_require__(54670));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
