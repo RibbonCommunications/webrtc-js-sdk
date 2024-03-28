@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.9.0-beta.1287
+ * Version: 6.10.0-beta.1288
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 8632:
+/***/ 4266:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.9.0-beta.1287';
+  return '6.10.0-beta.1288';
 }
 
 /***/ }),
@@ -97,7 +97,8 @@ const callCodes = exports.callCodes = {
   // No ICE candidates found
   NO_ICE_CANDIDATES: 'call:10',
   // Failed to recieve answer due to media mismatch
-  SESSION_MISMATCH: 'call:11'
+  SESSION_MISMATCH: 'call:11',
+  GLARE: 'call:12'
 };
 
 /**
@@ -2707,7 +2708,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(8632);
+var _version = __webpack_require__(4266);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3094,7 +3095,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(8632);
+var _version = __webpack_require__(4266);
 const _excluded = ["onInit"]; // Other plugins.
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -4504,7 +4505,7 @@ function ontrack(listener) {
     trackManager,
     log
   } = this;
-  nativePeer.ontrack = event => {
+  nativePeer.ontrack = async event => {
     /**
      * transceiver: The RTCRtpTransceiver for this remote track. (Available in unified-plan)
      * receiver: The RTCRtpReceiver for this remote track.
@@ -4534,7 +4535,7 @@ function ontrack(listener) {
      */
     let targetStream;
     if (streams.length === 0) {
-      targetStream = new MediaStream([nativeTrack]);
+      targetStream = await new MediaStream([nativeTrack]);
       log.debug('New Track is not associated with remote Stream.');
     } else {
       targetStream = streams[0];
@@ -4562,6 +4563,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = peer;
+exports.setPeerProxies = setPeerProxies;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _events = _interopRequireDefault(__webpack_require__(3255));
 var _methods = _interopRequireDefault(__webpack_require__(424));
@@ -4576,6 +4578,16 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
  * Wrapper imports.
  * Events, methods, and properties that we want to wrap/add to the native Peer.
  */ // Libraries.
+// EXTERNAL PROXY CODE
+let proxies;
+/**
+ * Function used to apply proxied functionality on top of the peer. Typically triggered by an
+ * external proxy SDK.
+ */
+function setPeerProxies(peerProxies) {
+  proxies = peerProxies;
+}
+
 /**
  * Create a Proxied Peer.
  * This Peer is a native PeerConnection that has had some new functionality
@@ -4603,7 +4615,8 @@ function peer(id) {
   });
 
   // Add the event emitter methods to the wrapped methods as well.
-  const customMethods = _objectSpread(_objectSpread({}, _methods.default), {}, {
+  const customMethods = _objectSpread(_objectSpread(_objectSpread({}, _methods.default), proxies), {}, {
+    // EXTERNAL PROXY CODE
     on: emitter.on.bind(emitter),
     off: emitter.off.bind(emitter),
     once: emitter.once.bind(emitter)
@@ -6690,6 +6703,12 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = Renderer;
 var _logs = __webpack_require__(8915);
 var _utils = __webpack_require__(791);
+/*
+ * IMPORTANT NOTE: This file is largely duplicated in other packages (search filename in project).
+ * Ideally, once we complete KJS-174, we can avoid this duplication, but for now ensure changes here
+ * are reflected in the duplicates as necessary.
+ */
+
 /**
  * Renderer for managing where Tracks are rendered.
  */
@@ -7108,7 +7127,7 @@ function TrackManager() {
 /***/ }),
 
 /***/ 535:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -7117,11 +7136,15 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = WebRTCManager;
+var _Peer = __webpack_require__(9531);
+var _logs = __webpack_require__(8915);
 /**
  * "Manager" for general WebRTC functions.
  * @class WebRTCManager
  */
 function WebRTCManager(managers) {
+  const log = _logs.logManager.getLogger('Manager', 'WebRTC');
+
   /**
    * Retrieve the list of available and supported codecs based on the browser's capabilities for sending media.
    * @method getAvailableCodecs
@@ -7134,11 +7157,31 @@ function WebRTCManager(managers) {
       return capabilities.codecs;
     }
   }
+
+  /**
+   * Set provided proxies using the "set proxies" functions per WebRTC functionality
+   * @param {Object} proxies An object of proxied WebRTC functionality
+   * @param {Object} proxies.peerProxies An object containing WebRTC Peer functionality proxies
+   */
+  function setProxies(proxies) {
+    // Set the provided peer proxies
+    if (proxies.peer) {
+      (0, _Peer.setPeerProxies)(proxies.peer);
+      if (Object.keys(proxies.peer).length) {
+        log.debug('Peer functionality has been updated with proxies.');
+      } else {
+        log.debug('Peer functionality has been updated to remove proxies.');
+      }
+    }
+
+    // TODO: Set any other proxies (media? track?) as necessary
+  }
   /**
    * The exposed API.
    */
   return {
-    getAvailableCodecs
+    getAvailableCodecs,
+    setProxies
   };
 }
 
@@ -7205,8 +7248,11 @@ function Media(nativeStream, isLocal) {
       return;
     }
 
-    // Add the native MediaStreamTrack to the MediaStream.
-    stream.addTrack(track.track);
+    // Add the native MediaStreamTrack to the MediaStream, if not already a part of the stream.
+    if (!stream.getTracks().find(streamTrack => streamTrack.id === track.id)) {
+      stream.addTrack(track.track);
+    }
+
     // Add the Track to the Media object.
     tracks.set(track.id, track);
 
@@ -7492,100 +7538,99 @@ function Session(id, managers) {
     const peer = peerManager.get(peerId);
     // TODO: Better error handling?
     if (peer) {
-      const addTrackOrReuseTransceiverPromises = tracks.map(track => {
-        return new Promise((resolve, reject) => {
-          // We try to find a reusable transceiver that we can attach the track to achieve the following:
-          // - Avoid transceiver pollution and needing to create a brand new transceiver to attach the track to.
-          // - Allow re-adding of the same track type that has been previously removed.
-          //   (This is so that we can still have re-adding of tracks when using the "basic" media API which imposes a 1-audio & 1-video limit)
-          const reusableTransceiver = peer.findReusableTransceiver(track.track.kind);
+      const addTrackOrReuseTransceiverPromises = tracks.map(async track => {
+        // We try to find a reusable transceiver that we can attach the track to achieve the following:
+        // - Avoid transceiver pollution and needing to create a brand new transceiver to attach the track to.
+        // - Allow re-adding of the same track type that has been previously removed.
+        //   (This is so that we can still have re-adding of tracks when using the "basic" media API which imposes a 1-audio & 1-video limit)
+        const reusableTransceiver = peer.findReusableTransceiver(track.track.kind);
 
-          // If we can find a reusable transceiver, reuse it.
-          if (reusableTransceiver) {
-            reusableTransceiver.sender
-            // Replace the dummy track on the Sender with the actual track we want to send.
-            .replaceTrack(track.track).then(() => {
-              /*
-               * Set the correct direction on the Transceiver to include that we now want to send:
-               *   - sendrecv --> sendrecv
-               *   - sendonly --> sendonly
-               *   - recvonly --> sendrecv
-               *   - inactive --> sendonly
-               */
-              reusableTransceiver.direction = ['sendrecv', 'recvonly'].includes(reusableTransceiver.direction) ? 'sendrecv' : 'sendonly';
-              resolve(`Track (${track.track.kind} : ${track.id}) reused transceiver (mid: ${reusableTransceiver.mid}).`);
-            }).catch(err => {
-              log.error(err);
-              reject(err);
-            });
-          } else {
-            // To get around the current limitation described above, we use peerConnection's `addTrack` when we can't find a reusable transceiver.
-            // `addTrack` does one of the following when called:
-            // - Create a new transceiver and attaches the track and stream to the sender
-            // - Find and use an existing transceiver that has never been used to send data before and attach the track and stream to the sender.
-            peer.addTransceiver(track);
-            resolve(`Added track (${track.track.kind} : ${track.id}).`);
+        // If we can find a reusable transceiver, reuse it.
+        if (reusableTransceiver) {
+          // Replace the dummy track on the Sender with the actual track we want to send.
+          try {
+            await reusableTransceiver.sender.replaceTrack(track.track);
+          } catch (err) {
+            log.error(err);
+            throw err;
           }
-        }).then(message => {
-          // Set event emitters and handlers
-          log.info(message);
+          /*
+           * Set the correct direction on the Transceiver to include that we now want to send:
+           *   - sendrecv --> sendrecv
+           *   - sendonly --> sendonly
+           *   - recvonly --> sendrecv
+           *   - inactive --> sendonly
+           */
+          reusableTransceiver.direction = ['sendrecv', 'recvonly'].includes(reusableTransceiver.direction) ? 'sendrecv' : 'sendonly';
+          log.info(`Track (${track.track.kind} : ${track.id}) reused transceiver (mid: ${reusableTransceiver.mid}).`);
+        } else {
+          // To get around the current limitation described above, we use peerConnection's `addTrack` when we can't find a reusable transceiver.
+          // `addTrack` does one of the following when called:
+          // - Create a new transceiver and attaches the track and stream to the sender
+          // - Find and use an existing transceiver that has never been used to send data before and attach the track and stream to the sender.
+          await peer.addTransceiver(track);
+          log.info(`Added track (${track.track.kind} : ${track.id}).`);
+        }
 
-          // Indicate that the Session has a new Track.
-          emitter.emit('new:track', {
-            local: true,
-            trackId: track.id
-          });
-          settings.dscpControls = (0, _utils.mergeValues)(settings.dscpControls, dscpTrackMapping);
-          track.once('ended', _ref => {
-            let {
-              isUnsolicited
-            } = _ref;
-            const peer = peerManager.get(peerId);
-            if (peer) {
-              // If the PeerConnection is closed, we don't need to worry about
-              //    removing the track (and it would throw an error anyway).
-              if (peer.signalingState !== 'closed') {
-                // If this track ending was expected, remove it from the Peer
-                //    immediately. Otherwise another operation will remove it.
-                if (!isUnsolicited) {
-                  peer.removeTrack(track.id);
+        // Indicate that the Session has a new Track.
+        emitter.emit('new:track', {
+          local: true,
+          trackId: track.id
+        });
 
-                  // Bubble the event upwards to event listeners.
+        // Add the dscpControls to the session's settings map
+        settings.dscpControls = (0, _utils.mergeValues)(settings.dscpControls, dscpTrackMapping);
+
+        // Setup event handler for once the track ends
+        track.once('ended', _ref => {
+          let {
+            isUnsolicited
+          } = _ref;
+          const peer = peerManager.get(peerId);
+          if (peer) {
+            // If the PeerConnection is closed, we don't need to worry about
+            //    removing the track (and it would throw an error anyway).
+            if (peer.signalingState !== 'closed') {
+              // If this track ending was expected, remove it from the Peer
+              //    immediately. Otherwise another operation will remove it.
+              if (!isUnsolicited) {
+                peer.removeTrack(track.id);
+
+                // Bubble the event upwards to event listeners.
+                emitter.emit('track:ended', {
+                  local: true,
+                  trackId: track.id,
+                  isUnsolicited
+                });
+              } else {
+                // In the event this track ending was due to a device change
+                // we should update our device list before notifying the client that
+                // the track ended so they don't try to use a removed device
+                // `true` --> Tell the SDK to _not_ bubble this event to the
+                //    application; only update state. The device disconnection
+                //    will trigger it's own "device change" event.
+                deviceManager.emit('change', true);
+
+                // Wait 50ms before emitting `track:ended` to allow the SDK
+                // a chance to update the device list in state
+                setTimeout(() => {
                   emitter.emit('track:ended', {
                     local: true,
                     trackId: track.id,
                     isUnsolicited
                   });
-                } else {
-                  // In the event this track ending was due to a device change
-                  // we should update our device list before notifying the client that
-                  // the track ended so they don't try to use a removed device
-                  // `true` --> Tell the SDK to _not_ bubble this event to the
-                  //    application; only update state. The device disconnection
-                  //    will trigger it's own "device change" event.
-                  deviceManager.emit('change', true);
-
-                  // Wait 50ms before emitting `track:ended` to allow the SDK
-                  // a chance to update the device list in state
-                  setTimeout(() => {
-                    emitter.emit('track:ended', {
-                      local: true,
-                      trackId: track.id,
-                      isUnsolicited
-                    });
-                  }, 50);
-                }
-
-                // Remove track from session dscp settings
-                if (settings.dscpControls.hasOwnProperty(track.id)) {
-                  log.debug(`Removing track ${track.id} from session dscp settings`);
-                  delete settings.dscpControls[track.id];
-                }
-              } else {
-                log.debug(`Received ended event for track ${track.id}, but its associated Peer ${peer.id} is closed. Ignoring this event...`);
+                }, 50);
               }
+
+              // Remove track from session dscp settings
+              if (settings.dscpControls.hasOwnProperty(track.id)) {
+                log.debug(`Removing track ${track.id} from session dscp settings`);
+                delete settings.dscpControls[track.id];
+              }
+            } else {
+              log.debug(`Received ended event for track ${track.id}, but its associated Peer ${peer.id} is closed. Ignoring this event...`);
             }
-          });
+          }
         });
       });
       return Promise.all(addTrackOrReuseTransceiverPromises);
@@ -7683,7 +7728,6 @@ function Session(id, managers) {
    * @param {Object} result The result of ice collection check function.
    * @param {string} result.type The action to take.
    * @param {number} result.wait How many ms to wait for the next scheduled check.
-   * @return {Promise} Resolves with the rollbacked description or error.
    */
   function iceCollectionCheckResult(result) {
     const peer = peerManager.get(peerId);
@@ -8216,7 +8260,7 @@ function Session(id, managers) {
    *     This will close the previous Peer, stopping any media being sent/received on it.
    * @method recreatePeer
    */
-  function recreatePeer() {
+  async function recreatePeer() {
     const oldPeer = peer;
     const newPeer = peerManager.create(config.peer);
     if (newPeer) {
@@ -8226,9 +8270,9 @@ function Session(id, managers) {
       peer = newPeer;
 
       // Copy tracks
-      oldPeer.localTracks.forEach(oldLocalTrack => {
-        newPeer.addTransceiver(oldLocalTrack);
-      });
+      await Promise.all(oldPeer.localTracks.map(async oldLocalTrack => {
+        await newPeer.addTransceiver(oldLocalTrack);
+      }));
 
       // Set event handlers
       setupPeerEventHandlers(newPeer);
@@ -19810,7 +19854,7 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 8849:
+/***/ 4010:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -19912,7 +19956,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(5899));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(8849));
+var _version = _interopRequireDefault(__webpack_require__(4010));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
