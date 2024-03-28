@@ -1,4 +1,4 @@
-[copyright © 2023 ribbon communications operating company, inc. all rights reserved]: #
+[copyright © 2024 ribbon communications operating company, inc. all rights reserved]: #
 
 # Change Log
 
@@ -6,6 +6,23 @@ Ribbon WebRTC SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+
+## 6.9.0 - 2024-03-28
+
+### Added
+
+- Added extra validation on `sendCustomParameters` API to ensure parameters are set on the Call, before calling this API. `KJS-2047`
+- Added extra validation to `setCredentials` API to ensure user does not attempt to change credentials while being subscribed to services under different credentials. `KJS-2088`
+
+### Fixed
+
+- Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
+- Fixed a Call issue where updating ICE server configuration would not take affect after the user subscribed. `KJS-2095`
+- Fixed an issue where the SDK was incorrectly reporting previous call state `Ended` when a call is ended locally. It now correctly reports previous call state as `Connected`. `KJS-2099`
+
+### Changed
+
+- Changed call metrics logic so that call metrics are only added into the report as part of a successful call event. This way, the metric value will only measure the duration of a successful operation. `KJS-1972`
 
 ## 6.8.0 - 2024-02-23
 
@@ -51,7 +68,6 @@ Ribbon WebRTC SDK change log.
   - All `proxy:error` events will now have a clearer human-readable message and error code.
   - The `proxy:error` events triggered from the `proxy.initializeRemote` API will more clearly describe the cause of the error.
   - Documentation for the Proxy APIs have been updated to be clearer about expected error scenarios.
-- Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
 - Fixed a Call issue where `devices:change` events were emitted when a call ended even though no device changed. `KJS-1953`
 - Fixed a Call issue where two `devices:change` events were emitted when a media device was disconnected instead of only one. `KJS-1953`
 - Fixed the configuration sample used in video calling for the `Voice and Video Calls` tutorial trail, since video call was failing. `KJS-1957`
@@ -1610,4 +1626,4 @@ Our reactive approach to this new version of the SDK puts more responsibility on
 - Completely new unified API that replaces both FCS and Kandy.js 2.x. See the reference documentation.
 - New documentation portal with all new documentation and quick starts for 3.0.
 
-[copyright © 2023 ribbon communications operating company, inc. all rights reserved]: #
+[copyright © 2024 ribbon communications operating company, inc. all rights reserved]: #
