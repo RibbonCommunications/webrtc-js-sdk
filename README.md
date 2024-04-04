@@ -15,7 +15,7 @@ To install a particular build branch or beta branch with the Github URL, run:
 ### In the browser :
 ```html
 <script src="https://unpkg.com/@rbbn/webrtc-js-sdk@6.10.0/dist/webrtc.js"
-  integrity="sha384-+1Tc9xgguilGfZOMVPv8kJ3/6oHX7qjd6HQRgBkhq+MYuLqzkr5aOGk+P10lfz5D"
+  integrity="sha384-V1gMDVEvgWDEiYgGJiU9QPmuNp857t2x+vu5PCBOFR2qgeW6orGIjV7+geCHDRjD"
   crossorigin="anonymous">
 </script>
 ```
@@ -23,9 +23,9 @@ To install a particular build branch or beta branch with the Github URL, run:
 
 The information about tutorials and documents can be found in the links below
 
-* `Documents`: [docs](https://RibbonCommunications.github.io/webrtc-js-sdk/docs)
+* [Documentation](https://RibbonCommunications.github.io/webrtc-js-sdk/docs)
 
-* `Tutorials`: [SDK Configuration](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/#/Configurations)
+* [Tutorials](https://RibbonCommunications.github.io/webrtc-js-sdk/tutorials/#/Configurations)
 
 ## Compatibility
 
