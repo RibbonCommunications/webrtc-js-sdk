@@ -3507,7 +3507,7 @@ track will be silent and a video track will be a black frame. It is
 possible for the track to start receiving media again (see the
 [media:sourceUnmuted][122] event).
 
-This event is generated outside the control of the SDK. This will predominantely
+This event is generated outside the control of the SDK. This will predominantly
 happen for a remote track during network issues, where media will lose frames
 and be "choppy". This may also happen for a local track if the browser or
 end-user stops allowing the SDK to access the media device, for example.

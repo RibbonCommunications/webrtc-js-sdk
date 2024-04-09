@@ -30,7 +30,7 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed a Proxy issue where setting proxy mode with the existing value would trigger a `devices:change` event even though devices did not change. `KJS-1883`
-- Fixed a Call issue where updating ICE server configuration would not take affect after the user subscribed. `KJS-2095`
+- Fixed a Call issue where updating ICE server configuration would not take effect after the user subscribed. `KJS-2095`
 - Fixed an issue where the SDK was incorrectly reporting previous call state `Ended` when a call is ended locally. It now correctly reports previous call state as `Connected`. `KJS-2099`
 
 ### Changed
