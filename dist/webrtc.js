@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.10.0-beta.1304
+ * Version: 6.10.0-beta.1305
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 40746:
+/***/ 48587:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.10.0-beta.1304';
+  return '6.10.0-beta.1305';
 }
 
 /***/ }),
@@ -5234,6 +5234,20 @@ function createManager(bottle) {
   (0, _Operation.default)(bottle);
   bottle.factory('CallManager', () => callManager(bottle.container));
 }
+
+/**
+ * @method checkCallExistence
+ * @returns {undefined} Returns undefined if the call exists.
+ * @throws {BasicError} Throws if the call does not exist.
+ */
+function checkCallExistence(state, callId) {
+  if (!(0, _selectors.getCallById)(state, callId)) {
+    throw new _errors.default({
+      code: _errors.callCodes.INVALID_PARAM,
+      message: `Call does not exist: ${callId}`
+    });
+  }
+}
 function callManager(container) {
   const {
     context,
@@ -5449,6 +5463,7 @@ function callManager(container) {
      * @return {Object|undefined}
      */
     return async function localOperation(callId) {
+      checkCallExistence(context.getState(), callId);
       const operation = Callstack.operations[stackMethod].local(callId);
       if (ongoing[callId].getByType(_constants2.OPERATIONS.END)) {
         // Prevent new operations when the call is ending.
@@ -5552,6 +5567,8 @@ function callManager(container) {
       const secCallId = params[0];
       // For a JOIN, the ID for the new, joined call is provided as well.
       const joinedCallId = params[1];
+      checkCallExistence(context.getState(), priCallId);
+      checkCallExistence(context.getState(), secCallId);
       const operation = Callstack.operations[stackMethod].local(priCallId, {
         priCallId,
         secCallId,
@@ -9817,7 +9834,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(40746);
+var _version = __webpack_require__(48587);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -21649,7 +21666,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(40746);
+var _version = __webpack_require__(48587);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -34483,7 +34500,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(40746);
+var _version = __webpack_require__(48587);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -42239,7 +42256,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(40746);
+var _version = __webpack_require__(48587);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -42390,7 +42407,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(40746);
+var _version = __webpack_require__(48587);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -52897,7 +52914,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(40746);
+var _version = __webpack_require__(48587);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -85738,7 +85755,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 54676:
+/***/ 24601:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -86179,7 +86196,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(54676));
+var _version = _interopRequireDefault(__webpack_require__(24601));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
