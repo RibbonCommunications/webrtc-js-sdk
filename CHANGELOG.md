@@ -23,6 +23,10 @@ Ribbon WebRTC SDK change log.
 - Fixed `setCredentials` API validation for handling empty access tokens. `KJS-2130`
 - Fixed a Call issue where `call:stateChange` events were not being emitted when Consultative Transfer & Join operations failed.
 
+### Changed
+
+- Optimized the Call "time to answer" metric when in Proxy-mode by reducing a message crossing the proxy channel.
+
 ## 6.9.0 - 2024-03-28
 
 ### Added
