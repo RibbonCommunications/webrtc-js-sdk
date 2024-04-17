@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.10.0-beta.1308
+ * Version: 6.10.0-beta.1309
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 3895:
+/***/ 8391:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.10.0-beta.1308';
+  return '6.10.0-beta.1309';
 }
 
 /***/ }),
@@ -579,9 +579,11 @@ function styleLog(entry) {
 function defaultActionHandler(entry) {
   // Handle the "start" and "stop" action log entries specifically.
   if (['group', 'groupCollapsed'].includes(entry.method)) {
+    // eslint-disable-next-line no-console
     console[entry.method](...entry.messages);
     return;
   } else if (entry.method === 'groupEnd') {
+    // eslint-disable-next-line no-console
     console.groupEnd();
     return;
   }
@@ -590,6 +592,7 @@ function defaultActionHandler(entry) {
     style,
     payload
   } = styleLog(entry);
+  // eslint-disable-next-line no-console
   console[entry.method](prefix, style, payload);
 }
 
@@ -2027,7 +2030,6 @@ async function deviceManager(webRTC, command) {
       const devices = await manager.setupDeviceInitialization(...params);
       return devices;
     } catch (err) {
-      console.debug('Failed to initialize devices: ', err);
       let error = {
         name: err.name,
         message: err.message,
@@ -2407,7 +2409,6 @@ async function mediaManager(webRTC, command) {
       const media = await manager.createLocal(...params);
       return (0, _index.convertMedia)(media);
     } catch (err) {
-      console.debug('Failed to create local media: ', err);
       return stringifyError(err);
     }
   } else if (operation === 'createLocalScreen') {
@@ -2415,7 +2416,6 @@ async function mediaManager(webRTC, command) {
       const media = await manager.createLocalScreen(...params);
       return (0, _index.convertMedia)(media);
     } catch (err) {
-      console.debug('Failed to create local screen: ', err);
       return stringifyError(err);
     }
   } else {
@@ -2563,7 +2563,6 @@ async function sessionManager(webRTC, command) {
         medias: objs.medias.map(_index.convertMedia)
       };
     } catch (err) {
-      console.debug('Failed to get and add media to session: ', err);
       return (0, _mediaManager.stringifyError)(err);
     }
   } else {
@@ -2708,7 +2707,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(3895);
+var _version = __webpack_require__(8391);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3095,7 +3094,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(3895);
+var _version = __webpack_require__(8391);
 const _excluded = ["onInit"]; // Other plugins.
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -3568,6 +3567,7 @@ function defaultLogHandler(entry) {
   }
   const formattedString = (0, _logFormatter.default)(entry);
   const tail = entry.messages.slice(1);
+  // eslint-disable-next-line no-console
   console[method](formattedString, ...tail);
 }
 
@@ -19854,7 +19854,7 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 663:
+/***/ 7326:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -19956,7 +19956,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(5899));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(663));
+var _version = _interopRequireDefault(__webpack_require__(7326));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
