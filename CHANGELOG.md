@@ -25,7 +25,7 @@ Ribbon WebRTC SDK change log.
 
 ### Changed
 
-- Optimized the Call "time to answer" metric when in Proxy-mode by reducing a message crossing the proxy channel.
+- Optimized the Call "time to answer" metric when in Proxy-mode by reducing a message crossing the proxy channel. `KJS-2149`
 
 ## 6.9.0 - 2024-03-28
 
