@@ -22,6 +22,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Call issue where the error for performing an operation on a non-existent call was unclear. `KJS-2097`
 - Fixed `setCredentials` API validation for handling empty access tokens. `KJS-2130`
 - Fixed a Call issue where `call:stateChange` events were not being emitted when Consultative Transfer & Join operations failed.
+- Fixed a Proxy issue where the local SDK would incorrectly report a remote version mismatch as an unknown error. `KJS-2126`
 
 ### Changed
 
