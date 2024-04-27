@@ -877,7 +877,7 @@
             },
             {
               "title": "param",
-              "description": "The amount of time (in seconds) for which to keep subscription up and alive.",
+              "description": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds.",
               "lineNumber": 7,
               "type": {
                 "type": "OptionalType",
@@ -954,22 +954,22 @@
           ],
           "loc": {
             "start": {
-              "line": 42,
+              "line": 45,
               "column": 2
             },
             "end": {
-              "line": 56,
+              "line": 59,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 57,
+                "line": 60,
                 "column": 2
               },
               "end": {
-                "line": 64,
+                "line": 67,
                 "column": 3
               }
             },
@@ -1014,7 +1014,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "The amount of time (in seconds) for which to keep subscription up and alive."
+                            "value": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds."
                           }
                         ]
                       }
