@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.11.0-beta.1342
+ * Version: 6.11.0-beta.1343
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 46430:
+/***/ 89896:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.11.0-beta.1342';
+  return '6.11.0-beta.1343';
 }
 
 /***/ }),
@@ -5122,15 +5122,11 @@ function createFlow(container) {
   return async function remoteOnly(wrtcsSessionId, handler, params) {
     let call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     let notificationEvent;
-
-    // See if there is a pending, local operation.
-    const pendingLocal = call.currentOperations.find(op => {
-      return op.isLocal && op.status === _constants.OP_STATUS.PENDING;
-    });
+    const pendingLocal = call.currentOperations.find(op => op.isLocal && op.status === _constants.OP_STATUS.PENDING);
 
     // TODO: Handle all notifications instead of only the ones the reporter knows about.
     // If the call exists (in the sense that is both valid as an object AND it's state is not ended)
-    if (call && call.state !== _constants2.CALL_STATES.ENDED) {
+    if (call.state !== _constants2.CALL_STATES.ENDED) {
       if (pendingLocal && pendingLocal.eventId && _constants3.REPORTER_OPERATION_EVENTS_MAP.hasOwnProperty(handler.name)) {
         // if call has an on-going local operation, then the
         // notification is part of that operation.
@@ -5475,11 +5471,9 @@ function callManager(container) {
       } else if (timeDelayed >= 500) {
         // Local negotiation is not PENDING even after 500ms delay; can't process this notification.
         log.debug(`Received negotiation answer still cannot be processed; ignoring.`);
-        return undefined;
+        return;
       } else {
-        const ongoingOp = call.currentOperations.find(op => {
-          return op.isLocal && op.status === _constants2.OP_STATUS.ONGOING && op.isBlocking;
-        });
+        const ongoingOp = call.currentOperations.find(op => op.isLocal && op.status === _constants2.OP_STATUS.ONGOING && op.isBlocking);
         if (ongoingOp) {
           log.debug(`Received negotiation answer for local ${ongoingOp.type} too early; delaying processing.`);
           await new Promise(resolve => setTimeout(resolve, 25));
@@ -5487,7 +5481,7 @@ function callManager(container) {
           return await getExistingNegotiation(callId, timeDelayed + 25);
         } else {
           // No PENDING or ONGOING local negotiation; can't process this notification.
-          return undefined;
+          return;
         }
       }
     }
@@ -5585,6 +5579,9 @@ function callManager(container) {
     return async function remoteOnly(wrtcsSessionId) {
       // TODO: Track 'remote notify' operations too.
       const handler = Callstack.notifications[stackMethod];
+      const state = context.getState();
+      const call = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
+      checkCallExistence(state, call.id);
       for (var _len3 = arguments.length, params = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
         params[_key3 - 1] = arguments[_key3];
       }
@@ -5598,12 +5595,13 @@ function callManager(container) {
      */
     return async function remoteOnly(wrtcsSessionId) {
       // Get the calls for both calls involved in the operation.
-      const priCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-      const operation = ongoing[priCall.id].getAll().find(op => {
-        return op.isLocal && [_constants2.OPERATIONS.JOIN, _constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.DIRECT_TRANSFER].includes(op.type);
-      });
+      const state = context.getState();
+      const priCall = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
+      checkCallExistence(state, priCall.id);
+      const operation = ongoing[priCall.id].getAll().find(op => op.isLocal && [_constants2.OPERATIONS.JOIN, _constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.DIRECT_TRANSFER].includes(op.type));
+
       // Note: secCall will not exist for direct transfer.
-      const secCall = (0, _selectors.getCallById)(context.getState(), operation.data.secCallId);
+      const secCall = (0, _selectors.getCallById)(state, operation.data.secCallId);
       const handler = Callstack.notifications[stackMethod];
       for (var _len4 = arguments.length, params = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
         params[_key4 - 1] = arguments[_key4];
@@ -5612,7 +5610,7 @@ function callManager(container) {
 
       // Remove the operation from the on-going lists.
       ongoing[priCall.id].remove(operation);
-      if (operation.type !== _constants2.OPERATIONS.JOIN) {
+      if (operation.type !== _constants2.OPERATIONS.JOIN && secCall) {
         // If a transfer, stop tracking the operation for every call involved.
         ongoing[secCall.id].remove(operation);
       } else if (priCall.id === operation.data.priCallId) {
@@ -9967,7 +9965,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(46430);
+var _version = __webpack_require__(89896);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -15765,8 +15763,19 @@ function sendCallAuditOperation(container) {
    * @param {string} wrtcsSessionId The ID that the server uses to identify the call.
    */
   async function repeatingTask(callId, wrtcsSessionId) {
-    const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const log = logManager.getLogger('CALL', currentCall ? callId : '');
+    const log = logManager.getLogger('CALL', callId || '');
+    let state;
+    try {
+      /**
+       * KJS-2164 TODO: This task should be stopped when the SDK is destroyed,
+       *  instead of having to check that state exists
+       */
+      state = context.getState();
+    } catch (e) {
+      log.debug('Failed to run repeating task; state has likely been destroyed');
+      return;
+    }
+    const currentCall = (0, _selectors.getCallById)(state, callId);
 
     // Stop repeating if the Call has already ended or it has been cancelled.
     if ([_constants.CALL_STATES.ENDED, _constants.CALL_STATES.CANCELLED].includes(currentCall.state)) {
@@ -21911,7 +21920,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(46430);
+var _version = __webpack_require__(89896);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -34746,7 +34755,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(46430);
+var _version = __webpack_require__(89896);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -42505,7 +42514,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(46430);
+var _version = __webpack_require__(89896);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -42656,7 +42665,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(46430);
+var _version = __webpack_require__(89896);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -53209,7 +53218,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(46430);
+var _version = __webpack_require__(89896);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -86039,7 +86048,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 91834:
+/***/ 69760:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -86480,7 +86489,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(91834));
+var _version = _interopRequireDefault(__webpack_require__(69760));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
