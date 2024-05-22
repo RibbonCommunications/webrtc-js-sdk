@@ -2246,6 +2246,11 @@ A new incoming call has been received.
 Information about the Call can be retrieved using the [call.getById][27]
 API.
 
+NOTE: Upon receiving this notification the call is in "Initiating" state. In order
+to answer calls, they must be in either "Ringing" or "Initiated" states. Therefore,
+this event should not be used to prompt the user to respond. Instead, the
+[call:stateChange][59] event should be used for this purpose.
+
 #### Parameters
 
 *   `params` **[Object][7]** 
@@ -2257,7 +2262,7 @@ API.
 
 ```javascript
 client.on('call:receive', function(params) {
-    // We have received a call, prompt the user to respond.
+    // We have received a call
     promptUser(client.call.getById(params.callId));
 });
 ```
