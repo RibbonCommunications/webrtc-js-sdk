@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.10.0
+ * Version: 6.11.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 4822:
+/***/ 1984:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,169 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.10.0';
+  return '6.11.0';
+}
+
+/***/ }),
+
+/***/ 5189:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(1600);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.autoRestart = autoRestart;
+exports.defer = defer;
+exports.delay = delay;
+exports.forwardAction = forwardAction;
+exports.logCssSelector = logCssSelector;
+exports.mergeValues = mergeValues;
+exports.normalizeServices = normalizeServices;
+exports.toQueryString = toQueryString;
+var _isElement2 = _interopRequireDefault(__webpack_require__(3004));
+var _isPlainObject2 = _interopRequireDefault(__webpack_require__(1449));
+var _isArray2 = _interopRequireDefault(__webpack_require__(1786));
+var _mergeAllWith2 = _interopRequireDefault(__webpack_require__(8041));
+var _queryString = _interopRequireDefault(__webpack_require__(4126));
+var _effects = __webpack_require__(9872);
+// Libraries.
+
+/**
+ * Deeply merges the values of multiple objects. Objects on the left receive the values from objects on their right.
+ * Unlike lodash's default merge behavior this doesn't merge arrays.
+ *
+ * @name mergeValues
+ * @param {...Object} objects - Objects to merge
+ * @return {Object} A new object containing the merged values.
+ */
+function mergeValues() {
+  for (var _len = arguments.length, objects = new Array(_len), _key = 0; _key < _len; _key++) {
+    objects[_key] = arguments[_key];
+  }
+  return (0, _mergeAllWith2.default)((leftValue, rightValue) => {
+    // Overwrite the default behavior of lodash's merge for arrays and simply
+    // clobber what's on the left so we don't end up with merged arrays.
+    if ((0, _isArray2.default)(leftValue)) {
+      return rightValue;
+    }
+  }, objects);
+}
+
+/**
+ * Utility function to convert an object to a query string.
+ *
+ * @param {Object} params An object of query parameters to be parsed and converted for use in a URL string
+ * @param {Object} [options] Options to be passed to the query-string library
+ * * @param {String} [options.arrayFormat] Format in which to compose array values which were passed as query parameters
+ */
+function toQueryString() {
+  let params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  if (Object.keys(params).length > 0) {
+    const stringifiedParams = _queryString.default.stringify(params, options);
+    return '?' + stringifiedParams;
+  }
+  return '';
+}
+
+/**
+ * Higher-order function to auto-restart sagas when they crash.
+ * Based on: https://github.com/redux-saga/redux-saga/pull/644#issuecomment-266454875
+ * @method autoRestart
+ * @param  {Generator} saga The saga to wrap.
+ * @return {Generator} Wrapped saga.
+ */
+function autoRestart(saga) {
+  return function* autoRestarting() {
+    // Only restart the saga if it crashed; avoid restarting it if
+    //      it returned normally.
+    let shouldRestart = false;
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+    do {
+      try {
+        yield (0, _effects.call)(saga, ...args);
+        shouldRestart = false;
+      } catch (e) {
+        // TODO: Re-add this log line.
+        // Importing the LogManager in this file breaks tests for an unknown
+        //    reason. Should find out why so that we can log in our utils.
+        // log.error(`Unhandled error in saga ${saga.name}.`, e)
+        // eslint-disable-next-line no-console
+        console.log(`Unhandled error in saga ${saga.name}.`, e);
+        shouldRestart = true;
+      }
+    } while (shouldRestart);
+  };
+}
+
+/**
+ * Forwards the actions by directly dispatching them.
+ * For example, this can be used with a takeEvery effect to grab actions from a channel and dispatch them.
+ * @param {Object} action The action to be forwarded.
+ * @example
+ * const channel = eventChannel(...)
+ * yield takeEvery(channel, forwardAction)
+ */
+function* forwardAction(action) {
+  yield (0, _effects.put)(action);
+}
+
+/**
+ * Ensures that services are in the same format understood by the server regardless,
+ * of whether the client provides services as strings or objects.
+ * @param {Array} services The list of services requested by the client.
+ * @return {Array} A normalized list of services requested by the client.
+ */
+function normalizeServices() {
+  let services = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  return services.map(service => {
+    if ((0, _isPlainObject2.default)(service) && service.hasOwnProperty('service')) {
+      return service;
+    }
+    return {
+      service: service
+    };
+  });
+}
+
+/**
+ * A deferred promise
+ * Don't use this unless you know what you are doing:
+ *  <https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns#the-deferred-anti-pattern>
+ * @returns An object a with promise property and functions to resolve and reject
+ */
+function defer() {
+  const d = {};
+  d.promise = new Promise((resolve, reject) => {
+    d.resolve = resolve;
+    d.reject = reject;
+  });
+  return d;
+}
+
+/**
+ * Delay execution.
+ * @param {number} duration in milleseconds.
+ */
+function delay(duration) {
+  return new Promise(resolve => setTimeout(resolve, duration));
+}
+
+/**
+ * Returns a log-safe CSS selector string.
+ * This is needed because applications that may try to stringify logs that output an HTML element may run
+ *   into a circular structure exceptions.
+ * @param {*} selector CSS Selector.
+ * @returns A log-safe string.
+ */
+function logCssSelector(selector) {
+  return (0, _isElement2.default)(selector) ? selector.id : selector;
 }
 
 /***/ }),
@@ -2707,7 +2869,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(4822);
+var _version = __webpack_require__(1984);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3104,7 +3266,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(4822);
+var _version = __webpack_require__(1984);
 const _excluded = ["onInit"]; // Other plugins.
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -3221,6 +3383,7 @@ exports.getMediaById = getMediaById;
 exports.getTrackById = getTrackById;
 exports.removeTracks = removeTracks;
 exports.renderTracks = renderTracks;
+var _utils = __webpack_require__(5189);
 var _logs = __webpack_require__(3862);
 /**
  * The Remote SDK's public Media APIs.
@@ -3339,7 +3502,7 @@ function getTrackById(webRTC, trackId) {
  * })
  */
 function renderTracks(webRTC, trackIds, cssSelector) {
-  log.debug(`${_logs.API_LOG_TAG}media.renderTracks: ${trackIds}, ${cssSelector}`);
+  log.debug(`${_logs.API_LOG_TAG}media.renderTracks: ${trackIds}, ${(0, _utils.logCssSelector)(cssSelector)}`);
   const trackManager = webRTC.managers.track;
   const renderer = webRTC.managers.renderer;
   const tracks = trackIds.map(trackManager.get);
@@ -3365,7 +3528,7 @@ function renderTracks(webRTC, trackIds, cssSelector) {
  * @param  {string} cssSelector A CSS selector string that uniquely identifies an element. Ensure that special characters are properly escaped.
  */
 function removeTracks(webRTC, trackIds, cssSelector) {
-  log.debug(`${_logs.API_LOG_TAG}media.removeTracks: ${trackIds}, ${cssSelector}`);
+  log.debug(`${_logs.API_LOG_TAG}media.removeTracks: ${trackIds}, ${(0, _utils.logCssSelector)(cssSelector)}`);
   const renderer = webRTC.managers.renderer;
   const container = document.querySelector(cssSelector);
   if (!container) {
@@ -9279,6 +9442,108 @@ function getBrowserDetails() {
 
 /***/ }),
 
+/***/ 5554:
+/***/ ((module) => {
+
+"use strict";
+
+var token = '%[a-f0-9]{2}';
+var singleMatcher = new RegExp('(' + token + ')|([^%]+?)', 'gi');
+var multiMatcher = new RegExp('(' + token + ')+', 'gi');
+
+function decodeComponents(components, split) {
+	try {
+		// Try to decode the entire string first
+		return [decodeURIComponent(components.join(''))];
+	} catch (err) {
+		// Do nothing
+	}
+
+	if (components.length === 1) {
+		return components;
+	}
+
+	split = split || 1;
+
+	// Split the array in 2 parts
+	var left = components.slice(0, split);
+	var right = components.slice(split);
+
+	return Array.prototype.concat.call([], decodeComponents(left), decodeComponents(right));
+}
+
+function decode(input) {
+	try {
+		return decodeURIComponent(input);
+	} catch (err) {
+		var tokens = input.match(singleMatcher) || [];
+
+		for (var i = 1; i < tokens.length; i++) {
+			input = decodeComponents(tokens, i).join('');
+
+			tokens = input.match(singleMatcher) || [];
+		}
+
+		return input;
+	}
+}
+
+function customDecodeURIComponent(input) {
+	// Keep track of all the replacements and prefill the map with the `BOM`
+	var replaceMap = {
+		'%FE%FF': '\uFFFD\uFFFD',
+		'%FF%FE': '\uFFFD\uFFFD'
+	};
+
+	var match = multiMatcher.exec(input);
+	while (match) {
+		try {
+			// Decode as big chunks as possible
+			replaceMap[match[0]] = decodeURIComponent(match[0]);
+		} catch (err) {
+			var result = decode(match[0]);
+
+			if (result !== match[0]) {
+				replaceMap[match[0]] = result;
+			}
+		}
+
+		match = multiMatcher.exec(input);
+	}
+
+	// Add `%C2` at the end of the map to make sure it does not replace the combinator before everything else
+	replaceMap['%C2'] = '\uFFFD';
+
+	var entries = Object.keys(replaceMap);
+
+	for (var i = 0; i < entries.length; i++) {
+		// Replace all decoded components
+		var key = entries[i];
+		input = input.replace(new RegExp(key, 'g'), replaceMap[key]);
+	}
+
+	return input;
+}
+
+module.exports = function (encodedURI) {
+	if (typeof encodedURI !== 'string') {
+		throw new TypeError('Expected `encodedURI` to be of type `string`, got `' + typeof encodedURI + '`');
+	}
+
+	try {
+		encodedURI = encodedURI.replace(/\+/g, ' ');
+
+		// Try the built in decoder first
+		return decodeURIComponent(encodedURI);
+	} catch (err) {
+		// Fallback to a more advanced decoder
+		return customDecodeURIComponent(encodedURI);
+	}
+};
+
+
+/***/ }),
+
 /***/ 161:
 /***/ ((module) => {
 
@@ -9619,6 +9884,31 @@ EventEmitter.EventEmitter = EventEmitter;
 if (true) {
   module.exports = EventEmitter;
 }
+
+
+/***/ }),
+
+/***/ 63:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = function (obj, predicate) {
+	var ret = {};
+	var keys = Object.keys(obj);
+	var isArr = Array.isArray(predicate);
+
+	for (var i = 0; i < keys.length; i++) {
+		var key = keys[i];
+		var val = obj[key];
+
+		if (isArr ? predicate.indexOf(key) !== -1 : predicate(key, val, obj)) {
+			ret[key] = val;
+		}
+	}
+
+	return ret;
+};
 
 
 /***/ }),
@@ -17166,6 +17456,18 @@ module.exports = func;
 
 /***/ }),
 
+/***/ 3004:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var convert = __webpack_require__(2003),
+    func = convert('isElement', __webpack_require__(2301), __webpack_require__(9112));
+
+func.placeholder = __webpack_require__(4652);
+module.exports = func;
+
+
+/***/ }),
+
 /***/ 8288:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -17183,6 +17485,18 @@ module.exports = func;
 
 var convert = __webpack_require__(2003),
     func = convert('isFunction', __webpack_require__(1049), __webpack_require__(9112));
+
+func.placeholder = __webpack_require__(4652);
+module.exports = func;
+
+
+/***/ }),
+
+/***/ 1449:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var convert = __webpack_require__(2003),
+    func = convert('isPlainObject', __webpack_require__(7030), __webpack_require__(9112));
 
 func.placeholder = __webpack_require__(4652);
 module.exports = func;
@@ -17594,6 +17908,38 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
+
+
+/***/ }),
+
+/***/ 2301:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var isObjectLike = __webpack_require__(5125),
+    isPlainObject = __webpack_require__(7030);
+
+/**
+ * Checks if `value` is likely a DOM element.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a DOM element, else `false`.
+ * @example
+ *
+ * _.isElement(document.body);
+ * // => true
+ *
+ * _.isElement('<body>');
+ * // => false
+ */
+function isElement(value) {
+  return isObjectLike(value) && value.nodeType === 1 && !isPlainObject(value);
+}
+
+module.exports = isElement;
 
 
 /***/ }),
@@ -19093,6 +19439,1740 @@ module.exports = lodash;
 
 /***/ }),
 
+/***/ 4126:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+const strictUriEncode = __webpack_require__(7785);
+const decodeComponent = __webpack_require__(5554);
+const splitOnFirst = __webpack_require__(5452);
+const filterObject = __webpack_require__(63);
+
+const isNullOrUndefined = value => value === null || value === undefined;
+
+const encodeFragmentIdentifier = Symbol('encodeFragmentIdentifier');
+
+function encoderForArrayFormat(options) {
+	switch (options.arrayFormat) {
+		case 'index':
+			return key => (result, value) => {
+				const index = result.length;
+
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), '[', index, ']'].join('')];
+				}
+
+				return [
+					...result,
+					[encode(key, options), '[', encode(index, options), ']=', encode(value, options)].join('')
+				];
+			};
+
+		case 'bracket':
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), '[]'].join('')];
+				}
+
+				return [...result, [encode(key, options), '[]=', encode(value, options)].join('')];
+			};
+
+		case 'colon-list-separator':
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), ':list='].join('')];
+				}
+
+				return [...result, [encode(key, options), ':list=', encode(value, options)].join('')];
+			};
+
+		case 'comma':
+		case 'separator':
+		case 'bracket-separator': {
+			const keyValueSep = options.arrayFormat === 'bracket-separator' ?
+				'[]=' :
+				'=';
+
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				// Translate null to an empty string so that it doesn't serialize as 'null'
+				value = value === null ? '' : value;
+
+				if (result.length === 0) {
+					return [[encode(key, options), keyValueSep, encode(value, options)].join('')];
+				}
+
+				return [[result, encode(value, options)].join(options.arrayFormatSeparator)];
+			};
+		}
+
+		default:
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, encode(key, options)];
+				}
+
+				return [...result, [encode(key, options), '=', encode(value, options)].join('')];
+			};
+	}
+}
+
+function parserForArrayFormat(options) {
+	let result;
+
+	switch (options.arrayFormat) {
+		case 'index':
+			return (key, value, accumulator) => {
+				result = /\[(\d*)\]$/.exec(key);
+
+				key = key.replace(/\[\d*\]$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = {};
+				}
+
+				accumulator[key][result[1]] = value;
+			};
+
+		case 'bracket':
+			return (key, value, accumulator) => {
+				result = /(\[\])$/.exec(key);
+				key = key.replace(/\[\]$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = [value];
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+
+		case 'colon-list-separator':
+			return (key, value, accumulator) => {
+				result = /(:list)$/.exec(key);
+				key = key.replace(/:list$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = [value];
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+
+		case 'comma':
+		case 'separator':
+			return (key, value, accumulator) => {
+				const isArray = typeof value === 'string' && value.includes(options.arrayFormatSeparator);
+				const isEncodedArray = (typeof value === 'string' && !isArray && decode(value, options).includes(options.arrayFormatSeparator));
+				value = isEncodedArray ? decode(value, options) : value;
+				const newValue = isArray || isEncodedArray ? value.split(options.arrayFormatSeparator).map(item => decode(item, options)) : value === null ? value : decode(value, options);
+				accumulator[key] = newValue;
+			};
+
+		case 'bracket-separator':
+			return (key, value, accumulator) => {
+				const isArray = /(\[\])$/.test(key);
+				key = key.replace(/\[\]$/, '');
+
+				if (!isArray) {
+					accumulator[key] = value ? decode(value, options) : value;
+					return;
+				}
+
+				const arrayValue = value === null ?
+					[] :
+					value.split(options.arrayFormatSeparator).map(item => decode(item, options));
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = arrayValue;
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], arrayValue);
+			};
+
+		default:
+			return (key, value, accumulator) => {
+				if (accumulator[key] === undefined) {
+					accumulator[key] = value;
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+	}
+}
+
+function validateArrayFormatSeparator(value) {
+	if (typeof value !== 'string' || value.length !== 1) {
+		throw new TypeError('arrayFormatSeparator must be single character string');
+	}
+}
+
+function encode(value, options) {
+	if (options.encode) {
+		return options.strict ? strictUriEncode(value) : encodeURIComponent(value);
+	}
+
+	return value;
+}
+
+function decode(value, options) {
+	if (options.decode) {
+		return decodeComponent(value);
+	}
+
+	return value;
+}
+
+function keysSorter(input) {
+	if (Array.isArray(input)) {
+		return input.sort();
+	}
+
+	if (typeof input === 'object') {
+		return keysSorter(Object.keys(input))
+			.sort((a, b) => Number(a) - Number(b))
+			.map(key => input[key]);
+	}
+
+	return input;
+}
+
+function removeHash(input) {
+	const hashStart = input.indexOf('#');
+	if (hashStart !== -1) {
+		input = input.slice(0, hashStart);
+	}
+
+	return input;
+}
+
+function getHash(url) {
+	let hash = '';
+	const hashStart = url.indexOf('#');
+	if (hashStart !== -1) {
+		hash = url.slice(hashStart);
+	}
+
+	return hash;
+}
+
+function extract(input) {
+	input = removeHash(input);
+	const queryStart = input.indexOf('?');
+	if (queryStart === -1) {
+		return '';
+	}
+
+	return input.slice(queryStart + 1);
+}
+
+function parseValue(value, options) {
+	if (options.parseNumbers && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
+		value = Number(value);
+	} else if (options.parseBooleans && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
+		value = value.toLowerCase() === 'true';
+	}
+
+	return value;
+}
+
+function parse(query, options) {
+	options = Object.assign({
+		decode: true,
+		sort: true,
+		arrayFormat: 'none',
+		arrayFormatSeparator: ',',
+		parseNumbers: false,
+		parseBooleans: false
+	}, options);
+
+	validateArrayFormatSeparator(options.arrayFormatSeparator);
+
+	const formatter = parserForArrayFormat(options);
+
+	// Create an object with no prototype
+	const ret = Object.create(null);
+
+	if (typeof query !== 'string') {
+		return ret;
+	}
+
+	query = query.trim().replace(/^[?#&]/, '');
+
+	if (!query) {
+		return ret;
+	}
+
+	for (const param of query.split('&')) {
+		if (param === '') {
+			continue;
+		}
+
+		let [key, value] = splitOnFirst(options.decode ? param.replace(/\+/g, ' ') : param, '=');
+
+		// Missing `=` should be `null`:
+		// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+		value = value === undefined ? null : ['comma', 'separator', 'bracket-separator'].includes(options.arrayFormat) ? value : decode(value, options);
+		formatter(decode(key, options), value, ret);
+	}
+
+	for (const key of Object.keys(ret)) {
+		const value = ret[key];
+		if (typeof value === 'object' && value !== null) {
+			for (const k of Object.keys(value)) {
+				value[k] = parseValue(value[k], options);
+			}
+		} else {
+			ret[key] = parseValue(value, options);
+		}
+	}
+
+	if (options.sort === false) {
+		return ret;
+	}
+
+	return (options.sort === true ? Object.keys(ret).sort() : Object.keys(ret).sort(options.sort)).reduce((result, key) => {
+		const value = ret[key];
+		if (Boolean(value) && typeof value === 'object' && !Array.isArray(value)) {
+			// Sort object keys, not values
+			result[key] = keysSorter(value);
+		} else {
+			result[key] = value;
+		}
+
+		return result;
+	}, Object.create(null));
+}
+
+exports.extract = extract;
+exports.parse = parse;
+
+exports.stringify = (object, options) => {
+	if (!object) {
+		return '';
+	}
+
+	options = Object.assign({
+		encode: true,
+		strict: true,
+		arrayFormat: 'none',
+		arrayFormatSeparator: ','
+	}, options);
+
+	validateArrayFormatSeparator(options.arrayFormatSeparator);
+
+	const shouldFilter = key => (
+		(options.skipNull && isNullOrUndefined(object[key])) ||
+		(options.skipEmptyString && object[key] === '')
+	);
+
+	const formatter = encoderForArrayFormat(options);
+
+	const objectCopy = {};
+
+	for (const key of Object.keys(object)) {
+		if (!shouldFilter(key)) {
+			objectCopy[key] = object[key];
+		}
+	}
+
+	const keys = Object.keys(objectCopy);
+
+	if (options.sort !== false) {
+		keys.sort(options.sort);
+	}
+
+	return keys.map(key => {
+		const value = object[key];
+
+		if (value === undefined) {
+			return '';
+		}
+
+		if (value === null) {
+			return encode(key, options);
+		}
+
+		if (Array.isArray(value)) {
+			if (value.length === 0 && options.arrayFormat === 'bracket-separator') {
+				return encode(key, options) + '[]';
+			}
+
+			return value
+				.reduce(formatter(key), [])
+				.join('&');
+		}
+
+		return encode(key, options) + '=' + encode(value, options);
+	}).filter(x => x.length > 0).join('&');
+};
+
+exports.parseUrl = (url, options) => {
+	options = Object.assign({
+		decode: true
+	}, options);
+
+	const [url_, hash] = splitOnFirst(url, '#');
+
+	return Object.assign(
+		{
+			url: url_.split('?')[0] || '',
+			query: parse(extract(url), options)
+		},
+		options && options.parseFragmentIdentifier && hash ? {fragmentIdentifier: decode(hash, options)} : {}
+	);
+};
+
+exports.stringifyUrl = (object, options) => {
+	options = Object.assign({
+		encode: true,
+		strict: true,
+		[encodeFragmentIdentifier]: true
+	}, options);
+
+	const url = removeHash(object.url).split('?')[0] || '';
+	const queryFromUrl = exports.extract(object.url);
+	const parsedQueryFromUrl = exports.parse(queryFromUrl, {sort: false});
+
+	const query = Object.assign(parsedQueryFromUrl, object.query);
+	let queryString = exports.stringify(query, options);
+	if (queryString) {
+		queryString = `?${queryString}`;
+	}
+
+	let hash = getHash(object.url);
+	if (object.fragmentIdentifier) {
+		hash = `#${options[encodeFragmentIdentifier] ? encode(object.fragmentIdentifier, options) : object.fragmentIdentifier}`;
+	}
+
+	return `${url}${queryString}${hash}`;
+};
+
+exports.pick = (input, filter, options) => {
+	options = Object.assign({
+		parseFragmentIdentifier: true,
+		[encodeFragmentIdentifier]: false
+	}, options);
+
+	const {url, query, fragmentIdentifier} = exports.parseUrl(input, options);
+	return exports.stringifyUrl({
+		url,
+		query: filterObject(query, filter),
+		fragmentIdentifier
+	}, options);
+};
+
+exports.exclude = (input, filter, options) => {
+	const exclusionFilter = Array.isArray(filter) ? key => !filter.includes(key) : (key, value) => !filter(key, value);
+
+	return exports.pick(input, exclusionFilter, options);
+};
+
+
+/***/ }),
+
+/***/ 9872:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  actionChannel: () => (/* reexport */ actionChannel),
+  all: () => (/* reexport */ io_c3792963_all),
+  apply: () => (/* reexport */ apply),
+  call: () => (/* reexport */ call),
+  cancel: () => (/* reexport */ cancel),
+  cancelled: () => (/* reexport */ cancelled),
+  cps: () => (/* reexport */ cps),
+  debounce: () => (/* reexport */ debounce),
+  delay: () => (/* reexport */ delay),
+  effectTypes: () => (/* reexport */ effectTypes),
+  flush: () => (/* reexport */ flush),
+  fork: () => (/* reexport */ fork),
+  getContext: () => (/* reexport */ getContext),
+  join: () => (/* reexport */ join),
+  put: () => (/* reexport */ put),
+  putResolve: () => (/* reexport */ putResolve),
+  race: () => (/* reexport */ race),
+  retry: () => (/* reexport */ retry$1),
+  select: () => (/* reexport */ io_c3792963_select),
+  setContext: () => (/* reexport */ setContext),
+  spawn: () => (/* reexport */ spawn),
+  take: () => (/* reexport */ take),
+  takeEvery: () => (/* reexport */ takeEvery$1),
+  takeLatest: () => (/* reexport */ takeLatest$1),
+  takeLeading: () => (/* reexport */ takeLeading$1),
+  takeMaybe: () => (/* reexport */ takeMaybe),
+  throttle: () => (/* reexport */ throttle$1)
+});
+
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
+var createSymbol = function createSymbol(name) {
+  return "@@redux-saga/" + name;
+};
+
+var CANCEL =
+/*#__PURE__*/
+createSymbol('CANCEL_PROMISE');
+var CHANNEL_END_TYPE =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('CHANNEL_END')));
+var redux_saga_symbols_esm_IO =
+/*#__PURE__*/
+createSymbol('IO');
+var MATCH =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('MATCH')));
+var MULTICAST =
+/*#__PURE__*/
+createSymbol('MULTICAST');
+var redux_saga_symbols_esm_SAGA_ACTION =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('SAGA_ACTION')));
+var SELF_CANCELLATION =
+/*#__PURE__*/
+createSymbol('SELF_CANCELLATION');
+var redux_saga_symbols_esm_TASK =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('TASK')));
+var redux_saga_symbols_esm_TASK_CANCEL =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('TASK_CANCEL')));
+var redux_saga_symbols_esm_TERMINATE =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('TERMINATE')));
+var redux_saga_symbols_esm_SAGA_LOCATION =
+/*#__PURE__*/
+(/* unused pure expression or super */ null && (createSymbol('LOCATION')));
+
+
+
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
+
+
+var undef = function undef(v) {
+  return v === null || v === undefined;
+};
+var redux_saga_is_esm_notUndef = function notUndef(v) {
+  return v !== null && v !== undefined;
+};
+var redux_saga_is_esm_func = function func(f) {
+  return typeof f === 'function';
+};
+var number = function number(n) {
+  return typeof n === 'number';
+};
+var redux_saga_is_esm_string = function string(s) {
+  return typeof s === 'string';
+};
+var redux_saga_is_esm_array = Array.isArray;
+var redux_saga_is_esm_object = function object(obj) {
+  return obj && !redux_saga_is_esm_array(obj) && typeof obj === 'object';
+};
+var promise = function promise(p) {
+  return p && redux_saga_is_esm_func(p.then);
+};
+var iterator = function iterator(it) {
+  return it && redux_saga_is_esm_func(it.next) && redux_saga_is_esm_func(it.throw);
+};
+var iterable = function iterable(it) {
+  return it && redux_saga_is_esm_func(Symbol) ? redux_saga_is_esm_func(it[Symbol.iterator]) : redux_saga_is_esm_array(it);
+};
+var task = function task(t) {
+  return t && t[TASK];
+};
+var sagaAction = function sagaAction(a) {
+  return Boolean(a && a[SAGA_ACTION]);
+};
+var observable = function observable(ob) {
+  return ob && redux_saga_is_esm_func(ob.subscribe);
+};
+var buffer = function buffer(buf) {
+  return buf && redux_saga_is_esm_func(buf.isEmpty) && redux_saga_is_esm_func(buf.take) && redux_saga_is_esm_func(buf.put);
+};
+var pattern = function pattern(pat) {
+  return pat && (redux_saga_is_esm_string(pat) || symbol(pat) || redux_saga_is_esm_func(pat) || redux_saga_is_esm_array(pat) && pat.every(pattern));
+};
+var channel = function channel(ch) {
+  return ch && redux_saga_is_esm_func(ch.take) && redux_saga_is_esm_func(ch.close);
+};
+var stringableFunc = function stringableFunc(f) {
+  return redux_saga_is_esm_func(f) && f.hasOwnProperty('toString');
+};
+var symbol = function symbol(sym) {
+  return Boolean(sym) && typeof Symbol === 'function' && sym.constructor === Symbol && sym !== Symbol.prototype;
+};
+var multicast = function multicast(ch) {
+  return channel(ch) && ch[MULTICAST];
+};
+var redux_saga_is_esm_effect = function effect(eff) {
+  return eff && eff[IO];
+};
+
+
+
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/core/node_modules/@babel/runtime/helpers/esm/extends.js
+function extends_extends() {
+  extends_extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return extends_extends.apply(this, arguments);
+}
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
+
+
+var MAX_SIGNED_INT = 2147483647;
+function delayP(ms, val) {
+  if (val === void 0) {
+    val = true;
+  }
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value
+  if (false) {}
+
+  var timeoutId;
+  var promise = new Promise(function (resolve) {
+    timeoutId = setTimeout(resolve, Math.min(MAX_SIGNED_INT, ms), val);
+  });
+
+  promise[CANCEL] = function () {
+    clearTimeout(timeoutId);
+  };
+
+  return promise;
+}
+
+/* harmony default export */ const redux_saga_delay_p_esm = (delayP);
+
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/core/dist/io-c3792963.js
+
+
+
+
+
+var konst = function konst(v) {
+  return function () {
+    return v;
+  };
+};
+var kTrue =
+/*#__PURE__*/
+konst(true);
+
+var noop = function noop() {};
+
+if (false) {}
+var identity = function identity(v) {
+  return v;
+};
+var hasSymbol = typeof Symbol === 'function';
+var asyncIteratorSymbol = hasSymbol && Symbol.asyncIterator ? Symbol.asyncIterator : '@@asyncIterator';
+function io_c3792963_check(value, predicate, error) {
+  if (!predicate(value)) {
+    throw new Error(error);
+  }
+}
+var assignWithSymbols = function assignWithSymbols(target, source) {
+  _extends(target, source);
+
+  if (Object.getOwnPropertySymbols) {
+    Object.getOwnPropertySymbols(source).forEach(function (s) {
+      target[s] = source[s];
+    });
+  }
+};
+var flatMap = function flatMap(mapper, arr) {
+  var _ref;
+
+  return (_ref = []).concat.apply(_ref, arr.map(mapper));
+};
+function remove(array, item) {
+  var index = array.indexOf(item);
+
+  if (index >= 0) {
+    array.splice(index, 1);
+  }
+}
+function once(fn) {
+  var called = false;
+  return function () {
+    if (called) {
+      return;
+    }
+
+    called = true;
+    fn();
+  };
+}
+
+var kThrow = function kThrow(err) {
+  throw err;
+};
+
+var kReturn = function kReturn(value) {
+  return {
+    value: value,
+    done: true
+  };
+};
+
+function makeIterator(next, thro, name) {
+  if (thro === void 0) {
+    thro = kThrow;
+  }
+
+  if (name === void 0) {
+    name = 'iterator';
+  }
+
+  var iterator = {
+    meta: {
+      name: name
+    },
+    next: next,
+    throw: thro,
+    return: kReturn,
+    isSagaIterator: true
+  };
+
+  if (typeof Symbol !== 'undefined') {
+    iterator[Symbol.iterator] = function () {
+      return iterator;
+    };
+  }
+
+  return iterator;
+}
+function logError(error, _ref2) {
+  var sagaStack = _ref2.sagaStack;
+
+  /*eslint-disable no-console*/
+  console.error(error);
+  console.error(sagaStack);
+}
+var internalErr = function internalErr(err) {
+  return new Error("\n  redux-saga: Error checking hooks detected an inconsistent state. This is likely a bug\n  in redux-saga code and not yours. Thanks for reporting this in the project's github repo.\n  Error: " + err + "\n");
+};
+var createSetContextWarning = function createSetContextWarning(ctx, props) {
+  return (ctx ? ctx + '.' : '') + "setContext(props): argument " + props + " is not a plain object";
+};
+var FROZEN_ACTION_ERROR = "You can't put (a.k.a. dispatch from saga) frozen actions.\nWe have to define a special non-enumerable property on those actions for scheduling purposes.\nOtherwise you wouldn't be able to communicate properly between sagas & other subscribers (action ordering would become far less predictable).\nIf you are using redux and you care about this behaviour (frozen actions),\nthen you might want to switch to freezing actions in a middleware rather than in action creator.\nExample implementation:\n\nconst freezeActions = store => next => action => next(Object.freeze(action))\n"; // creates empty, but not-holey array
+
+var createEmptyArray = function createEmptyArray(n) {
+  return Array.apply(null, new Array(n));
+};
+var wrapSagaDispatch = function wrapSagaDispatch(dispatch) {
+  return function (action) {
+    if (false) {}
+
+    return dispatch(Object.defineProperty(action, SAGA_ACTION, {
+      value: true
+    }));
+  };
+};
+var shouldTerminate = function shouldTerminate(res) {
+  return res === TERMINATE;
+};
+var shouldCancel = function shouldCancel(res) {
+  return res === TASK_CANCEL;
+};
+var shouldComplete = function shouldComplete(res) {
+  return shouldTerminate(res) || shouldCancel(res);
+};
+function createAllStyleChildCallbacks(shape, parentCallback) {
+  var keys = Object.keys(shape);
+  var totalCount = keys.length;
+
+  if (false) {}
+
+  var completedCount = 0;
+  var completed;
+  var results = array(shape) ? createEmptyArray(totalCount) : {};
+  var childCallbacks = {};
+
+  function checkEnd() {
+    if (completedCount === totalCount) {
+      completed = true;
+      parentCallback(results);
+    }
+  }
+
+  keys.forEach(function (key) {
+    var chCbAtKey = function chCbAtKey(res, isErr) {
+      if (completed) {
+        return;
+      }
+
+      if (isErr || shouldComplete(res)) {
+        parentCallback.cancel();
+        parentCallback(res, isErr);
+      } else {
+        results[key] = res;
+        completedCount++;
+        checkEnd();
+      }
+    };
+
+    chCbAtKey.cancel = noop;
+    childCallbacks[key] = chCbAtKey;
+  });
+
+  parentCallback.cancel = function () {
+    if (!completed) {
+      completed = true;
+      keys.forEach(function (key) {
+        return childCallbacks[key].cancel();
+      });
+    }
+  };
+
+  return childCallbacks;
+}
+function getMetaInfo(fn) {
+  return {
+    name: fn.name || 'anonymous',
+    location: getLocation(fn)
+  };
+}
+function getLocation(instrumented) {
+  return instrumented[SAGA_LOCATION];
+}
+
+var BUFFER_OVERFLOW = "Channel's Buffer overflow!";
+var ON_OVERFLOW_THROW = 1;
+var ON_OVERFLOW_DROP = 2;
+var ON_OVERFLOW_SLIDE = 3;
+var ON_OVERFLOW_EXPAND = 4;
+var zeroBuffer = {
+  isEmpty: kTrue,
+  put: noop,
+  take: noop
+};
+
+function ringBuffer(limit, overflowAction) {
+  if (limit === void 0) {
+    limit = 10;
+  }
+
+  var arr = new Array(limit);
+  var length = 0;
+  var pushIndex = 0;
+  var popIndex = 0;
+
+  var push = function push(it) {
+    arr[pushIndex] = it;
+    pushIndex = (pushIndex + 1) % limit;
+    length++;
+  };
+
+  var take = function take() {
+    if (length != 0) {
+      var it = arr[popIndex];
+      arr[popIndex] = null;
+      length--;
+      popIndex = (popIndex + 1) % limit;
+      return it;
+    }
+  };
+
+  var flush = function flush() {
+    var items = [];
+
+    while (length) {
+      items.push(take());
+    }
+
+    return items;
+  };
+
+  return {
+    isEmpty: function isEmpty() {
+      return length == 0;
+    },
+    put: function put(it) {
+      if (length < limit) {
+        push(it);
+      } else {
+        var doubledLimit;
+
+        switch (overflowAction) {
+          case ON_OVERFLOW_THROW:
+            throw new Error(BUFFER_OVERFLOW);
+
+          case ON_OVERFLOW_SLIDE:
+            arr[pushIndex] = it;
+            pushIndex = (pushIndex + 1) % limit;
+            popIndex = pushIndex;
+            break;
+
+          case ON_OVERFLOW_EXPAND:
+            doubledLimit = 2 * limit;
+            arr = flush();
+            length = arr.length;
+            pushIndex = arr.length;
+            popIndex = 0;
+            arr.length = doubledLimit;
+            limit = doubledLimit;
+            push(it);
+            break;
+
+          default: // DROP
+
+        }
+      }
+    },
+    take: take,
+    flush: flush
+  };
+}
+
+var none = function none() {
+  return zeroBuffer;
+};
+var fixed = function fixed(limit) {
+  return ringBuffer(limit, ON_OVERFLOW_THROW);
+};
+var dropping = function dropping(limit) {
+  return ringBuffer(limit, ON_OVERFLOW_DROP);
+};
+var sliding = function sliding(limit) {
+  return ringBuffer(limit, ON_OVERFLOW_SLIDE);
+};
+var expanding = function expanding(initialSize) {
+  return ringBuffer(initialSize, ON_OVERFLOW_EXPAND);
+};
+
+var buffers = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  none: none,
+  fixed: fixed,
+  dropping: dropping,
+  sliding: sliding,
+  expanding: expanding
+});
+
+var TAKE = 'TAKE';
+var PUT = 'PUT';
+var ALL = 'ALL';
+var RACE = 'RACE';
+var CALL = 'CALL';
+var CPS = 'CPS';
+var FORK = 'FORK';
+var JOIN = 'JOIN';
+var io_c3792963_CANCEL = 'CANCEL';
+var SELECT = 'SELECT';
+var ACTION_CHANNEL = 'ACTION_CHANNEL';
+var CANCELLED = 'CANCELLED';
+var FLUSH = 'FLUSH';
+var GET_CONTEXT = 'GET_CONTEXT';
+var SET_CONTEXT = 'SET_CONTEXT';
+
+var effectTypes = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  TAKE: TAKE,
+  PUT: PUT,
+  ALL: ALL,
+  RACE: RACE,
+  CALL: CALL,
+  CPS: CPS,
+  FORK: FORK,
+  JOIN: JOIN,
+  CANCEL: io_c3792963_CANCEL,
+  SELECT: SELECT,
+  ACTION_CHANNEL: ACTION_CHANNEL,
+  CANCELLED: CANCELLED,
+  FLUSH: FLUSH,
+  GET_CONTEXT: GET_CONTEXT,
+  SET_CONTEXT: SET_CONTEXT
+});
+
+var TEST_HINT = '\n(HINT: if you are getting these errors in tests, consider using createMockTask from @redux-saga/testing-utils)';
+
+var makeEffect = function makeEffect(type, payload) {
+  var _ref;
+
+  return _ref = {}, _ref[redux_saga_symbols_esm_IO] = true, _ref.combinator = false, _ref.type = type, _ref.payload = payload, _ref;
+};
+
+var isForkEffect = function isForkEffect(eff) {
+  return effect(eff) && eff.type === FORK;
+};
+
+var detach = function detach(eff) {
+  if (false) {}
+
+  return makeEffect(FORK, extends_extends({}, eff.payload, {
+    detached: true
+  }));
+};
+function take(patternOrChannel, multicastPattern) {
+  if (patternOrChannel === void 0) {
+    patternOrChannel = '*';
+  }
+
+  if (false) {}
+
+  if (pattern(patternOrChannel)) {
+    if (redux_saga_is_esm_notUndef(multicastPattern)) {
+      /* eslint-disable no-console */
+      console.warn("take(pattern) takes one argument but two were provided. Consider passing an array for listening to several action types");
+    }
+
+    return makeEffect(TAKE, {
+      pattern: patternOrChannel
+    });
+  }
+
+  if (multicast(patternOrChannel) && redux_saga_is_esm_notUndef(multicastPattern) && pattern(multicastPattern)) {
+    return makeEffect(TAKE, {
+      channel: patternOrChannel,
+      pattern: multicastPattern
+    });
+  }
+
+  if (channel(patternOrChannel)) {
+    if (redux_saga_is_esm_notUndef(multicastPattern)) {
+      /* eslint-disable no-console */
+      console.warn("take(channel) takes one argument but two were provided. Second argument is ignored.");
+    }
+
+    return makeEffect(TAKE, {
+      channel: patternOrChannel
+    });
+  }
+
+  if (false) {}
+}
+var takeMaybe = function takeMaybe() {
+  var eff = take.apply(void 0, arguments);
+  eff.payload.maybe = true;
+  return eff;
+};
+function put(channel$1, action) {
+  if (false) {}
+
+  if (undef(action)) {
+    action = channel$1; // `undefined` instead of `null` to make default parameter work
+
+    channel$1 = undefined;
+  }
+
+  return makeEffect(PUT, {
+    channel: channel$1,
+    action: action
+  });
+}
+var putResolve = function putResolve() {
+  var eff = put.apply(void 0, arguments);
+  eff.payload.resolve = true;
+  return eff;
+};
+function io_c3792963_all(effects) {
+  var eff = makeEffect(ALL, effects);
+  eff.combinator = true;
+  return eff;
+}
+function race(effects) {
+  var eff = makeEffect(RACE, effects);
+  eff.combinator = true;
+  return eff;
+} // this match getFnCallDescriptor logic
+
+var validateFnDescriptor = function validateFnDescriptor(effectName, fnDescriptor) {
+  io_c3792963_check(fnDescriptor, notUndef, effectName + ": argument fn is undefined or null");
+
+  if (func(fnDescriptor)) {
+    return;
+  }
+
+  var context = null;
+  var fn;
+
+  if (array(fnDescriptor)) {
+    context = fnDescriptor[0];
+    fn = fnDescriptor[1];
+    io_c3792963_check(fn, notUndef, effectName + ": argument of type [context, fn] has undefined or null `fn`");
+  } else if (object(fnDescriptor)) {
+    context = fnDescriptor.context;
+    fn = fnDescriptor.fn;
+    io_c3792963_check(fn, notUndef, effectName + ": argument of type {context, fn} has undefined or null `fn`");
+  } else {
+    io_c3792963_check(fnDescriptor, func, effectName + ": argument fn is not function");
+    return;
+  }
+
+  if (context && string(fn)) {
+    io_c3792963_check(context[fn], func, effectName + ": context arguments has no such method - \"" + fn + "\"");
+    return;
+  }
+
+  io_c3792963_check(fn, func, effectName + ": unpacked fn argument (from [context, fn] or {context, fn}) is not a function");
+};
+
+function getFnCallDescriptor(fnDescriptor, args) {
+  var context = null;
+  var fn;
+
+  if (redux_saga_is_esm_func(fnDescriptor)) {
+    fn = fnDescriptor;
+  } else {
+    if (redux_saga_is_esm_array(fnDescriptor)) {
+      context = fnDescriptor[0];
+      fn = fnDescriptor[1];
+    } else {
+      context = fnDescriptor.context;
+      fn = fnDescriptor.fn;
+    }
+
+    if (context && redux_saga_is_esm_string(fn) && redux_saga_is_esm_func(context[fn])) {
+      fn = context[fn];
+    }
+  }
+
+  return {
+    context: context,
+    fn: fn,
+    args: args
+  };
+}
+
+var isNotDelayEffect = function isNotDelayEffect(fn) {
+  return fn !== delay;
+};
+
+function call(fnDescriptor) {
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  if (false) { var arg0; }
+
+  return makeEffect(CALL, getFnCallDescriptor(fnDescriptor, args));
+}
+function apply(context, fn, args) {
+  if (args === void 0) {
+    args = [];
+  }
+
+  var fnDescriptor = [context, fn];
+
+  if (false) {}
+
+  return makeEffect(CALL, getFnCallDescriptor([context, fn], args));
+}
+function cps(fnDescriptor) {
+  if (false) {}
+
+  for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    args[_key2 - 1] = arguments[_key2];
+  }
+
+  return makeEffect(CPS, getFnCallDescriptor(fnDescriptor, args));
+}
+function fork(fnDescriptor) {
+  if (false) {}
+
+  for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+    args[_key3 - 1] = arguments[_key3];
+  }
+
+  return makeEffect(FORK, getFnCallDescriptor(fnDescriptor, args));
+}
+function spawn(fnDescriptor) {
+  if (false) {}
+
+  for (var _len4 = arguments.length, args = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+    args[_key4 - 1] = arguments[_key4];
+  }
+
+  return detach(fork.apply(void 0, [fnDescriptor].concat(args)));
+}
+function join(taskOrTasks) {
+  if (false) {}
+
+  return makeEffect(JOIN, taskOrTasks);
+}
+function cancel(taskOrTasks) {
+  if (taskOrTasks === void 0) {
+    taskOrTasks = SELF_CANCELLATION;
+  }
+
+  if (false) {}
+
+  return makeEffect(io_c3792963_CANCEL, taskOrTasks);
+}
+function io_c3792963_select(selector) {
+  if (selector === void 0) {
+    selector = identity;
+  }
+
+  for (var _len5 = arguments.length, args = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
+    args[_key5 - 1] = arguments[_key5];
+  }
+
+  if (false) {}
+
+  return makeEffect(SELECT, {
+    selector: selector,
+    args: args
+  });
+}
+/**
+  channel(pattern, [buffer])    => creates a proxy channel for store actions
+**/
+
+function actionChannel(pattern$1, buffer$1) {
+  if (false) {}
+
+  return makeEffect(ACTION_CHANNEL, {
+    pattern: pattern$1,
+    buffer: buffer$1
+  });
+}
+function cancelled() {
+  return makeEffect(CANCELLED, {});
+}
+function flush(channel$1) {
+  if (false) {}
+
+  return makeEffect(FLUSH, channel$1);
+}
+function getContext(prop) {
+  if (false) {}
+
+  return makeEffect(GET_CONTEXT, prop);
+}
+function setContext(props) {
+  if (false) {}
+
+  return makeEffect(SET_CONTEXT, props);
+}
+var delay =
+/*#__PURE__*/
+call.bind(null, redux_saga_delay_p_esm);
+
+
+
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/core/dist/redux-saga-effects.esm.js
+
+
+
+
+
+
+
+var done = function done(value) {
+  return {
+    done: true,
+    value: value
+  };
+};
+
+var qEnd = {};
+function safeName(patternOrChannel) {
+  if (channel(patternOrChannel)) {
+    return 'channel';
+  }
+
+  if (stringableFunc(patternOrChannel)) {
+    return String(patternOrChannel);
+  }
+
+  if (redux_saga_is_esm_func(patternOrChannel)) {
+    return patternOrChannel.name;
+  }
+
+  return String(patternOrChannel);
+}
+function fsmIterator(fsm, startState, name) {
+  var stateUpdater,
+      errorState,
+      effect,
+      nextState = startState;
+
+  function next(arg, error) {
+    if (nextState === qEnd) {
+      return done(arg);
+    }
+
+    if (error && !errorState) {
+      nextState = qEnd;
+      throw error;
+    } else {
+      stateUpdater && stateUpdater(arg);
+      var currentState = error ? fsm[errorState](error) : fsm[nextState]();
+      nextState = currentState.nextState;
+      effect = currentState.effect;
+      stateUpdater = currentState.stateUpdater;
+      errorState = currentState.errorState;
+      return nextState === qEnd ? done(arg) : effect;
+    }
+  }
+
+  return makeIterator(next, function (error) {
+    return next(null, error);
+  }, name);
+}
+
+function takeEvery(patternOrChannel, worker) {
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  var yTake = {
+    done: false,
+    value: take(patternOrChannel)
+  };
+
+  var yFork = function yFork(ac) {
+    return {
+      done: false,
+      value: fork.apply(void 0, [worker].concat(args, [ac]))
+    };
+  };
+
+  var action,
+      setAction = function setAction(ac) {
+    return action = ac;
+  };
+
+  return fsmIterator({
+    q1: function q1() {
+      return {
+        nextState: 'q2',
+        effect: yTake,
+        stateUpdater: setAction
+      };
+    },
+    q2: function q2() {
+      return {
+        nextState: 'q1',
+        effect: yFork(action)
+      };
+    }
+  }, 'q1', "takeEvery(" + safeName(patternOrChannel) + ", " + worker.name + ")");
+}
+
+function takeLatest(patternOrChannel, worker) {
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  var yTake = {
+    done: false,
+    value: take(patternOrChannel)
+  };
+
+  var yFork = function yFork(ac) {
+    return {
+      done: false,
+      value: fork.apply(void 0, [worker].concat(args, [ac]))
+    };
+  };
+
+  var yCancel = function yCancel(task) {
+    return {
+      done: false,
+      value: cancel(task)
+    };
+  };
+
+  var task, action;
+
+  var setTask = function setTask(t) {
+    return task = t;
+  };
+
+  var setAction = function setAction(ac) {
+    return action = ac;
+  };
+
+  return fsmIterator({
+    q1: function q1() {
+      return {
+        nextState: 'q2',
+        effect: yTake,
+        stateUpdater: setAction
+      };
+    },
+    q2: function q2() {
+      return task ? {
+        nextState: 'q3',
+        effect: yCancel(task)
+      } : {
+        nextState: 'q1',
+        effect: yFork(action),
+        stateUpdater: setTask
+      };
+    },
+    q3: function q3() {
+      return {
+        nextState: 'q1',
+        effect: yFork(action),
+        stateUpdater: setTask
+      };
+    }
+  }, 'q1', "takeLatest(" + safeName(patternOrChannel) + ", " + worker.name + ")");
+}
+
+function takeLeading(patternOrChannel, worker) {
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  var yTake = {
+    done: false,
+    value: take(patternOrChannel)
+  };
+
+  var yCall = function yCall(ac) {
+    return {
+      done: false,
+      value: call.apply(void 0, [worker].concat(args, [ac]))
+    };
+  };
+
+  var action;
+
+  var setAction = function setAction(ac) {
+    return action = ac;
+  };
+
+  return fsmIterator({
+    q1: function q1() {
+      return {
+        nextState: 'q2',
+        effect: yTake,
+        stateUpdater: setAction
+      };
+    },
+    q2: function q2() {
+      return {
+        nextState: 'q1',
+        effect: yCall(action)
+      };
+    }
+  }, 'q1', "takeLeading(" + safeName(patternOrChannel) + ", " + worker.name + ")");
+}
+
+function throttle(delayLength, patternOrChannel, worker) {
+  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+    args[_key - 3] = arguments[_key];
+  }
+
+  var action, channel$1;
+
+  var yTake = function yTake() {
+    return {
+      done: false,
+      value: take(channel$1)
+    };
+  };
+
+  var yFork = function yFork(ac) {
+    return {
+      done: false,
+      value: fork.apply(void 0, [worker].concat(args, [ac]))
+    };
+  };
+
+  var yDelay = {
+    done: false,
+    value: delay(delayLength)
+  };
+
+  var setAction = function setAction(ac) {
+    return action = ac;
+  };
+
+  var setChannel = function setChannel(ch) {
+    return channel$1 = ch;
+  };
+
+  var needsChannel = !channel(patternOrChannel);
+
+  if (!needsChannel) {
+    setChannel(patternOrChannel);
+  }
+
+  return fsmIterator({
+    q1: function q1() {
+      var yActionChannel = {
+        done: false,
+        value: actionChannel(patternOrChannel, sliding(1))
+      };
+      return {
+        nextState: 'q2',
+        effect: yActionChannel,
+        stateUpdater: setChannel
+      };
+    },
+    q2: function q2() {
+      return {
+        nextState: 'q3',
+        effect: yTake(),
+        stateUpdater: setAction
+      };
+    },
+    q3: function q3() {
+      return {
+        nextState: 'q4',
+        effect: yFork(action)
+      };
+    },
+    q4: function q4() {
+      return {
+        nextState: 'q2',
+        effect: yDelay
+      };
+    }
+  }, needsChannel ? 'q1' : 'q2', "throttle(" + safeName(patternOrChannel) + ", " + worker.name + ")");
+}
+
+function retry(maxTries, delayLength, fn) {
+  var counter = maxTries;
+
+  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+    args[_key - 3] = arguments[_key];
+  }
+
+  var yCall = {
+    done: false,
+    value: call.apply(void 0, [fn].concat(args))
+  };
+  var yDelay = {
+    done: false,
+    value: delay(delayLength)
+  };
+  return fsmIterator({
+    q1: function q1() {
+      return {
+        nextState: 'q2',
+        effect: yCall,
+        errorState: 'q10'
+      };
+    },
+    q2: function q2() {
+      return {
+        nextState: qEnd
+      };
+    },
+    q10: function q10(error) {
+      counter -= 1;
+
+      if (counter <= 0) {
+        throw error;
+      }
+
+      return {
+        nextState: 'q1',
+        effect: yDelay
+      };
+    }
+  }, 'q1', "retry(" + fn.name + ")");
+}
+
+function debounceHelper(delayLength, patternOrChannel, worker) {
+  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+    args[_key - 3] = arguments[_key];
+  }
+
+  var action, raceOutput;
+  var yTake = {
+    done: false,
+    value: take(patternOrChannel)
+  };
+  var yRace = {
+    done: false,
+    value: race({
+      action: take(patternOrChannel),
+      debounce: delay(delayLength)
+    })
+  };
+
+  var yFork = function yFork(ac) {
+    return {
+      done: false,
+      value: fork.apply(void 0, [worker].concat(args, [ac]))
+    };
+  };
+
+  var yNoop = function yNoop(value) {
+    return {
+      done: false,
+      value: value
+    };
+  };
+
+  var setAction = function setAction(ac) {
+    return action = ac;
+  };
+
+  var setRaceOutput = function setRaceOutput(ro) {
+    return raceOutput = ro;
+  };
+
+  return fsmIterator({
+    q1: function q1() {
+      return {
+        nextState: 'q2',
+        effect: yTake,
+        stateUpdater: setAction
+      };
+    },
+    q2: function q2() {
+      return {
+        nextState: 'q3',
+        effect: yRace,
+        stateUpdater: setRaceOutput
+      };
+    },
+    q3: function q3() {
+      return raceOutput.debounce ? {
+        nextState: 'q1',
+        effect: yFork(action)
+      } : {
+        nextState: 'q2',
+        effect: yNoop(raceOutput.action),
+        stateUpdater: setAction
+      };
+    }
+  }, 'q1', "debounce(" + safeName(patternOrChannel) + ", " + worker.name + ")");
+}
+
+var validateTakeEffect = function validateTakeEffect(fn, patternOrChannel, worker) {
+  check(patternOrChannel, notUndef, fn.name + " requires a pattern or channel");
+  check(worker, notUndef, fn.name + " requires a saga parameter");
+};
+
+function takeEvery$1(patternOrChannel, worker) {
+  if (false) {}
+
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  return fork.apply(void 0, [takeEvery, patternOrChannel, worker].concat(args));
+}
+function takeLatest$1(patternOrChannel, worker) {
+  if (false) {}
+
+  for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+    args[_key2 - 2] = arguments[_key2];
+  }
+
+  return fork.apply(void 0, [takeLatest, patternOrChannel, worker].concat(args));
+}
+function takeLeading$1(patternOrChannel, worker) {
+  if (false) {}
+
+  for (var _len3 = arguments.length, args = new Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
+    args[_key3 - 2] = arguments[_key3];
+  }
+
+  return fork.apply(void 0, [takeLeading, patternOrChannel, worker].concat(args));
+}
+function throttle$1(ms, patternOrChannel, worker) {
+  if (false) {}
+
+  for (var _len4 = arguments.length, args = new Array(_len4 > 3 ? _len4 - 3 : 0), _key4 = 3; _key4 < _len4; _key4++) {
+    args[_key4 - 3] = arguments[_key4];
+  }
+
+  return fork.apply(void 0, [throttle, ms, patternOrChannel, worker].concat(args));
+}
+function retry$1(maxTries, delayLength, worker) {
+  for (var _len5 = arguments.length, args = new Array(_len5 > 3 ? _len5 - 3 : 0), _key5 = 3; _key5 < _len5; _key5++) {
+    args[_key5 - 3] = arguments[_key5];
+  }
+
+  return call.apply(void 0, [retry, maxTries, delayLength, worker].concat(args));
+}
+function debounce(delayLength, pattern, worker) {
+  for (var _len6 = arguments.length, args = new Array(_len6 > 3 ? _len6 - 3 : 0), _key6 = 3; _key6 < _len6; _key6++) {
+    args[_key6 - 3] = arguments[_key6];
+  }
+
+  return fork.apply(void 0, [debounceHelper, delayLength, pattern, worker].concat(args));
+}
+
+
+
+;// CONCATENATED MODULE: ../../node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js
+
+
+
+/***/ }),
+
 /***/ 8060:
 /***/ ((module) => {
 
@@ -19864,7 +21944,47 @@ module.exports = function (session, opts) {
 
 /***/ }),
 
-/***/ 6825:
+/***/ 5452:
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = (string, separator) => {
+	if (!(typeof string === 'string' && typeof separator === 'string')) {
+		throw new TypeError('Expected the arguments to be of type `string`');
+	}
+
+	if (separator === '') {
+		return [string];
+	}
+
+	const separatorIndex = string.indexOf(separator);
+
+	if (separatorIndex === -1) {
+		return [string];
+	}
+
+	return [
+		string.slice(0, separatorIndex),
+		string.slice(separatorIndex + separator.length)
+	];
+};
+
+
+/***/ }),
+
+/***/ 7785:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
+
+
+/***/ }),
+
+/***/ 8838:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -19966,7 +22086,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(5899));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(6825));
+var _version = _interopRequireDefault(__webpack_require__(8838));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
@@ -24347,6 +26467,18 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -24357,6 +26489,22 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/node module decorator */

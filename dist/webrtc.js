@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.10.0
+ * Version: 6.11.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 56420:
+/***/ 14203:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.10.0';
+  return '6.11.0';
 }
 
 /***/ }),
@@ -5034,10 +5034,7 @@ function createFlow(container) {
       operation.reportEvent.setError(err);
       operation.reportEvent.endEvent();
       operation.tracker.finish(err);
-
-      // TODO: Either here or in the operation, respond to Gateway that
-      //    operation failed, so that the remote endpoint knows.
-      return;
+      throw err;
     }
 
     // Regular operations are finished now, but slow-start are not.
@@ -5125,15 +5122,11 @@ function createFlow(container) {
   return async function remoteOnly(wrtcsSessionId, handler, params) {
     let call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     let notificationEvent;
-
-    // See if there is a pending, local operation.
-    const pendingLocal = call.currentOperations.find(op => {
-      return op.isLocal && op.status === _constants.OP_STATUS.PENDING;
-    });
+    const pendingLocal = call.currentOperations.find(op => op.isLocal && op.status === _constants.OP_STATUS.PENDING);
 
     // TODO: Handle all notifications instead of only the ones the reporter knows about.
     // If the call exists (in the sense that is both valid as an object AND it's state is not ended)
-    if (call && call.state !== _constants2.CALL_STATES.ENDED) {
+    if (call.state !== _constants2.CALL_STATES.ENDED) {
       if (pendingLocal && pendingLocal.eventId && _constants3.REPORTER_OPERATION_EVENTS_MAP.hasOwnProperty(handler.name)) {
         // if call has an on-going local operation, then the
         // notification is part of that operation.
@@ -5244,6 +5237,13 @@ function checkCallExistence(state, callId) {
     });
   }
 }
+
+// This is a modified file.
+// For a second time.
+// For a third time.
+// For a fourth time.
+// For a fifth time.
+
 function callManager(container) {
   const {
     context,
@@ -5260,6 +5260,9 @@ function callManager(container) {
   const manager = {
     getTracker(callId) {
       return ongoing[callId];
+    },
+    getCallIds() {
+      return Object.keys(ongoing);
     }
   };
 
@@ -5321,26 +5324,47 @@ function callManager(container) {
    */
   async function newRemoteNegotiation(wrtcsSessionId, params) {
     /**
-     * Utility: If the call is blocked, wait a short time then check again.
-     * In some scenarios, the next negotiation is received before the previous
-     *    negotiation finishes.
-     * Reference: KJS-1152, KJS-1918
-     * @return {boolean}
+     * Utility for determining if the new remote negotiation will cause a glare scenario or not.
+     *
+     * Scenario 1: The on-going negotiation is local, with a new remote negotiation received.
+     *    This is a glare scenario whether we wait for the first negotiation to finish or not. The
+     *    first, local negotiation will change WebRTC state which is not taken into account in the
+     *    second, remote negotiation. It would cause a WebRTC error.
+     *
+     * Scenario 2: The on-going negotiation is remote, with another remote negotiation received.
+     *    Delay processing the second negotiation until the first is finished (or until time-out.)
+     *
+     * Reference: KJS-1152, KJS-1918, KJS-2059
+     * @method isGlare
+     * @param {Object} call The up-to-date call object.
+     * @param {number} [timeDelayed] The time delayed so far; only to be provided recursively.
+     * @return {Promise<boolean>}
      */
     async function isGlare(call) {
+      let timeDelayed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
       if (!ongoing[call.id].isBlocked) {
         return false;
+      } else if (timeDelayed >= 3000) {
+        // Time-out after 3 seconds if it's still a glare scenario.
+        return true;
       }
       const {
         isLocal,
         type
       } = ongoing[call.id].getNegotiation();
       log.debug(`Received new remote operation during ${isLocal ? 'local' : 'remote'} ${type} operation. Delaying handling.`);
-
-      // TODO: Check to see if the blocking operation is PENDING / almost done?
-      // TODO: Don't wait the full timeout if not necessary.
-      await new Promise(resolve => setTimeout(() => resolve(), 1000));
-      return ongoing[call.id].isBlocked;
+      if (isLocal) {
+        // If the on-going negotiation is local, then immediately respond as a glare scenario.
+        //    The local negotiation will have changes that the remote side did not take into
+        //    account, leading to WebRTC errors. Mark this as a glare scenario immediately so
+        //    the remote side will be notified sooner.
+        return true;
+      } else {
+        // If it is two remote negotiations causing the glare scenario, try to let the first
+        //    negotiation finish before processing the second.
+        await new Promise(resolve => setTimeout(resolve, 250));
+        return isGlare((0, _selectors.getCallById)(context.getState(), call.id), timeDelayed + 250);
+      }
     }
     let call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     const log = logManager.getLogger('CALL', call ? call.id : undefined);
@@ -5352,14 +5376,20 @@ function callManager(container) {
       log.info('Update request is for unknown wrtcsSession. Ignoring.', {
         wrtcsSessionId
       });
-      return;
+      throw new _errors.default({
+        code: _errors.callCodes.INVALID_STATE,
+        message: 'Cannot process new remote operation for call that does not exist.'
+      });
     } else if (call.state === _constants.CALL_STATES.ENDED) {
       // Scenario: The associated call is ended, and should not have an active
       //    WebRTC session.
       log.info('Update request is for ended call. Ignoring.', {
         wrtcsSessionId
       });
-      return;
+      throw new _errors.default({
+        code: _errors.callCodes.INVALID_STATE,
+        message: 'Cannot process new remote operation for Ended call.'
+      });
     }
     let opInfo;
     const isSlowStart = !params.sdp;
@@ -5441,11 +5471,9 @@ function callManager(container) {
       } else if (timeDelayed >= 500) {
         // Local negotiation is not PENDING even after 500ms delay; can't process this notification.
         log.debug(`Received negotiation answer still cannot be processed; ignoring.`);
-        return undefined;
+        return;
       } else {
-        const ongoingOp = call.currentOperations.find(op => {
-          return op.isLocal && op.status === _constants2.OP_STATUS.ONGOING && op.isBlocking;
-        });
+        const ongoingOp = call.currentOperations.find(op => op.isLocal && op.status === _constants2.OP_STATUS.ONGOING && op.isBlocking);
         if (ongoingOp) {
           log.debug(`Received negotiation answer for local ${ongoingOp.type} too early; delaying processing.`);
           await new Promise(resolve => setTimeout(resolve, 25));
@@ -5453,7 +5481,7 @@ function callManager(container) {
           return await getExistingNegotiation(callId, timeDelayed + 25);
         } else {
           // No PENDING or ONGOING local negotiation; can't process this notification.
-          return undefined;
+          return;
         }
       }
     }
@@ -5482,6 +5510,10 @@ function callManager(container) {
       return;
     }
     const operation = ongoing[call.id].getByType(opState.type);
+    if (!operation) {
+      log.warn('Received negotiation answer without a matching offer; ignoring.');
+      return;
+    }
     try {
       await callFlows.remoteAnswer(call, operation, params);
     } finally {
@@ -5547,6 +5579,9 @@ function callManager(container) {
     return async function remoteOnly(wrtcsSessionId) {
       // TODO: Track 'remote notify' operations too.
       const handler = Callstack.notifications[stackMethod];
+      const state = context.getState();
+      const call = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
+      checkCallExistence(state, call.id);
       for (var _len3 = arguments.length, params = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
         params[_key3 - 1] = arguments[_key3];
       }
@@ -5560,12 +5595,13 @@ function callManager(container) {
      */
     return async function remoteOnly(wrtcsSessionId) {
       // Get the calls for both calls involved in the operation.
-      const priCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-      const operation = ongoing[priCall.id].getAll().find(op => {
-        return op.isLocal && [_constants2.OPERATIONS.JOIN, _constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.DIRECT_TRANSFER].includes(op.type);
-      });
+      const state = context.getState();
+      const priCall = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
+      checkCallExistence(state, priCall.id);
+      const operation = ongoing[priCall.id].getAll().find(op => op.isLocal && [_constants2.OPERATIONS.JOIN, _constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.DIRECT_TRANSFER].includes(op.type));
+
       // Note: secCall will not exist for direct transfer.
-      const secCall = (0, _selectors.getCallById)(context.getState(), operation.data.secCallId);
+      const secCall = (0, _selectors.getCallById)(state, operation.data.secCallId);
       const handler = Callstack.notifications[stackMethod];
       for (var _len4 = arguments.length, params = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
         params[_key4 - 1] = arguments[_key4];
@@ -5574,7 +5610,7 @@ function callManager(container) {
 
       // Remove the operation from the on-going lists.
       ongoing[priCall.id].remove(operation);
-      if (operation.type !== _constants2.OPERATIONS.JOIN) {
+      if (operation.type !== _constants2.OPERATIONS.JOIN && secCall) {
         // If a transfer, stop tracking the operation for every call involved.
         ongoing[secCall.id].remove(operation);
       } else if (priCall.id === operation.data.priCallId) {
@@ -5849,7 +5885,8 @@ const operationMap = exports.operationMap = {
   // Remote-only.
   [_constants.OPERATIONS.SLOW_START]: 'slowStart',
   UNKNOWN: 'genericRemote',
-  NO_CHANGE: 'genericRemote'
+  NO_CHANGE: 'genericRemote',
+  [_constants.OPERATIONS.GENERIC_REMOTE]: 'genericRemote'
 };
 
 /*
@@ -6979,11 +7016,38 @@ var _constants = __webpack_require__(37409);
 // Operations.
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.addMedia', () => {
+    return {
+      local: {
+        // Stages of local operation.
+        validate: _validate.default,
+        localOffer: (0, _addMedia.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      },
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _remoteOffer.default)(bottle.container)
+      }
+    };
+  });
+  bottle.factory('Callstack.stages.addBasicMedia', () => {
+    return {
+      local: {
+        // Stages of local operation.
+        validate: _validateBasic.default,
+        localOffer: (0, _addMedia.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.addMedia', () => {
-    const opFactory = bottle.container.Callstack.models.Operation;
-    function addMedia(isLocal, stages) {
+    const Callstack = bottle.container.Callstack;
+    const opFactory = Callstack.models.Operation;
+    function addMedia(isLocal) {
       /**
        * Factory function for AddMedia operation.
        * @method addMedia
@@ -6991,6 +7055,7 @@ function initOperation(bottle) {
        * @return {Operation} An instance of an addMedia operation.
        */
       return callId => {
+        const stages = Callstack.stages.addMedia[isLocal ? 'local' : 'remote'];
         return opFactory.instance({
           // Operation meta-data.
           type: _constants.OPERATIONS.ADD_MEDIA,
@@ -7004,21 +7069,13 @@ function initOperation(bottle) {
       };
     }
     return {
-      local: addMedia(true, {
-        // Stages of local operation.
-        validate: _validate.default,
-        localOffer: (0, _addMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-      }),
-      remote: addMedia(false, {
-        // Stages of remote operation.
-        remoteOffer: (0, _remoteOffer.default)(bottle.container)
-      })
+      local: addMedia(true),
+      remote: addMedia(false)
     };
   });
   bottle.factory('Callstack.operations.addBasicMedia', () => {
     const opFactory = bottle.container.Callstack.models.Operation;
-    function basicAddMedia(isLocal, stages) {
+    function basicAddMedia() {
       /**
        * Factory function for basic AddMedia operation.
        * @method basicAddMedia
@@ -7030,21 +7087,16 @@ function initOperation(bottle) {
           // Operation meta-data.
           type: _constants.OPERATIONS.ADD_BASIC_MEDIA,
           isNegotiation: true,
-          isLocal,
+          isLocal: true,
           // Operation methods.
-          stages
+          stages: bottle.container.Callstack.stages.addBasicMedia.local
         }, {
           callId
         });
       };
     }
     return {
-      local: basicAddMedia(true, {
-        // Stages of local operation.
-        validate: _validateBasic.default,
-        localOffer: (0, _addMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-      })
+      local: basicAddMedia()
       // There is no remote 'basic' operation; it is seen as a regular removeMedia operation.
     };
   });
@@ -8019,10 +8071,32 @@ var _constants = __webpack_require__(37409);
 // Helpers
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.answer', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This is `localOffer` because the "localOperation" flow uses that
+        //    function. Eventually this should be "fixed" to properly reflect the answer.
+        localOffer: (0, _answer.default)(bottle.container)
+      }
+    };
+  });
+  bottle.factory('Callstack.stages.answerSlow', () => {
+    return {
+      local: {
+        validate: _validate2.default,
+        localOffer: (0, _slowAnswer.default)(bottle.container),
+        remoteAnswer: (0, _remoteSlowAnswer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.answer', () => {
-    const opFactory = bottle.container.Callstack.models.Operation;
+    const Callstack = bottle.container.Callstack;
+    const opFactory = Callstack.models.Operation;
 
     /**
      * Factory function for a LocalAnswer operation.
@@ -8035,12 +8109,7 @@ function initOperation(bottle) {
         type: _constants.OPERATIONS.ANSWER,
         isNegotiation: false,
         isLocal: true,
-        stages: {
-          validate: _validate.default,
-          // TODO: This is `localOffer` because the "localOperation" flow uses that
-          //    function. Eventually this should be "fixed" to properly reflect the answer.
-          localOffer: (0, _answer.default)(bottle.container)
-        }
+        stages: Callstack.stages.answer.local
       }, {
         callId
       });
@@ -8050,7 +8119,8 @@ function initOperation(bottle) {
     };
   });
   bottle.factory('Callstack.operations.answerSlow', () => {
-    const opFactory = bottle.container.Callstack.models.Operation;
+    const Callstack = bottle.container.Callstack;
+    const opFactory = Callstack.models.Operation;
 
     /**
      * Factory function for a SlowAnswer operation.
@@ -8063,11 +8133,7 @@ function initOperation(bottle) {
         type: _constants.OPERATIONS.ANSWER,
         isNegotiation: true,
         isLocal: true,
-        stages: {
-          validate: _validate2.default,
-          localOffer: (0, _slowAnswer.default)(bottle.container),
-          remoteAnswer: (0, _remoteSlowAnswer.default)(bottle.container)
-        }
+        stages: Callstack.stages.answerSlow.local
       }, {
         callId
       });
@@ -9195,6 +9261,19 @@ var _validate = _interopRequireDefault(__webpack_require__(84725));
 var _callStatusUpdateEnded = _interopRequireDefault(__webpack_require__(71005));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.end', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _end.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.end', () => {
@@ -9213,13 +9292,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _end.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.end.local
       }, {
         callId
       });
@@ -9445,6 +9518,19 @@ var _forward = _interopRequireDefault(__webpack_require__(85314));
 var _validate = _interopRequireDefault(__webpack_require__(98067));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.forward', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _forward.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.forward', () => {
@@ -9463,13 +9549,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _forward.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.forward.local
       }, {
         callId
       });
@@ -9555,6 +9635,16 @@ var _constants = __webpack_require__(37409);
 // Operation.
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.genericRemote', () => {
+    return {
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _remoteOffer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.genericRemote', () => {
@@ -9573,9 +9663,7 @@ function initOperation(bottle) {
         isNegotiation: true,
         isLocal: false,
         // Operation methods.
-        stages: {
-          remoteOffer: (0, _remoteOffer.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.genericRemote.remote
       }, {
         callId
       });
@@ -9877,7 +9965,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(56420);
+var _version = __webpack_require__(14203);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -9990,6 +10078,19 @@ var _getStats = _interopRequireDefault(__webpack_require__(77279));
 var _validate = _interopRequireDefault(__webpack_require__(58999));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.getStats', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _getStats.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.getStats', () => {
@@ -10008,13 +10109,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _getStats.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.getStats.local
       }, {
         callId
       });
@@ -10101,11 +10196,28 @@ var _constants = __webpack_require__(37409);
 // Operations.
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.hold', () => {
+    return {
+      local: {
+        // Stages of local operation.
+        validate: _validate.default,
+        localOffer: (0, _hold.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      },
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _remoteOffer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.hold', () => {
-    const opFactory = bottle.container.Callstack.models.Operation;
-    function hold(isLocal, stages) {
+    const Callstack = bottle.container.Callstack;
+    const opFactory = Callstack.models.Operation;
+    function hold(isLocal) {
       /**
        * Factory function for a Hold operation.
        * @method hold
@@ -10113,6 +10225,7 @@ function initOperation(bottle) {
        * @return {Operation} An instance of the hold operation.
        */
       return callId => {
+        const stages = Callstack.stages.hold[isLocal ? 'local' : 'remote'];
         return opFactory.instance({
           // Operation meta-data.
           type: _constants.OPERATIONS.HOLD,
@@ -10126,16 +10239,8 @@ function initOperation(bottle) {
       };
     }
     return {
-      local: hold(true, {
-        // Stages of local operation.
-        validate: _validate.default,
-        localOffer: (0, _hold.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-      }),
-      remote: hold(false, {
-        // Stages of remote operation.
-        remoteOffer: (0, _remoteOffer.default)(bottle.container)
-      })
+      local: hold(true),
+      remote: hold(false)
     };
   });
   bottle.factory('Callstack.utils.rollbackHold', () => (0, _rollbackHold.default)(bottle.container));
@@ -10939,6 +11044,17 @@ var _validate = _interopRequireDefault(__webpack_require__(96093));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(96483));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.iceRestart', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        localOffer: (0, _iceRestart.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.iceRestart', () => {
@@ -10957,11 +11073,7 @@ function initOperation(bottle) {
         isNegotiation: true,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          localOffer: (0, _iceRestart.default)(bottle.container),
-          remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.iceRestart.local
       }, {
         callId
       });
@@ -11364,6 +11476,19 @@ var _ignore = _interopRequireDefault(__webpack_require__(96123));
 var _validate = _interopRequireDefault(__webpack_require__(83628));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.ignore', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _ignore.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.ignore', () => {
@@ -11382,13 +11507,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _ignore.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.ignore.local
       }, {
         callId
       });
@@ -12968,6 +13087,24 @@ var _constants = __webpack_require__(37409);
 // Operations.
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.startMOH', () => {
+    return {
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _start.default)(bottle.container)
+      }
+    };
+  });
+  bottle.factory('Callstack.stages.stopMOH', () => {
+    return {
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _stop.default)(bottle.container)
+      }
+    };
+  });
+
   // Remote-only "start MOH" operation.
   bottle.factory('Callstack.operations.startMOH', () => {
     const opFactory = bottle.container.Callstack.models.Operation;
@@ -12985,9 +13122,7 @@ function initOperation(bottle) {
         isNegotiation: true,
         isLocal: false,
         // Operation methods.
-        stages: {
-          remoteOffer: (0, _start.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.startMOH.remote
       }, {
         callId
       });
@@ -13014,9 +13149,7 @@ function initOperation(bottle) {
         isNegotiation: true,
         isLocal: false,
         // Operation methods.
-        stages: {
-          remoteOffer: (0, _stop.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.stopMOH.remote
       }, {
         callId
       });
@@ -13544,6 +13677,19 @@ var _playAudio = _interopRequireDefault(__webpack_require__(81037));
 var _validate = _interopRequireDefault(__webpack_require__(55470));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.playAudioFile', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _playAudio.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.playAudioFile', () => {
@@ -13562,13 +13708,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _playAudio.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.playAudioFile.local
       }, {
         callId
       });
@@ -13793,6 +13933,19 @@ var _reject = _interopRequireDefault(__webpack_require__(62923));
 var _validate = _interopRequireDefault(__webpack_require__(70688));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.reject', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _reject.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.reject', () => {
@@ -13811,13 +13964,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _reject.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.reject.local
       }, {
         callId
       });
@@ -13973,11 +14120,38 @@ var _constants = __webpack_require__(37409);
 // Operations.
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.removeMedia', () => {
+    return {
+      local: {
+        // Stages of local operation.
+        validate: _validate.default,
+        localOffer: (0, _removeMedia.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      },
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _remoteOffer.default)(bottle.container)
+      }
+    };
+  });
+  bottle.factory('Callstack.stages.removeBasicMedia', () => {
+    return {
+      local: {
+        // Only the validate stage is different compared to LocalRemoveMedia.
+        validate: _validateBasic.default,
+        localOffer: (0, _removeMedia.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.removeMedia', () => {
-    const opFactory = bottle.container.Callstack.models.Operation;
-    function removeMedia(isLocal, stages) {
+    const Callstack = bottle.container.Callstack;
+    const opFactory = Callstack.models.Operation;
+    function removeMedia(isLocal) {
       /**
        * Factory function for a RemoveMedia operation.
        * @method removeMedia
@@ -13985,6 +14159,7 @@ function initOperation(bottle) {
        * @return {Operation} An instance of the removeMedia operation.
        */
       return callId => {
+        const stages = Callstack.stages.removeMedia[isLocal ? 'local' : 'remote'];
         return opFactory.instance({
           // Operation meta-data.
           type: _constants.OPERATIONS.REMOVE_MEDIA,
@@ -13998,16 +14173,8 @@ function initOperation(bottle) {
       };
     }
     return {
-      local: removeMedia(true, {
-        // Stages of local operation.
-        validate: _validate.default,
-        localOffer: (0, _removeMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-      }),
-      remote: removeMedia(false, {
-        // Stages of remote operation.
-        remoteOffer: (0, _remoteOffer.default)(bottle.container)
-      })
+      local: removeMedia(true),
+      remote: removeMedia(false)
     };
   });
   bottle.factory('Callstack.operations.removeBasicMedia', () => {
@@ -14028,12 +14195,7 @@ function initOperation(bottle) {
         isNegotiation: true,
         isLocal: true,
         // Operation methods.
-        stages: {
-          // Only the validate stage is different compared to LocalRemoveMedia.
-          validate: _validateBasic.default,
-          localOffer: (0, _removeMedia.default)(bottle.container),
-          remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.removeBasicMedia.local
       }, {
         callId
       });
@@ -14834,6 +14996,19 @@ var _validate = _interopRequireDefault(__webpack_require__(66823));
 var _webrtcReplaceTrack = _interopRequireDefault(__webpack_require__(12257));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.replaceTrack', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _replaceTrack.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.replaceTrack', () => {
@@ -14852,13 +15027,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _replaceTrack.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.replaceTrack.local
       }, {
         callId
       });
@@ -15177,6 +15346,19 @@ var _resyncCallState = _interopRequireDefault(__webpack_require__(46063));
 var _validate = _interopRequireDefault(__webpack_require__(62235));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.resyncCallState', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _resyncCallState.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.resyncCallState', () => {
@@ -15195,13 +15377,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _resyncCallState.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.resyncCallState.local
       }, {
         callId
       });
@@ -15587,8 +15763,19 @@ function sendCallAuditOperation(container) {
    * @param {string} wrtcsSessionId The ID that the server uses to identify the call.
    */
   async function repeatingTask(callId, wrtcsSessionId) {
-    const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const log = logManager.getLogger('CALL', currentCall ? callId : '');
+    const log = logManager.getLogger('CALL', callId || '');
+    let state;
+    try {
+      /**
+       * KJS-2164 TODO: This task should be stopped when the SDK is destroyed,
+       *  instead of having to check that state exists
+       */
+      state = context.getState();
+    } catch (e) {
+      log.debug('Failed to run repeating task; state has likely been destroyed');
+      return;
+    }
+    const currentCall = (0, _selectors.getCallById)(state, callId);
 
     // Stop repeating if the Call has already ended or it has been cancelled.
     if ([_constants.CALL_STATES.ENDED, _constants.CALL_STATES.CANCELLED].includes(currentCall.state)) {
@@ -15686,6 +15873,19 @@ var _sendCustomParameters = _interopRequireDefault(__webpack_require__(14273));
 var _validate = _interopRequireDefault(__webpack_require__(91005));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.sendCustomParameters', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _sendCustomParameters.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.sendCustomParameters', () => {
@@ -15704,13 +15904,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _sendCustomParameters.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.sendCustomParameters.local
       }, {
         callId
       });
@@ -15856,6 +16050,19 @@ var _sendDtmf = _interopRequireDefault(__webpack_require__(93367));
 var _validate = _interopRequireDefault(__webpack_require__(18515));
 var _constants = __webpack_require__(37409);
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.sendDtmf', () => {
+    return {
+      local: {
+        validate: _validate.default,
+        // TODO: This operation isn't a negotiation, so we shouldn't be naming
+        //    a stage with WebRTC negotiation terms. But this is the method
+        //    name the `localOperation` flow uses.
+        localOffer: (0, _sendDtmf.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.sendDtmf', () => {
@@ -15874,13 +16081,7 @@ function initOperation(bottle) {
         isNegotiation: false,
         isLocal: true,
         // Operation methods.
-        stages: {
-          validate: _validate.default,
-          // TODO: This operation isn't a negotiation, so we shouldn't be naming
-          //    a stage with WebRTC negotiation terms. But this is the method
-          //    name the `localOperation` flow uses.
-          localOffer: (0, _sendDtmf.default)(bottle.container)
-        }
+        stages: bottle.container.Callstack.stages.sendDtmf.local
       }, {
         callId
       });
@@ -17047,11 +17248,28 @@ var _constants = __webpack_require__(37409);
 // Operations.
 
 function initOperation(bottle) {
+  // Register the individual stages for the operation.
+  bottle.factory('Callstack.stages.unhold', () => {
+    return {
+      local: {
+        // Stages of local operation.
+        validate: _validate.default,
+        localOffer: (0, _unhold.default)(bottle.container),
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+      },
+      remote: {
+        // Stages of remote operation.
+        remoteOffer: (0, _remoteOffer.default)(bottle.container)
+      }
+    };
+  });
+
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.unhold', () => {
-    const opFactory = bottle.container.Callstack.models.Operation;
-    function unhold(isLocal, stages) {
+    const Callstack = bottle.container.Callstack;
+    const opFactory = Callstack.models.Operation;
+    function unhold(isLocal) {
       /**
        * Factory function for a Hold operation.
        * @method unhold
@@ -17059,6 +17277,7 @@ function initOperation(bottle) {
        * @return {Operation} An instance of the hold operation.
        */
       return callId => {
+        const stages = Callstack.stages.unhold[isLocal ? 'local' : 'remote'];
         return opFactory.instance({
           // Operation meta-data.
           type: _constants.OPERATIONS.UNHOLD,
@@ -17072,16 +17291,8 @@ function initOperation(bottle) {
       };
     }
     return {
-      local: unhold(true, {
-        // Stages of local operation.
-        validate: _validate.default,
-        localOffer: (0, _unhold.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
-      }),
-      remote: unhold(false, {
-        // Stages of remote operation.
-        remoteOffer: (0, _remoteOffer.default)(bottle.container)
-      })
+      local: unhold(true),
+      remote: unhold(false)
     };
   });
   bottle.factory('Callstack.utils.rollbackUnhold', () => (0, _rollbackUnhold.default)(bottle.container));
@@ -21709,7 +21920,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(56420);
+var _version = __webpack_require__(14203);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -25556,6 +25767,11 @@ const CALL_JOIN = exports.CALL_JOIN = 'call:join';
  * Information about the Call can be retrieved using the {@link call.getById}
  *    API.
  *
+ * NOTE: Upon receiving this notification the call is in "Initiating" state. In order
+ *    to answer calls, they must be in either "Ringing" or "Initiated" states. Therefore,
+ *    this event should not be used to prompt the user to respond. Instead, the
+ *    {@link #calleventcallstatechange call:stateChange} event should be used for this purpose.
+ *
  * @public
  * @memberof call
  * @event call:receive
@@ -25564,7 +25780,7 @@ const CALL_JOIN = exports.CALL_JOIN = 'call:join';
  * @param {api.BasicError} [params.error] An error object, if the operation was not successful.
  * @example
  * client.on('call:receive', function(params) {
- *     // We have received a call, prompt the user to respond.
+ *     // We have received a call
  *     promptUser(client.call.getById(params.callId));
  * });
  */
@@ -27630,9 +27846,11 @@ function createMiddleware(context) {
     }, remoteInfo), {}, {
       customParameters: message.customParameters
     });
-
-    // Pass the call parameters to the Callstack for handling.
-    await CallManager.negotiationOffer(wrtcsSessionId, params);
+    try {
+      await CallManager.negotiationOffer(wrtcsSessionId, params);
+    } catch (error) {
+      log.warn(`Cannot handle remote operation. Error: ${error.message}`);
+    }
   }
   return remoteOfferNotification;
 }
@@ -31744,9 +31962,11 @@ exports.autoRestart = autoRestart;
 exports.defer = defer;
 exports.delay = delay;
 exports.forwardAction = forwardAction;
+exports.logCssSelector = logCssSelector;
 exports.mergeValues = mergeValues;
 exports.normalizeServices = normalizeServices;
 exports.toQueryString = toQueryString;
+var _isElement2 = _interopRequireDefault(__webpack_require__(23004));
 var _isPlainObject2 = _interopRequireDefault(__webpack_require__(1449));
 var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _mergeAllWith2 = _interopRequireDefault(__webpack_require__(38041));
@@ -31875,6 +32095,17 @@ function defer() {
  */
 function delay(duration) {
   return new Promise(resolve => setTimeout(resolve, duration));
+}
+
+/**
+ * Returns a log-safe CSS selector string.
+ * This is needed because applications that may try to stringify logs that output an HTML element may run
+ *   into a circular structure exceptions.
+ * @param {*} selector CSS Selector.
+ * @returns A log-safe string.
+ */
+function logCssSelector(selector) {
+  return (0, _isElement2.default)(selector) ? selector.id : selector;
 }
 
 /***/ }),
@@ -34542,7 +34773,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(56420);
+var _version = __webpack_require__(14203);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _logs = __webpack_require__(43862);
 var _validation = __webpack_require__(42850);
@@ -42301,7 +42532,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(56420);
+var _version = __webpack_require__(14203);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -42452,7 +42683,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(56420);
+var _version = __webpack_require__(14203);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -43996,7 +44227,7 @@ function createRequests(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.SUBSCRIPTION_STATE = exports.OPERATIONS = exports.DISCONNECT_REASONS = void 0;
+exports.SUBSCRIPTION_STATE = exports.OPERATIONS = exports.MINIMUM_EXPIRY_SUBSCRIPTION_INTERVAL = exports.DISCONNECT_REASONS = void 0;
 /**
  * Possible subscription states.
  * @name SUBSCRIPTION_STATE
@@ -44028,6 +44259,13 @@ const OPERATIONS = exports.OPERATIONS = {
   SUBSCRIBE: 'SUBSCRIBE',
   UNSUBSCRIBE: 'UNSUBSCRIBE'
 };
+
+/**
+ * This is the minimum allowed value based on which, any outstanding services subscription can be refreshed.
+ * Any user provided `subscription.expires` interval is always compared against this value,
+ * to ensure it does not go below this minimum.
+ */
+const MINIMUM_EXPIRY_SUBSCRIPTION_INTERVAL = exports.MINIMUM_EXPIRY_SUBSCRIPTION_INTERVAL = 60000; // in milliseconds
 
 /***/ }),
 
@@ -46043,7 +46281,7 @@ function createRequest(container) {
    * @param  {string}    connection.server Server information for generating the URL.
    * @param  {string}    connection.requestOptions Common request options to be added.
    * @param  {Object}    subscription Information about the subscription instance.
-   * @param  {string}    subscription.expires - The time (in seconds) until subscription expiry.
+   * @param  {number}    subscription.expires - The time (in seconds) until subscription expiry.
    * @param  {Array}     subscription.service - The SPiDR services to resubscribe to.
    * @param  {Array}     subscription.url - The URL of the user's subscription instance.
    * @return {Object}    Resubscription response.
@@ -46162,6 +46400,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = subscriptionFactory;
 var _interface = __webpack_require__(81301);
 var actionTypes = _interopRequireWildcard(__webpack_require__(27190));
+var _constants = __webpack_require__(43265);
 var _subscriptionFlow = _interopRequireDefault(__webpack_require__(90537));
 var _onWebsocketOverridden = _interopRequireDefault(__webpack_require__(7466));
 var _onSubscriptionGone = _interopRequireDefault(__webpack_require__(10836));
@@ -46205,6 +46444,8 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 function subscriptionFactory() {
   let options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   let bottle = arguments.length > 1 ? arguments[1] : undefined;
+  const minExpiryInSec = _constants.MINIMUM_EXPIRY_SUBSCRIPTION_INTERVAL / 1000;
+
   /**
    * Configuration options for the Subscription feature.
    * @public
@@ -46212,7 +46453,7 @@ function subscriptionFactory() {
    * @memberof config
    * @instance
    * @param {Object} subscription Subscription config.
-   * @param {number} [subscription.expires=3600] The amount of time (in seconds) for which to keep subscription up and alive.
+   * @param {number} [subscription.expires=3600] The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds.
    * @param {number} [subscription.serviceUnavailableMaxRetries=3] The maximum number of times this client will retry in order to subscribe for a
    * given service, while getting 'Service Unavailable' from backend.
    * @param {Object} subscription.websocket
@@ -46232,7 +46473,7 @@ function subscriptionFactory() {
 
   // config validation
   const v8nValidation = _validation.validation.schema({
-    expires: _validation.validation.positive(),
+    expires: _validation.validation.positive().greaterThanOrEqual(minExpiryInSec),
     serviceUnavailableMaxRetries: _validation.validation.positive(),
     websocket: _validation.validation.schema({
       server: _validation.validation.string(),
@@ -46252,6 +46493,10 @@ function subscriptionFactory() {
     const {
       context
     } = container;
+    if (options.expires < minExpiryInSec) {
+      // Update the config to use correct value
+      options.expires = minExpiryInSec;
+    }
 
     // Send the provided options to the store.
     // This will be `state.config[name]`.
@@ -46438,14 +46683,17 @@ function createInterval(container) {
 
   /**
    * Start the interval.
+   * @param { function } update The update function to be called at regular interval of time.
+   * @param { number }   expires The subscription expiry value (in seconds), as provided from SDK configuration.
    * @method start
    */
   function start(update, expires) {
     // Set the delay to 50% of the interval between now and when the subscription expires for the first attempt,
     // 25% for the second attempt, etc
     let resubDelay = expires * 1000 / Math.pow(2, attemptNum);
-    // Don't try to resub more often than every 30 seconds.
-    resubDelay = resubDelay > 30000 ? resubDelay : 30000;
+    const halfwayInterval = _constants.MINIMUM_EXPIRY_SUBSCRIPTION_INTERVAL / 2;
+    // Don't try to resub more often than every halfwayInterval seconds.
+    resubDelay = resubDelay > halfwayInterval ? resubDelay : halfwayInterval;
 
     // Create a randomized version for 'resubDelay' value (each time we resubscribe) and
     // use that random value instead.
@@ -50065,9 +50313,12 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createMediaAPI;
 var _selectors = __webpack_require__(30105);
 var eventTypes = _interopRequireWildcard(__webpack_require__(46215));
+var _utils = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Webrtc plugin.
+
+// Other plugins.
 
 /**
  * Media related APIs.
@@ -50221,7 +50472,7 @@ function createMediaAPI(container) {
      */
     async renderTracks(trackIds, cssSelector) {
       let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-      log.debug(API_LOG_TAG + 'media.renderTracks: ', trackIds, cssSelector, options);
+      log.debug(API_LOG_TAG + 'media.renderTracks: ', trackIds, (0, _utils.logCssSelector)(cssSelector), options);
       let retValue;
       try {
         retValue = await operations.renderTracks(trackIds, cssSelector, options);
@@ -50249,7 +50500,7 @@ function createMediaAPI(container) {
      *    escaped.
      */
     async removeTracks(trackIds, cssSelector) {
-      log.debug(API_LOG_TAG + 'media.removeTracks: ', trackIds, cssSelector);
+      log.debug(API_LOG_TAG + 'media.removeTracks: ', trackIds, (0, _utils.logCssSelector)(cssSelector));
       await operations.removeTracks(trackIds, cssSelector);
     },
     /**
@@ -51170,11 +51421,14 @@ var _isString2 = _interopRequireDefault(__webpack_require__(49775));
 var _isUndefined2 = _interopRequireDefault(__webpack_require__(73346));
 var _actions = __webpack_require__(37992);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
+var _utils = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } // Webrtc plugin.
+// Other plugins.
 // Libraries.
+
 /**
  * WebRTC Media Operations factory function.
  * @method createMediaOperations
@@ -51222,7 +51476,7 @@ function createMediaOperations(container) {
     // selector is a string or a DOM element
     // (note: We can't use instanceof here since elements part of another window are not of the same instance as window.Element)
     (0, _isString2.default)(selector) || 'tagName' in selector)) {
-      log.info(`Rendering track(s) in element ${selector}.`, trackIds);
+      log.info(`Rendering track(s) in element ${(0, _utils.logCssSelector)(selector)}.`, trackIds);
 
       // Render the tracks.
       await Promise.all(filteredTracks.map(async track => {
@@ -51274,7 +51528,7 @@ function createMediaOperations(container) {
     dispatch(_actions.trackActions.removeTracks(trackIds, {
       selector
     }));
-    log.info(`Removing track(s) from element ${selector}.`, trackIds);
+    log.info(`Removing track(s) from element ${(0, _utils.logCssSelector)(selector)}.`, trackIds);
 
     // Remove the tracks.
     await Promise.all(trackIds.map(async id => {
@@ -52428,6 +52682,7 @@ function createOperations(container) {
       if (!proxyState.proxyMode) {
         log.debug(`Not in Proxy mode, ignoring previous message (${messageId}).`);
       } else if (data && (data.action || data.event)) {
+        log.debug(`Received event from remote webrtc stack (${data.action.type}).`);
         // Pass the message to the Webrtc plugin's handler logic.
         // All messages received should be from the webrtc-stack.
         messageHandler(data.action, data.event);
@@ -52742,17 +52997,21 @@ function _default(base, actualManager) {
                 // Record the time when the message is sent.
                 const sentTime = Date.now();
                 function callback(data, error) {
-                  // Strip operation timing data out of the reply and only forward the result from the remote side.
-                  const {
-                    opTiming
-                  } = data;
-                  data = data.result;
-                  const receivedTime = Date.now();
-                  log.debug(`Received manager ${operation.operation} response (${messageId}).`, data);
+                  if (data) {
+                    // Strip operation timing data out of the reply and only forward the result from the remote side.
+                    const {
+                      opTiming
+                    } = data;
+                    data = data.result;
+                    if (opTiming) {
+                      const receivedTime = Date.now();
+                      log.debug(`Received manager ${operation.operation} response (${messageId}).`, data);
 
-                  // If there are operation timings in the data, report them here.
-                  if (opTiming) {
-                    log.debug(`Remote operation ${operation.operation} timing sent: ${sentTime}, receivedRemote: ${opTiming.start}, remoteReplied: ${opTiming.end}, receivedLocal: ${receivedTime}`);
+                      // If there are operation timings in the data, report them here.
+                      if (opTiming) {
+                        log.debug(`Remote operation ${operation.operation} timing sent: ${sentTime}, receivedRemote: ${opTiming.start}, remoteReplied: ${opTiming.end}, receivedLocal: ${receivedTime}`);
+                      }
+                    }
                   }
 
                   /**
@@ -52913,17 +53172,21 @@ function modelProxy(base, channel) {
               // Record the time when the message is sent.
               const sentTime = Date.now();
               function callback(data, error) {
-                // Strip operation timing data out of the reply and only forward the result from the remote side.
-                const {
-                  opTiming
-                } = data;
-                data = data.result;
-                const receivedTime = Date.now();
-                log.debug(`Received model ${operation.operation} response (${messageId}).`, data);
+                if (data) {
+                  // Strip operation timing data out of the reply and only forward the result from the remote side.
+                  const {
+                    opTiming
+                  } = data;
+                  data = data.result;
+                  if (opTiming) {
+                    const receivedTime = Date.now();
+                    log.debug(`Received model ${operation.operation} response (${messageId}).`, data);
 
-                // If there are operation timings in the data, report them here.
-                if (opTiming) {
-                  log.debug(`Remote operation ${operation.operation} timing sent: ${sentTime}, receivedRemote: ${opTiming.start}, remoteReplied: ${opTiming.end}, receivedLocal: ${receivedTime}`);
+                    // If there are operation timings in the data, report them here.
+                    if (opTiming) {
+                      log.debug(`Remote operation ${operation.operation} timing sent: ${sentTime}, receivedRemote: ${opTiming.start}, remoteReplied: ${opTiming.end}, receivedLocal: ${receivedTime}`);
+                    }
+                  }
                 }
                 if (operation.operation === 'getStats') {
                   // If-block required for https://jira.rbbn.com/browse/KAA-2056
@@ -52988,7 +53251,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(56420);
+var _version = __webpack_require__(14203);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -71051,6 +71314,18 @@ module.exports = func;
 
 /***/ }),
 
+/***/ 23004:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var convert = __webpack_require__(42003),
+    func = convert('isElement', __webpack_require__(92301), __webpack_require__(69112));
+
+func.placeholder = __webpack_require__(54652);
+module.exports = func;
+
+
+/***/ }),
+
 /***/ 8288:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -71797,6 +72072,38 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
+
+
+/***/ }),
+
+/***/ 92301:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var isObjectLike = __webpack_require__(15125),
+    isPlainObject = __webpack_require__(97030);
+
+/**
+ * Checks if `value` is likely a DOM element.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a DOM element, else `false`.
+ * @example
+ *
+ * _.isElement(document.body);
+ * // => true
+ *
+ * _.isElement('<body>');
+ * // => false
+ */
+function isElement(value) {
+  return isObjectLike(value) && value.nodeType === 1 && !isPlainObject(value);
+}
+
+module.exports = isElement;
 
 
 /***/ }),
@@ -85818,7 +86125,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 79347:
+/***/ 75104:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -86259,7 +86566,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(79347));
+var _version = _interopRequireDefault(__webpack_require__(75104));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
