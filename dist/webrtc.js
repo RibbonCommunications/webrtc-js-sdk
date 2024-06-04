@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.12.0-beta.1362
+ * Version: 6.12.0-beta.1363
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 55469:
+/***/ 68407:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.12.0-beta.1362';
+  return '6.12.0-beta.1363';
 }
 
 /***/ }),
@@ -5532,7 +5532,6 @@ exports.callManager = callManager;
 exports["default"] = createManager;
 var _constants = __webpack_require__(60683);
 var _constants2 = __webpack_require__(37409);
-var _remoteOperation = _interopRequireDefault(__webpack_require__(71146));
 var _selectors = __webpack_require__(11430);
 var _operationMap = __webpack_require__(81739);
 var _flows = _interopRequireDefault(__webpack_require__(13583));
@@ -5576,7 +5575,6 @@ function callManager(container) {
     CallRequests
   } = container;
   const callFlows = (0, _flows.default)(container);
-  const getRemoteOperationInfo = (0, _remoteOperation.default)(container);
 
   // Map of calls to their on-going operations.
   const ongoing = {};
@@ -5723,7 +5721,7 @@ function callManager(container) {
         remoteOp: _constants2.OPERATIONS.SLOW_START
       };
     } else {
-      opInfo = await getRemoteOperationInfo(call, params.sdp);
+      opInfo = await Callstack.utils.getRemoteOperationInfo(call, params.sdp);
     }
     const stackMethod = _operationMap.operationMap[opInfo.remoteOp];
     const operation = Callstack.operations[stackMethod].remote(call.id);
@@ -6282,6 +6280,7 @@ var _sdp = _interopRequireDefault(__webpack_require__(20590));
 var _webrtc = _interopRequireDefault(__webpack_require__(68358));
 var _callManager = _interopRequireDefault(__webpack_require__(7995));
 var _reporter = _interopRequireDefault(__webpack_require__(13840));
+var _utils = _interopRequireDefault(__webpack_require__(70504));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
@@ -6299,6 +6298,8 @@ function createCallstack(bottle) {
   // Initialize the SDP and WebRTC operations.
   (0, _sdp.default)(bottle);
   (0, _webrtc.default)(bottle);
+  // Initialize Callstack utils.
+  (0, _utils.default)(bottle);
   (0, _callManager.default)(bottle);
 }
 
@@ -10189,7 +10190,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(55469);
+var _version = __webpack_require__(68407);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -17296,7 +17297,6 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = createSlowFinishHandler;
 var _state = __webpack_require__(65794);
-var _remoteOperation = _interopRequireDefault(__webpack_require__(71146));
 var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
 var _remoteTracks = _interopRequireDefault(__webpack_require__(45294));
 var _constants = __webpack_require__(60683);
@@ -17328,13 +17328,13 @@ function createSlowFinishHandler(container) {
   const {
     context,
     WebRTC,
+    Callstack,
     CallstackSDP,
     CallstackWebrtc,
     emitEvent,
     logManager,
     CallReporter
   } = container;
-  const getRemoteOperationInfo = (0, _remoteOperation.default)(container);
 
   /**
    * Operation flow handler.
@@ -17377,7 +17377,7 @@ function createSlowFinishHandler(container) {
       remoteOp,
       mediaDiff,
       remoteDesc
-    } = await getRemoteOperationInfo(call, sdp);
+    } = await Callstack.utils.getRemoteOperationInfo(call, sdp);
     const mediaState = (0, _state.getMediaState)(call);
     log.info(`Handling state change as remote ${remoteOp} in ${mediaState} scenario.`);
 
@@ -21640,6 +21640,31 @@ function checkBandwidthControls(bandwidthControls) {
 
 /***/ }),
 
+/***/ 70504:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(71600);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = initOperation;
+var _remoteOperation = _interopRequireDefault(__webpack_require__(71146));
+/*
+ * Utility helpers available in the Callstack.
+ * This file is where the names for the operations are defined.
+ */
+
+function initOperation(bottle) {
+  // Provide the top-level container to the factory functions.
+  //    Otherwise they would get the `operations` sub-container.
+  bottle.factory('Callstack.utils.getRemoteOperationInfo', () => (0, _remoteOperation.default)(bottle.container));
+}
+
+/***/ }),
+
 /***/ 50654:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -22447,7 +22472,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(55469);
+var _version = __webpack_require__(68407);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -35503,7 +35528,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(55469);
+var _version = __webpack_require__(68407);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _validation = __webpack_require__(42850);
 const _excluded = ["common"]; // Libraries.
@@ -43266,7 +43291,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(55469);
+var _version = __webpack_require__(68407);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -43417,7 +43442,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(55469);
+var _version = __webpack_require__(68407);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -54230,7 +54255,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(55469);
+var _version = __webpack_require__(68407);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -87122,7 +87147,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 83311:
+/***/ 8926:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -87563,7 +87588,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(83311));
+var _version = _interopRequireDefault(__webpack_require__(8926));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
