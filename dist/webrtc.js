@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.12.0-beta.1379
+ * Version: 6.12.0-beta.1380
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 23682:
+/***/ 61101:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.12.0-beta.1379';
+  return '6.12.0-beta.1380';
 }
 
 /***/ }),
@@ -4329,7 +4329,7 @@ function createTracker(container, callId, operationId, eventId, opInfo, joinOpti
       log.debug(`Cannot finish ${opString} operation; already finished.`);
       throw new Error('Operation tracking cannot be finished.');
     }
-    finishOperation(container, callId, operationId, eventId, opInfo, err);
+    finishOperation(container, callId, operationId, eventId, opInfo, err, tracker.status);
     tracker.status = _constants.OP_STATUS.FINISHED;
   };
   return tracker;
@@ -4437,9 +4437,10 @@ function updateOperation(container, callId, operationId, eventId, opInfo, result
  * @param {boolean} opInfo.isLocal
  * @param {boolean} opInfo.isNegotiation
  * @param {BasicError} err
+ * @param {string} status The current status of the operation, before being finished.
  * @returns {undefined}
  */
-function finishOperation(container, callId, operationId, eventId, opInfo, err) {
+function finishOperation(container, callId, operationId, eventId, opInfo, err, status) {
   const {
     context,
     emitEvent
@@ -4462,7 +4463,7 @@ function finishOperation(container, callId, operationId, eventId, opInfo, err) {
     error: err,
     previous: {
       operation: opInfo.type,
-      status: _constants.OP_STATUS.ONGOING
+      status
     }
   });
 }
@@ -10190,7 +10191,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(23682);
+var _version = __webpack_require__(61101);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -22479,7 +22480,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(23682);
+var _version = __webpack_require__(61101);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -35535,7 +35536,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(23682);
+var _version = __webpack_require__(61101);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _validation = __webpack_require__(42850);
 const _excluded = ["common"]; // Libraries.
@@ -43298,7 +43299,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(23682);
+var _version = __webpack_require__(61101);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -43449,7 +43450,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(23682);
+var _version = __webpack_require__(61101);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -54275,7 +54276,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(23682);
+var _version = __webpack_require__(61101);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -87167,7 +87168,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 81631:
+/***/ 49982:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -87608,7 +87609,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(81631));
+var _version = _interopRequireDefault(__webpack_require__(49982));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
