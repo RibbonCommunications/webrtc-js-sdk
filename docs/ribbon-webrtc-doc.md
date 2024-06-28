@@ -815,6 +815,7 @@ Type: [Object][7]
 
 *   `id` **[string][8]** The ID of the Media object.
 *   `local` **[boolean][11]** Indicator on whether this media is local or remote.
+*   `detached` **[boolean][11]** Indicator on whether this media contains detached tracks.
 *   `tracks` **[Array][19]<[call.TrackObject][42]>** A list of Track objects that are contained in this Media object.
 
 ### TrackObject
@@ -933,6 +934,15 @@ in order to make a call. If it does not already have permissions to
 use the devices, the user may be prompted by the browser to give
 permissions.
 
+Detached media can be used when starting a call. Detached media is created
+locally outside of a call and must be managed by the application. It can
+be used when making a call by passing an array of detached track ids in
+the media object. You can start a call with a mixture of detached
+and requested media, however, you can only use one of each type (audio, video,
+screen). For example, you could include a detached track id for video, and set
+MediaConstraint.audio: true, but you can't set MediaConstraint.video: true
+if you have passed in a detached track id of kind video.
+
 #### Parameters
 
 *   `destination` **([call.SIP_URI][55] | [call.TEL_URI][56])** The desired destination.
@@ -955,6 +965,7 @@ permissions.
         *   `media.screenOptions.height` **[call.MediaConstraint][57]?** The height of the screenShare.
         *   `media.screenOptions.width` **[call.MediaConstraint][57]?** The width of the screenShare.
         *   `media.screenOptions.frameRate` **[call.MediaConstraint][57]?** The frame rate of the screenShare.
+    *   `media.medias` **[Array][19]?** List of medias containing tracks to be attached to this call.
 *   `options` **[Object][7]?** 
 
     *   `options.bandwidth` **[call.BandwidthControls][32]?** Options for configuring media's bandwidth.
@@ -977,6 +988,14 @@ client.on('call:start', function (params) {
 // Make an audio-only call.
 const newCallId = client.call.make(destination, { audio: true })
 ```
+
+*   Throws **BasicError** Throws an error if mediaConstraints.medias is not an array.
+*   Throws **BasicError** Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.
+*   Throws **BasicError** Throws an error if mediaConstraints contains duplicate media kinds.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are not detached.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are not local.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are already in use by a session.
+*   Throws **BasicError** Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.
 
 Returns **[string][8]** The generated ID of the newly created call.
 
@@ -1026,6 +1045,7 @@ permissions.
         *   `media.screenOptions.height` **[call.MediaConstraint][57]?** The height of the screenShare.
         *   `media.screenOptions.width` **[call.MediaConstraint][57]?** The width of the screenShare.
         *   `media.screenOptions.frameRate` **[call.MediaConstraint][57]?** The frame rate of the screenShare.
+    *   `media.medias` **[Array][19]?** List of medias containing tracks to be attached to this call.
 *   `options` **[Object][7]?** 
 
     *   `options.bandwidth` **[call.BandwidthControls][32]?** Options for configuring media's bandwidth.
@@ -1173,6 +1193,7 @@ added to the Call.
     *   `media.audio` **[boolean][11]** Whether to add audio to the call. (optional, default `false`)
     *   `media.video` **[boolean][11]** Whether to add video to the call. (optional, default `false`)
     *   `media.screen` **[boolean][11]** Whether to add the screenshare to the call. (Note: Screensharing is not supported on iOS Safari.) (optional, default `false`)
+    *   `media.medias` **[Array][19]?** List of medias containing tracks to be attached to this call.
     *   `media.audioOptions` **[Object][7]?** Options for configuring the call's audio.
 
         *   `media.audioOptions.deviceId` **[call.MediaConstraint][57]?** ID of the microphone to receive audio from.
@@ -1191,6 +1212,16 @@ added to the Call.
 
     *   `options.bandwidth` **[call.BandwidthControls][32]?** Options for configuring media's bandwidth.
     *   `options.dscpControls` **[call.DSCPControls][58]?** Options for configuring DSCP markings on the media traffic
+
+<!---->
+
+*   Throws **BasicError** Throws an error if mediaConstraints.medias is not an array.
+*   Throws **BasicError** Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.
+*   Throws **BasicError** Throws an error if mediaConstraints contains duplicate media kinds.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are not detached.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are not local.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are already in use by a session.
+*   Throws **BasicError** Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.
 
 ### removeMedia
 
@@ -1372,6 +1403,7 @@ seamlessly for the remote application, which will not receive an event.
         *   `media.videoOptions.height` **[call.MediaConstraint][57]?** The height of the video.
         *   `media.videoOptions.width` **[call.MediaConstraint][57]?** The width of the video.
         *   `media.videoOptions.frameRate` **[call.MediaConstraint][57]?** The frame rate of the video.
+    *   `media.medias` **[Array][19]?** List of medias containing tracks to be attached to this call.
 
 #### Examples
 
@@ -1408,6 +1440,14 @@ client.call.replaceTrack(callId, videoTrack.id, {
   screen: true
 })
 ```
+
+*   Throws **BasicError** Throws an error if mediaConstraints.medias is not an array.
+*   Throws **BasicError** Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.
+*   Throws **BasicError** Throws an error if mediaConstraints contains duplicate media kinds.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are not detached.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are not local.
+*   Throws **BasicError** Throws an error if any tracks in mediaConstraints.medias are already in use by a session.
+*   Throws **BasicError** Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.
 
 ### restartMedia
 
@@ -3361,6 +3401,60 @@ client.media.initializeDevices()
 // The SDK will only ask for audio permissions.
 client.media.initializeDevices({ audio: true, video: false })
 ```
+
+### createLocalMedia
+
+Create local media Tracks.
+
+#### Parameters
+
+*   `mediaConstraints` **[Object][7]** Collection of constraints for each media type.
+
+    *   `mediaConstraints.audio` **([boolean][11] | [Object][7])?** Native media constraints for audio.
+    *   `mediaConstraints.video` **([boolean][11] | [Object][7])?** Native media constraints for video.
+
+#### Examples
+
+```javascript
+// Create detached media for your local video
+const medias = await client.media.createLocalMedia({ video: true })
+```
+
+*   Throws **BasicError** Throws a USER_MEDIA_ERROR error if any any other media type other than audio, video or screen is passed in mediaConstraints.
+*   Throws **BasicError** Throws a USER_MEDIA_ERROR error if provided constraints cannot be fulfilled.
+*   Throws **BasicError** Throws a USER_MEDIA_ERROR error if it fails to get media for other reasons.
+
+Returns **[Promise][75]** Resolves with an array of objects containing both a media type and a media object.
+
+### getLocalMedia
+
+Get local media Tracks.
+
+#### Examples
+
+```javascript
+await client.media.createLocalMedia({ video: true })
+// Get all detached tracks
+const medias = await client.media.getLocalMedia()
+```
+
+Returns **[Promise][75]** Resolves with an array of objects containing both a media type and a media object.
+
+### disposeLocalMedia
+
+Dispose local media Tracks.
+
+#### Parameters
+
+*   `trackId` **[string][8]** An id to a track to be cleaned up.
+
+<!---->
+
+*   Throws **BasicError** An error indicating that trackId must be defined.
+*   Throws **BasicError** An error indicating that the track that is to be disposed is in use by a call.
+*   Throws **BasicError** An error indicating that the track that is to be disposed was not created locally.
+
+Returns **[Promise][75]<[undefined][86]>** 
 
 ### renderTracks
 

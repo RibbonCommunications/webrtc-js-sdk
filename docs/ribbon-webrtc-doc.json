@@ -1689,11 +1689,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 68,
+                "line": 69,
                 "column": 0
               },
               "end": {
-                "line": 154,
+                "line": 155,
                 "column": 1
               }
             },
@@ -3658,22 +3658,22 @@
           ],
           "loc": {
             "start": {
-              "line": 240,
+              "line": 251,
               "column": 4
             },
             "end": {
-              "line": 246,
+              "line": 257,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 247,
+                "line": 258,
                 "column": 4
               },
               "end": {
-                "line": 249,
+                "line": 260,
                 "column": 5
               }
             },
@@ -3753,22 +3753,22 @@
           ],
           "loc": {
             "start": {
-              "line": 252,
+              "line": 263,
               "column": 4
             },
             "end": {
-              "line": 278,
+              "line": 289,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 279,
+                "line": 290,
                 "column": 4
               },
               "end": {
-                "line": 305,
+                "line": 316,
                 "column": 5
               }
             },
@@ -4795,22 +4795,22 @@
           ],
           "loc": {
             "start": {
-              "line": 20,
+              "line": 21,
               "column": 2
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 34,
+                "line": 35,
                 "column": 2
               },
               "end": {
-                "line": 37,
+                "line": 38,
                 "column": 3
               }
             },
@@ -6681,11 +6681,11 @@
     "context": {
       "loc": {
         "start": {
-          "line": 460,
+          "line": 461,
           "column": 0
         },
         "end": {
-          "line": 470,
+          "line": 471,
           "column": 1
         }
       },
@@ -11320,11 +11320,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -12067,11 +12067,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -12249,11 +12249,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -12445,11 +12445,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -12684,11 +12684,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -13007,11 +13007,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -13339,11 +13339,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -13659,11 +13659,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -14392,11 +14392,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -14667,11 +14667,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -14913,11 +14913,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -15150,11 +15150,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -15355,8 +15355,18 @@
             },
             {
               "title": "property",
-              "description": "A list of Track objects that are contained in this Media object.",
+              "description": "Indicator on whether this media contains detached tracks.",
               "lineNumber": 10,
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              },
+              "name": "detached"
+            },
+            {
+              "title": "property",
+              "description": "A list of Track objects that are contained in this Media object.",
+              "lineNumber": 11,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -15379,18 +15389,18 @@
               "column": 0
             },
             "end": {
-              "line": 320,
+              "line": 321,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -15449,8 +15459,31 @@
             },
             {
               "title": "property",
-              "name": "tracks",
+              "name": "detached",
               "lineNumber": 10,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Indicator on whether this media contains detached tracks."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            },
+            {
+              "title": "property",
+              "name": "tracks",
+              "lineNumber": 11,
               "description": {
                 "type": "root",
                 "children": [
@@ -15676,22 +15709,22 @@
           ],
           "loc": {
             "start": {
-              "line": 322,
+              "line": 323,
               "column": 0
             },
             "end": {
-              "line": 343,
+              "line": 344,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -16078,22 +16111,22 @@
           ],
           "loc": {
             "start": {
-              "line": 345,
+              "line": 346,
               "column": 0
             },
             "end": {
-              "line": 355,
+              "line": 356,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -16320,22 +16353,22 @@
           ],
           "loc": {
             "start": {
-              "line": 357,
+              "line": 358,
               "column": 0
             },
             "end": {
-              "line": 368,
+              "line": 369,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -16750,22 +16783,22 @@
           ],
           "loc": {
             "start": {
-              "line": 370,
+              "line": 371,
               "column": 0
             },
             "end": {
-              "line": 410,
+              "line": 411,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 460,
+                "line": 461,
                 "column": 0
               },
               "end": {
-                "line": 470,
+                "line": 471,
                 "column": 1
               }
             },
@@ -17014,6 +17047,15 @@
                     "value": "The SDK requires access to the machine's media devices (eg. microphone)\nin order to make a call. If it does not already have permissions to\nuse the devices, the user may be prompted by the browser to give\npermissions."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Detached media can be used when starting a call. Detached media is created\nlocally outside of a call and must be managed by the application. It can\nbe used when making a call by passing an array of detached track ids in\nthe media object. You can start a call with a mixture of detached\nand requested media, however, you can only use one of each type (audio, video,\nscreen). For example, you could include a detached track id for video, and set\nMediaConstraint.audio: true, but you can't set MediaConstraint.video: true\nif you have passed in a detached track id of kind video."
+                  }
+                ]
               }
             ]
           },
@@ -17021,35 +17063,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 23,
+              "lineNumber": 33,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 24
+              "lineNumber": 34
             },
             {
               "title": "memberof",
               "description": "call",
-              "lineNumber": 25
+              "lineNumber": 35
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 26,
+              "lineNumber": 36,
               "name": "link_call"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 27,
+              "lineNumber": 37,
               "name": "make"
             },
             {
               "title": "param",
               "description": "The desired destination.",
-              "lineNumber": 28,
+              "lineNumber": 38,
               "type": {
                 "type": "UnionType",
                 "elements": [
@@ -17068,7 +17110,7 @@
             {
               "title": "param",
               "description": "The media options the call should be initialized with.",
-              "lineNumber": 29,
+              "lineNumber": 39,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -17078,7 +17120,7 @@
             {
               "title": "param",
               "description": "Whether the call should have audio on start. Currently, audio-less calls are not supported.",
-              "lineNumber": 30,
+              "lineNumber": 40,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17092,7 +17134,7 @@
             {
               "title": "param",
               "description": "Options for configuring the call's audio.",
-              "lineNumber": 31,
+              "lineNumber": 41,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17105,7 +17147,7 @@
             {
               "title": "param",
               "description": "ID of the microphone to receive audio from.",
-              "lineNumber": 32,
+              "lineNumber": 42,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17118,7 +17160,7 @@
             {
               "title": "param",
               "description": "Whether the call should have video on start.",
-              "lineNumber": 33,
+              "lineNumber": 43,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17132,7 +17174,7 @@
             {
               "title": "param",
               "description": "Options for configuring the call's video.",
-              "lineNumber": 34,
+              "lineNumber": 44,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17145,7 +17187,7 @@
             {
               "title": "param",
               "description": "ID of the camera to receive video from.",
-              "lineNumber": 35,
+              "lineNumber": 45,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17158,7 +17200,7 @@
             {
               "title": "param",
               "description": "The height of the video.",
-              "lineNumber": 36,
+              "lineNumber": 46,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17171,7 +17213,7 @@
             {
               "title": "param",
               "description": "The width of the video.",
-              "lineNumber": 37,
+              "lineNumber": 47,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17184,7 +17226,7 @@
             {
               "title": "param",
               "description": "The frame rate of the video.",
-              "lineNumber": 38,
+              "lineNumber": 48,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17197,7 +17239,7 @@
             {
               "title": "param",
               "description": "Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)",
-              "lineNumber": 39,
+              "lineNumber": 49,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17211,7 +17253,7 @@
             {
               "title": "param",
               "description": "Options for configuring the call's screenShare.",
-              "lineNumber": 40,
+              "lineNumber": 50,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17224,7 +17266,7 @@
             {
               "title": "param",
               "description": "The height of the screenShare.",
-              "lineNumber": 41,
+              "lineNumber": 51,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17237,7 +17279,7 @@
             {
               "title": "param",
               "description": "The width of the screenShare.",
-              "lineNumber": 42,
+              "lineNumber": 52,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17250,7 +17292,7 @@
             {
               "title": "param",
               "description": "The frame rate of the screenShare.",
-              "lineNumber": 43,
+              "lineNumber": 53,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17262,8 +17304,21 @@
             },
             {
               "title": "param",
+              "description": "List of medias containing tracks to be attached to this call.",
+              "lineNumber": 54,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                }
+              },
+              "name": "media.medias"
+            },
+            {
+              "title": "param",
               "description": null,
-              "lineNumber": 44,
+              "lineNumber": 55,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17276,7 +17331,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 45,
+              "lineNumber": 56,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17289,7 +17344,7 @@
             {
               "title": "param",
               "description": "Custom display name to be provided to the destination. Not supported in all environments and may use default display name.",
-              "lineNumber": 46,
+              "lineNumber": 57,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17302,7 +17357,7 @@
             {
               "title": "param",
               "description": "Custom SIP header parameters for the SIP backend.",
-              "lineNumber": 47,
+              "lineNumber": 58,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17324,7 +17379,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic",
-              "lineNumber": 48,
+              "lineNumber": 59,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17335,9 +17390,72 @@
               "name": "options.dscpControls"
             },
             {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias is not an array.",
+              "lineNumber": 60,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
+              "lineNumber": 61,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
+              "lineNumber": 62,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
+              "lineNumber": 63,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
+              "lineNumber": 64,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
+              "lineNumber": 65,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
+              "lineNumber": 66,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
               "title": "returns",
               "description": "The generated ID of the newly created call.",
-              "lineNumber": 49,
+              "lineNumber": 67,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -17346,7 +17464,7 @@
             {
               "title": "example",
               "description": "// Listen for the event emitted after making a call.\nclient.on('call:start', function (params) {\n  const { callId, error } = params\n  if (error) {\n    // Call failed to initialize.\n  } else {\n    // Call was initialized, and the recipient user will be notified.\n  }\n})\n// Make an audio-only call.\nconst newCallId = client.call.make(destination, { audio: true })",
-              "lineNumber": 50
+              "lineNumber": 68
             }
           ],
           "loc": {
@@ -17355,18 +17473,18 @@
               "column": 2
             },
             "end": {
-              "line": 90,
+              "line": 108,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 102,
+                "line": 120,
                 "column": 2
               },
               "end": {
-                "line": 179,
+                "line": 207,
                 "column": 3
               }
             },
@@ -17383,7 +17501,7 @@
             {
               "title": "param",
               "name": "destination",
-              "lineNumber": 28,
+              "lineNumber": 38,
               "description": {
                 "type": "root",
                 "children": [
@@ -17415,7 +17533,7 @@
             {
               "title": "param",
               "name": "media",
-              "lineNumber": 29,
+              "lineNumber": 39,
               "description": {
                 "type": "root",
                 "children": [
@@ -17438,7 +17556,7 @@
                 {
                   "title": "param",
                   "name": "media.audio",
-                  "lineNumber": 30,
+                  "lineNumber": 40,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17462,7 +17580,7 @@
                 {
                   "title": "param",
                   "name": "media.audioOptions",
-                  "lineNumber": 31,
+                  "lineNumber": 41,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17488,7 +17606,7 @@
                     {
                       "title": "param",
                       "name": "media.audioOptions.deviceId",
-                      "lineNumber": 32,
+                      "lineNumber": 42,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17516,7 +17634,7 @@
                 {
                   "title": "param",
                   "name": "media.video",
-                  "lineNumber": 33,
+                  "lineNumber": 43,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17540,7 +17658,7 @@
                 {
                   "title": "param",
                   "name": "media.videoOptions",
-                  "lineNumber": 34,
+                  "lineNumber": 44,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17566,7 +17684,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.deviceId",
-                      "lineNumber": 35,
+                      "lineNumber": 45,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17592,7 +17710,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.height",
-                      "lineNumber": 36,
+                      "lineNumber": 46,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17618,7 +17736,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.width",
-                      "lineNumber": 37,
+                      "lineNumber": 47,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17644,7 +17762,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.frameRate",
-                      "lineNumber": 38,
+                      "lineNumber": 48,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17672,7 +17790,7 @@
                 {
                   "title": "param",
                   "name": "media.screen",
-                  "lineNumber": 39,
+                  "lineNumber": 49,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17696,7 +17814,7 @@
                 {
                   "title": "param",
                   "name": "media.screenOptions",
-                  "lineNumber": 40,
+                  "lineNumber": 50,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17722,7 +17840,7 @@
                     {
                       "title": "param",
                       "name": "media.screenOptions.height",
-                      "lineNumber": 41,
+                      "lineNumber": 51,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17748,7 +17866,7 @@
                     {
                       "title": "param",
                       "name": "media.screenOptions.width",
-                      "lineNumber": 42,
+                      "lineNumber": 52,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17774,7 +17892,7 @@
                     {
                       "title": "param",
                       "name": "media.screenOptions.frameRate",
-                      "lineNumber": 43,
+                      "lineNumber": 53,
                       "description": {
                         "type": "root",
                         "children": [
@@ -17798,13 +17916,39 @@
                       }
                     }
                   ]
+                },
+                {
+                  "title": "param",
+                  "name": "media.medias",
+                  "lineNumber": 54,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "List of medias containing tracks to be attached to this call."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    }
+                  }
                 }
               ]
             },
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 44,
+              "lineNumber": 55,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17816,7 +17960,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 45,
+                  "lineNumber": 56,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17842,7 +17986,7 @@
                 {
                   "title": "param",
                   "name": "options.displayName",
-                  "lineNumber": 46,
+                  "lineNumber": 57,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17868,7 +18012,7 @@
                 {
                   "title": "param",
                   "name": "options.customParameters",
-                  "lineNumber": 47,
+                  "lineNumber": 58,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17903,7 +18047,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 48,
+                  "lineNumber": 59,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17954,7 +18098,180 @@
             }
           ],
           "sees": [],
-          "throws": [],
+          "throws": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias is not an array."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias Objects are missing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "media"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "type"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints contains duplicate media kinds."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are not detached."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are not local."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias contains any type other than Object containing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "media"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "type"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            }
+          ],
           "todos": [],
           "yields": [],
           "access": "public",
@@ -18333,8 +18650,21 @@
             },
             {
               "title": "param",
-              "description": null,
+              "description": "List of medias containing tracks to be attached to this call.",
               "lineNumber": 43,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                }
+              },
+              "name": "media.medias"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "lineNumber": 44,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18347,7 +18677,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 44,
+              "lineNumber": 45,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18360,7 +18690,7 @@
             {
               "title": "param",
               "description": "Custom SIP header parameters for the SIP backend.",
-              "lineNumber": 45,
+              "lineNumber": 46,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18382,7 +18712,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic",
-              "lineNumber": 46,
+              "lineNumber": 47,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18395,22 +18725,22 @@
           ],
           "loc": {
             "start": {
-              "line": 181,
+              "line": 209,
               "column": 2
             },
             "end": {
-              "line": 228,
+              "line": 257,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 241,
+                "line": 270,
                 "column": 2
               },
               "end": {
-                "line": 276,
+                "line": 315,
                 "column": 3
               }
             },
@@ -18829,13 +19159,39 @@
                       }
                     }
                   ]
+                },
+                {
+                  "title": "param",
+                  "name": "media.medias",
+                  "lineNumber": 43,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "List of medias containing tracks to be attached to this call."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    }
+                  }
                 }
               ]
             },
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 43,
+              "lineNumber": 44,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18847,7 +19203,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 44,
+                  "lineNumber": 45,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18873,7 +19229,7 @@
                 {
                   "title": "param",
                   "name": "options.customParameters",
-                  "lineNumber": 45,
+                  "lineNumber": 46,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18908,7 +19264,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 46,
+                  "lineNumber": 47,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19097,22 +19453,22 @@
           ],
           "loc": {
             "start": {
-              "line": 278,
+              "line": 317,
               "column": 2
             },
             "end": {
-              "line": 297,
+              "line": 336,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 298,
+                "line": 337,
                 "column": 2
               },
               "end": {
-                "line": 326,
+                "line": 365,
                 "column": 3
               }
             },
@@ -19293,22 +19649,22 @@
           ],
           "loc": {
             "start": {
-              "line": 328,
+              "line": 367,
               "column": 2
             },
             "end": {
-              "line": 346,
+              "line": 385,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 347,
+                "line": 386,
                 "column": 2
               },
               "end": {
-                "line": 374,
+                "line": 413,
                 "column": 3
               }
             },
@@ -19508,22 +19864,22 @@
           ],
           "loc": {
             "start": {
-              "line": 376,
+              "line": 415,
               "column": 2
             },
             "end": {
-              "line": 395,
+              "line": 434,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 396,
+                "line": 435,
                 "column": 2
               },
               "end": {
-                "line": 429,
+                "line": 468,
                 "column": 3
               }
             },
@@ -19774,22 +20130,22 @@
           ],
           "loc": {
             "start": {
-              "line": 431,
+              "line": 470,
               "column": 2
             },
             "end": {
-              "line": 454,
+              "line": 493,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 455,
+                "line": 494,
                 "column": 2
               },
               "end": {
-                "line": 487,
+                "line": 526,
                 "column": 3
               }
             },
@@ -20477,8 +20833,21 @@
             },
             {
               "title": "param",
-              "description": "Options for configuring the call's audio.",
+              "description": "List of medias containing tracks to be attached to this call.",
               "lineNumber": 21,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                }
+              },
+              "name": "media.medias"
+            },
+            {
+              "title": "param",
+              "description": "Options for configuring the call's audio.",
+              "lineNumber": 22,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20491,7 +20860,7 @@
             {
               "title": "param",
               "description": "Options for configuring the call's video.",
-              "lineNumber": 22,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20504,7 +20873,7 @@
             {
               "title": "param",
               "description": "Options for configuring the call's screenShare.",
-              "lineNumber": 23,
+              "lineNumber": 24,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20517,7 +20886,7 @@
             {
               "title": "param",
               "description": "ID of the microphone to receive audio from.",
-              "lineNumber": 24,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20530,7 +20899,7 @@
             {
               "title": "param",
               "description": "ID of the camera to receive video from.",
-              "lineNumber": 25,
+              "lineNumber": 26,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20543,7 +20912,7 @@
             {
               "title": "param",
               "description": "The height of the video.",
-              "lineNumber": 26,
+              "lineNumber": 27,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20556,7 +20925,7 @@
             {
               "title": "param",
               "description": "The width of the video.",
-              "lineNumber": 27,
+              "lineNumber": 28,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20569,7 +20938,7 @@
             {
               "title": "param",
               "description": "The frame rate of the video.",
-              "lineNumber": 28,
+              "lineNumber": 29,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20582,7 +20951,7 @@
             {
               "title": "param",
               "description": "The height of the screenShare.",
-              "lineNumber": 29,
+              "lineNumber": 30,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20595,7 +20964,7 @@
             {
               "title": "param",
               "description": "The width of the screenShare.",
-              "lineNumber": 30,
+              "lineNumber": 31,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20608,7 +20977,7 @@
             {
               "title": "param",
               "description": "The frame rate of the screenShare.",
-              "lineNumber": 31,
+              "lineNumber": 32,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20621,7 +20990,7 @@
             {
               "title": "param",
               "description": null,
-              "lineNumber": 32,
+              "lineNumber": 33,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20634,7 +21003,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 33,
+              "lineNumber": 34,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20647,7 +21016,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic",
-              "lineNumber": 34,
+              "lineNumber": 35,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -20656,6 +21025,69 @@
                 }
               },
               "name": "options.dscpControls"
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias is not an array.",
+              "lineNumber": 36,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
+              "lineNumber": 37,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
+              "lineNumber": 38,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
+              "lineNumber": 39,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
+              "lineNumber": 40,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
+              "lineNumber": 41,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
+              "lineNumber": 42,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
             }
           ],
           "loc": {
@@ -20664,18 +21096,18 @@
               "column": 2
             },
             "end": {
-              "line": 174,
+              "line": 182,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 175,
+                "line": 183,
                 "column": 2
               },
               "end": {
-                "line": 203,
+                "line": 221,
                 "column": 3
               }
             },
@@ -20806,8 +21238,34 @@
                 },
                 {
                   "title": "param",
-                  "name": "media.audioOptions",
+                  "name": "media.medias",
                   "lineNumber": 21,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "List of medias containing tracks to be attached to this call."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    }
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "media.audioOptions",
+                  "lineNumber": 22,
                   "description": {
                     "type": "root",
                     "children": [
@@ -20833,7 +21291,7 @@
                     {
                       "title": "param",
                       "name": "media.audioOptions.deviceId",
-                      "lineNumber": 24,
+                      "lineNumber": 25,
                       "description": {
                         "type": "root",
                         "children": [
@@ -20861,7 +21319,7 @@
                 {
                   "title": "param",
                   "name": "media.videoOptions",
-                  "lineNumber": 22,
+                  "lineNumber": 23,
                   "description": {
                     "type": "root",
                     "children": [
@@ -20887,7 +21345,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.deviceId",
-                      "lineNumber": 25,
+                      "lineNumber": 26,
                       "description": {
                         "type": "root",
                         "children": [
@@ -20913,7 +21371,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.height",
-                      "lineNumber": 26,
+                      "lineNumber": 27,
                       "description": {
                         "type": "root",
                         "children": [
@@ -20939,7 +21397,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.width",
-                      "lineNumber": 27,
+                      "lineNumber": 28,
                       "description": {
                         "type": "root",
                         "children": [
@@ -20965,7 +21423,7 @@
                     {
                       "title": "param",
                       "name": "media.videoOptions.frameRate",
-                      "lineNumber": 28,
+                      "lineNumber": 29,
                       "description": {
                         "type": "root",
                         "children": [
@@ -20993,7 +21451,7 @@
                 {
                   "title": "param",
                   "name": "media.screenOptions",
-                  "lineNumber": 23,
+                  "lineNumber": 24,
                   "description": {
                     "type": "root",
                     "children": [
@@ -21019,7 +21477,7 @@
                     {
                       "title": "param",
                       "name": "media.screenOptions.height",
-                      "lineNumber": 29,
+                      "lineNumber": 30,
                       "description": {
                         "type": "root",
                         "children": [
@@ -21045,7 +21503,7 @@
                     {
                       "title": "param",
                       "name": "media.screenOptions.width",
-                      "lineNumber": 30,
+                      "lineNumber": 31,
                       "description": {
                         "type": "root",
                         "children": [
@@ -21071,7 +21529,7 @@
                     {
                       "title": "param",
                       "name": "media.screenOptions.frameRate",
-                      "lineNumber": 31,
+                      "lineNumber": 32,
                       "description": {
                         "type": "root",
                         "children": [
@@ -21101,7 +21559,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 32,
+              "lineNumber": 33,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -21113,7 +21571,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 33,
+                  "lineNumber": 34,
                   "description": {
                     "type": "root",
                     "children": [
@@ -21139,7 +21597,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 34,
+                  "lineNumber": 35,
                   "description": {
                     "type": "root",
                     "children": [
@@ -21169,7 +21627,180 @@
           "properties": [],
           "returns": [],
           "sees": [],
-          "throws": [],
+          "throws": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias is not an array."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias Objects are missing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "media"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "type"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints contains duplicate media kinds."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are not detached."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are not local."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias contains any type other than Object containing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "media"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "type"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            }
+          ],
           "todos": [],
           "yields": [],
           "access": "public",
@@ -21341,22 +21972,22 @@
           ],
           "loc": {
             "start": {
-              "line": 205,
+              "line": 223,
               "column": 2
             },
             "end": {
-              "line": 224,
+              "line": 242,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 225,
+                "line": 243,
                 "column": 2
               },
               "end": {
-                "line": 251,
+                "line": 269,
                 "column": 3
               }
             },
@@ -21728,22 +22359,22 @@
           ],
           "loc": {
             "start": {
-              "line": 253,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 283,
+              "line": 301,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 284,
+                "line": 302,
                 "column": 2
               },
               "end": {
-                "line": 317,
+                "line": 335,
                 "column": 3
               }
             },
@@ -22144,22 +22775,22 @@
           ],
           "loc": {
             "start": {
-              "line": 319,
+              "line": 337,
               "column": 2
             },
             "end": {
-              "line": 341,
+              "line": 359,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 342,
+                "line": 360,
                 "column": 2
               },
               "end": {
-                "line": 370,
+                "line": 388,
                 "column": 3
               }
             },
@@ -22372,22 +23003,22 @@
           ],
           "loc": {
             "start": {
-              "line": 372,
+              "line": 390,
               "column": 2
             },
             "end": {
-              "line": 405,
+              "line": 423,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 519,
+                "line": 545,
                 "column": 2
               },
               "end": {
-                "line": 548,
+                "line": 584,
                 "column": 3
               }
             },
@@ -22589,22 +23220,22 @@
           ],
           "loc": {
             "start": {
-              "line": 407,
+              "line": 425,
               "column": 2
             },
             "end": {
-              "line": 447,
+              "line": 465,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 519,
+                "line": 545,
                 "column": 2
               },
               "end": {
-                "line": 548,
+                "line": 584,
                 "column": 3
               }
             },
@@ -22915,34 +23546,110 @@
               "name": "media.videoOptions.frameRate"
             },
             {
+              "title": "param",
+              "description": "List of medias containing tracks to be attached to this call.",
+              "lineNumber": 38,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                }
+              },
+              "name": "media.medias"
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias is not an array.",
+              "lineNumber": 39,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
+              "lineNumber": 40,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
+              "lineNumber": 41,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
+              "lineNumber": 42,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
+              "lineNumber": 43,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
+              "lineNumber": 44,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
+              "lineNumber": 45,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
               "title": "example",
               "description": "const callId = ...\n// Get the video track used by the call.\nconst videoTrack = ...\n\n// Replace the specified video track of the call with a new\n//    video track.\nclient.call.replaceTrack(callId, videoTrack.id, {\n  // The track should be replaced with a video track using\n  //    a specific device. This effectively changes the input\n  //    device for an ongoing call.\n  video: true,\n  videoOptions: {\n    deviceId: cameraId\n  }\n})",
-              "lineNumber": 38
+              "lineNumber": 46
             },
             {
               "title": "example",
               "description": "const callId = ...\n// Get the video track used by the call.\nconst videoTrack = ...\n\n// Can also replace the specified video track of the call with a new\n// screen sharing track because screen sharing is delivered as a video stream to remote peer.\n// User will then be prompted to pick a specific screen to share and thus the device id will be selected.\nclient.call.replaceTrack(callId, videoTrack.id, {\n  // The track should be replaced with a screen sharing track.\n  // Note that 'screenOptions' property is not mandatory, as API will use default values\n  // for properties like: width, height, frameRate.\n  screen: true\n})",
-              "lineNumber": 55
+              "lineNumber": 63
             }
           ],
           "loc": {
             "start": {
-              "line": 449,
+              "line": 467,
               "column": 2
             },
             "end": {
-              "line": 518,
+              "line": 544,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 519,
+                "line": 545,
                 "column": 2
               },
               "end": {
-                "line": 548,
+                "line": 584,
                 "column": 3
               }
             },
@@ -23262,6 +23969,32 @@
                       }
                     }
                   ]
+                },
+                {
+                  "title": "param",
+                  "name": "media.medias",
+                  "lineNumber": 38,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "List of medias containing tracks to be attached to this call."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    }
+                  }
                 }
               ]
             }
@@ -23269,7 +24002,180 @@
           "properties": [],
           "returns": [],
           "sees": [],
-          "throws": [],
+          "throws": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias is not an array."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias Objects are missing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "media"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "type"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints contains duplicate media kinds."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are not detached."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are not local."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws an error if mediaConstraints.medias contains any type other than Object containing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "media"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "type"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            }
+          ],
           "todos": [],
           "yields": [],
           "access": "public",
@@ -23643,22 +24549,22 @@
           ],
           "loc": {
             "start": {
-              "line": 550,
+              "line": 586,
               "column": 2
             },
             "end": {
-              "line": 594,
+              "line": 630,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 595,
+                "line": 631,
                 "column": 2
               },
               "end": {
-                "line": 615,
+                "line": 651,
                 "column": 3
               }
             },
@@ -23991,22 +24897,22 @@
           ],
           "loc": {
             "start": {
-              "line": 651,
+              "line": 687,
               "column": 2
             },
             "end": {
-              "line": 714,
+              "line": 750,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 715,
+                "line": 751,
                 "column": 2
               },
               "end": {
-                "line": 755,
+                "line": 791,
                 "column": 3
               }
             },
@@ -42009,11 +42915,11 @@
     "context": {
       "loc": {
         "start": {
-          "line": 460,
+          "line": 461,
           "column": 0
         },
         "end": {
-          "line": 470,
+          "line": 471,
           "column": 1
         }
       },
@@ -44369,6 +45275,774 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Create local media Tracks."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 3
+            },
+            {
+              "title": "memberof",
+              "description": "media",
+              "lineNumber": 4
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 5,
+              "name": "createLocalMedia"
+            },
+            {
+              "title": "param",
+              "description": "Collection of constraints for each media type.",
+              "lineNumber": 6,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "mediaConstraints"
+            },
+            {
+              "title": "param",
+              "description": "Native media constraints for audio.",
+              "lineNumber": 7,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "boolean"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "mediaConstraints.audio"
+            },
+            {
+              "title": "param",
+              "description": "Native media constraints for video.",
+              "lineNumber": 8,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "boolean"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "mediaConstraints.video"
+            },
+            {
+              "title": "returns",
+              "description": "Resolves with an array of objects containing both a media type and a media object.",
+              "lineNumber": 9,
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws a USER_MEDIA_ERROR error if any any other media type other than audio, video or screen is passed in mediaConstraints.",
+              "lineNumber": 10,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws a USER_MEDIA_ERROR error if provided constraints cannot be fulfilled.",
+              "lineNumber": 11,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "Throws a USER_MEDIA_ERROR error if it fails to get media for other reasons.",
+              "lineNumber": 12,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "example",
+              "description": "// Create detached media for your local video\nconst medias = await client.media.createLocalMedia({ video: true })",
+              "lineNumber": 13
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 147,
+              "column": 7
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 148,
+                "column": 4
+              },
+              "end": {
+                "line": 159,
+                "column": 5
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/webrtc/interface/api/media.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "// Create detached media for your local video\nconst medias = await client.media.createLocalMedia({ video: true })"
+            }
+          ],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "mediaConstraints",
+              "lineNumber": 6,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Collection of constraints for each media type."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "mediaConstraints.audio",
+                  "lineNumber": 7,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Native media constraints for audio."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "boolean"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "mediaConstraints.video",
+                  "lineNumber": 8,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Native media constraints for video."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "boolean"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Resolves with an array of objects containing both a media type and a media object."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws a USER_MEDIA_ERROR error if any any other media type other than audio, video or screen is passed in mediaConstraints."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws a USER_MEDIA_ERROR error if provided constraints cannot be fulfilled."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Throws a USER_MEDIA_ERROR error if it fails to get media for other reasons."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            }
+          ],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "media",
+          "kind": "function",
+          "name": "createLocalMedia",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "media",
+              "kind": "namespace"
+            },
+            {
+              "name": "createLocalMedia",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "media.createLocalMedia"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Get local media Tracks."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 3
+            },
+            {
+              "title": "memberof",
+              "description": "media",
+              "lineNumber": 4
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 5,
+              "name": "getLocalMedia"
+            },
+            {
+              "title": "returns",
+              "description": "Resolves with an array of objects containing both a media type and a media object.",
+              "lineNumber": 6,
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              }
+            },
+            {
+              "title": "example",
+              "description": "await client.media.createLocalMedia({ video: true })\n// Get all detached tracks\nconst medias = await client.media.getLocalMedia()",
+              "lineNumber": 7
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 161,
+              "column": 4
+            },
+            "end": {
+              "line": 172,
+              "column": 7
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 173,
+                "column": 4
+              },
+              "end": {
+                "line": 184,
+                "column": 5
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/webrtc/interface/api/media.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "await client.media.createLocalMedia({ video: true })\n// Get all detached tracks\nconst medias = await client.media.getLocalMedia()"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Resolves with an array of objects containing both a media type and a media object."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "media",
+          "kind": "function",
+          "name": "getLocalMedia",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "media",
+              "kind": "namespace"
+            },
+            {
+              "name": "getLocalMedia",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "media.getLocalMedia"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Dispose local media Tracks."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 3
+            },
+            {
+              "title": "memberof",
+              "description": "media",
+              "lineNumber": 4
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 5,
+              "name": "disposeLocalMedia"
+            },
+            {
+              "title": "param",
+              "description": "An id to a track to be cleaned up.",
+              "lineNumber": 6,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "trackId"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "lineNumber": 7,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Promise"
+                },
+                "applications": [
+                  {
+                    "type": "UndefinedLiteral"
+                  }
+                ]
+              }
+            },
+            {
+              "title": "throws",
+              "description": "An error indicating that trackId must be defined.",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "An error indicating that the track that is to be disposed is in use by a call.",
+              "lineNumber": 9,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "title": "throws",
+              "description": "An error indicating that the track that is to be disposed was not created locally.",
+              "lineNumber": 10,
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 186,
+              "column": 4
+            },
+            "end": {
+              "line": 197,
+              "column": 7
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 198,
+                "column": 4
+              },
+              "end": {
+                "line": 202,
+                "column": 5
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/webrtc/interface/api/media.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "trackId",
+              "lineNumber": 6,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An id to a track to be cleaned up."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Promise"
+                },
+                "applications": [
+                  {
+                    "type": "UndefinedLiteral"
+                  }
+                ]
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An error indicating that trackId must be defined."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An error indicating that the track that is to be disposed is in use by a call."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            },
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An error indicating that the track that is to be disposed was not created locally."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "BasicError"
+              }
+            }
+          ],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "media",
+          "kind": "function",
+          "name": "disposeLocalMedia",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "media",
+              "kind": "namespace"
+            },
+            {
+              "name": "disposeLocalMedia",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "media.disposeLocalMedia"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Render Media Tracks in a container."
                   }
                 ]
@@ -44470,22 +46144,22 @@
           ],
           "loc": {
             "start": {
-              "line": 131,
+              "line": 204,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 230,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 158,
+                "line": 231,
                 "column": 4
               },
               "end": {
-                "line": 169,
+                "line": 242,
                 "column": 5
               }
             },
@@ -44719,22 +46393,22 @@
           ],
           "loc": {
             "start": {
-              "line": 171,
+              "line": 244,
               "column": 4
             },
             "end": {
-              "line": 184,
+              "line": 257,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 185,
+                "line": 258,
                 "column": 4
               },
               "end": {
-                "line": 188,
+                "line": 261,
                 "column": 5
               }
             },
@@ -44943,22 +46617,22 @@
           ],
           "loc": {
             "start": {
-              "line": 190,
+              "line": 263,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 285,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 213,
+                "line": 286,
                 "column": 4
               },
               "end": {
-                "line": 230,
+                "line": 303,
                 "column": 5
               }
             },
@@ -45126,22 +46800,22 @@
           ],
           "loc": {
             "start": {
-              "line": 232,
+              "line": 305,
               "column": 4
             },
             "end": {
-              "line": 246,
+              "line": 319,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 247,
+                "line": 320,
                 "column": 4
               },
               "end": {
-                "line": 264,
+                "line": 337,
                 "column": 5
               }
             },

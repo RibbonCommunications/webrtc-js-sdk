@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.11.0
+ * Version: 6.12.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 6845:
+/***/ 9405:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.11.0';
+  return '6.12.0';
 }
 
 /***/ }),
@@ -379,7 +379,10 @@ const usersCodes = exports.usersCodes = {
  * @name webrtcCodes
  */
 const webrtcCodes = exports.webrtcCodes = {
-  INVALID_PARAM: 'webrtc:1'
+  INVALID_PARAM: 'webrtc:1',
+  INVALID_TRACK_ID: 'webrtc:2',
+  TRACK_IN_USE: 'webrtc:3',
+  TRACK_NOT_LOCAL: 'webrtc:4'
 };
 
 /**
@@ -1039,8 +1042,10 @@ function watchMediaManagerEvents(manager, handler) {
     (0, _media.default)(media, handler);
 
     // Pass the action to the handler to be handled as appropriate
+    const detached = media.getTracks().some(track => track.isDetached());
     const newMediaAction = _actions.mediaActions.newMedia(id, {
       local: media.getState().isLocal,
+      detached,
       tracks: media.getTracks().map(track => track.id)
     });
     handler(newMediaAction);
@@ -1325,6 +1330,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = watchTrackManagerEvents;
 var _actions = __webpack_require__(7992);
+var _eventTypes = __webpack_require__(6215);
 var _track = _interopRequireDefault(__webpack_require__(27));
 // Call plugin.
 
@@ -1362,7 +1368,17 @@ function watchTrackManagerEvents(manager, handler) {
   const trackRemoved = id => {
     // Pass the action to the handler to be handled as appropriate
     const trackRemovedAction = _actions.trackActions.trackRemoved(id);
-    handler(trackRemovedAction);
+    // Check if track is detached and emit a 'track ended' event if it is
+    const track = manager.get(id);
+    const trackEndedEvent = track.isDetached() ? {
+      type: _eventTypes.TRACK_ENDED,
+      args: {
+        trackId: id,
+        isLocal: true,
+        detached: true
+      }
+    } : undefined;
+    handler(trackRemovedAction, trackEndedEvent);
   };
 
   // Listen for track add or remove events
@@ -2869,7 +2885,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(6845);
+var _version = __webpack_require__(9405);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3266,7 +3282,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(6845);
+var _version = __webpack_require__(9405);
 const _excluded = ["onInit"]; // Other plugins.
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -4237,7 +4253,7 @@ function createTimer(log, warn) {
       event: 'time',
       name
     };
-    if (timers.hasOwnProperty(name)) {
+    if (Object.hasOwn(timers, name)) {
       data.start = timers[name];
       warn(`Timer ${name} already started.`, data);
     } else {
@@ -4261,7 +4277,7 @@ function createTimer(log, warn) {
       name,
       start: timers[name]
     };
-    if (timers.hasOwnProperty(name)) {
+    if (Object.hasOwn(timers, name)) {
       const start = timers[name];
       // End the timer.
       delete timers[name];
@@ -4288,7 +4304,7 @@ function createTimer(log, warn) {
       name,
       start: timers[name]
     };
-    if (timers.hasOwnProperty(name)) {
+    if (Object.hasOwn(timers, name)) {
       const elapsed = now - timers[name];
       data.split = now;
       data.elapsed = elapsed;
@@ -6565,16 +6581,17 @@ function MediaManager(managers) {
    * Wraps native mediaStream, adds tracks to trackManager and Media, and sets up event handlers on a given media.
    * @method setupMedia
    * @param {MediaStream} mediaStream Creating a Media object with it.
+   * @param {boolean} isDetached Specifies if the track is detached and can be used with or without a call.
    * @return {Media}
    */
-  function setupMedia(mediaStream) {
+  function setupMedia(mediaStream, isDetached) {
     const media = new _media.default(mediaStream, true);
     log.debug(`Creating Media with ID: ${media.id}.`);
 
     // Only add tracks to a Media objects using the `addTrack` method.
     // Specify that this is a local track we're adding
     mediaStream.getTracks().forEach(nativeTrack => {
-      const wrappedTrack = trackManager.add(nativeTrack, mediaStream, true);
+      const wrappedTrack = trackManager.add(nativeTrack, mediaStream, true, isDetached);
       media.addTrack(wrappedTrack);
     });
     media.once('media:stopped', mediaId => {
@@ -6604,9 +6621,10 @@ function MediaManager(managers) {
    * Use the provided constraints to get user media as the base MediaStream.
    * @method createLocal
    * @param  {MediaStreamConstraints}  constraints
+   * @param  {boolean} isDetached Specifies if the track is detached and can be used with or without a call.
    * @return {Promise}
    */
-  function createLocal(constraints) {
+  function createLocal(constraints, isDetached) {
     const constraintsWorkaround = browserConstraintsWorkaround(constraints);
 
     // Get user media, ...
@@ -6614,7 +6632,7 @@ function MediaManager(managers) {
       // TODO: Proper error checking.
       // TODO: Use the WebAPI directly here? Probably not.
       navigator.mediaDevices.getUserMedia(constraintsWorkaround).then(mediaStream => {
-        const media = setupMedia(mediaStream);
+        const media = setupMedia(mediaStream, isDetached);
         medias.set(media.id, media);
         // TODO: Better event. Include metadata?
         emitter.emit('media:new', media.id);
@@ -6628,13 +6646,14 @@ function MediaManager(managers) {
    * Use the provided constraints to get user media as the base MediaStream.
    * @method createLocalScreen
    * @param {MediaStreamConstraints} constraints
+   * @param  {boolean} isDetached Specifies if the track is detached and can be used with or without a call.
    * @return {promise}
    */
-  function createLocalScreen(constraints) {
+  function createLocalScreen(constraints, isDetached) {
     const constraintsWorkaround = browserConstraintsWorkaround(constraints);
     return new Promise((resolve, reject) => {
       navigator.mediaDevices.getDisplayMedia(constraintsWorkaround).then(mediaStream => {
-        const media = setupMedia(mediaStream);
+        const media = setupMedia(mediaStream, isDetached);
         medias.set(media.id, media);
         // TODO: Better event. Include metadata?
         emitter.emit('media:new', media.id);
@@ -7217,9 +7236,10 @@ function TrackManager() {
    * @param  {MediaStreamTrack} track A native track object.
    * @param  {MediaStream} stream
    * @param  {boolean} isLocalTrack Specifies if the track parameter is a local one or a remote one.
+   * @param  {boolean} isDetached Specifies if the track is detached and can be used with or without a call.
    * @return {Track} The added/wrapped Track object.
    */
-  function add(track, stream, isLocalTrack) {
+  function add(track, stream, isLocalTrack, isDetached) {
     const targetTrack = tracks.get(track.id);
 
     // Chrome issue: track.stream is outdated and needs to be updated to newStream.
@@ -7239,11 +7259,14 @@ function TrackManager() {
 
       // Mark it as local (or remote) before we save it in the state
       wrappedTrack.setIsLocal(isLocalTrack);
+
+      // Mark as detached before we save it in the state
+      wrappedTrack.setIsDetached(isDetached);
       tracks.set(track.id, wrappedTrack);
 
       // Remove the track from the manager when it ends.
       wrappedTrack.once('ended', event => {
-        if (!event.isUnsolicited) {
+        if (!event.isUnsolicited || event.isDetached) {
           remove({
             trackId: track.id
           });
@@ -7266,10 +7289,10 @@ function TrackManager() {
     } = _ref;
     const track = get(trackId);
     if (track) {
+      emitter.emit('remove', trackId);
       tracks.delete(trackId);
       // Clean up any listeners.
       track.off('ended', remove);
-      emitter.emit('remove', trackId);
     }
     return Boolean(track);
   }
@@ -7796,7 +7819,7 @@ function Session(id, managers) {
               }
 
               // Remove track from session dscp settings
-              if (settings.dscpControls.hasOwnProperty(track.id)) {
+              if (Object.hasOwn(settings.dscpControls, track.id)) {
                 log.debug(`Removing track ${track.id} from session dscp settings`);
                 delete settings.dscpControls[track.id];
               }
@@ -8031,7 +8054,7 @@ function Session(id, managers) {
               isUnsolicited
             });
             // Remove track from session dscp settings
-            if (settings.dscpControls.hasOwnProperty(track.id)) {
+            if (Object.hasOwn(settings.dscpControls, track.id)) {
               log.debug(`Removing track ${track.id} from session dscp settings`);
               delete settings.dscpControls[track.id];
             }
@@ -8235,7 +8258,7 @@ function Session(id, managers) {
         if (allLocalTracks.findIndex(track => track.id === trackId) > -1) {
           peer.removeTrack(trackId);
           // Remove the track from the session dscp settings
-          if (settings.dscpControls.hasOwnProperty(trackId)) {
+          if (Object.hasOwn(settings.dscpControls, trackId)) {
             log.debug(`Removing track ${trackId} from session dscp settings`);
             delete settings.dscpControls[trackId];
           }
@@ -8882,6 +8905,7 @@ function Track(mediaTrack, mediaStream) {
   const track = mediaTrack;
   let stream = mediaStream;
   let isLocalTrack;
+  let isDetatchedTrack;
   let constraints = {};
   const emitter = new _eventemitter.default();
 
@@ -8908,7 +8932,8 @@ function Track(mediaTrack, mediaStream) {
        *    part of an operation. The operation should handle the track being
        *    ended since it was solicited.
        */
-      isUnsolicited: isNative
+      isUnsolicited: isNative,
+      isDetached: isDetached()
     });
   };
 
@@ -8945,6 +8970,12 @@ function Track(mediaTrack, mediaStream) {
   function isLocal() {
     return isLocalTrack;
   }
+  function setIsDetached(detached) {
+    isDetatchedTrack = detached;
+  }
+  function isDetached() {
+    return isDetatchedTrack;
+  }
   function setStream(newStream) {
     stream = newStream;
   }
@@ -8966,7 +8997,8 @@ function Track(mediaTrack, mediaStream) {
       label: track.label,
       muted: track.muted,
       enabled: track.enabled,
-      state: track.readyState
+      state: track.readyState,
+      detached: isDetatchedTrack
     };
   }
 
@@ -9054,7 +9086,9 @@ function Track(mediaTrack, mediaStream) {
     setStream,
     getStream,
     setIsLocal,
-    isLocal
+    isLocal,
+    setIsDetached,
+    isDetached
   };
 }
 
@@ -21984,7 +22018,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 8916:
+/***/ 5905:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -22086,7 +22120,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(5899));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(8916));
+var _version = _interopRequireDefault(__webpack_require__(5905));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
