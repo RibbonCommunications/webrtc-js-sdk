@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.12.0-beta.1392
+ * Version: 6.13.0-beta.1393
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 5740:
+/***/ 6393:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.12.0-beta.1392';
+  return '6.13.0-beta.1393';
 }
 
 /***/ }),
@@ -1560,13 +1560,12 @@ exports.mediaNewTrack = mediaNewTrack;
 exports.mediaTrackEnded = mediaTrackEnded;
 exports.newMedia = newMedia;
 exports.removedMedia = removedMedia;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } // Webrtc plugin.
+// Webrtc plugin.
+
 // Libraries.
 
 function mediaActionHelper(type, id) {
@@ -1574,9 +1573,10 @@ function mediaActionHelper(type, id) {
   let meta = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   const action = {
     type,
-    payload: _objectSpread(_objectSpread({}, payload), {}, {
+    payload: {
+      ...payload,
       id
-    })
+    }
   };
 
   // Only have meta and error properties on the action if they're needed.
@@ -1655,13 +1655,12 @@ exports.sessionNewTrack = sessionNewTrack;
 exports.sessionRemoved = sessionRemoved;
 exports.sessionTrackEnded = sessionTrackEnded;
 exports.sessionTrackReplaced = sessionTrackReplaced;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } // Call plugin.
+// Call plugin.
+
 // Libraries.
 
 function sessionActionHelper(type, id) {
@@ -1669,9 +1668,10 @@ function sessionActionHelper(type, id) {
   let meta = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   const action = {
     type,
-    payload: _objectSpread(_objectSpread({}, payload), {}, {
+    payload: {
+      ...payload,
       id
-    })
+    }
   };
 
   // Only have meta and error properties on the action if they're needed.
@@ -1718,9 +1718,10 @@ function sessionIceCollectionScheduledCheck(id, params) {
 function sessionAudioEnded(id, params) {
   return {
     type: actionTypes.SESSION_AUDIO_ENDED,
-    payload: _objectSpread({
-      id
-    }, params),
+    payload: {
+      id,
+      ...params
+    },
     error: Boolean(params.error)
   };
 }
@@ -1733,7 +1734,6 @@ function sessionAudioEnded(id, params) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(1600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -1749,20 +1749,20 @@ exports.trackSourceMuted = trackSourceMuted;
 exports.trackSourceUnmuted = trackSourceUnmuted;
 exports.unmuteTracks = unmuteTracks;
 exports.unmuteTracksFinish = unmuteTracksFinish;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } // Call plugin.
+// Call plugin.
+
 function trackManagerHelper(type, trackId) {
   let payload = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   let meta = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   return {
     type,
-    payload: _objectSpread(_objectSpread({}, payload), {}, {
+    payload: {
+      ...payload,
       trackId
-    }),
+    },
     meta
   };
 }
@@ -1789,47 +1789,55 @@ function muteTracks(trackIds) {
   return trackHelper(actionTypes.MUTE_TRACKS, trackIds);
 }
 function muteTracksFinish(trackIds, params) {
-  return trackHelper(actionTypes.MUTE_TRACKS_FINISH, _objectSpread({
-    trackIds: trackIds
-  }, params));
+  return trackHelper(actionTypes.MUTE_TRACKS_FINISH, {
+    trackIds: trackIds,
+    ...params
+  });
 }
 function unmuteTracks(trackIds) {
   return trackHelper(actionTypes.UNMUTE_TRACKS, trackIds);
 }
 function unmuteTracksFinish(trackIds, params) {
-  return trackHelper(actionTypes.UNMUTE_TRACKS_FINISH, _objectSpread({
-    trackIds: trackIds
-  }, params));
+  return trackHelper(actionTypes.UNMUTE_TRACKS_FINISH, {
+    trackIds: trackIds,
+    ...params
+  });
 }
 function trackSourceMuted(trackIds, params) {
-  return trackHelper(actionTypes.TRACK_SOURCE_MUTED, _objectSpread({
-    trackIds: trackIds
-  }, params));
+  return trackHelper(actionTypes.TRACK_SOURCE_MUTED, {
+    trackIds: trackIds,
+    ...params
+  });
 }
 function trackSourceUnmuted(trackIds, params) {
-  return trackHelper(actionTypes.TRACK_SOURCE_UNMUTED, _objectSpread({
-    trackIds: trackIds
-  }, params));
+  return trackHelper(actionTypes.TRACK_SOURCE_UNMUTED, {
+    trackIds: trackIds,
+    ...params
+  });
 }
 function renderTracks(trackIds, params) {
-  return trackHelper(actionTypes.RENDER_TRACKS, _objectSpread({
-    trackIds
-  }, params));
+  return trackHelper(actionTypes.RENDER_TRACKS, {
+    trackIds,
+    ...params
+  });
 }
 function renderTracksFinish(trackIds, params) {
-  return trackHelper(actionTypes.RENDER_TRACKS_FINISH, _objectSpread({
-    trackIds
-  }, params));
+  return trackHelper(actionTypes.RENDER_TRACKS_FINISH, {
+    trackIds,
+    ...params
+  });
 }
 function removeTracks(trackIds, params) {
-  return trackHelper(actionTypes.REMOVE_TRACKS, _objectSpread({
-    trackIds
-  }, params));
+  return trackHelper(actionTypes.REMOVE_TRACKS, {
+    trackIds,
+    ...params
+  });
 }
 function removeTracksFinish(trackIds, params) {
-  return trackHelper(actionTypes.REMOVE_TRACKS_FINISH, _objectSpread({
-    trackIds
-  }, params));
+  return trackHelper(actionTypes.REMOVE_TRACKS_FINISH, {
+    trackIds,
+    ...params
+  });
 }
 
 /***/ }),
@@ -2173,19 +2181,15 @@ function replyChannel(channel) {
 /***/ }),
 
 /***/ 2497:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(1600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = deviceManager;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 /**
  * Device Manager "converter".
  * Receives a webRTC command intended for the Device Manager, performs the webRTC
@@ -2214,9 +2218,10 @@ async function deviceManager(webRTC, command) {
         error: true
       };
       if (err.name === 'OverconstrainedError' && err.constraint) {
-        error = _objectSpread(_objectSpread({}, error), {}, {
+        error = {
+          ...error,
           constraint: err.constraint
-        });
+        };
       }
       return error;
     }
@@ -2243,7 +2248,6 @@ exports.convertMedia = convertMedia;
 exports.convertSession = convertSession;
 exports.convertTrack = convertTrack;
 exports["default"] = convertCommand;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _deviceManager = _interopRequireDefault(__webpack_require__(2497));
 var _mediaManager = _interopRequireDefault(__webpack_require__(1420));
 var _sessionManager = _interopRequireDefault(__webpack_require__(3311));
@@ -2256,9 +2260,10 @@ var _session = _interopRequireDefault(__webpack_require__(9094));
 var _track = _interopRequireDefault(__webpack_require__(8897));
 var _logger = _interopRequireDefault(__webpack_require__(3093));
 var _logs = __webpack_require__(3862);
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } // Proxy plugin.
+// Proxy plugin.
+
 // Other plugins.
+
 const log = _logs.logManager.getLogger('PROXY');
 
 // Converters for the webRTC managers.
@@ -2322,9 +2327,10 @@ function convertCommand(webRTC, command) {
  */
 function convertTrack(track) {
   if (track) {
-    return _objectSpread({
-      type: 'track'
-    }, track.getState());
+    return {
+      type: 'track',
+      ...track.getState()
+    };
   }
 }
 
@@ -2354,13 +2360,13 @@ function convertMedia(media) {
 function convertSession(session) {
   if (session) {
     const sessionState = session.getState();
-    return _objectSpread(_objectSpread({
-      type: 'session'
-    }, sessionState), {}, {
+    return {
+      type: 'session',
+      ...sessionState,
       localTracks: sessionState.localTracks.map(convertTrack),
       allLocalTracks: sessionState.allLocalTracks.map(convertTrack),
       remoteTracks: sessionState.remoteTracks.map(convertTrack)
-    });
+    };
   }
 }
 
@@ -2535,16 +2541,12 @@ async function media(webRTC, command) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(1600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = mediaManager;
 exports.stringifyError = stringifyError;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _index = __webpack_require__(9967);
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function stringifyError(err) {
   // Convert the Error into a format that can be stringified for the channel.
   //    This will need to be reconstructed on the other side.
@@ -2553,9 +2555,10 @@ function stringifyError(err) {
     message: err.message
   };
   if (err.name === 'OverconstrainedError' && err.constraint) {
-    error = _objectSpread(_objectSpread({}, error), {}, {
+    error = {
+      ...error,
       constraint: err.constraint
-    });
+    };
   }
   return {
     error
@@ -2885,7 +2888,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(5740);
+var _version = __webpack_require__(6393);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3170,10 +3173,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = setupEvents;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _eventEmitter = _interopRequireDefault(__webpack_require__(9661));
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 /**
  * Sets up an Event Emitter for the Remote SDK.
  * @method setupEvents
@@ -3263,9 +3263,10 @@ function setupEvents() {
       });
     });
   }
-  return _objectSpread(_objectSpread({}, emitter), {}, {
+  return {
+    ...emitter,
     setWebrtcListeners
-  });
+  };
 }
 
 /***/ }),
@@ -3277,15 +3278,15 @@ function setupEvents() {
 
 
 var _interopRequireDefault = __webpack_require__(1600);
-var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(4923));
 var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(5740);
-const _excluded = ["onInit"]; // Other plugins.
+var _version = __webpack_require__(6393);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+// Other plugins.
+
 const log = _logs.logManager.getLogger('PROXY');
 
 /**
@@ -3330,9 +3331,9 @@ function remoteClient() {
 
   // Exclude onInit from the public Proxy API.
   const {
-      onInit
-    } = proxy,
-    proxyApi = (0, _objectWithoutProperties2.default)(proxy, _excluded);
+    onInit,
+    ...proxyApi
+  } = proxy;
 
   /**
    * Wrapper function to ensure that Media APIs aren't used before the webRTC
@@ -4045,12 +4046,9 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createLogger;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _constants = __webpack_require__(8599);
 var _validation = __webpack_require__(920);
 var _timer = _interopRequireDefault(__webpack_require__(6270));
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 /**
  * Creates a Logger.
  * @method createLogger
@@ -4103,7 +4101,9 @@ function createLogger(target) {
       for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }
-      const entry = _objectSpread(_objectSpread({}, injectables), {}, {
+      const entry = {
+        // Extra data to be added to the LogEntry.
+        ...injectables,
         // Meta-info about the log.
         method,
         timestamp: Date.now(),
@@ -4111,7 +4111,7 @@ function createLogger(target) {
         target: logger.target,
         // The actual arguments logged.
         messages: [...args]
-      });
+      };
       logger.handler(entry);
     };
   }
@@ -4203,7 +4203,10 @@ function createLogger(target) {
     timer: data
   })(message);
   const timer = (0, _timer.default)(timeLog, timeWarn);
-  return _objectSpread(_objectSpread({}, api), timer);
+  return {
+    ...api,
+    ...timer
+  };
 }
 
 /***/ }),
@@ -4753,7 +4756,6 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = peer;
 exports.setPeerProxies = setPeerProxies;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _events = _interopRequireDefault(__webpack_require__(3255));
 var _methods = _interopRequireDefault(__webpack_require__(424));
 var _properties = _interopRequireDefault(__webpack_require__(1936));
@@ -4762,11 +4764,13 @@ var _config = _interopRequireDefault(__webpack_require__(352));
 var _logs = __webpack_require__(8915);
 var _eventemitter = _interopRequireDefault(__webpack_require__(161));
 var _timer = __webpack_require__(6564);
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } /*
+/*
  * Wrapper imports.
  * Events, methods, and properties that we want to wrap/add to the native Peer.
- */ // Libraries.
+ */
+
+// Libraries.
+
 // EXTERNAL PROXY CODE
 let proxies;
 /**
@@ -4804,12 +4808,14 @@ function peer(id) {
   });
 
   // Add the event emitter methods to the wrapped methods as well.
-  const customMethods = _objectSpread(_objectSpread(_objectSpread({}, _methods.default), proxies), {}, {
+  const customMethods = {
+    ..._methods.default,
+    ...proxies,
     // EXTERNAL PROXY CODE
     on: emitter.on.bind(emitter),
     off: emitter.off.bind(emitter),
     once: emitter.once.bind(emitter)
-  });
+  };
 
   /**
    * The Peer model.
@@ -7590,7 +7596,6 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = Session;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(6290));
 var _debounce2 = _interopRequireDefault(__webpack_require__(2915));
 var _logs = __webpack_require__(8915);
 var _transceiverUtils = __webpack_require__(671);
@@ -7600,11 +7605,14 @@ var _extractors = __webpack_require__(5969);
 var _utils = __webpack_require__(791);
 var _iceCollectionScheduledCheck = _interopRequireDefault(__webpack_require__(5846));
 var _eventemitter = _interopRequireDefault(__webpack_require__(161));
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; } // Helpers.
+// Helpers.
+
 // SDP Helpers.
+
 // General Utils.
+
 // Libraries.
+
 const unfixedDebounce = _debounce2.default.convert({
   fixed: false
 });
@@ -8398,9 +8406,10 @@ function Session(id, managers) {
           clearTimeout(targetPeer.iceLoop);
           targetPeer.iceLoop = undefined;
         }
-        emitter.emit('peer:iceCandidateCollected', _objectSpread({
-          reason: _constants.ICE_COLLECTION_CHECK_REASONS.NEW_CANDIDATE
-        }, iceCollectionInfo));
+        emitter.emit('peer:iceCandidateCollected', {
+          reason: _constants.ICE_COLLECTION_CHECK_REASONS.NEW_CANDIDATE,
+          ...iceCollectionInfo
+        });
       }
     }, {
       leading: true
@@ -8413,9 +8422,10 @@ function Session(id, managers) {
           clearTimeout(targetPeer.iceLoop);
           targetPeer.iceLoop = undefined;
         }
-        emitter.emit('peer:iceCollectionScheduledCheck', _objectSpread({
-          reason: _constants.ICE_COLLECTION_CHECK_REASONS.SCHEDULED
-        }, iceCollectionInfo));
+        emitter.emit('peer:iceCollectionScheduledCheck', {
+          reason: _constants.ICE_COLLECTION_CHECK_REASONS.SCHEDULED,
+          ...iceCollectionInfo
+        });
       }
     });
 
@@ -22018,7 +22028,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 5831:
+/***/ 1878:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -22120,7 +22130,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(5899));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(5831));
+var _version = _interopRequireDefault(__webpack_require__(1878));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 
@@ -26348,28 +26358,6 @@ if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object'
 
 /***/ }),
 
-/***/ 6290:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var toPropertyKey = __webpack_require__(7739);
-function _defineProperty(obj, key, value) {
-  key = toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 1600:
 /***/ ((module) => {
 
@@ -26379,95 +26367,6 @@ function _interopRequireDefault(obj) {
   };
 }
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 4923:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var objectWithoutPropertiesLoose = __webpack_require__(5538);
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
-module.exports = _objectWithoutProperties, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 5538:
-/***/ ((module) => {
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-module.exports = _objectWithoutPropertiesLoose, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 8064:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var _typeof = (__webpack_require__(7425)["default"]);
-function toPrimitive(t, r) {
-  if ("object" != _typeof(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r || "default");
-    if ("object" != _typeof(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-module.exports = toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 7739:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var _typeof = (__webpack_require__(7425)["default"]);
-var toPrimitive = __webpack_require__(8064);
-function toPropertyKey(t) {
-  var i = toPrimitive(t, "string");
-  return "symbol" == _typeof(i) ? i : String(i);
-}
-module.exports = toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 7425:
-/***/ ((module) => {
-
-function _typeof(o) {
-  "@babel/helpers - typeof";
-
-  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
-    return typeof o;
-  } : function (o) {
-    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(o);
-}
-module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ })
 
