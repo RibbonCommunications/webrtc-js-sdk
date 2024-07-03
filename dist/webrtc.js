@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.13.0-beta.1393
+ * Version: 6.13.0-beta.1394
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 95945:
+/***/ 14953:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.13.0-beta.1393';
+  return '6.13.0-beta.1394';
 }
 
 /***/ }),
@@ -5416,10 +5416,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
-var _constants = __webpack_require__(37409);
-var _constants2 = __webpack_require__(42750);
-// Call plugin.
-
+var _constants = __webpack_require__(42750);
 // Call Reports.
 
 /*
@@ -5427,10 +5424,6 @@ var _constants2 = __webpack_require__(42750);
  *    (eg. call ended) from the remote side of the call.
  */
 function createFlow(container) {
-  const {
-    CallReporter
-  } = container;
-
   /**
    * Flow for a generic "remote update" notification.
    * Simply tracks the operation and processes the notification.
@@ -5449,37 +5442,29 @@ function createFlow(container) {
   }
 
   /**
-   * Flow for an update received before a new, outgoing call is answered (ie. while there
-   *    is a PENDING make operation on-going).
+   * Flow for an update received while there is a PENDING local operation on-going.
    *
    * This is intended for the following scenarios:
-   *    - a WebRTC prAnswer SDP.
-   *    - a "call ringing" update.
+   *    - a WebRTC prAnswer SDP (during MAKE).
+   *    - a "call ringing" update (during MAKE).
    * @method pendingMake
    * @param {Object} call The call object being operated on.
-   * @param {Function|Object} handler The `handler` function to process the notification.
+   * @param {Operation} operation The pending local operation.
+   * @param {string} stage The name of the stage that should handle the notification.
    * @param {Object} params Operation-specific data.
    * @return {Promise<undefined>}
    */
-  async function pendingMake(call, handler, params) {
-    const pendingLocal = call.currentOperations.find(op => {
-      return op.isLocal && op.status === _constants.OP_STATUS.PENDING && op.type === _constants.OPERATIONS.MAKE;
-    });
-
-    // KJS-2011 TODO: Update 'pending make' notifications for operation tracking.
-    // eslint-disable-next-line no-constant-condition
-    if (!pendingLocal || true) {
-      // If there isn't a pending make operation, handle this notification as stand-alone instead.
-      return handler(call.wrtcsSessionId, ...params);
-    }
-
-    // Add an event as part of the on-going MAKE event.
-    const operationEvent = CallReporter.getReport(call.id).getEvent(pendingLocal.eventId);
-    const notificationEvent = operationEvent.addEvent(_constants2.REPORTER_OPERATION_EVENTS_MAP[handler.name]);
+  async function pendingUpdate(call, operation, stage, params) {
+    // Add an event as part of the on-going operation event.
+    const notificationEvent = operation.reportEvent.addEvent(_constants.REPORTER_OPERATION_EVENTS_MAP[stage]);
 
     // Process the notification as normal.
-    await handler(call.wrtcsSessionId, ...params);
-    notificationEvent.endEvent();
+    try {
+      await operation.stages[stage](call.wrtcsSessionId, ...params);
+      notificationEvent.endEvent();
+    } catch (err) {
+      notificationEvent.endEvent(err);
+    }
   }
 
   /**
@@ -5504,7 +5489,7 @@ function createFlow(container) {
   }
   return {
     generic,
-    pendingMake,
+    pendingUpdate,
     ended
   };
 }
@@ -6001,14 +5986,16 @@ function callManager(container) {
      * @return {Promise<undefined>}
      */
     return async function makeUpdate(wrtcsSessionId) {
-      const handler = Callstack.notifications[stackMethod];
       const state = context.getState();
       checkCallExistence(state, wrtcsSessionId);
       const call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
+      const pendingMake = ongoing[call.id].getPending().find(op => {
+        return op.isLocal && [_constants2.OPERATIONS.MAKE, _constants2.OPERATIONS.MAKE_ANONYMOUS, _constants2.OPERATIONS.JOIN].includes(op.type);
+      });
       for (var _len3 = arguments.length, params = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
         params[_key3 - 1] = arguments[_key3];
       }
-      await callFlows.RemoteUpdate.pendingMake(call, handler, params);
+      await callFlows.RemoteUpdate.pendingUpdate(call, pendingMake, stackMethod, params);
     };
   }
 
@@ -6258,7 +6245,8 @@ function _default(bottle) {
       validate,
       localOffer,
       remoteAnswer,
-      remoteOffer
+      remoteOffer,
+      ...nonstandardStages
     } = stages;
 
     // Instance data for the operation.
@@ -6285,8 +6273,7 @@ function _default(bottle) {
         localOffer: localOffer,
         remoteAnswer: remoteAnswer,
         remoteOffer: remoteOffer,
-        remoteSuccess: stages.remoteSuccess,
-        remoteFailure: stages.remoteFailure
+        ...nonstandardStages
       },
       // Instance specific.
       callId,
@@ -9322,170 +9309,6 @@ function validate(state, callId, destination) {
 
 /***/ }),
 
-/***/ 42702:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(71600);
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = initOperation;
-var _receiveEarlyMedia = _interopRequireDefault(__webpack_require__(75934));
-// The factory funnction for the notification handler.
-
-function initOperation(bottle) {
-  // Provide the top-level container to the factory function.
-  //    Otherwise it would get the `notification` sub-container.
-  bottle.factory('Callstack.notifications.receiveEarlyMedia', () => (0, _receiveEarlyMedia.default)(bottle.container));
-}
-
-/***/ }),
-
-/***/ 75934:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = receiveEarlyMediaOperation;
-var _actions = __webpack_require__(6313);
-var _selectors = __webpack_require__(11430);
-var _remoteTracks = __webpack_require__(45294);
-var _eventTypes = __webpack_require__(55166);
-var _constants = __webpack_require__(60683);
-// Call Plugin
-
-/**
- * Bottle wrapper for "receive early media" notification handler.
- * @return {Function}
- */
-function receiveEarlyMediaOperation(container) {
-  const {
-    context,
-    emitEvent,
-    logManager,
-    WebRTC,
-    CallstackSDP
-  } = container;
-
-  /**
-   * A "session progress" notification has been received. It contains an "early
-   *    media" SDP (pranswer) that needs to be processed.
-   *
-   * Processing a pranswer is done by:
-   *    1. Validating the Call / Session.
-   *    2. Running the SDP through the SDP pipeline.
-   *    3. Setting the SDP as the Session's remote description (as pranswer).
-   *    4. Updating the Call state.
-   *
-   * @method receiveEarlyMedia
-   * @param {Object} params       Parameters describing the notification.
-   */
-  async function receiveEarlyMedia(wrtcsSessionId, params) {
-    const {
-      customParameters
-    } = params;
-
-    /**
-     * Get the call from state.
-     */
-    const currentCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-    const log = logManager.getLogger('CALL', (currentCall || {}).id);
-    log.info('Received early media notice; handling.', {
-      wrtcsSessionId
-    });
-    if (!currentCall) {
-      log.info('Early media notice for unknown wrtcsSession. Ignoring.', {
-        wrtcsSessionId
-      });
-      return;
-    }
-
-    /**
-     * Get the Webrtc Session.
-     */
-    const session = await WebRTC.sessionManager.get(currentCall.webrtcSessionId);
-    if (!session) {
-      log.info('Early media notice for missing wrtcsSession. Ignoring.', {
-        wrtcsSessionId
-      });
-      // TODO: Better error.
-      return;
-    }
-    // Dispatch a custom parameters received action/event if any custom parameters were received as part of the notification
-    if (customParameters) {
-      const customNames = customParameters.map(param => param.name);
-      log.debug(`Received custom parameters as part of the Call: ${customNames}.`);
-      context.dispatch(_actions.callActions.customParametersReceived(currentCall.id, {
-        customParameters
-      }));
-
-      // Emit the associated event with the above action
-      emitEvent(_eventTypes.CUSTOM_PARAMETERS, {
-        callId: currentCall.id,
-        customParameters
-      });
-    }
-    try {
-      /*
-       * Run the remote SDP pranswer through any SDP handlers provided, then set it
-       *    as the Session's remote description.
-       * This is the "pre set remote" stage.
-       */
-      const callConfigOptions = (0, _selectors.getOptions)(context.getState());
-      const sdp = CallstackSDP.runPipeline(callConfigOptions.sdpHandlers, params.sdp, {
-        callId: currentCall.id,
-        type: 'pranswer',
-        step: 'set',
-        endpoint: 'remote'
-      });
-      await session.processAnswer({
-        type: 'pranswer',
-        sdp: sdp
-      });
-    } catch (err) {
-      log.debug(`Failed to process pranswer for Call ${currentCall.id}; ignoring.`);
-      return;
-    }
-
-    // Get the list of all remote tracks being offered in this call. This is a
-    //    new call, so this should be the full list of remote tracks available.
-    const remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
-    log.info(`Finished handling early media notice. Changing to ${_constants.CALL_STATES.EARLY_MEDIA}.`);
-    context.dispatch(_actions.callActions.sessionProgress(currentCall.id, {
-      // Remote participant's information.
-      remoteParticipant: {
-        displayNumber: params.remoteNumber,
-        displayName: params.remoteName
-      },
-      remoteTracks
-    }));
-
-    // Tell the application that tracks are available on the call now.
-    emitEvent(_eventTypes.CALL_TRACKS_ADDED, {
-      callId: currentCall.id,
-      trackIds: remoteTracks
-    });
-    emitEvent(_eventTypes.CALL_STATE_CHANGE, {
-      callId: currentCall.id,
-      previous: {
-        state: currentCall.state,
-        localHold: currentCall.localHold,
-        remoteHold: currentCall.remoteHold
-      }
-    });
-  }
-  return receiveEarlyMedia;
-}
-
-/***/ }),
-
 /***/ 28732:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -10323,7 +10146,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(95945);
+var _version = __webpack_require__(14953);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -11970,12 +11793,6 @@ Object.defineProperty(exports, "createDirectTransfer", ({
     return _directTransfer.default;
   }
 }));
-Object.defineProperty(exports, "createEarlyMedia", ({
-  enumerable: true,
-  get: function () {
-    return _earlyMedia.default;
-  }
-}));
 Object.defineProperty(exports, "createEnd", ({
   enumerable: true,
   get: function () {
@@ -12135,7 +11952,6 @@ var _end = _interopRequireDefault(__webpack_require__(28732));
 var _forward = _interopRequireDefault(__webpack_require__(34316));
 var _ignore = _interopRequireDefault(__webpack_require__(87969));
 var _reject = _interopRequireDefault(__webpack_require__(48215));
-var _earlyMedia = _interopRequireDefault(__webpack_require__(42702));
 var _callCancelled = _interopRequireDefault(__webpack_require__(93948));
 var _addMedia = _interopRequireDefault(__webpack_require__(50196));
 var _hold = _interopRequireDefault(__webpack_require__(26846));
@@ -12759,11 +12575,15 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = initOperation;
 var _make = _interopRequireDefault(__webpack_require__(96422));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(43658));
+var _callStatusUpdateRinging = _interopRequireDefault(__webpack_require__(43846));
+var _receiveEarlyMedia = _interopRequireDefault(__webpack_require__(46105));
 var _incomingCall = _interopRequireDefault(__webpack_require__(39494));
 var _setupIncomingCall = _interopRequireDefault(__webpack_require__(10418));
 var _setupOutgoingSession = _interopRequireDefault(__webpack_require__(71290));
 var _constants = __webpack_require__(37409);
-// Operations.
+// Local operation stages.
+
+// Remote operation stages.
 
 // Helpers
 
@@ -12774,7 +12594,10 @@ function initOperation(bottle) {
       local: {
         // Note: No `validate` stage; can always start a new call.
         localOffer: (0, _make.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        // Remote updates while operation is pending.
+        callStatusUpdateRinging: (0, _callStatusUpdateRinging.default)(bottle.container),
+        receiveEarlyMedia: (0, _receiveEarlyMedia.default)(bottle.container)
       },
       remote: {
         remoteOffer: (0, _incomingCall.default)(bottle.container)
@@ -13016,6 +12839,148 @@ function createMakeOperation(container) {
     });
   }
   return makeCall;
+}
+
+/***/ }),
+
+/***/ 46105:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = receiveEarlyMediaOperation;
+var _actions = __webpack_require__(6313);
+var _selectors = __webpack_require__(11430);
+var _remoteTracks = __webpack_require__(45294);
+var _eventTypes = __webpack_require__(55166);
+var _constants = __webpack_require__(60683);
+// Call Plugin
+
+/**
+ * Bottle wrapper for "receive early media" notification handler.
+ * @return {Function}
+ */
+function receiveEarlyMediaOperation(container) {
+  const {
+    context,
+    emitEvent,
+    logManager,
+    WebRTC,
+    CallstackSDP
+  } = container;
+
+  /**
+   * A "session progress" notification has been received. It contains an "early
+   *    media" SDP (pranswer) that needs to be processed.
+   *
+   * Processing a pranswer is done by:
+   *    1. Validating the Call / Session.
+   *    2. Running the SDP through the SDP pipeline.
+   *    3. Setting the SDP as the Session's remote description (as pranswer).
+   *    4. Updating the Call state.
+   *
+   * @method receiveEarlyMedia
+   * @param {Object} params       Parameters describing the notification.
+   */
+  async function receiveEarlyMedia(wrtcsSessionId, params) {
+    const {
+      customParameters
+    } = params;
+
+    /**
+     * Get the call from state.
+     */
+    const currentCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
+    const log = logManager.getLogger('CALL', (currentCall || {}).id);
+    log.info('Received early media notice; handling.', {
+      wrtcsSessionId
+    });
+    if (!currentCall) {
+      log.info('Early media notice for unknown wrtcsSession. Ignoring.', {
+        wrtcsSessionId
+      });
+      return;
+    }
+
+    /**
+     * Get the Webrtc Session.
+     */
+    const session = await WebRTC.sessionManager.get(currentCall.webrtcSessionId);
+    if (!session) {
+      log.info('Early media notice for missing wrtcsSession. Ignoring.', {
+        wrtcsSessionId
+      });
+      // TODO: Better error.
+      return;
+    }
+    // Dispatch a custom parameters received action/event if any custom parameters were received as part of the notification
+    if (customParameters) {
+      const customNames = customParameters.map(param => param.name);
+      log.debug(`Received custom parameters as part of the Call: ${customNames}.`);
+      context.dispatch(_actions.callActions.customParametersReceived(currentCall.id, {
+        customParameters
+      }));
+
+      // Emit the associated event with the above action
+      emitEvent(_eventTypes.CUSTOM_PARAMETERS, {
+        callId: currentCall.id,
+        customParameters
+      });
+    }
+    try {
+      /*
+       * Run the remote SDP pranswer through any SDP handlers provided, then set it
+       *    as the Session's remote description.
+       * This is the "pre set remote" stage.
+       */
+      const callConfigOptions = (0, _selectors.getOptions)(context.getState());
+      const sdp = CallstackSDP.runPipeline(callConfigOptions.sdpHandlers, params.sdp, {
+        callId: currentCall.id,
+        type: 'pranswer',
+        step: 'set',
+        endpoint: 'remote'
+      });
+      await session.processAnswer({
+        type: 'pranswer',
+        sdp: sdp
+      });
+    } catch (err) {
+      log.debug(`Failed to process pranswer for Call ${currentCall.id}; ignoring.`);
+      throw err;
+    }
+
+    // Get the list of all remote tracks being offered in this call. This is a
+    //    new call, so this should be the full list of remote tracks available.
+    const remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
+    log.info(`Finished handling early media notice. Changing to ${_constants.CALL_STATES.EARLY_MEDIA}.`);
+    context.dispatch(_actions.callActions.sessionProgress(currentCall.id, {
+      // Remote participant's information.
+      remoteParticipant: {
+        displayNumber: params.remoteNumber,
+        displayName: params.remoteName
+      },
+      remoteTracks
+    }));
+
+    // Tell the application that tracks are available on the call now.
+    emitEvent(_eventTypes.CALL_TRACKS_ADDED, {
+      callId: currentCall.id,
+      trackIds: remoteTracks
+    });
+    emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+      callId: currentCall.id,
+      previous: {
+        state: currentCall.state,
+        localHold: currentCall.localHold,
+        remoteHold: currentCall.remoteHold
+      }
+    });
+  }
+  return receiveEarlyMedia;
 }
 
 /***/ }),
@@ -17159,11 +17124,8 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = initOperation;
 var _sendRingingFeedback = _interopRequireDefault(__webpack_require__(53516));
 var _validate = _interopRequireDefault(__webpack_require__(97965));
-var _callStatusUpdateRinging = _interopRequireDefault(__webpack_require__(43846));
 var _constants = __webpack_require__(37409);
 // Local operation.
-
-// Remote operation.
 
 // Call plugin.
 
@@ -17199,11 +17161,9 @@ function initOperation(bottle) {
     }
     return {
       local: LocalSendFeedback
+      // remote "ringing feedback" is part of the `make` operation.
     };
   });
-
-  // Register the handler for the "call ringing" notitication.
-  bottle.factory('Callstack.notifications.callStatusUpdateRinging', () => (0, _callStatusUpdateRinging.default)(bottle.container));
 }
 
 /***/ }),
@@ -17340,9 +17300,7 @@ exports["default"] = callStatusRingingOperation;
 var _actions = __webpack_require__(6313);
 var _eventTypes = __webpack_require__(55166);
 var _selectors = __webpack_require__(11430);
-var _constants = __webpack_require__(37409);
-var _constants2 = __webpack_require__(60683);
-var _constants3 = __webpack_require__(42750);
+var _constants = __webpack_require__(60683);
 // Call plugin.
 
 /**
@@ -17352,7 +17310,6 @@ var _constants3 = __webpack_require__(42750);
 function callStatusRingingOperation(container) {
   const {
     context,
-    CallReporter,
     emitEvent,
     logManager
   } = container;
@@ -17386,16 +17343,10 @@ function callStatusRingingOperation(container) {
         wrtcsSessionId
       });
       return;
-    } else if (call.state !== _constants2.CALL_STATES.INITIATED) {
+    } else if (call.state !== _constants.CALL_STATES.INITIATED) {
       log.info(`Call ringing notice for Call in an invalid state: ${call.state}. Ignoring.`);
       return;
     }
-    const callReport = CallReporter.getReport(call.id);
-    const makeOrJoinOp = call.currentOperations.find(op => {
-      return op.isLocal && (op.type === _constants.OPERATIONS.MAKE || op.type === _constants.OPERATIONS.MAKE_ANONYMOUS || op.type === _constants.OPERATIONS.JOIN);
-    });
-    const operationEvent = callReport.getEvent(makeOrJoinOp.eventId);
-    const receiveRingingEvent = operationEvent.addEvent(_constants3.REPORT_EVENTS.REMOTE_RINGING);
 
     // Dispatch a custom parameters received action/event if any custom parameters were
     //    received as part of the notification
@@ -17410,7 +17361,7 @@ function callStatusRingingOperation(container) {
         customParameters: params.customParameters
       });
     }
-    log.info(`Finished handling call ringing notice. Changing to ${_constants2.CALL_STATES.RINGING}.`);
+    log.info(`Finished handling call ringing notice. Changing to ${_constants.CALL_STATES.RINGING}.`);
     context.dispatch(_actions.callActions.callRinging(call.id, {
       // Remote participant's information.
       remoteParticipant: {
@@ -17426,7 +17377,6 @@ function callStatusRingingOperation(container) {
         remoteHold: call.remoteHold
       }
     });
-    receiveRingingEvent.endEvent();
   }
   return callStatusUpdateRinging;
 }
@@ -19181,7 +19131,10 @@ const REPORTER_OPERATION_EVENTS_MAP = exports.REPORTER_OPERATION_EVENTS_MAP = {
   UNKNOWN_REMOTE: 'UNKNOWN',
   GENERIC_REMOTE: 'UNKNOWN',
   NO_CHANGE_REMOTE: 'UNKNOWN',
-  callStatusUpdateEnded: 'END_REMOTE',
+  // TechDebt TODO: Have these consistently named.
+  callStatusUpdateEnded: REPORT_EVENTS.END_REMOTE,
+  receiveEarlyMedia: 'EARLY_MEDIA',
+  callStatusUpdateRinging: REPORT_EVENTS.REMOTE_RINGING,
   // TechDebt TODO: These constants are mostly hardcoded copy/paste of the call OPERATIONS.
   [_constants.OPERATIONS.CALL_CANCEL]: _constants.OPERATIONS.CALL_CANCEL
 };
@@ -22635,7 +22588,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(95945);
+var _version = __webpack_require__(14953);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -35805,7 +35758,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(95945);
+var _version = __webpack_require__(14953);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _validation = __webpack_require__(42850);
 // Libraries.
@@ -43640,7 +43593,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(95945);
+var _version = __webpack_require__(14953);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -43791,7 +43744,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(95945);
+var _version = __webpack_require__(14953);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -54691,7 +54644,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(95945);
+var _version = __webpack_require__(14953);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -87592,7 +87545,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 1429:
+/***/ 13964:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -88033,7 +87986,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(1429));
+var _version = _interopRequireDefault(__webpack_require__(13964));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
