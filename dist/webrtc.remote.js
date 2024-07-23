@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.13.0-beta.1400
+ * Version: 6.13.0-beta.1401
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2170:
+/***/ 9153:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.13.0-beta.1400';
+  return '6.13.0-beta.1401';
 }
 
 /***/ }),
@@ -2297,22 +2297,22 @@ const models = {
 function convertCommand(webRTC, command) {
   if (command.id === 'manager') {
     // Forward the command to the appropriate manager converter.
-    log.debug(`Performing ${command.type} manager operation ${command.operation}.`, command.params);
-    const result = managers[command.type](webRTC, command);
+    log.debug(`Performing ${command.modelType} manager operation ${command.operation}.`, command.params);
+    const result = managers[command.modelType](webRTC, command);
 
     // The result is a Promise. Add a .then for debugging after it completes.
     result.then(data => {
-      log.debug(`Completed ${command.type} manager operation ${command.operation}.`, data);
+      log.debug(`Completed ${command.modelType} manager operation ${command.operation}.`, data);
     });
     return result;
   } else {
     // Forward the command to the appropriate model converter.
-    log.debug(`Performing ${command.type} model operation ${command.operation}.`, command.params);
-    const result = models[command.type](webRTC, command);
+    log.debug(`Performing ${command.modelType} model operation ${command.operation}.`, command.params);
+    const result = models[command.modelType](webRTC, command);
 
     // The result is a Promise. Add a .then for debugging after it completes.
     result.then(data => {
-      log.debug(`Completed ${command.type} model operation ${command.operation}.`, data);
+      log.debug(`Completed ${command.modelType} model operation ${command.operation}.`, data);
     });
     return result;
   }
@@ -2328,7 +2328,7 @@ function convertCommand(webRTC, command) {
 function convertTrack(track) {
   if (track) {
     return {
-      type: 'track',
+      modelType: 'track',
       ...track.getState()
     };
   }
@@ -2344,7 +2344,7 @@ function convertTrack(track) {
 function convertMedia(media) {
   if (media) {
     return {
-      type: 'media',
+      modelType: 'media',
       id: media.id
     };
   }
@@ -2361,7 +2361,7 @@ function convertSession(session) {
   if (session) {
     const sessionState = session.getState();
     return {
-      type: 'session',
+      modelType: 'session',
       ...sessionState,
       localTracks: sessionState.localTracks.map(convertTrack),
       allLocalTracks: sessionState.allLocalTracks.map(convertTrack),
@@ -2379,7 +2379,7 @@ function convertSession(session) {
 function convertLogger(logger) {
   if (logger) {
     return {
-      type: 'logger',
+      modelType: 'logger',
       // Use the name as the unique Logger ID (which is what it is).
       id: logger.name
     };
@@ -2739,7 +2739,7 @@ async function sessionManager(webRTC, command) {
     try {
       const objs = await manager.getWithMedia(...params);
       return {
-        type: 'multiple',
+        modelType: 'multiple',
         session: (0, _index.convertSession)(objs.session),
         medias: objs.medias.map(_index.convertMedia)
       };
@@ -2888,7 +2888,7 @@ var _converters = _interopRequireDefault(__webpack_require__(9967));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(5976));
 var _channel = __webpack_require__(1074);
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(2170);
+var _version = __webpack_require__(9153);
 var _errors = _interopRequireWildcard(__webpack_require__(3437));
 var _uuid = __webpack_require__(130);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(5203));
@@ -3074,11 +3074,11 @@ function clientProxy() {
          */
         if (base.isReady) {
           const startOpTime = Date.now();
-          log.info(`Received ${data.type} ${data.operation} operation, performing...`);
+          log.info(`Received ${data.modelType} ${data.operation} operation, performing...`);
           // WebRTC operations may be async. Need to ensure that
           //    they finish before replying to the command.
           (0, _converters.default)(base.webRTC, data).then(result => {
-            log.info(`Finished ${data.type} ${data.operation} operation in, replying with result.`);
+            log.info(`Finished ${data.modelType} ${data.operation} operation in, replying with result.`);
 
             // Create a reply and include the original result with timing data.
             const reply = {
@@ -3157,7 +3157,7 @@ function clientProxy() {
  * @return {boolean}
  */
 function isWebrtcCommand(data) {
-  return data.type && data.id && data.operation;
+  return data.modelType && data.id && data.operation;
 }
 
 /***/ }),
@@ -3282,7 +3282,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(9514));
 var mediaApis = _interopRequireWildcard(__webpack_require__(8522));
 var _events = _interopRequireDefault(__webpack_require__(1099));
 var _logs = __webpack_require__(3862);
-var _version = __webpack_require__(2170);
+var _version = __webpack_require__(9153);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Other plugins.
@@ -22046,7 +22046,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 8534:
+/***/ 7663:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -22148,7 +22148,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(5899));
 
 var _nil = _interopRequireDefault(__webpack_require__(5384));
 
-var _version = _interopRequireDefault(__webpack_require__(8534));
+var _version = _interopRequireDefault(__webpack_require__(7663));
 
 var _validate = _interopRequireDefault(__webpack_require__(7888));
 

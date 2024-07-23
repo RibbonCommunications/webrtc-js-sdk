@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.13.0-beta.1400
+ * Version: 6.13.0-beta.1401
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 45061:
+/***/ 97196:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.13.0-beta.1400';
+  return '6.13.0-beta.1401';
 }
 
 /***/ }),
@@ -10157,7 +10157,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(45061);
+var _version = __webpack_require__(97196);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
 // Call plugin.
 
@@ -22599,7 +22599,7 @@ exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(45061);
+var _version = __webpack_require__(97196);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -35769,7 +35769,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(45061);
+var _version = __webpack_require__(97196);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _validation = __webpack_require__(42850);
 // Libraries.
@@ -43604,7 +43604,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(45061);
+var _version = __webpack_require__(97196);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -43755,7 +43755,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(45061);
+var _version = __webpack_require__(97196);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
 // Request plugin.
@@ -54331,15 +54331,15 @@ var _uuid = __webpack_require__(60130);
  * @method createManagerProxy
  * @param  {Object} base The base object being wrapped.
  * @param  {boolean} base.proxyMode Whether operations should be proxied or not.
- * @param  {string} base.type The type of manager this is.
+ * @param  {string} base.modelType The type of manager this is.
  * @param  {Object} actualManager A webRTC manager.
  * @return {Proxy}
  */
 function _default(base, actualManager) {
   // Hardcode `id` as manager, since this function is only for manager proxies.
   base.id = 'manager';
-  const log = _logs.logManager.getLogger('PROXY', base.type);
-  log.debug(`Creating manager proxy for ${base.type}.`, base);
+  const log = _logs.logManager.getLogger('PROXY', base.modelType);
+  log.debug(`Creating manager proxy for ${base.modelType}.`, base);
   return new Proxy(base, {
     /**
      * Proxy "getter" calls on the Proxy.
@@ -54386,7 +54386,7 @@ function _default(base, actualManager) {
           apply: function (funcTarget, thisArg, args) {
             // Assemble the webRTC command to be sent over the channel.
             const operation = {
-              type: thisArg.type,
+              modelType: thisArg.modelType,
               id: thisArg.id,
               operation: prop,
               params: args
@@ -54423,12 +54423,12 @@ function _default(base, actualManager) {
                    * Parse the data received from the remote side.
                    */
                   function parseData(data) {
-                    if (data && data.type === 'multiple') {
+                    if (data && data.modelType === 'multiple') {
                       // If the response has multiple WebRTC models, each need to
                       //    be wrapped with a proxy for the Callstack.
                       const proxies = {};
                       Object.keys(data).forEach(key => {
-                        if (key === 'type') {
+                        if (key === 'modelType') {
                           // Skip.
                         } else if (Array.isArray(key)) {
                           proxies[key] = data[key].map(parseData);
@@ -54437,7 +54437,7 @@ function _default(base, actualManager) {
                         }
                       });
                       return proxies;
-                    } else if (data && data.type) {
+                    } else if (data && data.modelType) {
                       // If the response is a Webrtc model, we need to wrap it
                       //    with a proxy for the Callstack.
                       return (0, _model.default)(data, thisArg.channel);
@@ -54507,8 +54507,8 @@ var _uuid = __webpack_require__(60130);
  * @return {Proxy}   A proxied webRTC object.
  */
 function modelProxy(base, channel) {
-  const log = _logs.logManager.getLogger('PROXY', `${base.type}/${base.id}`);
-  log.debug(`Creating model proxy for ${base.type}/${base.id}.`);
+  const log = _logs.logManager.getLogger('PROXY', `${base.modelType}/${base.id}`);
+  log.debug(`Creating model proxy for ${base.modelType}/${base.id}.`);
   return new Proxy(base, {
     get: function (objTarget, prop, receiver) {
       /*
@@ -54561,7 +54561,7 @@ function modelProxy(base, channel) {
           apply: function (funcTarget, thisArg, args) {
             // Assemble the webRTC command to be sent over the channel.
             const operation = {
-              type: thisArg.type,
+              modelType: thisArg.modelType,
               id: thisArg.id,
               operation: prop,
               params: args
@@ -54605,7 +54605,7 @@ function modelProxy(base, channel) {
                  * Parse the data received from the remote side.
                  */
                 function parseData(data) {
-                  if (data && data.type && operation.operation === 'getTracks') {
+                  if (data && data.modelType && operation.operation === 'getTracks') {
                     // If the operation we sent across was `getTracks`, then the
                     //    response data should be Webrtc model(s). We need to
                     //    wrap it with a proxy for the Callstack.
@@ -54656,7 +54656,7 @@ exports["default"] = initializeProxy;
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(45061);
+var _version = __webpack_require__(97196);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -54700,7 +54700,7 @@ function initializeProxy(webRTC) {
    */
   for (const manager in webRTC.managers) {
     base.managers[manager] = (0, _manager.default)({
-      type: manager,
+      modelType: manager,
       proxyMode: base.proxyMode,
       channel: base.channel
     }, webRTC.managers[manager]);
@@ -87575,7 +87575,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 99404:
+/***/ 60435:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -88016,7 +88016,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(99404));
+var _version = _interopRequireDefault(__webpack_require__(60435));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
