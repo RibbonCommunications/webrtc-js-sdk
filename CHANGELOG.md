@@ -7,6 +7,12 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.13.0 - 2024-07-26
+
+### Fixed
+
+- Fixed the handling of an end session notification as a result of a successful transfer, at the transferor side. `KJS-2264`
+
 ## 6.12.0 - 2024-06-28
 
 ### Added

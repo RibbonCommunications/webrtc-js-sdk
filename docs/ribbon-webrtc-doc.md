@@ -3410,8 +3410,9 @@ Create local media Tracks.
 
 *   `mediaConstraints` **[Object][7]** Collection of constraints for each media type.
 
-    *   `mediaConstraints.audio` **([boolean][11] | [Object][7])?** Native media constraints for audio.
-    *   `mediaConstraints.video` **([boolean][11] | [Object][7])?** Native media constraints for video.
+    *   `mediaConstraints.audio` **[boolean][11]?** Native media constraints for audio.
+    *   `mediaConstraints.video` **[boolean][11]?** Native media constraints for video.
+    *   `mediaConstraints.screen` **[boolean][11]?** Native media constraints for display (screen).
 
 #### Examples
 
