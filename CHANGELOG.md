@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 6.14.0 - beta
 
+### Fixed
+
+- Fixed issue where an exception was thrown by the SDK if credentials are set and the client attempts to unsubscribe no services. `KJS-2291`
+
 ## 6.13.0 - 2024-07-26
 
 ### Fixed
