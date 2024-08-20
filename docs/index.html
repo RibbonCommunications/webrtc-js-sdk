@@ -23971,8 +23971,9 @@ client.services.subscribe([
   
 
   <p>Subscribes to platform notifications for an SDK service.</p>
-<p>Extra configuration can be provide as an additional object parameter.
-Currently only a "forceLogOut" flag can be supplied in this object.</p>
+<p>Extra configuration can be provided as an additional object parameter.
+The "forceLogOut" flag has been deprecated, as no longer being supported by backend.
+It will be removed in the next major release.</p>
 <p>For push notifications on link, please see <a href="notifications.registerPush">notifications.registerPush</a></p>
 <p>The SDK currently only supports the <code>websocket</code> channel as a subscription
 type.</p>
@@ -24028,7 +24029,7 @@ type.</p>
                 <tr>
   <td class='break-word'><span class='code bold'>options.forceLogOut</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>?</code>
   </td>
-  <td class='break-word'><span>Force the oldest connection to log out if too many simultaneous connections. Link only.
+  <td class='break-word'><span>Deprecated: Force the oldest connection to log out if too many simultaneous connections. Link only.
 </span></td>
 </tr>
 

@@ -13,6 +13,11 @@ Ribbon WebRTC SDK change log.
 
 - Fixed issue where an exception was thrown by the SDK if credentials are set and the client attempts to unsubscribe no services. `KJS-2291`
 
+### Deprecated
+
+- The Subscription API option `forceLogout` is being deprecated and will be removed in the next major release. `KJS-1624`
+  - The WebRTC Gateway no longer supports this option, so the SDK will stop passing it through.
+
 ## 6.13.0 - 2024-07-26
 
 ### Fixed
