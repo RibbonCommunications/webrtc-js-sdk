@@ -56591,7 +56591,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Extra configuration can be provide as an additional object parameter.\nCurrently only a \"forceLogOut\" flag can be supplied in this object."
+                    "value": "Extra configuration can be provided as an additional object parameter.\nThe \"forceLogOut\" flag has been deprecated, as no longer being supported by backend.\nIt will be removed in the next major release."
                   }
                 ]
               },
@@ -56689,35 +56689,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 16,
+              "lineNumber": 17,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 17
+              "lineNumber": 18
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 18
+              "lineNumber": 19
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 19,
+              "lineNumber": 20,
               "name": "subscription"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 20,
+              "lineNumber": 21,
               "name": "subscribe"
             },
             {
               "title": "param",
               "description": "A list of service configurations.",
-              "lineNumber": 21,
+              "lineNumber": 22,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -56745,7 +56745,7 @@
             {
               "title": "param",
               "description": "The options object for non-credential options.",
-              "lineNumber": 22,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -56757,8 +56757,8 @@
             },
             {
               "title": "param",
-              "description": "Force the oldest connection to log out if too many simultaneous connections. Link only.",
-              "lineNumber": 23,
+              "description": "Deprecated: Force the oldest connection to log out if too many simultaneous connections. Link only.",
+              "lineNumber": 24,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -56771,7 +56771,7 @@
             {
               "title": "param",
               "description": "The method of how to receive service updates.",
-              "lineNumber": 24,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -56785,7 +56785,7 @@
             {
               "title": "param",
               "description": "Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device.",
-              "lineNumber": 25,
+              "lineNumber": 26,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -56798,7 +56798,7 @@
             {
               "title": "return",
               "description": null,
-              "lineNumber": 26,
+              "lineNumber": 27,
               "type": {
                 "type": "UndefinedLiteral"
               }
@@ -56806,7 +56806,7 @@
             {
               "title": "example",
               "description": "// Subscribe for chat and SMS services.\nclient.services.subscribe(['call', 'IM'], {forceLogOut: true, clientCorrelator: 'abc123'})",
-              "lineNumber": 27
+              "lineNumber": 28
             }
           ],
           "loc": {
@@ -56815,18 +56815,18 @@
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 132,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 132,
+                "line": 133,
                 "column": 4
               },
               "end": {
-                "line": 190,
+                "line": 195,
                 "column": 5
               }
             },
@@ -56843,7 +56843,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 21,
+              "lineNumber": 22,
               "description": {
                 "type": "root",
                 "children": [
@@ -56884,7 +56884,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 22,
+              "lineNumber": 23,
               "description": {
                 "type": "root",
                 "children": [
@@ -56910,7 +56910,7 @@
                 {
                   "title": "param",
                   "name": "options.forceLogOut",
-                  "lineNumber": 23,
+                  "lineNumber": 24,
                   "description": {
                     "type": "root",
                     "children": [
@@ -56919,7 +56919,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "Force the oldest connection to log out if too many simultaneous connections. Link only."
+                            "value": "Deprecated: Force the oldest connection to log out if too many simultaneous connections. Link only."
                           }
                         ]
                       }
@@ -56936,7 +56936,7 @@
                 {
                   "title": "param",
                   "name": "options.type",
-                  "lineNumber": 24,
+                  "lineNumber": 25,
                   "description": {
                     "type": "root",
                     "children": [
@@ -56960,7 +56960,7 @@
                 {
                   "title": "param",
                   "name": "options.clientCorrelator",
-                  "lineNumber": 25,
+                  "lineNumber": 26,
                   "description": {
                     "type": "root",
                     "children": [
@@ -57165,22 +57165,22 @@
           ],
           "loc": {
             "start": {
-              "line": 192,
+              "line": 197,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 218,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 214,
+                "line": 219,
                 "column": 4
               },
               "end": {
-                "line": 253,
+                "line": 258,
                 "column": 5
               }
             },
@@ -57412,22 +57412,22 @@
           ],
           "loc": {
             "start": {
-              "line": 255,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 292,
+              "line": 297,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 293,
+                "line": 298,
                 "column": 4
               },
               "end": {
-                "line": 300,
+                "line": 305,
                 "column": 5
               }
             },

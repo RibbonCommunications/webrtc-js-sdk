@@ -4416,8 +4416,9 @@ client.services.subscribe([
 
 Subscribes to platform notifications for an SDK service.
 
-Extra configuration can be provide as an additional object parameter.
-Currently only a "forceLogOut" flag can be supplied in this object.
+Extra configuration can be provided as an additional object parameter.
+The "forceLogOut" flag has been deprecated, as no longer being supported by backend.
+It will be removed in the next major release.
 
 For push notifications on link, please see [notifications.registerPush][149]
 
@@ -4434,7 +4435,7 @@ Upon getting such event, existing subscriptions can be retrieved using the
 *   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][151])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
-    *   `options.forceLogOut` **[boolean][11]?** Force the oldest connection to log out if too many simultaneous connections. Link only.
+    *   `options.forceLogOut` **[boolean][11]?** Deprecated: Force the oldest connection to log out if too many simultaneous connections. Link only.
     *   `options.type` **[string][8]** The method of how to receive service updates. (optional, default `'websocket'`)
     *   `options.clientCorrelator` **[string][8]?** Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device.
 
