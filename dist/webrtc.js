@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.14.0-beta.1419
+ * Version: 6.15.0-beta.1420
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -99,8 +99,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ../../node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
 var redux_saga_symbols_esm = __webpack_require__(23143);
-// EXTERNAL MODULE: ../../node_modules/@redux-saga/core/node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(84458);
+// EXTERNAL MODULE: ../../node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(7896);
 // EXTERNAL MODULE: ../../node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
 var redux_saga_is_esm = __webpack_require__(83594);
 ;// CONCATENATED MODULE: ../../node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
@@ -2103,7 +2103,6 @@ module.exports = function (fromModel) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -2111,6 +2110,7 @@ exports["default"] = void 0;
 var _plugin = _interopRequireDefault(__webpack_require__(47995));
 var _config = _interopRequireDefault(__webpack_require__(26218));
 var _events = _interopRequireDefault(__webpack_require__(94731));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * This is a list of base plugins that most solutions will need. These plugins provide service-like capabilities
  * to the SDK.
@@ -2274,7 +2274,6 @@ function commonIndex() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 var _core = _interopRequireDefault(__webpack_require__(12284));
 var _basePlugins = _interopRequireDefault(__webpack_require__(55981));
 var _webrtc = _interopRequireDefault(__webpack_require__(49169));
@@ -2294,6 +2293,7 @@ var _index = _interopRequireDefault(__webpack_require__(29175));
 var _request = __webpack_require__(38048);
 __webpack_require__(71308);
 var _codecRemover = __webpack_require__(87056);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const defaultPlugins = [..._basePlugins.default, {
   name: 'authentication',
   fn: _link2.default
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 64510:
+/***/ 55404:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,67 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.14.0-beta.1419';
-}
-
-/***/ }),
-
-/***/ 4025:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.parseSpidrServices = parseSpidrServices;
-var _constants = __webpack_require__(72916);
-/**
- * Uses the requested and received SPiDR [subscription] services to determine
- *      the SDK subscription status for each service.
- * @method parseSpidrServices
- * @param  {Array}  requested The list of requested SPiDR services.
- * @param  {Array}  received The list of received SPiDR services.
- * @return {Object} Information about the SDK's subscriptions.
- */
-function parseSpidrServices(requested, received) {
-  // UC platform is not case-sensitive (Link is), so filter without caring about case.
-  const upperReceived = received.map(service => service.toUpperCase());
-
-  // Find the missing services.
-  const missing = requested.filter(function (reqService) {
-    // If the requested service was received (not caring about case),
-    //      it is not missing.
-    return upperReceived.indexOf(reqService.toUpperCase()) === -1;
-  });
-  const subscriptions = {
-    requested,
-    received,
-    missing,
-    status: 'UNKNOWN',
-    services: {}
-  };
-
-  // Determine the overall subscription status.
-  if (received.length === 0) {
-    subscriptions.status = _constants.SUBSCRIPTION_STATE.NONE;
-  } else if (received.length > 0 && missing.length > 0) {
-    subscriptions.status = _constants.SUBSCRIPTION_STATE.PARTIAL;
-  } else if (received.length > 0 && requested.length === received.length) {
-    subscriptions.status = _constants.SUBSCRIPTION_STATE.FULL;
-  } else {
-    // Should never reach this case.
-  }
-
-  // List the individual service statuses.
-  received.forEach(function (service) {
-    subscriptions.services[service] = true;
-  });
-  missing.forEach(function (service) {
-    subscriptions.services[service] = false;
-  });
-  return subscriptions;
+  return '6.15.0-beta.1420';
 }
 
 /***/ }),
@@ -2485,15 +2425,12 @@ const DISCONNECT_REASONS = exports.DISCONNECT_REASONS = {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.USER_DETAILS_RECEIVED = exports.UPDATE_HMAC_TOKEN = exports.SET_TOKEN = exports.SET_CREDENTIALS_FINISH = exports.SET_CREDENTIALS = exports.SET_CONNECTION_INFO = exports.RESUBSCRIPTION_FINISHED = exports.REFRESH_TOKENS_FINISHED = exports.REFRESH_TOKENS = exports.GET_USER_DETAILS = exports.DISCONNECT_FINISHED = exports.DISCONNECT = exports.CONNECT_FINISHED = exports.CONNECTION_OCCURRED = exports.CONNECT = exports.AUTHORIZATION_ERROR = void 0;
+exports.USER_DETAILS_RECEIVED = exports.UPDATE_HMAC_TOKEN = exports.SET_TOKEN = exports.SET_CREDENTIALS_FINISH = exports.SET_CREDENTIALS = exports.SET_CONNECTION_INFO = exports.RESUBSCRIPTION_FINISHED = exports.REFRESH_TOKENS_FINISHED = exports.REFRESH_TOKENS = exports.GET_USER_DETAILS = exports.DISCONNECT_FINISHED = exports.CONNECTION_OCCURRED = exports.AUTHORIZATION_ERROR = void 0;
 const prefix = '@@KANDY/';
-const CONNECT = exports.CONNECT = prefix + 'CONNECT';
 const SET_CONNECTION_INFO = exports.SET_CONNECTION_INFO = prefix + 'SET_CONNECTION_INFO';
 const CONNECTION_OCCURRED = exports.CONNECTION_OCCURRED = prefix + 'CONNECTION_OCCURRED';
-const CONNECT_FINISHED = exports.CONNECT_FINISHED = prefix + 'CONNECT_FINISHED';
 const GET_USER_DETAILS = exports.GET_USER_DETAILS = prefix + 'GET_USER_DETAILS';
 const USER_DETAILS_RECEIVED = exports.USER_DETAILS_RECEIVED = prefix + 'USER_DETAILS_RECEIVED';
-const DISCONNECT = exports.DISCONNECT = prefix + 'DISCONNECT';
 const DISCONNECT_FINISHED = exports.DISCONNECT_FINISHED = prefix + 'DISCONNECT_FINISHED';
 const RESUBSCRIPTION_FINISHED = exports.RESUBSCRIPTION_FINISHED = prefix + 'RESUBSCRIPTION_FINISHED';
 const REFRESH_TOKENS = exports.REFRESH_TOKENS = prefix + 'REFRESH_TOKENS';
@@ -2515,10 +2452,7 @@ const UPDATE_HMAC_TOKEN = exports.UPDATE_HMAC_TOKEN = prefix + 'UPDATE_HMAC_TOKE
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.connect = connect;
-exports.connectFinished = connectFinished;
 exports.connectionOccurred = connectionOccurred;
-exports.disconnect = disconnect;
 exports.disconnectFinished = disconnectFinished;
 exports.getUserDetails = getUserDetails;
 exports.refreshTokens = refreshTokens;
@@ -2532,28 +2466,7 @@ exports.updateHmacToken = updateHmacToken;
 exports.userDetailsReceived = userDetailsReceived;
 var actionTypes = _interopRequireWildcard(__webpack_require__(10530));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-/**
- * Creates a connect action that takes a credentials object.
- *
- * @method connect
- * @param {Object} credentials The credentials to pass to the connect action.
- * @param {Object} [options] Any parameters that aren't credentials.
- * @return {Object} A flux standard action.
- */
-function connect(credentials, options) {
-  return {
-    type: actionTypes.CONNECT,
-    payload: {
-      credentials,
-      options
-    },
-    meta: {
-      isSensitive: true
-    }
-  };
-}
-
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Create a set connection info action that takes a connection and user info object
  *
@@ -2622,49 +2535,6 @@ function connectionOccurred(_ref2, platform) {
 }
 
 /**
- * Create a connect finished action that takes a userInfo object on success and possibly
- * an error object.
- *
- * @method connectFinished
- * @param {Object} $0
- * @param {Object} $0.subscription A subscription object. Contains what services to subscribe to.
- * @param {Object} $0.userInfo An object representing the user information.
- * @param {Object} $0.connection A connection object. Information about how to connect to the backend services.
- * @param {string} [$0.error] An error message. Only present if an error occurred.
- * @param {string} platform The backend platform we are currently on.
- * @param {boolean} isSSO Boolean for whether the current connection scenario is SSO or not.
- * @return {Object} A flux standard action.
- */
-function connectFinished(_ref3, platform) {
-  let {
-    subscription,
-    userInfo,
-    connection,
-    error
-  } = _ref3;
-  let isSSO = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  var action = {
-    type: actionTypes.CONNECT_FINISHED,
-    meta: {
-      platform,
-      isSSO,
-      isSensitive: true
-    }
-  };
-  if (error) {
-    action.error = true;
-    action.payload = error;
-  } else {
-    action.payload = {
-      subscription,
-      userInfo,
-      connection
-    };
-  }
-  return action;
-}
-
-/**
  * Creates a getUserDetails action
  *
  * @method getUserDetails
@@ -2698,18 +2568,6 @@ function userDetailsReceived(userDetailsResponse) {
     }
   };
   return action;
-}
-
-/**
- * Creates a disconnect action.
- *
- * @method disconnect
- * @return {Object} A flux standard action.
- */
-function disconnect() {
-  return {
-    type: actionTypes.DISCONNECT
-  };
 }
 
 /**
@@ -2756,11 +2614,11 @@ function disconnectFinished() {
  * @param {string} platform The backend platform we are currently on.
  * @return {Object} A flux standard action.
  */
-function resubscribeFinished(_ref4, platform) {
+function resubscribeFinished(_ref3, platform) {
   let {
     error,
     attemptNum
-  } = _ref4;
+  } = _ref3;
   var action = {
     type: actionTypes.RESUBSCRIPTION_FINISHED,
     meta: {
@@ -2807,11 +2665,11 @@ function refreshTokens(credentials) {
  * @param {string} platform The backend platform we are currently on.
  * @return {Object} A flux standard action.
  */
-function refreshTokensFinished(_ref5, platform) {
+function refreshTokensFinished(_ref4, platform) {
   let {
     error,
     connection
-  } = _ref5;
+  } = _ref4;
   var action = {
     type: actionTypes.REFRESH_TOKENS_FINISHED,
     payload: {
@@ -2836,11 +2694,11 @@ function refreshTokensFinished(_ref5, platform) {
  * @param {string} idToken An identity token retrieved using the authentication APIs of the platform.
  * @return {Object} A flux standard action.
  */
-function setTokens(_ref6) {
+function setTokens(_ref5) {
   let {
     accessToken,
     idToken
-  } = _ref6;
+  } = _ref5;
   return {
     type: actionTypes.SET_TOKEN,
     payload: {
@@ -2864,7 +2722,7 @@ function setTokens(_ref6) {
  * @param {string} $0.accessToken An access token retrieved using the authentication APIs of the platform. Used for CIM authentication.
  * @return {Object} A flux standard action.
  */
-function setCredentials(_ref7) {
+function setCredentials(_ref6) {
   let {
     username,
     password,
@@ -2873,7 +2731,7 @@ function setCredentials(_ref7) {
     bearerAccessToken,
     idToken,
     accessToken
-  } = _ref7;
+  } = _ref6;
   return {
     type: actionTypes.SET_CREDENTIALS,
     payload: {
@@ -2899,16 +2757,17 @@ function setCredentials(_ref7) {
  * @param {Object} $0
  * @param {Object} $0.userInfo An object representing the user information.
  * @param {Object} $0.connection A connection object. Information about how to connect to the backend services.
+ * @param {boolean} $0.isAnonymous Indicates if this user is an anonymous user.
  * @param {string} [$0.error] An error message. Only present if an error occurred.
  * @param {string} platform The backend platform we are currently on.
  * @return {Object} A flux standard action.
  */
-function setCredentialsFinished(_ref8, platform) {
+function setCredentialsFinished(_ref7, platform) {
   let {
     userInfo,
     connection,
     error
-  } = _ref8;
+  } = _ref7;
   var action = {
     type: actionTypes.SET_CREDENTIALS_FINISH,
     meta: {
@@ -2964,7 +2823,7 @@ var actions = _interopRequireWildcard(__webpack_require__(35770));
 var _selectors = __webpack_require__(46942);
 var _constants = __webpack_require__(72916);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Authentication APIs factory function.
  * @method createAPI
@@ -3302,7 +3161,6 @@ const AUTH_CREDENTIALS_SET = exports.AUTH_CREDENTIALS_SET = 'auth:credentialsSet
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -3327,6 +3185,7 @@ Object.defineProperty(exports, "reducer", ({
 var _reducers = _interopRequireDefault(__webpack_require__(53659));
 var _name = _interopRequireDefault(__webpack_require__(57788));
 var _api = _interopRequireDefault(__webpack_require__(36008));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 
 /***/ }),
 
@@ -3355,7 +3214,6 @@ var _default = exports["default"] = name;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -3364,17 +3222,9 @@ var _merge2 = _interopRequireDefault(__webpack_require__(9612));
 var actionTypes = _interopRequireWildcard(__webpack_require__(10530));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const reducers = {};
-reducers[actionTypes.CONNECT] = {
-  next(state) {
-    return {
-      ...state,
-      isPending: true,
-      error: undefined
-    };
-  }
-};
 reducers[actionTypes.SET_CONNECTION_INFO] = {
   next(state, action) {
     return {
@@ -3385,41 +3235,6 @@ reducers[actionTypes.SET_CONNECTION_INFO] = {
         [action.meta.platform]: action.payload.connection
       },
       userInfo: action.payload.userInfo
-    };
-  }
-};
-reducers[actionTypes.CONNECT_FINISHED] = {
-  next(state, action) {
-    return {
-      ...state,
-      isConnected: true,
-      isPending: false,
-      error: undefined,
-      isSSO: action.meta.isSSO,
-      platform: action.meta.platform,
-      // Separate subscription, connection info based on the platform used.
-      // Store platform subscription information.
-      subscription: {
-        ...state.subscription,
-        [action.meta.platform]: action.payload.subscription
-      },
-      // Store platform connection information to be provided to other plugins.
-      connection: action.payload.connection ? {
-        ...state.connection,
-        [action.meta.platform]: action.payload.connection
-      } : {
-        ...state.connection
-      },
-      // Store user information to be provided to developers.
-      userInfo: action.payload.userInfo ? action.payload.userInfo : state.userInfo
-    };
-  },
-  throw(state, action) {
-    return {
-      ...state,
-      isConnected: false,
-      isPending: false,
-      error: action.payload
     };
   }
 };
@@ -3441,15 +3256,6 @@ reducers[actionTypes.CONNECTION_OCCURRED] = {
         ...state.connection,
         [action.meta.platform]: action.payload.connection
       }
-    };
-  }
-};
-reducers[actionTypes.DISCONNECT] = {
-  next(state) {
-    return {
-      ...state,
-      isPending: true,
-      error: undefined
     };
   }
 };
@@ -3582,7 +3388,6 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -3600,6 +3405,7 @@ exports.getUserInfo = getUserInfo;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _constants = __webpack_require__(72916);
 var _constants2 = __webpack_require__(49833);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Redux-saga selector functions.
  * Used with the `select` effect in sagas to Retrieves
@@ -3805,7 +3611,7 @@ var _actions = __webpack_require__(43424);
 var _utils = __webpack_require__(25189);
 var _validation = __webpack_require__(42850);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // The interface to follow.
 
 // Operations
@@ -3900,13 +3706,13 @@ function authFactory() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerOperations;
 var _updateToken = _interopRequireDefault(__webpack_require__(5273));
 var _setCredentials = _interopRequireDefault(__webpack_require__(82799));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Register the operation with the bottle. This will make it available on the
  *    top-level container under its namespace.
@@ -3928,7 +3734,6 @@ function registerOperations(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -3941,8 +3746,9 @@ var _selectors2 = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _base = _interopRequireDefault(__webpack_require__(21166));
 var _utf = _interopRequireDefault(__webpack_require__(35050));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Auth
 
 // Subscription plugin
@@ -3972,7 +3778,9 @@ function createOperation(container) {
       authname,
       hmacToken,
       bearerAccessToken,
-      accessToken
+      accessToken,
+      anonUsername,
+      realm
     } = _ref;
     const {
       username: existingUsername,
@@ -4006,6 +3814,11 @@ function createOperation(container) {
         Accept: 'application/json'
       }
     };
+    if (realm) {
+      requestOptions.queryParams = {
+        tokenrealm: realm
+      };
+    }
     if (hmacToken) {
       // Only need the hmacToken in the x-token header when subscribing.
       log.info('Setting the info for hmacToken scenario.');
@@ -4024,6 +3837,8 @@ function createOperation(container) {
     } else if (username && password) {
       log.info('Setting the info for username/password scenario.');
       requestOptions.headers.Authorization = 'Basic ' + _base.default.encode(_utf.default.encode(username + ':' + password));
+    } else if (username && anonUsername) {
+      // Anonymous call scenario, auth headers not required.
     } else {
       log.info('Unexpected credentials scenario.');
       const error = new _errors.default({
@@ -4041,7 +3856,8 @@ function createOperation(container) {
 
     // Gather information to provide externally.
     const userInfo = {
-      username
+      username: anonUsername || username,
+      isAnonymous: !!anonUsername
     };
 
     // Gather information to provide internally, to other plugins.
@@ -4083,7 +3899,7 @@ var actions = _interopRequireWildcard(__webpack_require__(35770));
 var eventTypes = _interopRequireWildcard(__webpack_require__(71430));
 var _constants = __webpack_require__(49833);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Auth
 
 // Constants
@@ -4148,6 +3964,9 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createTracker;
+__webpack_require__(80978);
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _constants = __webpack_require__(37409);
 /**
  * Factory for an "on-going operation" tracker.
@@ -4186,7 +4005,7 @@ function createTracker(log) {
       // Operations should only be 'added' once. This error indicates a bug.
       log.warn('Cannot track operation that was previously tracked.');
       throw new Error('Operation is already being tracked!');
-    } else if (operation.tracker.status !== _constants.OP_STATUS.NOT_STARTED) {
+    } else if (operation.status !== _constants.OP_STATUS.NOT_STARTED) {
       // Operations should be 'added' before they are started. This error indicates a bug.
       log.warn('Cannot track operation that was previously started.');
       throw new Error('Operation was already started!');
@@ -4288,11 +4107,13 @@ exports["default"] = createTracker;
 exports.finishOperation = finishOperation;
 exports.startOperation = startOperation;
 exports.updateOperation = updateOperation;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 /**
@@ -4325,6 +4146,8 @@ function createTracker(container, callId, operationId, eventId, opInfo, joinOpti
     // JOIN is a special-case. A newly joined call's `tracker.start()` method will not be called,
     //    so initialize the tracker in an already started state. The join operation needs to be
     //    changed for this to be fixed.
+    // TechDebt TODO: Have the joined call be put into state by the API, so that it exists when
+    //    `tracker.start()` is called for the other calls.
     tracker.status = _constants.OP_STATUS.ONGOING;
   }
 
@@ -4499,20 +4322,15 @@ function finishOperation(container, callId, operationId, eventId, opInfo, err, s
 /***/ }),
 
 /***/ 57679:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
-var _StatusTracker = _interopRequireDefault(__webpack_require__(22286));
-var _constants = __webpack_require__(37409);
-// CallManager.
-
 /**
  * Operation flow for a consultative transfer operation.
  *
@@ -4523,10 +4341,9 @@ var _constants = __webpack_require__(37409);
  *    - The second call receives a generic "call end" notification to indicate
  *        success, and no notification on failure.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   const {
-    context,
-    CallReporter
+    context
   } = container;
 
   /**
@@ -4534,43 +4351,32 @@ function createFlow(container) {
    *    operation, while tracking it against two calls.
    * @method localChanges
    */
-  async function localChanges(priCallId, operation, params) {
-    // Setup tracking on the secondary call.
-    const secCallId = params[0];
-    const secReport = CallReporter.getReport(secCallId);
-    const secOpEvent = secReport.addEvent(operation.reportEvent.type);
+  async function localChanges(calls) {
+    operation.tracker.start();
 
     /*
      * Validate the operation before starting it. If the operation deems that it
      *    can't be done right now, avoid doing any state tracking, etc. for the
      *    operation.
      */
-    const validationError = operation.stages.validate(context.getState(), priCallId, ...params);
+    const validationError = stages.validate(context.getState(), calls);
     if (validationError) {
       // Update the Call Report to indicate the operation ended with an error.
       operation.reportEvent.endEvent(validationError);
-      secOpEvent.endEvent(validationError);
+      operation.tracker.finish(validationError);
       throw validationError;
     }
-    operation.tracker.start();
-    // The tracker to update the second call's state needs to be created manually.
-    // TODO: How to "finish" the secTracker on notification response?
-    const secTracker = (0, _StatusTracker.default)(container, secCallId, operation.id, secOpEvent.id, operation);
-    secTracker.start();
     try {
       // Perform the operation.
-      await operation.stages.localOffer(priCallId, ...params);
+      await stages.localOffer(calls);
 
       // Update operation tracking; now waiting on remote response.
       operation.tracker.update();
-      secTracker.update();
     } catch (err) {
       operation.reportEvent.endEvent(err);
-      secOpEvent.endEvent(err);
 
       // Finish operation tracking; operation has failed.
       operation.tracker.finish(err);
-      secTracker.finish(err);
       throw err;
     }
   }
@@ -4581,19 +4387,15 @@ function createFlow(container) {
    *    to be cleaned-up.
    * @method remoteSuccess
    */
-  async function remoteSuccess(call, operation, params) {
+  async function remoteSuccess(call, params) {
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
-    await operation.stages.remoteSuccess(call, params);
+    await stages.remoteSuccess(call, params);
     operation.reportEvent.endEvent();
-    // KJS-2176 TODO: Need to coordinate between this "transfer successful" notification and the "call ended"
-    //    notification that will be received for the other call. Only one of them should be completing the operation.
-    if (operation.tracker.status !== _constants.OP_STATUS.FINISHED) {
-      operation.tracker.finish();
-    }
+    operation.tracker.finish();
   }
 
   /**
@@ -4601,13 +4403,13 @@ function createFlow(container) {
    *    indicating the consultative transfer failed.
    * @method remoteFailure
    */
-  async function remoteFailure(call, operation, params) {
+  async function remoteFailure(call, params) {
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
-    const error = await operation.stages.remoteFailure(call, params);
+    const error = await stages.remoteFailure(call, params);
     operation.reportEvent.endEvent(error);
     operation.tracker.finish(error);
   }
@@ -4616,17 +4418,18 @@ function createFlow(container) {
    * A "call end" notification has been received for the secondary call,
    *    indicating the consultative transfer succeeded. The backend considers
    *    the secondary call ended, so only need client-side updates.
+   * The primary call's notification will trigger updates to the tracker and call report.
    * @method callEndSuccess
    */
-  async function callEndSuccess(call, operation, params) {
-    // KJS-2176 TODO: Implement this. Have the CallManager redirect the
-    //    notification here instead of the general "call end" handler.
+  async function callEnd(call, params) {
+    // Handle the notification the same as the "sessionComplete" notification.
+    await stages.remoteSuccess(call, params);
   }
   return {
-    localChanges,
-    remoteSuccess,
-    remoteFailure,
-    callEndSuccess
+    start: localChanges,
+    sessionComplete: remoteSuccess,
+    sessionFail: remoteFailure,
+    callEnd
   };
 }
 
@@ -4638,12 +4441,12 @@ function createFlow(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
-var _LocalOperation = _interopRequireDefault(__webpack_require__(76445));
+var _LocalNegotiation = _interopRequireDefault(__webpack_require__(95553));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Operation flow for a direct transfer operation.
  *
@@ -4651,27 +4454,37 @@ var _LocalOperation = _interopRequireDefault(__webpack_require__(76445));
  *    - The "response" notification is of two different types, depending
  *        on success or failure.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   /**
    * A direct transfer operation has been started locally.
    * The "local changes" portion is identical to a local
    *    negotiation. Re-use that flow.
    * @method localChanges
    */
-  const localChanges = (0, _LocalOperation.default)(container);
+  const localChanges = (0, _LocalNegotiation.default)(container, operation, stages).start;
+
+  /**
+   * Direct transfer is a Negotiation, but it receives "complex" remote responses. Expose a
+   *    `receiveResponse` method that the CallManager expects for a Negotiation, but simply
+   *    have it redirect to the appropriate "complex" method.
+   */
+  async function receiveResponse(call, params) {
+    const handler = params.eventType === 'sessionComplete' ? remoteSuccess : remoteFailure;
+    return handler(call, params);
+  }
 
   /**
    * A "session complete" notification has been received, indicating the
    *    direct transfer succeeded. The original call needs to be cleaned-up.
    * @method remoteSuccess
    */
-  async function remoteSuccess(call, operation, params) {
+  async function remoteSuccess(call, params) {
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
-    await operation.stages.remoteSuccess(call, params);
+    await stages.remoteSuccess(call, params);
     operation.reportEvent.endEvent();
     operation.tracker.finish();
   }
@@ -4681,20 +4494,19 @@ function createFlow(container) {
    *    direct transfer failed. The original call still exists.
    * @method remoteFailure
    */
-  async function remoteFailure(call, operation, params) {
+  async function remoteFailure(call, params) {
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
-    const error = await operation.stages.remoteFailure(call, params);
+    const error = await stages.remoteFailure(call, params);
     operation.reportEvent.endEvent(error);
     operation.tracker.finish(error);
   }
   return {
-    localChanges,
-    remoteSuccess,
-    remoteFailure
+    start: localChanges,
+    receiveResponse
   };
 }
 
@@ -4706,15 +4518,14 @@ function createFlow(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
-var _StatusTracker = _interopRequireDefault(__webpack_require__(22286));
+var _LocalNegotiation = _interopRequireDefault(__webpack_require__(95553));
 var _constants = __webpack_require__(37409);
-// CallManager.
-
+var _selectors = __webpack_require__(11430);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 /**
@@ -4727,67 +4538,42 @@ var _constants = __webpack_require__(37409);
  *    - The new, joined call's response notification is of two different types,
  *        depending on success or failure.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   const {
-    context,
-    CallReporter
+    context
   } = container;
+  const negoFlow = (0, _LocalNegotiation.default)(container, operation, stages);
 
   /**
    * A join operation has been started locally.
    * @method localChanges
    */
-  async function localChanges(priCallId, operation, params) {
-    // Setup tracking on the secondary call.
-    const secCallId = params[0];
-    const secReport = CallReporter.getReport(secCallId);
-    const secOpEvent = secReport.addEvent(operation.reportEvent.type);
+  async function localChanges(calls, params) {
+    operation.tracker.start();
 
     /*
      * Validate the operation before starting it. If the operation deems that it
      *    can't be done right now, avoid doing any state tracking, etc. for the
      *    operation.
      */
-    const validationError = operation.stages.validate(context.getState(), priCallId, ...params);
+    const validationError = stages.validate(context.getState(), calls);
     if (validationError) {
       // Update the Call Report to indicate the operation ended with an error.
       operation.reportEvent.endEvent(validationError);
-      secOpEvent.endEvent(validationError);
+      operation.tracker.finish(validationError);
       throw validationError;
     }
-    operation.tracker.start();
-    // The tracker to update the second call's state needs to be created manually.
-    // TODO: How to "finish" the secTracker on notification response?
-    const secTracker = (0, _StatusTracker.default)(container, secCallId, operation.id, secOpEvent.id, operation);
-    secTracker.start();
-
-    /*
-     * Setup tracking for the third, joined call. Since this call is new, it does
-     *    not have a tracker / call report yet.
-     */
-    const joinedCallId = params[1];
-    const joinedCallReport = CallReporter.createReport('CALL', joinedCallId);
-    const joinOpEvent = joinedCallReport.addEvent(operation.reportEvent.type);
-    const joinTracker = (0, _StatusTracker.default)(container, joinedCallId, operation.id, joinOpEvent.id, operation, {
-      isJoinedCall: true
-    });
     try {
       // Perform the operation.
-      await operation.stages.localOffer(priCallId, ...params);
+      await stages.localOffer(calls, ...params);
 
       // Update operation tracking; now waiting on remote response.
       operation.tracker.update();
-      secTracker.update();
-      joinTracker.update();
     } catch (err) {
       operation.reportEvent.endEvent(err);
-      secOpEvent.endEvent(err);
-      joinOpEvent.endEvent(err);
 
       // Finish operation tracking; operation has failed.
       operation.tracker.finish(err);
-      secTracker.finish(err);
-      joinTracker.finish(err);
       throw err;
     }
   }
@@ -4798,9 +4584,10 @@ function createFlow(container) {
    *    establish the joined call.
    * @method joinAnswer
    */
-  async function joinAnswer() {
-    // KJS-2176 TODO: Implement this. Have the CallManager redirect the
-    //    notification here instead of the general "call end" handler.
+  async function joinAnswer(call, params) {
+    // KJS-2176 TODO: Improve the handling of the `respondCallUpdate`. If the new call
+    //    is "Connected", the other two should be Ended at the same time.
+    return await negoFlow.receiveResponse(call, params);
   }
 
   /**
@@ -4809,9 +4596,18 @@ function createFlow(container) {
    *    notifications in this scenario, so all must be updated.
    * @method joinEnd
    */
-  async function joinEnd() {
-    // KJS-2176 TODO: Implement this. Have the CallManager redirect the
-    //    notification here instead of the general "call end" handler.
+  async function joinEnd(call, params) {
+    let error;
+    await operation.calls.map(async info => {
+      const call = (0, _selectors.getCallById)(context.getState(), info.callId);
+      if (info.role === 'joined') {
+        return stages.joinedFailure(call, params);
+      } else {
+        error = await stages.remoteFailure(call, params);
+      }
+    });
+    operation.reportEvent.endEvent(error);
+    operation.tracker.finish(error);
   }
 
   /**
@@ -4821,13 +4617,13 @@ function createFlow(container) {
    *    one at a time.
    * @method remoteSuccess
    */
-  async function remoteSuccess(call, operation, params) {
+  async function remoteSuccess(call, params) {
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
-    await operation.stages.remoteSuccess(call, params);
+    await stages.remoteSuccess(call, params);
 
     /*
      * Note: Don't manage operation tracking with these success operations.
@@ -4845,13 +4641,13 @@ function createFlow(container) {
    *    one at a time.
    * @method remoteFailure
    */
-  async function remoteFailure(call, operation, params) {
+  async function remoteFailure(call, params) {
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
-    const error = await operation.stages.remoteFailure(call, params);
+    const error = await stages.remoteFailure(call, params);
     if (operation.status !== _constants.OP_STATUS.FINISHED) {
       // Two "failure" notifications will be received; one for each call. Only end the
       //    the operation on the first notification processed to avoid overlap.
@@ -4860,17 +4656,17 @@ function createFlow(container) {
     }
   }
   return {
-    localChanges,
-    joinAnswer,
-    joinEnd,
-    remoteSuccess,
-    remoteFailure
+    start: localChanges,
+    respondCallUpdate: joinAnswer,
+    callEnd: joinEnd,
+    sessionComplete: remoteSuccess,
+    sessionFail: remoteFailure
   };
 }
 
 /***/ }),
 
-/***/ 25967:
+/***/ 95553:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -4880,13 +4676,16 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
+__webpack_require__(80978);
 var _constants = __webpack_require__(60683);
+var _constants2 = __webpack_require__(37409);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _state = __webpack_require__(65794);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
+var _selectors = __webpack_require__(11430);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -4905,24 +4704,112 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  *    - Notification Response (error): The remote response to indicate negotiation
  *        failed due to an error on the remote end.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   const {
     context,
     emitEvent,
     logManager
   } = container;
 
+  /*
+   * A negotiation response whose processing was deferred.
+   */
+  let deferredResponse;
+  /*
+   * Flag for whether the negotiation has received the remote response.
+   */
+  let responseReceived = false;
+
+  /**
+   * Entry for the first half of the flow.
+   * @method start
+   * @async
+   * @param {string} callId ID for the call being operated on.
+   * @param {Object} params Operation
+   * @return {Promise<undefined>}
+   * @throws {Error} Throws if the flow was previously started.
+   */
+  async function start(callId, params) {
+    if (operation.status !== _constants2.OP_STATUS.NOT_STARTED) {
+      throw new Error('Flow cannot be started a second time.');
+    }
+    return localChanges(callId, params);
+  }
+
   /**
    * Entry for the first half of the flow: perform local changes on the call
    *    before signalling to the remote side.
-   * @method localChanges
-   * @async
+   * @method resume
    * @param {string} callId ID for the call being operated on.
-   * @param {Operation} operation The operation being performed.
    * @param {Object} params Operation
    * @return {Promise<undefined>}
    */
-  async function localChanges(callId, operation, params) {
+  async function resume(call, params) {
+    if (operation.status === _constants2.OP_STATUS.PENDING) {
+      // KJS-2304 TODO: A separate signaling status means this check is not necessary.
+      if (responseReceived || deferredResponse) {
+        // Negotiations only receive one response. This error indicates a bug.
+        throw new Error('Negotiations should only receive one response.');
+      }
+
+      // Expected scenario.
+      return remoteResponse(call, params);
+    } else if (operation.status === _constants2.OP_STATUS.ONGOING) {
+      /*
+       * If the operation is not in PENDING status, that means it is not ready to process this
+       *    response. Defer processing it until later.
+       * KJS-2304 TODO: Split out the "REST" step, so that this check can be more accurate. ONGOING
+       *    is supposed to be the "local processing" stage, but also include the full REST request.
+       */
+      const log = logManager.getLogger('CALL', call.id);
+      if (deferredResponse) {
+        // Negotiations only receive one response. This error indicates a bug.
+        throw new Error('Negotiations should only receive one response.');
+      }
+      log.debug(`Received negotiation answer for local ${operation.type} too early; delaying processing.`);
+      return Promise.race([new Promise((resolve, reject) => {
+        deferredResponse = {
+          params,
+          promise: {
+            resolve,
+            reject
+          }
+        };
+      }), new Promise(resolve => setTimeout(() => {
+        resolve(new Error('timeout'));
+      }, 500))]).then(result => {
+        if (result && result.message === 'timeout') {
+          /*
+           * If we still have not received the REST response 500ms after receiving the websocket
+           *    notification, assume issues. Try to process the notification and just continue with
+           *    the operation.
+           * KJS-2304 TODO: Improve this scenario's handling when "Signaling" is its own OP_STATUS
+           *    (instead of being part of OP_STATUS.ONGOING). Theoretically, we never need to wait
+           *    for the REST response if we receive the remote response, since that implies signaling
+           *    was successful and is over.
+           */
+          log.debug('Timed-out waiting for signaling response; attempting to process.');
+          deferredResponse = undefined;
+          return remoteResponse(call, params);
+        }
+        return result;
+      });
+    } else {
+      throw new Error('Cannot receive response in current state.');
+    }
+  }
+
+  /**
+   * Perform local changes on the call before signalling to the remote side.
+   * @method localChanges
+   * @async
+   * @param {string} callId ID for the call being operated on.
+   * @param {Object} params Operation
+   * @return {Promise<undefined>}
+   * @throws {BasicError} Throws if the call is in an invalid state for the operation.
+   * @throws {BasicError} Throws if the local changes fail.
+   */
+  async function localChanges(callId, params) {
     /*
      * Check for glare scenarios.
      * ...
@@ -4936,8 +4823,8 @@ function createFlow(container) {
      *    can't be done right now, avoid doing any state tracking, etc. for the
      *    operation.
      */
-    if (operation.stages.validate) {
-      const validationError = operation.stages.validate(context.getState(), callId, ...params);
+    if (stages.validate) {
+      const validationError = stages.validate(context.getState(), callId, ...params);
       if (validationError) {
         // Update the Call Report to indicate the operation ended with an error.
         operation.reportEvent.endEvent(validationError);
@@ -4950,16 +4837,46 @@ function createFlow(container) {
      * Perform the local portions of the negotiation.
      */
     try {
-      const result = await operation.stages.localOffer(callId, ...params);
-      operation.tracker.update(result);
+      const result = await stages.localOffer(callId, ...params);
+
+      /*
+       * Update the operation status if it is still ONGOING. If it isn't, that means it went
+       *    straight from ONGOING --> FINISHED because the response was already processed.
+       * KJS-2304 TODO: A separate signaling status means this check is not necessary.
+       */
+      if (operation.status === _constants2.OP_STATUS.ONGOING) {
+        operation.tracker.update(result);
+      }
+
+      /*
+       * If there was a deferred response, that means the websocket response was received
+       *    before the operation was ready for it. Process it now, but don't block on it.
+       */
+      if (deferredResponse && operation.status === _constants2.OP_STATUS.PENDING) {
+        const {
+          params,
+          promise
+        } = deferredResponse;
+        const call = (0, _selectors.getCallById)(context.getState(), callId);
+        deferredResponse = undefined;
+        remoteResponse(call, params).then(promise.resolve).catch(promise.reject);
+      }
       return result;
     } catch (err) {
       /*
-       * Operation failed, end the operation tracking and throw the error.
+       * If `localOffer` failed, but the operation was already finished elsewhere, that means
+       *    the remote response was received & processed. Don't try to update it further.
        */
-      operation.reportEvent.endEvent(err);
-      operation.tracker.finish(err);
-      throw err;
+      if (operation.status === _constants2.OP_STATUS.FINISHED || responseReceived) {
+        return;
+      } else {
+        /*
+         * Operation failed, end the operation tracking and throw the error.
+         */
+        operation.reportEvent.endEvent(err);
+        operation.tracker.finish(err);
+        throw err;
+      }
     }
   }
 
@@ -4970,11 +4887,11 @@ function createFlow(container) {
    * @method remoteResponse
    * @async
    * @param {Object} call The call being operated on.
-   * @param {Operation} operation The operation being performed.
    * @param {Object} params Response data provided by the remote endpoint.
    * @return {Promise<undefined>}
    */
-  async function remoteResponse(call, operation, params) {
+  async function remoteResponse(call, params) {
+    responseReceived = true;
     const wrtcsSessionId = call.wrtcsSessionId;
     const log = logManager.getLogger('CALL', call ? call.id : undefined);
     if (call.state === _constants.CALL_STATES.ENDED) {
@@ -4993,7 +4910,7 @@ function createFlow(container) {
      *    failed (likely glare condition) and the SDK should retry the operation.
      */
     if (!params.sdp && params.code === 49 && params.retryAfter) {
-      await rollbackLocal(call, operation, params);
+      await rollbackLocal(call, params);
       return;
     }
 
@@ -5015,7 +4932,7 @@ function createFlow(container) {
         customParameters
       });
     }
-    return await processResponse(call, operation, params);
+    return await processResponse(call, params);
   }
 
   /**
@@ -5026,16 +4943,15 @@ function createFlow(container) {
    * @method processResponse
    * @async
    * @param {Object} call The call being operated on.
-   * @param {Operation} operation The operation being performed.
    * @param {Object} params Response data provided by the remote endpoint.
    * @return {Promise<undefined>}
    */
-  async function processResponse(call, operation, params) {
+  async function processResponse(call, params) {
     const log = logManager.getLogger('CALL', call.id);
     log.info(`Processing remote response for local ${operation.type} operation.`);
     const mediaState = (0, _state.getMediaState)(call);
     log.debug(`Current call info; State: ${call.state}, MediaState: ${mediaState}.`);
-    await operation.stages.remoteAnswer(call, params);
+    await stages.remoteAnswer(call, params);
     operation.reportEvent.endEvent();
     operation.tracker.finish();
   }
@@ -5045,31 +4961,46 @@ function createFlow(container) {
    * @method rollbackLocal
    * @async
    * @param {Object} call
-   * @param {Operation} operation
    * @param {Object} params
    * @return {Promise<undefined>}
    */
-  async function rollbackLocal(call, operation, params) {
+  async function rollbackLocal(call, params) {
     const log = logManager.getLogger('CALL', call.id);
-    // TODO: Properly handle this scenario. The call may be in a bad state
-    //    because we set an offer but not an answer. May need to revert
-    //    signaling state and/or re-perform operation internally.
-    // For now, fail loudly and abort the operation to prevent crashes. The
-    //    negotiation sagas expect there to be an SDP.
-    // The call state will be left in a broken state because of KAA-1607.
-    log.error(`Response indicates an error scenario (${params.message}). Aborting operation.`);
+    // TODO:  re-perform operation internally after some time,  as indicated by retryAfter.
+    log.debug(`Response indicates an error scenario (${params.message}). Aborting operation.`);
     const error = new _errors.default({
-      message: 'Operation failed on remote side; aborting.',
+      message: 'Operation failed on remote side; aborting local operation by reverting it.',
       code: _errors.callCodes.GENERIC_ERROR
     });
     operation.reportEvent.endEvent(error);
+
+    // Trigger a rollback
+    if (stages.rollback) {
+      let opData;
+      // Add Media & Add Basic Media require an extra parameter: medias
+      if (operation.type === _constants2.OPERATIONS.ADD_MEDIA || operation.type === _constants2.OPERATIONS.ADD_BASIC_MEDIA) {
+        const localOp = call.currentOperations.find(op => {
+          return op.id === operation.id;
+        });
+        if (localOp && localOp.operationData) {
+          opData = localOp.operationData;
+        }
+      }
+      try {
+        await stages.rollback(call.webrtcSessionId, opData);
+      } catch (err) {
+        log.info(`Rollbacking back local ${operation.type} failed. Error: ${err.message}`);
+        throw err;
+      }
+    }
+    // Finally, finish tracking the current operation
     operation.tracker.finish(error);
     return;
   }
   return {
-    localChanges,
+    start,
     // Start the negotiation.
-    remoteResponse // Handle remote response.
+    receiveResponse: resume // Handle remote response.
   };
 }
 
@@ -5094,22 +5025,21 @@ exports["default"] = createFlow;
  * A Local Operation can receive the following inputs:
  *    - API Call: To start the local negotiation.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   const {
     context
   } = container;
 
   /**
-   * @method localChanges
+   * @method start
    * @async
    * @param {string} callId
-   * @param {Operation} operation
    * @param {Object} params
    * @throws {BasicError} Throws an error if operation validation fails.
    * @throws {BasicError} Throws an error if the operation itself fails.
    * @return {Promise<Object|undefined>}
    */
-  async function localChanges(callId, operation, params) {
+  async function start(callId, params) {
     /*
      * Check for glare scenarios.
      * ...
@@ -5123,8 +5053,8 @@ function createFlow(container) {
      *    can't be done right now, avoid doing any state tracking, etc. for the
      *    operation.
      */
-    if (operation.stages.validate) {
-      const validationError = operation.stages.validate(context.getState(), callId, ...params);
+    if (stages.validate) {
+      const validationError = stages.validate(context.getState(), callId, ...params);
       if (validationError) {
         // Update the Call Report to indicate the operation ended with an error.
         operation.reportEvent.endEvent(validationError);
@@ -5137,7 +5067,7 @@ function createFlow(container) {
      * Perform the local portions of the negotiation.
      */
     try {
-      const result = await operation.stages.localOffer(callId, ...params);
+      const result = await stages.localOffer(callId, ...params);
       operation.reportEvent.endEvent();
       operation.tracker.finish();
       return result;
@@ -5151,7 +5081,7 @@ function createFlow(container) {
     }
   }
   return {
-    localChanges // Start the operation.
+    start // Start the operation.
   };
 }
 
@@ -5163,7 +5093,6 @@ function createFlow(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -5172,8 +5101,9 @@ var _selectors = __webpack_require__(11430);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Libraries
@@ -5186,7 +5116,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  *    of the notification itself (eg. custom parameters), then hands-off to the
  *    operation itself to setup the WebRTC portions of the call.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   const {
     context,
     Callstack,
@@ -5201,7 +5131,7 @@ function createFlow(container) {
    * @param {Object} params Arbitrary parameter object.
    * @param {string} [channel] The notification channel the message was received on.
    */
-  async function newIncoming(wrtcsSessionId, operation, params, channel) {
+  async function newIncoming(wrtcsSessionId, params, channel) {
     const log = logManager.getLogger('CALL', params.callId);
     log.info('Received new incoming call; initiating.', {
       wrtcsSessionId
@@ -5267,7 +5197,7 @@ function createFlow(container) {
       });
     }
     try {
-      await operation.stages.remoteOffer(wrtcsSessionId, params);
+      await stages.remoteOffer(wrtcsSessionId, params);
     } catch (err) {
       operation.tracker.finish(err);
       operation.reportEvent.endEvent(err);
@@ -5294,7 +5224,7 @@ function createFlow(container) {
     operation.reportEvent.endEvent();
   }
   return {
-    newIncoming
+    start: newIncoming
   };
 }
 
@@ -5316,7 +5246,7 @@ var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _state = __webpack_require__(65794);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 /**
@@ -5328,7 +5258,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * A Remote Negotiation can recieve the following inputs:
  *    - Notification: To start the remote negotiation.
  */
-function createFlow(container) {
+function createFlow(container, operation, stages) {
   const {
     context,
     emitEvent,
@@ -5340,13 +5270,12 @@ function createFlow(container) {
    * @method newRemoteOperation
    * @async
    * @param {Object} call
-   * @param {Operation} operation
    * @param {Object} opInfo
    * @param {Object} params
    * @throws {BasicError} Throws an error if the operation itself fails.
    * @return {Promise<undefined>}
    */
-  async function newRemoteOperation(call, operation, opInfo, params) {
+  async function newRemoteOperation(call, opInfo, params) {
     const log = logManager.getLogger('CALL', call.id);
     operation.tracker.start();
 
@@ -5355,7 +5284,7 @@ function createFlow(container) {
     try {
       const mediaState = (0, _state.getMediaState)(call);
       log.info(`Processing update request as remote ${opInfo.remoteOp} operation in ${mediaState} scenario.`);
-      await operation.stages.remoteOffer(call, params, opInfo);
+      await stages.remoteOffer(call, params, opInfo);
     } catch (err) {
       operation.reportEvent.setError(err);
       operation.reportEvent.endEvent();
@@ -5377,12 +5306,11 @@ function createFlow(container) {
    * @method remoteChanges
    * @async
    * @param {Object} call
-   * @param {Operation} operation
    * @param {Object} opInfo
    * @param {Object} params
    * @return {Promise<undefined>}
    */
-  async function remoteChanges(call, operation, opInfo, params) {
+  async function remoteChanges(call, opInfo, params) {
     const log = logManager.getLogger('CALL', call ? call.id : undefined);
     log.info('Received new update call request; handling.', {
       wrtcsSessionId: call.wrtcsSessionId
@@ -5402,10 +5330,10 @@ function createFlow(container) {
         customParameters
       });
     }
-    return await newRemoteOperation(call, operation, opInfo, params);
+    return await newRemoteOperation(call, opInfo, params);
   }
   return {
-    remoteChanges
+    start: remoteChanges
   };
 }
 
@@ -5420,35 +5348,36 @@ function createFlow(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createFlow;
+exports.createEnded = createEnded;
+exports.createGeneric = createGeneric;
+exports.createPending = createPending;
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 // Call plugin.
 
 // Call Reports.
 
-/*
- * Operation flow for a "remote update" notification. This is for a simple state updates
- *    (eg. call ended) from the remote side of the call.
- */
-function createFlow(container) {
+function createGeneric(container, operation, stages) {
   /**
    * Flow for a generic "remote update" notification.
    * Simply tracks the operation and processes the notification.
    *
    * @method generic
    * @param {Object} call The call object being operated on.
-   * @param {Operation} operation
    * @param {Object} params Operation-specific data.
    * @return {Promise<undefined>}
    */
-  async function generic(call, operation, params) {
+  async function generic(call, params) {
     operation.tracker.start();
-    await operation.stages.remoteOffer(call.wrtcsSessionId, params);
+    await stages.remoteOffer(call.wrtcsSessionId, params);
     operation.tracker.finish();
     operation.reportEvent.endEvent();
   }
-
+  return {
+    start: generic
+  };
+}
+function createPending(container, operation, stages) {
   /**
    * Flow for an update received while there is a PENDING local operation on-going.
    *
@@ -5457,39 +5386,46 @@ function createFlow(container) {
    *    - a "call ringing" update (during MAKE).
    * @method pendingUpdate
    * @param {Object} call The call object being operated on.
-   * @param {Operation} operation The pending local operation.
    * @param {string} stage The name of the stage that should handle the notification.
    * @param {Object} params Operation-specific data.
    * @return {Promise<undefined>}
    */
-  async function pendingUpdate(call, operation, stage, params) {
+  async function pendingUpdate(call, stage, params) {
     // Add an event as part of the on-going operation event.
     const notificationEvent = operation.reportEvent.addEvent(_constants2.REPORTER_OPERATION_EVENTS_MAP[stage]);
 
     // Process the notification as normal.
     try {
-      await operation.stages[stage](call.wrtcsSessionId, ...params);
+      await stages[stage](call.wrtcsSessionId, ...params);
       notificationEvent.endEvent();
     } catch (err) {
       notificationEvent.endEvent(err);
     }
   }
+  return {
+    start: pendingUpdate
+  };
+}
+function createEnded(container, operation, stages) {
+  const {
+    start: generic
+  } = createGeneric(container, operation, stages);
 
   /**
    * Flow for a "call ended" update.
    * This update can be received at any time, either solicited or unsolicited.
    * @method ended
    * @param {Object} call The call object being operated on.
-   * @param {Operation} operation
    * @param {Object} params Operation-specific data.
    * @param {Operation} [pendingOp] The pending Operation that this notification interrupted.
    * @return {Promise<undefined>}
    */
-  async function ended(call, operation, params, pendingOp) {
+  async function ended(call, params, pendingOp) {
     // Handle the notification itself the same as a generic update.
-    await generic(call, operation, params);
+    await generic(call, params);
+
+    // ...but then, if it interrupted another operation, the other operation needs to be ended.
     if (pendingOp) {
-      // ...but then, if it interrupted another operation, the other operation needs to be ended.
       pendingOp.reportEvent.endEvent();
       if (pendingOp.tracker.status !== _constants.OP_STATUS.FINISHED) {
         // KJS-2176 TODO: For transfers, need to coordinate between this "end call" notification and the "transfer success"
@@ -5499,47 +5435,7 @@ function createFlow(container) {
     }
   }
   return {
-    generic,
-    pendingUpdate,
-    ended
-  };
-}
-
-/***/ }),
-
-/***/ 13583:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(71600);
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = setupFlows;
-var _RemoteCall = _interopRequireDefault(__webpack_require__(94131));
-var _LocalOperation = _interopRequireDefault(__webpack_require__(76445));
-var _LocalNegotiation = _interopRequireDefault(__webpack_require__(25967));
-var _RemoteNegotiation = _interopRequireDefault(__webpack_require__(56628));
-var _RemoteUpdate = _interopRequireDefault(__webpack_require__(7913));
-var _DirectTransfer = _interopRequireDefault(__webpack_require__(93907));
-var _ConsultativeTransfer = _interopRequireDefault(__webpack_require__(57679));
-var _Join = _interopRequireDefault(__webpack_require__(51994));
-// General flows.
-
-// Special-case flows.
-
-function setupFlows(container) {
-  return {
-    RemoteCall: (0, _RemoteCall.default)(container),
-    LocalOperation: (0, _LocalOperation.default)(container),
-    LocalNegotiation: (0, _LocalNegotiation.default)(container),
-    RemoteNegotiation: (0, _RemoteNegotiation.default)(container),
-    RemoteUpdate: (0, _RemoteUpdate.default)(container),
-    directTransfer: (0, _DirectTransfer.default)(container),
-    consulTransfer: (0, _ConsultativeTransfer.default)(container),
-    join: (0, _Join.default)(container)
+    start: ended
   };
 }
 
@@ -5551,24 +5447,26 @@ function setupFlows(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.callManager = callManager;
 exports["default"] = createManager;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _constants = __webpack_require__(60683);
 var _constants2 = __webpack_require__(37409);
 var _selectors = __webpack_require__(11430);
 var _operationMap = __webpack_require__(81739);
-var _flows = _interopRequireDefault(__webpack_require__(13583));
 var _OperationTracker = _interopRequireDefault(__webpack_require__(99392));
 var _Negotiation = _interopRequireDefault(__webpack_require__(21196));
 var _Update = _interopRequireDefault(__webpack_require__(2117));
+var _MultiCall = _interopRequireDefault(__webpack_require__(11648));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Call Manager.
@@ -5580,6 +5478,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 function createManager(bottle) {
   (0, _Negotiation.default)(bottle);
   (0, _Update.default)(bottle);
+  (0, _MultiCall.default)(bottle);
   bottle.factory('CallManager', () => callManager(bottle.container));
 }
 
@@ -5600,10 +5499,10 @@ function callManager(container) {
   const {
     context,
     Callstack,
+    CallReporter,
     logManager,
     CallRequests
   } = container;
-  const callFlows = (0, _flows.default)(container);
 
   // Map of calls to their on-going operations.
   const ongoing = {};
@@ -5637,7 +5536,7 @@ function callManager(container) {
     for (var _len = arguments.length, params = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       params[_key - 1] = arguments[_key];
     }
-    return await callFlows.LocalNegotiation.localChanges(callId, operation, params);
+    return await operation.start(callId, params);
   }
 
   // CallManager method for receiving a new, incoming call.
@@ -5653,7 +5552,7 @@ function callManager(container) {
     const operation = Callstack.operations.make.remote(callId);
     ongoing[callId].add(operation);
     params.callId = callId;
-    await callFlows.RemoteCall.newIncoming(wrtcsSessionId, operation, params, channel);
+    await operation.start(wrtcsSessionId, params, channel);
     ongoing[callId].remove(operation);
   }
 
@@ -5776,7 +5675,7 @@ function callManager(container) {
     try {
       // Get the latest call state, in case there was a delay due to glare.
       call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-      await callFlows.RemoteNegotiation.remoteChanges(call, operation, opInfo, params);
+      await operation.start(call, opInfo, params);
     } catch (err) {
       ongoing[call.id].remove(operation);
       throw err;
@@ -5803,47 +5702,17 @@ function callManager(container) {
 
     /**
      * Helper to find the local operation that the received notification is a response for.
-     * If the assumed local operation is not ready yet (ie. not PENDING), will delay a
-     *    short time before re-finding the operation. Will attempt every 25ms, for a max of
-     *    500ms, before eventually ignoring the notification.
      */
     async function getExistingNegotiation(callId) {
-      let timeDelayed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
       const call = (0, _selectors.getCallById)(context.getState(), callId);
-      const opState = call.currentOperations.find((op, ind, arr) => {
-        return op.isLocal && op.status === _constants2.OP_STATUS.PENDING && op.isBlocking ||
+      return call.currentOperations.find((op, ind, arr) => {
+        return op.isLocal && op.isBlocking ||
         // Local pending operation.
         !op.isLocal && op.type === _constants2.OPERATIONS.SLOW_START && op.isBlocking ||
         // Remote slow-start operation.
         op.isLocal && op.type === _constants2.OPERATIONS.JOIN && arr.length === 1 // Local pending join, as the only op.
         ;
       });
-
-      /*
-       * Scenarios:
-       *    1. local PENDING negotiation found: this response is for that operation.
-       *    2. still no PENDING after max delay: error scenario; can't delay forever.
-       *    3. local ONGOING negotiation found: response was receive too early, delay then re-process.
-       *    4. nether negotiation found: error scenario
-       */
-      if (opState) {
-        return opState;
-      } else if (timeDelayed >= 500) {
-        // Local negotiation is not PENDING even after 500ms delay; can't process this notification.
-        log.debug(`Received negotiation answer still cannot be processed; ignoring.`);
-        return;
-      } else {
-        const ongoingOp = call.currentOperations.find(op => op.isLocal && op.status === _constants2.OP_STATUS.ONGOING && op.isBlocking);
-        if (ongoingOp) {
-          log.debug(`Received negotiation answer for local ${ongoingOp.type} too early; delaying processing.`);
-          await new Promise(resolve => setTimeout(resolve, 25));
-          // Re-get the operation after a delay, but indicate it was already delayed.
-          return await getExistingNegotiation(callId, timeDelayed + 25);
-        } else {
-          // No PENDING or ONGOING local negotiation; can't process this notification.
-          return;
-        }
-      }
     }
     if (!call) {
       // Scenario: The notification is about a call that state does not know about.
@@ -5875,7 +5744,7 @@ function callManager(container) {
       return;
     }
     try {
-      await callFlows.LocalNegotiation.remoteResponse(call, operation, params);
+      await operation.receiveResponse(call, params);
     } finally {
       // Remove the operation from the on-going list.
       ongoing[call.id].remove(operation);
@@ -5922,11 +5791,7 @@ function callManager(container) {
         for (var _len2 = arguments.length, params = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
           params[_key2 - 1] = arguments[_key2];
         }
-        if (operation.isNegotiation) {
-          result = await callFlows.LocalNegotiation.localChanges(callId, operation, params);
-        } else {
-          result = await callFlows.LocalOperation.localChanges(callId, operation, params);
-        }
+        result = await operation.start(callId, params);
       } catch (err) {
         // Operation failed; no longer on-going.
         ongoing[callId].remove(operation);
@@ -5942,7 +5807,7 @@ function callManager(container) {
 
   /**
    * Wrapper for generic "remote update" notifications.
-   * @method remoteUpdate
+   * @method newRemoteNotify
    * @param {string} stackMethod
    * @return {Function}
    */
@@ -5961,7 +5826,7 @@ function callManager(container) {
       const call = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
       const operation = Callstack.operations[stackMethod](call.id);
       ongoing[call.id].add(operation);
-      await callFlows.RemoteUpdate.generic(call, operation, params);
+      await operation.start(call, params);
       ongoing[call.id].remove(operation);
     };
   }
@@ -5987,13 +5852,18 @@ function callManager(container) {
       const state = context.getState();
       checkCallExistence(state, wrtcsSessionId);
       const call = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
+      const log = logManager.getLogger('CALL', call ? call.id : undefined);
       const pendingMake = ongoing[call.id].getPending().find(op => {
-        return op.isLocal && [_constants2.OPERATIONS.MAKE, _constants2.OPERATIONS.MAKE_ANONYMOUS, _constants2.OPERATIONS.JOIN].includes(op.type);
+        return op.isLocal && [_constants2.OPERATIONS.MAKE, _constants2.OPERATIONS.MAKE_ANONYMOUS].includes(op.type);
       });
-      for (var _len3 = arguments.length, params = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-        params[_key3 - 1] = arguments[_key3];
+      if (pendingMake) {
+        for (var _len3 = arguments.length, params = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+          params[_key3 - 1] = arguments[_key3];
+        }
+        await pendingMake.receiveUpdate(call, stackMethod, params);
+      } else {
+        log.debug(`Received ${stackMethod} notification for non-make operation; ignoring.`);
       }
-      await callFlows.RemoteUpdate.pendingUpdate(call, pendingMake, stackMethod, params);
     };
   }
 
@@ -6012,63 +5882,83 @@ function callManager(container) {
     const state = context.getState();
     checkCallExistence(state, wrtcsSessionId);
     const call = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
-    const pendingOp = ongoing[call.id].getPending()[0];
-    // KJS-2176 TODO: Differentiate between Scenarios 2 and 3. If solicited 'callEnd' notification,
-    //    don't create a stand-alone operation for it. Reuse the operation that triggered receiving
-    //    the notification (eg. complex operations).
-
-    const operation = Callstack.operations.end.remote(call.id);
-    ongoing[call.id].add(operation);
-    await callFlows.RemoteUpdate.ended(call, operation, params, pendingOp);
-    ongoing[call.id].remove(operation);
+    const pendingComplex = ongoing[call.id].getAll().filter(op => {
+      return [_constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.JOIN].includes(op.type);
+    })[0];
+    /*
+     * Special-cases: The 'call end' notification was for a call in a complex operation.
+     */
+    if (pendingComplex) {
+      const {
+        type,
+        calls
+      } = pendingComplex;
+      if (type === _constants2.OPERATIONS.CONSULTATIVE_TRANSFER && calls.some(_ref => {
+        let {
+          role
+        } = _ref;
+        return role === 'secondary';
+      })) {
+        /*
+         * This 'end call' notification is for the secondary call of a `consultative transfer` operation, indicating a success.
+         * Process the response, then stop tracking only this call's operation.
+         */
+        await pendingComplex.receiveResponse(call, params);
+        ongoing[call.id].remove(pendingComplex);
+      } else if (type === _constants2.OPERATIONS.JOIN && calls.find(info => info.role === 'joined' && info.callId === call.id)) {
+        /*
+         * This 'end call' notification is for the joined call of a `join` operation, indicating a failure.
+         * Process the response, then stop tracking the operation for all calls involved.
+         */
+        await pendingComplex.receiveResponse(call, params);
+        calls.forEach(info => {
+          ongoing[info.callId].remove(pendingComplex);
+        });
+      }
+    } else {
+      const operation = Callstack.operations.end.remote(call.id);
+      ongoing[call.id].add(operation);
+      const pendingOp = ongoing[call.id].getPending()[0];
+      await operation.start(call, params, pendingOp);
+      ongoing[call.id].remove(operation);
+    }
   }
-  function exiComplexResponse(stackMethod) {
-    const stage = stackMethod === _operationMap.notificationMap.SESSION_STATUS_ENDED ? 'remoteSuccess' : 'remoteFailure';
+
+  /**
+   * CallManager API for "complex response" remote notifications.
+   * @method exiComplexResponse
+   * @param {string} wrtcsSessionId
+   * @param {Object} params Data from the notification.
+   * @return {Promise<undefined>}
+   */
+  async function exiComplexResponse(wrtcsSessionId, params) {
     /*
      * The JOIN operation will receive a response for each call.
      * The transfers will receive a single response.
      */
-    return async function remoteOnly(wrtcsSessionId) {
-      // Get the calls for both calls involved in the operation.
-      const state = context.getState();
-      const priCall = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
-      checkCallExistence(state, priCall.id);
-      const operation = ongoing[priCall.id].getAll().find(op => op.isLocal && [_constants2.OPERATIONS.JOIN, _constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.DIRECT_TRANSFER].includes(op.type));
 
-      // Note: secCall will not exist for direct transfer.
-      const secCall = (0, _selectors.getCallById)(state, operation.data.secCallId);
-      for (var _len4 = arguments.length, params = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-        params[_key4 - 1] = arguments[_key4];
-      }
-      switch (operation.type) {
-        case _constants2.OPERATIONS.DIRECT_TRANSFER:
-          await callFlows.directTransfer[stage](priCall, operation, params);
-          break;
-        case _constants2.OPERATIONS.CONSULTATIVE_TRANSFER:
-          await callFlows.consulTransfer[stage](priCall, operation, params);
-          break;
-        case _constants2.OPERATIONS.JOIN:
-          await callFlows.join[stage](priCall, operation, params);
-          break;
-        default:
-          // Error: This entry should only be for a complex operation. This path indicates a bug.
-          throw new Error(`Complex response entry cannot be used for ${operation.type}`);
-      }
+    // Get the calls for both calls involved in the operation.
+    const state = context.getState();
+    const priCall = (0, _selectors.getCallByWrtcsSessionId)(state, wrtcsSessionId);
+    checkCallExistence(state, priCall.id);
+    const operation = ongoing[priCall.id].getAll().find(op => op.isLocal && [_constants2.OPERATIONS.JOIN, _constants2.OPERATIONS.CONSULTATIVE_TRANSFER, _constants2.OPERATIONS.DIRECT_TRANSFER].includes(op.type));
+    if (operation) {
+      await operation.receiveResponse(priCall, params);
+    } else {
+      // Error: This entry should only be for a complex operation. This path indicates a bug.
+      throw new Error(`Complex response entry cannot be used for notification ${params.eventType}`);
+    }
 
-      // Remove the operation from the on-going lists.
-      ongoing[priCall.id].remove(operation);
-      if (operation.type !== _constants2.OPERATIONS.JOIN && secCall) {
-        // If a transfer, stop tracking the operation for every call involved.
-        ongoing[secCall.id].remove(operation);
-      } else if (priCall.id === operation.data.priCallId) {
-        // If join AND the notification was for the primary call, also stop tracking
-        //    the operation for the new, joined call.
-        if (ongoing[operation.data.joinedCallId].getById(operation.id)) {
-          // TODO: Why is this not tracked?
-          ongoing[operation.data.joinedCallId].remove(operation);
-        }
+    // Remove the operation from the on-going lists.
+    ongoing[priCall.id].remove(operation);
+    if (operation.type === _constants2.OPERATIONS.JOIN && priCall.id === operation.data.priCallId) {
+      // If join AND the notification was for the primary call, also stop tracking
+      //    the operation for the new, joined call.
+      if (ongoing[operation.data.joinedCallId].getById(operation.id)) {
+        // TODO: Why is this not tracked?
+        ongoing[operation.data.joinedCallId].remove(operation);
       }
-    };
+    }
   }
 
   /**
@@ -6081,26 +5971,21 @@ function callManager(container) {
     /**
      * @method dualCall
      * @async
-     * @param {string} priCallId ID of the primary call for the operation.
+     * @param {Array<Object>} calls Array of calls this operation will affect.
      * @param {Array} params
      * @throws {BasicError}
      * @return {undefined}
      */
-    return async function dualCall(priCallId) {
-      for (var _len5 = arguments.length, params = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
-        params[_key5 - 1] = arguments[_key5];
-      }
-      // The ID of the secondary call is provided as a parameter.
-      const secCallId = params[0];
-      // For a JOIN, the ID for the new, joined call is provided as well.
-      const joinedCallId = params[1];
+    return async function dualCall(calls) {
+      const callIds = calls.map(call => call.id);
+      const [priCallId, secCallId, joinedCallId] = callIds;
       checkCallExistence(context.getState(), priCallId);
       checkCallExistence(context.getState(), secCallId);
-      const operation = Callstack.operations[stackMethod].local(priCallId, {
-        priCallId,
-        secCallId,
-        joinedCallId
-      });
+      if (joinedCallId) {
+        // Create the CallReport for the joined call.
+        CallReporter.createReport('CALL', joinedCallId);
+      }
+      const operation = Callstack.operations[stackMethod].local(calls);
       if (ongoing[priCallId].isBlocked || ongoing[secCallId].isBlocked) {
         const blockedId = ongoing[priCallId].isBlocked ? priCallId : secCallId;
         // Call is "blocked"; starting a new negotiation is a glare scenario.
@@ -6117,9 +6002,12 @@ function callManager(container) {
           const track = (0, _OperationTracker.default)(logManager.getLogger('CALL', joinedCallId));
           ongoing[joinedCallId] = track;
           ongoing[joinedCallId].add(operation);
-          await callFlows.join.localChanges(priCallId, operation, params);
+          for (var _len4 = arguments.length, params = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+            params[_key4 - 1] = arguments[_key4];
+          }
+          await operation.start(calls, params);
         } else if (operation.type === _constants2.OPERATIONS.CONSULTATIVE_TRANSFER) {
-          await callFlows.consulTransfer.localChanges(priCallId, operation, params);
+          await operation.start(calls);
         } else {
           // This entry should only be used for the above two operations. This path indicates a bug.
           throw new Error(`Dual-call entry cannot be used for ${operation.type}`);
@@ -6168,7 +6056,7 @@ function callManager(container) {
    */;
   ['CALL_STATUS_FAILED', 'SESSION_STATUS_ENDED'].forEach(type => {
     const stackMethod = _operationMap.notificationMap[type];
-    manager[stackMethod] = exiComplexResponse(stackMethod);
+    manager[stackMethod] = exiComplexResponse;
   })
 
   /*
@@ -6185,20 +6073,171 @@ function callManager(container) {
 
 /***/ }),
 
+/***/ 11648:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = _default;
+__webpack_require__(80978);
+var _StatusTracker = _interopRequireDefault(__webpack_require__(22286));
+var _constants = __webpack_require__(42750);
+var _uuid = __webpack_require__(60130);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+// Call Reports.
+
+// Libraries.
+
+function _default(bottle) {
+  /**
+   * Factory for creating instances of a generic Operation.
+   * @param {Object} container The nested container; not actually used here.
+   * @param {Object} opInfo Static info about this operation.
+   * @param {string} opInfo.type Type constant of the operation.
+   * @param {boolean} opInfo.isNegotiation Whether this operation is a negotiation or not.
+   * @param {Object} opInfo.stages The methods to handle various stages of this operation.
+   * @param {Function} opInfo.stages.validate
+   * @param {Function} opInfo.stages.localOffer
+   * @param {Function} opInfo.stages.remoteAnswer
+   * @param {Function} opInfo.stages.remoteOffer
+   * @param {Object} instanceInfo Info specific to this instance of the operation.
+   * @param {Array<Object>} instanceInfo.callInfo List of calls affected by this operation.
+   * @return {Operation} An instance of an operation.
+   */
+  bottle.instanceFactory('Callstack.models.MultiCall', (container, opInfo, instanceInfo) => {
+    // Static data for the operation.
+    const {
+      type,
+      isNegotiation,
+      stages,
+      createFlow
+    } = opInfo;
+    opInfo.isLocal = true;
+
+    // Instance data for the operation.
+    const id = (0, _uuid.v4)();
+    const {
+      callInfo,
+      data
+    } = instanceInfo;
+
+    // TechDebt TODO: The Reporter's event map should be consistent so we don't have to guess for the right name.
+    const eventName = _constants.REPORTER_OPERATION_EVENTS_MAP[type + '_LOCAL'] || _constants.REPORTER_OPERATION_EVENTS_MAP[type];
+    const calls = callInfo.map(_ref => {
+      let {
+        id: callId,
+        role
+      } = _ref;
+      // TODO: Should the Operation factory add the event immediately or at a later point?
+      const reportEvent = bottle.container.CallReporter.getReport(callId).addEvent(eventName);
+
+      /*
+       * Information about a call involved in the multi-call operation.
+       * @typedef {Object} callInfo
+       * @param {string} callId
+       * @param {string} role
+       * @param {ReportEvent} reportEvent
+       * @param {StatusTracker} tracker
+       */
+      return {
+        callId,
+        role,
+        reportEvent,
+        tracker: (0, _StatusTracker.default)(bottle.container, callId, id, reportEvent.id, opInfo, {
+          // TechDebt TODO: This is part of join's `tracker.start()` workaround. It tells the tracker
+          //    to have the trackding be started immediately instead of waiting for `start()`.
+          isJoinedCall: role === 'joined'
+        })
+      };
+    });
+
+    /**
+     * Method to start the operation.
+     * @method start
+     */
+    async function start() {
+      return flow.start(...arguments);
+    }
+
+    /**
+     * Method to process the remote response to the negotiation.
+     * @method receiveResponse
+     */
+    async function receiveResponse(call, params) {
+      const responseType = params.eventType;
+      // TODO: Validation.
+      if (typeof flow[responseType] === 'undefined') {
+        throw new Error(`No ${responseType} on the flow!`);
+      }
+      return flow[responseType](call, params);
+    }
+    const Operation = {
+      // Operation meta-data.
+      type,
+      isNegotiation,
+      isLocal: true,
+      // Operation methods.
+      start,
+      receiveResponse,
+      // Instance specific.
+      calls,
+      id,
+      data: {
+        ...data
+      },
+      // Progress tracker.
+      tracker: {
+        // Expose a single "tracker" that wraps the trackers of every call.
+        start: () => calls.forEach(call => {
+          // TechDebt TODO: We can't "start" the joined call's operation because the joined
+          //    call does not exist in redux state at this point. The operation adds it to
+          //    state, but the API should do that so join doesn't need special-handling.
+          if (call.role !== 'joined') {
+            call.tracker.start();
+          }
+        }),
+        update: result => calls.forEach(call => call.tracker.update(result)),
+        finish: err => calls.forEach(call => call.tracker.finish(err))
+      },
+      get status() {
+        return calls[0].tracker.status;
+      },
+      // Operation Event.
+      reportEvent: {
+        // Expose a single "reportEvent" that wraps the events of every call.
+        addEvent: type => calls.forEach(call => call.reportEvent.addEvent(type)),
+        setError: err => calls.forEach(call => call.reportEvent.setError(err)),
+        endEvent: err => calls.forEach(call => call.reportEvent.endEvent(err))
+      }
+    };
+    const flow = createFlow(bottle.container, Operation, stages);
+    return Operation;
+  });
+}
+
+/***/ }),
+
 /***/ 21196:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = _default;
+__webpack_require__(80978);
 var _StatusTracker = _interopRequireDefault(__webpack_require__(22286));
+var _LocalNegotiation = _interopRequireDefault(__webpack_require__(95553));
+var _RemoteNegotiation = _interopRequireDefault(__webpack_require__(56628));
 var _constants = __webpack_require__(42750);
 var _uuid = __webpack_require__(60130);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call Reports.
 
 // Libraries.
@@ -6223,19 +6262,15 @@ function _default(bottle) {
     // TODO: Parameter validation.
     // TODO: Based on which stages were provided, determine the "flow" the operation needs to follow.
 
+    // If `createFlow` is defined, use that. Otherwise, default based on `isLocal`.
+    const createFlow = opInfo.createFlow ?? (opInfo.isLocal ? _LocalNegotiation.default : _RemoteNegotiation.default);
+
     // Static data for the operation.
     const {
       type,
       isLocal,
       stages
     } = opInfo;
-    const {
-      validate,
-      localOffer,
-      remoteAnswer,
-      remoteOffer,
-      ...nonstandardStages
-    } = stages;
 
     // Instance data for the operation.
     const id = (0, _uuid.v4)();
@@ -6250,20 +6285,47 @@ function _default(bottle) {
     const reportEvent = bottle.container.CallReporter.getReport(callId).addEvent(eventName);
     opInfo.isNegotiation = true;
     const tracker = (0, _StatusTracker.default)(bottle.container, callId, id, reportEvent.id, opInfo);
+
+    /**
+     * Method to start the operation.
+     * @method start
+     */
+    async function start() {
+      return flow.start(...arguments);
+    }
+
+    /**
+     * Method to process the remote response to the negotiation.
+     * @method receiveResponse
+     */
+    async function receiveResponse() {
+      // TODO: Validation.
+      if (typeof flow.receiveResponse === 'undefined') {
+        throw new Error('No receiveResponse on the flow!');
+      }
+      return flow.receiveResponse(...arguments);
+    }
+
+    /**
+     * Method to process a remote update to the negotiation.
+     * @method receiveUpdate
+     */
+    async function receiveUpdate() {
+      // TODO: Validation.
+      if (typeof flow.receiveUpdate === 'undefined') {
+        throw new Error('No receiveUpdate on the flow!');
+      }
+      return flow.receiveUpdate(...arguments);
+    }
     const Operation = {
       // Operation meta-data.
       type,
       isNegotiation: true,
       isLocal,
       // Operation methods.
-      stages: {
-        // TODO: Local validate vs. remote validate?
-        validate: validate,
-        localOffer: localOffer,
-        remoteAnswer: remoteAnswer,
-        remoteOffer: remoteOffer,
-        ...nonstandardStages
-      },
+      start,
+      receiveResponse,
+      receiveUpdate,
       // Instance specific.
       callId,
       id,
@@ -6278,6 +6340,7 @@ function _default(bottle) {
       // Operation Event.
       reportEvent
     };
+    const flow = createFlow(bottle.container, Operation, stages);
     return Operation;
   });
 }
@@ -6290,14 +6353,17 @@ function _default(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = _default;
+__webpack_require__(80978);
 var _StatusTracker = _interopRequireDefault(__webpack_require__(22286));
+var _LocalOperation = _interopRequireDefault(__webpack_require__(76445));
+var _RemoteUpdate = __webpack_require__(7913);
 var _constants = __webpack_require__(42750);
 var _uuid = __webpack_require__(60130);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call Reports.
 
 // Libraries.
@@ -6341,17 +6407,15 @@ function _default(bottle) {
   bottle.instanceFactory('Callstack.models.Update', (container, opInfo, instanceInfo) => {
     hasUpdateStages(opInfo.isLocal, opInfo.stages);
 
+    // If `createFlow` is defined, use that. Otherwise, default based on `isLocal`.
+    const createFlow = opInfo.createFlow ?? (opInfo.isLocal ? _LocalOperation.default : _RemoteUpdate.createGeneric);
+
     // Static data for the operation.
     const {
       type,
       isLocal,
       stages
     } = opInfo;
-    const {
-      validate,
-      localOffer,
-      remoteOffer
-    } = stages;
 
     // Instance data for the operation.
     const id = (0, _uuid.v4)();
@@ -6366,19 +6430,35 @@ function _default(bottle) {
     const reportEvent = bottle.container.CallReporter.getReport(callId).addEvent(eventName);
     opInfo.isNegotiation = false;
     const tracker = (0, _StatusTracker.default)(bottle.container, callId, id, reportEvent.id, opInfo);
+
+    /**
+     * Method to start the operation.
+     * @method start
+     */
+    async function start() {
+      return flow.start(...arguments);
+    }
+
+    /**
+     * @typedef {Object} UpdateOperation
+     * @property {string}   type The type of operation.
+     * @property {boolean}  isNegotiation Whether the operation is a negotiation or not.
+     * @property {boolean}  isLocal Whether the operation was started locally or not.
+     * @property {Function} start The method to start processing the operation.
+     * @property {string}   callId ID of the call the operation is acting on.
+     * @property {string}   id ID of the operation.
+     * @property {Object}   data Arbitrary information the operation needs.
+     * @property {Object}   tracker The StatusTracker for the operation.
+     * @property {string}   status The current status of the operation.
+     * @property {Object}   reportEvent The CallReport event representing the operation.
+     */
     const UpdateOperation = {
       // Operation meta-data.
       type,
       isNegotiation: false,
       isLocal,
       // Operation methods.
-      stages: {
-        // Local Update handlers.
-        validate: validate,
-        localOffer: localOffer,
-        // Remote Update handlers.
-        remoteOffer: remoteOffer
-      },
+      start,
       // Instance specific.
       callId,
       id,
@@ -6392,6 +6472,7 @@ function _default(bottle) {
       },
       reportEvent
     };
+    const flow = createFlow(bottle.container, UpdateOperation, stages);
     return UpdateOperation;
   });
 }
@@ -6472,7 +6553,6 @@ const notificationMap = exports.notificationMap = {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -6483,8 +6563,9 @@ var _webrtc = _interopRequireDefault(__webpack_require__(68358));
 var _callManager = _interopRequireDefault(__webpack_require__(7995));
 var _reporter = _interopRequireDefault(__webpack_require__(13840));
 var _utils = _interopRequireDefault(__webpack_require__(70504));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Callstack  factory function.
  * @method createCallstack
@@ -6685,7 +6766,6 @@ function shouldHandlePattern(action) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -6694,6 +6774,7 @@ var _getSessions = _interopRequireDefault(__webpack_require__(64513));
 var _iceCollectionCheck = _interopRequireDefault(__webpack_require__(93204));
 var _normalizeIceFailure = _interopRequireDefault(__webpack_require__(7240));
 var _callAudit = _interopRequireDefault(__webpack_require__(27319));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const callStackMiddlewares = [_getSessions.default, _iceCollectionCheck.default, _normalizeIceFailure.default, _callAudit.default];
 var _default = exports["default"] = callStackMiddlewares;
 
@@ -6748,7 +6829,6 @@ function shouldHandlePattern(action) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -6761,6 +6841,7 @@ var _validateBasic = _interopRequireDefault(__webpack_require__(6274));
 var _remoteOffer = _interopRequireDefault(__webpack_require__(75063));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(31917));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
@@ -6771,7 +6852,8 @@ function initOperation(bottle) {
         // Stages of local operation.
         validate: _validate.default,
         localOffer: (0, _addMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        rollback: (0, _rollbackAddMedia.default)(bottle.container)
       },
       remote: {
         // Stages of remote operation.
@@ -6785,7 +6867,8 @@ function initOperation(bottle) {
         // Stages of local operation.
         validate: _validateBasic.default,
         localOffer: (0, _addMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        rollback: (0, _rollbackAddMedia.default)(bottle.container)
       }
     };
   });
@@ -6863,7 +6946,9 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = addMediaOperation;
+exports["default"] = createAddMedia;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _actions = __webpack_require__(6313);
 var _eventTypes = __webpack_require__(55166);
 var _selectors = __webpack_require__(11430);
@@ -6876,7 +6961,100 @@ var _kandyWebrtc = __webpack_require__(15203);
  * Bottle wrapper for addMedia call operation.
  * @return {Function}
  */
-function addMediaOperation(container) {
+function createAddMedia(container) {
+  return async function addMedia(callId, mediaConstraints, options) {
+    // Perform changes on the local call session.
+    const stageData = await localChanges(container, callId, mediaConstraints, options);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    // Signal those changes to the remote call session.
+    await signalling(container, call, stageData);
+
+    // Return data needed by the CallManager.
+    return {
+      operationData: stageData.operationData
+    };
+  };
+}
+
+/**
+ * Local changes for the 'add media' operation.
+ *
+ * Performs WebRTC changes to the local side of the call.
+ * @async
+ * @method localChanges
+ * @param {Object}   callId The ID of the call.
+ * @param {Object}   mediaConstraints The constraints for the new media.
+ * @param {Object}   options Extra options for the media.
+ * @param {Object}   options.bandwidth Bandwidth options.
+ * @param {Object}   options.dscpControls DSCP controls.
+ * @return {Promise<Object>}
+ */
+async function localChanges(container, callId, mediaConstraints, options) {
+  const {
+    context,
+    Callstack,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Adding media to call.');
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const {
+    bandwidth,
+    dscpControls
+  } = options;
+
+  // Get some call data.
+  const {
+    webrtcSessionId,
+    bandwidth: callBandwidth
+  } = targetCall;
+  const finalBandwidth = {
+    audio: bandwidth && bandwidth.audio ? bandwidth.audio : callBandwidth.audio,
+    video: bandwidth && bandwidth.video ? bandwidth.video : callBandwidth.video
+  };
+  // Create media and add tracks using webRTC
+  // TODO: This could so add try/catch and end the event if is an error
+  const {
+    sdp,
+    medias
+  } = await Callstack.utils.webrtcAddMedia(mediaConstraints, {
+    sessionId: webrtcSessionId,
+    bandwidth: finalBandwidth,
+    dscpControls
+  });
+
+  // Meta-data from the operation to be handled by the CallManager.
+  const operationData = {
+    local: true,
+    mediaIds: medias.map(media => media.id),
+    tracks: medias.reduce((acc, currMedia) => {
+      return acc.concat(currMedia.tracks.map(track => track.id));
+    }, []),
+    bandwidth: finalBandwidth
+  };
+  log.info('Finished local portion of adding media. Waiting on remote response.');
+  return {
+    operationData,
+    // Operation data for the CallManager.
+    sdp
+  };
+}
+
+/**
+ * Signalling stage for the 'add media' operation.
+ *
+ * Sends a REST request to the server with the local offer SDP.
+ * @async
+ * @method signalling
+ * @param {Object} container
+ * @param {Call} call The call being acted on.
+ * @param {Object} params Data returned by the `localChanges` stage.
+ * @param {SDP} params.sdp The local offer SDP generated by the `localChanges` stage.
+ * @param {Object} params.operationData Data about what the `localChanges` stage acted on.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws an error if the REST request fails.
+ */
+async function signalling(container, call, params) {
   const {
     context,
     CallRequests,
@@ -6885,137 +7063,72 @@ function addMediaOperation(container) {
     emitEvent,
     logManager
   } = container;
+  const {
+    operationData,
+    sdp
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
 
-  /**
-   * Adds media to the call
-   *
-   * This function performs the webRTC and signaling operations to
-   *    update local and server sessions of a call.
-   * Assumptions:
-   *    1. Validate that the call state is "Connected".
-   *        - The call is connected.
-   * Responsibilities:
-   *    1. Perform webRTC operations to add media.
-   *    2. Update the backend with the new state.
-   *    3. Update local state, using Redux
-   * @method addMedia
-   * @param {Object}   callId The ID of the call.
-   * @param {Object}   mediaConstraints The constraints for the new media.
-   * @param {Object}   options Extra options for the media.
-   * @param {Object}   options.bandwidth Bandwidth options.
-   * @param {Object}   options.dscpControls DSCP controls.
-   */
-  async function addMedia(callId, mediaConstraints, options) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Adding media to call.');
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const {
-      bandwidth,
-      dscpControls
-    } = options;
-
-    // Get some call data.
-    const {
-      webrtcSessionId,
-      wrtcsSessionId,
-      bandwidth: callBandwidth,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    } = targetCall;
-    const finalBandwidth = {
-      audio: bandwidth && bandwidth.audio ? bandwidth.audio : callBandwidth.audio,
-      video: bandwidth && bandwidth.video ? bandwidth.video : callBandwidth.video
-    };
-    // Create media and add tracks using webRTC
-    // TODO: This could so add try/catch and end the event if is an error
-    const {
-      sdp,
-      medias
-    } = await Callstack.utils.webrtcAddMedia(mediaConstraints, {
-      sessionId: webrtcSessionId,
-      bandwidth: finalBandwidth,
-      dscpControls
-    });
-    const callInfo = {
-      wrtcsSessionId,
-      id: callId,
+  // Perform signalling to add media
+  try {
+    await CallRequests.updateSession({
+      wrtcsSessionId: call.wrtcsSessionId,
+      id: call.id,
       offer: sdp,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    };
-
-    // Perform signalling to add media
-    try {
-      await CallRequests.updateSession(callInfo);
-    } catch (responseError) {
-      log.info('Failed to add media to call.');
-      // Rollback is not supported on safari or for a plan other than unified-plan
-      let rollbackErr;
-      try {
-        await Callstack.utils.rollbackAddMedia(webrtcSessionId, medias);
-      } catch (rollbackError) {
-        log.debug('Automatic add media rollback failed:', rollbackError);
-        // TODO:
-        //  1 - Don't handle the error in the catch since we do the chrome behaviour only after rollback operation
-        //  2 - Check if chrome still has a rollback issue
-        // Ideally, we would do the chrome behaviour checks before we even attempt the rollback, but for now we
-        // close the call on chrome after doing the rollback regardless of success/failure
-        rollbackErr = rollbackError;
-      }
-      const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
-      // There is an issue on Chrome where the remote track is removed from the call when the SDP rolls back
-      //  leaving the call in an awkward state.
-      if (rollbackErr || browser === 'chrome') {
-        // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
-        //  signalling state, Safari does not perform an automatic rollback when a remote offer is
-        //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
-        if (browser === 'safari' || browser === 'chrome') {
-          log.info('Ending call due to unrecoverable state after call add media failure.');
-          // Hangup the call from WebRTC perspective
-          await CallstackWebrtc.closeCall(webrtcSessionId);
-
-          // Cleanup Redux state by sending END_CALL_FINISH action
-          context.dispatch(_actions.callActions.endCallFinish(callId, {
-            isLocal: true,
-            transition: {
-              reasonText: 'Call has ended due to call add media failure.'
-            }
-          }));
-          emitEvent(_eventTypes.CALL_STATE_CHANGE, {
-            callId,
-            previous: {
-              state: targetCall.state,
-              localHold: targetCall.localHold,
-              remoteHold: targetCall.remoteHold
-            },
-            error: responseError
-          });
-          throw responseError;
-        }
-        log.info('Unable to reset state after add media operation failure, future operations may not work as intended.');
-      }
-      throw responseError;
-    }
-    let tracks = [];
-    medias.forEach(media => {
-      tracks = tracks.concat(media.tracks.map(track => track.id));
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
     });
-    log.info('Finished local portion of adding media. Waiting on remote response.');
-    // Return the operation data so the CallManager can handle it.
-    return {
-      operationData: {
-        local: true,
-        mediaIds: medias.map(media => media.id),
-        tracks,
-        bandwidth: finalBandwidth
+  } catch (responseError) {
+    log.info('Failed to add media to call.');
+    // Rollback is not supported on safari or for a plan other than unified-plan
+    let rollbackErr;
+    try {
+      await Callstack.utils.rollbackAddMedia(call.webrtcSessionId, operationData);
+    } catch (rollbackError) {
+      log.debug('Automatic add media rollback failed:', rollbackError);
+      // TODO:
+      //  1 - Don't handle the error in the catch since we do the chrome behaviour only after rollback operation
+      //  2 - Check if chrome still has a rollback issue
+      // Ideally, we would do the chrome behaviour checks before we even attempt the rollback, but for now we
+      // close the call on chrome after doing the rollback regardless of success/failure
+      rollbackErr = rollbackError;
+    }
+    const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
+    // There is an issue on Chrome where the remote track is removed from the call when the SDP rolls back
+    //  leaving the call in an awkward state.
+    if (rollbackErr || browser === 'chrome') {
+      // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
+      //  signalling state, Safari does not perform an automatic rollback when a remote offer is
+      //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
+      if (browser === 'safari' || browser === 'chrome') {
+        log.info('Ending call due to unrecoverable state after call add media failure.');
+        // Hangup the call from WebRTC perspective
+        await CallstackWebrtc.closeCall(call.webrtcSessionId);
+
+        // Cleanup Redux state by sending END_CALL_FINISH action
+        context.dispatch(_actions.callActions.endCallFinish(call.id, {
+          isLocal: true,
+          transition: {
+            reasonText: 'Call has ended due to call add media failure.'
+          }
+        }));
+        emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+          callId: call.id,
+          previous: {
+            state: call.state,
+            localHold: call.localHold,
+            remoteHold: call.remoteHold
+          },
+          error: responseError
+        });
+        throw responseError;
       }
-    };
+      log.info('Unable to reset state after add media operation failure, future operations may not work as intended.');
+    }
+    throw responseError;
   }
-  return addMedia;
 }
 
 /***/ }),
@@ -7030,13 +7143,14 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAddMediaResponse;
+__webpack_require__(60452);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 var _selectors = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 // Other plugins.
@@ -7168,7 +7282,7 @@ var _constants = __webpack_require__(60683);
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins.
@@ -7207,7 +7321,6 @@ function validate(state, callId, mediaConstraints, options) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -7217,7 +7330,8 @@ var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _selectors2 = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Other plugins
@@ -7258,11 +7372,14 @@ function validate(state, callId, kind, mediaConstraints, options) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAddMediaHandler;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _state = __webpack_require__(65794);
 var _remoteTracks = _interopRequireDefault(__webpack_require__(45294));
 var _setMediaInactive = _interopRequireDefault(__webpack_require__(23180));
@@ -7271,18 +7388,14 @@ var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants2 = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Callstack.
 
 function createAddMediaHandler(container) {
   const {
     context,
-    WebRTC,
-    CallstackWebrtc,
-    CallstackSDP,
-    CallRequests,
-    emitEvent,
-    logManager
+    emitEvent
   } = container;
 
   /**
@@ -7305,14 +7418,16 @@ function createAddMediaHandler(container) {
    * @param {Object} opInfo.mediaDesc
    * @param {Object} opInfo.remoteDesc
    * @throws {Error} Throws when the operation fails.
-   * @return {undefined}
+   * @return {Promise<undefined>}
    */
   async function operation(call, params, opInfo) {
     try {
-      // Handle the remote add media operation and return the affected tracks.
+      // Perform changes on the local call session.
+      const stageData = await localChanges(container, call, params, opInfo);
+      // Signal those changes to the remote call session.
       const {
         remoteTracks
-      } = await onRemoteAddMedia(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.remoteAddMediaFinish(call.id, {
         remote: true,
         remoteParticipant: {
@@ -7340,90 +7455,130 @@ function createAddMediaHandler(container) {
       throw error;
     }
   }
-
-  /**
-   * Operation for handling a new remote add-media offer SDP.
-   *
-   * Offer checks:
-   *    - set media inactive if locally held
-   *
-   * @method onRemoteAddMedia
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDesc
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when WebRTC negotiation fails.
-   * @throws {Error} Throws when Gateway signaling fails.
-   * @return {Object} Tracks affected by the operation.
-   */
-  async function onRemoteAddMedia(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
-    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
-    }
-
-    /*
-     * The remote operation is offering media, so if the call is locally held,
-     *    then we need to modify the offer to ensure that media does not restart.
-     */
-    const mediaState = (0, _state.getMediaState)(call);
-    if ([_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
-      log.debug('Modifying remote offer to prevent resetting media while in local hold.');
-      params.sdp = (0, _setMediaInactive.default)(params.sdp);
-      if (!params.sdp) {
-        log.debug('SDP is either undefined or not a string.');
-        return;
-      }
-      // Update the `mediaDiff` after we modified the SDP.
-      opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
-    }
-
-    // Handle the offer SDP to receive an answer SDP.
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to remote update. Changing state based on the remote operation.');
-
-      // Get the list of remote tracks that were added by the remote operation.
-      //    This is done after `handleOffer` so the Transceivers are up-to-date
-      //    with the changes being offered.
-      const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.ADD_MEDIA, opInfo.mediaDiff, session);
-      return {
-        remoteTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
-  }
   return operation;
+}
+
+/**
+ * Local changes stage for the remote 'add media' operation.
+ *
+ * Processes the remote offer SDP
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber
+ * @param {string} params.remoteName
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDesc
+ * @param {Object} opInfo.remoteDesc
+ * @throws {Error} Throws when WebRTC negotiation fails.
+ * @return {Promise<Object>} Data for subsequent stages.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    WebRTC,
+    CallstackWebrtc,
+    CallstackSDP,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
+  }
+
+  /*
+   * The remote operation is offering media, so if the call is locally held,
+   *    then we need to modify the offer to ensure that media does not restart.
+   */
+  const mediaState = (0, _state.getMediaState)(call);
+  if ([_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
+    log.debug('Modifying remote offer to prevent resetting media while in local hold.');
+    params.sdp = (0, _setMediaInactive.default)(params.sdp);
+    if (!params.sdp) {
+      log.debug('SDP is either undefined or not a string.');
+      return;
+    }
+    // Update the `mediaDiff` after we modified the SDP.
+    opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
+  }
+
+  // Handle the offer SDP to receive an answer SDP.
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+
+  // Data needed for further stages of the operation.
+  return {
+    answer,
+    session,
+    opInfo
+  };
+}
+
+/**
+ * Signalling stage for the remote 'add media' operation.
+ *
+ * Responds to the remote operation with an answer SDP.
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.answer The remote offer SDP.
+ * @param {Object} params.session
+ * @param {Object} params.opInfo
+ * @param {Object} params.opInfo.mediaDesc
+ * @param {Object} params.opInfo.remoteDesc
+ * @throws {Error} Throws when Gateway signaling fails.
+ * @return {Promise<Object>} Tracks affected by the operation.
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    session,
+    opInfo
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to remote update. Changing state based on the remote operation.');
+
+    // Get the list of remote tracks that were added by the remote operation.
+    //    This is done after `handleOffer` so the Transceivers are up-to-date
+    //    with the changes being offered.
+    const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.ADD_MEDIA, opInfo.mediaDiff, session);
+    return {
+      remoteTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -7434,7 +7589,6 @@ function createAddMediaHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -7442,6 +7596,7 @@ exports["default"] = rollbackAddMediaOperation;
 var _isUndefined2 = _interopRequireDefault(__webpack_require__(73346));
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 // Libraries
@@ -7465,12 +7620,16 @@ function rollbackAddMediaOperation(container) {
    *  2. Rollback the local description SDP offer
    * @method rollbackLocalAddMedia
    * @param {string} sessionId    The local webRTC session id, used to lookup the session object
-   * @param {Array}  medias       A list of Media state objects
+   * @param {Object} operationData Meta-data relating to the on-going operation.
+   * @param {Array<string>} operationData.tracks The list track IDs that were added as part of the operation.
    * @return {Object} offer object containing a Session Description Protocol
    */
-  async function rollbackAddMedia(sessionId, medias) {
+  async function rollbackAddMedia(sessionId, operationData) {
     const log = logManager.getLogger('CALLSTACK');
     const session = await WebRTC.sessionManager.get(sessionId);
+    const {
+      tracks
+    } = operationData;
     if (!session) {
       const message = `WebRTC session ${sessionId} not found.`;
       log.debug(message);
@@ -7478,12 +7637,6 @@ function rollbackAddMediaOperation(container) {
         message
       });
     }
-
-    // Remove the new local media(s) that were added
-    let tracks = [];
-    medias.forEach(media => {
-      tracks = tracks.concat(media.tracks.map(track => track.id));
-    });
 
     // Get the tracks that we want to remove
     const localTracksToRemove = await WebRTC.track.getTracks(tracks);
@@ -7533,6 +7686,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = webrtcAddMediaOperation;
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
@@ -7540,7 +7695,7 @@ var _call = __webpack_require__(12442);
 var _media = __webpack_require__(50654);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Utils
@@ -7679,13 +7834,14 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = answerWebrtcSessionOperation;
+__webpack_require__(44936);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 var _media = __webpack_require__(50654);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Utils
@@ -7843,7 +7999,6 @@ function answerWebrtcSessionOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -7855,6 +8010,7 @@ var _validate2 = _interopRequireDefault(__webpack_require__(47733));
 var _remoteSlowAnswer = _interopRequireDefault(__webpack_require__(78112));
 var _answerWebrtcSession = _interopRequireDefault(__webpack_require__(88003));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 // Helpers
@@ -7943,7 +8099,7 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = answerOperation;
+exports["default"] = createAnswer;
 var _actions = __webpack_require__(6313);
 var _eventTypes = __webpack_require__(55166);
 var _selectors = __webpack_require__(11430);
@@ -7961,19 +8117,7 @@ var _selectors2 = __webpack_require__(30105);
  * Bottle wrapper for answer call operation.
  * @return {Function}
  */
-function answerOperation(container) {
-  const {
-    context,
-    Callstack,
-    CallRequests,
-    CallReporter,
-    emitEvent,
-    logManager
-  } = container;
-  const {
-    answerWebrtcSession
-  } = Callstack.utils;
-
+function createAnswer(container) {
   /**
    * Answers an incoming call.
    *
@@ -7983,133 +8127,184 @@ function answerOperation(container) {
    * The PeerConnection will exist already (created as part of receiving offer).
    *    Signaling with an answer SDP will establish the call, so it can be
    *    considered "Connected" afterwards.
-   *
-   * Assumptions:
-   *    1. The call is in Initiated or Ringing state.
-   *    2. The call's direction is incoming.
-   *    3. The call is not marked as slow-start.
-   * Responsibilities:
-   *    1. Create an answer for the call, using the webRTC helpers.
-   *    2. Update the call on the server with the answer.
-   *    3. Update call state (via redux actions).
-   * @method answer
-   * @param {string} callId The ID of the call to answer.
-   * @param {Object} media The media options the call should be initialized with.
-   * @param {boolean} [media.audio=false] Whether the call should have audio on start. Currently, audio-less calls are not supported.
-   * @param {Object} [media.audioOptions] Options for configuring the call's audio.
-   * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
-   * @param {boolean} [media.video=false] Whether the call should have video on start.
-   * @param {Object} [media.videoOptions] Options for configuring the call's video.
-   * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
-   * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
-   * @param {boolean} [media.screen=false] Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)
-   * @param {Object} [media.screenOptions] Options for configuring the call's screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.height] The height of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.width] The width of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.frameRate] The frame rate of the screenShare.
-   * @param {Object} [options]
-   * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
-   * @param {call.DSCPControls} [options.dscpControls] Options for configuring DSCP markings on the media traffic
-   * @param {Array<call.CustomParameter>} [options.customParameters] Custom SIP header parameters for the SIP backend.
-   * @param {Array<call.CustomBody>} [options.customBodies] Custom SIP bodies for the SIP backend.
    */
+  return async function answer(callId, media, options) {
+    const stageData = await localChanges(container, callId, media, options);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    await signalling(container, call, stageData);
+  };
+}
 
-  async function answer(callId, media, options) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Answering incoming call.');
-    const incomingCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const bandwidth = (0, _call.checkBandwidthControls)(options.bandwidth);
+/**
+ * Local changes stage for the 'answer' operation.
+ *
+ * Performs WebRTC changes (adding local media, setting local answer SDP) on the local call session.
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId The ID of the call to answer.
+ * @param {Object} media The media options the call should be initialized with.
+ * @param {boolean} [media.audio=false] Whether the call should have audio on start. Currently, audio-less calls are not supported.
+ * @param {Object} [media.audioOptions] Options for configuring the call's audio.
+ * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
+ * @param {boolean} [media.video=false] Whether the call should have video on start.
+ * @param {Object} [media.videoOptions] Options for configuring the call's video.
+ * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
+ * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
+ * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
+ * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
+ * @param {boolean} [media.screen=false] Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)
+ * @param {Object} [media.screenOptions] Options for configuring the call's screenShare.
+ * @param {call.MediaConstraint} [media.screenOptions.height] The height of the screenShare.
+ * @param {call.MediaConstraint} [media.screenOptions.width] The width of the screenShare.
+ * @param {call.MediaConstraint} [media.screenOptions.frameRate] The frame rate of the screenShare.
+ * @param {Object} [options]
+ * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
+ * @param {call.DSCPControls} [options.dscpControls] Options for configuring DSCP markings on the media traffic
+ * @param {Array<call.CustomParameter>} [options.customParameters] Custom SIP header parameters for the SIP backend.
+ * @param {Array<call.CustomBody>} [options.customBodies] Custom SIP bodies for the SIP backend.
+ * @return {Promise<Object>} Data needed for subsequent stages.
+ * @throws {BasicError} Throws an error if the WebRTC changes fail.
+ */
+async function localChanges(container, callId, media, options) {
+  const {
+    context,
+    Callstack,
+    logManager
+  } = container;
+  const {
+    answerWebrtcSession
+  } = Callstack.utils;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Answering incoming call.');
+  const incomingCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const bandwidth = (0, _call.checkBandwidthControls)(options.bandwidth);
 
-    // Update the existing webRTC session with an answer.
-    const sessionOptions = {
-      sessionId: incomingCall.webrtcSessionId,
-      bandwidth,
-      dscpControls: options.dscpControls,
-      callId: incomingCall.id
-    };
-    let webrtcInfo;
-    try {
-      webrtcInfo = await answerWebrtcSession(media, sessionOptions);
-    } catch (error) {
-      log.info('Failed to answer incoming call.');
-      throw error;
-    }
-    const callInfo = {
-      id: incomingCall.id,
-      answer: webrtcInfo.answerSDP,
-      wrtcsSessionId: incomingCall.wrtcsSessionId,
-      customParameters: options.customParameters,
-      customBodies: options.customBodies
-    };
-
-    // Perform the signaling to answer the call.
-    try {
-      await CallRequests.answerSession(callInfo);
-      log.info(`Finished answering call. Changing to ${_constants2.CALL_STATES.CONNECTED}.`);
-
-      // Get the list of all local tracks on the Session.
-      const sessionState = (0, _selectors2.getSessionById)(context.getState(), incomingCall.webrtcSessionId) || {};
-      const localTracks = sessionState.localTracks;
-
-      // Get the list of all remote tracks being offered in this call. This is a
-      //    new call, so this should be the full list of remote tracks available.
-      const remoteTracks = await (0, _remoteTracks.getIncomingRemoteTracks)(webrtcInfo.session);
-      context.dispatch(_actions.callActions.answerCallFinish(callId, {
-        state: _constants2.CALL_STATES.CONNECTED,
-        startTime: Date.now(),
-        // The local Media object associated with this call.
-        mediaIds: webrtcInfo.mediaIds,
-        webrtcSessionId: webrtcInfo.sessionId,
-        // TODO: Properly track the media that the call has.
-        mediaConstraints: media,
-        // The bandwidth of the call
-        bandwidth,
-        // The custom parameters (headers) and custom bodies of the call
-        customParameters: options.customParameters,
-        customBodies: options.customBodies,
-        localTracks,
-        // Add the remote tracks to the call state now that negotiation is done.
-        remoteTracks
-      }, {
-        isSlowStart: false
-      }));
-
-      // Tell the application that tracks are available on the call now.
-      emitEvent(_eventTypes.CALL_TRACKS_ADDED, {
-        callId,
-        trackIds: [...localTracks, ...remoteTracks]
-      });
-      emitEvent(_eventTypes.CALL_STATE_CHANGE, {
-        callId,
-        previous: {
-          state: incomingCall.state,
-          localHold: incomingCall.localHold,
-          remoteHold: incomingCall.remoteHold
-        }
-      });
-    } catch (error) {
-      log.info('Failed to answer call.');
-
-      // If the call has been answered already by the same user logged into a different client then
-      // we should let our resync call operation figure it out and put the call in the correct state
-      // (Cancelled)
-      if (error.code === 55) {
-        const callReport = CallReporter.getReport(callId);
-        // Start the call resync event
-        const operation = incomingCall.currentOperations.find(op => {
-          return op.isLocal && op.type === _constants.OPERATIONS.ANSWER;
-        });
-        const operationEvent = callReport.getEvent(operation.eventId);
-        const resyncEvent = operationEvent.addEvent(_constants3.REPORT_EVENTS.RESYNC);
-        await Callstack.operations.resyncCallState.stages.localOffer(callId);
-        resyncEvent.endEvent();
-      }
-      throw error;
-    }
+  // Update the existing webRTC session with an answer.
+  const sessionOptions = {
+    sessionId: incomingCall.webrtcSessionId,
+    bandwidth,
+    dscpControls: options.dscpControls,
+    callId: incomingCall.id
+  };
+  let webrtcInfo;
+  try {
+    webrtcInfo = await answerWebrtcSession(media, sessionOptions);
+  } catch (error) {
+    log.info('Failed to answer incoming call.');
+    throw error;
   }
-  return answer;
+  return {
+    webrtcInfo,
+    media,
+    bandwidth,
+    options
+  };
+}
+
+/**
+ * Signalling stage for the 'answer' operation.
+ *
+ * Responds to the remote operation with an answer SDP. Updates call state and emits
+ *    events to the application afterwards.
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call
+ * @param {Object} params
+ * @param {Object} params.webrtcInfo
+ * @param {Object} params.media
+ * @param {Object} params.bandwidth
+ * @param {Object} params.options
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    context,
+    Callstack,
+    CallRequests,
+    CallReporter,
+    emitEvent,
+    logManager
+  } = container;
+  const {
+    webrtcInfo,
+    media,
+    bandwidth,
+    options
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  const callInfo = {
+    id: call.id,
+    answer: webrtcInfo.answerSDP,
+    wrtcsSessionId: call.wrtcsSessionId,
+    customParameters: options.customParameters,
+    customBodies: options.customBodies
+  };
+
+  // Perform the signaling to answer the call.
+  try {
+    await CallRequests.answerSession(callInfo);
+    log.info(`Finished answering call. Changing to ${_constants2.CALL_STATES.CONNECTED}.`);
+
+    // Get the list of all local tracks on the Session.
+    const sessionState = (0, _selectors2.getSessionById)(context.getState(), call.webrtcSessionId) || {};
+    const localTracks = sessionState.localTracks;
+
+    // Get the list of all remote tracks being offered in this call. This is a
+    //    new call, so this should be the full list of remote tracks available.
+    const remoteTracks = await (0, _remoteTracks.getIncomingRemoteTracks)(webrtcInfo.session);
+    context.dispatch(_actions.callActions.answerCallFinish(call.id, {
+      state: _constants2.CALL_STATES.CONNECTED,
+      startTime: Date.now(),
+      // The local Media object associated with this call.
+      mediaIds: webrtcInfo.mediaIds,
+      webrtcSessionId: webrtcInfo.sessionId,
+      // TODO: Properly track the media that the call has.
+      mediaConstraints: media,
+      // The bandwidth of the call
+      bandwidth,
+      // The custom parameters (headers) and custom bodies of the call
+      customParameters: options.customParameters,
+      customBodies: options.customBodies,
+      localTracks,
+      // Add the remote tracks to the call state now that negotiation is done.
+      remoteTracks
+    }, {
+      isSlowStart: false
+    }));
+
+    // Tell the application that tracks are available on the call now.
+    emitEvent(_eventTypes.CALL_TRACKS_ADDED, {
+      callId: call.id,
+      trackIds: [...localTracks, ...remoteTracks]
+    });
+    emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+      callId: call.id,
+      previous: {
+        state: call.state,
+        localHold: call.localHold,
+        remoteHold: call.remoteHold
+      }
+    });
+  } catch (error) {
+    log.info('Failed to answer call.');
+
+    // If the call has been answered already by the same user logged into a different client then
+    // we should let our resync call operation figure it out and put the call in the correct state
+    // (Cancelled)
+    if (error.code === 55) {
+      const callReport = CallReporter.getReport(call.id);
+      // Start the call resync event
+      const operation = call.currentOperations.find(op => {
+        return op.isLocal && op.type === _constants.OPERATIONS.ANSWER;
+      });
+      const operationEvent = callReport.getEvent(operation.eventId);
+      const resyncEvent = operationEvent.addEvent(_constants3.REPORT_EVENTS.RESYNC);
+      await Callstack.operations.resyncCallState.stages.localOffer(call.id);
+      resyncEvent.endEvent();
+    }
+    throw error;
+  }
 }
 
 /***/ }),
@@ -8124,11 +8319,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -8221,7 +8417,7 @@ var _remoteTracks = __webpack_require__(45294);
 var _constants3 = __webpack_require__(42750);
 var _selectors = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 // Other plugins.
@@ -8355,7 +8551,9 @@ function createSlowAnswerResponse(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = answerOperation;
+exports["default"] = createSlowAnswer;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(37409);
@@ -8368,7 +8566,89 @@ var _constants3 = __webpack_require__(42750);
  * Bottle wrapper for answer call operation.
  * @return {Function}
  */
-function answerOperation(container) {
+function createSlowAnswer(container) {
+  return async function slowAnswer(callId, media, options) {
+    // Perform changes on the local call session.
+    const stageData = await localChanges(container, callId, media, options);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    // Signal those changes to the remote call session.
+    await signalling(container, call, stageData);
+  };
+}
+
+/**
+ * Local processing stage for the 'slow answer' operation.
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId
+ * @param {Object} params
+ * @param {Object} params.media
+ * @param {Object} params.options
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the WebRTC changes fails.
+ */
+async function localChanges(container, callId, media, options) {
+  const {
+    context,
+    Callstack,
+    logManager
+  } = container;
+  const {
+    setupOutgoingSession
+  } = Callstack.utils;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Answering incoming call.');
+  const bandwidth = (0, _call.checkBandwidthControls)(options.bandwidth);
+  log.debug('Answering call with slow start negotiation.');
+  const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
+  const callOptions = (0, _selectors.getOptions)(context.getState());
+
+  /*
+   * If the call was a slow start call, then it doesn't have a webRTC session
+   *    yet. We need to setup the session and provide the signaling server
+   *    with an SDP offer.
+   */
+  let webrtcInfo;
+  try {
+    webrtcInfo = await setupOutgoingSession(media, {
+      callId,
+      defaultPeerConfig: callOptions.defaultPeerConfig,
+      turnInfo,
+      bandwidth,
+      dscpControls: options.dscpControls,
+      // ICE related configs.
+      trickleIceMode: callOptions.trickleIceMode,
+      removeBundling: callOptions.removeBundling,
+      serverTurnCredentials: callOptions.serverTurnCredentials
+    });
+  } catch (error) {
+    log.info('Failed to answer incoming call.');
+    throw error;
+  }
+
+  // Return data that will be needed for further stages.
+  return {
+    webrtcInfo,
+    media,
+    bandwidth,
+    options
+  };
+}
+
+/**
+ * Signalling stage for the 'slow answer' operation.
+ * @method signalling
+ * @param {Object} container
+ * @param {CallObject} call
+ * @param {Object} params
+ * @param {Object} params.webrtcInfo
+ * @param {Object} params.media
+ * @param {Object} params.bandwidth
+ * @param {Object} params.options
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
   const {
     context,
     Callstack,
@@ -8377,135 +8657,62 @@ function answerOperation(container) {
     logManager
   } = container;
   const {
-    setupOutgoingSession
-  } = Callstack.utils;
+    webrtcInfo,
+    media,
+    bandwidth,
+    options
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
 
-  /**
-   * Answers an incoming slow-start call.
-   *
-   * This operation defines how a slow-start call is answered. It performs the webRTC and
-   *    signaling operations to respond to a call on the server.
-   *
-   * The local "call" does not exist at this point in time and needs to be created
-   *    locally. An offer SDP from the call will be used for signaling (as per
-   *    slow start), but the call cannot be considered "Connected" until we
-   *    receive a response to the offer SDP.
-   * Assumptions:
-   *    1. The call is in Initiated or Ringing state.
-   *    2. The call's direction is incoming.
-   *    3. The call is marked as slow-start.
-   * Responsibilities:
-   *    1. Setup the call locally, using the webRTC helper operation.
-   *    2. Update the call on the server with an offer.
-   *    3. Update state (via redux actions).
-   * @method answer
-   * @param {string} callId The ID of the call to answer.
-   * @param {Object} media The media options the call should be initialized with.
-   * @param {boolean} [media.audio=false] Whether the call should have audio on start. Currently, audio-less calls are not supported.
-   * @param {Object} [media.audioOptions] Options for configuring the call's audio.
-   * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
-   * @param {boolean} [media.video=false] Whether the call should have video on start.
-   * @param {Object} [media.videoOptions] Options for configuring the call's video.
-   * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
-   * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
-   * @param {boolean} [media.screen=false] Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)
-   * @param {Object} [media.screenOptions] Options for configuring the call's screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.height] The height of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.width] The width of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.frameRate] The frame rate of the screenShare.
-   * @param {Object} [options]
-   * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
-   * @param {call.DSCPControls} [options.dscpControls] Options for configuring DSCP markings on the media traffic
-   * @param {Array<call.CustomParameter>} [options.customParameters] Custom SIP header parameters for the SIP backend.
-   * @param {Array<call.CustomBody>} [options.customBodies] Custom SIP bodies for the SIP backend.
-   */
-  async function slowAnswer(callId, media, options) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Answering incoming call.');
-    const call = (0, _selectors.getCallById)(context.getState(), callId);
-    const bandwidth = (0, _call.checkBandwidthControls)(options.bandwidth);
-    const wrtcsSessionId = call.wrtcsSessionId;
-    log.debug('Answering call with slow start negotiation.');
-    const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
-    const callOptions = (0, _selectors.getOptions)(context.getState());
-
-    /*
-     * If the call was a slow start call, then it doesn't have a webRTC session
-     *    yet. We need to setup the session and provide the signaling server
-     *    with an SDP offer.
-     */
-    let webrtcInfo;
-    try {
-      webrtcInfo = await setupOutgoingSession(media, {
-        callId,
-        defaultPeerConfig: callOptions.defaultPeerConfig,
-        turnInfo,
-        bandwidth,
-        dscpControls: options.dscpControls,
-        // ICE related configs.
-        trickleIceMode: callOptions.trickleIceMode,
-        removeBundling: callOptions.removeBundling,
-        serverTurnCredentials: callOptions.serverTurnCredentials
-      });
-    } catch (error) {
-      log.info('Failed to answer incoming call.');
-      throw error;
-    }
-    const callInfo = {
-      id: callId,
+  // Perform the signaling to answer the call.
+  try {
+    await CallRequests.answerSession({
+      id: call.id,
       answer: webrtcInfo.offerSdp,
-      wrtcsSessionId,
+      wrtcsSessionId: call.wrtcsSessionId,
       customParameters: options.customParameters,
       customBodies: options.customBodies
-    };
+    });
+    log.info(`Finished answering slow-start call. Changing to ${_constants2.CALL_STATES.RINGING} and waiting for remote slow-start answer.`);
+    context.dispatch(_actions.callActions.answerCallFinish(call.id, {
+      state: _constants2.CALL_STATES.RINGING,
+      // TODO: Proper start time for slow-start calls.
+      startTime: Date.now(),
+      // The local Media object associated with this call.
+      mediaIds: webrtcInfo.mediaIds,
+      // For slow start calls, there isn't a webRTC session yet.
+      webrtcSessionId: webrtcInfo.sessionId,
+      // TODO: Properly track the media that the call has.
+      mediaConstraints: media,
+      // The bandwidth of the call
+      bandwidth,
+      // The custom parameters (headers) and custom bodies of the call
+      customParameters: options.customParameters,
+      customBodies: options.customBodies,
+      localTracks: [],
+      remoteTracks: []
+    }, {
+      isSlowStart: call.isSlowStart
+    }));
+  } catch (error) {
+    log.info('Failed to answer call.');
 
-    // Perform the signaling to answer the call.
-    try {
-      await CallRequests.answerSession(callInfo);
-      log.info(`Finished answering slow-start call. Changing to ${_constants2.CALL_STATES.RINGING} and waiting for remote slow-start answer.`);
-      context.dispatch(_actions.callActions.answerCallFinish(callId, {
-        state: _constants2.CALL_STATES.RINGING,
-        // TODO: Proper start time for slow-start calls.
-        startTime: Date.now(),
-        // The local Media object associated with this call.
-        mediaIds: webrtcInfo.mediaIds,
-        // For slow start calls, there isn't a webRTC session yet.
-        webrtcSessionId: webrtcInfo.sessionId,
-        // TODO: Properly track the media that the call has.
-        mediaConstraints: media,
-        // The bandwidth of the call
-        bandwidth,
-        // The custom parameters (headers) and custom bodies of the call
-        customParameters: options.customParameters,
-        customBodies: options.customBodies,
-        localTracks: [],
-        remoteTracks: []
-      }, {
-        isSlowStart: call.isSlowStart
-      }));
-    } catch (error) {
-      log.info('Failed to answer call.');
-
-      // If the call has been answered already by the same user logged into a different client then
-      // we should let our resync call operation figure it out and put the call in the correct state
-      // (Cancelled)
-      if (error.code === 55) {
-        const callReport = CallReporter.getReport(callId);
-        // Start the call resync event
-        const operation = call.currentOperations.find(op => {
-          return op.isLocal && op.type === _constants.OPERATIONS.ANSWER;
-        });
-        const operationEvent = callReport.getEvent(operation.eventId);
-        const resyncEvent = operationEvent.addEvent(_constants3.REPORT_EVENTS.RESYNC);
-        await Callstack.operations.resyncCallState.stages.localOffer(callId);
-        resyncEvent.endEvent();
-      }
-      throw error;
+    // If the call has been answered already by the same user logged into a different client then
+    // we should let our resync call operation figure it out and put the call in the correct state
+    // (Cancelled)
+    if (error.code === 55) {
+      const callReport = CallReporter.getReport(call.id);
+      // Start the call resync event
+      const operation = call.currentOperations.find(op => {
+        return op.isLocal && op.type === _constants.OPERATIONS.ANSWER;
+      });
+      const operationEvent = callReport.getEvent(operation.eventId);
+      const resyncEvent = operationEvent.addEvent(_constants3.REPORT_EVENTS.RESYNC);
+      await Callstack.operations.resyncCallState.stages.localOffer(call.id);
+      resyncEvent.endEvent();
     }
+    throw error;
   }
-  return slowAnswer;
 }
 
 /***/ }),
@@ -8520,11 +8727,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -8578,13 +8786,13 @@ function validate(state, callId, media, options) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _callCancelled = _interopRequireDefault(__webpack_require__(18898));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // The factory funnction for the notification handler.
 
 function initOperation(bottle) {
@@ -8623,6 +8831,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = callCancelOperation;
+__webpack_require__(60452);
 var _eventTypes = __webpack_require__(55166);
 var _constants = __webpack_require__(60683);
 var _actions = __webpack_require__(6313);
@@ -8701,7 +8910,8 @@ function callCancelOperation(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = consultativeTransferOperation;
+exports["default"] = createConsultativeTransfer;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 // Call Plugin
 
@@ -8709,50 +8919,53 @@ var _selectors = __webpack_require__(11430);
  * Bottle wrapper for consultativeTransfer call operation.
  * @return {Function}
  */
-function consultativeTransferOperation(container) {
+function createConsultativeTransfer(container) {
+  /**
+   * Transfers 2 ongoing calls to one another.
+   */
+  return async function consultativeTransfer(calls) {
+    // No local changes for this operation.
+    // Signal the transfer to the call server.
+    return signalling(container, calls);
+  };
+}
+
+/**
+ * Signalling stage for a 'consultative transfer' operation.
+ *
+ * Sends a REST request to the server to indicate the intention to transfer.
+ * @method signalling
+ * @param {Array<Object>} calls Array of calls this operation will affect.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws an error if the REST request fails.
+ */
+async function signalling(container, calls) {
   const {
     context,
     CallRequests,
     logManager
   } = container;
+  const callId = calls[0].id;
+  const otherCallId = calls[1].id;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Performing consultative transfer on call.');
+  const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const otherCall = (0, _selectors.getCallById)(context.getState(), otherCallId);
 
-  /**
-   *
-   * Transfers 2 ongoing calls to one another.
-   *
-   * This function handles the WebRTC and signalling portions of transferring 2 ongoing calls to one another.
-   * Assumptions:
-   *    1. The action contains the other call id
-   *    2. The calls are in the 'On Hold' state
-   * Responsibilities:
-   *    1. Perform the signaling to tell the server that we want to transfer 2 ongoing calls to one other.
-   *    2. Update call state (via redux actions).
-   * @method consultativeTransfer
-   * @param {string} callId ID of the call which needs to be transferred to another call.
-   * @param {string} otherCallId The ID of the second call, where the first call will be transfered to.
-   */
-  async function consultativeTransfer(callId, otherCallId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Performing consultative transfer on call.');
-    const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const otherCall = (0, _selectors.getCallById)(context.getState(), otherCallId);
-
-    // Collect the information needed to make the request.
-    const callInfo = {
-      id: callId,
-      wrtcsSessionId: currentCall.wrtcsSessionId,
-      otherWrtcsSessionId: otherCall.wrtcsSessionId,
-      destination: otherCall.direction === 'outgoing' ? otherCall.to : otherCall.from
-    };
-    try {
-      await CallRequests.consultativeTransferSessions(callInfo);
-    } catch (responseError) {
-      log.info('Failed to consultative transfer call.');
-      throw responseError;
-    }
-    log.info('Finished local portion of consultative transfer. Waiting on remote response.');
+  // Collect the information needed to make the request.
+  const callInfo = {
+    id: callId,
+    wrtcsSessionId: currentCall.wrtcsSessionId,
+    otherWrtcsSessionId: otherCall.wrtcsSessionId,
+    destination: otherCall.direction === 'outgoing' ? otherCall.to : otherCall.from
+  };
+  try {
+    await CallRequests.consultativeTransferSessions(callInfo);
+  } catch (responseError) {
+    log.info('Failed to consultative transfer call.');
+    throw responseError;
   }
-  return consultativeTransfer;
+  log.info('Finished local portion of consultative transfer. Waiting on remote response.');
 }
 
 /***/ }),
@@ -8763,7 +8976,6 @@ function consultativeTransferOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -8772,28 +8984,28 @@ var _consultativeTransfer = _interopRequireDefault(__webpack_require__(21147));
 var _remoteSuccess = _interopRequireDefault(__webpack_require__(25103));
 var _remoteFailure = _interopRequireDefault(__webpack_require__(50414));
 var _validate = _interopRequireDefault(__webpack_require__(85363));
+var _ConsultativeTransfer = _interopRequireDefault(__webpack_require__(57679));
 var _constants = __webpack_require__(37409);
-// Operations.
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+// Stages.
 
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.consultativeTransfer', () => {
-    // TODO: This operation is not actually a negotiation, but this is currently
-    //    how we indicate this is a "blocking" operation (to prevent glare).
-    const negFactory = bottle.container.Callstack.models.Negotiation;
+    const multiFactory = bottle.container.Callstack.models.MultiCall;
 
     /**
      * Factory function for a LocalConsultTransfer operation.
      * @method LocalConsultTransfer
-     * @param {string} callId ID for the call this operation will affect.
+     * @param {Array<Object>} callInfo List of calls affected by this operation.
      * @return {Operation} An instance of a local consultative transfer operation.
      */
-    function LocalConsultTransfer(callId, data) {
-      return negFactory.instance({
+    function LocalConsultTransfer(callInfo) {
+      return multiFactory.instance({
         // Operation meta-data.
         type: _constants.OPERATIONS.CONSULTATIVE_TRANSFER,
-        isLocal: true,
+        isNegotiation: true,
         // Operation methods.
         stages: {
           validate: _validate.default,
@@ -8801,10 +9013,10 @@ function initOperation(bottle) {
           localOffer: (0, _consultativeTransfer.default)(bottle.container),
           remoteSuccess: (0, _remoteSuccess.default)(bottle.container),
           remoteFailure: (0, _remoteFailure.default)(bottle.container)
-        }
+        },
+        createFlow: _ConsultativeTransfer.default
       }, {
-        callId,
-        data
+        callInfo
       });
     }
     return {
@@ -8830,7 +9042,7 @@ var _constants = __webpack_require__(60683);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -9010,7 +9222,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Helpers.
@@ -9018,13 +9230,13 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 /*
  * Pre-operation validation method.
  *
- * @param {Object} call The call being operated on.
+ * @param {Array<Object>} calls Array of calls this operation will affect.
  * @return {BasicError|undefined} If operation cannot be performed, returns an error.
  */
 
-function validate(state, callId, otherCallId) {
-  const call = (0, _selectors.getCallById)(state, callId);
-  const otherCall = (0, _selectors.getCallById)(state, otherCallId);
+function validate(state, calls) {
+  const call = (0, _selectors.getCallById)(state, calls[0].id);
+  const otherCall = (0, _selectors.getCallById)(state, calls[1].id);
   /*
    * `consultativeTransfer` operation validation:
    *    1. First Call must exist.
@@ -9066,7 +9278,8 @@ function validate(state, callId, otherCallId) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = directTransferOperation;
+exports["default"] = createDirectTransfer;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 // Call Plugin
 
@@ -9074,47 +9287,50 @@ var _selectors = __webpack_require__(11430);
  * Bottle wrapper for directTransfer call operation.
  * @return {Function}
  */
-function directTransferOperation(container) {
+function createDirectTransfer(container) {
+  /**
+   * Direct Transfers an ongoing call.
+   */
+  return async function directTransfer(callId, destination) {
+    // No local changes for this operation.
+    // Signal the transfer to the call server.
+    return signalling(container, callId, destination);
+  };
+}
+
+/**
+ * Signalling stage for a 'direct transfer' operation.
+ *
+ * Sends a REST request to the server to indicate the intention to transfer.
+ * @method signalling
+ * @param {Object} container
+ * @param {string} callId
+ * @param {string} destination
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws an error if the REST request fails.
+ */
+async function signalling(container, callId, destination) {
   const {
     context,
     CallRequests,
     logManager
   } = container;
-
-  /**
-   *
-   * Direct Transfers an ongoing call.
-   *
-   * This function handles the WebRTC and signalling portions of direct transferring an ongoing call
-   * Assumptions:
-   *    1. The action contains a destination address
-   *    2. The call is in the 'On Hold' state
-   * Responsibilities:
-   *    1. Perform the signaling to tell the server that we want to direct transfer the call to a specified destination address.
-   *    2. Update call state (via redux actions).
-   * @method directTransfer
-   * @param {string} callId ID of the call being acted on.
-   * @param {string} destination The destination to transfer the call to.
-   */
-  async function directTransfer(callId, destination) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Performing direct transfer on call.');
-    const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
-    // Collect the information needed to make the request.
-    const callInfo = {
-      wrtcsSessionId: currentCall.wrtcsSessionId,
-      address: destination,
-      id: callId
-    };
-    try {
-      await CallRequests.directTransferSession(callInfo);
-    } catch (responseError) {
-      log.info('Failed to direct transfer call.');
-      throw responseError;
-    }
-    log.info('Finished local portion of direct transfer. Waiting on remote response.');
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Performing direct transfer on call.');
+  const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
+  // Collect the information needed to make the request.
+  const callInfo = {
+    wrtcsSessionId: currentCall.wrtcsSessionId,
+    address: destination,
+    id: callId
+  };
+  try {
+    await CallRequests.directTransferSession(callInfo);
+  } catch (responseError) {
+    log.info('Failed to direct transfer call.');
+    throw responseError;
   }
-  return directTransfer;
+  log.info('Finished local portion of direct transfer. Waiting on remote response.');
 }
 
 /***/ }),
@@ -9125,7 +9341,6 @@ function directTransferOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -9134,16 +9349,15 @@ var _directTransfer = _interopRequireDefault(__webpack_require__(42871));
 var _validate = _interopRequireDefault(__webpack_require__(65372));
 var _remoteSuccess = _interopRequireDefault(__webpack_require__(33800));
 var _remoteFailure = _interopRequireDefault(__webpack_require__(46016));
+var _DirectTransfer = _interopRequireDefault(__webpack_require__(93907));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.directTransfer', () => {
-    // TODO: This is not a WebRTC negotiation, but it does expect a notification
-    //    in response. Currently, `isNegotiation` is the only flag to tell the
-    //    `localOperation` flow that the operation needs to wait for a response.
     const negFactory = bottle.container.Callstack.models.Negotiation;
 
     /**
@@ -9166,7 +9380,8 @@ function initOperation(bottle) {
           localOffer: (0, _directTransfer.default)(bottle.container),
           remoteSuccess: (0, _remoteSuccess.default)(bottle.container),
           remoteFailure: (0, _remoteFailure.default)(bottle.container)
-        }
+        },
+        createFlow: _DirectTransfer.default
       }, {
         callId
       });
@@ -9194,7 +9409,7 @@ var _constants = __webpack_require__(60683);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -9371,7 +9586,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Helpers.
@@ -9411,7 +9626,6 @@ function validate(state, callId, destination) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -9419,7 +9633,9 @@ exports["default"] = initOperation;
 var _end = _interopRequireDefault(__webpack_require__(16108));
 var _validate = _interopRequireDefault(__webpack_require__(84725));
 var _callStatusUpdateEnded = _interopRequireDefault(__webpack_require__(61881));
+var _RemoteUpdate = __webpack_require__(7913);
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.end', () => {
@@ -9450,12 +9666,15 @@ function initOperation(bottle) {
        */
       return callId => {
         const stages = bottle.container.Callstack.stages.end[isLocal ? 'local' : 'remote'];
+        // Remote 'ended' operations require a specific flow. For local 'ended', use the default.
+        const createFlow = isLocal ? undefined : _RemoteUpdate.createEnded;
         return updateFactory.instance({
           // Operation meta-data.
           type: _constants.OPERATIONS.END,
           isLocal,
           // Operation methods.
-          stages
+          stages,
+          createFlow
         }, {
           callId
         });
@@ -9479,12 +9698,14 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = endOperation;
+exports["default"] = createEnd;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(60683);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Helpers
@@ -9493,68 +9714,92 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * Bottle wrapper for end call operation.
  * @return {Function}
  */
-function endOperation(container) {
+function createEnd(container) {
+  /**
+   * Callstack operation to end an existing call.
+   */
+  return async function end(callId) {
+    // Perform local changes on the local call session.
+    await localChanges(container, callId);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    // Signal those changes to the remote call session.
+    await signalling(container, call);
+  };
+}
+
+/**
+ * Local changes stage for the 'end' operation.
+ *
+ * Performs WebRTC changes (cleaning-up resources) on the local call session.
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId The ID that the SDK uses to identify this call.
+ * @return {Promise<undefined>}
+ */
+async function localChanges(container, callId) {
   const {
     context,
-    CallRequests,
     CallstackWebrtc,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Ending call.');
+  const call = (0, _selectors.getCallById)(context.getState(), callId);
+  try {
+    // Perform webRTC functions
+    await CallstackWebrtc.closeCall(call.webrtcSessionId);
+  } catch (error) {
+    // Even if there is an error at the webrtc callstack layer,
+    // don't abort, but rather still attempt to send REST request to backend.
+    log.warn(`Could not successfully complete closing webrtc call: ${error}`);
+  }
+}
+
+/**
+ * Signalling stage for the 'ends' operation.
+ *
+ * Sends a REST request to tell the server the call is ended.
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call
+ * @return {Promise<undefined>}
+ */
+async function signalling(container, call) {
+  const {
+    CallRequests,
     logManager,
     emitEvent
   } = container;
-
-  /**
-   * Callstack operation to end an existing call.
-   *
-   * @method endCall
-   * @param {string} callId The ID that the SDK uses to identify this call.
-   * @return {undefined}
-   * @throws {BasicError} Throws an error if the WebRTC operation fails.
-   * @throws {BasicError} Throws an error if the REST request fails.
-   */
-  async function end(callId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Ending call.');
-    let call = (0, _selectors.getCallById)(context.getState(), callId);
-    const {
+  const log = logManager.getLogger('CALL', call.id);
+  const {
+    id: callId,
+    wrtcsSessionId,
+    isAnonymous,
+    account
+  } = call;
+  try {
+    // Invoke the request
+    await CallRequests.endSession({
+      callId,
       wrtcsSessionId,
-      webrtcSessionId,
       isAnonymous,
       account
-    } = call;
-    try {
-      // Perform webRTC functions
-      await CallstackWebrtc.closeCall(webrtcSessionId);
-    } catch (error) {
-      // Even if there is an error at the webrtc callstack layer,
-      // don't abort, but rather still attempt to send REST request to backend.
-      log.warn(`Could not successfully complete closing webrtc call: ${error}`);
-    }
-    call = (0, _selectors.getCallById)(context.getState(), callId);
-    try {
-      // Invoke the request
-      await CallRequests.endSession({
-        callId,
-        wrtcsSessionId,
-        isAnonymous,
-        account
-      });
-    } catch (error) {
-      // Catch and ignore the error.
-      // Design choice: The `end` operation will never fail for a valid call. If
-      //    the application wants to end the call, then make sure it ends. Avoid
-      //    the application getting in an awkward error state where they can't
-      //    end a call.
-    } finally {
-      log.info(`Finished ending call. Changing to ${_constants.CALL_STATES.ENDED}.`);
+    });
+  } catch (error) {
+    // Catch and ignore the error.
+    // Design choice: The `end` operation will never fail for a valid call. If
+    //    the application wants to end the call, then make sure it ends. Avoid
+    //    the application getting in an awkward error state where they can't
+    //    end a call.
+  } finally {
+    log.info(`Finished ending call. Changing to ${_constants.CALL_STATES.ENDED}.`);
 
-      // Tell the application that no tracks are available any longer.
-      emitEvent(eventTypes.CALL_TRACKS_REMOVED, {
-        callId,
-        trackIds: [...call.localTracks, ...call.remoteTracks]
-      });
-    }
+    // Tell the application that no tracks are available any longer.
+    emitEvent(eventTypes.CALL_TRACKS_REMOVED, {
+      callId,
+      trackIds: [...call.localTracks, ...call.remoteTracks]
+    });
   }
-  return end;
 }
 
 /***/ }),
@@ -9572,7 +9817,7 @@ exports["default"] = validate;
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 /*
@@ -9726,7 +9971,8 @@ function callStatusEndedOperation(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = forwardOperation;
+exports["default"] = createForward;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 // Call plugin.
@@ -9735,53 +9981,52 @@ var _constants = __webpack_require__(60683);
  * Bottle wrapper for forward call operation.
  * @return {Function}
  */
-function forwardOperation(container) {
+function createForward(container) {
+  /**
+   * Forwards an incoming call.
+   */
+  return async function forward(callId, destination) {
+    // No local changes for this operation.
+    // Signal the intent to forward to the call server.
+    await signalling(container, callId, destination);
+  };
+}
+
+/**
+ * Signalling stage for the 'forward' operation.
+ * @method signalling
+ * @param {Object} container
+ * @param {string} callId      ID of the call being acted on.
+ * @param {string} destination The destination to forward the call to.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ * @throws {BasicError} Throws if the call cannot be closed.
+ */
+async function signalling(container, callId, destination) {
   const {
     CallRequests,
     CallstackWebrtc,
     context,
     logManager
   } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Forwarding incoming call.');
+  const call = (0, _selectors.getCallById)(context.getState(), callId);
+  // Collect the information needed to make the request.
+  const callInfo = {
+    wrtcsSessionId: call.wrtcsSessionId,
+    address: destination
+  };
+  try {
+    await CallRequests.forwardSession(callInfo);
 
-  /**
-   *
-   * Forwards an incoming call.
-   *
-   * This operation handles the WebRTC and signalling portions of forwarding an incoming call
-   * Assumptions:
-   *    1. The action contains a destination address
-   * Responsibilities:
-   *    1. Perform the signaling to tell the server that we want to forward the call to a specified destination address.
-   *    2. Update call state (via redux actions).
-   * @method forwardCall
-   * @param {string} callId      ID of the call being acted on.
-   * @param {string} destination The destination to forward the call to.
-   * @return {undefined}
-   * @throws {BasicError} Throws INVALID_PARAM if the call cannot be found.
-   * @throws {BasicError} Throws INVALID_STATE if the call is in the wrong state.
-   * @throws {BasicError} Throws ??? if the REST request fails.
-   */
-  async function forward(callId, destination) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Forwarding incoming call.');
-    const call = (0, _selectors.getCallById)(context.getState(), callId);
-    // Collect the information needed to make the request.
-    const callInfo = {
-      wrtcsSessionId: call.wrtcsSessionId,
-      address: destination
-    };
-    try {
-      await CallRequests.forwardSession(callInfo);
-
-      // Clean-up webrtc resources.
-      await CallstackWebrtc.closeCall(call.webrtcSessionId);
-      log.info(`Finished forwarding call. Changing to ${_constants.CALL_STATES.ENDED}.`);
-    } catch (err) {
-      log.info('Failed to forward call.');
-      throw err;
-    }
+    // Clean-up webrtc resources.
+    await CallstackWebrtc.closeCall(call.webrtcSessionId);
+    log.info(`Finished forwarding call. Changing to ${_constants.CALL_STATES.ENDED}.`);
+  } catch (err) {
+    log.info('Failed to forward call.');
+    throw err;
   }
-  return forward;
 }
 
 /***/ }),
@@ -9792,7 +10037,6 @@ function forwardOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -9800,6 +10044,7 @@ exports["default"] = initOperation;
 var _forward = _interopRequireDefault(__webpack_require__(85314));
 var _validate = _interopRequireDefault(__webpack_require__(98067));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.forward', () => {
@@ -9854,11 +10099,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -9907,13 +10153,13 @@ function validate(state, callId, destination) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _remoteOffer = _interopRequireDefault(__webpack_require__(61425));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operation.
 
 function initOperation(bottle) {
@@ -9963,11 +10209,14 @@ function initOperation(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createGenericHandler;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _remoteTracks = __webpack_require__(45294);
 var _setMediaInactive = _interopRequireDefault(__webpack_require__(23180));
 var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
@@ -9975,14 +10224,20 @@ var _webrtc = __webpack_require__(82332);
 var _state = __webpack_require__(65794);
 var _constants = __webpack_require__(60683);
 var _actions = __webpack_require__(6313);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+/**
+ * Operation for handling a new offer SDP in a generic way.
+ * If this operation is used, it means we don't know what the remote operation
+ *    is, so we can follow through with generic WebRTC negotiation without any
+ *    added flair.
+ *
+ * The "media restart" operation will be handled as a generic remote (NO_CHANGE)
+ *    operation. Other operations are negotiations that we don't understand
+ *    (UNKNOWN or other types of NO_CHANGE).
+ */
 function createGenericHandler(container) {
   const {
-    context,
-    WebRTC,
-    CallstackWebrtc,
-    CallRequests,
-    CallstackSDP,
-    logManager
+    context
   } = container;
 
   /**
@@ -10008,9 +10263,12 @@ function createGenericHandler(container) {
    */
   async function operation(call, params, opInfo) {
     try {
+      // Perform changes on the local call session.
+      const stageData = await localChanges(container, call, params, opInfo);
+      // Signal those changes to the remote call session.
       const {
         remoteTracks
-      } = await onGenericRemote(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.updateCall(call.id, {
         remote: true,
         remoteParticipant: {
@@ -10032,120 +10290,155 @@ function createGenericHandler(container) {
       throw error;
     }
   }
+  return operation;
+}
+
+/**
+ * Local changes for the 'generic remote' operation.
+ * Performs WebRTC changes to the local side of the call.
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber
+ * @param {string} params.remoteName
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDesc
+ * @param {Object} opInfo.remoteDesc
+ * @throws {Error} Throws when Gateway signaling fails.
+ * @return {Promise<Object>} Tracks affected by the operation.
+ * @throws {Error} Throws when WebRTC negotiation fails.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    WebRTC,
+    CallstackWebrtc,
+    CallstackSDP,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
+  }
+
+  /*
+   * If the remote operation is offering media but the call is locally held,
+   *    then we need to modify the offer to ensure that media does not restart.
+   */
+  const mediaState = (0, _state.getMediaState)(call);
+  const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
+  if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
+    log.debug('Modifying remote offer to prevent resetting media while in local hold.');
+    params.sdp = (0, _setMediaInactive.default)(params.sdp);
+    if (!params.sdp) {
+      log.debug('SDP is either undefined or not a string.');
+      return;
+    }
+    // Update the `mediaDiff` after we modified the SDP.
+    opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
+  }
 
   /**
-   * Operation for handling a new offer SDP in a generic way.
-   * If this operation is used, it means we don't know what the remote operation
-   *    is, so we can follow through with generic WebRTC negotiation without any
-   *    added flair.
-   *
-   * The "media restart" operation will be handled as a generic remote (NO_CHANGE)
-   *    operation. Other operations are negotiations that we don't understand
-   *    (UNKNOWN or other types of NO_CHANGE).
-   *
-   * @method onGenericRemote
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDesc
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when WebRTC negotiation fails.
-   * @throws {Error} Throws when Gateway signaling fails.
-   * @return {Object} Tracks affected by the operation.
+   * Decision: When we receive a remote offer SDP that has a different "session
+   *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
+   * This is a workaround/fix for scenarios where the remote endpoint changes.
+   *    It avoids possible DTLS role conflict issues.
    */
-  async function onGenericRemote(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
+  const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
+  if (!sameSession) {
+    log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
     const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
-    }
-
-    /*
-     * If the remote operation is offering media but the call is locally held,
-     *    then we need to modify the offer to ensure that media does not restart.
-     */
-    const mediaState = (0, _state.getMediaState)(call);
-    const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
-    if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
-      log.debug('Modifying remote offer to prevent resetting media while in local hold.');
-      params.sdp = (0, _setMediaInactive.default)(params.sdp);
-      if (!params.sdp) {
-        log.debug('SDP is either undefined or not a string.');
-        return;
-      }
-      // Update the `mediaDiff` after we modified the SDP.
-      opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
-    }
-
-    /**
-     * Decision: When we receive a remote offer SDP that has a different "session
-     *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
-     * This is a workaround/fix for scenarios where the remote endpoint changes.
-     *    It avoids possible DTLS role conflict issues.
-     */
-    const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
-    if (!sameSession) {
-      log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
-      const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-      await session.recreatePeer();
-    }
-
-    /**
-     * If the offer SDP has a DTLS role of active (which is invalid), change it to
-     *    actpass. This is a workaround for transfer scenarios where the offer SDP
-     *    is the remote endpoint's answer SDP from them answering the call. This
-     *    happens when slow-start is not done for the transfer.
-     */
-    if (params.sdp.includes('setup:active')) {
-      log.debug(`Received offer SDP with active role for call ${call.id}. Changing.`);
-      params.sdp = params.sdp.replace(/setup:active/g, 'setup:actpass');
-    }
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-
-      // Get the list of remote tracks that are changing (either added or removed) as
-      //    part of the remote operation. This is done after `handleOffer` so the
-      //    Transceivers are up-to-date with the changes being offered.
-      let remoteTracks = [];
-      if (!sameSession) {
-        // If the PeerConnection was recreated, then ALL remote tracks will be new.
-        remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
-      }
-      return {
-        remoteTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
+    await session.recreatePeer();
   }
-  return operation;
+
+  /**
+   * If the offer SDP has a DTLS role of active (which is invalid), change it to
+   *    actpass. This is a workaround for transfer scenarios where the offer SDP
+   *    is the remote endpoint's answer SDP from them answering the call. This
+   *    happens when slow-start is not done for the transfer.
+   */
+  if (params.sdp.includes('setup:active')) {
+    log.debug(`Received offer SDP with active role for call ${call.id}. Changing.`);
+    params.sdp = params.sdp.replace(/setup:active/g, 'setup:actpass');
+  }
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+
+  // Data for subsequent stages.
+  return {
+    answer,
+    sameSession,
+    session
+  };
+}
+
+/**
+ * Signalling stage for the 'add media' operation.
+ *
+ * Sends a REST request to the server with the remote answer SDP.
+ * @async
+ * @method signalling
+ * @param {Object} container
+ * @param {Call} call The call being acted on.
+ * @param {Object} params Data returned by the `localChanges` stage.
+ * @param {Object} params.answer
+ * @param {Object} params.sameSession
+ * @param {Object} params.session
+ * @return {Promise<Object>} Tracks affected by the operation.
+ * @throws {Error} Throws when Gateway signaling fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    sameSession,
+    session
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+
+    // Get the list of remote tracks that are changing (either added or removed) as
+    //    part of the remote operation. This is done after `handleOffer` so the
+    //    Transceivers are up-to-date with the changes being offered.
+    let remoteTracks = [];
+    if (!sameSession) {
+      // If the PeerConnection was recreated, then ALL remote tracks will be new.
+      remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
+    }
+    return {
+      remoteTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -10156,12 +10449,12 @@ function createGenericHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = getAvailableCodecsOperation;
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -10215,12 +10508,12 @@ function getAvailableCodecsOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _getAvailableCodecs = _interopRequireDefault(__webpack_require__(46120));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
@@ -10239,15 +10532,15 @@ function initOperation(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
-var _version = __webpack_require__(64510);
+var _version = __webpack_require__(55404);
 var _sdkId = _interopRequireDefault(__webpack_require__(15878));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Libraries.
@@ -10350,7 +10643,6 @@ function getStatsOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -10358,6 +10650,7 @@ exports["default"] = initOperation;
 var _getStats = _interopRequireDefault(__webpack_require__(77279));
 var _validate = _interopRequireDefault(__webpack_require__(58999));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.getStats', () => {
@@ -10412,11 +10705,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -10462,7 +10756,6 @@ function validate(state, callId, trackId) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -10473,6 +10766,7 @@ var _rollbackHold = _interopRequireDefault(__webpack_require__(92766));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(59745));
 var _remoteOffer = _interopRequireDefault(__webpack_require__(46889));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
@@ -10483,7 +10777,8 @@ function initOperation(bottle) {
         // Stages of local operation.
         validate: _validate.default,
         localOffer: (0, _hold.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        rollback: (0, _rollbackHold.default)(bottle.container)
       },
       remote: {
         // Stages of remote operation.
@@ -10536,7 +10831,9 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = holdOperation;
+exports["default"] = createHold;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
@@ -10548,15 +10845,7 @@ var _kandyWebrtc = __webpack_require__(15203);
  * Bottle wrapper for hold call operation.
  * @return {Function}
  */
-function holdOperation(container) {
-  const {
-    context,
-    CallRequests,
-    Callstack,
-    CallstackWebrtc,
-    logManager
-  } = container;
-
+function createHold(container) {
   /**
    * Updates an existing call to have inactive media.
    * Can be used as a "hold" operation for plain webRTC scenarios.
@@ -10565,91 +10854,124 @@ function holdOperation(container) {
    *    signaling operations to update the local and server sessions of a call.
    *    This represents the start of the webRTC renegotiation process for the
    *    local side.
-   * Assumptions:
-   *    1. The call is in the correct state for the operation.
-   *        - The call exists, and is not already locally held.
-   * Responsibilities:
-   *    1. Generate an offer with the media directions as "locally held".
-   *    2. Perform signaling to update the server session with the offer.
-   *    3. Update call state (via redux actions).
-   * @method hold
-   * @param {string}   callId  The ID of the call to hold.
    */
-  async function hold(callId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Holding call.');
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const {
-      wrtcsSessionId,
-      webrtcSessionId,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    } = targetCall;
-    // TODO: Make sure the session is in the correct signaling state to start a
-    //    renegotiation operation.
-    let offer;
-    try {
-      offer = await CallstackWebrtc.generateOffer(webrtcSessionId, {
-        audio: 'inactive',
-        video: 'inactive'
-      }, targetCall.bandwidth);
-    } catch (generateOfferError) {
-      log.debug('Failed to generate SDP offer');
-      throw generateOfferError;
-    }
-    const callInfo = {
-      wrtcsSessionId,
-      id: callId,
-      offer: offer.sdp,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    };
-    try {
-      await CallRequests.updateSession(callInfo);
-    } catch (responseError) {
-      log.info('Failed to hold call.');
-      // Rollback is not supported on safari or for a plan other than unified-plan
-      let rollbackErr;
-      try {
-        await Callstack.utils.rollbackHold(webrtcSessionId);
-      } catch (rollbackError) {
-        log.debug('Automatic hold rollback failed:', rollbackError);
-        rollbackErr = rollbackError;
-      }
+  return async function hold(callId) {
+    const stageData = await localChanges(container, callId);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    await signalling(container, call, stageData);
+  };
+}
 
-      // There is a "browser issue" with Chrome where the remote track is removed from the call when the local description
-      //  offer is set. This track is not recovered during rollback so call remains in an awkward state.
-      //  See comments on PR-3224.
-      const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
-      if (rollbackErr || browser === 'chrome') {
-        // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
-        //  signalling state, Safari does not perform an automatic rollback when a remote offer is
-        //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
-        if (browser === 'safari' || browser === 'chrome') {
-          log.info('Ending call due to unrecoverable state after call hold failure.');
-          // Hangup the call from WebRTC perspective
-          await CallstackWebrtc.closeCall(webrtcSessionId);
-
-          // Cleanup Redux state by sending END_CALL_FINISH action
-          context.dispatch(_actions.callActions.endCallFinish(callId, {
-            isLocal: true,
-            transition: {
-              reasonText: 'Call has ended due to call hold failure.'
-            }
-          }));
-          throw responseError;
-        }
-        log.info('Unable to reset state after hold operation failure, future operations may not work as intended.');
-      }
-      throw responseError;
-    }
-    log.info('Finished local portion of holding call. Waiting on remote response.');
+/**
+ * Local changes for the 'hold' operation.
+ *
+ * Performs WebRTC changes to the local side of the call.
+ * @async
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object}   callId The ID of the call.
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, callId) {
+  const {
+    context,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Holding call.');
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  // TODO: Make sure the session is in the correct signaling state to start a
+  //    renegotiation operation.
+  let offer;
+  try {
+    offer = await CallstackWebrtc.generateOffer(targetCall.webrtcSessionId, {
+      audio: 'inactive',
+      video: 'inactive'
+    }, targetCall.bandwidth);
+  } catch (generateOfferError) {
+    log.debug('Failed to generate SDP offer');
+    throw generateOfferError;
   }
-  return hold;
+  return {
+    offer
+  };
+}
+
+/**
+ * Signalling stage for the 'hold' operation.
+ *
+ * Sends a REST request to the server with the local offer SDP.
+ * @async
+ * @method signalling
+ * @param {Object} container
+ * @param {Call} call The call being acted on.
+ * @param {Object} params Data returned by the `localChanges` stage.
+ * @param {Object} params.offer The local offer SDP generated by the `localChanges` stage.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws an error if the REST request fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    context,
+    CallRequests,
+    Callstack,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const {
+    offer
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    await CallRequests.updateSession({
+      wrtcsSessionId: call.wrtcsSessionId,
+      id: call.id,
+      offer: offer.sdp,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+  } catch (responseError) {
+    log.info('Failed to hold call.');
+    // Rollback is not supported on safari or for a plan other than unified-plan
+    let rollbackErr;
+    try {
+      await Callstack.utils.rollbackHold(call.webrtcSessionId);
+    } catch (rollbackError) {
+      log.debug('Automatic hold rollback failed:', rollbackError);
+      rollbackErr = rollbackError;
+    }
+
+    // There is a "browser issue" with Chrome where the remote track is removed from the call when the local description
+    //  offer is set. This track is not recovered during rollback so call remains in an awkward state.
+    //  See comments on PR-3224.
+    const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
+    if (rollbackErr || browser === 'chrome') {
+      // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
+      //  signalling state, Safari does not perform an automatic rollback when a remote offer is
+      //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
+      if (browser === 'safari' || browser === 'chrome') {
+        log.info('Ending call due to unrecoverable state after call hold failure.');
+        // Hangup the call from WebRTC perspective
+        await CallstackWebrtc.closeCall(call.webrtcSessionId);
+
+        // Cleanup Redux state by sending END_CALL_FINISH action
+        context.dispatch(_actions.callActions.endCallFinish(call.id, {
+          isLocal: true,
+          transition: {
+            reasonText: 'Call has ended due to call hold failure.'
+          }
+        }));
+        throw responseError;
+      }
+      log.info('Unable to reset state after hold operation failure, future operations may not work as intended.');
+    }
+    throw responseError;
+  }
+  log.info('Finished local portion of holding call. Waiting on remote response.');
 }
 
 /***/ }),
@@ -10669,7 +10991,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 function createHoldResponse(container) {
@@ -10795,7 +11117,7 @@ exports["default"] = validate;
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 /*
@@ -10836,24 +11158,21 @@ function validate(state, callId) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createHoldHandler;
+exports["default"] = createRemoteHold;
+__webpack_require__(80978);
 var _webrtc = __webpack_require__(82332);
 var _remoteTracks = _interopRequireWildcard(__webpack_require__(45294));
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
-function createHoldHandler(container) {
+function createRemoteHold(container) {
   const {
     context,
-    WebRTC,
-    CallstackWebrtc,
-    CallRequests,
-    emitEvent,
-    logManager
+    emitEvent
   } = container;
 
   /**
@@ -10876,15 +11195,15 @@ function createHoldHandler(container) {
    * @param {string} params.remoteName The display name of the remote endpoint.
    * @param {Object} opInfo
    * @param {Object} opInfo.mediaDiff
-   * @return {undefined}
+   * @return {Promise<undefined>}
    */
-  async function operation(call, params, opInfo) {
+  return async function operation(call, params, opInfo) {
     try {
-      // Handle the remote hold operation and return the affected local/remote tracks.
+      const stageData = await localChanges(container, call, params, opInfo);
       const {
         localTracks,
         remoteTracks
-      } = await onRemoteHold(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.remoteHoldFinish(call.id, {
         remote: true,
         remoteParticipant: {
@@ -10931,95 +11250,128 @@ function createHoldHandler(container) {
       // Rethrow the error so the CallManager knows of the failure.
       throw error;
     }
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber
+ * @param {string} params.remoteName
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDiff
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    WebRTC,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
   }
 
   /**
-   * Operation for handling a new remote hold offer SDP.
-   *
-   * Offer checks:
-   *    - recreate Peer if different SDP session
-   *
-   * @method onRemoteHold
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @return {Object} Affected local and remote tracks.
+   * Decision: When we receive a remote offer SDP that has a different "session
+   *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
+   * This is a workaround/fix for scenarios where the remote endpoint changes.
+   *    It avoids possible DTLS role conflict issues.
    */
-  async function onRemoteHold(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
-    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
-    }
-
-    /**
-     * Decision: When we receive a remote offer SDP that has a different "session
-     *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
-     * This is a workaround/fix for scenarios where the remote endpoint changes.
-     *    It avoids possible DTLS role conflict issues.
-     */
-    // TODO: Verify that this is needed for remote hold operations.
-    const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
-    if (!sameSession) {
-      log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
-      await session.recreatePeer();
-    }
-
-    // Handle the offer SDP to receive an answer SDP.
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to remote update. Changing state based on the remote operation.');
-
-      // Get the list of remote tracks that are changing (either added or removed) as
-      //    part of the remote operation. This is done after `handleOffer` so the
-      //    Transceivers are up-to-date with the changes being offered.
-      let remoteTracks = [];
-      if (!sameSession) {
-        // If the PeerConnection was recreated, then ALL remote tracks will be new.
-        remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
-      } else {
-        remoteTracks = await (0, _remoteTracks.default)(_constants.OPERATIONS.HOLD, opInfo.mediaDiff, session);
-      }
-
-      // On remote hold, all local tracks become unavailable.
-      const affectedLocalTracks = call.localTracks;
-      return {
-        remoteTracks,
-        localTracks: affectedLocalTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
+  // TODO: Verify that this is needed for remote hold operations.
+  const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
+  if (!sameSession) {
+    log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
+    await session.recreatePeer();
   }
-  return operation;
+
+  // Handle the offer SDP to receive an answer SDP.
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+  return {
+    answer,
+    sameSession,
+    session,
+    opInfo
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call
+ * @param {Object} params
+ * @param {Object} params.answer
+ * @param {Object} params.sameSession
+ * @param {Object} params.session
+ * @param {Object} params.opInfo
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    sameSession,
+    session,
+    opInfo
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to remote update. Changing state based on the remote operation.');
+
+    // Get the list of remote tracks that are changing (either added or removed) as
+    //    part of the remote operation. This is done after `handleOffer` so the
+    //    Transceivers are up-to-date with the changes being offered.
+    let remoteTracks = [];
+    if (!sameSession) {
+      // If the PeerConnection was recreated, then ALL remote tracks will be new.
+      remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
+    } else {
+      remoteTracks = await (0, _remoteTracks.default)(_constants.OPERATIONS.HOLD, opInfo.mediaDiff, session);
+    }
+
+    // On remote hold, all local tracks become unavailable.
+    const affectedLocalTracks = call.localTracks;
+    return {
+      remoteTracks,
+      localTracks: affectedLocalTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -11030,13 +11382,23 @@ function createHoldHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = rollbackHoldOperation;
-var _errors = _interopRequireDefault(__webpack_require__(83437));
+var _selectors = __webpack_require__(11430);
+var _actions = __webpack_require__(6313);
+var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
+var _constants = __webpack_require__(37409);
+var _errors = _interopRequireWildcard(__webpack_require__(83437));
+var _kandyWebrtc = __webpack_require__(15203);
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+// Call plugin.
+
 // Other plugins.
+
+//Libraries
 
 /**
  * Bottle wrapper for "rollback hold" operation.
@@ -11045,7 +11407,10 @@ var _errors = _interopRequireDefault(__webpack_require__(83437));
 function rollbackHoldOperation(container) {
   const {
     logManager,
-    WebRTC
+    WebRTC,
+    CallstackWebrtc,
+    emitEvent,
+    context
   } = container;
 
   /**
@@ -11081,15 +11446,74 @@ function rollbackHoldOperation(container) {
 
     // Rollback the local offer
     let offer;
+    let rollbackErr;
     try {
       offer = await session.rollbackLocalDescription();
     } catch (error) {
       log.debug('Failed to rollback local description offer SDP:', error);
-      throw error;
+      rollbackErr = error;
+    }
+    const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
+    // For HOLD Operation, there is a "browser issue" with Chrome where the remote track is removed from the call when the local description
+    //  offer is set. This track is not recovered during rollback so call remains in an awkward state.
+    //  See comments on PR-3224.
+    if (rollbackErr || browser === 'chrome') {
+      await handleRollbackFailure(sessionId, browser);
+    }
+    if (rollbackErr) {
+      throw rollbackErr;
     }
     return {
       offer
     };
+  }
+  async function handleRollbackFailure(sessionId, browser) {
+    const call = (0, _selectors.getCallByWebrtcSessionId)(context.getState(), sessionId);
+    const log = logManager.getLogger('CALL', call.id);
+
+    // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
+    //  signalling state, Safari does not perform an automatic rollback when a remote offer is
+    //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
+    if (browser === 'safari' || browser === 'chrome') {
+      log.info('Ending call due to unrecoverable state after call hold failure.');
+      // Hangup the call from WebRTC perspective
+      await CallstackWebrtc.closeCall(call.webrtcSessionId);
+      // Cleanup Redux state by sending END_CALL_FINISH action
+      const reasonText = 'Call has ended due to call hold failure.';
+      context.dispatch(_actions.callActions.endCallFinish(call.id, {
+        isLocal: true,
+        transition: {
+          reasonText
+        }
+      }));
+
+      // 1- 'call operation' event
+      emitEvent(eventTypes.CALL_OPERATION, {
+        callId: call.id,
+        isLocal: true,
+        operation: _constants.OPERATIONS.END,
+        transition: _constants.OP_TRANSITIONS.FINISH,
+        previous: {},
+        error: undefined
+      });
+
+      // 2- 'call state change' event, which updates the state.
+      emitEvent(eventTypes.CALL_STATE_CHANGE, {
+        callId: call.id,
+        previous: {
+          state: call.state,
+          localHold: call.localHold,
+          remoteHold: call.remoteHold
+        },
+        transition: {
+          reasonText
+        },
+        error: new _errors.default({
+          message: reasonText,
+          code: _errors.callCodes.GENERIC_ERROR
+        })
+      });
+    }
   }
   return rollbackHold;
 }
@@ -11106,6 +11530,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = callIceCollectionCheckOperation;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _actions = __webpack_require__(6313);
 var _constants = __webpack_require__(60683);
@@ -11113,7 +11538,7 @@ var _constants2 = __webpack_require__(42750);
 var _eventTypes = __webpack_require__(55166);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -11292,12 +11717,12 @@ function callIceCollectionCheckOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _iceCollectionCheck = _interopRequireDefault(__webpack_require__(20398));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
@@ -11312,7 +11737,6 @@ function initOperation(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -11321,6 +11745,7 @@ var _iceRestart = _interopRequireDefault(__webpack_require__(11708));
 var _validate = _interopRequireDefault(__webpack_require__(96093));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(96483));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.iceRestart', () => {
@@ -11374,7 +11799,9 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = iceRestartOperation;
+exports["default"] = createIceRestart;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 var _call = __webpack_require__(12442);
 var _selectors2 = __webpack_require__(46942);
@@ -11383,7 +11810,7 @@ var _utils = __webpack_require__(54866);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -11394,14 +11821,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * Bottle wrapper for iceRestart call operation.
  * @return {Function}
  */
-function iceRestartOperation(container) {
-  const {
-    context,
-    CallRequests,
-    WebRTC,
-    CallstackWebrtc,
-    logManager
-  } = container;
+function createIceRestart(container) {
   /**
    * Updates an existing call with unchanged media to trigger an ICE restart and renegotiation.
    *
@@ -11409,122 +11829,161 @@ function iceRestartOperation(container) {
    *    signaling operations to update the local and server sessions of a call.
    *    This represents the start of the webRTC renegotiation process for the
    *    local side.
-   * Assumptions:
-   *    1. The call is in the correct state for the operation.
-   *        - The call exists.
-   * Responsibilities:
-   *    1. Flag the Peer to restart ICE.
-   *    2. Generate an offer with unchanged media directions.
-   *    3. Perform signaling to update the server session with the offer.
-   *    4. Update call state (via redux actions).
-   * @method iceRestart
-   * @param {string} callId The id of the call having it's media restarted.
    */
-  async function iceRestart(callId) {
-    const call = (0, _selectors.getCallById)(context.getState(), callId);
+  return async function iceRestart(callId) {
+    const stageData = await localChanges(container, callId);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    await signalling(container, call, stageData);
+  };
+}
 
-    // Get some call data.
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, callId) {
+  const {
+    context,
+    WebRTC,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const call = (0, _selectors.getCallById)(context.getState(), callId);
+
+  // Get some call data.
+  const {
+    webrtcSessionId,
+    wrtcsSessionId,
+    bandwidth,
+    isAnonymous,
+    account,
+    localHold,
+    customParameters,
+    customBodies
+  } = call;
+  const session = await WebRTC.sessionManager.get(webrtcSessionId);
+  const dtlsRole = await session.getDtlsRole();
+
+  // The passive side of the call should wait a short amount of time before restarting media connection
+  // to avoid a glare scenario where both sides of the call try to restart the media connection
+  // at the same time.
+  if (dtlsRole === 'passive') {
     const {
-      webrtcSessionId,
-      wrtcsSessionId,
-      bandwidth,
-      isAnonymous,
-      account,
-      localHold,
-      customParameters,
-      customBodies
-    } = call;
-    const session = await WebRTC.sessionManager.get(webrtcSessionId);
-    const dtlsRole = await session.getDtlsRole();
+      mediaConnectionRetryDelay
+    } = (0, _selectors.getOptions)(context.getState());
+    await (0, _utils2.delay)(mediaConnectionRetryDelay);
+  }
+  const log = logManager.getLogger('CALL', callId);
 
-    // The passive side of the call should wait a short amount of time before restarting media connection
-    // to avoid a glare scenario where both sides of the call try to restart the media connection
-    // at the same time.
-    if (dtlsRole === 'passive') {
-      const {
-        mediaConnectionRetryDelay
-      } = (0, _selectors.getOptions)(context.getState());
-      await (0, _utils2.delay)(mediaConnectionRetryDelay);
-    }
-    const log = logManager.getLogger('CALL', callId);
+  // Tell the RTCPeerConnection to restart the ICE connection as part of the
+  //    next negotiation.
+  try {
+    await session.restartIce();
+  } catch (error) {
+    log.debug('Peer restartIce function not available. Restarting ICE with createOffer instead.');
+  }
 
-    // Tell the RTCPeerConnection to restart the ICE connection as part of the
-    //    next negotiation.
-    try {
-      await session.restartIce();
-    } catch (error) {
-      log.debug('Peer restartIce function not available. Restarting ICE with createOffer instead.');
-    }
-
-    // Before doing the negotiation for ICE Restart, make sure we have network.
-    const platform = (0, _selectors2.getPlatform)(context.getState());
-    const {
-      connected: isConnected
-    } = (0, _selectors3.getConnectionState)(context.getState(), platform);
+  // Before doing the negotiation for ICE Restart, make sure we have network.
+  const platform = (0, _selectors2.getPlatform)(context.getState());
+  const {
+    connected: isConnected
+  } = (0, _selectors3.getConnectionState)(context.getState(), platform);
+  if (!isConnected) {
+    log.debug('Websocket not connected; waiting for reconnect before performing media restart.');
+    const isConnected = await (0, _utils.waitForReconnect)(container);
     if (!isConnected) {
-      log.debug('Websocket not connected; waiting for reconnect before performing media restart.');
-      const isConnected = await (0, _utils.waitForReconnect)(container);
-      if (!isConnected) {
-        log.info('Subscription lost; stopping media restart attempt.');
-        throw new _errors.default({
-          code: _errors.subscriptionCodes.WS_CONNECTION_ERROR,
-          message: 'No subscription for operation.'
-        });
-      }
-    }
-    log.info('Performing call renegotiation to reconnect media connection.');
-
-    // Make sure we have the right media directions in the negotiation.
-    //    We don't want to accidentally unhold media while on local hold.
-    const mediaDirections = {
-      audio: localHold ? 'inactive' : 'sendrecv',
-      video: localHold ? 'inactive' : 'sendrecv'
-    };
-
-    // If we're not on hold nor sending any audio or video, change the media direction(s) to recvonly to
-    //  prevent the other side from getting empty tracks.
-    if (!localHold) {
-      const localTracks = (0, _call.getLocalTracks)(context, callId);
-      mediaDirections.audio = localTracks.some(track => track.kind === 'audio') ? 'sendrecv' : 'recvonly';
-      mediaDirections.video = localTracks.some(track => track.kind === 'video') ? 'sendrecv' : 'recvonly';
-    }
-    const callInfo = {
-      wrtcsSessionId,
-      id: callId,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    };
-
-    // Backwards compatibility - can remove after KJS-2044
-    const otherOptions = {
-      iceRestart: true
-    };
-
-    // Generate the offer
-    let offer;
-    try {
-      offer = await CallstackWebrtc.generateOffer(webrtcSessionId, mediaDirections, bandwidth, otherOptions);
-      callInfo.offer = offer.sdp;
-    } catch (err) {
-      log.debug('Failed to generate offer.');
+      log.info('Subscription lost; stopping media restart attempt.');
       throw new _errors.default({
-        code: _errors.callCodes.INVALID_OFFER,
-        message: 'Failed to generate SDP offer'
+        code: _errors.subscriptionCodes.WS_CONNECTION_ERROR,
+        message: 'No subscription for operation.'
       });
     }
-
-    // Update the server
-    try {
-      await CallRequests.updateSession(callInfo);
-      log.info('Finished local portion of media restart. Waiting on remote response.');
-    } catch (error) {
-      log.info('Failed to renegotiate call.');
-      throw error;
-    }
   }
-  return iceRestart;
+  log.info('Performing call renegotiation to reconnect media connection.');
+
+  // Make sure we have the right media directions in the negotiation.
+  //    We don't want to accidentally unhold media while on local hold.
+  const mediaDirections = {
+    audio: localHold ? 'inactive' : 'sendrecv',
+    video: localHold ? 'inactive' : 'sendrecv'
+  };
+
+  // If we're not on hold nor sending any audio or video, change the media direction(s) to recvonly to
+  //  prevent the other side from getting empty tracks.
+  if (!localHold) {
+    const localTracks = (0, _call.getLocalTracks)(context, callId);
+    mediaDirections.audio = localTracks.some(track => track.kind === 'audio') ? 'sendrecv' : 'recvonly';
+    mediaDirections.video = localTracks.some(track => track.kind === 'video') ? 'sendrecv' : 'recvonly';
+  }
+  const callInfo = {
+    wrtcsSessionId,
+    id: callId,
+    isAnonymous,
+    account,
+    customParameters,
+    customBodies
+  };
+
+  // Backwards compatibility - can remove after KJS-2044
+  const otherOptions = {
+    iceRestart: true
+  };
+
+  // Generate the offer
+  let offer;
+  try {
+    offer = await CallstackWebrtc.generateOffer(webrtcSessionId, mediaDirections, bandwidth, otherOptions);
+    callInfo.offer = offer.sdp;
+  } catch (err) {
+    log.debug('Failed to generate offer.');
+    throw new _errors.default({
+      code: _errors.callCodes.INVALID_OFFER,
+      message: 'Failed to generate SDP offer'
+    });
+  }
+  return {
+    offer
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call
+ * @param {Object} params
+ * @param {Object} params.offer
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    offer
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+
+  // Update the server
+  try {
+    await CallRequests.updateSession({
+      wrtcsSessionId: call.wrtcsSessionId,
+      id: call.id,
+      offer: offer.sdp,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished local portion of media restart. Waiting on remote response.');
+  } catch (error) {
+    log.info('Failed to renegotiate call.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -11545,7 +12004,7 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 function createMediaRestartResponse(container) {
@@ -11655,7 +12114,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -11744,7 +12203,6 @@ function ignoreOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -11752,6 +12210,7 @@ exports["default"] = initOperation;
 var _ignore = _interopRequireDefault(__webpack_require__(96123));
 var _validate = _interopRequireDefault(__webpack_require__(83628));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.ignore', () => {
@@ -11806,11 +12265,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _constants = __webpack_require__(60683);
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -11855,7 +12315,6 @@ function validate(state, callId) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -12069,6 +12528,7 @@ var _sendRingingFeedback = _interopRequireDefault(__webpack_require__(40367));
 var _musicOnHold = _interopRequireDefault(__webpack_require__(46092));
 var _genericRemote = _interopRequireDefault(__webpack_require__(53894));
 var _slowStart = _interopRequireDefault(__webpack_require__(99051));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 
 /***/ }),
 
@@ -12078,7 +12538,6 @@ var _slowStart = _interopRequireDefault(__webpack_require__(99051));
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -12088,23 +12547,26 @@ var _validate = _interopRequireDefault(__webpack_require__(85344));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(35845));
 var _remoteSuccess = _interopRequireDefault(__webpack_require__(43271));
 var _remoteFailure = _interopRequireDefault(__webpack_require__(28522));
+var _joinedFailure = _interopRequireDefault(__webpack_require__(22033));
+var _Join = _interopRequireDefault(__webpack_require__(51994));
 var _constants = __webpack_require__(37409);
-// Operations.
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+// Stages.
 
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
   bottle.factory('Callstack.operations.join', () => {
-    const negFactory = bottle.container.Callstack.models.Negotiation;
+    const multiFactory = bottle.container.Callstack.models.MultiCall;
 
     /**
      * Factory function for a LocalJoin operation.
      * @method LocalJoin
-     * @param {string} callId ID for the call this operation will affect.
+     * @param {Array<Object>} callInfo List of calls affected by this operation.
      * @return {Operation} An instance of a local join operation.
      */
-    function LocalJoin(callId, data) {
-      return negFactory.instance({
+    function LocalJoin(callInfo) {
+      return multiFactory.instance({
         // Operation meta-data.
         type: _constants.OPERATIONS.JOIN,
         /*
@@ -12119,7 +12581,6 @@ function initOperation(bottle) {
          *    needs to "clean-up" the operation for all 3 calls.
          */
         isNegotiation: false,
-        isLocal: true,
         // Operation methods.
         stages: {
           validate: _validate.default,
@@ -12128,11 +12589,12 @@ function initOperation(bottle) {
           remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
           // Response handlers for the existing calls.
           remoteSuccess: (0, _remoteSuccess.default)(bottle.container),
-          remoteFailure: (0, _remoteFailure.default)(bottle.container)
-        }
+          remoteFailure: (0, _remoteFailure.default)(bottle.container),
+          joinedFailure: (0, _joinedFailure.default)(bottle.container)
+        },
+        createFlow: _Join.default
       }, {
-        callId,
-        data
+        callInfo
       });
     }
     return {
@@ -12152,7 +12614,7 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = joinOperation;
+exports["default"] = createJoin;
 var _constants = __webpack_require__(60683);
 var _actions = __webpack_require__(6313);
 var _call = __webpack_require__(12442);
@@ -12162,7 +12624,7 @@ var _constants2 = __webpack_require__(37409);
 var _constants3 = __webpack_require__(42750);
 var _selectors2 = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -12171,9 +12633,14 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * Bottle wrapper for join call operation.
  * @return {Function}
  */
-function joinOperation(container) {
+function createJoin(container) {
+  return async function join(calls, from) {
+    const stageData = await localChanges(container, calls, from);
+    await signalling(container, calls, stageData);
+  };
+}
+async function localChanges(container, calls, from) {
   const {
-    CallRequests,
     CallReporter,
     Callstack,
     context,
@@ -12183,208 +12650,287 @@ function joinOperation(container) {
   const {
     setupOutgoingSession
   } = Callstack.utils;
+  const callId = calls[0].id;
+  const otherCallId = calls[1].id;
+  const newCallId = calls[2].id;
+  const log = logManager.getLogger('CALL', callId);
+  log.info(`Performing join on calls ${callId} and ${otherCallId}.`);
+  const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const otherCall = (0, _selectors.getCallById)(context.getState(), otherCallId);
+
+  // Determine combined participant name if any
+  const currentCallRemoteName = currentCall.remoteParticipant.displayName;
+  const otherCallRemoteName = otherCall.remoteParticipant.displayName;
+  let participantName;
+  if (currentCallRemoteName && otherCallRemoteName) {
+    participantName = `${currentCallRemoteName},${otherCallRemoteName}`;
+  } else if (currentCallRemoteName) {
+    participantName = `${currentCallRemoteName},`;
+  } else if (otherCallRemoteName) {
+    participantName = `,${otherCallRemoteName}`;
+  }
+
+  // Determine combined remote participant address
+  const currentCallRemoteAddress = currentCall.direction === _constants.CALL_DIRECTION.OUTGOING ? currentCall.to : currentCall.from;
+  const otherCallRemoteAddress = otherCall.direction === _constants.CALL_DIRECTION.OUTGOING ? otherCall.to : otherCall.from;
+  const participantAddress = `${currentCallRemoteAddress},${otherCallRemoteAddress}`;
+
+  // User the audio constraints from the current call and set video to false.
+  const mediaConstraints = {
+    video: false,
+    audio: currentCall.mediaConstraints ? currentCall.mediaConstraints.audio || true : true
+  };
+
+  // Use the bandwidth constraints from the current call
+  const bandwidth = (0, _call.checkBandwidthControls)(currentCall.bandwidth);
+  const dscpControls = currentCall.dscpControls;
+  const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
+  const {
+    trickleIceMode,
+    defaultPeerConfig,
+    removeBundling,
+    serverTurnCredentials
+  } = (0, _selectors.getOptions)(context.getState());
+
+  // Get the call report event ID
+  const callReport = CallReporter.getReport(newCallId);
+  const operationEvent = callReport.findLastOngoingEvent(_constants3.REPORTER_OPERATION_EVENTS_MAP.JOIN);
+  const operation = currentCall.currentOperations.find(op => op.type === _constants2.OPERATIONS.JOIN);
+
+  // TechDebt TODO: The joined call should be put in state by the API. That way it exists before the CallManager
+  //    starts doing its thing, and it doesn't need so much special-handling.
+  // Create the new joined call in state right away
+  context.dispatch(_actions.callActions.joinStart(newCallId, {
+    // The media constraints this call has.
+    mediaConstraints,
+    // The combined addresses of the 2 other participants in the joined call.
+    participantAddress,
+    // The combined names of the 2 other participants in the joined call.
+    participantName,
+    // This call's current user
+    from,
+    // The ids of the calls that were used for joining.
+    usedCallIds: [currentCall.id, otherCall.id],
+    // The custom parameters of the combined call.
+    customParameters: currentCall.customParameters,
+    // The DSCP Controls of the combined call.
+    dscpControls,
+    // The bandwidth from the original call.
+    bandwidth,
+    // The call report event id for this operation
+    eventId: operationEvent.id,
+    operationId: operation.id
+  }));
+  let webrtcInfo;
+  try {
+    webrtcInfo = await setupOutgoingSession(mediaConstraints, {
+      defaultPeerConfig,
+      turnInfo,
+      trickleIceMode,
+      dscpControls,
+      removeBundling,
+      bandwidth,
+      callId: newCallId,
+      serverTurnCredentials
+    });
+  } catch (error) {
+    // An error occurred while trying to setup the WebRTC portion of the joined call.
+    //    Report the error and mark the call as ended.
+    log.info(`Failed to initiate call. Changing to ${_constants.CALL_STATES.ENDED}.`);
+    context.dispatch(_actions.callActions.joinFinish(newCallId, {
+      usedCallIds: [currentCall.id, otherCall.id],
+      error
+    }));
+    emitEvent(eventTypes.CALL_STATE_CHANGE, {
+      callId: newCallId,
+      previous: {
+        // JOIN_START action sets the new call's state to initiating and holds to false
+        state: _constants.CALL_STATES.INITIATING,
+        localHold: false,
+        remoteHold: false
+      },
+      error
+    });
+    // Emits a call operation event only for the new call
+    emitEvent(eventTypes.CALL_OPERATION, {
+      callId: newCallId,
+      isLocal: true,
+      operation: _constants2.OPERATIONS.JOIN,
+      transition: _constants2.OP_TRANSITIONS.FINISH,
+      previous: undefined,
+      error
+    });
+    throw error;
+  }
+  return {
+    webrtcInfo
+  };
+}
+async function signalling(container, calls, params) {
+  const {
+    CallRequests,
+    context,
+    emitEvent,
+    logManager
+  } = container;
+  const {
+    webrtcInfo
+  } = params;
+  const callId = calls[0].id;
+  const otherCallId = calls[1].id;
+  const newCallId = calls[2].id;
+  const log = logManager.getLogger('CALL', callId);
+  const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const otherCall = (0, _selectors.getCallById)(context.getState(), otherCallId);
+  const {
+    offerSdp,
+    sessionId,
+    mediaIds
+  } = webrtcInfo;
+
+  // Collect the information needed to make the request.
+  const callInfo = {
+    id: callId,
+    wrtcsSessionId: currentCall.wrtcsSessionId,
+    otherWrtcsSessionId: otherCall.wrtcsSessionId,
+    sdp: offerSdp,
+    // Use the customParameters of the current call
+    customParameters: currentCall.customParameters
+  };
+  let newWrtcsSessionId;
+  try {
+    newWrtcsSessionId = await CallRequests.joinSessions(callInfo);
+  } catch (error) {
+    log.info('Failed to join call.');
+    context.dispatch(_actions.callActions.joinFinish(newCallId, {
+      error,
+      usedCallIds: [callId, otherCallId]
+    }));
+    emitEvent(eventTypes.CALL_STATE_CHANGE, {
+      callId: newCallId,
+      previous: {
+        // JOIN_START action sets the new call's state to initiating and holds to false
+        state: _constants.CALL_STATES.INITIATING,
+        localHold: false,
+        remoteHold: false
+      },
+      error
+    });
+    // Emits a call operation event only for the new call
+    emitEvent(eventTypes.CALL_OPERATION, {
+      callId: newCallId,
+      isLocal: true,
+      operation: _constants2.OPERATIONS.JOIN,
+      transition: _constants2.OP_TRANSITIONS.FINISH,
+      previous: undefined,
+      error
+    });
+    throw error;
+  }
+  log.info('Finished local portion of join. Waiting on remote response.');
+
+  // Get the list of all local tracks on the Session. Add the local tracks
+  //    to call state now so they are available while the call rings.
+  const sessionState = (0, _selectors2.getSessionById)(context.getState(), sessionId);
+  // Dispatch an action to do the following:
+  //  - create a new "joined" call in state
+  //  - update calls used in the join to have isPending property
+  context.dispatch(_actions.callActions.pendingJoin(newCallId, {
+    // The ID that the backend uses to track this webRTC session.
+    wrtcsSessionId: newWrtcsSessionId,
+    // The ID that the webRTC stack uses to track this webRTC session.
+    webrtcSessionId: sessionId,
+    // The local Media object associated with this call.
+    mediaIds,
+    // The ids of the calls that were used for joining.
+    usedCallIds: [currentCall.id, otherCall.id],
+    localTracks: sessionState.localTracks,
+    // Set the state of the joined call to Initiated.
+    state: _constants.CALL_STATES.INITIATED
+  }));
+  emitEvent(eventTypes.CALL_JOIN, {
+    callId: newCallId
+  });
+
+  // Tell the application that local tracks are available on the call now.
+  emitEvent(eventTypes.CALL_TRACKS_ADDED, {
+    callId: newCallId,
+    trackIds: sessionState.localTracks
+  });
+}
+
+/***/ }),
+
+/***/ 22033:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = createHandler;
+var _actions = __webpack_require__(6313);
+var _constants = __webpack_require__(60683);
+var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
+var _errors = _interopRequireWildcard(__webpack_require__(83437));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+// Call plugin.
+
+// Other plugins.
+
+function createHandler(container) {
+  const {
+    context,
+    CallstackWebrtc,
+    emitEvent,
+    logManager
+  } = container;
 
   /**
+   * A "session failure" notification has been received for the new, joined call.
+   *    Clean-up the call and mark it as Ended.
    *
-   * Joins 2 ongoing calls.
-   *
-   * This operation handles the WebRTC and signalling portions of joining 2 ongoing calls
-   * Validations:
-   *    1. The calls are in the 'On Hold' state
-   * Responsibilities:
-   *    1. Perform the signaling to tell the server that we want to join 2 ongoing calls.
-   *    2. Update call state (via redux actions).
-   * @method join
-   * @param {string} callId The ID of the call.
-   * @param {string} otherCallId The ID of the other call being joined.
-   * @param {string} newCallId The IF of the new joined call.
-   * @param {string} from The username of the account joining the calls.
+   * @method joinedFailure
+   * @param {Object} call The joined call for the operation.
+   * @param {Object} params Parameters describing the incoming call.
+   * @param {string} [params.reasonText] Human-readable explanation for the call change.
+   * @param {string} [params.statusCode] Code representing the reason for the call change.
+   * @emits call#call:stateChange Error event for operation; no actual state change.
+   * @return {Promise<BasicError>}
    */
-  async function join(callId, otherCallId, newCallId, from) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info(`Performing join on calls ${callId} and ${otherCallId}.`);
-    const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const otherCall = (0, _selectors.getCallById)(context.getState(), otherCallId);
-
-    // Determine combined participant name if any
-    const currentCallRemoteName = currentCall.remoteParticipant.displayName;
-    const otherCallRemoteName = otherCall.remoteParticipant.displayName;
-    let participantName;
-    if (currentCallRemoteName && otherCallRemoteName) {
-      participantName = `${currentCallRemoteName},${otherCallRemoteName}`;
-    } else if (currentCallRemoteName) {
-      participantName = `${currentCallRemoteName},`;
-    } else if (otherCallRemoteName) {
-      participantName = `,${otherCallRemoteName}`;
-    }
-
-    // Determine combined remote participant address
-    const currentCallRemoteAddress = currentCall.direction === _constants.CALL_DIRECTION.OUTGOING ? currentCall.to : currentCall.from;
-    const otherCallRemoteAddress = otherCall.direction === _constants.CALL_DIRECTION.OUTGOING ? otherCall.to : otherCall.from;
-    const participantAddress = `${currentCallRemoteAddress},${otherCallRemoteAddress}`;
-
-    // User the audio constraints from the current call and set video to false.
-    const mediaConstraints = {
-      video: false,
-      audio: currentCall.mediaConstraints ? currentCall.mediaConstraints.audio || true : true
-    };
-
-    // Use the bandwidth constraints from the current call
-    const bandwidth = (0, _call.checkBandwidthControls)(currentCall.bandwidth);
-    const dscpControls = currentCall.dscpControls;
-    const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
-    const {
-      trickleIceMode,
-      defaultPeerConfig,
-      removeBundling,
-      serverTurnCredentials
-    } = (0, _selectors.getOptions)(context.getState());
-
-    // Get the call report event ID
-    const callReport = CallReporter.getReport(newCallId);
-    const operationEvent = callReport.findLastOngoingEvent(_constants3.REPORTER_OPERATION_EVENTS_MAP.JOIN);
-    const operation = currentCall.currentOperations.find(op => op.type === _constants2.OPERATIONS.JOIN);
-
-    // Create the new joined call in state right away
-    context.dispatch(_actions.callActions.joinStart(newCallId, {
-      // The media constraints this call has.
-      mediaConstraints,
-      // The combined addresses of the 2 other participants in the joined call.
-      participantAddress,
-      // The combined names of the 2 other participants in the joined call.
-      participantName,
-      // This call's current user
-      from,
-      // The ids of the calls that were used for joining.
-      usedCallIds: [currentCall.id, otherCall.id],
-      // The custom parameters of the combined call.
-      customParameters: currentCall.customParameters,
-      // The DSCP Controls of the combined call.
-      dscpControls,
-      // The bandwidth from the original call.
-      bandwidth,
-      // The call report event id for this operation
-      eventId: operationEvent.id,
-      operationId: operation.id
-    }));
-    let webrtcInfo;
-    try {
-      webrtcInfo = await setupOutgoingSession(mediaConstraints, {
-        defaultPeerConfig,
-        turnInfo,
-        trickleIceMode,
-        dscpControls,
-        removeBundling,
-        bandwidth,
-        callId: newCallId,
-        serverTurnCredentials
-      });
-    } catch (error) {
-      // An error occurred while trying to setup the WebRTC portion of the joined call.
-      //    Report the error and mark the call as ended.
-      log.info(`Failed to initiate call. Changing to ${_constants.CALL_STATES.ENDED}.`);
-      context.dispatch(_actions.callActions.joinFinish(newCallId, {
-        usedCallIds: [currentCall.id, otherCall.id],
-        error
-      }));
-      emitEvent(eventTypes.CALL_STATE_CHANGE, {
-        callId: newCallId,
-        previous: {
-          // JOIN_START action sets the new call's state to initiating and holds to false
-          state: _constants.CALL_STATES.INITIATING,
-          localHold: false,
-          remoteHold: false
-        },
-        error
-      });
-      // Emits a call operation event only for the new call
-      emitEvent(eventTypes.CALL_OPERATION, {
-        callId: newCallId,
-        isLocal: true,
-        operation: _constants2.OPERATIONS.JOIN,
-        transition: _constants2.OP_TRANSITIONS.FINISH,
-        previous: undefined,
-        error
-      });
-      throw error;
-    }
-    const {
-      offerSdp,
-      sessionId,
-      mediaIds
-    } = webrtcInfo;
-
-    // Collect the information needed to make the request.
-    const callInfo = {
-      id: callId,
-      wrtcsSessionId: currentCall.wrtcsSessionId,
-      otherWrtcsSessionId: otherCall.wrtcsSessionId,
-      sdp: offerSdp,
-      // Use the customParameters of the current call
-      customParameters: currentCall.customParameters
-    };
-    let newWrtcsSessionId;
-    try {
-      newWrtcsSessionId = await CallRequests.joinSessions(callInfo);
-    } catch (error) {
-      log.info('Failed to join call.');
-      context.dispatch(_actions.callActions.joinFinish(newCallId, {
-        error,
-        usedCallIds: [callId, otherCallId]
-      }));
-      emitEvent(eventTypes.CALL_STATE_CHANGE, {
-        callId: newCallId,
-        previous: {
-          // JOIN_START action sets the new call's state to initiating and holds to false
-          state: _constants.CALL_STATES.INITIATING,
-          localHold: false,
-          remoteHold: false
-        },
-        error
-      });
-      // Emits a call operation event only for the new call
-      emitEvent(eventTypes.CALL_OPERATION, {
-        callId: newCallId,
-        isLocal: true,
-        operation: _constants2.OPERATIONS.JOIN,
-        transition: _constants2.OP_TRANSITIONS.FINISH,
-        previous: undefined,
-        error
-      });
-      throw error;
-    }
-    log.info('Finished local portion of join. Waiting on remote response.');
-
-    // Get the list of all local tracks on the Session. Add the local tracks
-    //    to call state now so they are available while the call rings.
-    const sessionState = (0, _selectors2.getSessionById)(context.getState(), sessionId);
-    // Dispatch an action to do the following:
-    //  - create a new "joined" call in state
-    //  - update calls used in the join to have isPending property
-    context.dispatch(_actions.callActions.pendingJoin(newCallId, {
-      // The ID that the backend uses to track this webRTC session.
-      wrtcsSessionId: newWrtcsSessionId,
-      // The ID that the webRTC stack uses to track this webRTC session.
-      webrtcSessionId: sessionId,
-      // The local Media object associated with this call.
-      mediaIds,
-      // The ids of the calls that were used for joining.
-      usedCallIds: [currentCall.id, otherCall.id],
-      localTracks: sessionState.localTracks,
-      // Set the state of the joined call to Initiated.
-      state: _constants.CALL_STATES.INITIATED
-    }));
-    emitEvent(eventTypes.CALL_JOIN, {
-      callId: newCallId
+  return async function joinedFailure(call, params) {
+    const reasonText = params.reasonText || _constants.COMPLEX_OPERATION_MESSAGES.JOIN_FAILURE;
+    const statusCode = params.statusCode || _constants.STATUS_CODES.JOIN_FAILURE;
+    const log = logManager.getLogger('CALL', call.id);
+    log.info('Received call operation failed notice; handling.', {
+      wrtcsSessionId: call.wrtcsSessionId
     });
-
-    // Tell the application that local tracks are available on the call now.
-    emitEvent(eventTypes.CALL_TRACKS_ADDED, {
-      callId: newCallId,
-      trackIds: sessionState.localTracks
+    log.debug(`Processing as a local join failure (${statusCode}).`);
+    await CallstackWebrtc.closeCall(call.webrtcSessionId);
+    const error = new _errors.default({
+      message: `Join operation failed: ${reasonText} (${statusCode})`,
+      code: _errors.callCodes.GENERIC_ERROR
     });
-  }
-  return join;
+    context.dispatch(_actions.callActions.endCallFinish(call.id, {
+      error
+    }));
+
+    // Notify the app that there has been a call state change
+    emitEvent(eventTypes.CALL_STATE_CHANGE, {
+      callId: call.id,
+      previous: {
+        state: call.state,
+        localHold: true,
+        remoteHold: false
+      },
+      error
+    });
+    log.info('Finished handling call operation failed notice.');
+    return error;
+  };
 }
 
 /***/ }),
@@ -12395,12 +12941,12 @@ function joinOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(43658));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * The `join` operation creates a new outgoing call (the "joined" call). This function
  *    handles the remote answer SDP for that new call. (The two existing calls do
@@ -12430,7 +12976,7 @@ var _constants = __webpack_require__(60683);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -12615,17 +13161,18 @@ var _constants = __webpack_require__(60683);
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
- * @param {Object} call The call being operated on.
+ * @param {Array<Object>} calls Array of calls this operation will affect.
  * @return {BasicError|undefined} If operation cannot be performed, returns an error.
  */
 
-function validate(state, callId, otherCallId, newCallId, from) {
-  const primaryCall = (0, _selectors.getCallById)(state, callId);
-  const secondaryCall = (0, _selectors.getCallById)(state, otherCallId);
+function validate(state, calls, from) {
+  const primaryCall = (0, _selectors.getCallById)(state, calls[0].id);
+  const secondaryCall = (0, _selectors.getCallById)(state, calls[1].id);
+
   /*
    * `join` operation validation:
    *    1. First Call must exist.
@@ -12664,7 +13211,6 @@ function validate(state, callId, otherCallId, newCallId, from) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -12674,9 +13220,13 @@ var _remoteAnswer = _interopRequireDefault(__webpack_require__(43658));
 var _callStatusUpdateRinging = _interopRequireDefault(__webpack_require__(43846));
 var _receiveEarlyMedia = _interopRequireDefault(__webpack_require__(46105));
 var _incomingCall = _interopRequireDefault(__webpack_require__(39494));
+var _RemoteCall = _interopRequireDefault(__webpack_require__(94131));
+var _LocalNegotiation = _interopRequireDefault(__webpack_require__(95553));
+var _RemoteUpdate = __webpack_require__(7913);
 var _setupIncomingCall = _interopRequireDefault(__webpack_require__(10418));
 var _setupOutgoingSession = _interopRequireDefault(__webpack_require__(71290));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Local operation stages.
 
 // Remote operation stages.
@@ -12719,7 +13269,18 @@ function initOperation(bottle) {
         type: _constants.OPERATIONS.MAKE,
         isLocal: true,
         // Operation methods.
-        stages: Callstack.stages.make.local
+        stages: Callstack.stages.make.local,
+        /*
+         * The `make` operation is a special-case negotiation. The "main" operation
+         *    follow the negotiation flow, but it can also receive updates while in PENDING
+         *    state. Merge together the two flows to create the `make` flow.
+         */
+        createFlow: function () {
+          return {
+            ...(0, _LocalNegotiation.default)(...arguments),
+            receiveUpdate: (0, _RemoteUpdate.createPending)(...arguments).start
+          };
+        }
       }, {
         callId
       });
@@ -12728,7 +13289,8 @@ function initOperation(bottle) {
       return updateFactory.instance({
         type: _constants.OPERATIONS.MAKE,
         isLocal: false,
-        stages: Callstack.stages.make.remote
+        stages: Callstack.stages.make.remote,
+        createFlow: _RemoteCall.default
       }, {
         callId
       });
@@ -12753,7 +13315,9 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createMakeOperation;
+exports["default"] = createMake;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _actions = __webpack_require__(6313);
 var _eventTypes = __webpack_require__(55166);
 var _selectors = __webpack_require__(11430);
@@ -12768,19 +13332,7 @@ var _selectors2 = __webpack_require__(30105);
  * Bottle wrapper for the local portion of the make operation.
  * @return {Function}
  */
-function createMakeOperation(container) {
-  const {
-    context,
-    CallRequests,
-    Callstack,
-    CallstackWebrtc,
-    emitEvent,
-    logManager
-  } = container;
-  const {
-    setupOutgoingSession
-  } = Callstack.utils;
-
+function createMake(container) {
   /**
    * Callstack operation to start a new outgoing call.
    *
@@ -12788,152 +13340,191 @@ function createMakeOperation(container) {
    *    - User media,
    *    - A local PeerConnection, setup with the media and local offer, and
    *    - To start the call on the server, providing the local offer.
-   * @method makeCall
-   * @param {string} callId The ID that the SDK uses to identify this call.
-   * @param {Object} participants
-   * @param {string} participants.to The "callee" address for the call.
-   * @param {string} participants.from The "caller" address for the call.
-   * @param {Object} media
-   * @param {Object|boolean} media.audio
-   * @param {Object|boolean} media.video
-   * @param {Object|boolean} media.screen
-   * @param {Object|Array<Object>} media.medias
-   * @param {Object} [options={}]
-   * @param {string} [options.displayName]
-   * @param {call.DSCPControls} [options.dscpControls]
-   * @param {call.BandwidthControls} [options.bandwidth]
-   * @param {Array<call.CustomParameter>} [options.customParameters]
-   * @param {Array<call.CustomBody>} [options.customBodies]
-   * @param {boolean} [options.isAnonymous] Whether the call is being made with an "anonymous user" or not.
-   * @param {string} [options.account] If anonymous, the user account used to authenticate the call.
-   * @return {undefined}
-   * @throws {BasicError} Throws an error if the WebRTC operation fails.
-   * @throws {BasicError} Throws an error if the REST request fails.
    */
-  async function makeCall(callId, participants, media) {
+  return async function makeCall(callId, participants, media) {
     let options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Initiating new outgoing call.');
+    // Perform changes to the local call session (ie. set it up).
+    const stageData = await localChanges(container, callId, participants, media, options);
+    // Signal the outgoing call to the server.
+    await signalling(container, callId, stageData);
+  };
+}
 
-    // Get info from state for the operation.
-    const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
-    const callOptions = (0, _selectors.getOptions)(context.getState());
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId
+ * @param {Object} participants
+ * @param {Object} media
+ * @param {Object} [options={}]
+ * @return {Promise<Object>} Resolves with data needed for the signalling step.
+ * @throws {BasicError} Throws an error if the WebRTC session fails to set up.
+ */
+async function localChanges(container, callId, participants, media) {
+  let options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  const {
+    context,
+    Callstack,
+    logManager
+  } = container;
+  const {
+    setupOutgoingSession
+  } = Callstack.utils;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Initiating new outgoing call.');
 
-    // Verify input parameter(s).
-    // TODO: Validation of application-input should happen in the API.
-    const bandwidth = (0, _call.checkBandwidthControls)(options.bandwidth);
-    let callInfo;
-    try {
-      // Compile all of the info needed for the WebRTC operation.
-      const webrtcInfo = {
-        defaultPeerConfig: callOptions.defaultPeerConfig,
-        turnInfo,
-        bandwidth,
-        dscpControls: options.dscpControls,
-        callId,
-        // ICE related.
-        trickleIceMode: callOptions.trickleIceMode,
-        // ??? Remove.
-        removeBundling: callOptions.removeBundling
-      };
+  // Get info from state for the operation.
+  const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
+  const callOptions = (0, _selectors.getOptions)(context.getState());
 
-      /*
-       * Setup local WebRTC resources needed for the call. This includes user media
-       *    and a local PeerConnection.
-       *
-       * Expected return format:
-       * @type {Object}
-       * @param {string} sessionId The ID of the Session object associated with this call.
-       * @param {Array<string>} mediaIds List of Media objects associated with this call.
-       * @param {string} offerSdp The local offer SDP generated during Session setup.
-       */
-      callInfo = await setupOutgoingSession(media, webrtcInfo);
-    } catch (err) {
-      log.info(`Failed to initiate call. Changing to ${_constants.CALL_STATES.ENDED}.`);
-      // Rethrow the error so it gets to the API.
-      throw err;
-    }
-    let wrtcsSessionId;
-    try {
-      // Info required for the server to create the session.
-      const sessionInfo = {
-        id: callId,
-        to: participants.to,
-        offer: callInfo.offerSdp,
-        // For anonymous calls.
-        isAnonymous: options.isAnonymous,
-        account: options.account,
-        from: participants.from
-      };
-      // Info to augment the server session, but not required.
-      const sessionOptions = {
-        displayName: options.displayName ? options.displayName : '',
-        customParameters: options.customParameters,
-        customBodies: options.customBodies
-      };
-
-      /*
-       * Create the call on the server.
-       *
-       * Expected return format:
-       * @param {string} wrtcsSessionId The ID that the server uses to identify this call.
-       */
-      wrtcsSessionId = await CallRequests.createSession(sessionInfo, sessionOptions);
-    } catch (err) {
-      /*
-       * The call failed being created on the server. Clean up the local WebRTC resources
-       *    and finish the operation by updating state and emitting the "state change" error event.
-       */
-      log.info('Failed to initiate call. Ending call and cleaning up WebRTC portions.');
-
-      // TODO: Update redux state that the Media object is stopped.
-      //    Need an event from Media model to notify about the stop, and listener
-      //    set on Media when it is created (in `createLocalMedia` saga).
-      await CallstackWebrtc.closeCall(callInfo.sessionId);
-
-      // Rethrow the error to the API.
-      throw err;
-    }
+  // Verify input parameter(s).
+  // TODO: Validation of application-input should happen in the API.
+  const bandwidth = (0, _call.checkBandwidthControls)(options.bandwidth);
+  let callInfo;
+  try {
+    // Compile all of the info needed for the WebRTC operation.
+    const webrtcInfo = {
+      defaultPeerConfig: callOptions.defaultPeerConfig,
+      turnInfo,
+      bandwidth,
+      dscpControls: options.dscpControls,
+      callId,
+      // ICE related.
+      trickleIceMode: callOptions.trickleIceMode,
+      // ??? Remove.
+      removeBundling: callOptions.removeBundling
+    };
 
     /*
-     * The call was succesfully created on the server. Finish the local side of
-     *    the operation by updating state and emitting the "state change" event.
+     * Setup local WebRTC resources needed for the call. This includes user media
+     *    and a local PeerConnection.
+     *
+     * Expected return format:
+     * @type {Object}
+     * @param {string} sessionId The ID of the Session object associated with this call.
+     * @param {Array<string>} mediaIds List of Media objects associated with this call.
+     * @param {string} offerSdp The local offer SDP generated during Session setup.
      */
-    log.info(`Finished initiating call. Changing to ${_constants.CALL_STATES.INITIATED} and waiting on remote answer.`);
-
-    // Get the list of all local tracks on the Session. Add the local tracks
-    //    to call state now so they are available while the call rings.
-    const sessionState = (0, _selectors2.getSessionById)(context.getState(), callInfo.sessionId);
-    context.dispatch(_actions.callActions.pendingMakeCall(callId, {
-      // The ID that the backend uses to track this webRTC session.
-      wrtcsSessionId: wrtcsSessionId,
-      // The ID that the webRTC stack uses to track this webRTC session.
-      webrtcSessionId: callInfo.sessionId,
-      // The local Media object associated with this call.
-      mediaIds: callInfo.mediaIds,
-      // The bandwidth of the call.
-      bandwidth,
-      // The custom display name to use. Not supported on all environments.
-      displayName: options.displayName,
-      // The custom parameters (headers) and custom bodies of the call
-      customParameters: options.customParameters,
-      customBodies: options.customBodies,
-      localTracks: sessionState.localTracks,
-      // The current state of the call
-      // TODO: Normally, call state should not be part of action because
-      //       whoever checks this action payload, should obtain the call state from
-      //       Redux state, using a selector.
-      //       So further changes are needed in 'callAudit' middleware
-      state: _constants.CALL_STATES.INITIATED
-    }));
-
-    // Tell the application that local tracks are available on the call now.
-    emitEvent(_eventTypes.CALL_TRACKS_ADDED, {
-      callId,
-      trackIds: sessionState.localTracks
-    });
+    callInfo = await setupOutgoingSession(media, webrtcInfo);
+  } catch (err) {
+    log.info(`Failed to initiate call. Changing to ${_constants.CALL_STATES.ENDED}.`);
+    // Rethrow the error so it gets to the API.
+    throw err;
   }
-  return makeCall;
+  return {
+    participants,
+    callInfo,
+    options,
+    bandwidth
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {string} callId
+ * @param {Object} params
+ * @param {Object} params.participants
+ * @param {Object} params.callInfo
+ * @param {Object} params.options
+ * @param {Object} params.bandwidth
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws an error if the REST request fails.
+ */
+async function signalling(container, callId, params) {
+  const {
+    context,
+    CallRequests,
+    CallstackWebrtc,
+    emitEvent,
+    logManager
+  } = container;
+  const {
+    participants,
+    callInfo,
+    options,
+    bandwidth
+  } = params;
+  const log = logManager.getLogger('CALL', callId);
+  let wrtcsSessionId;
+  try {
+    // Info required for the server to create the session.
+    const sessionInfo = {
+      id: callId,
+      to: participants.to,
+      offer: callInfo.offerSdp,
+      // For anonymous calls.
+      isAnonymous: options.isAnonymous,
+      account: options.account,
+      from: participants.from
+    };
+    // Info to augment the server session, but not required.
+    const sessionOptions = {
+      displayName: options.displayName ? options.displayName : '',
+      customParameters: options.customParameters,
+      customBodies: options.customBodies
+    };
+
+    /*
+     * Create the call on the server.
+     *
+     * Expected return format:
+     * @param {string} wrtcsSessionId The ID that the server uses to identify this call.
+     */
+    wrtcsSessionId = await CallRequests.createSession(sessionInfo, sessionOptions);
+  } catch (err) {
+    /*
+     * The call failed being created on the server. Clean up the local WebRTC resources
+     *    and finish the operation by updating state and emitting the "state change" error event.
+     */
+    log.info('Failed to initiate call. Ending call and cleaning up WebRTC portions.');
+
+    // TODO: Update redux state that the Media object is stopped.
+    //    Need an event from Media model to notify about the stop, and listener
+    //    set on Media when it is created (in `createLocalMedia` saga).
+    await CallstackWebrtc.closeCall(callInfo.sessionId);
+
+    // Rethrow the error to the API.
+    throw err;
+  }
+
+  /*
+   * The call was succesfully created on the server. Finish the local side of
+   *    the operation by updating state and emitting the "state change" event.
+   */
+  log.info(`Finished initiating call. Changing to ${_constants.CALL_STATES.INITIATED} and waiting on remote answer.`);
+
+  // Get the list of all local tracks on the Session. Add the local tracks
+  //    to call state now so they are available while the call rings.
+  const sessionState = (0, _selectors2.getSessionById)(context.getState(), callInfo.sessionId);
+  context.dispatch(_actions.callActions.pendingMakeCall(callId, {
+    // The ID that the backend uses to track this webRTC session.
+    wrtcsSessionId: wrtcsSessionId,
+    // The ID that the webRTC stack uses to track this webRTC session.
+    webrtcSessionId: callInfo.sessionId,
+    // The local Media object associated with this call.
+    mediaIds: callInfo.mediaIds,
+    // The bandwidth of the call.
+    bandwidth,
+    // The custom display name to use. Not supported on all environments.
+    displayName: options.displayName,
+    // The custom parameters (headers) and custom bodies of the call
+    customParameters: options.customParameters,
+    customBodies: options.customBodies,
+    localTracks: sessionState.localTracks,
+    // The current state of the call
+    // TODO: Normally, call state should not be part of action because
+    //       whoever checks this action payload, should obtain the call state from
+    //       Redux state, using a selector.
+    //       So further changes are needed in 'callAudit' middleware
+    state: _constants.CALL_STATES.INITIATED
+  }));
+
+  // Tell the application that local tracks are available on the call now.
+  emitEvent(_eventTypes.CALL_TRACKS_ADDED, {
+    callId,
+    trackIds: sessionState.localTracks
+  });
 }
 
 /***/ }),
@@ -13090,6 +13681,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createMakeResponse;
+__webpack_require__(60452);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
@@ -13097,7 +13689,7 @@ var _constants2 = __webpack_require__(60683);
 var _remoteTracks = __webpack_require__(45294);
 var _constants3 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 function createMakeResponse(container) {
@@ -13233,7 +13825,8 @@ function createMakeResponse(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = incomingCallOperation;
+exports["default"] = createRemoteMake;
+exports.localChanges = localChanges;
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _eventTypes = __webpack_require__(55166);
@@ -13246,7 +13839,31 @@ var _constants3 = __webpack_require__(42750);
  * Bottle wrapper for "incoming call" notification handler.
  * @return {Function}
  */
-function incomingCallOperation(container) {
+function createRemoteMake(container) {
+  /**
+   * A "call incoming" notification has been received and needs to be handled.
+   *
+   * This operation is intended to be the entry point for all "call incoming"
+   *    notifications. A "call incoming" notification is the initial offer to
+   *    establish a call with a remote endpoint. It represents the start of both
+   *    the call flow and webRTC negotiation process for the local side.
+   * Handling the notification will create a new call in state.
+   */
+  return async function incomingCall(wrtcsSessionId, params, channel) {
+    await localChanges(container, wrtcsSessionId, params, channel);
+    // No signalling step.
+  };
+}
+/**
+ * @method localChanges
+ * @param {string}   wrtcsSessionId ID that the server uses to identify the session.
+ * @param {Object}   params        Parameters describing the incoming call.
+ * @param {string}   [params.sdp]  The remote SDP offer included with the notification (if any).
+ * @param {string}   params.remoteNumber   Number of the remote participant.
+ * @param {string}   params.remoteName     Display name of the remote participant.
+ * @param {string}   params.calleeNumber  Number of the intended call recipient
+ */
+async function localChanges(container, wrtcsSessionId, params, channel) {
   const {
     context,
     CallRequests,
@@ -13258,146 +13875,122 @@ function incomingCallOperation(container) {
   const {
     setupIncomingCall
   } = Callstack.utils;
+  const {
+    sdp,
+    callId
+  } = params;
+  const callConfig = (0, _selectors.getOptions)(context.getState());
+
+  // Get the call report for this call
+  const callReport = CallReporter.getReport(callId);
+
+  // Get the RECEIVE_CALL event from the report
+  const receiveCallEvent = callReport.findLastOngoingEvent(_constants3.REPORT_EVENTS.RECEIVE_CALL);
+  const log = logManager.getLogger('CALL', callId);
+
   /**
-   * A "call incoming" notification has been received and needs to be handled.
-   *
-   * This operation is intended to be the entry point for all "call incoming"
-   *    notifications. A "call incoming" notification is the initial offer to
-   *    establish a call with a remote endpoint. It represents the start of both
-   *    the call flow and webRTC negotiation process for the local side.
-   * Handling the notification will create a new call in state.
-   * Responsibilities:
-   *    1. Have the callstack perform the required webRTC negotiation process.
-   *        - Regular or Slow Start negotiation.
-   *    2. Respond that the call has been received (ie. ringing).
-   *    3. Create call state (via redux action).
-   * @method incomingCall
-   * @param {string}   wrtcsSessionId ID that the server uses to identify the session.
-   * @param {Object}   params        Parameters describing the incoming call.
-   * @param {string}   [params.sdp]  The remote SDP offer included with the notification (if any).
-   * @param {string}   params.remoteNumber   Number of the remote participant.
-   * @param {string}   params.remoteName     Display name of the remote participant.
-   * @param {string}   params.calleeNumber  Number of the intended call recipient
+   * An incoming call may or may not have an SDP offer associated with it.
+   * If it has an SDP, then it is a "regular" call scenario and can be handled
+   *    as a normal webRTC negotiation.
+   * If it has no SDP, then it is a "slow start" call scenario. In a slow start
+   *    scenario, the signaling server acts as a webRTC-middleman, requiring
+   *    both sides to provide it with offers and generating the answers itself.
    */
-  async function incomingCall(wrtcsSessionId, params, channel) {
-    const {
-      sdp,
-      callId
-    } = params;
-    const callConfig = (0, _selectors.getOptions)(context.getState());
+  if (sdp) {
+    // Regular call.
+    receiveCallEvent.addData('isSlowStart', false);
+    const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
 
-    // Get the call report for this call
-    const callReport = CallReporter.getReport(callId);
+    // Since we have the remote offer SDP, we can setup a webRTC session.
+    try {
+      // TODO: The call report is missing a "process remote media" event as part of the RECEIVE_CALL event.
+      await setupIncomingCall({
+        offer: {
+          sdp,
+          type: 'offer'
+        },
+        trickleIceMode: callConfig.trickleIceMode,
+        defaultPeerConfig: callConfig.defaultPeerConfig,
+        turnInfo,
+        callId,
+        removeBundling: callConfig.removeBundling,
+        serverTurnCredentials: callConfig.serverTurnCredentials
+      });
+    } catch (error) {
+      // The reason we're wrapping the error in an object here is because the setupIncomingCall operation
+      // used to return an object with an error property. Now that we are throwing instead, we throw the
+      // BasicError directly, but our interface is expecting an object with an error property.
+      log.info(`Failed to initiate incoming call. Changing to ${_constants2.CALL_STATES.ENDED}.`);
+      context.dispatch(_actions.callActions.endCallFinish(callId, {
+        isLocal: true,
+        error: {
+          error
+        }
+      }));
+      emitEvent(_eventTypes.CALL_OPERATION, {
+        callId,
+        isLocal: true,
+        operation: _constants.OPERATIONS.END,
+        transition: _constants.OP_TRANSITIONS.FINISH,
+        error: {
+          error
+        }
+      });
+      emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+        callId,
+        previous: {
+          state: _constants2.CALL_STATES.INITIATING,
+          localHold: false,
+          remoteHold: false
+        },
+        error: {
+          error
+        }
+      });
+      throw error;
+    }
+  } else {
+    log.debug('Incoming call is a slow-start call.');
+    // Slow start call.
+    receiveCallEvent.addData('isSlowStart', true);
 
-    // Get the RECEIVE_CALL event from the report
-    const receiveCallEvent = callReport.findLastOngoingEvent(_constants3.REPORT_EVENTS.RECEIVE_CALL);
-    const log = logManager.getLogger('CALL', callId);
-
-    /**
-     * An incoming call may or may not have an SDP offer associated with it.
-     * If it has an SDP, then it is a "regular" call scenario and can be handled
-     *    as a normal webRTC negotiation.
-     * If it has no SDP, then it is a "slow start" call scenario. In a slow start
-     *    scenario, the signaling server acts as a webRTC-middleman, requiring
-     *    both sides to provide it with offers and generating the answers itself.
+    /*
+     * We can't setup a webRTC session yet because generating an offer requires
+     *   media constraints. We need to wait until the application provides
+     *   media information before we can setup the call.
      */
-    if (sdp) {
-      // Regular call.
-      receiveCallEvent.addData('isSlowStart', false);
-      const turnInfo = (0, _selectors.getTurnInfo)(context.getState());
-
-      // Since we have the remote offer SDP, we can setup a webRTC session.
-      try {
-        // TODO: The call report is missing a "process remote media" event as part of the RECEIVE_CALL event.
-        await setupIncomingCall({
-          offer: {
-            sdp,
-            type: 'offer'
-          },
-          trickleIceMode: callConfig.trickleIceMode,
-          defaultPeerConfig: callConfig.defaultPeerConfig,
-          turnInfo,
-          callId,
-          removeBundling: callConfig.removeBundling,
-          serverTurnCredentials: callConfig.serverTurnCredentials
-        });
-      } catch (error) {
-        // The reason we're wrapping the error in an object here is because the setupIncomingCall operation
-        // used to return an object with an error property. Now that we are throwing instead, we throw the
-        // BasicError directly, but our interface is expecting an object with an error property.
-        log.info(`Failed to initiate incoming call. Changing to ${_constants2.CALL_STATES.ENDED}.`);
-        context.dispatch(_actions.callActions.endCallFinish(callId, {
-          isLocal: true,
-          error: {
-            error
-          }
-        }));
-        emitEvent(_eventTypes.CALL_OPERATION, {
-          callId,
-          isLocal: true,
-          operation: _constants.OPERATIONS.END,
-          transition: _constants.OP_TRANSITIONS.FINISH,
-          error: {
-            error
-          }
-        });
-        emitEvent(_eventTypes.CALL_STATE_CHANGE, {
-          callId,
-          previous: {
-            state: _constants2.CALL_STATES.INITIATING,
-            localHold: false,
-            remoteHold: false
-          },
-          error: {
-            error
-          }
-        });
-        throw error;
-      }
-    } else {
-      log.debug('Incoming call is a slow-start call.');
-      // Slow start call.
-      receiveCallEvent.addData('isSlowStart', true);
-
-      /*
-       * We can't setup a webRTC session yet because generating an offer requires
-       *   media constraints. We need to wait until the application provides
-       *   media information before we can setup the call.
-       */
-    }
-
-    // Next state will be Initiated normally, or Ringing if ringing feedback is sent.
-    let nextState = _constants2.CALL_STATES.INITIATED;
-
-    // If in 'auto' mode for `ringingFeedbackMode`, send the feedback immediately.
-    if (callConfig.ringingFeedbackMode === 'auto') {
-      log.info('Sending ringing feedback automatically for incoming call.');
-      const callInfo = {
-        wrtcsSessionId,
-        id: callId
-      };
-      try {
-        await CallRequests.updateCallRinging(callInfo);
-        log.debug('Successfully sent ringing feedback.');
-        nextState = _constants2.CALL_STATES.RINGING;
-      } catch (error) {
-        log.info(`Failed to send ringing feedback - ${error.code}: ${error.message} `);
-      }
-    }
-    log.info(`Finished initiating incoming call. Changing to ${nextState} and waiting on local answer.`);
-    context.dispatch(_actions.callActions.updateCall(callId, {
-      state: nextState
-    }));
-    emitEvent(_eventTypes.CALL_STATE_CHANGE, {
-      callId,
-      previous: {
-        state: _constants2.CALL_STATES.INITIATING,
-        localHold: false,
-        remoteHold: false
-      }
-    });
   }
-  return incomingCall;
+
+  // Next state will be Initiated normally, or Ringing if ringing feedback is sent.
+  let nextState = _constants2.CALL_STATES.INITIATED;
+
+  // If in 'auto' mode for `ringingFeedbackMode`, send the feedback immediately.
+  if (callConfig.ringingFeedbackMode === 'auto') {
+    log.info('Sending ringing feedback automatically for incoming call.');
+    const callInfo = {
+      wrtcsSessionId,
+      id: callId
+    };
+    try {
+      await CallRequests.updateCallRinging(callInfo);
+      log.debug('Successfully sent ringing feedback.');
+      nextState = _constants2.CALL_STATES.RINGING;
+    } catch (error) {
+      log.info(`Failed to send ringing feedback - ${error.code}: ${error.message} `);
+    }
+  }
+  log.info(`Finished initiating incoming call. Changing to ${nextState} and waiting on local answer.`);
+  context.dispatch(_actions.callActions.updateCall(callId, {
+    state: nextState
+  }));
+  emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+    callId,
+    previous: {
+      state: _constants2.CALL_STATES.INITIATING,
+      localHold: false,
+      remoteHold: false
+    }
+  });
 }
 
 /***/ }),
@@ -13416,7 +14009,7 @@ var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Helpers
@@ -13527,6 +14120,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = setupOutgoingSessionOperation;
+__webpack_require__(44936);
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(37409);
@@ -13535,7 +14129,7 @@ var _call = __webpack_require__(12442);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _constants2 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Utils
@@ -13731,7 +14325,6 @@ function setupOutgoingSessionOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -13739,6 +14332,7 @@ exports["default"] = initOperation;
 var _start = _interopRequireDefault(__webpack_require__(31408));
 var _stop = _interopRequireDefault(__webpack_require__(50163));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
@@ -13821,11 +14415,14 @@ function initOperation(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createStartMohHandler;
+exports["default"] = createStartMoH;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _state = __webpack_require__(65794);
 var _remoteTracks = _interopRequireDefault(__webpack_require__(45294));
 var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
@@ -13836,45 +14433,19 @@ var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants2 = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function createStartMohHandler(container) {
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function createStartMoH(container) {
   const {
     context,
-    CallstackWebrtc,
-    CallRequests,
-    CallstackSDP,
-    WebRTC,
-    logManager,
     emitEvent
   } = container;
-
-  /**
-   * Operation wrapper to handle state changes and events.
-   *
-   * On succesful handling:
-   *    - updates call state to add new remote tracks,
-   *    - emits a "tracks added" event
-   *
-   * On failure to handle, ...?:
-   *    - updates call state ...?,
-   *
-   * @method operation
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when the operation fails.
-   * @return {undefined}
-   */
-  async function operation(call, params, opInfo) {
+  return async function startMoH(call, params, opInfo) {
     try {
+      const stageData = await localChanges(container, call, params, opInfo);
       const {
         remoteTracks
-      } = await onStartMOH(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.remoteStartMohFinish(call.id, {
         remote: true,
         remoteParticipant: {
@@ -13898,104 +14469,136 @@ function createStartMohHandler(container) {
       // Rethrow the error so the CallManager knows of the failure.
       throw error;
     }
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber
+ * @param {string} params.remoteName
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDiff
+ * @param {Object} opInfo.remoteDesc
+ * @throws {Error} Throws if the WebRTC changes fail.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    CallstackWebrtc,
+    CallstackSDP,
+    WebRTC,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
+  }
+
+  /*
+   * If the remote operation is offering media but the call is locally held,
+   *    then we need to modify the offer to ensure that media does not restart.
+   */
+  const mediaState = (0, _state.getMediaState)(call);
+  const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
+  if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
+    log.debug('Modifying remote offer to prevent resetting media while in local hold.');
+    params.sdp = (0, _setMediaInactive.default)(params.sdp);
+    if (!params.sdp) {
+      log.debug('SDP is either undefined or not a string.');
+      return;
+    }
+    // Update the `mediaDiff` after we modified the SDP.
+    opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
   }
 
   /**
-   * Operation for handling a new remote start MOH offer SDP.
-   *
-   * Offer checks:
-   *    - set media inactive if locally held
-   *    - recreate Peer if different SDP session
-   *
-   * @method onStartMOH
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when WebRTC negotiation fails.
-   * @throws {Error} Throws when Gateway signaling fails.
-   * @return {Object} Tracks affected by the operation.
+   * Decision: When we receive a remote offer SDP that has a different "session
+   *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
+   * This is a workaround/fix for scenarios where the remote endpoint changes.
+   *    It avoids possible DTLS role conflict issues.
    */
-  async function onStartMOH(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
+  const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
+  if (!sameSession) {
+    log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
     const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
-    }
-
-    /*
-     * If the remote operation is offering media but the call is locally held,
-     *    then we need to modify the offer to ensure that media does not restart.
-     */
-    const mediaState = (0, _state.getMediaState)(call);
-    const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
-    if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
-      log.debug('Modifying remote offer to prevent resetting media while in local hold.');
-      params.sdp = (0, _setMediaInactive.default)(params.sdp);
-      if (!params.sdp) {
-        log.debug('SDP is either undefined or not a string.');
-        return;
-      }
-      // Update the `mediaDiff` after we modified the SDP.
-      opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
-    }
-
-    /**
-     * Decision: When we receive a remote offer SDP that has a different "session
-     *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
-     * This is a workaround/fix for scenarios where the remote endpoint changes.
-     *    It avoids possible DTLS role conflict issues.
-     */
-    const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
-    if (!sameSession) {
-      log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
-      const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-      await session.recreatePeer();
-    }
-
-    // Handle the offer SDP to receive an answer SDP.
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to remote update. Changing state based on the remote operation.');
-
-      // Get the list of remote tracks that were added by the remote operation.
-      //    This is done after `handleOffer` so the Transceivers are up-to-date
-      //    with the changes being offered.
-      const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.START_MOH, opInfo.mediaDiff, session);
-      return {
-        remoteTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
+    await session.recreatePeer();
   }
-  return operation;
+
+  // Handle the offer SDP to receive an answer SDP.
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+  return {
+    answer,
+    opInfo,
+    session
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.answer
+ * @param {string} params.session
+ * @param {Object} params.opInfo
+ * @param {Object} params.opInfo.mediaDiff
+ * @param {Object} params.opInfo.remoteDesc
+ * @throws {Error} Throws if the REST request fails.
+ * @return {Promise<Object>}
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    opInfo,
+    session
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to remote update. Changing state based on the remote operation.');
+
+    // Get the list of remote tracks that were added by the remote operation.
+    //    This is done after `handleOffer` so the Transceivers are up-to-date
+    //    with the changes being offered.
+    const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.START_MOH, opInfo.mediaDiff, session);
+    return {
+      remoteTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -14006,11 +14609,14 @@ function createStartMohHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createStopMohHandler;
+exports["default"] = createStopMoH;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _state = __webpack_require__(65794);
 var _remoteTracks = _interopRequireDefault(__webpack_require__(45294));
 var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
@@ -14021,45 +14627,19 @@ var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants2 = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function createStopMohHandler(container) {
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function createStopMoH(container) {
   const {
     context,
-    CallstackWebrtc,
-    CallRequests,
-    CallstackSDP,
-    WebRTC,
-    logManager,
     emitEvent
   } = container;
-
-  /**
-   * Operation wrapper to handle state changes and events.
-   *
-   * On succesful handling:
-   *    - updates call state to add new remote tracks,
-   *    - emits a "tracks added" event
-   *
-   * On failure to handle, ...?:
-   *    - updates call state ...?,
-   *
-   * @method operation
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when the operation fails.
-   * @return {undefined}
-   */
-  async function operation(call, params, opInfo) {
+  return async function stopMOH(call, params, opInfo) {
     try {
+      const stageData = await localChanges(container, call, params, opInfo);
       const {
         remoteTracks
-      } = await onStopMOH(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.remoteStopMohFinish(call.id, {
         remote: true,
         remoteParticipant: {
@@ -14083,104 +14663,136 @@ function createStopMohHandler(container) {
       // Rethrow the error so the CallManager knows of the failure.
       throw error;
     }
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber
+ * @param {string} params.remoteName
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDiff
+ * @param {Object} opInfo.remoteDesc
+ * @throws {Error} Throws if the WebRTC changes fail.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    CallstackWebrtc,
+    CallstackSDP,
+    WebRTC,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
+  }
+
+  /*
+   * If the remote operation is offering media but the call is locally held,
+   *    then we need to modify the offer to ensure that media does not restart.
+   */
+  const mediaState = (0, _state.getMediaState)(call);
+  const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
+  if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
+    log.debug('Modifying remote offer to prevent resetting media while in local hold.');
+    params.sdp = (0, _setMediaInactive.default)(params.sdp);
+    if (!params.sdp) {
+      log.debug('SDP is either undefined or not a string.');
+      return;
+    }
+    // Update the `mediaDiff` after we modified the SDP.
+    opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
   }
 
   /**
-   * Operation for handling a new remote stop MOH offer SDP.
-   *
-   * Offer checks:
-   *    - set media inactive if locally held
-   *    - recreate Peer if different SDP session
-   *
-   * @method onStopMOH
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when WebRTC negotiation fails.
-   * @throws {Error} Throws when Gateway signaling fails.
-   * @return {Object} Tracks affected by the operation.
+   * Decision: When we receive a remote offer SDP that has a different "session
+   *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
+   * This is a workaround/fix for scenarios where the remote endpoint changes.
+   *    It avoids possible DTLS role conflict issues.
    */
-  async function onStopMOH(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
+  const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
+  if (!sameSession) {
+    log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
     const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
-    }
-
-    /*
-     * If the remote operation is offering media but the call is locally held,
-     *    then we need to modify the offer to ensure that media does not restart.
-     */
-    const mediaState = (0, _state.getMediaState)(call);
-    const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
-    if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
-      log.debug('Modifying remote offer to prevent resetting media while in local hold.');
-      params.sdp = (0, _setMediaInactive.default)(params.sdp);
-      if (!params.sdp) {
-        log.debug('SDP is either undefined or not a string.');
-        return;
-      }
-      // Update the `mediaDiff` after we modified the SDP.
-      opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
-    }
-
-    /**
-     * Decision: When we receive a remote offer SDP that has a different "session
-     *    ID" as the currently set remote SDP, recreate the call's PeerConnection.
-     * This is a workaround/fix for scenarios where the remote endpoint changes.
-     *    It avoids possible DTLS role conflict issues.
-     */
-    const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
-    if (!sameSession) {
-      log.debug(`Received offer SDP is from a different session. Recreating Peer for call ${call.id}.`);
-      const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-      await session.recreatePeer();
-    }
-
-    // Handle the offer SDP to receive an answer SDP.
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to remote update. Changing state based on the remote operation.');
-
-      // Get the list of remote tracks that were added by the remote operation.
-      //    This is done after `handleOffer` so the Transceivers are up-to-date
-      //    with the changes being offered.
-      const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.STOP_MOH, opInfo.mediaDiff, session);
-      return {
-        remoteTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
+    await session.recreatePeer();
   }
-  return operation;
+
+  // Handle the offer SDP to receive an answer SDP.
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+  return {
+    answer,
+    session,
+    opInfo
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.answer
+ * @param {string} params.session
+ * @param {Object} params.opInfo
+ * @param {Object} params.opInfo.mediaDiff
+ * @param {Object} params.opInfo.remoteDesc
+ * @throws {Error} Throws if the REST request fails.
+ * @return {Promise<Object>}
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    opInfo,
+    session
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to remote update. Changing state based on the remote operation.');
+
+    // Get the list of remote tracks that were added by the remote operation.
+    //    This is done after `handleOffer` so the Transceivers are up-to-date
+    //    with the changes being offered.
+    const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.STOP_MOH, opInfo.mediaDiff, session);
+    return {
+      remoteTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -14191,12 +14803,12 @@ function createStopMohHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _normalizeIceFailure = _interopRequireDefault(__webpack_require__(53550));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
@@ -14215,6 +14827,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createNormalizeIceFailureOperation;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _actionTypes = __webpack_require__(1371);
@@ -14222,7 +14835,7 @@ var _actionTypes2 = __webpack_require__(39100);
 var sessionActions = _interopRequireWildcard(__webpack_require__(57423));
 var _eventTypes = __webpack_require__(55166);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -14321,7 +14934,6 @@ function createNormalizeIceFailureOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -14329,6 +14941,7 @@ exports["default"] = initOperation;
 var _playAudio = _interopRequireDefault(__webpack_require__(81037));
 var _validate = _interopRequireDefault(__webpack_require__(55470));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.playAudioFile', () => {
@@ -14382,7 +14995,8 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createOperation;
+exports["default"] = createPlayAudio;
+exports.localChanges = localChanges;
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
@@ -14390,7 +15004,7 @@ var _constants = __webpack_require__(37409);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _actionTypes = __webpack_require__(1371);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -14399,7 +15013,33 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * Bottle wrapper for playAudioFile call operation.
  * @return {Function}
  */
-function createOperation(container) {
+function createPlayAudio(container) {
+  /**
+   * "Play audio file" operation.
+   * Validates that it can perform the operation, then passes it off to the
+   *    Call's Session object. The WebRTC stack performs the actual operation; this
+   *    function manages the responses from the WebRTC stack and forwards feedback
+   *    to the API.
+   */
+  return async function playAudio(callId, filePath, onPlayingCallback) {
+    await localChanges(container, callId, filePath, onPlayingCallback);
+    // No signalling step for this operation.
+  };
+}
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {string}   callId            ID of the Call the act on.
+ * @param {string}   filePath          Path to the audio file.
+ * @param {Function} onPlayingCallback Callback for when audio starts playing.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if call does not exist.
+ * @throws {BasicError} Throws if call is not in correct state.
+ * @throws {BasicError} Throws if call does not have a WebRTC session.
+ * @throws {BasicError} Throws if the session cannot play audio.
+ * @throws {BasicError} Throws if audio plays longer than expected duration.
+ */
+async function localChanges(container, callId, filePath, onPlayingCallback) {
   const {
     context,
     WebRTC,
@@ -14407,120 +15047,98 @@ function createOperation(container) {
     Notifications,
     logManager
   } = container;
-
-  /**
-   * "Play audio file" operation.
-   * Validates that it can perform the operation, then passes it off to the
-   *    Call's Session object. The WebRTC stack performs the actual operation; this
-   *    function manages the responses from the WebRTC stack and forwards feedback
-   *    to the API.
-   *
-   * @method playAudio
-   * @param {string}   callId            ID of the Call the act on.
-   * @param {string}   filePath          Path to the audio file.
-   * @param {Function} onPlayingCallback Callback for when audio starts playing.
-   * @return {undefined}
-   * @throws {BasicError} Throws if call does not exist.
-   * @throws {BasicError} Throws if call is not in correct state.
-   * @throws {BasicError} Throws if call does not have a WebRTC session.
-   * @throws {BasicError} Throws if the session cannot play audio.
-   * @throws {BasicError} Throws if audio plays longer than expected duration.
-   */
-  async function playAudio(callId, filePath, onPlayingCallback) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Replacing call audio with file media.');
-    const call = (0, _selectors.getCallById)(context.getState(), callId);
-    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      throw new _errors.default({
-        code: _errors.callCodes.INVALID_STATE,
-        message: "Call's WebRTC session not found."
-      });
-    }
-    let duration;
-    try {
-      duration = await session.insertAudio(filePath);
-      log.info('Audio file has started to play.');
-      const operation = call.currentOperations.find(op => {
-        return op.isLocal && op.type === _constants.OPERATIONS.PLAY_AUDIO;
-      });
-      /*
-       * Special-case: Have the playAudio operation manage the "update" transition.
-       *    This is because it is not a negotiation operation (hence the CallManager
-       *    wouldn't give it an update transition), but still has a "pending" stage
-       *    (hence needs an update transition).
-       */
-      context.dispatch(_actions.callActions.operationUpdate(callId, _constants.OP_TRANSITIONS.PLAY_AUDIO, true, {
-        transition: _constants.OP_TRANSITIONS.UPDATE,
-        eventId: operation.eventId
-      }));
-      emitEvent(eventTypes.CALL_OPERATION, {
-        callId,
-        isLocal: true,
-        operation: _constants.OPERATIONS.PLAY_AUDIO,
-        transition: _constants.OP_TRANSITIONS.UPDATE,
-        previous: {
-          operations: _constants.OPERATIONS.PLAY_AUDIO,
-          status: _constants.OP_STATUS.ONGOING
-        }
-      });
-    } catch (err) {
-      // Failed to start playing audio file.
-      log.info('Failed to start playing audio file.');
-      let code;
-      switch (err.message) {
-        case 'Failed to play audio file.':
-          // Likely: the filePath is invalid.
-          code = _errors.callCodes.INVALID_PARAM;
-          break;
-        case 'No valid local audio track found to insert audio file on.':
-          // Error: The Call needs to have a local audio track.
-          code = _errors.callCodes.NOT_SUPPORTED;
-          break;
-        default:
-          // Likely: the native `replaceTrack` function failed.
-          code = _errors.callCodes.UNKNOWN_ERROR;
-          break;
-      }
-      throw new _errors.default({
-        code,
-        message: err.message
-      });
-    }
-
-    // Resolve the 'pending' promise to signify the file has started to play.
-    onPlayingCallback({
-      duration
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Replacing call audio with file media.');
+  const call = (0, _selectors.getCallById)(context.getState(), callId);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    throw new _errors.default({
+      code: _errors.callCodes.INVALID_STATE,
+      message: "Call's WebRTC session not found."
     });
-
-    // Wait for the notice saying that the audio file has stopped playing.
-    const timeout = duration * 1000 + 3000;
-    let action;
-    try {
-      action = await Notifications.takeAction(action => {
-        return action.type === _actionTypes.SESSION_AUDIO_ENDED && action.payload.id === session.id;
-      }, timeout);
-    } catch (err) {
-      // Audio file hasn't completed when it should have; assume error.
-      log.info('No response from audio file after expected duration; timing-out.');
-      throw new _errors.default({
-        code: _errors.callCodes.STATE_DESYNC,
-        message: 'Play audio file operation timed-out.'
-      });
-    }
-    if (action.error) {
-      // Audio file encountered an error.
-      log.info('Audio file encountered an error while playing.');
-      throw new _errors.default({
-        code: _errors.callCodes.UNKNOWN_ERROR,
-        message: 'Encountered error while playing audio file.'
-      });
-    } else {
-      // Audio file ended.
-      log.info('Audio file has finished playing.');
-    }
   }
-  return playAudio;
+  let duration;
+  try {
+    duration = await session.insertAudio(filePath);
+    log.info('Audio file has started to play.');
+    const operation = call.currentOperations.find(op => {
+      return op.isLocal && op.type === _constants.OPERATIONS.PLAY_AUDIO;
+    });
+    /*
+     * Special-case: Have the playAudio operation manage the "update" transition.
+     *    This is because it is not a negotiation operation (hence the CallManager
+     *    wouldn't give it an update transition), but still has a "pending" stage
+     *    (hence needs an update transition).
+     */
+    context.dispatch(_actions.callActions.operationUpdate(callId, _constants.OP_TRANSITIONS.PLAY_AUDIO, true, {
+      transition: _constants.OP_TRANSITIONS.UPDATE,
+      eventId: operation.eventId
+    }));
+    emitEvent(eventTypes.CALL_OPERATION, {
+      callId,
+      isLocal: true,
+      operation: _constants.OPERATIONS.PLAY_AUDIO,
+      transition: _constants.OP_TRANSITIONS.UPDATE,
+      previous: {
+        operations: _constants.OPERATIONS.PLAY_AUDIO,
+        status: _constants.OP_STATUS.ONGOING
+      }
+    });
+  } catch (err) {
+    // Failed to start playing audio file.
+    log.info('Failed to start playing audio file.');
+    let code;
+    switch (err.message) {
+      case 'Failed to play audio file.':
+        // Likely: the filePath is invalid.
+        code = _errors.callCodes.INVALID_PARAM;
+        break;
+      case 'No valid local audio track found to insert audio file on.':
+        // Error: The Call needs to have a local audio track.
+        code = _errors.callCodes.NOT_SUPPORTED;
+        break;
+      default:
+        // Likely: the native `replaceTrack` function failed.
+        code = _errors.callCodes.UNKNOWN_ERROR;
+        break;
+    }
+    throw new _errors.default({
+      code,
+      message: err.message
+    });
+  }
+
+  // Resolve the 'pending' promise to signify the file has started to play.
+  onPlayingCallback({
+    duration
+  });
+
+  // Wait for the notice saying that the audio file has stopped playing.
+  const timeout = duration * 1000 + 3000;
+  let action;
+  try {
+    action = await Notifications.takeAction(action => {
+      return action.type === _actionTypes.SESSION_AUDIO_ENDED && action.payload.id === session.id;
+    }, timeout);
+  } catch (err) {
+    // Audio file hasn't completed when it should have; assume error.
+    log.info('No response from audio file after expected duration; timing-out.');
+    throw new _errors.default({
+      code: _errors.callCodes.STATE_DESYNC,
+      message: 'Play audio file operation timed-out.'
+    });
+  }
+  if (action.error) {
+    // Audio file encountered an error.
+    log.info('Audio file encountered an error while playing.');
+    throw new _errors.default({
+      code: _errors.callCodes.UNKNOWN_ERROR,
+      message: 'Encountered error while playing audio file.'
+    });
+  } else {
+    // Audio file ended.
+    log.info('Audio file has finished playing.');
+  }
 }
 
 /***/ }),
@@ -14539,7 +15157,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -14576,7 +15194,6 @@ function validate(state, callId, filePath, onPlayingCallback) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -14584,6 +15201,7 @@ exports["default"] = initOperation;
 var _reject = _interopRequireDefault(__webpack_require__(62923));
 var _validate = _interopRequireDefault(__webpack_require__(70688));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.reject', () => {
@@ -14637,7 +15255,8 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = rejectOperation;
+exports["default"] = createReject;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 // Call plugin
@@ -14648,49 +15267,51 @@ var _constants = __webpack_require__(60683);
  * Bottle wrapper for reject call operation.
  * @return {Function}
  */
-function rejectOperation(container) {
+function createReject(container) {
+  /**
+   * Rejects an incoming call.
+   *
+   * This operation defines how a call is rejected. It performs the WebRTC and
+   *    signalling operations to reject a "call" both locally and on the server.
+   */
+  return async function reject(callId) {
+    // No local changes for this step.
+    await signalling(container, callId);
+  };
+}
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} callId The ID of the call to reject.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, callId) {
   const {
     context,
     CallRequests,
     CallstackWebrtc,
     logManager
   } = container;
-  /**
-   * Rejects an incoming call.
-   *
-   * This operation defines how a call is rejected. It performs the WebRTC and
-   *    signalling operations to reject a "call" both locally and on the server.
-   * Assumptions:
-   *    1. None
-   * Responsibilities:
-   *    1. Cleanup the call locally, using the WebRTC helper saga.
-   *    2. Reject the call on the server.
-   *    3. Update call state (via redux action).
-   * @method rejectCall
-   * @param {Object} callId The ID of the call to reject.
-   */
-  async function reject(callId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Rejecting incoming call.');
-    const incomingCall = (0, _selectors.getCallById)(context.getState(), callId);
-    // Collect the information needed to make the request.
-    const callInfo = {
-      id: callId,
-      wrtcsSessionId: incomingCall.wrtcsSessionId
-    };
-    try {
-      await CallRequests.rejectSession(callInfo);
-    } catch (error) {
-      log.info('Failed to reject call.');
-      throw error;
-    }
-
-    // Clean-up WebRTC resources AFTER the REST request to ensure that the
-    //    server-side call is ended. Avoids issues if REST request fails.
-    await CallstackWebrtc.closeCall(incomingCall.webrtcSessionId);
-    log.info(`Finished rejecting call. Changing to ${_constants.CALL_STATES.ENDED}.`);
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Rejecting incoming call.');
+  const incomingCall = (0, _selectors.getCallById)(context.getState(), callId);
+  // Collect the information needed to make the request.
+  const callInfo = {
+    id: callId,
+    wrtcsSessionId: incomingCall.wrtcsSessionId
+  };
+  try {
+    await CallRequests.rejectSession(callInfo);
+  } catch (error) {
+    log.info('Failed to reject call.');
+    throw error;
   }
-  return reject;
+
+  // Clean-up WebRTC resources AFTER the REST request to ensure that the
+  //    server-side call is ended. Avoids issues if REST request fails.
+  await CallstackWebrtc.closeCall(incomingCall.webrtcSessionId);
+  log.info(`Finished rejecting call. Changing to ${_constants.CALL_STATES.ENDED}.`);
 }
 
 /***/ }),
@@ -14705,11 +15326,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -14755,7 +15377,6 @@ function validate(state, callId) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -14768,6 +15389,7 @@ var _validateBasic = _interopRequireDefault(__webpack_require__(63378));
 var _remoteOffer = _interopRequireDefault(__webpack_require__(43352));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(47455));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
@@ -14778,7 +15400,8 @@ function initOperation(bottle) {
         // Stages of local operation.
         validate: _validate.default,
         localOffer: (0, _removeMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        rollback: (0, _rollbackRemoveMedia.default)(bottle.container)
       },
       remote: {
         // Stages of remote operation.
@@ -14792,7 +15415,8 @@ function initOperation(bottle) {
         // Only the validate stage is different compared to LocalRemoveMedia.
         validate: _validateBasic.default,
         localOffer: (0, _removeMedia.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        rollback: (0, _rollbackRemoveMedia.default)(bottle.container)
       }
     };
   });
@@ -14871,12 +15495,13 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createRemoveMediaResponse;
+__webpack_require__(60452);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 function createRemoveMediaResponse(container) {
@@ -14998,7 +15623,9 @@ function createRemoveMediaResponse(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = removeMediaOperation;
+exports["default"] = createRemoveMedia;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _eventTypes = __webpack_require__(55166);
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
@@ -15007,13 +15634,83 @@ var _kandyWebrtc = __webpack_require__(15203);
 
 // Libraries
 
-// Other plugins
-
 /**
  * Bottle wrapper for removeMedia call operation.
  * @return {Function}
  */
-function removeMediaOperation(container) {
+function createRemoveMedia(container) {
+  /**
+   * Removes media from an existing session.
+   *
+   * This function handles the WebRTC and signalling portions of removing media from an existing call
+   */
+  return async function removeMedia(callId, tracks) {
+    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    const stageData = await localChanges(container, callId, tracks, options);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    return signalling(container, call, stageData);
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId The ID of the call.
+ * @param {Array<string>}  tracks The list of track IDs to be removed.
+ * @param {Object} options Extra options for the media.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, callId, tracks, options) {
+  const {
+    context,
+    Callstack,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Removing media from call.');
+  const {
+    bandwidth
+  } = options;
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const {
+    webrtcSessionId,
+    bandwidth: callBandwidth
+  } = targetCall;
+  const finalBandwidth = {
+    audio: bandwidth && bandwidth.audio ? bandwidth.audio : callBandwidth.audio,
+    video: bandwidth && bandwidth.video ? bandwidth.video : callBandwidth.video
+  };
+  let sdp;
+  try {
+    sdp = await Callstack.utils.webrtcRemoveMedia({
+      sessionId: webrtcSessionId,
+      tracks,
+      bandwidth: finalBandwidth
+    });
+  } catch (removeMediaError) {
+    log.info('Failed to remove media from call.');
+    throw removeMediaError;
+  }
+  return {
+    sdp,
+    tracks,
+    finalBandwidth
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call
+ * @param {Object} params Data from the localChanges step.
+ * @param {Object} params.sdp
+ * @param {Array<string>} params.tracks
+ * @param {Object} params.finalBandwidth
+ * @return {Promise<Object>} Data needed in case a rollback is necessary.
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
   const {
     context,
     CallRequests,
@@ -15022,117 +15719,71 @@ function removeMediaOperation(container) {
     emitEvent,
     logManager
   } = container;
+  const {
+    sdp,
+    tracks,
+    finalBandwidth
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
 
-  /**
-   *
-   * Removes media from an existing session.
-   *
-   * This function handles the WebRTC and signalling portions of removing media from an existing call
-   * Assumptions:
-   *    1. The action contains a tracks object that is neither an array or an empty object
-   *    2. The call is in the 'Connected' state
-   * Responsibilities:
-   *    1. Perform the signaling to tell the server that we want to to remove the specified track
-   *    2. Update call state (via redux actions).
-   * @method removeMedia
-   * @param {Object} callId The ID of the call.
-   * @param {Array}  tracks The list of track IDs to be removed.
-   * @param {Object} options Extra options for the media.
-   */
-  async function removeMedia(callId, tracks) {
-    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Removing media from call.');
-    const {
-      bandwidth
-    } = options;
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const {
-      webrtcSessionId,
-      wrtcsSessionId,
-      bandwidth: callBandwidth,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    } = targetCall;
-    const finalBandwidth = {
-      audio: bandwidth && bandwidth.audio ? bandwidth.audio : callBandwidth.audio,
-      video: bandwidth && bandwidth.video ? bandwidth.video : callBandwidth.video
-    };
-    let sdp;
-    try {
-      sdp = await Callstack.utils.webrtcRemoveMedia({
-        sessionId: webrtcSessionId,
-        tracks,
-        bandwidth: finalBandwidth
-      });
-    } catch (removeMediaError) {
-      log.info('Failed to remove media from call.');
-      throw removeMediaError;
-    }
-    const callInfo = {
-      wrtcsSessionId,
-      id: callId,
+  // Perform signalling to remove media
+  try {
+    await CallRequests.updateSession({
+      wrtcsSessionId: call.wrtcsSessionId,
+      id: call.id,
       offer: sdp,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    };
-
-    // Perform signalling to remove media
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+  } catch (responseError) {
+    log.info('Failed to remove media from call.');
+    // Rollback is not supported on safari or for a plan other than unified-plan
     try {
-      await CallRequests.updateSession(callInfo);
-    } catch (responseError) {
-      log.info('Failed to remove media from call.');
-      // Rollback is not supported on safari or for a plan other than unified-plan
-      try {
-        await Callstack.utils.rollbackRemoveMedia(webrtcSessionId);
-      } catch (rollbackError) {
-        log.debug('Automatic remove media rollback failed:', rollbackError);
-        const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
-        // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
-        // signalling state, Safari does not perform an automatic rollback when a remote offer is
-        // received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
-        if (browser === 'safari') {
-          log.info('Ending call due to unrecoverable state after call remove media failure.');
-          // Hangup the call from WebRTC perspective
-          await CallstackWebrtc.closeCall(webrtcSessionId);
+      await Callstack.utils.rollbackRemoveMedia(call.webrtcSessionId);
+    } catch (rollbackError) {
+      log.debug('Automatic remove media rollback failed:', rollbackError);
+      const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
+      // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
+      // signalling state, Safari does not perform an automatic rollback when a remote offer is
+      // received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
+      if (browser === 'safari') {
+        log.info('Ending call due to unrecoverable state after call remove media failure.');
+        // Hangup the call from WebRTC perspective
+        await CallstackWebrtc.closeCall(call.webrtcSessionId);
 
-          // Cleanup Redux state by sending END_CALL_FINISH action
-          context.dispatch(_actions.callActions.endCallFinish(callId, {
-            isLocal: true,
-            transition: {
-              reasonText: 'Call has ended due to call remove media failure.'
-            }
-          }));
-          emitEvent(_eventTypes.CALL_STATE_CHANGE, {
-            callId,
-            previous: {
-              state: targetCall.state,
-              localHold: targetCall.localHold,
-              remoteHold: targetCall.remoteHold
-            },
-            error: responseError
-          });
-          throw responseError;
-        }
-        log.info('Unable to reset state after remove media operation failure, future operations may not work as intended.');
+        // Cleanup Redux state by sending END_CALL_FINISH action
+        context.dispatch(_actions.callActions.endCallFinish(call.id, {
+          isLocal: true,
+          transition: {
+            reasonText: 'Call has ended due to call remove media failure.'
+          }
+        }));
+        emitEvent(_eventTypes.CALL_STATE_CHANGE, {
+          callId: call.id,
+          previous: {
+            state: call.state,
+            localHold: call.localHold,
+            remoteHold: call.remoteHold
+          },
+          error: responseError
+        });
+        throw responseError;
       }
-      throw responseError;
+      log.info('Unable to reset state after remove media operation failure, future operations may not work as intended.');
     }
-    log.info('Finished local portion of removing media. Waiting on remote response.');
-    // Return the operation data so the CallManager can handle it.
-    return {
-      operationData: {
-        local: true,
-        tracks,
-        bandwidth: finalBandwidth
-      }
-    };
+    throw responseError;
   }
-  return removeMedia;
+  log.info('Finished local portion of removing media. Waiting on remote response.');
+  // Return the operation data so the CallManager can handle it.
+  return {
+    operationData: {
+      local: true,
+      tracks,
+      bandwidth: finalBandwidth
+    }
+  };
 }
 
 /***/ }),
@@ -15143,7 +15794,6 @@ function removeMediaOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -15154,7 +15804,8 @@ var _constants = __webpack_require__(60683);
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Pre-operation validation method.
  *
@@ -15204,7 +15855,7 @@ var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _constants = __webpack_require__(60683);
 var _selectors = __webpack_require__(11430);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -15248,11 +15899,14 @@ function validateBasic(state, callId, tracks) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createRemoveMediaHandler;
+exports["default"] = createRemoteRemoveMedia;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _state = __webpack_require__(65794);
 var _remoteTracks = _interopRequireDefault(__webpack_require__(45294));
 var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
@@ -15262,47 +15916,21 @@ var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants2 = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Callstack.
 
-function createRemoveMediaHandler(container) {
+function createRemoteRemoveMedia(container) {
   const {
     context,
-    WebRTC,
-    CallstackWebrtc,
-    CallstackSDP,
-    CallRequests,
-    emitEvent,
-    logManager
+    emitEvent
   } = container;
-
-  /**
-   * Operation wrapper to handle state changes and events.
-   *
-   * On succesful handling:
-   *    - updates call state to remote remote tracks,
-   *    - emits a "tracks removed" event
-   *
-   * On failure to handle, ...?:
-   *    - updates call state ...?,
-   *
-   * @method operation
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber The display number of the remote endpoint.
-   * @param {string} params.remoteName The display name of the remote endpoint.
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @throws {Error} Throws when the operation fails.
-   * @return {undefined}
-   */
-  async function operation(call, params, opInfo) {
+  return async function remoteRemoveMedia(call, params, opInfo) {
     try {
-      // Handle the remote remove media operation and return the affected remote tracks.
+      const stageData = await localChanges(container, call, params, opInfo);
       const {
         remoteTracks
-      } = await onRemoteRemoveMedia(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.remoteRemoveMediaFinish(call.id, {
         remote: true,
         remoteParticipant: {
@@ -15330,93 +15958,121 @@ function createRemoveMediaHandler(container) {
       // Rethrow the error so the CallManager knows of the failure.
       throw error;
     }
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber The display number of the remote endpoint.
+ * @param {string} params.remoteName The display name of the remote endpoint.
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDiff
+ * @throws {Error} Throws if the WebRTC changes fail.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    WebRTC,
+    CallstackWebrtc,
+    CallstackSDP,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
   }
 
-  /**
-   * Operation for handling a new remote remove-media offer SDP.
-   *
-   *
-   * Offer checks:
-   *    - set media inactive if locally held
-   *
-   * @method onRemoteRemoveMedia
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDesc
-   * @param {Object} opInfo.remoteDesc
-   * @throws {Error} Throws when WebRTC negotiation fails.
-   * @throws {Error} Throws when Gateway signaling fails.
-   * @return {Object} Tracks affected by the operation.
+  /*
+   * If the remote operation is offering media but the call is locally held,
+   *    then we need to modify the offer to ensure that media does not restart.
    */
-  async function onRemoteRemoveMedia(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
-    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
+  const mediaState = (0, _state.getMediaState)(call);
+  const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
+  if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
+    log.debug('Modifying remote offer to prevent resetting media while in local hold.');
+    params.sdp = (0, _setMediaInactive.default)(params.sdp);
+    if (!params.sdp) {
+      log.debug('SDP is either undefined or not a string.');
+      return;
     }
-
-    /*
-     * If the remote operation is offering media but the call is locally held,
-     *    then we need to modify the offer to ensure that media does not restart.
-     */
-    const mediaState = (0, _state.getMediaState)(call);
-    const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
-    if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
-      log.debug('Modifying remote offer to prevent resetting media while in local hold.');
-      params.sdp = (0, _setMediaInactive.default)(params.sdp);
-      if (!params.sdp) {
-        log.debug('SDP is either undefined or not a string.');
-        return;
-      }
-      // Update the `mediaDiff` after we modified the SDP.
-      opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
-    }
-
-    // Handle the offer SDP to receive an answer SDP.
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to remote update. Changing state based on the remote operation.');
-
-      // Get the list of remote tracks that were removed by the remote operation.
-      //    This is done after `handleOffer` so the Transceivers are up-to-date
-      //    with the changes being offered.
-      const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.REMOVE_MEDIA, opInfo.mediaDiff, session);
-      return {
-        remoteTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
+    // Update the `mediaDiff` after we modified the SDP.
+    opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
   }
-  return operation;
+
+  // Handle the offer SDP to receive an answer SDP.
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+  return {
+    answer,
+    opInfo,
+    session
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.answer
+ * @param {Object} params.session
+ * @param {Object} params.opInfo
+ * @param {Object} params.opInfo.mediaDiff
+ * @throws {Error} Throws if the REST request fails.
+ * @return {Promise<Object>} Data needed for state updates and events.
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    opInfo,
+    session
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to remote update. Changing state based on the remote operation.');
+
+    // Get the list of remote tracks that were removed by the remote operation.
+    //    This is done after `handleOffer` so the Transceivers are up-to-date
+    //    with the changes being offered.
+    const remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.REMOVE_MEDIA, opInfo.mediaDiff, session);
+    return {
+      remoteTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -15427,12 +16083,12 @@ function createRemoveMediaHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = rollbackRemoveMediaOperation;
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -15494,11 +16150,11 @@ function rollbackRemoveMediaOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = webrtcRemoveMediaOperation;
+__webpack_require__(60452);
 var _isUndefined2 = _interopRequireDefault(__webpack_require__(73346));
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var _selectors = __webpack_require__(11430);
@@ -15506,7 +16162,8 @@ var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin
 
 // Libraries
@@ -15635,7 +16292,6 @@ function webrtcRemoveMediaOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -15644,6 +16300,7 @@ var _replaceTrack = _interopRequireDefault(__webpack_require__(45965));
 var _validate = _interopRequireDefault(__webpack_require__(66823));
 var _webrtcReplaceTrack = _interopRequireDefault(__webpack_require__(12257));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.replaceTrack', () => {
@@ -15698,79 +16355,80 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = replaceTrackOperation;
+exports["default"] = createReplaceTrack;
+exports.localChanges = localChanges;
 var _selectors = __webpack_require__(11430);
 // Call plugin
-
-// Helpers.
 
 /**
  * Bottle wrapper for replaceTrack call operation.
  * @return {Function}
  */
-function replaceTrackOperation(container) {
+function createReplaceTrack(container) {
+  /**
+   * Replaces an existing track with a new track.
+   *
+   * This function handles the WebRTC portion of replacing a track.
+   */
+  return async function replaceTrack(callId, trackId, mediaConstraints) {
+    return localChanges(container, callId, trackId, mediaConstraints);
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId The ID of the call to replace the track of.
+ * @param {string} trackId The ID of the track to replace.
+ * @param {Object} [mediaConstraints={}] The media constraints.
+ *
+ * @param {Object|boolean} [mediaConstraints.audio] Audio-based constraints object or false.
+ * @param {string} [mediaConstraints.audio.deviceId] ID of the microphone to receive audio from.
+ *
+ * @param {Object|boolean} [mediaConstraints.video] Video-based constraints object or false.
+ * @param {string} [mediaConstraints.video.deviceId] ID of the camera to receive video from.
+ * @param {string} [mediaConstraints.video.width] The width of the video.
+ * @param {string} [mediaConstraints.video.height] The height of the video.
+ * @param {string} [mediaConstraints.video.frameRate] The frame rate of the video.
+ *
+ * @param {Object|boolean} [mediaConstraints.screen] Screen Share-based constraints object or false.
+ * @param {string} [mediaConstraints.screen.width] The width of the video.
+ * @param {string} [mediaConstraints.screen.height] The height of the video.
+ * @param {string} [mediaConstraints.screen.frameRate] The frame rate of the video.
+ *
+ * @param {Array} [mediaConstraints.medias] List of medias containing tracks to be attached to this call.
+ *
+ * @return {Promise<Object>}
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, callId, trackId, mediaConstraints) {
   const {
     context,
     Callstack,
     logManager
   } = container;
-  /**
-   *
-   * Replaces an existing track with a new track.
-   *
-   * This function handles the WebRTC portion of replacing a track.
-   * Assumptions:
-   *    1. The action contains call id, trackId, and mediaConstraints
-   * Responsibilities:
-   *    1. Creates a new track.
-   *    2. Replaces an an existing track with the newly created track.
-   *    3. Update call state (via redux actions).
-   * @method replaceTrack
-   * @param {string} callId The ID of the call to replace the track of.
-   * @param {string} trackId The ID of the track to replace.
-   * @param {Object} [mediaConstraints={}] The media constraints.
-   *
-   * @param {Object|boolean} [mediaConstraints.audio] Audio-based constraints object or false.
-   * @param {string} [mediaConstraints.audio.deviceId] ID of the microphone to receive audio from.
-   *
-   * @param {Object|boolean} [mediaConstraints.video] Video-based constraints object or false.
-   * @param {string} [mediaConstraints.video.deviceId] ID of the camera to receive video from.
-   * @param {string} [mediaConstraints.video.width] The width of the video.
-   * @param {string} [mediaConstraints.video.height] The height of the video.
-   * @param {string} [mediaConstraints.video.frameRate] The frame rate of the video.
-   *
-   * @param {Object|boolean} [mediaConstraints.screen] Screen Share-based constraints object or false.
-   * @param {string} [mediaConstraints.screen.width] The width of the video.
-   * @param {string} [mediaConstraints.screen.height] The height of the video.
-   * @param {string} [mediaConstraints.screen.frameRate] The frame rate of the video.
-   *
-   * @param {Array} [mediaConstraints.medias] List of medias containing tracks to be attached to this call.
-   */
-  async function replaceTrack(callId, trackId, mediaConstraints) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Replacing track on call.');
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    let result;
-    try {
-      result = await Callstack.utils.webRtcReplaceTrack({
-        sessionId: targetCall.webrtcSessionId,
-        trackId,
-        mediaConstraints
-      });
-    } catch (error) {
-      log.info('Failed to replace track on call.');
-      throw error;
-    }
-    const {
-      newTrackId,
-      oldTrackState
-    } = result;
-    return {
-      newTrackId,
-      oldTrackState
-    };
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Replacing track on call.');
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  let result;
+  try {
+    result = await Callstack.utils.webRtcReplaceTrack({
+      sessionId: targetCall.webrtcSessionId,
+      trackId,
+      mediaConstraints
+    });
+  } catch (error) {
+    log.info('Failed to replace track on call.');
+    throw error;
   }
-  return replaceTrack;
+  const {
+    newTrackId,
+    oldTrackState
+  } = result;
+  return {
+    newTrackId,
+    oldTrackState
+  };
 }
 
 /***/ }),
@@ -15785,11 +16443,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -15829,10 +16488,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = webrtcReplaceTrackOperation;
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Bottle wrapper for "webrtc ReplaceTrack" operation.
  * @return {Function}
@@ -15999,7 +16660,6 @@ function webrtcReplaceTrackOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -16007,6 +16667,7 @@ exports["default"] = initOperation;
 var _resyncCallState = _interopRequireDefault(__webpack_require__(46063));
 var _validate = _interopRequireDefault(__webpack_require__(62235));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.resyncCallState', () => {
@@ -16066,28 +16727,21 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = resyncCallStateOperation;
+exports["default"] = createResync;
+exports.signalling = signalling;
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
-
-// Other plugins
 
 /**
  * Bottle wrapper for resyncCallState call operation.
  * @return {Function}
  */
-function resyncCallStateOperation(container) {
-  const {
-    context,
-    CallRequests,
-    logManager,
-    emitEvent
-  } = container;
+function createResync(container) {
   /**
    * Sends a GET session request and updates the call if necessary.
    * The response to the GET session request contains two properties that can be used for determining the call state:
@@ -16098,81 +16752,89 @@ function resyncCallStateOperation(container) {
    *
    * This operation performs the signaling operation to get the status of a call session on the server, and any local
    *    WebRTC operations necessary for closing the call if necessary.
-   *
-   * Responsibilities:
-   *    1. Update the call state if the call is out of sync (call's status does not match the response from the server)
-   * @method resyncCallState
-   * @param {string}   callId        The call being acted on.
    */
-  async function resyncCallState(callId) {
-    const {
-      CallstackWebrtc
-    } = container;
-    const log = logManager.getLogger('CALL', callId);
-    const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
-    try {
-      const sessionStatusResponse = await CallRequests.getSession({
-        wrtcsSessionId: currentCall.wrtcsSessionId,
-        id: callId
-      });
-      if (sessionStatusResponse.state === 'ANSWERED' && currentCall.state !== _constants.CALL_STATES.CONNECTED && currentCall.state !== _constants.CALL_STATES.ON_HOLD) {
-        log.info('Call re-sync found that call was answered elsewhere. Cancelling call.');
-        // If the call is answered, but not by us, report call as cancelled
-        await CallstackWebrtc.closeCall(currentCall.webrtcSessionId);
-        const latestCall = (0, _selectors.getCallById)(context.getState(), callId);
-        if (latestCall.state !== _constants.CALL_STATES.ENDED && latestCall.state !== _constants.CALL_STATES.CANCELLED) {
-          context.dispatch(_actions.callActions.callCancelled(currentCall.id));
+  return async function resyncCallState(callId) {
+    await signalling(container, callId);
+  };
+}
 
-          // Notifiy the application that the call has been closed
-          emitEvent(eventTypes.CALL_STATE_CHANGE, {
-            callId,
-            previous: {
-              state: latestCall.state,
-              localHold: latestCall.localHold,
-              remoteHold: latestCall.remoteHold
-            }
-          });
-        }
-      } else {
-        log.info('Call re-sync found that there are no changes necessary for the call');
-        context.dispatch(_actions.callActions.resyncFinish(currentCall.id));
+/**
+ * @method resyncCallState
+ * @param {Object} container
+ * @param {string} callId  The call being acted on.
+ * @return {Promise<undefined>}
+ */
+async function signalling(container, callId) {
+  const {
+    context,
+    CallRequests,
+    CallstackWebrtc,
+    logManager,
+    emitEvent
+  } = container;
+  const log = logManager.getLogger('CALL', callId);
+  const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
+  try {
+    const sessionStatusResponse = await CallRequests.getSession({
+      wrtcsSessionId: currentCall.wrtcsSessionId,
+      id: callId
+    });
+    if (sessionStatusResponse.state === 'ANSWERED' && currentCall.state !== _constants.CALL_STATES.CONNECTED && currentCall.state !== _constants.CALL_STATES.ON_HOLD) {
+      log.info('Call re-sync found that call was answered elsewhere. Cancelling call.');
+      // If the call is answered, but not by us, report call as cancelled
+      await CallstackWebrtc.closeCall(currentCall.webrtcSessionId);
+      const latestCall = (0, _selectors.getCallById)(context.getState(), callId);
+      if (latestCall.state !== _constants.CALL_STATES.ENDED && latestCall.state !== _constants.CALL_STATES.CANCELLED) {
+        context.dispatch(_actions.callActions.callCancelled(currentCall.id));
+
+        // Notifiy the application that the call has been closed
+        emitEvent(eventTypes.CALL_STATE_CHANGE, {
+          callId,
+          previous: {
+            state: latestCall.state,
+            localHold: latestCall.localHold,
+            remoteHold: latestCall.remoteHold
+          }
+        });
       }
-    } catch (error) {
-      // Call not found
-      if (error.code === 47) {
-        log.info('Call re-sync found that the call has ended. Ending Call.');
-        // End the call as the session does not exist on the server anymore (statusCode 47 response)
-        await CallstackWebrtc.closeCall(currentCall.webrtcSessionId);
-        const latestCall = (0, _selectors.getCallById)(context.getState(), callId);
-        if (latestCall.state !== _constants.CALL_STATES.ENDED && latestCall.state !== _constants.CALL_STATES.CANCELLED) {
-          context.dispatch(_actions.callActions.endCallFinish(currentCall.id, {
-            isLocal: true
-          }));
+    } else {
+      log.info('Call re-sync found that there are no changes necessary for the call');
+      context.dispatch(_actions.callActions.resyncFinish(currentCall.id));
+    }
+  } catch (error) {
+    // Call not found
+    if (error.code === 47) {
+      log.info('Call re-sync found that the call has ended. Ending Call.');
+      // End the call as the session does not exist on the server anymore (statusCode 47 response)
+      await CallstackWebrtc.closeCall(currentCall.webrtcSessionId);
+      const latestCall = (0, _selectors.getCallById)(context.getState(), callId);
+      if (latestCall.state !== _constants.CALL_STATES.ENDED && latestCall.state !== _constants.CALL_STATES.CANCELLED) {
+        context.dispatch(_actions.callActions.endCallFinish(currentCall.id, {
+          isLocal: true
+        }));
 
-          // Tell the application that no tracks are available any longer.
-          emitEvent(eventTypes.CALL_TRACKS_REMOVED, {
-            callId,
-            trackIds: [...currentCall.localTracks, ...currentCall.remoteTracks]
-          });
+        // Tell the application that no tracks are available any longer.
+        emitEvent(eventTypes.CALL_TRACKS_REMOVED, {
+          callId,
+          trackIds: [...currentCall.localTracks, ...currentCall.remoteTracks]
+        });
 
-          // 2- 'call state change' event, which updates the state.
-          emitEvent(eventTypes.CALL_STATE_CHANGE, {
-            callId,
-            previous: {
-              state: currentCall.state,
-              localHold: currentCall.localHold,
-              remoteHold: currentCall.remoteHold
-            },
-            error
-          });
-        }
-      } else {
-        // GET response errors other than session not found
-        log.info(`Call re-sync failure (${error.code}).`, error);
+        // 2- 'call state change' event, which updates the state.
+        emitEvent(eventTypes.CALL_STATE_CHANGE, {
+          callId,
+          previous: {
+            state: currentCall.state,
+            localHold: currentCall.localHold,
+            remoteHold: currentCall.remoteHold
+          },
+          error
+        });
       }
+    } else {
+      // GET response errors other than session not found
+      log.info(`Call re-sync failure (${error.code}).`, error);
     }
   }
-  return resyncCallState;
 }
 
 /***/ }),
@@ -16190,7 +16852,7 @@ exports["default"] = validate;
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -16219,12 +16881,12 @@ function validate(state, callId) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _sendCallAudit = _interopRequireDefault(__webpack_require__(14254));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
@@ -16247,13 +16909,14 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = sendCallAuditOperation;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants2 = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Bottle wrapper for call audit operation.
  * @return {Function}
@@ -16525,7 +17188,6 @@ function sendCallAuditOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -16533,6 +17195,7 @@ exports["default"] = initOperation;
 var _sendCustomParameters = _interopRequireDefault(__webpack_require__(14273));
 var _validate = _interopRequireDefault(__webpack_require__(91005));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.sendCustomParameters', () => {
@@ -16587,7 +17250,8 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = sendCustomParametersOperation;
+exports["default"] = createSendParameters;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 // Call plugin
 
@@ -16595,47 +17259,50 @@ var _selectors = __webpack_require__(11430);
  * Bottle wrapper for sendCustomParameters call operation.
  * @return {Function}
  */
-function sendCustomParametersOperation(container) {
+function createSendParameters(container) {
+  return async function sendCustomParameters(callId) {
+    await signalling(container, callId);
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {string} callId The ID of the call being acted on.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws an error if the REST request fails.
+ */
+async function signalling(container, callId) {
   const {
     context,
     CallRequests,
     logManager
   } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Sending custom parameters for call.');
 
-  /**
-   * Sends custom parameters for a call.
-   * @param {string} callId The ID of the call being acted on.
-   * @return {undefined}
-   * @throws {BasicError} Throws an error if the REST request fails.
-   */
-  async function sendCustomParameters(callId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Sending custom parameters for call.');
-
-    // Get the call.
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const {
-      wrtcsSessionId,
-      isAnonymous,
-      account,
-      customParameters
-    } = targetCall;
-    const callInfo = {
-      wrtcsSessionId,
-      isAnonymous,
-      account,
-      customParameters,
-      id: callId
-    };
-    try {
-      await CallRequests.updateCustomParameters(callInfo);
-      log.info('Finished sending custom parameters.');
-    } catch (error) {
-      log.info('Failed to send custom parameters.');
-      throw error;
-    }
+  // Get the call.
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const {
+    wrtcsSessionId,
+    isAnonymous,
+    account,
+    customParameters
+  } = targetCall;
+  const callInfo = {
+    wrtcsSessionId,
+    isAnonymous,
+    account,
+    customParameters,
+    id: callId
+  };
+  try {
+    await CallRequests.updateCustomParameters(callInfo);
+    log.info('Finished sending custom parameters.');
+  } catch (error) {
+    log.info('Failed to send custom parameters.');
+    throw error;
   }
-  return sendCustomParameters;
 }
 
 /***/ }),
@@ -16654,7 +17321,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -16701,7 +17368,6 @@ function validate(state, callId) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -16709,6 +17375,7 @@ exports["default"] = initOperation;
 var _sendDtmf = _interopRequireDefault(__webpack_require__(93367));
 var _validate = _interopRequireDefault(__webpack_require__(18515));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Register the individual stages for the operation.
   bottle.factory('Callstack.stages.sendDtmf', () => {
@@ -16878,17 +17545,18 @@ async function playInBand(session, options) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createDtmfOperation;
+exports["default"] = createSendDtmf;
+exports.localChanges = localChanges;
 var _playMethods = __webpack_require__(4140);
 var _hasTelephoneEvent = _interopRequireDefault(__webpack_require__(78692));
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // import { addTone, convertTone, splitTones } from './tones'
 
 // Call plugin.
@@ -16899,80 +17567,87 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * Bottle wrapper for sendDtmf call operation.
  * @return {Function}
  */
-function createDtmfOperation(container) {
+function createSendDtmf(container) {
+  /**
+   * Operation for sending DTMF tones on a call.
+   * Determines if the DTMF tones need to be out-of-band (preferred) or in-band.
+   *    Refers to helper functions to send the tones.
+   */
+  return async function sendDtmf(callId, tone) {
+    let {
+      duration,
+      intertoneGap
+    } = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    await localChanges(container, callId, tone, {
+      duration,
+      intertoneGap
+    });
+  };
+}
+
+/**
+ * @async
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId ID for the Call.
+ * @param {string} tone The tone(s) to be sent.
+ * @param {Object} options
+ * @param {number} options.duration How long each tone should be played for.
+ * @param {number} options.intertoneGap How long in between of each tone.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws INVALID_PARAM if call does not exist.
+ * @throws {BasicError} Throws INVALID_STATE if call is in the wrong state.
+ * @throws {BasicError} Throws INVALID_PARAM if tone is not a valid DTMF tone.
+ * @throws {BasicError} Throws GENERIC_ERROR if sending the tone fails.
+ */
+async function localChanges(container, callId, tone, _ref) {
+  let {
+    duration,
+    intertoneGap
+  } = _ref;
   const {
     context,
     logManager,
     WebRTC
   } = container;
+  const log = logManager.getLogger('CALL', callId);
+  const call = (0, _selectors.getCallById)(context.getState(), callId);
 
-  /**
-   * Operation for sending DTMF tones on a call.
-   * Determines if the DTMF tones need to be out-of-band (preferred) or in-band.
-   *    Refers to helper functions to send the tones.
-   *
-   * Responsibilities:
-   *    1. Validate the operation is currently possible.
-   *    2. Determine if out-of-band tones are possible for the call.
-   *    3. Send the tones, depending on method available.
-   * @async
-   * @method sendDtmf
-   * @param {string} callId ID for the Call.
-   * @param {string} tone The tone(s) to be sent.
-   * @param {Object} options
-   * @param {number} options.duration How long each tone should be played for.
-   * @param {number} options.intertoneGap How long in between of each tone.
-   * @return {undefined}
-   * @throws {BasicError} Throws INVALID_PARAM if call does not exist.
-   * @throws {BasicError} Throws INVALID_STATE if call is in the wrong state.
-   * @throws {BasicError} Throws INVALID_PARAM if tone is not a valid DTMF tone.
-   * @throws {BasicError} Throws GENERIC_ERROR if sending the tone fails.
-   */
-  async function sendDtmf(callId, tone) {
-    let {
-      duration,
-      intertoneGap
-    } = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    const log = logManager.getLogger('CALL', callId);
-    const call = (0, _selectors.getCallById)(context.getState(), callId);
-
-    // Get the webrtc Session for the call.
-    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    // Get the remote description for the Session.
-    const remoteDesc = await session.getRemoteDescription();
-    const canSendOutBand = (0, _hasTelephoneEvent.default)(remoteDesc.sdp);
-    try {
-      if (canSendOutBand) {
-        log.debug(`Sending DTMF tones out-of-band for call ${call.id}.`);
-        await (0, _playMethods.playOutBand)(session, {
-          tone,
-          duration,
-          intertoneGap
-        });
-      } else {
-        log.debug(`Sending DTMF tones in-band for call ${call.id}.`);
-        await (0, _playMethods.playInBand)(session, {
-          tone,
-          duration,
-          intertoneGap
-        });
-      }
-      log.info(`Successfully sent DTMF tones for call ${call.id}.`);
-    } catch (err) {
-      log.debug(`Failed to send DTMF tones for call ${call.id}.`);
-      throw new _errors.default({
-        code: _errors.callCodes.GENERIC_ERROR,
-        message: `Unable to send DTMF tones for call ${call.id}.`
+  // Get the webrtc Session for the call.
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  // Get the remote description for the Session.
+  const remoteDesc = await session.getRemoteDescription();
+  const canSendOutBand = (0, _hasTelephoneEvent.default)(remoteDesc.sdp);
+  try {
+    if (canSendOutBand) {
+      log.debug(`Sending DTMF tones out-of-band for call ${call.id}.`);
+      await (0, _playMethods.playOutBand)(session, {
+        tone,
+        duration,
+        intertoneGap
+      });
+    } else {
+      log.debug(`Sending DTMF tones in-band for call ${call.id}.`);
+      await (0, _playMethods.playInBand)(session, {
+        tone,
+        duration,
+        intertoneGap
       });
     }
+    log.info(`Successfully sent DTMF tones for call ${call.id}.`);
+  } catch (err) {
+    log.debug(`Failed to send DTMF tones for call ${call.id}.`);
+    throw new _errors.default({
+      code: _errors.callCodes.GENERIC_ERROR,
+      message: `Unable to send DTMF tones for call ${call.id}.`
+    });
   }
-  return sendDtmf;
 }
 
 /***/ }),
 
 /***/ 39858:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -16983,6 +17658,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports.addTones = addTones;
 exports.convertTone = convertTone;
 exports.splitTones = splitTones;
+__webpack_require__(80978);
 /**
  * Converts a single tone input to its dual-frequencies.
  * @method convertTone
@@ -17152,11 +17828,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = validate;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -17202,7 +17879,6 @@ function validate(state, callId, tone) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -17210,6 +17886,7 @@ exports["default"] = initOperation;
 var _sendRingingFeedback = _interopRequireDefault(__webpack_require__(53516));
 var _validate = _interopRequireDefault(__webpack_require__(97965));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Local operation.
 
 // Call plugin.
@@ -17261,56 +17938,56 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = sendRingingFeedbackOperation;
+exports["default"] = createRingingFeedback;
+exports.signalling = signalling;
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 // Call plugin
-
-// Other plugins
 
 /**
  * Bottle wrapper for sendRingingFeedback call operation.
  * @return {Function}
  */
-function sendRingingFeedbackOperation(container) {
+function createRingingFeedback(container) {
+  /**
+   * Sends ringing feedback to the server for an incoming, Initiated call.
+   *
+   * This operation defines how/when a call can send ringing feedback to the remote user.
+   *    It performs signaling to send this notification to the server, which forwards
+   *    it to the remote side of the call.
+   */
+  return async function sendRingingFeedback(callId) {
+    await signalling(container, callId);
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {string} callId The id for the call sending ringing feedback.
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, callId) {
   const {
     context,
     CallRequests,
     logManager
   } = container;
-  /**
-   * Sends ringing feedback to the server for an incoming, Initiated call.
-   *
-   * This saga defines how/when a call can send ringing feedback to the remote user.
-   *    It performs signaling to send this notification to the server, which forwards
-   *    it to the remote side of the call.
-   * Assumptions:
-   *    1. The call is in Initiated state.
-   *    2. The call's direction is incoming.
-   *    3. The SDK is configured `ringingFeedbackMode: 'manual'`.
-   * Responsibilities:
-   *    1. Perform signaling.
-   *    2. Update call state (via redux action).
-   * @method sendRingingFeedback
-   * @param {string}   callId        The id for the call sending ringing feedback.
-   */
-  async function sendRingingFeedback(callId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Sending ringing feedback for incoming call.');
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const callInfo = {
-      wrtcsSessionId: targetCall.wrtcsSessionId,
-      id: targetCall.id
-    };
-    try {
-      await CallRequests.updateCallRinging(callInfo);
-    } catch (error) {
-      log.info(`Failed to send ringing feedback: ${error.code}: ${error.message}`);
-      throw error;
-    }
-    log.info(`Ringing feedback sent. Changing call to ${_constants.CALL_STATES.RINGING} state.`);
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Sending ringing feedback for incoming call.');
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const callInfo = {
+    wrtcsSessionId: targetCall.wrtcsSessionId,
+    id: targetCall.id
+  };
+  try {
+    await CallRequests.updateCallRinging(callInfo);
+  } catch (error) {
+    log.info(`Failed to send ringing feedback: ${error.code}: ${error.message}`);
+    throw error;
   }
-  return sendRingingFeedback;
+  log.info(`Ringing feedback sent. Changing call to ${_constants.CALL_STATES.RINGING} state.`);
 }
 
 /***/ }),
@@ -17329,7 +18006,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -17473,11 +18150,13 @@ function callStatusRingingOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createSlowFinishHandler;
+exports["default"] = createSlowStartFinish;
+exports.localChanges = localChanges;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _state = __webpack_require__(65794);
 var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
 var _remoteTracks = _interopRequireDefault(__webpack_require__(45294));
@@ -17489,7 +18168,8 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants3 = __webpack_require__(42750);
 var _selectors = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Other plugins.
@@ -17506,7 +18186,12 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  * Handling the response will affect the call's media, and the call state will
  *    be updated depending on the new media and the current call state.
  */
-function createSlowFinishHandler(container) {
+function createSlowStartFinish(container) {
+  return async function slowStartFinish(call, params) {
+    await localChanges(container, call, params);
+  };
+}
+async function localChanges(container, call, params) {
   const {
     context,
     WebRTC,
@@ -17517,23 +18202,6 @@ function createSlowFinishHandler(container) {
     logManager,
     CallReporter
   } = container;
-
-  /**
-   * Operation flow handler.
-   */
-  async function operation(call, params) {
-    /*
-     * Now that we have the remote SDP, we can compare the previous SDP and the
-     *    new SDP to determine what the remote operation is.
-     */
-    const opInfo = await getOpInfo(call, params.sdp);
-
-    // Handle the remote answer SDP for the slow-start operation.
-    const session = await onSlowFinish(call, opInfo.sdp);
-
-    // Handle state changes and/or events to be emitted.
-    await handleUpdates(call, params, opInfo, session);
-  }
 
   /**
    * Helper function to get information about the operation.
@@ -17757,7 +18425,18 @@ function createSlowFinishHandler(container) {
       return action;
     };
   }
-  return operation;
+
+  /*
+   * Now that we have the remote SDP, we can compare the previous SDP and the
+   *    new SDP to determine what the remote operation is.
+   */
+  const opInfo = await getOpInfo(call, params.sdp);
+
+  // Handle the remote answer SDP for the slow-start operation.
+  const session = await onSlowFinish(call, opInfo.sdp);
+
+  // Handle state changes and/or events to be emitted.
+  await handleUpdates(call, params, opInfo, session);
 }
 
 /***/ }),
@@ -17768,14 +18447,15 @@ function createSlowFinishHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _start = _interopRequireDefault(__webpack_require__(88453));
 var _finish = _interopRequireDefault(__webpack_require__(32132));
+var _LocalNegotiation = _interopRequireDefault(__webpack_require__(95553));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
@@ -17784,7 +18464,7 @@ function initOperation(bottle) {
     return {
       remote: {
         // Stages of remote operation.
-        remoteOffer: (0, _start.default)(bottle.container),
+        localOffer: (0, _start.default)(bottle.container),
         remoteAnswer: (0, _finish.default)(bottle.container)
       }
     };
@@ -17805,7 +18485,25 @@ function initOperation(bottle) {
         type: _constants.OPERATIONS.SLOW_START,
         isLocal: false,
         // Operation methods.
-        stages: bottle.container.Callstack.stages.slowStart.remote
+        stages: bottle.container.Callstack.stages.slowStart.remote,
+        /*
+         * Special-case operation:
+         * Slow-start is a remote operation, but follows the local negotiation flow.
+         */
+        createFlow: (container, operation, stages) => {
+          const flow = (0, _LocalNegotiation.default)(container, operation, stages);
+          return {
+            ...flow,
+            // Additionally, convert the `start` function parameters from the
+            //     "remote negotiation" to the "local negotiation" signature.
+            start: function (call, opInfo) {
+              for (var _len = arguments.length, params = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+                params[_key - 2] = arguments[_key];
+              }
+              return flow.start(call, params);
+            }
+          };
+        }
       }, {
         callId
       });
@@ -17827,12 +18525,14 @@ function initOperation(bottle) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createSlowStartHandler;
+exports["default"] = createStartSlowStart;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _state = __webpack_require__(65794);
 var _selectors = __webpack_require__(11430);
 var callActions = _interopRequireWildcard(__webpack_require__(77202));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Operation for the "offer" of a slow-start negotiation.
  *
@@ -17848,35 +18548,18 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  *    notification before negotiation is complete. Media and call state will
  *    only be affected by that response notification.
  */
-function createSlowStartHandler(container) {
+function createStartSlowStart(container) {
   const {
-    context,
-    WebRTC,
-    CallstackWebrtc,
-    CallRequests,
-    logManager
+    context
   } = container;
-
   /**
-   * Operation wrapper to handle state changes and events.
-   *
-   * On succesful handling:
-   *    - dispatche action (no state change?)
-   *
-   * On failure to handle, ...?:
-   *    - updates call state ...?,
-   *
-   * @method operation
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber The display number of the remote endpoint.
-   * @param {string} params.remoteName The display name of the remote endpoint.
-   * @return {undefined}
+   * Function for handling the WebRTC negotiation and Gateway signaling aspects
+   *    of the operation. Creates a new offer SDP and sends it to the Gateway.
    */
-  async function operation(call, params) {
+  return async function slowStart(call, params) {
     try {
-      await onSlowStart(call, params);
+      const stageData = await localChanges(container, call);
+      await signalling(container, call, stageData);
 
       /*
        * The operation is not complete until we receive a response to our offer. The
@@ -17897,97 +18580,122 @@ function createSlowStartHandler(container) {
       // Rethrow the error so the CallManager knows of the failure.
       throw error;
     }
-  }
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, call) {
+  const {
+    context,
+    WebRTC,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  log.info('Processing slow-start update request from remote endpoint.');
+  const mediaState = (0, _state.getMediaState)(call);
+  log.debug(`Current call info; State: ${call.state}, MediaState: ${mediaState}.`);
 
   /**
-   * Function for handling the WebRTC negotiation and Gateway signaling aspects
-   *    of the operation. Creates a new offer SDP and sends it to the Gateway.
-   *
-   * @method onSlowStart
-   * @param {Object} call The call being acted on.
-   * @param {Object} params       Parameters of the update request.
-   * @param {string} params.remoteNumber Number of the remote participant.
-   * @param {string} params.remoteName   Name of the remote participant.
+   * Decision: Whenever we receive a slow-start notification, recreate the Peer.
+   *    This is needed in certain situations (but not all...)
+   * Known Scenarios:
+   * 1. Direct transfer:
+   *    - The user being transferred will be on remote hold and will receive a
+   *        slow-start notification as part of the "transfer renegotitions".
+   *        Not recreating the Peer will result in a DTLS role conflict.
+   *    - The user receiving the transfer will negotiate the initial connection,
+   *        then will receive a slow-start notification (when Connected). Not
+   *        recreating the Peer for the slow-start results in DTLS conflict.
+   * Exception: If client has set the call option 'mediaBrokerOnly' to true, then
+   *    we don't need to recreate the call's PeerConnection.
    */
-  async function onSlowStart(call, params) {
-    const log = logManager.getLogger('CALL', call.id);
-    log.info('Processing slow-start update request from remote endpoint.');
-    const mediaState = (0, _state.getMediaState)(call);
-    log.debug(`Current call info; State: ${call.state}, MediaState: ${mediaState}.`);
-
-    /**
-     * Decision: Whenever we receive a slow-start notification, recreate the Peer.
-     *    This is needed in certain situations (but not all...)
-     * Known Scenarios:
-     * 1. Direct transfer:
-     *    - The user being transferred will be on remote hold and will receive a
-     *        slow-start notification as part of the "transfer renegotitions".
-     *        Not recreating the Peer will result in a DTLS role conflict.
-     *    - The user receiving the transfer will negotiate the initial connection,
-     *        then will receive a slow-start notification (when Connected). Not
-     *        recreating the Peer for the slow-start results in DTLS conflict.
-     * Exception: If client has set the call option 'mediaBrokerOnly' to true, then
-     *    we don't need to recreate the call's PeerConnection.
-     */
-    const {
-      mediaBrokerOnly
-    } = (0, _selectors.getOptions)(context.getState());
-    if (!mediaBrokerOnly) {
-      log.debug(`Recreating Peer for Session ${call.webrtcSessionId}.`);
-      const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-      await session.recreatePeer();
-    } else {
-      log.debug('Not recreating PeerConnection as mediaBrokerOnly is set to true in configuration.');
-    }
-
-    /*
-     * Decision: Whenever we receive an offer without an SDP (slow start), and
-     *    we're not locally held, respond with all media directions as sendrecv.
-     *    This is to signal what we are capable of, rather than what we want.
-     *    When we are locally held, we don't want to allow the remote side to
-     *    restart media, hence respond with media directions as inactive.
-     * This handles two (non-local hold) scenarios specifically:
-     *  1. Re-invite: We have already negotiated to perform the remote operation,
-     *      but we received a second offer (without an SDP) as a side-effect to
-     *      further update media.
-     *    Eg. Music on Hold: The remote operation is to set media to inactive,
-     *      and the re-invite updates media so we can receive the hold audio.
-     *  2. Slow start unhold: We receive an offer without an SDP, but we have no
-     *      idea what the remote operation was. If we are on remote hold, we
-     *      assume that it's a remote unhold operation.
-     */
-    const mediaDirections = {
-      audio: call.localHold ? 'inactive' : 'sendrecv',
-      video: call.localHold ? 'inactive' : 'sendrecv'
-    };
-
-    // Create an offer to use for responding to the slow start notification.
-    let slowOffer;
-    try {
-      slowOffer = await CallstackWebrtc.generateOffer(call.webrtcSessionId, mediaDirections);
-    } catch (error) {
-      // TODO: Handle this scenario (revert operation if necessary).
-      log.info('Failed to respond to slow-start remote update.', error);
-      throw error;
-    }
-    try {
-      // Respond with our "offer".
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: slowOffer.sdp,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to slow-start remote update. Waiting on remote response.');
-    } catch (error) {
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to slow-start remote update.', error);
-      throw error;
-    }
+  const {
+    mediaBrokerOnly
+  } = (0, _selectors.getOptions)(context.getState());
+  if (!mediaBrokerOnly) {
+    log.debug(`Recreating Peer for Session ${call.webrtcSessionId}.`);
+    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+    await session.recreatePeer();
+  } else {
+    log.debug('Not recreating PeerConnection as mediaBrokerOnly is set to true in configuration.');
   }
-  return operation;
+
+  /*
+   * Decision: Whenever we receive an offer without an SDP (slow start), and
+   *    we're not locally held, respond with all media directions as sendrecv.
+   *    This is to signal what we are capable of, rather than what we want.
+   *    When we are locally held, we don't want to allow the remote side to
+   *    restart media, hence respond with media directions as inactive.
+   * This handles two (non-local hold) scenarios specifically:
+   *  1. Re-invite: We have already negotiated to perform the remote operation,
+   *      but we received a second offer (without an SDP) as a side-effect to
+   *      further update media.
+   *    Eg. Music on Hold: The remote operation is to set media to inactive,
+   *      and the re-invite updates media so we can receive the hold audio.
+   *  2. Slow start unhold: We receive an offer without an SDP, but we have no
+   *      idea what the remote operation was. If we are on remote hold, we
+   *      assume that it's a remote unhold operation.
+   */
+  const mediaDirections = {
+    audio: call.localHold ? 'inactive' : 'sendrecv',
+    video: call.localHold ? 'inactive' : 'sendrecv'
+  };
+
+  // Create an offer to use for responding to the slow start notification.
+  let slowOffer;
+  try {
+    slowOffer = await CallstackWebrtc.generateOffer(call.webrtcSessionId, mediaDirections);
+  } catch (error) {
+    // TODO: Handle this scenario (revert operation if necessary).
+    log.info('Failed to respond to slow-start remote update.', error);
+    throw error;
+  }
+  return {
+    slowOffer
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.slowOffer
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    slowOffer
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Respond with our "offer".
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: slowOffer.sdp,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to slow-start remote update. Waiting on remote response.');
+  } catch (error) {
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to slow-start remote update.', error);
+    throw error;
+  }
 }
 
 /***/ }),
@@ -17998,7 +18706,6 @@ function createSlowStartHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -18009,6 +18716,7 @@ var _rollbackUnhold = _interopRequireDefault(__webpack_require__(17436));
 var _remoteOffer = _interopRequireDefault(__webpack_require__(78130));
 var _remoteAnswer = _interopRequireDefault(__webpack_require__(74071));
 var _constants = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Operations.
 
 function initOperation(bottle) {
@@ -18019,7 +18727,8 @@ function initOperation(bottle) {
         // Stages of local operation.
         validate: _validate.default,
         localOffer: (0, _unhold.default)(bottle.container),
-        remoteAnswer: (0, _remoteAnswer.default)(bottle.container)
+        remoteAnswer: (0, _remoteAnswer.default)(bottle.container),
+        rollback: (0, _rollbackUnhold.default)(bottle.container)
       },
       remote: {
         // Stages of remote operation.
@@ -18069,7 +18778,6 @@ function initOperation(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -18082,8 +18790,9 @@ var _constants2 = __webpack_require__(42750);
 var _selectors = __webpack_require__(11430);
 var _selectors2 = __webpack_require__(30105);
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 // Other plugins.
@@ -18249,7 +18958,9 @@ function createUnholdResponse(container) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = unholdOperation;
+exports["default"] = createUnhold;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
 var _actions = __webpack_require__(6313);
 var _selectors = __webpack_require__(11430);
 var _kandyWebrtc = __webpack_require__(15203);
@@ -18262,15 +18973,7 @@ var _selectors2 = __webpack_require__(30105);
  * Bottle wrapper for unhold call operation.
  * @return {Function}
  */
-function unholdOperation(container) {
-  const {
-    context,
-    CallRequests,
-    Callstack,
-    CallstackWebrtc,
-    logManager
-  } = container;
-
+function createUnhold(container) {
   /**
    * Updates an existing call to have "full" media.
    * Can be used as an "unhold" operation for plain webRTC scenarios.
@@ -18279,93 +18982,122 @@ function unholdOperation(container) {
    *    signaling operations to update the local and server sessions of a call.
    *    This represents the start of the webRTC renegotiation process for the
    *    local side.
-   * Assumptions:
-   *    1. The call is in the correct state for the operation.
-   *        - The call exists, and is locally held.
-   * Responsibilities:
-   *    1. Generate an offer with the media directions as "connected".
-   *    2. Perform signaling to update the server session with the offer.
-   *    3. Update call state (via redux actions).
-   * @method unhold
-   * @param {string} callId  The ID of the call to unhold.
    */
-  async function unhold(callId) {
-    const log = logManager.getLogger('CALL', callId);
-    log.info('Unholding call.');
-    const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
-    const {
-      wrtcsSessionId,
-      webrtcSessionId,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    } = targetCall;
+  return async function unhold(callId) {
+    const stageData = await localChanges(container, callId);
+    const call = (0, _selectors.getCallById)(container.context.getState(), callId);
+    await signalling(container, call, stageData);
+  };
+}
 
-    // If the Session doesn't have a local track for a media kind, then don't change
-    //    that direction to say we're sending one. This prevents the other side
-    //    from getting an empty track.
-    const sessionState = (0, _selectors2.getSessionById)(context.getState(), webrtcSessionId);
-    const localTracks = sessionState.localTracks;
-    const tracks = localTracks.map(id => (0, _selectors2.getTrackById)(context.getState(), id));
-    const mediaDirections = {
-      audio: tracks.some(track => track.kind === 'audio') ? 'sendrecv' : 'recvonly',
-      video: tracks.some(track => track.kind === 'video') ? 'sendrecv' : 'recvonly'
-    };
-    let offer;
-    try {
-      offer = await CallstackWebrtc.generateOffer(webrtcSessionId, mediaDirections, targetCall.bandwidth);
-    } catch (generateOfferError) {
-      log.debug('Invalid SDP offer or SDP offer not received.');
-      throw generateOfferError;
-    }
-    const callInfo = {
-      wrtcsSessionId,
-      id: callId,
-      offer: offer.sdp,
-      isAnonymous,
-      account,
-      customParameters,
-      customBodies
-    };
-    try {
-      await CallRequests.updateSession(callInfo);
-    } catch (responseError) {
-      log.info('Failed to unhold call.');
-      // Rollback only supported on unified-plan
-      let rollbackErr;
-      try {
-        await Callstack.utils.rollbackUnhold(webrtcSessionId);
-      } catch (rollbackError) {
-        log.debug('Automatic unhold rollback failed:', rollbackError);
-        rollbackErr = rollbackError;
-      }
-      const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
-      if (rollbackErr) {
-        // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
-        //  signalling state, Safari does not perform an automatic rollback when a remote offer is
-        //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
-        if (browser === 'safari') {
-          log.info('Ending call due to unrecoverable state after call unhold failure.');
-          // Hangup the call from WebRTC perspective
-          await CallstackWebrtc.closeCall(webrtcSessionId);
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {string} callId  The ID of the call to unhold.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ * @throws {BasicError} Throws if the WebRTC changes fail.
+ */
+async function localChanges(container, callId) {
+  const {
+    context,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', callId);
+  log.info('Unholding call.');
+  const targetCall = (0, _selectors.getCallById)(context.getState(), callId);
+  const {
+    webrtcSessionId
+  } = targetCall;
 
-          // Cleanup Redux state by sending END_CALL_FINISH action
-          context.dispatch(_actions.callActions.endCallFinish(callId, {
-            isLocal: true,
-            transition: {
-              reasonText: 'Call has ended due to call unhold failure.'
-            }
-          }));
-          throw responseError;
-        }
-        log.info('Unable to reset state after unhold operation failure, future operations may not work as intended.');
-      }
-      throw responseError;
-    }
-    log.info('Finished local portion of unholding call. Waiting on remote response.');
+  // If the Session doesn't have a local track for a media kind, then don't change
+  //    that direction to say we're sending one. This prevents the other side
+  //    from getting an empty track.
+  const sessionState = (0, _selectors2.getSessionById)(context.getState(), webrtcSessionId);
+  const localTracks = sessionState.localTracks;
+  const tracks = localTracks.map(id => (0, _selectors2.getTrackById)(context.getState(), id));
+  const mediaDirections = {
+    audio: tracks.some(track => track.kind === 'audio') ? 'sendrecv' : 'recvonly',
+    video: tracks.some(track => track.kind === 'video') ? 'sendrecv' : 'recvonly'
+  };
+  let offer;
+  try {
+    offer = await CallstackWebrtc.generateOffer(webrtcSessionId, mediaDirections, targetCall.bandwidth);
+  } catch (generateOfferError) {
+    log.debug('Invalid SDP offer or SDP offer not received.');
+    throw generateOfferError;
   }
-  return unhold;
+  return {
+    offer
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call
+ * @param {Object} params
+ * @param {Object} params.offer
+ * @return {Promise<undefined>}
+ * @throws {BasicError} Throws if the REST request fails.
+ */
+async function signalling(container, call, params) {
+  const {
+    context,
+    CallRequests,
+    Callstack,
+    CallstackWebrtc,
+    logManager
+  } = container;
+  const {
+    offer
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  const callInfo = {
+    wrtcsSessionId: call.wrtcsSessionId,
+    id: call.id,
+    offer: offer.sdp,
+    isAnonymous: call.isAnonymous,
+    account: call.account,
+    customParameters: call.customParameters,
+    customBodies: call.customBodies
+  };
+  try {
+    await CallRequests.updateSession(callInfo);
+  } catch (responseError) {
+    log.info('Failed to unhold call.');
+    // Rollback only supported on unified-plan
+    let rollbackErr;
+    try {
+      await Callstack.utils.rollbackUnhold(call.webrtcSessionId);
+    } catch (rollbackError) {
+      log.debug('Automatic unhold rollback failed:', rollbackError);
+      rollbackErr = rollbackError;
+    }
+    const browser = (0, _kandyWebrtc.getBrowserDetails)().browser;
+    if (rollbackErr) {
+      // Although Safari can automatically rollback and set another local offer while in `have-local-offer`
+      //  signalling state, Safari does not perform an automatic rollback when a remote offer is
+      //  received while in that state. An InvalidStateError is thrown instead and call is in an awkward state.
+      if (browser === 'safari') {
+        log.info('Ending call due to unrecoverable state after call unhold failure.');
+        // Hangup the call from WebRTC perspective
+        await CallstackWebrtc.closeCall(call.webrtcSessionId);
+
+        // Cleanup Redux state by sending END_CALL_FINISH action
+        context.dispatch(_actions.callActions.endCallFinish(call.id, {
+          isLocal: true,
+          transition: {
+            reasonText: 'Call has ended due to call unhold failure.'
+          }
+        }));
+        throw responseError;
+      }
+      log.info('Unable to reset state after unhold operation failure, future operations may not work as intended.');
+    }
+    throw responseError;
+  }
+  log.info('Finished local portion of unholding call. Waiting on remote response.');
 }
 
 /***/ }),
@@ -18383,7 +19115,7 @@ exports["default"] = validate;
 var _selectors = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /*
  * Pre-operation validation method.
  *
@@ -18419,11 +19151,14 @@ function validate(state, callId) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports["default"] = createUnholdHandler;
+exports["default"] = createRemoteUnhold;
+exports.localChanges = localChanges;
+exports.signalling = signalling;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _webrtc = __webpack_require__(82332);
 var _state = __webpack_require__(65794);
 var _remoteTracks = _interopRequireWildcard(__webpack_require__(45294));
@@ -18435,54 +19170,35 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _selectors = __webpack_require__(11430);
 var _constants2 = __webpack_require__(37409);
 var _selectors2 = __webpack_require__(30105);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Callstack.
 
 // Other plugins.
 
-function createUnholdHandler(container) {
+function createRemoteUnhold(container) {
   const {
     context,
-    WebRTC,
-    CallstackWebrtc,
-    CallstackSDP,
-    CallRequests,
-    emitEvent,
-    logManager
+    emitEvent
   } = container;
 
   /**
-   * Operation wrapper to handle state changes and events.
+   * Operation for handling a new remote unhold offer SDP.
    *
-   * On succesful handling:
-   *    - updates call state to remove "remote hold" flag,
-   *    - emits a "tracks added" event
-   *    - conditionally emits a "track removed" event if MoH
-   *    - emits a "call state change" event.
-   *
-   * On failure to handle, ...?:
-   *    - updates call state ...?,
-   *    - emits a "call state change" error event.
-   *
-   * @method operation
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber The display number of the remote endpoint.
-   * @param {string} params.remoteName The display name of the remote endpoint.
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDiff
-   * @throws {Error} Throws when the operation fails.
-   * @return {undefined}
+   * Offer checks:
+   *    - set media inactive if locally held
+   *    - recreate Peer if remote op is hold + stop MOH in one
+   *    - unset DTLS role in offer if set
    */
-  async function operation(call, params, opInfo) {
+  return async function remoteUnhold(call, params, opInfo) {
     try {
       // Handle the remote unhold operation and return the affected local/remote tracks.
+      const stageData = await localChanges(container, call, params, opInfo);
       const {
         remoteTracks,
         localTracks
-      } = await onRemoteUnhold(call, params, opInfo);
+      } = await signalling(container, call, stageData);
       context.dispatch(_actions.callActions.remoteUnholdFinish(call.id, {
         remote: true,
         remoteParticipant: {
@@ -18546,146 +19262,179 @@ function createUnholdHandler(container) {
       // Rethrow the error so the CallManager knows of the failure.
       throw error;
     }
+  };
+}
+
+/**
+ * @method localChanges
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.sdp The remote offer SDP.
+ * @param {string} params.remoteNumber
+ * @param {string} params.remoteName
+ * @param {Object} opInfo
+ * @param {Object} opInfo.mediaDesc
+ * @throws {Error} Throws when WeBRTC negotiation fails.
+ * @return {Promise<Object>} Data needed for the signalling step.
+ */
+async function localChanges(container, call, params, opInfo) {
+  const {
+    context,
+    WebRTC,
+    CallstackWebrtc,
+    CallstackSDP,
+    logManager
+  } = container;
+  const log = logManager.getLogger('CALL', call.id);
+  const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
+  if (!session) {
+    log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
+    throw new Error(`Session for call ${call.id} not found.`);
+  }
+
+  /*
+   * If the remote operation is offering media but the call is locally held,
+   *    then we need to modify the offer to ensure that media does not restart.
+   */
+  const mediaState = (0, _state.getMediaState)(call);
+  const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
+  if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
+    log.debug('Modifying remote offer to prevent resetting media while in local hold.');
+    params.sdp = (0, _setMediaInactive.default)(params.sdp);
+    if (!params.sdp) {
+      log.debug('SDP is either undefined or not a string.');
+      return;
+    }
+    // Update the `mediaDiff` after we modified the SDP.
+    opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
   }
 
   /**
-   * Operation for handling a new remote unhold offer SDP.
-   *
-   * Offer checks:
-   *    - set media inactive if locally held
-   *    - recreate Peer if remote op is hold + stop MOH in one
-   *    - unset DTLS role in offer if set
-   *
-   * @method onRemoteUnhold
-   * @param {Object} call The call being acted on.
-   * @param {Object} params
-   * @param {Object} params.sdp The remote offer SDP.
-   * @param {string} params.remoteNumber
-   * @param {string} params.remoteName
-   * @param {Object} opInfo
-   * @param {Object} opInfo.mediaDesc
-   * @throws {Error} Throws when WeBRTC negotiation fails.
-   * @throws {Error} Throws when Gateway signaling fails.
-   * @return {Object} Affected local and remote tracks.
+   * Decision: When we receive a remote unhold offer SDP that currently has MoH,
+   *    then we want to recreate the PeerConnection even if it's the same Session.
+   * This is a workaround/fix for to avoid possible DTLS role conflict issues.
+   *    This usually is only for remote offers for a different "session ID",
+   *    but is a special-case.
+   * The remote operation is an unhold but it is also stopping MoH. The Peer was
+   *    recreated on start MOH because the SDP was from a different session, but
+   *    the session doesn't change for stop MOH because it was a remote complex
+   *    operation. The Peer needs to be recreated again otherwise local tracks
+   *    will not be properly added back the call (because of how `recreatePeer` works).
+   * Exception: If client has set the call option 'mediaBrokerOnly' to true, then
+   *    we don't need to recreate the call's PeerConnection.
+   * Reference: KJS-934
    */
-  async function onRemoteUnhold(call, params, opInfo) {
-    const log = logManager.getLogger('CALL', call.id);
-    const session = await WebRTC.sessionManager.get(call.webrtcSessionId);
-    if (!session) {
-      log.debug(`webRTC session ${call.webrtcSessionId} not found.`);
-      throw new Error(`Session for call ${call.id} not found.`);
-    }
-
-    /*
-     * If the remote operation is offering media but the call is locally held,
-     *    then we need to modify the offer to ensure that media does not restart.
-     */
-    const mediaState = (0, _state.getMediaState)(call);
-    const isMediaFlowing = (0, _hasMediaFlowing.default)(params.sdp);
-    if (isMediaFlowing && [_constants.CALL_MEDIA_STATES.DUAL_HOLD, _constants.CALL_MEDIA_STATES.LOCAL_HOLD].includes(mediaState)) {
-      log.debug('Modifying remote offer to prevent resetting media while in local hold.');
-      params.sdp = (0, _setMediaInactive.default)(params.sdp);
-      if (!params.sdp) {
-        log.debug('SDP is either undefined or not a string.');
-        return;
-      }
-      // Update the `mediaDiff` after we modified the SDP.
-      opInfo.mediaDiff = CallstackSDP.compareMedia(opInfo.remoteDesc.sdp, params.sdp, true);
-    }
-
-    /**
-     * Decision: When we receive a remote unhold offer SDP that currently has MoH,
-     *    then we want to recreate the PeerConnection even if it's the same Session.
-     * This is a workaround/fix for to avoid possible DTLS role conflict issues.
-     *    This usually is only for remote offers for a different "session ID",
-     *    but is a special-case.
-     * The remote operation is an unhold but it is also stopping MoH. The Peer was
-     *    recreated on start MOH because the SDP was from a different session, but
-     *    the session doesn't change for stop MOH because it was a remote complex
-     *    operation. The Peer needs to be recreated again otherwise local tracks
-     *    will not be properly added back the call (because of how `recreatePeer` works).
-     * Exception: If client has set the call option 'mediaBrokerOnly' to true, then
-     *    we don't need to recreate the call's PeerConnection.
-     * Reference: KJS-934
-     */
-    const {
-      mediaBrokerOnly
-    } = (0, _selectors.getOptions)(context.getState());
-    const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
-    if (sameSession && call.hasMOH && !mediaBrokerOnly) {
-      log.debug(`Received offer SDP is both an unhold and stop MoH on the same session. Recreating Peer for call ${call.id}.`);
-      await session.recreatePeer();
-    } else {
-      log.debug('Not recreating PeerConnection as mediaBrokerOnly is set to true in configuration.');
-    }
-
-    /**
-     * If the offer SDP has a DTLS role of active (which is invalid), change it to
-     *    actpass. This is a workaround for transfer scenarios where the offer SDP
-     *    is the remote endpoint's answer SDP from them answering the call. This
-     *    happens when slow-start is not done for the transfer.
-     * The user being transferred will see the remote operation as an unhold even
-     *    though it is a transfer.
-     */
-    if (params.sdp.includes('setup:active')) {
-      log.debug(`Received offer SDP with active role for call ${call.id}. Changing.`);
-      params.sdp = params.sdp.replace(/setup:active/g, 'setup:actpass');
-    }
-
-    // Handle the offer SDP to receive an answer SDP.
-    let answer;
-    try {
-      answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
-    } catch (error) {
-      log.debug('Failed to receive offer SDP.', error);
-
-      // TODO: Notify the Gateway that negotiation has failed.
-      // The call may now be in a bad state and needs to be fixed.
-
-      throw error;
-    }
-    try {
-      // Send answer sdp back to remote side
-      await CallRequests.updateSessionResponse({
-        wrtcsSessionId: call.wrtcsSessionId,
-        answer: answer.answerSDP,
-        isAnonymous: call.isAnonymous,
-        account: call.account,
-        customParameters: call.customParameters,
-        customBodies: call.customBodies
-      });
-      log.info('Finished responding to remote update. Changing state based on the remote operation.');
-
-      // Get the list of remote tracks that are changing (either added or removed) as
-      //    part of the remote operation. This is done after `handleOffer` so the
-      //    Transceivers are up-to-date with the changes being offered.
-      let remoteTracks = [];
-      if (!sameSession) {
-        // If the PeerConnection was recreated, then ALL remote tracks will be new.
-        remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
-      } else {
-        remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.UNHOLD, opInfo.mediaDiff, session);
-      }
-      let affectedLocalTracks = [];
-      if (!call.localHold) {
-        // On remote unhold (that isn't a dual-hold), all local tracks on the Session
-        //    become available.
-        const sessionState = (0, _selectors2.getSessionById)(context.getState(), call.webrtcSessionId);
-        affectedLocalTracks = sessionState.localTracks;
-      }
-      return {
-        remoteTracks,
-        localTracks: affectedLocalTracks
-      };
-    } catch (error) {
-      // Scenario: The offer was processed, but failed to respond with the answer.
-      // The remote side needs the answer SDP before the call is "connected".
-      // TODO: Handle this scenario (retry request or fail/revert operation?)
-      log.info('Failed to respond to remote offer with an answer.');
-      throw error;
-    }
+  const {
+    mediaBrokerOnly
+  } = (0, _selectors.getOptions)(context.getState());
+  const sameSession = await (0, _webrtc.isSameSdpSessionId)(WebRTC, call.webrtcSessionId, params.sdp);
+  if (sameSession && call.hasMOH && !mediaBrokerOnly) {
+    log.debug(`Received offer SDP is both an unhold and stop MoH on the same session. Recreating Peer for call ${call.id}.`);
+    await session.recreatePeer();
+  } else {
+    log.debug('Not recreating PeerConnection as mediaBrokerOnly is set to true in configuration.');
   }
-  return operation;
+
+  /**
+   * If the offer SDP has a DTLS role of active (which is invalid), change it to
+   *    actpass. This is a workaround for transfer scenarios where the offer SDP
+   *    is the remote endpoint's answer SDP from them answering the call. This
+   *    happens when slow-start is not done for the transfer.
+   * The user being transferred will see the remote operation as an unhold even
+   *    though it is a transfer.
+   */
+  if (params.sdp.includes('setup:active')) {
+    log.debug(`Received offer SDP with active role for call ${call.id}. Changing.`);
+    params.sdp = params.sdp.replace(/setup:active/g, 'setup:actpass');
+  }
+
+  // Handle the offer SDP to receive an answer SDP.
+  let answer;
+  try {
+    answer = await CallstackWebrtc.handleOffer(params.sdp, call.webrtcSessionId, call.bandwidth);
+  } catch (error) {
+    log.debug('Failed to receive offer SDP.', error);
+
+    // TODO: Notify the Gateway that negotiation has failed.
+    // The call may now be in a bad state and needs to be fixed.
+
+    throw error;
+  }
+  return {
+    answer,
+    sameSession,
+    session,
+    opInfo
+  };
+}
+
+/**
+ * @method signalling
+ * @param {Object} container
+ * @param {Object} call The call being acted on.
+ * @param {Object} params
+ * @param {Object} params.answer
+ * @param {string} params.sameSession
+ * @param {string} params.session
+ * @param {Object} params.opInfo
+ * @param {Object} params.opInfo.mediaDesc
+ * @throws {Error} Throws when Gateway signaling fails.
+ * @return {Promise<Object>} Affected local and remote tracks.
+ */
+async function signalling(container, call, params) {
+  const {
+    context,
+    CallRequests,
+    logManager
+  } = container;
+  const {
+    answer,
+    sameSession,
+    session,
+    opInfo
+  } = params;
+  const log = logManager.getLogger('CALL', call.id);
+  try {
+    // Send answer sdp back to remote side
+    await CallRequests.updateSessionResponse({
+      wrtcsSessionId: call.wrtcsSessionId,
+      answer: answer.answerSDP,
+      isAnonymous: call.isAnonymous,
+      account: call.account,
+      customParameters: call.customParameters,
+      customBodies: call.customBodies
+    });
+    log.info('Finished responding to remote update. Changing state based on the remote operation.');
+
+    // Get the list of remote tracks that are changing (either added or removed) as
+    //    part of the remote operation. This is done after `handleOffer` so the
+    //    Transceivers are up-to-date with the changes being offered.
+    let remoteTracks = [];
+    if (!sameSession) {
+      // If the PeerConnection was recreated, then ALL remote tracks will be new.
+      remoteTracks = await (0, _remoteTracks.getAllRemoteTracks)(session);
+    } else {
+      remoteTracks = await (0, _remoteTracks.default)(_constants2.OPERATIONS.UNHOLD, opInfo.mediaDiff, session);
+    }
+    let affectedLocalTracks = [];
+    if (!call.localHold) {
+      // On remote unhold (that isn't a dual-hold), all local tracks on the Session
+      //    become available.
+      const sessionState = (0, _selectors2.getSessionById)(context.getState(), call.webrtcSessionId);
+      affectedLocalTracks = sessionState.localTracks;
+    }
+    return {
+      remoteTracks,
+      localTracks: affectedLocalTracks
+    };
+  } catch (error) {
+    // Scenario: The offer was processed, but failed to respond with the answer.
+    // The remote side needs the answer SDP before the call is "connected".
+    // TODO: Handle this scenario (retry request or fail/revert operation?)
+    log.info('Failed to respond to remote offer with an answer.');
+    throw error;
+  }
 }
 
 /***/ }),
@@ -18696,12 +19445,12 @@ function createUnholdHandler(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = rollbackUnholdOperation;
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -18770,12 +19519,12 @@ function rollbackUnholdOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _updateCallState = _interopRequireDefault(__webpack_require__(74487));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function initOperation(bottle) {
   // Provide the top-level container to the factory functions.
   //    Otherwise they would get the `operations` sub-container.
@@ -18800,7 +19549,7 @@ var _constants = __webpack_require__(60683);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants2 = __webpack_require__(37409);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 /**
@@ -19251,13 +20000,13 @@ const ICE_COLLECTION_OPERATIONS = exports.ICE_COLLECTION_OPERATIONS = {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createComponent;
 var _metricHandlers = _interopRequireDefault(__webpack_require__(81633));
 var _webrtcReporter = _interopRequireDefault(__webpack_require__(27181));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call Report related.
 
 function createComponent(bottle) {
@@ -19295,6 +20044,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _constants = __webpack_require__(42750);
 /**
  * @method durationHandler
@@ -19743,13 +20494,13 @@ function sanitizeSdesFromSdp(newSdp, info, originalSdp) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _compareMedia = _interopRequireDefault(__webpack_require__(43673));
 var _pipeline = _interopRequireDefault(__webpack_require__(16582));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * SDP Helper Operations available in the Callstack.
  * This file is where the names for the operations are defined.
@@ -19770,16 +20521,17 @@ function initOperation(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createCompareMedia;
+__webpack_require__(44936);
 var _summarizeMedia = _interopRequireDefault(__webpack_require__(56078));
 var _matchMedias = __webpack_require__(17706);
 var _compareSummary = _interopRequireDefault(__webpack_require__(31725));
 var _constants = __webpack_require__(64707);
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -19951,7 +20703,7 @@ const MEDIA_TRANSITIONS = exports.MEDIA_TRANSITIONS = {
 /***/ }),
 
 /***/ 17706:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -19961,6 +20713,8 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.matchMedias = matchMedias;
 exports.matchMediasNaive = matchMediasNaive;
+__webpack_require__(60452);
+__webpack_require__(44936);
 /**
  * Matches MediaSummary objects between two lists of media.
  *    Finds matches between the lists based on the media's sectionId.
@@ -20879,6 +21633,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getAffectedRemoteTracks;
 exports.getAllRemoteTracks = getAllRemoteTracks;
 exports.getIncomingRemoteTracks = getIncomingRemoteTracks;
+__webpack_require__(44936);
 var _operations = __webpack_require__(67251);
 var _constants = __webpack_require__(37409);
 // Callstack plugin.
@@ -21125,7 +21880,7 @@ async function getIncomingRemoteTracks(session) {
 /***/ }),
 
 /***/ 56078:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -21134,6 +21889,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = summarizeMedia;
+__webpack_require__(60452);
+__webpack_require__(44936);
 /**
  * Reduce the media information in the SDP to only what we will use.
  * The SDP object provided as input is assumed to use standard values.
@@ -21247,7 +22004,6 @@ function summarizeMedia(logManager, sdp) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -21255,6 +22011,7 @@ exports["default"] = createPipeline;
 var _runDefault = _interopRequireDefault(__webpack_require__(84749));
 var _runYaml = _interopRequireDefault(__webpack_require__(16203));
 var _kandyLogger = __webpack_require__(17070);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Pipeline modes.
 
 // Libraries.
@@ -21303,7 +22060,6 @@ function createPipeline(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -21313,6 +22069,7 @@ var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _utils = __webpack_require__(54312);
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Utils.
 
 // Libraries.
@@ -21357,17 +22114,18 @@ function runPipelineDefault(handlers, sdp, info, log) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = runPipelineYaml;
+__webpack_require__(44936);
 var _isFunction2 = _interopRequireDefault(__webpack_require__(62064));
 var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _utils = __webpack_require__(54312);
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
 var _variableDiff = _interopRequireDefault(__webpack_require__(10765));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Utils.
 
 // Libraries.
@@ -21438,7 +22196,6 @@ function runPipelineYaml(handlers, sdp, info, log) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -21449,6 +22206,7 @@ var _map2 = _interopRequireDefault(__webpack_require__(65159));
 var _join2 = _interopRequireDefault(__webpack_require__(85569));
 var _compose2 = _interopRequireDefault(__webpack_require__(52602));
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Library.
 
 // Refers to functions in src/callstack/sdp/pipeline.js
@@ -21510,12 +22268,13 @@ const eightSpaces = '        ';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = hasMediaFlowing;
+__webpack_require__(60452);
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries
 
 /**
@@ -21545,12 +22304,12 @@ function hasMediaFlowing(sdp) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = hasTelephoneEvent;
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -21602,7 +22361,6 @@ function setMediaInactive(sdp) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -21612,6 +22370,7 @@ exports.getCallAction = getCallAction;
 exports.getLocalOpTrackEvents = getLocalOpTrackEvents;
 exports.getLocalTracks = getLocalTracks;
 exports.getTrackDscpMapping = getTrackDscpMapping;
+__webpack_require__(44936);
 var _without2 = _interopRequireDefault(__webpack_require__(43214));
 var _selectors = __webpack_require__(11430);
 var _actions = __webpack_require__(6313);
@@ -21619,7 +22378,8 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _constants = __webpack_require__(37409);
 var _selectors2 = __webpack_require__(30105);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin
 
 // Other plugins
@@ -21844,12 +22604,12 @@ function checkBandwidthControls(bandwidthControls) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initOperation;
 var _remoteOperation = _interopRequireDefault(__webpack_require__(71146));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Utility helpers available in the Callstack.
  * This file is where the names for the operations are defined.
@@ -21864,7 +22624,7 @@ function initOperation(bottle) {
 /***/ }),
 
 /***/ 50654:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -21873,6 +22633,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.organizeTracks = organizeTracks;
+__webpack_require__(60452);
 /**
  * Organize the return value of `mediaOps.createLocal` into lists of Tracks for
  *    each media kind.
@@ -21929,7 +22690,6 @@ async function organizeTracks() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -21939,6 +22699,7 @@ var _hasMediaFlowing = _interopRequireDefault(__webpack_require__(43393));
 var _state = __webpack_require__(65794);
 var _constants = __webpack_require__(60683);
 var _constants2 = __webpack_require__(37409);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function factory(container) {
   const {
     CallstackSDP,
@@ -22157,7 +22918,6 @@ function closeCallOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -22167,6 +22927,7 @@ var _createLocal = _interopRequireDefault(__webpack_require__(78982));
 var _generateOffer = _interopRequireDefault(__webpack_require__(52849));
 var _handleOffer = _interopRequireDefault(__webpack_require__(70710));
 var _receivedAnswer = _interopRequireDefault(__webpack_require__(49923));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Webrtc Helper Operations available in the Callstack.
  * This file is where the names for the operations are defined.
@@ -22268,7 +23029,7 @@ var _constants = __webpack_require__(37409);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _constants2 = __webpack_require__(42750);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -22396,7 +23157,7 @@ var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(42750);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other Plugins
@@ -22528,16 +23289,17 @@ function handleOfferOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = receivedAnswerOperation;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _changeDtlsRoleTo = _interopRequireDefault(__webpack_require__(1813));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Helpers.
@@ -22668,9 +23430,13 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = parseConfigs;
 exports.fixIceServerUrls = fixIceServerUrls;
 exports.mergeDefaults = mergeDefaults;
+__webpack_require__(60452);
+__webpack_require__(95850);
+__webpack_require__(73631);
+__webpack_require__(71399);
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(64510);
+var _version = __webpack_require__(55404);
 var _defaults = __webpack_require__(27241);
 var _validation = __webpack_require__(42850);
 // Other plugins.
@@ -23134,7 +23900,6 @@ const TRACK_REMOVED = exports.TRACK_REMOVED = trackPrefix + 'REMOVED';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -23214,7 +23979,8 @@ var _isPlainObject2 = _interopRequireDefault(__webpack_require__(1449));
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var actionTypes = _interopRequireWildcard(__webpack_require__(39100));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Libraries.
@@ -23617,7 +24383,7 @@ exports.turnActions = exports.callActions = void 0;
 var callActionsImport = _interopRequireWildcard(__webpack_require__(77202));
 var turnActionsImport = _interopRequireWildcard(__webpack_require__(21371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Apparently the following doesn't work:
 //      export * as newName from './place';
 // So import everything from each file, then re-export.
@@ -23638,7 +24404,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports.turnChanged = turnChanged;
 var actionTypes = _interopRequireWildcard(__webpack_require__(39100));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 /**
@@ -23677,7 +24443,7 @@ var _selectors2 = __webpack_require__(46942);
 var _normalization = __webpack_require__(54395);
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call Plugin
 
 // Other plugins.
@@ -23793,7 +24559,14 @@ function createAPI(container) {
     }));
     let error;
     try {
-      await CallManager.consultativeTransfer(callId, otherCallId);
+      const calls = [{
+        id: callId,
+        role: 'primary'
+      }, {
+        id: otherCallId,
+        role: 'secondary'
+      }];
+      await CallManager.consultativeTransfer(calls);
     } catch (err) {
       error = err;
       context.dispatch(_actions.callActions.consultativeTransferFinish(callId, {
@@ -23854,7 +24627,17 @@ function createAPI(container) {
     // Start the operation
     let error;
     try {
-      await CallManager.join(callId, otherCallId, newCallId, from);
+      const calls = [{
+        id: callId,
+        role: 'primary'
+      }, {
+        id: otherCallId,
+        role: 'secondary'
+      }, {
+        id: newCallId,
+        role: 'joined'
+      }];
+      await CallManager.join(calls, from);
     } catch (err) {
       error = err;
       context.dispatch(_actions.callActions.joinFinish(callId, {
@@ -24066,7 +24849,7 @@ var _utils = __webpack_require__(27842);
 var _normalization = __webpack_require__(54395);
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -24133,19 +24916,11 @@ function createAPI(container) {
    * @param {call.SIP_URI|call.TEL_URI} destination The desired destination.
    * @param {Object} media The media options the call should be initialized with.
    * @param {boolean} [media.audio=false] Whether the call should have audio on start. Currently, audio-less calls are not supported.
-   * @param {Object} [media.audioOptions] Options for configuring the call's audio.
-   * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
+   * @param {call.AudioOptions} [media.audioOptions] Options for configuring the call's audio.
    * @param {boolean} [media.video=false] Whether the call should have video on start.
-   * @param {Object} [media.videoOptions] Options for configuring the call's video.
-   * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
-   * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
+   * @param {call.VideoOptions} [media.videoOptions] Options for configuring the call's video.
    * @param {boolean} [media.screen=false] Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)
-   * @param {Object} [media.screenOptions] Options for configuring the call's screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.height] The height of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.width] The width of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.frameRate] The frame rate of the screenShare.
+   * @param {call.ScreenOptions} [media.screenOptions] Options for configuring the call's screenShare.
    * @param {Array} [media.medias] List of medias containing tracks to be attached to this call.
    * @param {Object} [options]
    * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
@@ -24297,19 +25072,11 @@ function createAPI(container) {
    * @param {string} callId The ID of the call to answer.
    * @param {Object} media The media options the call should be initialized with.
    * @param {boolean} [media.audio=false] Whether the call should have audio on start. Currently, audio-less calls are not supported.
-   * @param {Object} [media.audioOptions] Options for configuring the call's audio.
-   * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
+   * @param {call.AudioOptions} [media.audioOptions] Options for configuring the call's audio.
    * @param {boolean} [media.video=false] Whether the call should have video on start.
-   * @param {Object} [media.videoOptions] Options for configuring the call's video.
-   * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
-   * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
+   * @param {call.VideoOptions} [media.videoOptions] Options for configuring the call's video.
    * @param {boolean} [media.screen=false] Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)
-   * @param {Object} [media.screenOptions] Options for configuring the call's screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.height] The height of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.width] The width of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.frameRate] The frame rate of the screenShare.
+   * @param {call.ScreenOptions} [media.screenOptions] Options for configuring the call's screenShare.
    * @param {Array} [media.medias] List of medias containing tracks to be attached to this call.
    * @param {Object} [options]
    * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
@@ -24595,7 +25362,6 @@ function createAPI(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -24605,6 +25371,7 @@ var _midcall = _interopRequireDefault(__webpack_require__(1594));
 var _complex = _interopRequireDefault(__webpack_require__(10094));
 var _misc = _interopRequireDefault(__webpack_require__(39992));
 var _constants = _interopRequireDefault(__webpack_require__(56465));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * The 'call' namespace (within the 'api' type) is used to make audio and video calls to and from
  * SIP users and PSTN phones.
@@ -24699,6 +25466,68 @@ var _constants = _interopRequireDefault(__webpack_require__(56465));
  *      // Set height and width constraints to ideally be 1280x720.
  *      height: { ideal: 720 },
  *      width: { ideal: 1280 }
+ *    }
+ * })
+ */
+
+/**
+ * The AudioOptions type defines the format for specifying audio-related constraints.
+ *
+ * @public
+ * @static
+ * @typedef {Object} AudioOptions
+ * @memberof call
+ * @property {call.MediaConstraint} deviceId ID of the microphone to receive audio from.
+ * @example
+ * // Specify what specific microphone device to use by providing its device ID.
+ * client.call.make(destination, {
+ *    audio: true,
+ *    audioOptions: { deviceId: 'some unique device ID' }
+ * })
+ */
+
+/**
+ * The VideoOptions type defines the format for specifying video-related constraints.
+ *
+ * @public
+ * @static
+ * @typedef {Object} VideoOptions
+ * @memberof call
+ * @property {call.MediaConstraint} deviceId ID of the camera to receive video from.
+ * @property {call.MediaConstraint} [height] The height of the video.
+ * @property {call.MediaConstraint} [width] The width of the video.
+ * @property {call.MediaConstraint} [frameRate] The frame rate of the video.
+ * @example
+ * client.call.make(destination, {
+ *    video: true,
+ *    videoOptions: {
+ *      deviceId: 'some unique device ID',
+ *      // Set height and width constraints to exactly be 1280x720.
+ *      height: { exact: 720 },
+ *      width: { exact: 1280 },
+ *      frameRate: { exact: 24 }
+ *    }
+ * })
+ */
+
+/**
+ * The ScreenOptions type defines the format for specifying screen capturing-related constraints.
+ *
+ * @public
+ * @static
+ * @typedef {Object} ScreenOptions
+ * @memberof call
+ * @property {call.MediaConstraint} [height] The height of the screen capture.
+ * @property {call.MediaConstraint} [width] The width of the screen capture.
+ * @property {call.MediaConstraint} [frameRate] The frame rate of the live screen share.
+ * @example
+ * client.call.make(destination, {
+ *    screen: true,
+ *    screenOptions: {
+ *      // Set height and width constraints to exactly be 1280x720.
+ *      height: { exact: 720 },
+ *      width: { exact: 1280 },
+ *      frameRate: { exact: 24 }
  *    }
  * })
  */
@@ -25080,7 +25909,6 @@ function createAPI(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -25092,7 +25920,8 @@ var _selectors = __webpack_require__(11430);
 var _utils = __webpack_require__(27842);
 var _call = __webpack_require__(12442);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Helpers.
@@ -25246,17 +26075,9 @@ function createAPI(container) {
    * @param {boolean} [media.video=false] Whether to add video to the call.
    * @param {boolean} [media.screen=false] Whether to add the screenshare to the call. (Note: Screensharing is not supported on iOS Safari.)
    * @param {Array}   [media.medias] List of medias containing tracks to be attached to this call.
-   * @param {Object}  [media.audioOptions] Options for configuring the call's audio.
-   * @param {Object}  [media.videoOptions] Options for configuring the call's video.
-   * @param {Object}  [media.screenOptions] Options for configuring the call's screenShare.
-   * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
-   * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
-   * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
-   * @param {call.MediaConstraint} [media.screenOptions.height] The height of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.width] The width of the screenShare.
-   * @param {call.MediaConstraint} [media.screenOptions.frameRate] The frame rate of the screenShare.
+   * @param {call.AudioOptions}  [media.audioOptions] Options for configuring the call's audio.
+   * @param {call.VideoOptions}  [media.videoOptions] Options for configuring the call's video.
+   * @param {call.ScreenOptions} [media.screenOptions] Options for configuring the call's screenShare.
    * @param {Object} [options]
    * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
    * @param {call.DSCPControls} [options.dscpControls] Options for configuring DSCP markings on the media traffic
@@ -25378,11 +26199,7 @@ function createAPI(container) {
    * @requires call
    * @requires callMe
    * @param {string}                 callId              ID of the call being acted on.
-   * @param {Object}                 [videoOptions]           Options for configuring the call's video.
-   * @param {call.MediaConstraint}   [videoOptions.deviceId]  ID of the camera to receive video from.
-   * @param {call.MediaConstraint}   [videoOptions.height]    The height of the video.
-   * @param {call.MediaConstraint}   [videoOptions.width]     The width of the video.
-   * @param {call.MediaConstraint}   [videoOptions.frameRate] The frame rate of the video.
+   * @param {call.VideoOptions}      [videoOptions]      Options for configuring the call's video.
    * @param {Object}                 [options]
    * @param {call.BandwidthControls} [options.bandwidth] Options for configuring media's bandwidth.
    * @param {call.DSCPControls}      [options.dscpControls] Options for configuring DSCP markings on the media traffic.
@@ -25581,14 +26398,11 @@ function createAPI(container) {
    * @param {string} trackId The ID of the track to replace.
    * @param {Object} [media={}] The media options.
    * @param {boolean} [media.audio=false] Whether to create an audio track.
-   * @param {Object} [media.audioOptions] Options for configuring the audio track.
-   * @param {call.MediaConstraint} [media.audioOptions.deviceId] ID of the microphone to receive audio from.
+   * @param {call.AudioOptions} [media.audioOptions] Options for configuring the audio track.
    * @param {boolean} [media.video=false] Whether to create a video track.
-   * @param {Object} [media.videoOptions] Options for configuring the video track.
-   * @param {call.MediaConstraint} [media.videoOptions.deviceId] ID of the camera to receive video from.
-   * @param {call.MediaConstraint} [media.videoOptions.height] The height of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.width] The width of the video.
-   * @param {call.MediaConstraint} [media.videoOptions.frameRate] The frame rate of the video.
+   * @param {call.VideoOptions} [media.videoOptions] Options for configuring the video track.
+   * @param {boolean} [media.screen=false] Whether to create a screen share track.
+   * @param {call.ScreenOptions} [media.screenOptions] Options for configuring the call's screenShare.
    * @param {Array} [media.medias] List of medias containing tracks to be attached to this call.
    * @throws {BasicError} Throws an error if mediaConstraints.medias is not an array.
    * @throws {BasicError} Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.
@@ -25891,12 +26705,13 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAPI;
+__webpack_require__(80978);
 var _selectors = __webpack_require__(11430);
 var _actions = __webpack_require__(6313);
 var eventTypes = _interopRequireWildcard(__webpack_require__(55166));
 var _actions2 = __webpack_require__(43424);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins
@@ -26937,13 +27752,13 @@ const MEDIA_RESTART = exports.MEDIA_RESTART = 'call:mediaRestart';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _index = _interopRequireDefault(__webpack_require__(25535));
 var _reducers = _interopRequireDefault(__webpack_require__(1103));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 /**
@@ -26967,11 +27782,11 @@ var _default = exports["default"] = {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
+__webpack_require__(60452);
 var _union2 = _interopRequireDefault(__webpack_require__(38959));
 var _concat2 = _interopRequireDefault(__webpack_require__(12462));
 var actionTypes = _interopRequireWildcard(__webpack_require__(39100));
@@ -26981,7 +27796,8 @@ var _constants2 = __webpack_require__(37409);
 var _operations = _interopRequireDefault(__webpack_require__(87156));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Libraries.
@@ -27753,13 +28569,13 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = _default;
 var _call = _interopRequireDefault(__webpack_require__(47608));
 var _turn = _interopRequireDefault(__webpack_require__(46404));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Combine subreducers into a single call reducer.
  */
@@ -27780,7 +28596,6 @@ function _default() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -27791,7 +28606,8 @@ var actionTypes = _interopRequireWildcard(__webpack_require__(39100));
 var _constants = __webpack_require__(37409);
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Libraries.
@@ -27949,7 +28765,7 @@ exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(39100));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Libraries.
@@ -27990,6 +28806,7 @@ exports.getCallByWrtcsSessionId = getCallByWrtcsSessionId;
 exports.getCalls = getCalls;
 exports.getOptions = getOptions;
 exports.getTurnInfo = getTurnInfo;
+__webpack_require__(60452);
 var _constants = __webpack_require__(60683);
 // Call plugin.
 
@@ -28078,17 +28895,19 @@ function getTurnInfo(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.formatMediaConstraints = formatMediaConstraints;
 exports.validateDetachedMedia = validateDetachedMedia;
 exports.validateMediaConstraints = validateMediaConstraints;
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Lodash FP
 
 /**
@@ -28217,7 +29036,6 @@ async function validateDetachedMedia(medias) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -28231,7 +29049,8 @@ var _callstack = _interopRequireDefault(__webpack_require__(25974));
 var _actions = __webpack_require__(43424);
 var _kandyWebrtc = __webpack_require__(15203);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Other plugins.
@@ -28498,6 +29317,7 @@ function createMiddleware(context) {
     const domain = (0, _selectors2.getDomain)(context.getState());
     const remoteInfo = (0, _utils.getRemoteParticipant)(targetCall, message, domain);
     const params = {
+      eventType: message.eventType,
       reasonText,
       statusCode,
       // Remote participant's information.
@@ -28556,6 +29376,7 @@ function createMiddleware(context) {
     const domain = (0, _selectors2.getDomain)(context.getState());
     const remoteInfo = (0, _utils.getRemoteParticipant)(targetCall, message, domain);
     const params = {
+      eventType: message.eventType,
       reasonText,
       statusCode,
       // Remote participant's information.
@@ -28684,7 +29505,6 @@ function shouldHandlePattern(action) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -28701,6 +29521,7 @@ var _resyncSessionStatuses = _interopRequireDefault(__webpack_require__(85296));
 var _sessionProgressNotification = _interopRequireDefault(__webpack_require__(1189));
 var _setTurnCredentials = _interopRequireDefault(__webpack_require__(72391));
 var _middleware = _interopRequireDefault(__webpack_require__(56390));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Link-specific middlewares.
 
 // Callstack middlewares.
@@ -28780,6 +29601,7 @@ function createMiddleware(context) {
 
     // Pull-out the parameters into a standard format for the Callstack.
     const params = {
+      eventType: message.eventType,
       wrtcsSessionId: message.sessionParams.sessionData,
       sdp: message.sessionParams.sdp,
       retryAfter: message.sessionParams.retryAfter,
@@ -28813,6 +29635,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = createMiddleware;
 exports.shouldHandlePattern = shouldHandlePattern;
+__webpack_require__(60452);
 var _actionTypes = __webpack_require__(9148);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(60683);
@@ -29006,6 +29829,7 @@ function createMiddleware(context) {
     const domain = (0, _selectors2.getDomain)(context.getState());
     const remoteInfo = (0, _utils.getRemoteParticipant)(targetCall, message, domain);
     const params = {
+      eventType: message.eventType,
       reasonText,
       statusCode,
       // Remote participant's information.
@@ -29064,7 +29888,6 @@ function shouldHandlePattern(action) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -29075,6 +29898,7 @@ Object.defineProperty(exports, "setTurnCredentials", ({
   }
 }));
 var _setTurnCredentials = _interopRequireDefault(__webpack_require__(96345));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 
 /***/ }),
 
@@ -29084,12 +29908,12 @@ var _setTurnCredentials = _interopRequireDefault(__webpack_require__(96345));
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerOperation;
 var _setTurnCredentials = _interopRequireDefault(__webpack_require__(43566));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Register the operation with the bottle. This will make it available on the
  *    top-level container under its namespace.
@@ -29182,7 +30006,7 @@ var _constants2 = __webpack_require__(42750);
 var _selectors2 = __webpack_require__(46942);
 var requestUtils = _interopRequireWildcard(__webpack_require__(39790));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins.
@@ -29389,6 +30213,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = establishRequests;
+__webpack_require__(60452);
 var _selectors = __webpack_require__(11430);
 var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
@@ -29398,7 +30223,7 @@ var _normalization = __webpack_require__(54395);
 var requestUtils = _interopRequireWildcard(__webpack_require__(39790));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Other plugins.
@@ -29780,7 +30605,6 @@ function establishRequests(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -29789,6 +30613,7 @@ var _complex = _interopRequireDefault(__webpack_require__(47630));
 var _establish = _interopRequireDefault(__webpack_require__(7554));
 var _misc = _interopRequireDefault(__webpack_require__(97617));
 var _negotiation = _interopRequireDefault(__webpack_require__(12972));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Link-specific Call Requests factory function.
  * Creates a closure where dependencies can be set and used
@@ -29811,7 +30636,6 @@ function createRequests(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -29822,8 +30646,9 @@ var _constants2 = __webpack_require__(42750);
 var _selectors2 = __webpack_require__(46942);
 var requestUtils = _interopRequireWildcard(__webpack_require__(39790));
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -30119,7 +30944,7 @@ var _constants = __webpack_require__(37409);
 var _constants2 = __webpack_require__(42750);
 var requestUtils = _interopRequireWildcard(__webpack_require__(39790));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Helpers
 
 /**
@@ -30281,7 +31106,6 @@ function negotiationRequests(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -30289,6 +31113,7 @@ exports.generateCallUrl = generateCallUrl;
 exports.handleLinkCallRequestError = handleLinkCallRequestError;
 exports.linkCallRequest = linkCallRequest;
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Helpers
 
 /**
@@ -30418,7 +31243,7 @@ function generateCallUrl(requestInfo, options) {
 /***/ }),
 
 /***/ 32100:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -30427,6 +31252,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getRemoteParticipant = getRemoteParticipant;
+__webpack_require__(60452);
 /**
  * Gets the remote participant data from a notification object's `callNotificationParams` property if it exists.
  * @param {Object} targetCall The current call object from state.
@@ -30484,7 +31310,7 @@ function getRemoteParticipant(targetCall, notification, domain) {
 /***/ }),
 
 /***/ 87056:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -30493,6 +31319,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.createCodecRemover = createCodecRemover;
+__webpack_require__(60452);
+__webpack_require__(44936);
 /**
  * Creates and returns an SDP Handler function that will remove the desired codecs
  *  from the SDP when passed to the pipeline.
@@ -30608,13 +31436,13 @@ function createCodecRemover() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.iceCollectionCheckFunction = iceCollectionCheckFunction;
 var _constants = __webpack_require__(60683);
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Default function used for the SDK's ICE collection process. Will determine when enough
  *     candidates have been collected, or enough time has passed, until negotiation can
@@ -31039,7 +31867,7 @@ exports.retrieveCallLogsFinish = retrieveCallLogsFinish;
 exports.setCache = setCache;
 var actionTypes = _interopRequireWildcard(__webpack_require__(13179));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Represents a request to fetch call logs.
  * @method retrieveCallLogs
@@ -31144,18 +31972,19 @@ function setCache(data) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAPI;
+__webpack_require__(80978);
 var _isNumber2 = _interopRequireDefault(__webpack_require__(29180));
 var actions = _interopRequireWildcard(__webpack_require__(35222));
 var _selectors = __webpack_require__(99899);
 var eventTypes = _interopRequireWildcard(__webpack_require__(46085));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call History plugin.
 
 // Other plugins
@@ -31441,7 +32270,6 @@ const CALL_HISTORY_CACHE_CHANGE = exports.CALL_HISTORY_CACHE_CHANGE = 'callHisto
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -31460,6 +32288,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _api = _interopRequireDefault(__webpack_require__(19314));
 var _reducers = _interopRequireDefault(__webpack_require__(88998));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const name = exports.name = 'callHistory';
 
 /***/ }),
@@ -31470,7 +32299,6 @@ const name = exports.name = 'callHistory';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -31482,7 +32310,8 @@ var _reverse2 = _interopRequireDefault(__webpack_require__(52419));
 var actionTypes = _interopRequireWildcard(__webpack_require__(13179));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const reducers = {};
 reducers[actionTypes.FETCH_CALL_HISTORY_FINISH] = {
   next(state, action) {
@@ -31571,13 +32400,13 @@ const isSimilar = function (serverLogEntry) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getCachedHistory = getCachedHistory;
 exports.getCallHistory = getCallHistory;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Retrieves call history stored in state.
  * Call History is a collection of data records detalining past calls that were made or received.
@@ -31621,13 +32450,13 @@ function getCachedHistory(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(23353));
 var _operation = _interopRequireDefault(__webpack_require__(35176));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('CallHistoryRequests.fetchCallLogs', container => {
     return (0, _request.default)(bottle.container);
@@ -31651,7 +32480,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createOperation;
 var actions = _interopRequireWildcard(__webpack_require__(35222));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call History plugin.
 
 /**
@@ -31715,7 +32544,6 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -31724,7 +32552,8 @@ var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -31873,7 +32702,6 @@ function createRequest(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -31905,6 +32733,7 @@ var _fetch = _interopRequireDefault(__webpack_require__(86316));
 var _remove = _interopRequireDefault(__webpack_require__(73667));
 var _setCache = _interopRequireDefault(__webpack_require__(78522));
 var _storeLog = _interopRequireDefault(__webpack_require__(29200));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 
 /***/ }),
 
@@ -31914,13 +32743,13 @@ var _storeLog = _interopRequireDefault(__webpack_require__(29200));
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(42149));
 var _operation = _interopRequireDefault(__webpack_require__(42086));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('CallHistoryRequests.removeCallLogs', container => {
     return (0, _request.default)(bottle.container);
@@ -31944,7 +32773,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createOperation;
 var actions = _interopRequireWildcard(__webpack_require__(35222));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call History plugin.
 
 /**
@@ -31999,7 +32828,6 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -32008,7 +32836,8 @@ var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -32113,12 +32942,12 @@ function createRequest(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _operation = _interopRequireDefault(__webpack_require__(18523));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('CallHistoryOperations.setCache', container => {
     return (0, _operation.default)(bottle.container);
@@ -32139,7 +32968,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createOperation;
 var actions = _interopRequireWildcard(__webpack_require__(35222));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call History plugin.
 
 /**
@@ -32172,12 +33001,12 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _operation = _interopRequireDefault(__webpack_require__(2816));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('CallHistoryOperations.storeCallLog', container => {
     return (0, _operation.default)(bottle.container);
@@ -32202,7 +33031,7 @@ var _selectors = __webpack_require__(46942);
 var _constants = __webpack_require__(60683);
 var _selectors2 = __webpack_require__(11430);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call History plugin.
 
 // Other plugins.
@@ -32289,7 +33118,6 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -32298,7 +33126,8 @@ var _interface = __webpack_require__(46441);
 var _middleware = _interopRequireDefault(__webpack_require__(27891));
 var features = _interopRequireWildcard(__webpack_require__(18895));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Call History plugin factory.
  * @method callHistoryFactory
@@ -32404,7 +33233,7 @@ exports.clickToCall = clickToCall;
 exports.clickToCallFinish = clickToCallFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(17385));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Represents a request to POST clickToCall data.
  * @method clickToCall
@@ -32603,7 +33432,6 @@ const CLICK_TO_CALL_ERROR = exports.CLICK_TO_CALL_ERROR = 'clickToCall:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -32622,6 +33450,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _api = _interopRequireDefault(__webpack_require__(43797));
 var _reducers = _interopRequireDefault(__webpack_require__(19211));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * This interface is for a clickToCall plugin.
  * @type {string}
@@ -32643,7 +33472,7 @@ exports["default"] = void 0;
 var _reduxActions = __webpack_require__(68305);
 var actionTypes = _interopRequireWildcard(__webpack_require__(17385));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * clicktoCall Plugin.
  *
@@ -32682,12 +33511,12 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getAll = getAll;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other Libraries
 
 /**
@@ -32709,7 +33538,6 @@ function getAll(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -32718,6 +33546,7 @@ var _interface = __webpack_require__(77638);
 var _api = _interopRequireDefault(__webpack_require__(43797));
 var _operations = _interopRequireDefault(__webpack_require__(77571));
 var _requests = _interopRequireDefault(__webpack_require__(70371));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * ClickToCall service plugin factory.
  * Provides the SDK with the 'Click to Call' feature.
@@ -32753,7 +33582,7 @@ exports["default"] = createOperations;
 var actions = _interopRequireWildcard(__webpack_require__(21585));
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // ClickToCall Actions
 
 /**
@@ -32846,7 +33675,7 @@ exports["default"] = createRequests;
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Other plugins.
 
 /**
@@ -32924,7 +33753,7 @@ function createRequests(container) {
 /***/ }),
 
 /***/ 93725:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -32933,6 +33762,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createInterval;
+__webpack_require__(80978);
 /**
  * Interval creation factory function.
  * @method createInterval
@@ -33011,7 +33841,6 @@ var _default = exports["default"] = sdkId;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -33029,6 +33858,7 @@ var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _mergeAllWith2 = _interopRequireDefault(__webpack_require__(38041));
 var _queryString = _interopRequireDefault(__webpack_require__(34126));
 var _effects = __webpack_require__(27422);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -33173,7 +34003,6 @@ function logCssSelector(selector) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -33188,6 +34017,7 @@ var _concat2 = _interopRequireDefault(__webpack_require__(12462));
 var _2 = _interopRequireDefault(__webpack_require__(99194));
 var _logs = __webpack_require__(43862);
 var _v8n = _interopRequireDefault(__webpack_require__(66162));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * This wrapper generates error messages from v8n Validation Errors. https://imbrn.github.io/v8n/api/#validationerror
  * They are logged using LogManager as a warning to our customers when they mess up arguments.
@@ -33302,13 +34132,13 @@ const aOrAn = string => /[aeiou]/i.test(string[0]) ? 'an' : 'a';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = configFactory;
 var _interface = _interopRequireDefault(__webpack_require__(13522));
 var _api = _interopRequireDefault(__webpack_require__(86304));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * This file is a plugin for the "Config" plugin
  * Reference info: https://confluence.genband.com/display/KSDK/Plugins
@@ -33371,11 +34201,12 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.setSdpHandlers = setSdpHandlers;
 exports.update = update;
+__webpack_require__(44936);
 var actionTypes = _interopRequireWildcard(__webpack_require__(29341));
 var _sanitizeSdesFromSdp = __webpack_require__(22379);
 var _modifySdpBandwidth = __webpack_require__(46699);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Add or update a specific key within the store.config.
  *
@@ -33439,7 +34270,6 @@ function setSdpHandlers(sdpHandlers) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -33449,7 +34279,8 @@ var actions = _interopRequireWildcard(__webpack_require__(43424));
 var _selectors = __webpack_require__(44790);
 var _configs = _interopRequireDefault(__webpack_require__(87878));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Config plugin.
 
 // Other plugins.
@@ -33545,13 +34376,13 @@ function createAPI(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _api = _interopRequireDefault(__webpack_require__(86304));
 var _reducers = _interopRequireDefault(__webpack_require__(30658));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * This interface is for a Config plugin.
  * @type {string}
@@ -33579,7 +34410,7 @@ var actionTypes = _interopRequireWildcard(__webpack_require__(29341));
 var _reduxActions = __webpack_require__(68305);
 var _utils = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 const reducers = {};
 reducers[actionTypes.CONFIG_UPDATE] = {
   next(state, action) {
@@ -33610,12 +34441,12 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getConfiguration = getConfiguration;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Retrieves configuration Object stored in state
  *
@@ -33635,7 +34466,6 @@ function getConfiguration(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -33647,6 +34477,7 @@ var _actions = __webpack_require__(43424);
 var _actions2 = __webpack_require__(60279);
 var _effects = __webpack_require__(27422);
 var _constants = __webpack_require__(49833);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Connectivity plugin.
 
 // Other plugins.
@@ -33691,7 +34522,6 @@ function baseConnectivity(options) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -33708,8 +34538,9 @@ var _logs = __webpack_require__(43862);
 var _effects = __webpack_require__(27422);
 var _errors = _interopRequireDefault(__webpack_require__(83437));
 var _codes = __webpack_require__(87772);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Connectivity plugin.
 
 // Other plugins.
@@ -34025,8 +34856,9 @@ Object.defineProperty(exports, "__esModule", ({
 exports.cleanupWebSocket = cleanupWebSocket;
 exports.openWebsocket = openWebsocket;
 exports.wsEmitter = wsEmitter;
+__webpack_require__(80978);
 var _actions = __webpack_require__(69897);
-var _reduxSaga = __webpack_require__(7);
+var _reduxSaga = __webpack_require__(47013);
 var _effects = __webpack_require__(27422);
 var _utils = __webpack_require__(25189);
 var _actions2 = __webpack_require__(32697);
@@ -34175,16 +35007,17 @@ const CHANGE_PING_INTERVAL = exports.CHANGE_PING_INTERVAL = prefix + 'CHANGE_PIN
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.wsReconnectFailed = exports.wsError = exports.wsDisconnectFinished = exports.wsDisconnect = exports.wsConnectFinished = exports.wsClosed = exports.wsAttemptConnect = exports.lostConnection = exports.changePingInterval = exports.changeConnectivityChecking = void 0;
+__webpack_require__(80978);
 var actionTypes = _interopRequireWildcard(__webpack_require__(53202));
 var _constants = __webpack_require__(49833);
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Constants
 
 /**
@@ -34389,7 +35222,7 @@ exports["default"] = void 0;
 var eventTypes = _interopRequireWildcard(__webpack_require__(50287));
 var actionTypes = _interopRequireWildcard(__webpack_require__(53202));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var events = {};
 events[actionTypes.WS_CONNECT_FINISHED] = function (action) {
   if (action.error) {
@@ -34433,7 +35266,6 @@ var _default = exports["default"] = events;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -34441,6 +35273,7 @@ exports["default"] = void 0;
 var _name = _interopRequireDefault(__webpack_require__(70629));
 var _api = _interopRequireDefault(__webpack_require__(44211));
 var _reducers = _interopRequireDefault(__webpack_require__(76734));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var _default = exports["default"] = {
   name: _name.default,
   api: _api.default,
@@ -34470,7 +35303,6 @@ var _default = exports["default"] = name;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -34479,7 +35311,8 @@ var _omit2 = _interopRequireDefault(__webpack_require__(81053));
 var actionTypes = _interopRequireWildcard(__webpack_require__(53202));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const reducers = {};
 reducers[actionTypes.WS_ATTEMPT_CONNECT] = {
   next(state, action) {
@@ -34618,15 +35451,16 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getCheckConnectivity = getCheckConnectivity;
 exports.getConnectionState = getConnectionState;
 exports.getConnectivityConfig = getConnectivityConfig;
+__webpack_require__(80978);
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _name = _interopRequireDefault(__webpack_require__(70629));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function getConnectionState(state, platform) {
   if (state[_name.default][platform]) {
     return (0, _cloneDeep2.default)(state[_name.default][platform]);
@@ -34712,7 +35546,6 @@ async function waitForReconnect(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -34721,6 +35554,7 @@ var _defaults2 = _interopRequireDefault(__webpack_require__(469));
 var _base = _interopRequireDefault(__webpack_require__(89214));
 var _constants = __webpack_require__(49833);
 var _validation = __webpack_require__(42850);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Parse and/or Validate
 
 const defaultValues = {
@@ -35160,7 +35994,7 @@ exports["default"] = BasicError;
 /***/ }),
 
 /***/ 49661:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -35169,6 +36003,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = eventEmitter;
+__webpack_require__(80978);
+__webpack_require__(44936);
 /*
  * Event emitter module. Can be used as a standalone factory or as a mixin.
  *
@@ -35320,18 +36156,19 @@ function eventEmitter() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = eventsImplementation;
+__webpack_require__(44936);
 var _interface = _interopRequireDefault(__webpack_require__(85902));
 var _actions = __webpack_require__(60279);
 var actionTypes = _interopRequireWildcard(__webpack_require__(73051));
 var _eventEmitter = _interopRequireDefault(__webpack_require__(49661));
 var _logs = __webpack_require__(43862);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Events plugin.
 
 // Logs, TODO: Remove this once the middleware is removed.
@@ -35511,9 +36348,10 @@ exports.off = off;
 exports.on = on;
 exports.subscribe = subscribe;
 exports.unsubscribe = unsubscribe;
+__webpack_require__(80978);
 var actionTypes = _interopRequireWildcard(__webpack_require__(73051));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Add an action-to-event mapping
  * @param  {Object} mapping A mapping object
@@ -35736,13 +36574,13 @@ function createAPI(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _api = _interopRequireDefault(__webpack_require__(24514));
 var _reducers = _interopRequireDefault(__webpack_require__(62319));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 /**
@@ -35764,7 +36602,6 @@ var _default = exports["default"] = {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -35775,7 +36612,8 @@ var _add2 = _interopRequireDefault(__webpack_require__(14727));
 var _update2 = _interopRequireDefault(__webpack_require__(68496));
 var actionTypes = _interopRequireWildcard(__webpack_require__(73051));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Events plugin.
 
 // Libraries.
@@ -35826,23 +36664,25 @@ function reducer() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.factory = factory;
+__webpack_require__(80978);
+__webpack_require__(44936);
 var _merge2 = _interopRequireDefault(__webpack_require__(9612));
 var _map2 = _interopRequireDefault(__webpack_require__(65159));
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
-var _redux = __webpack_require__(76070);
+var _redux = __webpack_require__(69394);
 var _reduxDevtoolsExtension = __webpack_require__(58267);
-var _reduxSaga = _interopRequireDefault(__webpack_require__(7));
+var _reduxSaga = _interopRequireDefault(__webpack_require__(47013));
 var _effects = __webpack_require__(27422);
 var _bottlejs = _interopRequireDefault(__webpack_require__(39146));
 var _utils = __webpack_require__(25189);
-var _version = __webpack_require__(64510);
+var _version = __webpack_require__(55404);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(93725));
 var _validation = __webpack_require__(42850);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 // Helpers.
@@ -36150,7 +36990,7 @@ function factory(pluginFactories) {
 /***/ }),
 
 /***/ 88923:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -36159,6 +36999,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = defaultActionHandler;
+__webpack_require__(60452);
 /* Helper function for styling logs based on the log type.
  * This function will inspect the log entry and format the log
  * accordingly.
@@ -36239,16 +37080,17 @@ function defaultActionHandler(entry) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createActionLogger;
+__webpack_require__(60452);
 var _index = __webpack_require__(43862);
 var _constants = __webpack_require__(8599);
 var _transformers = _interopRequireDefault(__webpack_require__(34305));
 var _utils = __webpack_require__(63821);
 var _reduxLogger = __webpack_require__(17073);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Logs plugin.
 
 // Action specific.
@@ -36327,12 +37169,13 @@ function excludeActions(actions) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = setupTransformers;
+__webpack_require__(44936);
 var _omit2 = _interopRequireDefault(__webpack_require__(81053));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries
 
 /**
@@ -36388,7 +37231,7 @@ function removePayloads(action) {
 /***/ }),
 
 /***/ 63821:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -36397,6 +37240,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.titleFormatter = titleFormatter;
+__webpack_require__(44936);
 /**
  * Standard title formatter function is almost identical to the defaultTitleFormatter found in redux-logger
  * but removes placeholder characters previously used for styling, which is not being used in the logging
@@ -36423,12 +37267,12 @@ function titleFormatter(action, time, took) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.partialDefaultLogActions = exports.defaultOptions = void 0;
 var _actionHandler = _interopRequireDefault(__webpack_require__(88923));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Configuration options for the Logs feature.
  *
@@ -36621,13 +37465,13 @@ export const parseLogConfig = parse('logger', defaultValidation)
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.logManager = exports.API_LOG_TAG = void 0;
 var _kandyLogger = _interopRequireDefault(__webpack_require__(17070));
 var _config = __webpack_require__(64883);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Logs generated as a result of invoking the public API will contain this tag
 const API_LOG_TAG = exports.API_LOG_TAG = 'API invoked: ';
 
@@ -36679,7 +37523,7 @@ exports.setHandler = setHandler;
 exports.setLevel = setLevel;
 var actionTypes = _interopRequireWildcard(__webpack_require__(91913));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Logs plugin.
 
 /**
@@ -36755,7 +37599,7 @@ exports["default"] = createAPI;
 var actions = _interopRequireWildcard(__webpack_require__(5161));
 var _selectors = __webpack_require__(13751);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * The SDK has an internal logging system for providing information about its
  *    behaviour. The SDK will generate logs, at different levels for different
@@ -36961,7 +37805,6 @@ function createAPI(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -36980,6 +37823,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _api = _interopRequireDefault(__webpack_require__(17188));
 var _reducers = _interopRequireDefault(__webpack_require__(43773));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const name = exports.name = 'logs';
 
 /***/ }),
@@ -36997,7 +37841,7 @@ exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(91913));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Libraries
 
 /**
@@ -37032,13 +37876,13 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getLevel = getLevel;
 exports.getTypes = getTypes;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -37068,7 +37912,7 @@ function getTypes(state) {
 /***/ }),
 
 /***/ 32908:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -37078,6 +37922,13 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.getHandlerMap = getHandlerMap;
 exports.getLevelMap = getLevelMap;
+__webpack_require__(43623);
+__webpack_require__(9784);
+__webpack_require__(56942);
+__webpack_require__(4278);
+__webpack_require__(13963);
+__webpack_require__(34565);
+__webpack_require__(75485);
 // The SDK's name for the default/global log level.
 const defaultType = 'DEFAULT';
 
@@ -37138,7 +37989,7 @@ exports["default"] = createOperations;
 var actions = _interopRequireWildcard(__webpack_require__(5161));
 var _utils = __webpack_require__(32908);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Logs Operations factory function.
  * @method createOperations
@@ -37237,11 +38088,11 @@ function createOperations(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = logsFactory;
+__webpack_require__(60452);
 var _interface = __webpack_require__(47166);
 var actions = _interopRequireWildcard(__webpack_require__(5161));
 var _utils = __webpack_require__(32908);
@@ -37253,8 +38104,9 @@ var _utils2 = __webpack_require__(25189);
 var _kandyLogger = __webpack_require__(17070);
 var _index = __webpack_require__(43862);
 __webpack_require__(81370);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
 Note regarding this file's name:
 
@@ -37428,7 +38280,7 @@ exports.fetchConversationsFinished = fetchConversationsFinished;
 exports.updateConversation = updateConversation;
 var actionTypes = _interopRequireWildcard(__webpack_require__(5344));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Conversation actions.
  * Actions relating to the creation/management of conversation objects.
@@ -37568,7 +38420,7 @@ exports.messageActions = exports.convoActions = void 0;
 var messageActionsImport = _interopRequireWildcard(__webpack_require__(91153));
 var convoActionsImport = _interopRequireWildcard(__webpack_require__(50226));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Apparently the following doesn't work:
 //      export * as newName from './place';
 // So import everything from each file, then re-export.
@@ -37603,7 +38455,7 @@ exports.sendMessageRead = exports.sendMessageFinish = exports.sendMessage = void
 exports.sendMessageReadFinish = sendMessageReadFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(5344));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Action helper functions.
  */
@@ -38114,7 +38966,6 @@ const MESSAGES_ERROR = exports.MESSAGES_ERROR = 'messages:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -38140,6 +38991,7 @@ Object.defineProperty(exports, "reducer", ({
 var _api = _interopRequireDefault(__webpack_require__(63910));
 var _mixins = _interopRequireDefault(__webpack_require__(65101));
 var _reducers = _interopRequireDefault(__webpack_require__(96467));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 /**
@@ -38156,7 +39008,6 @@ const name = exports.name = 'messaging';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -38168,7 +39019,8 @@ var _selectors = __webpack_require__(20504);
 var _selectors2 = __webpack_require__(46942);
 var eventTypes = _interopRequireWildcard(__webpack_require__(40080));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // `features` and `lastPull` are not documented because they're intended to be internal
 // `type` is not documented because as of now there are no types other than 'im'
 
@@ -38514,7 +39366,6 @@ function createMixins(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -38526,7 +39377,8 @@ var _unionBy2 = _interopRequireDefault(__webpack_require__(84157));
 var actionTypes = _interopRequireWildcard(__webpack_require__(5344));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const reducers = {};
 reducers[actionTypes.CREATE_CONVERSATION] = {
   next(state, action) {
@@ -38834,7 +39686,6 @@ function sendMessageFinishHelper(message, action) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -38845,6 +39696,7 @@ exports.getMessages = getMessages;
 exports.getMessagingConfig = getMessagingConfig;
 var _isEqual2 = _interopRequireDefault(__webpack_require__(11520));
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Selector functions for messaging.
  * Used to retrieve specific portions of the state.
@@ -38917,7 +39769,6 @@ function findMember(state, destination, id) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -38929,6 +39780,7 @@ var _middleware = _interopRequireDefault(__webpack_require__(12686));
 var _requests = _interopRequireDefault(__webpack_require__(84060));
 var _validation = __webpack_require__(42850);
 var _actions = __webpack_require__(43424);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Parse and/or Validate
 
 // Other plugins.
@@ -39033,6 +39885,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperations;
+__webpack_require__(60452);
 var _actions = __webpack_require__(60152);
 var _selectors = __webpack_require__(20504);
 var eventTypes = _interopRequireWildcard(__webpack_require__(40080));
@@ -39040,7 +39893,7 @@ var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _selectors2 = __webpack_require__(46942);
 var _actionTypes = __webpack_require__(9148);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Messaging
 
 // Error
@@ -39208,7 +40061,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createRequests;
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Error
 
 /**
@@ -39328,7 +40181,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports.mwiUpdate = mwiUpdate;
 var actionTypes = _interopRequireWildcard(__webpack_require__(5733));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Creates a message waiting indicator update action.
  *
@@ -39497,7 +40350,6 @@ const MWI_ERROR = exports.MWI_ERROR = 'voicemail:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -39516,6 +40368,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _api = _interopRequireDefault(__webpack_require__(55489));
 var _reducers = _interopRequireDefault(__webpack_require__(50325));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 /**
@@ -39539,7 +40392,7 @@ exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(5733));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 const reducers = {};
 reducers[actionTypes.MWI_UPDATE] = {
   // The next function will only handle non-error actions.
@@ -39560,12 +40413,12 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getMwi = getMwi;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Redux-saga selector functions.
  * Used with the `select` effect in sagas to retrieve
@@ -39589,7 +40442,6 @@ function getMwi(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -39599,6 +40451,7 @@ var _api = _interopRequireDefault(__webpack_require__(55489));
 var _middleware = _interopRequireDefault(__webpack_require__(93288));
 var _operations = _interopRequireDefault(__webpack_require__(89115));
 var _requests = _interopRequireDefault(__webpack_require__(87113));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Voicemail service plugin factory.
  * Provides the SDK with the Voicemail feature.
@@ -39685,7 +40538,7 @@ var actions = _interopRequireWildcard(__webpack_require__(60764));
 var eventTypes = _interopRequireWildcard(__webpack_require__(89764));
 var _utils = __webpack_require__(9533);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // MWI Actions
 
 /**
@@ -39764,7 +40617,7 @@ var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _utils = __webpack_require__(9533);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Other plugins.
 
 /**
@@ -39926,9 +40779,10 @@ exports.registerApplePushNotification = registerApplePushNotification;
 exports.unregisterAndroidPushNotification = unregisterAndroidPushNotification;
 exports.unregisterApplePushNotification = unregisterApplePushNotification;
 exports.websocketNotification = websocketNotification;
+__webpack_require__(80978);
 var actionTypes = _interopRequireWildcard(__webpack_require__(9148));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Helper function for funneling all notification types into a single action.
  * @method notificationHelper
@@ -40143,7 +40997,7 @@ exports["default"] = createAPI;
 var actions = _interopRequireWildcard(__webpack_require__(32697));
 var eventTypes = _interopRequireWildcard(__webpack_require__(92710));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * The 'notification' namespace allows user to register/deregister for/from push notifications as well as
  * enabling/disabling the processing of websocket notifications.
@@ -40407,7 +41261,6 @@ const NOTI_RECEIVED = exports.NOTI_RECEIVED = 'notification:received';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -40426,6 +41279,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _reducers = _interopRequireDefault(__webpack_require__(67263));
 var _api = _interopRequireDefault(__webpack_require__(64959));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const name = exports.name = 'notifications';
 
 /***/ }),
@@ -40444,7 +41298,7 @@ var actionTypes = _interopRequireWildcard(__webpack_require__(9148));
 var _actionTypes2 = __webpack_require__(53202);
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 const reducers = {};
 reducers[actionTypes.ENABLE_NOTIFICATION_CHANNEL_FINISH] = {
   next(state, action) {
@@ -40531,13 +41385,13 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getNotificationConfig = getNotificationConfig;
 exports.getNotificationsInfo = getNotificationsInfo;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Retrieves the notifications state.
  * @method getNotificationsInfo
@@ -40570,7 +41424,6 @@ function getNotificationConfig(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -40579,11 +41432,12 @@ var _defaultsDeep2 = _interopRequireDefault(__webpack_require__(6766));
 var _interface = __webpack_require__(90308);
 var _middleware = _interopRequireDefault(__webpack_require__(90746));
 var initOperations = _interopRequireWildcard(__webpack_require__(78409));
-var _requests = _interopRequireDefault(__webpack_require__(77895));
+var _requests = _interopRequireDefault(__webpack_require__(34485));
 var _actions = __webpack_require__(43424);
 var _validation = __webpack_require__(42850);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Notifications plugin
 
 // Other plugins.
@@ -40669,7 +41523,6 @@ function notificationsFactory() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -40687,6 +41540,7 @@ Object.defineProperty(exports, "pushRegistration", ({
 }));
 var _notification = _interopRequireDefault(__webpack_require__(43351));
 var _pushRegistration = _interopRequireDefault(__webpack_require__(6305));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 
 /***/ }),
 
@@ -40702,7 +41556,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = createOperation;
 var actions = _interopRequireWildcard(__webpack_require__(32697));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Link-specific notification factory function.
  * @method createOperation
@@ -40737,13 +41591,13 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerOperations;
 var _processNotification = _interopRequireDefault(__webpack_require__(45821));
 var _enableWebsocketChannel = _interopRequireDefault(__webpack_require__(27695));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Register the operation with the bottle. This will make it available on the
  *    top-level container under its namespace.
@@ -40765,11 +41619,26 @@ function registerOperations(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperation;
+__webpack_require__(80978);
+__webpack_require__(60452);
+__webpack_require__(44936);
+__webpack_require__(85303);
+__webpack_require__(50737);
+__webpack_require__(48423);
+__webpack_require__(97380);
+__webpack_require__(35905);
+__webpack_require__(71697);
+__webpack_require__(9394);
+__webpack_require__(13438);
+__webpack_require__(53616);
+__webpack_require__(35630);
+__webpack_require__(30896);
+__webpack_require__(24139);
+__webpack_require__(70823);
 var _has2 = _interopRequireDefault(__webpack_require__(15107));
 var _defaults2 = _interopRequireDefault(__webpack_require__(469));
 var _selectors = __webpack_require__(50606);
@@ -40778,7 +41647,8 @@ var eventTypes = _interopRequireWildcard(__webpack_require__(92710));
 var _selectors2 = __webpack_require__(46942);
 var _pako = __webpack_require__(32845);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Notifications plugin
 
 // Other plugins
@@ -40938,13 +41808,13 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerOperations;
 var _registerPushDeviceToken = _interopRequireDefault(__webpack_require__(94183));
 var _unregisterPushDeviceToken = _interopRequireDefault(__webpack_require__(75733));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Register the operation with the bottle. This will make it available on the
  *    top-level container under its namespace.
@@ -40966,7 +41836,6 @@ function registerOperations(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -40974,6 +41843,7 @@ exports["default"] = createOperation;
 var _defaults2 = _interopRequireDefault(__webpack_require__(469));
 var _selectors = __webpack_require__(50606);
 var _selectors2 = __webpack_require__(46942);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 // Other plugins.
@@ -41022,7 +41892,6 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -41030,6 +41899,7 @@ exports["default"] = createOperation;
 var _defaults2 = _interopRequireDefault(__webpack_require__(469));
 var _selectors = __webpack_require__(50606);
 var _selectors2 = __webpack_require__(46942);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 // Other plugins.
@@ -41072,18 +41942,18 @@ function createOperation(container) {
 
 /***/ }),
 
-/***/ 77895:
+/***/ 34485:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createRequests;
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Error plugin
 
 /**
@@ -41309,6 +42179,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createMiddleware;
+__webpack_require__(80978);
+__webpack_require__(44936);
 var _actionTypes = __webpack_require__(9148);
 /**
  * Middleware factory for the Notifications plugin.
@@ -41474,7 +42346,6 @@ const GET_PRESENCE_LIST = exports.GET_PRESENCE_LIST = prefix + 'GET_PRESENCE_LIS
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -41491,10 +42362,12 @@ exports.unsubscribePresence = unsubscribePresence;
 exports.unsubscribePresenceFinish = unsubscribePresenceFinish;
 exports.updatePresence = updatePresence;
 exports.updatePresenceFinish = updatePresenceFinish;
+__webpack_require__(80978);
 var actionTypes = _interopRequireWildcard(__webpack_require__(65181));
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Presence plugin.
 
 // Other plugins.
@@ -41654,7 +42527,7 @@ exports["default"] = createAPI;
 var _eventTypes = __webpack_require__(30719);
 var selectors = _interopRequireWildcard(__webpack_require__(87291));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * The 'presence' namespace provides an interface for an application to set the
  *    User's presence information and to track other Users' presence
@@ -41968,7 +42841,6 @@ const ERROR = exports.ERROR = 'presence:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -41987,6 +42859,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _api = _interopRequireDefault(__webpack_require__(69694));
 var _reducers = _interopRequireDefault(__webpack_require__(7834));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 /**
@@ -42003,7 +42876,6 @@ const name = exports.name = 'presence';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -42012,7 +42884,8 @@ var _omit2 = _interopRequireDefault(__webpack_require__(81053));
 var actionTypes = _interopRequireWildcard(__webpack_require__(65181));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries
 
 const reducers = {};
@@ -42327,7 +43200,6 @@ const ACTIVITY = exports.ACTIVITY = {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -42338,6 +43210,7 @@ var _middleware = _interopRequireDefault(__webpack_require__(37085));
 var _operations = _interopRequireDefault(__webpack_require__(87783));
 var _requests = _interopRequireDefault(__webpack_require__(2457));
 var _constants = __webpack_require__(88460);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Link Presence plugin factory.
  * @method presenceFactory
@@ -42452,6 +43325,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperations;
+__webpack_require__(60452);
 var actions = _interopRequireWildcard(__webpack_require__(4785));
 var eventTypes = _interopRequireWildcard(__webpack_require__(30719));
 var _selectors = __webpack_require__(87291);
@@ -42459,7 +43333,7 @@ var _actionTypes = __webpack_require__(9148);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _constants = __webpack_require__(88460);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Presence plugin.
 
 // Other plugins
@@ -42685,13 +43559,13 @@ function createOperations(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createRequests;
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -42851,9 +43725,10 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.linkAuthorization = linkAuthorization;
+__webpack_require__(60452);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * "Authorization" issues are REST errors caused by invalid user credentials.
  *    These are issues that should be solvable by an end-user updating/fixing
@@ -42985,7 +43860,6 @@ const parseOptions = exports.parseOptions = (0, _validation.parse)('request', v8
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -42995,6 +43869,7 @@ var _requestModule = _interopRequireDefault(__webpack_require__(35669));
 var _interface = _interopRequireDefault(__webpack_require__(65696));
 var _actions = __webpack_require__(43424);
 var _utils = __webpack_require__(25189);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Request plugin.
 // Other plugins.
 // Utils.
@@ -43082,7 +43957,7 @@ exports.request = request;
 exports.response = response;
 var actionTypes = _interopRequireWildcard(__webpack_require__(42165));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var nextRequestId = 0;
 function generateRequestId() {
   return nextRequestId++;
@@ -43142,7 +44017,6 @@ function authorizationError(error) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -43150,6 +44024,7 @@ exports["default"] = createAPI;
 var _merge2 = _interopRequireDefault(__webpack_require__(9612));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -43256,13 +44131,13 @@ const REQUEST_ERROR = exports.REQUEST_ERROR = 'request:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _name = _interopRequireDefault(__webpack_require__(3205));
 var _api = _interopRequireDefault(__webpack_require__(6249));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var _default = exports["default"] = {
   name: _name.default,
   createAPI: _api.default
@@ -43333,6 +44208,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = makeRequest;
+__webpack_require__(80978);
+__webpack_require__(60452);
 var _logs = __webpack_require__(43862);
 var _utils = __webpack_require__(25189);
 // Other plugins.
@@ -43662,7 +44539,6 @@ function makeResponse() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -43675,10 +44551,11 @@ var authorizations = _interopRequireWildcard(__webpack_require__(55689));
 var _makeRequest = _interopRequireDefault(__webpack_require__(87569));
 var _utils = __webpack_require__(70720);
 var _selectors = __webpack_require__(46942);
-var _version = __webpack_require__(64510);
+var _version = __webpack_require__(55404);
 var _utils2 = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Request plugin.
 
 // Other plugins.
@@ -43814,7 +44691,6 @@ function getTime() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -43822,13 +44698,15 @@ exports.fetchResource = fetchResource;
 exports.getCommonOptions = getCommonOptions;
 exports.getCpaasAgentHeaderValue = getCpaasAgentHeaderValue;
 exports.sanitizeRequest = sanitizeRequest;
+__webpack_require__(60452);
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(50647);
 var _selectors2 = __webpack_require__(46942);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(64510);
+var _version = __webpack_require__(55404);
 var _utils = __webpack_require__(25189);
 var _effects = __webpack_require__(27422);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Request plugin.
 
 // Other plugins.
@@ -43966,7 +44844,6 @@ async function fetchResource(resource, requestInfo, module) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -43977,6 +44854,7 @@ var _operations = _interopRequireDefault(__webpack_require__(15697));
 var _requests = _interopRequireDefault(__webpack_require__(24268));
 var _intervals = _interopRequireDefault(__webpack_require__(30091));
 var _actionTypes = __webpack_require__(9148);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Sip Events plugin.
 
 // Other plugins.
@@ -44057,7 +44935,7 @@ exports.sipEventUpdate = sipEventUpdate;
 exports.sipEventUpdateFinish = sipEventUpdateFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(98144));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Helper function for formatting _FINISH actions.
 function finishActionHelper(actionType, _ref) {
   let {
@@ -44557,7 +45435,6 @@ const EVENT_RECEIVED = exports.EVENT_RECEIVED = 'sip:eventsChange';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -44576,6 +45453,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _api = _interopRequireDefault(__webpack_require__(8931));
 var _reducer = _interopRequireDefault(__webpack_require__(13902));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 const name = exports.name = 'sipEvents';
@@ -44588,7 +45466,6 @@ const name = exports.name = 'sipEvents';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -44600,7 +45477,8 @@ var _concat2 = _interopRequireDefault(__webpack_require__(12462));
 var actionTypes = _interopRequireWildcard(__webpack_require__(98144));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 const reducers = {};
@@ -44673,12 +45551,12 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getSipEventInfo = getSipEventInfo;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Retrieves information about a sip event.
  * @method getSipEventInfo
@@ -44705,6 +45583,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createIntervals;
+__webpack_require__(80978);
 var _selectors = __webpack_require__(83238);
 var _errors = __webpack_require__(83437);
 // sipEvents plugin
@@ -44808,11 +45687,11 @@ function createIntervals(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperations;
+__webpack_require__(60452);
 var _includes2 = _interopRequireDefault(__webpack_require__(34803));
 var actions = _interopRequireWildcard(__webpack_require__(15705));
 var eventTypes = _interopRequireWildcard(__webpack_require__(81898));
@@ -44821,7 +45700,8 @@ var _selectors2 = __webpack_require__(48944);
 var _selectors3 = __webpack_require__(11430);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // sipEvents plugin
 
 // Other plugins
@@ -45163,7 +46043,7 @@ exports["default"] = createRequests;
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Other plugins
 
 /**
@@ -45468,7 +46348,7 @@ exports.unsubscribe = unsubscribe;
 exports.unsubscribeFinished = unsubscribeFinished;
 var actionTypes = _interopRequireWildcard(__webpack_require__(27190));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Helper function for formatting actions.
  * Ensures that actions follow an expectable format.
@@ -45747,6 +46627,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAPI;
+__webpack_require__(60452);
 var actions = _interopRequireWildcard(__webpack_require__(44295));
 var eventTypes = _interopRequireWildcard(__webpack_require__(36826));
 var _selectors = __webpack_require__(48944);
@@ -45755,7 +46636,7 @@ var _constants = __webpack_require__(49833);
 var _utils = __webpack_require__(25189);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * The 'services' namespace allows an application to manage how they wish the SDK to
  *    receive communications from the platform. An application can subscribe to
@@ -46165,7 +47046,6 @@ const SUB_RESUB = exports.SUB_RESUB = 'subscription:resub';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -46184,6 +47064,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _reducers = _interopRequireDefault(__webpack_require__(54097));
 var _api = _interopRequireDefault(__webpack_require__(20308));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const name = exports.name = 'subscription';
 
 /***/ }),
@@ -46194,7 +47075,6 @@ const name = exports.name = 'subscription';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -46206,7 +47086,8 @@ var _constants2 = __webpack_require__(43265);
 var _constants3 = __webpack_require__(72916);
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Constants
 
 // Other plugins.
@@ -46407,7 +47288,6 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -46422,9 +47302,11 @@ exports.getSubscriptionPlatform = getSubscriptionPlatform;
 exports.getSubscriptions = getSubscriptions;
 exports.getWebsocketConfig = getWebsocketConfig;
 exports.getWebsocketId = getWebsocketId;
+__webpack_require__(60452);
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _selectors = __webpack_require__(46942);
 var _utils = __webpack_require__(25189);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Auth selectors for backwards compatibility.
 
 // Utilities.
@@ -46615,7 +47497,6 @@ function getSubscriptionPlatform(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -46640,6 +47521,7 @@ Object.defineProperty(exports, "updateSubscription", ({
 var _subscribe = _interopRequireDefault(__webpack_require__(67994));
 var _unsubscribe = _interopRequireDefault(__webpack_require__(87711));
 var _update = _interopRequireDefault(__webpack_require__(10974));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 
 /***/ }),
 
@@ -46709,13 +47591,13 @@ function parseSpidrServices(requested, received) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(46892));
 var _operation = _interopRequireDefault(__webpack_require__(35123));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('SubscriptionRequests.subscribe', container => {
     return (0, _request.default)(bottle.container);
@@ -46748,7 +47630,7 @@ var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _constants = __webpack_require__(49833);
 var _selectors3 = __webpack_require__(48944);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Subscription plugin.
 
 // Auth plugin
@@ -46969,11 +47851,14 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createRequest;
+var _selectors = __webpack_require__(46942);
+var _services = __webpack_require__(72203);
 var _utils = __webpack_require__(25189);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
-var _services = __webpack_require__(4025);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+// Auth plugin.
+
 /**
  * Request factory function.
  * @method createRequest
@@ -46982,6 +47867,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
  */
 function createRequest(container) {
   const {
+    context,
     logManager,
     sendRequest
   } = container;
@@ -47000,7 +47886,8 @@ function createRequest(container) {
    */
   async function subscribe(authConfig, expires, connection, services) {
     let extras = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
-    const subscribeType = authConfig.isAnonymous ? 'anonymous' : 'user';
+    const userInfo = (0, _selectors.getUserInfo)(context.getState());
+    const subscribeType = userInfo.isAnonymous ? 'anonymous' : 'user';
     let requestOptions = {};
     requestOptions.method = 'POST';
     requestOptions.url = `${connection.server.protocol}://${connection.server.server}:${connection.server.port}` + `/rest/version/${connection.server.version}` + `/${subscribeType}/${connection.username}/subscription`;
@@ -47102,13 +47989,13 @@ function createRequest(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(90269));
 var _operation = _interopRequireDefault(__webpack_require__(46918));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('SubscriptionRequests.unsubscribe', container => {
     return (0, _request.default)(bottle.container);
@@ -47220,12 +48107,12 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createRequest;
 var _errors = _interopRequireDefault(__webpack_require__(83437));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Errors
 
 /**
@@ -47308,13 +48195,13 @@ function createRequest(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(3038));
 var _operation = _interopRequireDefault(__webpack_require__(527));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('SubscriptionRequests.resubscribe', container => {
     return (0, _request.default)(bottle.container);
@@ -47332,15 +48219,16 @@ function registerFeature(bottle) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperation;
+__webpack_require__(60452);
 var _union2 = _interopRequireDefault(__webpack_require__(38959));
 var _selectors = __webpack_require__(48944);
 var _selectors2 = __webpack_require__(46942);
 var _constants = __webpack_require__(49833);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Subscription plugin
 
 // Auth plugin
@@ -47430,7 +48318,7 @@ exports["default"] = createRequest;
 var _services = __webpack_require__(72203);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Other plugins.
 
 /**
@@ -47567,7 +48455,6 @@ function createRequest(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -47587,8 +48474,9 @@ var _actionTypes2 = __webpack_require__(9148);
 var connectivityActionTypes = _interopRequireWildcard(__webpack_require__(53202));
 var _utils = __webpack_require__(25189);
 var _validation = __webpack_require__(42850);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // The interface to follow.
 
 // Subscription operations registered by the plugin initialization itself
@@ -47784,12 +48672,12 @@ function subscriptionFactory() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = registerIntervals;
 var _resubscribe = _interopRequireDefault(__webpack_require__(38835));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Register intervals with the bottle. This will make it available on the
  *    top-level container under its namespace.
@@ -47819,7 +48707,7 @@ var _selectors2 = __webpack_require__(46942);
 var _eventTypes = __webpack_require__(36826);
 var _constants2 = __webpack_require__(49833);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Subscription plugin.
 
 // Auth Plugin
@@ -48001,9 +48889,13 @@ exports["default"] = createOperation;
 var actions = _interopRequireWildcard(__webpack_require__(44295));
 var eventTypes = _interopRequireWildcard(__webpack_require__(36826));
 var _constants = __webpack_require__(43265);
+var _selectors = __webpack_require__(46942);
+var authEventTypes = _interopRequireWildcard(__webpack_require__(71430));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Subscription plugin.
+
+// Auth plugin
 
 /**
  * Operation factory function responsible for handling the 'connection lost' notification.
@@ -48018,6 +48910,8 @@ function createOperation(container) {
     SubscriptionIntervals
   } = container;
   async function handleLossOfConnection() {
+    const userInfo = (0, _selectors.getUserInfo)(context.getState());
+
     // Stop the automatic re-subscription interval.
     SubscriptionIntervals.resubInterval.stopResubInterval();
     context.dispatch(actions.unsubscribeFinished({
@@ -48025,7 +48919,7 @@ function createOperation(container) {
     }));
 
     // Dispatch an event with same payload, for backwards compatibility.
-    emitEvent(eventTypes.SUB_CHANGE, {
+    emitEvent(userInfo.isAnonymous ? authEventTypes.AUTH_CHANGE : eventTypes.SUB_CHANGE, {
       reason: _constants.DISCONNECT_REASONS.LOST_CONNECTION
     });
   }
@@ -48051,12 +48945,16 @@ var _constants = __webpack_require__(43265);
 var _selectors2 = __webpack_require__(53951);
 var _actionTypes = __webpack_require__(53202);
 var _actions2 = __webpack_require__(69897);
+var _selectors3 = __webpack_require__(46942);
+var authEventTypes = _interopRequireWildcard(__webpack_require__(71430));
 var _constants2 = __webpack_require__(49833);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Subscription plugin.
 
 // Connectivity Plugin
+
+// Auth plugin
 
 // Constants
 
@@ -48082,6 +48980,8 @@ function createOperation(container) {
     return (action.type === _actionTypes.WS_DISCONNECT_FINISHED || action.type === _actionTypes.WS_ERROR) && action.meta.platform === platform;
   }
   async function receiveNotificationMessage(notificationMessage) {
+    const userInfo = (0, _selectors3.getUserInfo)(context.getState());
+
     // Dispatch an action to disconnect the websocket (and let the connectivity
     //      plugin know we expect it to be disconnected).
     const wsState = (0, _selectors2.getConnectionState)(context.getState(), platform);
@@ -48117,7 +49017,7 @@ function createOperation(container) {
     context.dispatch(actions.unsubscribeFinished(content, platform));
 
     // Dispatch an event with same payload, for backwards compatibility.
-    emitEvent(eventTypes.SUB_CHANGE, {
+    emitEvent(userInfo.isAnonymous ? authEventTypes.AUTH_CHANGE : eventTypes.SUB_CHANGE, {
       reason: _constants.DISCONNECT_REASONS.GONE
     });
   }
@@ -48144,7 +49044,7 @@ var _actionTypes = __webpack_require__(53202);
 var _actions2 = __webpack_require__(69897);
 var _constants2 = __webpack_require__(49833);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Subscription plugin.
 
 // Connectivity Plugin
@@ -48212,18 +49112,19 @@ function createOperation(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOperation;
+__webpack_require__(60452);
 var _difference2 = _interopRequireDefault(__webpack_require__(94815));
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var actionTypes = _interopRequireWildcard(__webpack_require__(27190));
 var _selectors = __webpack_require__(48944);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Subscription plugin.
 
 // Errors
@@ -48416,7 +49317,7 @@ exports.updateContact = updateContact;
 exports.updateContactFinish = updateContactFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(67705));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * Refresh the contact list.
  * @returns {Object} A flux standard action representing the REFRESH_CONTACTS action.
@@ -48588,7 +49489,7 @@ exports.searchDirectory = searchDirectory;
 exports.searchDirectoryFinish = searchDirectoryFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(67705));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  *
  * @param {string} userId The URI uniquely identifying the user.
@@ -48677,7 +49578,7 @@ exports["default"] = contactsAPI;
 var _selectors = __webpack_require__(45741);
 var eventTypes = _interopRequireWildcard(__webpack_require__(46268));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Users plugin.
 
 function contactsAPI(container) {
@@ -48891,13 +49792,13 @@ function contactsAPI(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAPI;
 var _users = _interopRequireDefault(__webpack_require__(68248));
 var _contacts = _interopRequireDefault(__webpack_require__(41232));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Users API factory function.
  * Defines the interface between the application and the SDK's Users APIs.
@@ -49199,7 +50100,6 @@ const USERS_ERROR = exports.USERS_ERROR = 'users:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -49218,6 +50118,7 @@ Object.defineProperty(exports, "reducer", ({
 }));
 var _index = _interopRequireDefault(__webpack_require__(27865));
 var _reducers = _interopRequireDefault(__webpack_require__(97285));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Import the components of the interface.
 
 /**
@@ -49236,7 +50137,6 @@ const name = exports.name = 'users';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -49244,7 +50144,8 @@ exports["default"] = void 0;
 var _unset2 = _interopRequireDefault(__webpack_require__(61505));
 var actionTypes = _interopRequireWildcard(__webpack_require__(67705));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const reducers = {};
 const contactsPendingReducer = {
   next(state) {
@@ -49362,7 +50263,6 @@ var _default = exports["default"] = reducers;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -49370,6 +50270,7 @@ exports["default"] = void 0;
 var _contacts = _interopRequireDefault(__webpack_require__(1724));
 var _users = _interopRequireDefault(__webpack_require__(22047));
 var _reduxActions = __webpack_require__(68305);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Combine all of reducers into a single reducer, defaulting to an empty Object for each
  * substate of contacts and users
@@ -49399,7 +50300,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(67705));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 const reducers = {};
 reducers[actionTypes.FETCH_USER_FINISH] = {
   next(state, action) {
@@ -49454,7 +50355,6 @@ var _default = exports["default"] = reducers;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -49463,6 +50363,7 @@ exports.getContacts = getContacts;
 exports.getUser = getUser;
 exports.getUsers = getUsers;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Redux-saga selector functions.
  * Used with the `select` effect in sagas to Retrieves
@@ -49514,7 +50415,6 @@ function getUser(state, name) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -49522,6 +50422,7 @@ exports["default"] = usersFactory;
 var _interface = __webpack_require__(75923);
 var _operations = _interopRequireDefault(__webpack_require__(28042));
 var _requests = _interopRequireDefault(__webpack_require__(65960));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Users service plugin factory.
  * Provides the SDK with the 'Users' feature.
@@ -49549,7 +50450,6 @@ function usersFactory() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -49560,7 +50460,8 @@ var contactsActions = _interopRequireWildcard(__webpack_require__(49323));
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Users' Actions
 
 /**
@@ -50054,7 +50955,6 @@ function createOperations(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -50063,7 +50963,8 @@ var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var _selectors = __webpack_require__(46942);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
 
 /**
@@ -50241,7 +51142,7 @@ exports["default"] = watchDeviceEvents;
 var _actions = __webpack_require__(37992);
 var eventTypes = _interopRequireWildcard(__webpack_require__(46215));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Webrtc plugin.
 
 /**
@@ -50293,7 +51194,6 @@ function watchDeviceEvents(manager, handler) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -50308,7 +51208,8 @@ var webrtcActionTypes = _interopRequireWildcard(__webpack_require__(1371));
 var _eventTypes2 = __webpack_require__(55166);
 var _selectors = __webpack_require__(11430);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Manager channels.
 
 // Webrtc plugin.
@@ -50497,13 +51398,13 @@ function watchMediaEvents(media, handler) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = watchMediaManagerEvents;
 var _actions = __webpack_require__(37992);
 var _media = _interopRequireDefault(__webpack_require__(96023));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 /**
@@ -50668,13 +51569,13 @@ function watchSessionEvents(session, handler) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = watchSessionManagerEvents;
 var _actions = __webpack_require__(37992);
 var _session = _interopRequireDefault(__webpack_require__(72227));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 /**
@@ -50730,7 +51631,7 @@ exports["default"] = watchTrackEvents;
 var _actions = __webpack_require__(37992);
 var eventTypes = _interopRequireWildcard(__webpack_require__(46215));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Libraries.
 
 /**
@@ -50803,7 +51704,6 @@ function watchTrackEvents(track, handler) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -50811,6 +51711,7 @@ exports["default"] = watchTrackManagerEvents;
 var _actions = __webpack_require__(37992);
 var _eventTypes = __webpack_require__(46215);
 var _track = _interopRequireDefault(__webpack_require__(80027));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 /**
@@ -50880,7 +51781,6 @@ function watchTrackManagerEvents(manager, handler) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -50899,7 +51799,8 @@ var _logs2 = __webpack_require__(43862);
 var _selectors = __webpack_require__(13751);
 var _kandyWebrtc = _interopRequireWildcard(__webpack_require__(15203));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Other plugins.
@@ -51078,7 +51979,7 @@ exports.initializeDevice = initializeDevice;
 exports.initializeDeviceFinish = initializeDeviceFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Webrtc plugin.
 
 function devicesChanged(devices) {
@@ -51131,7 +52032,7 @@ var sessionActionsImport = _interopRequireWildcard(__webpack_require__(57423));
 var mediaActionsImport = _interopRequireWildcard(__webpack_require__(39479));
 var miscActionsImport = _interopRequireWildcard(__webpack_require__(78480));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Apparently the following doesn't work:
 //      export * as newName from './place';
 // So import everything from each file, then re-export.
@@ -51149,7 +52050,6 @@ const miscActions = exports.miscActions = miscActionsImport;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -51160,7 +52060,8 @@ exports.removedMedia = removedMedia;
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Libraries.
@@ -51212,7 +52113,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports.setBrowserDetails = setBrowserDetails;
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Webrtc plugin.
 
 /**
@@ -51238,7 +52139,6 @@ function setBrowserDetails(details) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -51255,7 +52155,8 @@ exports.sessionTrackReplaced = sessionTrackReplaced;
 var _isEmpty2 = _interopRequireDefault(__webpack_require__(8288));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
 
 // Libraries.
@@ -51348,7 +52249,7 @@ exports.unmuteTracks = unmuteTracks;
 exports.unmuteTracksFinish = unmuteTracksFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 function trackManagerHelper(type, trackId) {
@@ -51445,7 +52346,6 @@ function removeTracksFinish(trackIds, params) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -51453,6 +52353,7 @@ exports["default"] = createAPI;
 var _isPlainObject2 = _interopRequireDefault(__webpack_require__(1449));
 var _selectors = __webpack_require__(30105);
 var _media = _interopRequireDefault(__webpack_require__(45662));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Namespaced APIs.
@@ -51544,7 +52445,7 @@ var _selectors = __webpack_require__(30105);
 var eventTypes = _interopRequireWildcard(__webpack_require__(46215));
 var _utils = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Webrtc plugin.
 
 // Other plugins.
@@ -52039,13 +52940,13 @@ const TRACK_ENDED = exports.TRACK_ENDED = 'media:trackEnded';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _api = _interopRequireDefault(__webpack_require__(2233));
 var _reducers = _interopRequireDefault(__webpack_require__(14279));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var _default = exports["default"] = {
   name: 'webrtc',
   api: _api.default,
@@ -52067,7 +52968,7 @@ exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Libraries.
@@ -52101,7 +53002,7 @@ exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin.
 
 // Libraries.
@@ -52142,7 +53043,6 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -52152,6 +53052,7 @@ var _media = _interopRequireDefault(__webpack_require__(57815));
 var _tracks = _interopRequireDefault(__webpack_require__(2546));
 var _sessions = _interopRequireDefault(__webpack_require__(10544));
 var _browser = _interopRequireDefault(__webpack_require__(84697));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Webrtc plugin top-level reducer.
  * @method reducer
@@ -52179,7 +53080,6 @@ function _default() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -52189,7 +53089,8 @@ var _concat2 = _interopRequireDefault(__webpack_require__(12462));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Libraries.
@@ -52262,17 +53163,19 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _remove2 = _interopRequireDefault(__webpack_require__(58009));
 var _concat2 = _interopRequireDefault(__webpack_require__(12462));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Libraries.
@@ -52363,17 +53266,18 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
+__webpack_require__(60452);
 var _remove2 = _interopRequireDefault(__webpack_require__(58009));
 var _concat2 = _interopRequireDefault(__webpack_require__(12462));
 var actionTypes = _interopRequireWildcard(__webpack_require__(1371));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Libraries.
@@ -52722,18 +53626,20 @@ function createLogOperations(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createMediaOperations;
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _isString2 = _interopRequireDefault(__webpack_require__(49775));
 var _isUndefined2 = _interopRequireDefault(__webpack_require__(73346));
 var _actions = __webpack_require__(37992);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _utils = __webpack_require__(25189);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 // Other plugins.
@@ -53171,7 +54077,6 @@ function createMediaOperations(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -53179,6 +54084,7 @@ exports["default"] = createWebRTCOperations;
 var _isPlainObject2 = _interopRequireDefault(__webpack_require__(1449));
 var _devices = __webpack_require__(61547);
 var _eventTypes = __webpack_require__(46215);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * WebRTC Operations factory function.
  * @method createWebRTCOperations
@@ -53298,6 +54204,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.jsonChannel = jsonChannel;
 exports.replyChannel = replyChannel;
+__webpack_require__(80978);
 var _logs = __webpack_require__(43862);
 // Other plugins.
 
@@ -53479,7 +54386,6 @@ function replyChannel(channel) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -53492,7 +54398,8 @@ var _kandyWebrtc = _interopRequireWildcard(__webpack_require__(15203));
 var _operations = _interopRequireDefault(__webpack_require__(50458));
 var _api = _interopRequireDefault(__webpack_require__(20589));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Proxy Plugin.
 
 // Libraries.
@@ -53607,7 +54514,7 @@ exports.setProxyMode = setProxyMode;
 exports.setProxyModeFinish = setProxyModeFinish;
 var actionTypes = _interopRequireWildcard(__webpack_require__(85078));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function actionHelper(type) {
   let payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   const action = {
@@ -53680,7 +54587,7 @@ exports["default"] = createAPI;
 var _selectors = __webpack_require__(21590);
 var eventTypes = _interopRequireWildcard(__webpack_require__(92871));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 /**
  * The 'proxy' namespace allows for a secondary mode for making calls: proxy mode.
  * When proxy mode is enabled, the SDK will redirect webRTC / media operations from the current machine to a remote machine using a channel.
@@ -54008,13 +54915,13 @@ const PROXY_ERROR = exports.PROXY_ERROR = 'proxy:error';
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _api = _interopRequireDefault(__webpack_require__(20589));
 var _reducers = _interopRequireDefault(__webpack_require__(12570));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Expose the components of the Proxy Interface as a single object.
  */
@@ -54039,7 +54946,7 @@ exports["default"] = void 0;
 var actionTypes = _interopRequireWildcard(__webpack_require__(85078));
 var _reduxActions = __webpack_require__(68305);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Proxy plugin.
 
 // Libraries.
@@ -54095,12 +55002,12 @@ var _default = exports["default"] = reducer;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.getProxyState = getProxyState;
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -54127,7 +55034,6 @@ function getProxyState(state) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -54142,7 +55048,8 @@ var _selectors2 = __webpack_require__(13751);
 var _selectors3 = __webpack_require__(21590);
 var _channels = __webpack_require__(59720);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Webrtc plugin.
 
 function createOperations(container) {
@@ -54392,16 +55299,17 @@ function createOperations(container) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = _default;
+__webpack_require__(80978);
 var _isNull2 = _interopRequireDefault(__webpack_require__(78608));
 var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _model = _interopRequireDefault(__webpack_require__(82031));
 var _logs = __webpack_require__(43862);
 var _uuid = __webpack_require__(60130);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Proxy plugin.
 
 // Other plugins.
@@ -54575,6 +55483,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = modelProxy;
+__webpack_require__(60452);
 var _logs = __webpack_require__(43862);
 var _uuid = __webpack_require__(60130);
 // Other plugins.
@@ -54730,19 +55639,20 @@ function modelProxy(base, channel) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = initializeProxy;
+__webpack_require__(60452);
 var _manager = _interopRequireDefault(__webpack_require__(90198));
 var _channel = __webpack_require__(81074);
 var _logs = __webpack_require__(43862);
-var _version = __webpack_require__(64510);
+var _version = __webpack_require__(55404);
 var _errors = _interopRequireWildcard(__webpack_require__(83437));
 var _uuid = __webpack_require__(60130);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Proxy plugin.
 
 // Other plugins.
@@ -55084,7 +55994,6 @@ const timeLevel = exports.timeLevel = logLevels.DEBUG;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -55092,6 +56001,7 @@ exports.logLevels = exports.logFormatter = exports["default"] = void 0;
 var _logManager = _interopRequireDefault(__webpack_require__(41018));
 var _logFormatter = _interopRequireDefault(__webpack_require__(4581));
 var _constants = __webpack_require__(8599);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Package main.
  */
@@ -55147,12 +56057,13 @@ function defaultLogFormatter(entry) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = defaultLogHandler;
+__webpack_require__(60452);
 var _logFormatter = _interopRequireDefault(__webpack_require__(4581));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Default function for the SDK to use for logging.
  *    Uses entry information to form a prefix, then logs to console.
@@ -55183,7 +56094,6 @@ function defaultLogHandler(entry) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -55192,6 +56102,7 @@ var _logger = _interopRequireDefault(__webpack_require__(12476));
 var _logHandler = _interopRequireDefault(__webpack_require__(40877));
 var _constants = __webpack_require__(8599);
 var _validation = __webpack_require__(70920);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const defaultType = Symbol('Default');
 
 /**
@@ -55455,7 +56366,6 @@ function createManager() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -55463,6 +56373,7 @@ exports["default"] = createLogger;
 var _constants = __webpack_require__(8599);
 var _validation = __webpack_require__(70920);
 var _timer = _interopRequireDefault(__webpack_require__(66270));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Creates a Logger.
  * @method createLogger
@@ -55750,6 +56661,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.checkHandler = checkHandler;
 exports.checkLevel = checkLevel;
+__webpack_require__(80978);
 var _constants = __webpack_require__(8599);
 /**
  * Helper function to validate a "log level" string before its used in the library.
@@ -55794,12 +56706,12 @@ function checkHandler(handler) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
 var _reporter = _interopRequireDefault(__webpack_require__(68137));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * Package main.
  */
@@ -55814,13 +56726,16 @@ var _default = exports["default"] = _reporter.default;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = reportFactory;
+__webpack_require__(80978);
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _isString2 = _interopRequireDefault(__webpack_require__(49775));
 var _timelineEvent = _interopRequireDefault(__webpack_require__(29662));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Utils
 
 /**
@@ -56113,13 +57028,14 @@ function reportFactory(type, id) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createReporter;
+__webpack_require__(80978);
 var _isString2 = _interopRequireDefault(__webpack_require__(49775));
 var _report = _interopRequireDefault(__webpack_require__(23338));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Utils
 
 /**
@@ -56197,13 +57113,15 @@ function createReporter() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createTimelineEvent;
+__webpack_require__(80978);
+__webpack_require__(44936);
 var _isString2 = _interopRequireDefault(__webpack_require__(49775));
 var _uuid = __webpack_require__(60130);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Utils
 
 /**
@@ -56504,6 +57422,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = onicecandidate;
+__webpack_require__(44936);
 var _constants = __webpack_require__(35800);
 /**
  * Event wrapper for `icecandidate` event.
@@ -56663,7 +57582,6 @@ function onicegatheringstatechange(listener) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -56674,6 +57592,7 @@ var _icegatheringstatechange = _interopRequireDefault(__webpack_require__(84888)
 var _negotiationneeded = _interopRequireDefault(__webpack_require__(74974));
 var _signalingstatechange = _interopRequireDefault(__webpack_require__(74239));
 var _track = _interopRequireDefault(__webpack_require__(56275));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var _default = exports["default"] = {
   onicecandidate: _icecandidate.default,
   oniceconnectionstatechange: _iceconnectionstatechange.default,
@@ -56748,7 +57667,7 @@ function onsignalingstatechange(listener) {
 /***/ }),
 
 /***/ 56275:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -56757,6 +57676,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = ontrack;
+__webpack_require__(44936);
 /**
  * Event wrapper for `track` event.
  * Reference: developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/ontrack
@@ -56824,12 +57744,12 @@ function ontrack(listener) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = peer;
 exports.setPeerProxies = setPeerProxies;
+__webpack_require__(60452);
 var _events = _interopRequireDefault(__webpack_require__(43255));
 var _methods = _interopRequireDefault(__webpack_require__(60424));
 var _properties = _interopRequireDefault(__webpack_require__(1936));
@@ -56838,6 +57758,7 @@ var _config = _interopRequireDefault(__webpack_require__(60352));
 var _logs = __webpack_require__(88915);
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
 var _timer = __webpack_require__(66564);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
  * Wrapper imports.
  * Events, methods, and properties that we want to wrap/add to the native Peer.
@@ -57032,7 +57953,7 @@ function peer(id) {
 /***/ }),
 
 /***/ 54771:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -57041,6 +57962,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = addIceCandidate;
+__webpack_require__(80978);
 /**
  * Add an ICE candidate to the connection.
  * @method addIceCandidate
@@ -57069,7 +57991,7 @@ function addIceCandidate(candidate) {
 /***/ }),
 
 /***/ 20596:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -57078,6 +58000,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = addTransceiver;
+__webpack_require__(44936);
 /**
  * Add a Transceiver to the connection.
  * @method addTransceiver
@@ -57153,6 +58076,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAnswer;
+__webpack_require__(44936);
 var _constants = __webpack_require__(35800);
 var _pipeline = __webpack_require__(39031);
 var _handlers = __webpack_require__(4952);
@@ -57225,6 +58149,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createOffer;
+__webpack_require__(44936);
 var _constants = __webpack_require__(35800);
 var _pipeline = __webpack_require__(39031);
 var _handlers = __webpack_require__(4952);
@@ -57346,7 +58271,7 @@ function getState() {
 /***/ }),
 
 /***/ 53326:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -57355,6 +58280,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = getStats;
+__webpack_require__(80978);
 /**
  * Retrieve RTCStatsReport for a sender or the peerConnection.
  * @method getStats
@@ -57427,7 +58353,6 @@ function getTransceivers() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -57446,6 +58371,7 @@ var _replaceTrack = _interopRequireDefault(__webpack_require__(26956));
 var _sendDTMF = _interopRequireDefault(__webpack_require__(14869));
 var _setLocalDescription = _interopRequireDefault(__webpack_require__(27045));
 var _setRemoteDescription = _interopRequireDefault(__webpack_require__(59418));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const methods = {
   addIceCandidate: _addIceCandidate.default,
   addTransceiver: _addTransceiver.default,
@@ -57505,7 +58431,7 @@ function removeTrack(trackId) {
 /***/ }),
 
 /***/ 26956:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -57514,6 +58440,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = replaceTrack;
+__webpack_require__(80978);
 /**
  * Replaces a specified transceiver's sender.track.
  * @method replaceTrack
@@ -57662,13 +58589,13 @@ function insertDTMF(sender, tone, duration, intertoneGap, callback, log) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = setLocalDescription;
 var _constants = __webpack_require__(35800);
 var _iceCollectionScheduledCheck = _interopRequireDefault(__webpack_require__(85846));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Utils.
 
 /**
@@ -57830,7 +58757,6 @@ function setRemoteDescription(desc) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -57841,6 +58767,7 @@ var _remoteDescription = _interopRequireDefault(__webpack_require__(12159));
 var _remoteTracksActive = _interopRequireDefault(__webpack_require__(19706));
 var _remoteTracks = _interopRequireDefault(__webpack_require__(10583));
 var _senderTracks = _interopRequireDefault(__webpack_require__(38689));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var _default = exports["default"] = {
   localDescription: _localDescription.default,
   localTracks: _localTracks.default,
@@ -58260,7 +59187,6 @@ const ICE_COLLECTION_RESULT_TYPES = exports.ICE_COLLECTION_RESULT_TYPES = {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -58282,7 +59208,8 @@ var _pipeline = _interopRequireDefault(__webpack_require__(39031));
 var sdpHandlers = _interopRequireWildcard(__webpack_require__(4952));
 var _utils = __webpack_require__(30791);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Models.
 
 // Managers.
@@ -58365,12 +59292,12 @@ function initialize() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.logManager = void 0;
 var _kandyLogger = _interopRequireDefault(__webpack_require__(17070));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const manager = (0, _kandyLogger.default)({
   level: 'DEBUG'
 });
@@ -58384,14 +59311,15 @@ const logManager = exports.logManager = manager;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.WEBRTC_DEVICE_KINDS = void 0;
 exports["default"] = DeviceManager;
+__webpack_require__(44936);
 var _logs = __webpack_require__(88915);
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /*
@@ -58560,7 +59488,6 @@ function DeviceManager() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -58568,6 +59495,7 @@ exports["default"] = MediaManager;
 var _logs = __webpack_require__(88915);
 var _media = _interopRequireDefault(__webpack_require__(10662));
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Models that this manager directly manages.
 
 // Libraries.
@@ -58870,7 +59798,6 @@ function MediaManager(managers) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -58879,6 +59806,7 @@ var _logs = __webpack_require__(88915);
 var _Peer = _interopRequireDefault(__webpack_require__(89531));
 var _uuid = __webpack_require__(60130);
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -58977,6 +59905,10 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = Renderer;
+__webpack_require__(44936);
+__webpack_require__(95850);
+__webpack_require__(73631);
+__webpack_require__(71399);
 var _logs = __webpack_require__(88915);
 var _utils = __webpack_require__(30791);
 /*
@@ -59149,7 +60081,6 @@ function Renderer() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -59158,6 +60089,7 @@ var _logs = __webpack_require__(88915);
 var _session = _interopRequireDefault(__webpack_require__(30503));
 var _uuid = __webpack_require__(60130);
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -59267,13 +60199,13 @@ function SessionManager(managers) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = TrackManager;
 var _track = _interopRequireDefault(__webpack_require__(77836));
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -59477,13 +60409,13 @@ function WebRTCManager(managers) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = Media;
 var _logs = __webpack_require__(88915);
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -59673,11 +60605,13 @@ function Media(nativeStream, isLocal) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = Session;
+__webpack_require__(80978);
+__webpack_require__(60452);
+__webpack_require__(44936);
 var _debounce2 = _interopRequireDefault(__webpack_require__(32915));
 var _logs = __webpack_require__(88915);
 var _transceiverUtils = __webpack_require__(30671);
@@ -59687,6 +60621,7 @@ var _extractors = __webpack_require__(65969);
 var _utils = __webpack_require__(30791);
 var _iceCollectionScheduledCheck = _interopRequireDefault(__webpack_require__(85846));
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Helpers.
 
 // SDP Helpers.
@@ -60974,13 +61909,13 @@ function Session(id, managers) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = Track;
 var _logs = __webpack_require__(88915);
 var _eventemitter = _interopRequireDefault(__webpack_require__(10161));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 /**
@@ -61236,6 +62171,7 @@ exports.changeMediaDirection = changeMediaDirection;
 exports.preventDtlsRoleChange = preventDtlsRoleChange;
 exports.removeBundling = removeBundling;
 exports.removeTrickleIce = removeTrickleIce;
+__webpack_require__(60452);
 var _logs = __webpack_require__(88915);
 var _constants = __webpack_require__(35800);
 // Constants.
@@ -61373,7 +62309,6 @@ function preventDtlsRoleChange(newSdp, info, originalSdp) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -61384,6 +62319,7 @@ var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _cloneDeep2 = _interopRequireDefault(__webpack_require__(33904));
 var _sdpTransform = _interopRequireDefault(__webpack_require__(23978));
 var _logs = __webpack_require__(88915);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
 const log = _logs.logManager.getLogger('SdpPipeline');
@@ -61484,7 +62420,6 @@ var _default = exports["default"] = createPipeline();
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -61493,6 +62428,7 @@ var _includes2 = _interopRequireDefault(__webpack_require__(34803));
 var _values2 = _interopRequireDefault(__webpack_require__(32818));
 var _constants = __webpack_require__(35800);
 var _logs = __webpack_require__(88915);
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const log = _logs.logManager.getLogger('SdpPipeline');
 
 /**
@@ -61528,7 +62464,6 @@ function setTransceiverDirection(transceiver, targetDirection) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(71600);
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -61538,6 +62473,7 @@ exports.mergeValues = mergeValues;
 var _isArray2 = _interopRequireDefault(__webpack_require__(61786));
 var _mergeAllWith2 = _interopRequireDefault(__webpack_require__(38041));
 var _adapter = _interopRequireDefault(__webpack_require__(73409));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // TODO: This function was copied from Kandy, we should eventually create a common project that
 // can contain all of these utils that are useful in multiple packages.
 
@@ -84074,7 +85010,7 @@ function handleActions(handlers, defaultState, options) {
 "use strict";
 
 
-var compose = (__webpack_require__(76070).compose);
+var compose = (__webpack_require__(69394).compose);
 
 exports.__esModule = true;
 exports.composeWithDevTools =
@@ -84106,7 +85042,7 @@ exports.devToolsEnhancer =
 
 /***/ }),
 
-/***/ 7:
+/***/ 47013:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -84131,9 +85067,9 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ../../node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
 var redux_saga_symbols_esm = __webpack_require__(23143);
-// EXTERNAL MODULE: ../../node_modules/@redux-saga/core/node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(84458);
-;// CONCATENATED MODULE: ../../node_modules/@redux-saga/core/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+// EXTERNAL MODULE: ../../node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(7896);
+;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -84151,7 +85087,7 @@ var redux_saga_is_esm = __webpack_require__(83594);
 // EXTERNAL MODULE: ../../node_modules/@redux-saga/core/dist/io-c3792963.js + 1 modules
 var io_c3792963 = __webpack_require__(33316);
 // EXTERNAL MODULE: ../../node_modules/redux/es/redux.js + 5 modules
-var redux = __webpack_require__(76070);
+var redux = __webpack_require__(69394);
 ;// CONCATENATED MODULE: ../../node_modules/@redux-saga/deferred/dist/redux-saga-deferred.esm.js
 function deferred() {
   var def = {};
@@ -86064,7 +87000,7 @@ function debounce(delayLength, pattern, worker) {
 
 /***/ }),
 
-/***/ 76070:
+/***/ 69394:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -86082,7 +87018,7 @@ __webpack_require__.d(__webpack_exports__, {
   legacy_createStore: () => (/* binding */ legacy_createStore)
 });
 
-;// CONCATENATED MODULE: ../../node_modules/redux/node_modules/@babel/runtime/helpers/esm/typeof.js
+;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/typeof.js
 function _typeof(o) {
   "@babel/helpers - typeof";
 
@@ -86092,7 +87028,7 @@ function _typeof(o) {
     return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
   }, _typeof(o);
 }
-;// CONCATENATED MODULE: ../../node_modules/redux/node_modules/@babel/runtime/helpers/esm/toPrimitive.js
+;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/toPrimitive.js
 
 function _toPrimitive(input, hint) {
   if (_typeof(input) !== "object" || input === null) return input;
@@ -86104,14 +87040,14 @@ function _toPrimitive(input, hint) {
   }
   return (hint === "string" ? String : Number)(input);
 }
-;// CONCATENATED MODULE: ../../node_modules/redux/node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
+;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
 
 
 function _toPropertyKey(arg) {
   var key = _toPrimitive(arg, "string");
   return _typeof(key) === "symbol" ? key : String(key);
 }
-;// CONCATENATED MODULE: ../../node_modules/redux/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/defineProperty.js
 
 function _defineProperty(obj, key, value) {
   key = _toPropertyKey(key);
@@ -86127,7 +87063,7 @@ function _defineProperty(obj, key, value) {
   }
   return obj;
 }
-;// CONCATENATED MODULE: ../../node_modules/redux/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/objectSpread2.js
 
 function ownKeys(e, r) {
   var t = Object.keys(e);
@@ -87657,7 +88593,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 4157:
+/***/ 61414:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -88098,7 +89034,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(95899));
 
 var _nil = _interopRequireDefault(__webpack_require__(15384));
 
-var _version = _interopRequireDefault(__webpack_require__(4157));
+var _version = _interopRequireDefault(__webpack_require__(61414));
 
 var _validate = _interopRequireDefault(__webpack_require__(77888));
 
@@ -93018,19 +93954,4446 @@ if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object'
 
 /***/ }),
 
-/***/ 71600:
-/***/ ((module) => {
+/***/ 21052:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+"use strict";
+
+var isCallable = __webpack_require__(30688);
+var tryToString = __webpack_require__(3397);
+
+var $TypeError = TypeError;
+
+// `Assert: IsCallable(argument) is true`
+module.exports = function (argument) {
+  if (isCallable(argument)) return argument;
+  throw new $TypeError(tryToString(argument) + ' is not a function');
+};
+
 
 /***/ }),
 
-/***/ 84458:
+/***/ 29568:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isPossiblePrototype = __webpack_require__(41167);
+
+var $String = String;
+var $TypeError = TypeError;
+
+module.exports = function (argument) {
+  if (isPossiblePrototype(argument)) return argument;
+  throw new $TypeError("Can't set " + $String(argument) + ' as a prototype');
+};
+
+
+/***/ }),
+
+/***/ 2712:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var has = (__webpack_require__(52161).has);
+
+// Perform ? RequireInternalSlot(M, [[SetData]])
+module.exports = function (it) {
+  has(it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ 60586:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var wellKnownSymbol = __webpack_require__(72032);
+var create = __webpack_require__(38536);
+var defineProperty = (__webpack_require__(12131).f);
+
+var UNSCOPABLES = wellKnownSymbol('unscopables');
+var ArrayPrototype = Array.prototype;
+
+// Array.prototype[@@unscopables]
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+if (ArrayPrototype[UNSCOPABLES] === undefined) {
+  defineProperty(ArrayPrototype, UNSCOPABLES, {
+    configurable: true,
+    value: create(null)
+  });
+}
+
+// add a key to Array.prototype[@@unscopables]
+module.exports = function (key) {
+  ArrayPrototype[UNSCOPABLES][key] = true;
+};
+
+
+/***/ }),
+
+/***/ 69887:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isPrototypeOf = __webpack_require__(66148);
+
+var $TypeError = TypeError;
+
+module.exports = function (it, Prototype) {
+  if (isPrototypeOf(Prototype, it)) return it;
+  throw new $TypeError('Incorrect invocation');
+};
+
+
+/***/ }),
+
+/***/ 89175:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isObject = __webpack_require__(35309);
+
+var $String = String;
+var $TypeError = TypeError;
+
+// `Assert: Type(argument) is Object`
+module.exports = function (argument) {
+  if (isObject(argument)) return argument;
+  throw new $TypeError($String(argument) + ' is not an object');
+};
+
+
+/***/ }),
+
+/***/ 82065:
+/***/ ((module) => {
+
+"use strict";
+
+// eslint-disable-next-line es/no-typed-arrays -- safe
+module.exports = typeof ArrayBuffer != 'undefined' && typeof DataView != 'undefined';
+
+
+/***/ }),
+
+/***/ 20079:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var uncurryThisAccessor = __webpack_require__(81092);
+var classof = __webpack_require__(52177);
+
+var ArrayBuffer = globalThis.ArrayBuffer;
+var TypeError = globalThis.TypeError;
+
+// Includes
+// - Perform ? RequireInternalSlot(O, [[ArrayBufferData]]).
+// - If IsSharedArrayBuffer(O) is true, throw a TypeError exception.
+module.exports = ArrayBuffer && uncurryThisAccessor(ArrayBuffer.prototype, 'byteLength', 'get') || function (O) {
+  if (classof(O) !== 'ArrayBuffer') throw new TypeError('ArrayBuffer expected');
+  return O.byteLength;
+};
+
+
+/***/ }),
+
+/***/ 49160:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var uncurryThis = __webpack_require__(5033);
+var arrayBufferByteLength = __webpack_require__(20079);
+
+var ArrayBuffer = globalThis.ArrayBuffer;
+var ArrayBufferPrototype = ArrayBuffer && ArrayBuffer.prototype;
+var slice = ArrayBufferPrototype && uncurryThis(ArrayBufferPrototype.slice);
+
+module.exports = function (O) {
+  if (arrayBufferByteLength(O) !== 0) return false;
+  if (!slice) return false;
+  try {
+    slice(O, 0, 0);
+    return false;
+  } catch (error) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ 45732:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isDetached = __webpack_require__(49160);
+
+var $TypeError = TypeError;
+
+module.exports = function (it) {
+  if (isDetached(it)) throw new $TypeError('ArrayBuffer is detached');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ 72113:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var uncurryThis = __webpack_require__(9668);
+var uncurryThisAccessor = __webpack_require__(81092);
+var toIndex = __webpack_require__(65992);
+var notDetached = __webpack_require__(45732);
+var arrayBufferByteLength = __webpack_require__(20079);
+var detachTransferable = __webpack_require__(70563);
+var PROPER_STRUCTURED_CLONE_TRANSFER = __webpack_require__(74133);
+
+var structuredClone = globalThis.structuredClone;
+var ArrayBuffer = globalThis.ArrayBuffer;
+var DataView = globalThis.DataView;
+var min = Math.min;
+var ArrayBufferPrototype = ArrayBuffer.prototype;
+var DataViewPrototype = DataView.prototype;
+var slice = uncurryThis(ArrayBufferPrototype.slice);
+var isResizable = uncurryThisAccessor(ArrayBufferPrototype, 'resizable', 'get');
+var maxByteLength = uncurryThisAccessor(ArrayBufferPrototype, 'maxByteLength', 'get');
+var getInt8 = uncurryThis(DataViewPrototype.getInt8);
+var setInt8 = uncurryThis(DataViewPrototype.setInt8);
+
+module.exports = (PROPER_STRUCTURED_CLONE_TRANSFER || detachTransferable) && function (arrayBuffer, newLength, preserveResizability) {
+  var byteLength = arrayBufferByteLength(arrayBuffer);
+  var newByteLength = newLength === undefined ? byteLength : toIndex(newLength);
+  var fixedLength = !isResizable || !isResizable(arrayBuffer);
+  var newBuffer;
+  notDetached(arrayBuffer);
+  if (PROPER_STRUCTURED_CLONE_TRANSFER) {
+    arrayBuffer = structuredClone(arrayBuffer, { transfer: [arrayBuffer] });
+    if (byteLength === newByteLength && (preserveResizability || fixedLength)) return arrayBuffer;
+  }
+  if (byteLength >= newByteLength && (!preserveResizability || fixedLength)) {
+    newBuffer = slice(arrayBuffer, 0, newByteLength);
+  } else {
+    var options = preserveResizability && !fixedLength && maxByteLength ? { maxByteLength: maxByteLength(arrayBuffer) } : undefined;
+    newBuffer = new ArrayBuffer(newByteLength, options);
+    var a = new DataView(arrayBuffer);
+    var b = new DataView(newBuffer);
+    var copyLength = min(newByteLength, byteLength);
+    for (var i = 0; i < copyLength; i++) setInt8(b, i, getInt8(a, i));
+  }
+  if (!PROPER_STRUCTURED_CLONE_TRANSFER) detachTransferable(arrayBuffer);
+  return newBuffer;
+};
+
+
+/***/ }),
+
+/***/ 4317:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var NATIVE_ARRAY_BUFFER = __webpack_require__(82065);
+var DESCRIPTORS = __webpack_require__(99924);
+var globalThis = __webpack_require__(13931);
+var isCallable = __webpack_require__(30688);
+var isObject = __webpack_require__(35309);
+var hasOwn = __webpack_require__(84678);
+var classof = __webpack_require__(51566);
+var tryToString = __webpack_require__(3397);
+var createNonEnumerableProperty = __webpack_require__(22385);
+var defineBuiltIn = __webpack_require__(52470);
+var defineBuiltInAccessor = __webpack_require__(29393);
+var isPrototypeOf = __webpack_require__(66148);
+var getPrototypeOf = __webpack_require__(17610);
+var setPrototypeOf = __webpack_require__(64584);
+var wellKnownSymbol = __webpack_require__(72032);
+var uid = __webpack_require__(65736);
+var InternalStateModule = __webpack_require__(67804);
+
+var enforceInternalState = InternalStateModule.enforce;
+var getInternalState = InternalStateModule.get;
+var Int8Array = globalThis.Int8Array;
+var Int8ArrayPrototype = Int8Array && Int8Array.prototype;
+var Uint8ClampedArray = globalThis.Uint8ClampedArray;
+var Uint8ClampedArrayPrototype = Uint8ClampedArray && Uint8ClampedArray.prototype;
+var TypedArray = Int8Array && getPrototypeOf(Int8Array);
+var TypedArrayPrototype = Int8ArrayPrototype && getPrototypeOf(Int8ArrayPrototype);
+var ObjectPrototype = Object.prototype;
+var TypeError = globalThis.TypeError;
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var TYPED_ARRAY_TAG = uid('TYPED_ARRAY_TAG');
+var TYPED_ARRAY_CONSTRUCTOR = 'TypedArrayConstructor';
+// Fixing native typed arrays in Opera Presto crashes the browser, see #595
+var NATIVE_ARRAY_BUFFER_VIEWS = NATIVE_ARRAY_BUFFER && !!setPrototypeOf && classof(globalThis.opera) !== 'Opera';
+var TYPED_ARRAY_TAG_REQUIRED = false;
+var NAME, Constructor, Prototype;
+
+var TypedArrayConstructorsList = {
+  Int8Array: 1,
+  Uint8Array: 1,
+  Uint8ClampedArray: 1,
+  Int16Array: 2,
+  Uint16Array: 2,
+  Int32Array: 4,
+  Uint32Array: 4,
+  Float32Array: 4,
+  Float64Array: 8
+};
+
+var BigIntArrayConstructorsList = {
+  BigInt64Array: 8,
+  BigUint64Array: 8
+};
+
+var isView = function isView(it) {
+  if (!isObject(it)) return false;
+  var klass = classof(it);
+  return klass === 'DataView'
+    || hasOwn(TypedArrayConstructorsList, klass)
+    || hasOwn(BigIntArrayConstructorsList, klass);
+};
+
+var getTypedArrayConstructor = function (it) {
+  var proto = getPrototypeOf(it);
+  if (!isObject(proto)) return;
+  var state = getInternalState(proto);
+  return (state && hasOwn(state, TYPED_ARRAY_CONSTRUCTOR)) ? state[TYPED_ARRAY_CONSTRUCTOR] : getTypedArrayConstructor(proto);
+};
+
+var isTypedArray = function (it) {
+  if (!isObject(it)) return false;
+  var klass = classof(it);
+  return hasOwn(TypedArrayConstructorsList, klass)
+    || hasOwn(BigIntArrayConstructorsList, klass);
+};
+
+var aTypedArray = function (it) {
+  if (isTypedArray(it)) return it;
+  throw new TypeError('Target is not a typed array');
+};
+
+var aTypedArrayConstructor = function (C) {
+  if (isCallable(C) && (!setPrototypeOf || isPrototypeOf(TypedArray, C))) return C;
+  throw new TypeError(tryToString(C) + ' is not a typed array constructor');
+};
+
+var exportTypedArrayMethod = function (KEY, property, forced, options) {
+  if (!DESCRIPTORS) return;
+  if (forced) for (var ARRAY in TypedArrayConstructorsList) {
+    var TypedArrayConstructor = globalThis[ARRAY];
+    if (TypedArrayConstructor && hasOwn(TypedArrayConstructor.prototype, KEY)) try {
+      delete TypedArrayConstructor.prototype[KEY];
+    } catch (error) {
+      // old WebKit bug - some methods are non-configurable
+      try {
+        TypedArrayConstructor.prototype[KEY] = property;
+      } catch (error2) { /* empty */ }
+    }
+  }
+  if (!TypedArrayPrototype[KEY] || forced) {
+    defineBuiltIn(TypedArrayPrototype, KEY, forced ? property
+      : NATIVE_ARRAY_BUFFER_VIEWS && Int8ArrayPrototype[KEY] || property, options);
+  }
+};
+
+var exportTypedArrayStaticMethod = function (KEY, property, forced) {
+  var ARRAY, TypedArrayConstructor;
+  if (!DESCRIPTORS) return;
+  if (setPrototypeOf) {
+    if (forced) for (ARRAY in TypedArrayConstructorsList) {
+      TypedArrayConstructor = globalThis[ARRAY];
+      if (TypedArrayConstructor && hasOwn(TypedArrayConstructor, KEY)) try {
+        delete TypedArrayConstructor[KEY];
+      } catch (error) { /* empty */ }
+    }
+    if (!TypedArray[KEY] || forced) {
+      // V8 ~ Chrome 49-50 `%TypedArray%` methods are non-writable non-configurable
+      try {
+        return defineBuiltIn(TypedArray, KEY, forced ? property : NATIVE_ARRAY_BUFFER_VIEWS && TypedArray[KEY] || property);
+      } catch (error) { /* empty */ }
+    } else return;
+  }
+  for (ARRAY in TypedArrayConstructorsList) {
+    TypedArrayConstructor = globalThis[ARRAY];
+    if (TypedArrayConstructor && (!TypedArrayConstructor[KEY] || forced)) {
+      defineBuiltIn(TypedArrayConstructor, KEY, property);
+    }
+  }
+};
+
+for (NAME in TypedArrayConstructorsList) {
+  Constructor = globalThis[NAME];
+  Prototype = Constructor && Constructor.prototype;
+  if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
+  else NATIVE_ARRAY_BUFFER_VIEWS = false;
+}
+
+for (NAME in BigIntArrayConstructorsList) {
+  Constructor = globalThis[NAME];
+  Prototype = Constructor && Constructor.prototype;
+  if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
+}
+
+// WebKit bug - typed arrays constructors prototype is Object.prototype
+if (!NATIVE_ARRAY_BUFFER_VIEWS || !isCallable(TypedArray) || TypedArray === Function.prototype) {
+  // eslint-disable-next-line no-shadow -- safe
+  TypedArray = function TypedArray() {
+    throw new TypeError('Incorrect invocation');
+  };
+  if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
+    if (globalThis[NAME]) setPrototypeOf(globalThis[NAME], TypedArray);
+  }
+}
+
+if (!NATIVE_ARRAY_BUFFER_VIEWS || !TypedArrayPrototype || TypedArrayPrototype === ObjectPrototype) {
+  TypedArrayPrototype = TypedArray.prototype;
+  if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
+    if (globalThis[NAME]) setPrototypeOf(globalThis[NAME].prototype, TypedArrayPrototype);
+  }
+}
+
+// WebKit bug - one more object in Uint8ClampedArray prototype chain
+if (NATIVE_ARRAY_BUFFER_VIEWS && getPrototypeOf(Uint8ClampedArrayPrototype) !== TypedArrayPrototype) {
+  setPrototypeOf(Uint8ClampedArrayPrototype, TypedArrayPrototype);
+}
+
+if (DESCRIPTORS && !hasOwn(TypedArrayPrototype, TO_STRING_TAG)) {
+  TYPED_ARRAY_TAG_REQUIRED = true;
+  defineBuiltInAccessor(TypedArrayPrototype, TO_STRING_TAG, {
+    configurable: true,
+    get: function () {
+      return isObject(this) ? this[TYPED_ARRAY_TAG] : undefined;
+    }
+  });
+  for (NAME in TypedArrayConstructorsList) if (globalThis[NAME]) {
+    createNonEnumerableProperty(globalThis[NAME], TYPED_ARRAY_TAG, NAME);
+  }
+}
+
+module.exports = {
+  NATIVE_ARRAY_BUFFER_VIEWS: NATIVE_ARRAY_BUFFER_VIEWS,
+  TYPED_ARRAY_TAG: TYPED_ARRAY_TAG_REQUIRED && TYPED_ARRAY_TAG,
+  aTypedArray: aTypedArray,
+  aTypedArrayConstructor: aTypedArrayConstructor,
+  exportTypedArrayMethod: exportTypedArrayMethod,
+  exportTypedArrayStaticMethod: exportTypedArrayStaticMethod,
+  getTypedArrayConstructor: getTypedArrayConstructor,
+  isView: isView,
+  isTypedArray: isTypedArray,
+  TypedArray: TypedArray,
+  TypedArrayPrototype: TypedArrayPrototype
+};
+
+
+/***/ }),
+
+/***/ 98404:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toObject = __webpack_require__(90298);
+var toAbsoluteIndex = __webpack_require__(37352);
+var lengthOfArrayLike = __webpack_require__(8344);
+
+// `Array.prototype.fill` method implementation
+// https://tc39.es/ecma262/#sec-array.prototype.fill
+module.exports = function fill(value /* , start = 0, end = @length */) {
+  var O = toObject(this);
+  var length = lengthOfArrayLike(O);
+  var argumentsLength = arguments.length;
+  var index = toAbsoluteIndex(argumentsLength > 1 ? arguments[1] : undefined, length);
+  var end = argumentsLength > 2 ? arguments[2] : undefined;
+  var endPos = end === undefined ? length : toAbsoluteIndex(end, length);
+  while (endPos > index) O[index++] = value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ 77895:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var lengthOfArrayLike = __webpack_require__(8344);
+
+module.exports = function (Constructor, list, $length) {
+  var index = 0;
+  var length = arguments.length > 2 ? $length : lengthOfArrayLike(list);
+  var result = new Constructor(length);
+  while (length > index) result[index] = list[index++];
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 21138:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toIndexedObject = __webpack_require__(36854);
+var toAbsoluteIndex = __webpack_require__(37352);
+var lengthOfArrayLike = __webpack_require__(8344);
+
+// `Array.prototype.{ indexOf, includes }` methods implementation
+var createMethod = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIndexedObject($this);
+    var length = lengthOfArrayLike(O);
+    if (length === 0) return !IS_INCLUDES && -1;
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare -- NaN check
+    if (IS_INCLUDES && el !== el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare -- NaN check
+      if (value !== value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) {
+      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+module.exports = {
+  // `Array.prototype.includes` method
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
+  includes: createMethod(true),
+  // `Array.prototype.indexOf` method
+  // https://tc39.es/ecma262/#sec-array.prototype.indexof
+  indexOf: createMethod(false)
+};
+
+
+/***/ }),
+
+/***/ 50563:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var bind = __webpack_require__(14162);
+var IndexedObject = __webpack_require__(74347);
+var toObject = __webpack_require__(90298);
+var lengthOfArrayLike = __webpack_require__(8344);
+
+// `Array.prototype.{ findLast, findLastIndex }` methods implementation
+var createMethod = function (TYPE) {
+  var IS_FIND_LAST_INDEX = TYPE === 1;
+  return function ($this, callbackfn, that) {
+    var O = toObject($this);
+    var self = IndexedObject(O);
+    var index = lengthOfArrayLike(self);
+    var boundFunction = bind(callbackfn, that);
+    var value, result;
+    while (index-- > 0) {
+      value = self[index];
+      result = boundFunction(value, index, O);
+      if (result) switch (TYPE) {
+        case 0: return value; // findLast
+        case 1: return index; // findLastIndex
+      }
+    }
+    return IS_FIND_LAST_INDEX ? -1 : undefined;
+  };
+};
+
+module.exports = {
+  // `Array.prototype.findLast` method
+  // https://github.com/tc39/proposal-array-find-from-last
+  findLast: createMethod(0),
+  // `Array.prototype.findLastIndex` method
+  // https://github.com/tc39/proposal-array-find-from-last
+  findLastIndex: createMethod(1)
+};
+
+
+/***/ }),
+
+/***/ 86207:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var isArray = __webpack_require__(40256);
+
+var $TypeError = TypeError;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// Safari < 13 does not throw an error in this case
+var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !function () {
+  // makes no sense without proper strict mode support
+  if (this !== undefined) return true;
+  try {
+    // eslint-disable-next-line es/no-object-defineproperty -- safe
+    Object.defineProperty([], 'length', { writable: false }).length = 1;
+  } catch (error) {
+    return error instanceof TypeError;
+  }
+}();
+
+module.exports = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function (O, length) {
+  if (isArray(O) && !getOwnPropertyDescriptor(O, 'length').writable) {
+    throw new $TypeError('Cannot set read only .length');
+  } return O.length = length;
+} : function (O, length) {
+  return O.length = length;
+};
+
+
+/***/ }),
+
+/***/ 87686:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+
+module.exports = uncurryThis([].slice);
+
+
+/***/ }),
+
+/***/ 3097:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var arraySlice = __webpack_require__(87686);
+
+var floor = Math.floor;
+
+var sort = function (array, comparefn) {
+  var length = array.length;
+
+  if (length < 8) {
+    // insertion sort
+    var i = 1;
+    var element, j;
+
+    while (i < length) {
+      j = i;
+      element = array[i];
+      while (j && comparefn(array[j - 1], element) > 0) {
+        array[j] = array[--j];
+      }
+      if (j !== i++) array[j] = element;
+    }
+  } else {
+    // merge sort
+    var middle = floor(length / 2);
+    var left = sort(arraySlice(array, 0, middle), comparefn);
+    var right = sort(arraySlice(array, middle), comparefn);
+    var llength = left.length;
+    var rlength = right.length;
+    var lindex = 0;
+    var rindex = 0;
+
+    while (lindex < llength || rindex < rlength) {
+      array[lindex + rindex] = (lindex < llength && rindex < rlength)
+        ? comparefn(left[lindex], right[rindex]) <= 0 ? left[lindex++] : right[rindex++]
+        : lindex < llength ? left[lindex++] : right[rindex++];
+    }
+  }
+
+  return array;
+};
+
+module.exports = sort;
+
+
+/***/ }),
+
+/***/ 24501:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var lengthOfArrayLike = __webpack_require__(8344);
+
+// https://tc39.es/proposal-change-array-by-copy/#sec-array.prototype.toReversed
+// https://tc39.es/proposal-change-array-by-copy/#sec-%typedarray%.prototype.toReversed
+module.exports = function (O, C) {
+  var len = lengthOfArrayLike(O);
+  var A = new C(len);
+  var k = 0;
+  for (; k < len; k++) A[k] = O[len - k - 1];
+  return A;
+};
+
+
+/***/ }),
+
+/***/ 27117:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var lengthOfArrayLike = __webpack_require__(8344);
+var toIntegerOrInfinity = __webpack_require__(81680);
+
+var $RangeError = RangeError;
+
+// https://tc39.es/proposal-change-array-by-copy/#sec-array.prototype.with
+// https://tc39.es/proposal-change-array-by-copy/#sec-%typedarray%.prototype.with
+module.exports = function (O, C, index, value) {
+  var len = lengthOfArrayLike(O);
+  var relativeIndex = toIntegerOrInfinity(index);
+  var actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
+  if (actualIndex >= len || actualIndex < 0) throw new $RangeError('Incorrect index');
+  var A = new C(len);
+  var k = 0;
+  for (; k < len; k++) A[k] = k === actualIndex ? value : O[k];
+  return A;
+};
+
+
+/***/ }),
+
+/***/ 52177:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+
+var toString = uncurryThis({}.toString);
+var stringSlice = uncurryThis(''.slice);
+
+module.exports = function (it) {
+  return stringSlice(toString(it), 8, -1);
+};
+
+
+/***/ }),
+
+/***/ 51566:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__(52522);
+var isCallable = __webpack_require__(30688);
+var classofRaw = __webpack_require__(52177);
+var wellKnownSymbol = __webpack_require__(72032);
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var $Object = Object;
+
+// ES3 wrong here
+var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) === 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS ? classofRaw(O)
+    // ES3 arguments fallback
+    : (result = classofRaw(O)) === 'Object' && isCallable(O.callee) ? 'Arguments' : result;
+};
+
+
+/***/ }),
+
+/***/ 43891:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var hasOwn = __webpack_require__(84678);
+var ownKeys = __webpack_require__(50990);
+var getOwnPropertyDescriptorModule = __webpack_require__(37537);
+var definePropertyModule = __webpack_require__(12131);
+
+module.exports = function (target, source, exceptions) {
+  var keys = ownKeys(source);
+  var defineProperty = definePropertyModule.f;
+  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
+      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+    }
+  }
+};
+
+
+/***/ }),
+
+/***/ 88440:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(64694);
+
+module.exports = !fails(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  // eslint-disable-next-line es/no-object-getprototypeof -- required for testing
+  return Object.getPrototypeOf(new F()) !== F.prototype;
+});
+
+
+/***/ }),
+
+/***/ 22385:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var definePropertyModule = __webpack_require__(12131);
+var createPropertyDescriptor = __webpack_require__(17781);
+
+module.exports = DESCRIPTORS ? function (object, key, value) {
+  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+
+/***/ 17781:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+
+/***/ }),
+
+/***/ 29393:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var makeBuiltIn = __webpack_require__(41135);
+var defineProperty = __webpack_require__(12131);
+
+module.exports = function (target, name, descriptor) {
+  if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
+  if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
+  return defineProperty.f(target, name, descriptor);
+};
+
+
+/***/ }),
+
+/***/ 52470:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isCallable = __webpack_require__(30688);
+var definePropertyModule = __webpack_require__(12131);
+var makeBuiltIn = __webpack_require__(41135);
+var defineGlobalProperty = __webpack_require__(11604);
+
+module.exports = function (O, key, value, options) {
+  if (!options) options = {};
+  var simple = options.enumerable;
+  var name = options.name !== undefined ? options.name : key;
+  if (isCallable(value)) makeBuiltIn(value, name, options);
+  if (options.global) {
+    if (simple) O[key] = value;
+    else defineGlobalProperty(key, value);
+  } else {
+    try {
+      if (!options.unsafe) delete O[key];
+      else if (O[key]) simple = true;
+    } catch (error) { /* empty */ }
+    if (simple) O[key] = value;
+    else definePropertyModule.f(O, key, {
+      value: value,
+      enumerable: false,
+      configurable: !options.nonConfigurable,
+      writable: !options.nonWritable
+    });
+  } return O;
+};
+
+
+/***/ }),
+
+/***/ 11604:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var defineProperty = Object.defineProperty;
+
+module.exports = function (key, value) {
+  try {
+    defineProperty(globalThis, key, { value: value, configurable: true, writable: true });
+  } catch (error) {
+    globalThis[key] = value;
+  } return value;
+};
+
+
+/***/ }),
+
+/***/ 99924:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(64694);
+
+// Detect IE8's incomplete defineProperty implementation
+module.exports = !fails(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] !== 7;
+});
+
+
+/***/ }),
+
+/***/ 70563:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var getBuiltInNodeModule = __webpack_require__(56544);
+var PROPER_STRUCTURED_CLONE_TRANSFER = __webpack_require__(74133);
+
+var structuredClone = globalThis.structuredClone;
+var $ArrayBuffer = globalThis.ArrayBuffer;
+var $MessageChannel = globalThis.MessageChannel;
+var detach = false;
+var WorkerThreads, channel, buffer, $detach;
+
+if (PROPER_STRUCTURED_CLONE_TRANSFER) {
+  detach = function (transferable) {
+    structuredClone(transferable, { transfer: [transferable] });
+  };
+} else if ($ArrayBuffer) try {
+  if (!$MessageChannel) {
+    WorkerThreads = getBuiltInNodeModule('worker_threads');
+    if (WorkerThreads) $MessageChannel = WorkerThreads.MessageChannel;
+  }
+
+  if ($MessageChannel) {
+    channel = new $MessageChannel();
+    buffer = new $ArrayBuffer(2);
+
+    $detach = function (transferable) {
+      channel.port1.postMessage(null, [transferable]);
+    };
+
+    if (buffer.byteLength === 2) {
+      $detach(buffer);
+      if (buffer.byteLength === 0) detach = $detach;
+    }
+  }
+} catch (error) { /* empty */ }
+
+module.exports = detach;
+
+
+/***/ }),
+
+/***/ 21442:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var isObject = __webpack_require__(35309);
+
+var document = globalThis.document;
+// typeof document.createElement is 'object' in old IE
+var EXISTS = isObject(document) && isObject(document.createElement);
+
+module.exports = function (it) {
+  return EXISTS ? document.createElement(it) : {};
+};
+
+
+/***/ }),
+
+/***/ 23433:
+/***/ ((module) => {
+
+"use strict";
+
+var $TypeError = TypeError;
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF; // 2 ** 53 - 1 == 9007199254740991
+
+module.exports = function (it) {
+  if (it > MAX_SAFE_INTEGER) throw $TypeError('Maximum allowed index exceeded');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ 83687:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = {
+  IndexSizeError: { s: 'INDEX_SIZE_ERR', c: 1, m: 1 },
+  DOMStringSizeError: { s: 'DOMSTRING_SIZE_ERR', c: 2, m: 0 },
+  HierarchyRequestError: { s: 'HIERARCHY_REQUEST_ERR', c: 3, m: 1 },
+  WrongDocumentError: { s: 'WRONG_DOCUMENT_ERR', c: 4, m: 1 },
+  InvalidCharacterError: { s: 'INVALID_CHARACTER_ERR', c: 5, m: 1 },
+  NoDataAllowedError: { s: 'NO_DATA_ALLOWED_ERR', c: 6, m: 0 },
+  NoModificationAllowedError: { s: 'NO_MODIFICATION_ALLOWED_ERR', c: 7, m: 1 },
+  NotFoundError: { s: 'NOT_FOUND_ERR', c: 8, m: 1 },
+  NotSupportedError: { s: 'NOT_SUPPORTED_ERR', c: 9, m: 1 },
+  InUseAttributeError: { s: 'INUSE_ATTRIBUTE_ERR', c: 10, m: 1 },
+  InvalidStateError: { s: 'INVALID_STATE_ERR', c: 11, m: 1 },
+  SyntaxError: { s: 'SYNTAX_ERR', c: 12, m: 1 },
+  InvalidModificationError: { s: 'INVALID_MODIFICATION_ERR', c: 13, m: 1 },
+  NamespaceError: { s: 'NAMESPACE_ERR', c: 14, m: 1 },
+  InvalidAccessError: { s: 'INVALID_ACCESS_ERR', c: 15, m: 1 },
+  ValidationError: { s: 'VALIDATION_ERR', c: 16, m: 0 },
+  TypeMismatchError: { s: 'TYPE_MISMATCH_ERR', c: 17, m: 1 },
+  SecurityError: { s: 'SECURITY_ERR', c: 18, m: 1 },
+  NetworkError: { s: 'NETWORK_ERR', c: 19, m: 1 },
+  AbortError: { s: 'ABORT_ERR', c: 20, m: 1 },
+  URLMismatchError: { s: 'URL_MISMATCH_ERR', c: 21, m: 1 },
+  QuotaExceededError: { s: 'QUOTA_EXCEEDED_ERR', c: 22, m: 1 },
+  TimeoutError: { s: 'TIMEOUT_ERR', c: 23, m: 1 },
+  InvalidNodeTypeError: { s: 'INVALID_NODE_TYPE_ERR', c: 24, m: 1 },
+  DataCloneError: { s: 'DATA_CLONE_ERR', c: 25, m: 1 }
+};
+
+
+/***/ }),
+
+/***/ 92367:
+/***/ ((module) => {
+
+"use strict";
+
+// IE8- don't enum bug keys
+module.exports = [
+  'constructor',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  'toString',
+  'valueOf'
+];
+
+
+/***/ }),
+
+/***/ 48512:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var UA = __webpack_require__(68655);
+
+module.exports = /MSIE|Trident/.test(UA);
+
+
+/***/ }),
+
+/***/ 1056:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var ENVIRONMENT = __webpack_require__(82438);
+
+module.exports = ENVIRONMENT === 'NODE';
+
+
+/***/ }),
+
+/***/ 68655:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+
+var navigator = globalThis.navigator;
+var userAgent = navigator && navigator.userAgent;
+
+module.exports = userAgent ? String(userAgent) : '';
+
+
+/***/ }),
+
+/***/ 82438:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* global Bun, Deno -- detection */
+var globalThis = __webpack_require__(13931);
+var userAgent = __webpack_require__(68655);
+var classof = __webpack_require__(52177);
+
+var userAgentStartsWith = function (string) {
+  return userAgent.slice(0, string.length) === string;
+};
+
+module.exports = (function () {
+  if (userAgentStartsWith('Bun/')) return 'BUN';
+  if (userAgentStartsWith('Cloudflare-Workers')) return 'CLOUDFLARE';
+  if (userAgentStartsWith('Deno/')) return 'DENO';
+  if (userAgentStartsWith('Node.js/')) return 'NODE';
+  if (globalThis.Bun && typeof Bun.version == 'string') return 'BUN';
+  if (globalThis.Deno && typeof Deno.version == 'object') return 'DENO';
+  if (classof(globalThis.process) === 'process') return 'NODE';
+  if (globalThis.window && globalThis.document) return 'BROWSER';
+  return 'REST';
+})();
+
+
+/***/ }),
+
+/***/ 98009:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+
+var $Error = Error;
+var replace = uncurryThis(''.replace);
+
+var TEST = (function (arg) { return String(new $Error(arg).stack); })('zxcasd');
+// eslint-disable-next-line redos/no-vulnerable -- safe
+var V8_OR_CHAKRA_STACK_ENTRY = /\n\s*at [^:]*:[^\n]*/;
+var IS_V8_OR_CHAKRA_STACK = V8_OR_CHAKRA_STACK_ENTRY.test(TEST);
+
+module.exports = function (stack, dropEntries) {
+  if (IS_V8_OR_CHAKRA_STACK && typeof stack == 'string' && !$Error.prepareStackTrace) {
+    while (dropEntries--) stack = replace(stack, V8_OR_CHAKRA_STACK_ENTRY, '');
+  } return stack;
+};
+
+
+/***/ }),
+
+/***/ 73289:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var createNonEnumerableProperty = __webpack_require__(22385);
+var clearErrorStack = __webpack_require__(98009);
+var ERROR_STACK_INSTALLABLE = __webpack_require__(89128);
+
+// non-standard V8
+var captureStackTrace = Error.captureStackTrace;
+
+module.exports = function (error, C, stack, dropEntries) {
+  if (ERROR_STACK_INSTALLABLE) {
+    if (captureStackTrace) captureStackTrace(error, C);
+    else createNonEnumerableProperty(error, 'stack', clearErrorStack(stack, dropEntries));
+  }
+};
+
+
+/***/ }),
+
+/***/ 89128:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(64694);
+var createPropertyDescriptor = __webpack_require__(17781);
+
+module.exports = !fails(function () {
+  var error = new Error('a');
+  if (!('stack' in error)) return true;
+  // eslint-disable-next-line es/no-object-defineproperty -- safe
+  Object.defineProperty(error, 'stack', createPropertyDescriptor(1, 7));
+  return error.stack !== 7;
+});
+
+
+/***/ }),
+
+/***/ 55532:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var getOwnPropertyDescriptor = (__webpack_require__(37537).f);
+var createNonEnumerableProperty = __webpack_require__(22385);
+var defineBuiltIn = __webpack_require__(52470);
+var defineGlobalProperty = __webpack_require__(11604);
+var copyConstructorProperties = __webpack_require__(43891);
+var isForced = __webpack_require__(51633);
+
+/*
+  options.target         - name of the target object
+  options.global         - target is the global object
+  options.stat           - export as static methods of target
+  options.proto          - export as prototype methods of target
+  options.real           - real prototype method for the `pure` version
+  options.forced         - export even if the native feature is available
+  options.bind           - bind methods to the target, required for the `pure` version
+  options.wrap           - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe         - use the simple assignment of property instead of delete + defineProperty
+  options.sham           - add a flag to not completely full polyfills
+  options.enumerable     - export as enumerable property
+  options.dontCallGetSet - prevent calling a getter on target
+  options.name           - the .name of the function if it does not match the key
+*/
+module.exports = function (options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+  if (GLOBAL) {
+    target = globalThis;
+  } else if (STATIC) {
+    target = globalThis[TARGET] || defineGlobalProperty(TARGET, {});
+  } else {
+    target = globalThis[TARGET] && globalThis[TARGET].prototype;
+  }
+  if (target) for (key in source) {
+    sourceProperty = source[key];
+    if (options.dontCallGetSet) {
+      descriptor = getOwnPropertyDescriptor(target, key);
+      targetProperty = descriptor && descriptor.value;
+    } else targetProperty = target[key];
+    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+    // contained in target
+    if (!FORCED && targetProperty !== undefined) {
+      if (typeof sourceProperty == typeof targetProperty) continue;
+      copyConstructorProperties(sourceProperty, targetProperty);
+    }
+    // add a flag to not completely full polyfills
+    if (options.sham || (targetProperty && targetProperty.sham)) {
+      createNonEnumerableProperty(sourceProperty, 'sham', true);
+    }
+    defineBuiltIn(target, key, sourceProperty, options);
+  }
+};
+
+
+/***/ }),
+
+/***/ 64694:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (error) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ 39659:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var NATIVE_BIND = __webpack_require__(26398);
+
+var FunctionPrototype = Function.prototype;
+var apply = FunctionPrototype.apply;
+var call = FunctionPrototype.call;
+
+// eslint-disable-next-line es/no-reflect -- safe
+module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function () {
+  return call.apply(apply, arguments);
+});
+
+
+/***/ }),
+
+/***/ 14162:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(5033);
+var aCallable = __webpack_require__(21052);
+var NATIVE_BIND = __webpack_require__(26398);
+
+var bind = uncurryThis(uncurryThis.bind);
+
+// optional / simple context binding
+module.exports = function (fn, that) {
+  aCallable(fn);
+  return that === undefined ? fn : NATIVE_BIND ? bind(fn, that) : function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ 26398:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(64694);
+
+module.exports = !fails(function () {
+  // eslint-disable-next-line es/no-function-prototype-bind -- safe
+  var test = (function () { /* empty */ }).bind();
+  // eslint-disable-next-line no-prototype-builtins -- safe
+  return typeof test != 'function' || test.hasOwnProperty('prototype');
+});
+
+
+/***/ }),
+
+/***/ 68724:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var NATIVE_BIND = __webpack_require__(26398);
+
+var call = Function.prototype.call;
+
+module.exports = NATIVE_BIND ? call.bind(call) : function () {
+  return call.apply(call, arguments);
+};
+
+
+/***/ }),
+
+/***/ 40453:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var hasOwn = __webpack_require__(84678);
+
+var FunctionPrototype = Function.prototype;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
+
+var EXISTS = hasOwn(FunctionPrototype, 'name');
+// additional protection from minified / mangled / dropped function names
+var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
+var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
+
+module.exports = {
+  EXISTS: EXISTS,
+  PROPER: PROPER,
+  CONFIGURABLE: CONFIGURABLE
+};
+
+
+/***/ }),
+
+/***/ 81092:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var aCallable = __webpack_require__(21052);
+
+module.exports = function (object, key, method) {
+  try {
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    return uncurryThis(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
+  } catch (error) { /* empty */ }
+};
+
+
+/***/ }),
+
+/***/ 5033:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var classofRaw = __webpack_require__(52177);
+var uncurryThis = __webpack_require__(9668);
+
+module.exports = function (fn) {
+  // Nashorn bug:
+  //   https://github.com/zloirock/core-js/issues/1128
+  //   https://github.com/zloirock/core-js/issues/1130
+  if (classofRaw(fn) === 'Function') return uncurryThis(fn);
+};
+
+
+/***/ }),
+
+/***/ 9668:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var NATIVE_BIND = __webpack_require__(26398);
+
+var FunctionPrototype = Function.prototype;
+var call = FunctionPrototype.call;
+var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
+
+module.exports = NATIVE_BIND ? uncurryThisWithBind : function (fn) {
+  return function () {
+    return call.apply(fn, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ 56544:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var IS_NODE = __webpack_require__(1056);
+
+module.exports = function (name) {
+  if (IS_NODE) {
+    try {
+      return globalThis.process.getBuiltinModule(name);
+    } catch (error) { /* empty */ }
+    try {
+      // eslint-disable-next-line no-new-func -- safe
+      return Function('return require("' + name + '")')();
+    } catch (error) { /* empty */ }
+  }
+};
+
+
+/***/ }),
+
+/***/ 2160:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var isCallable = __webpack_require__(30688);
+
+var aFunction = function (argument) {
+  return isCallable(argument) ? argument : undefined;
+};
+
+module.exports = function (namespace, method) {
+  return arguments.length < 2 ? aFunction(globalThis[namespace]) : globalThis[namespace] && globalThis[namespace][method];
+};
+
+
+/***/ }),
+
+/***/ 55723:
+/***/ ((module) => {
+
+"use strict";
+
+// `GetIteratorDirect(obj)` abstract operation
+// https://tc39.es/proposal-iterator-helpers/#sec-getiteratordirect
+module.exports = function (obj) {
+  return {
+    iterator: obj,
+    next: obj.next,
+    done: false
+  };
+};
+
+
+/***/ }),
+
+/***/ 75383:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aCallable = __webpack_require__(21052);
+var isNullOrUndefined = __webpack_require__(5268);
+
+// `GetMethod` abstract operation
+// https://tc39.es/ecma262/#sec-getmethod
+module.exports = function (V, P) {
+  var func = V[P];
+  return isNullOrUndefined(func) ? undefined : aCallable(func);
+};
+
+
+/***/ }),
+
+/***/ 88761:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aCallable = __webpack_require__(21052);
+var anObject = __webpack_require__(89175);
+var call = __webpack_require__(68724);
+var toIntegerOrInfinity = __webpack_require__(81680);
+var getIteratorDirect = __webpack_require__(55723);
+
+var INVALID_SIZE = 'Invalid size';
+var $RangeError = RangeError;
+var $TypeError = TypeError;
+var max = Math.max;
+
+var SetRecord = function (set, intSize) {
+  this.set = set;
+  this.size = max(intSize, 0);
+  this.has = aCallable(set.has);
+  this.keys = aCallable(set.keys);
+};
+
+SetRecord.prototype = {
+  getIterator: function () {
+    return getIteratorDirect(anObject(call(this.keys, this.set)));
+  },
+  includes: function (it) {
+    return call(this.has, this.set, it);
+  }
+};
+
+// `GetSetRecord` abstract operation
+// https://tc39.es/proposal-set-methods/#sec-getsetrecord
+module.exports = function (obj) {
+  anObject(obj);
+  var numSize = +obj.size;
+  // NOTE: If size is undefined, then numSize will be NaN
+  // eslint-disable-next-line no-self-compare -- NaN check
+  if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
+  var intSize = toIntegerOrInfinity(numSize);
+  if (intSize < 0) throw new $RangeError(INVALID_SIZE);
+  return new SetRecord(obj, intSize);
+};
+
+
+/***/ }),
+
+/***/ 13931:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var check = function (it) {
+  return it && it.Math === Math && it;
+};
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+module.exports =
+  // eslint-disable-next-line es/no-global-this -- safe
+  check(typeof globalThis == 'object' && globalThis) ||
+  check(typeof window == 'object' && window) ||
+  // eslint-disable-next-line no-restricted-globals -- safe
+  check(typeof self == 'object' && self) ||
+  check(typeof __webpack_require__.g == 'object' && __webpack_require__.g) ||
+  check(typeof this == 'object' && this) ||
+  // eslint-disable-next-line no-new-func -- fallback
+  (function () { return this; })() || Function('return this')();
+
+
+/***/ }),
+
+/***/ 84678:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var toObject = __webpack_require__(90298);
+
+var hasOwnProperty = uncurryThis({}.hasOwnProperty);
+
+// `HasOwnProperty` abstract operation
+// https://tc39.es/ecma262/#sec-hasownproperty
+// eslint-disable-next-line es/no-object-hasown -- safe
+module.exports = Object.hasOwn || function hasOwn(it, key) {
+  return hasOwnProperty(toObject(it), key);
+};
+
+
+/***/ }),
+
+/***/ 37390:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = {};
+
+
+/***/ }),
+
+/***/ 28651:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__(2160);
+
+module.exports = getBuiltIn('document', 'documentElement');
+
+
+/***/ }),
+
+/***/ 17913:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var fails = __webpack_require__(64694);
+var createElement = __webpack_require__(21442);
+
+// Thanks to IE8 for its funny defineProperty
+module.exports = !DESCRIPTORS && !fails(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty(createElement('div'), 'a', {
+    get: function () { return 7; }
+  }).a !== 7;
+});
+
+
+/***/ }),
+
+/***/ 74347:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var fails = __webpack_require__(64694);
+var classof = __webpack_require__(52177);
+
+var $Object = Object;
+var split = uncurryThis(''.split);
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+module.exports = fails(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins -- safe
+  return !$Object('z').propertyIsEnumerable(0);
+}) ? function (it) {
+  return classof(it) === 'String' ? split(it, '') : $Object(it);
+} : $Object;
+
+
+/***/ }),
+
+/***/ 75086:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isCallable = __webpack_require__(30688);
+var isObject = __webpack_require__(35309);
+var setPrototypeOf = __webpack_require__(64584);
+
+// makes subclassing work correct for wrapped built-ins
+module.exports = function ($this, dummy, Wrapper) {
+  var NewTarget, NewTargetPrototype;
+  if (
+    // it can work only with native `setPrototypeOf`
+    setPrototypeOf &&
+    // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
+    isCallable(NewTarget = dummy.constructor) &&
+    NewTarget !== Wrapper &&
+    isObject(NewTargetPrototype = NewTarget.prototype) &&
+    NewTargetPrototype !== Wrapper.prototype
+  ) setPrototypeOf($this, NewTargetPrototype);
+  return $this;
+};
+
+
+/***/ }),
+
+/***/ 1881:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var isCallable = __webpack_require__(30688);
+var store = __webpack_require__(46762);
+
+var functionToString = uncurryThis(Function.toString);
+
+// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+if (!isCallable(store.inspectSource)) {
+  store.inspectSource = function (it) {
+    return functionToString(it);
+  };
+}
+
+module.exports = store.inspectSource;
+
+
+/***/ }),
+
+/***/ 99457:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isObject = __webpack_require__(35309);
+var createNonEnumerableProperty = __webpack_require__(22385);
+
+// `InstallErrorCause` abstract operation
+// https://tc39.es/proposal-error-cause/#sec-errorobjects-install-error-cause
+module.exports = function (O, options) {
+  if (isObject(options) && 'cause' in options) {
+    createNonEnumerableProperty(O, 'cause', options.cause);
+  }
+};
+
+
+/***/ }),
+
+/***/ 67804:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var NATIVE_WEAK_MAP = __webpack_require__(34724);
+var globalThis = __webpack_require__(13931);
+var isObject = __webpack_require__(35309);
+var createNonEnumerableProperty = __webpack_require__(22385);
+var hasOwn = __webpack_require__(84678);
+var shared = __webpack_require__(46762);
+var sharedKey = __webpack_require__(41962);
+var hiddenKeys = __webpack_require__(37390);
+
+var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
+var TypeError = globalThis.TypeError;
+var WeakMap = globalThis.WeakMap;
+var set, get, has;
+
+var enforce = function (it) {
+  return has(it) ? get(it) : set(it, {});
+};
+
+var getterFor = function (TYPE) {
+  return function (it) {
+    var state;
+    if (!isObject(it) || (state = get(it)).type !== TYPE) {
+      throw new TypeError('Incompatible receiver, ' + TYPE + ' required');
+    } return state;
+  };
+};
+
+if (NATIVE_WEAK_MAP || shared.state) {
+  var store = shared.state || (shared.state = new WeakMap());
+  /* eslint-disable no-self-assign -- prototype methods protection */
+  store.get = store.get;
+  store.has = store.has;
+  store.set = store.set;
+  /* eslint-enable no-self-assign -- prototype methods protection */
+  set = function (it, metadata) {
+    if (store.has(it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+    metadata.facade = it;
+    store.set(it, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return store.get(it) || {};
+  };
+  has = function (it) {
+    return store.has(it);
+  };
+} else {
+  var STATE = sharedKey('state');
+  hiddenKeys[STATE] = true;
+  set = function (it, metadata) {
+    if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+    metadata.facade = it;
+    createNonEnumerableProperty(it, STATE, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return hasOwn(it, STATE) ? it[STATE] : {};
+  };
+  has = function (it) {
+    return hasOwn(it, STATE);
+  };
+}
+
+module.exports = {
+  set: set,
+  get: get,
+  has: has,
+  enforce: enforce,
+  getterFor: getterFor
+};
+
+
+/***/ }),
+
+/***/ 40256:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var classof = __webpack_require__(52177);
+
+// `IsArray` abstract operation
+// https://tc39.es/ecma262/#sec-isarray
+// eslint-disable-next-line es/no-array-isarray -- safe
+module.exports = Array.isArray || function isArray(argument) {
+  return classof(argument) === 'Array';
+};
+
+
+/***/ }),
+
+/***/ 39232:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var classof = __webpack_require__(51566);
+
+module.exports = function (it) {
+  var klass = classof(it);
+  return klass === 'BigInt64Array' || klass === 'BigUint64Array';
+};
+
+
+/***/ }),
+
+/***/ 30688:
+/***/ ((module) => {
+
+"use strict";
+
+// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
+var documentAll = typeof document == 'object' && document.all;
+
+// `IsCallable` abstract operation
+// https://tc39.es/ecma262/#sec-iscallable
+// eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
+module.exports = typeof documentAll == 'undefined' && documentAll !== undefined ? function (argument) {
+  return typeof argument == 'function' || argument === documentAll;
+} : function (argument) {
+  return typeof argument == 'function';
+};
+
+
+/***/ }),
+
+/***/ 51633:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(64694);
+var isCallable = __webpack_require__(30688);
+
+var replacement = /#|\.prototype\./;
+
+var isForced = function (feature, detection) {
+  var value = data[normalize(feature)];
+  return value === POLYFILL ? true
+    : value === NATIVE ? false
+    : isCallable(detection) ? fails(detection)
+    : !!detection;
+};
+
+var normalize = isForced.normalize = function (string) {
+  return String(string).replace(replacement, '.').toLowerCase();
+};
+
+var data = isForced.data = {};
+var NATIVE = isForced.NATIVE = 'N';
+var POLYFILL = isForced.POLYFILL = 'P';
+
+module.exports = isForced;
+
+
+/***/ }),
+
+/***/ 5268:
+/***/ ((module) => {
+
+"use strict";
+
+// we can't use just `it == null` since of `document.all` special case
+// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
+module.exports = function (it) {
+  return it === null || it === undefined;
+};
+
+
+/***/ }),
+
+/***/ 35309:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isCallable = __webpack_require__(30688);
+
+module.exports = function (it) {
+  return typeof it == 'object' ? it !== null : isCallable(it);
+};
+
+
+/***/ }),
+
+/***/ 41167:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isObject = __webpack_require__(35309);
+
+module.exports = function (argument) {
+  return isObject(argument) || argument === null;
+};
+
+
+/***/ }),
+
+/***/ 66555:
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = false;
+
+
+/***/ }),
+
+/***/ 27935:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__(2160);
+var isCallable = __webpack_require__(30688);
+var isPrototypeOf = __webpack_require__(66148);
+var USE_SYMBOL_AS_UID = __webpack_require__(94866);
+
+var $Object = Object;
+
+module.exports = USE_SYMBOL_AS_UID ? function (it) {
+  return typeof it == 'symbol';
+} : function (it) {
+  var $Symbol = getBuiltIn('Symbol');
+  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
+};
+
+
+/***/ }),
+
+/***/ 29936:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var call = __webpack_require__(68724);
+
+module.exports = function (record, fn, ITERATOR_INSTEAD_OF_RECORD) {
+  var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
+  var next = record.next;
+  var step, result;
+  while (!(step = call(next, iterator)).done) {
+    result = fn(step.value);
+    if (result !== undefined) return result;
+  }
+};
+
+
+/***/ }),
+
+/***/ 4774:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var call = __webpack_require__(68724);
+var anObject = __webpack_require__(89175);
+var getMethod = __webpack_require__(75383);
+
+module.exports = function (iterator, kind, value) {
+  var innerResult, innerError;
+  anObject(iterator);
+  try {
+    innerResult = getMethod(iterator, 'return');
+    if (!innerResult) {
+      if (kind === 'throw') throw value;
+      return value;
+    }
+    innerResult = call(innerResult, iterator);
+  } catch (error) {
+    innerError = true;
+    innerResult = error;
+  }
+  if (kind === 'throw') throw value;
+  if (innerError) throw innerResult;
+  anObject(innerResult);
+  return value;
+};
+
+
+/***/ }),
+
+/***/ 8344:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toLength = __webpack_require__(27331);
+
+// `LengthOfArrayLike` abstract operation
+// https://tc39.es/ecma262/#sec-lengthofarraylike
+module.exports = function (obj) {
+  return toLength(obj.length);
+};
+
+
+/***/ }),
+
+/***/ 41135:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var fails = __webpack_require__(64694);
+var isCallable = __webpack_require__(30688);
+var hasOwn = __webpack_require__(84678);
+var DESCRIPTORS = __webpack_require__(99924);
+var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(40453).CONFIGURABLE);
+var inspectSource = __webpack_require__(1881);
+var InternalStateModule = __webpack_require__(67804);
+
+var enforceInternalState = InternalStateModule.enforce;
+var getInternalState = InternalStateModule.get;
+var $String = String;
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var defineProperty = Object.defineProperty;
+var stringSlice = uncurryThis(''.slice);
+var replace = uncurryThis(''.replace);
+var join = uncurryThis([].join);
+
+var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
+  return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
+});
+
+var TEMPLATE = String(String).split('String');
+
+var makeBuiltIn = module.exports = function (value, name, options) {
+  if (stringSlice($String(name), 0, 7) === 'Symbol(') {
+    name = '[' + replace($String(name), /^Symbol\(([^)]*)\).*$/, '$1') + ']';
+  }
+  if (options && options.getter) name = 'get ' + name;
+  if (options && options.setter) name = 'set ' + name;
+  if (!hasOwn(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
+    if (DESCRIPTORS) defineProperty(value, 'name', { value: name, configurable: true });
+    else value.name = name;
+  }
+  if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
+    defineProperty(value, 'length', { value: options.arity });
+  }
+  try {
+    if (options && hasOwn(options, 'constructor') && options.constructor) {
+      if (DESCRIPTORS) defineProperty(value, 'prototype', { writable: false });
+    // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
+    } else if (value.prototype) value.prototype = undefined;
+  } catch (error) { /* empty */ }
+  var state = enforceInternalState(value);
+  if (!hasOwn(state, 'source')) {
+    state.source = join(TEMPLATE, typeof name == 'string' ? name : '');
+  } return value;
+};
+
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+// eslint-disable-next-line no-extend-native -- required
+Function.prototype.toString = makeBuiltIn(function toString() {
+  return isCallable(this) && getInternalState(this).source || inspectSource(this);
+}, 'toString');
+
+
+/***/ }),
+
+/***/ 41787:
+/***/ ((module) => {
+
+"use strict";
+
+var ceil = Math.ceil;
+var floor = Math.floor;
+
+// `Math.trunc` method
+// https://tc39.es/ecma262/#sec-math.trunc
+// eslint-disable-next-line es/no-math-trunc -- safe
+module.exports = Math.trunc || function trunc(x) {
+  var n = +x;
+  return (n > 0 ? floor : ceil)(n);
+};
+
+
+/***/ }),
+
+/***/ 33887:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toString = __webpack_require__(60599);
+
+module.exports = function (argument, $default) {
+  return argument === undefined ? arguments.length < 2 ? '' : $default : toString(argument);
+};
+
+
+/***/ }),
+
+/***/ 38536:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* global ActiveXObject -- old IE, WSH */
+var anObject = __webpack_require__(89175);
+var definePropertiesModule = __webpack_require__(50227);
+var enumBugKeys = __webpack_require__(92367);
+var hiddenKeys = __webpack_require__(37390);
+var html = __webpack_require__(28651);
+var documentCreateElement = __webpack_require__(21442);
+var sharedKey = __webpack_require__(41962);
+
+var GT = '>';
+var LT = '<';
+var PROTOTYPE = 'prototype';
+var SCRIPT = 'script';
+var IE_PROTO = sharedKey('IE_PROTO');
+
+var EmptyConstructor = function () { /* empty */ };
+
+var scriptTag = function (content) {
+  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
+};
+
+// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
+var NullProtoObjectViaActiveX = function (activeXDocument) {
+  activeXDocument.write(scriptTag(''));
+  activeXDocument.close();
+  var temp = activeXDocument.parentWindow.Object;
+  // eslint-disable-next-line no-useless-assignment -- avoid memory leak
+  activeXDocument = null;
+  return temp;
+};
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var NullProtoObjectViaIFrame = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = documentCreateElement('iframe');
+  var JS = 'java' + SCRIPT + ':';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  html.appendChild(iframe);
+  // https://github.com/zloirock/core-js/issues/475
+  iframe.src = String(JS);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(scriptTag('document.F=Object'));
+  iframeDocument.close();
+  return iframeDocument.F;
+};
+
+// Check for document.domain and active x support
+// No need to use active x approach when document.domain is not set
+// see https://github.com/es-shims/es5-shim/issues/150
+// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
+// avoid IE GC bug
+var activeXDocument;
+var NullProtoObject = function () {
+  try {
+    activeXDocument = new ActiveXObject('htmlfile');
+  } catch (error) { /* ignore */ }
+  NullProtoObject = typeof document != 'undefined'
+    ? document.domain && activeXDocument
+      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
+      : NullProtoObjectViaIFrame()
+    : NullProtoObjectViaActiveX(activeXDocument); // WSH
+  var length = enumBugKeys.length;
+  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+  return NullProtoObject();
+};
+
+hiddenKeys[IE_PROTO] = true;
+
+// `Object.create` method
+// https://tc39.es/ecma262/#sec-object.create
+// eslint-disable-next-line es/no-object-create -- safe
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    EmptyConstructor[PROTOTYPE] = anObject(O);
+    result = new EmptyConstructor();
+    EmptyConstructor[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = NullProtoObject();
+  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
+};
+
+
+/***/ }),
+
+/***/ 50227:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(82666);
+var definePropertyModule = __webpack_require__(12131);
+var anObject = __webpack_require__(89175);
+var toIndexedObject = __webpack_require__(36854);
+var objectKeys = __webpack_require__(41728);
+
+// `Object.defineProperties` method
+// https://tc39.es/ecma262/#sec-object.defineproperties
+// eslint-disable-next-line es/no-object-defineproperties -- safe
+exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var props = toIndexedObject(Properties);
+  var keys = objectKeys(Properties);
+  var length = keys.length;
+  var index = 0;
+  var key;
+  while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
+  return O;
+};
+
+
+/***/ }),
+
+/***/ 12131:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var IE8_DOM_DEFINE = __webpack_require__(17913);
+var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(82666);
+var anObject = __webpack_require__(89175);
+var toPropertyKey = __webpack_require__(2358);
+
+var $TypeError = TypeError;
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var $defineProperty = Object.defineProperty;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var ENUMERABLE = 'enumerable';
+var CONFIGURABLE = 'configurable';
+var WRITABLE = 'writable';
+
+// `Object.defineProperty` method
+// https://tc39.es/ecma262/#sec-object.defineproperty
+exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPropertyKey(P);
+  anObject(Attributes);
+  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+    var current = $getOwnPropertyDescriptor(O, P);
+    if (current && current[WRITABLE]) {
+      O[P] = Attributes.value;
+      Attributes = {
+        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
+        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+        writable: false
+      };
+    }
+  } return $defineProperty(O, P, Attributes);
+} : $defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPropertyKey(P);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return $defineProperty(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw new $TypeError('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ 37537:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var call = __webpack_require__(68724);
+var propertyIsEnumerableModule = __webpack_require__(98208);
+var createPropertyDescriptor = __webpack_require__(17781);
+var toIndexedObject = __webpack_require__(36854);
+var toPropertyKey = __webpack_require__(2358);
+var hasOwn = __webpack_require__(84678);
+var IE8_DOM_DEFINE = __webpack_require__(17913);
+
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
+exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject(O);
+  P = toPropertyKey(P);
+  if (IE8_DOM_DEFINE) try {
+    return $getOwnPropertyDescriptor(O, P);
+  } catch (error) { /* empty */ }
+  if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ 6217:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+var internalObjectKeys = __webpack_require__(41528);
+var enumBugKeys = __webpack_require__(92367);
+
+var hiddenKeys = enumBugKeys.concat('length', 'prototype');
+
+// `Object.getOwnPropertyNames` method
+// https://tc39.es/ecma262/#sec-object.getownpropertynames
+// eslint-disable-next-line es/no-object-getownpropertynames -- safe
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return internalObjectKeys(O, hiddenKeys);
+};
+
+
+/***/ }),
+
+/***/ 15168:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+// eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
+exports.f = Object.getOwnPropertySymbols;
+
+
+/***/ }),
+
+/***/ 17610:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var hasOwn = __webpack_require__(84678);
+var isCallable = __webpack_require__(30688);
+var toObject = __webpack_require__(90298);
+var sharedKey = __webpack_require__(41962);
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__(88440);
+
+var IE_PROTO = sharedKey('IE_PROTO');
+var $Object = Object;
+var ObjectPrototype = $Object.prototype;
+
+// `Object.getPrototypeOf` method
+// https://tc39.es/ecma262/#sec-object.getprototypeof
+// eslint-disable-next-line es/no-object-getprototypeof -- safe
+module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {
+  var object = toObject(O);
+  if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
+  var constructor = object.constructor;
+  if (isCallable(constructor) && object instanceof constructor) {
+    return constructor.prototype;
+  } return object instanceof $Object ? ObjectPrototype : null;
+};
+
+
+/***/ }),
+
+/***/ 66148:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+
+module.exports = uncurryThis({}.isPrototypeOf);
+
+
+/***/ }),
+
+/***/ 41528:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var hasOwn = __webpack_require__(84678);
+var toIndexedObject = __webpack_require__(36854);
+var indexOf = (__webpack_require__(21138).indexOf);
+var hiddenKeys = __webpack_require__(37390);
+
+var push = uncurryThis([].push);
+
+module.exports = function (object, names) {
+  var O = toIndexedObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (hasOwn(O, key = names[i++])) {
+    ~indexOf(result, key) || push(result, key);
+  }
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 41728:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var internalObjectKeys = __webpack_require__(41528);
+var enumBugKeys = __webpack_require__(92367);
+
+// `Object.keys` method
+// https://tc39.es/ecma262/#sec-object.keys
+// eslint-disable-next-line es/no-object-keys -- safe
+module.exports = Object.keys || function keys(O) {
+  return internalObjectKeys(O, enumBugKeys);
+};
+
+
+/***/ }),
+
+/***/ 98208:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+var $propertyIsEnumerable = {}.propertyIsEnumerable;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({ 1: 2 }, 1);
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
+exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : $propertyIsEnumerable;
+
+
+/***/ }),
+
+/***/ 64584:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* eslint-disable no-proto -- safe */
+var uncurryThisAccessor = __webpack_require__(81092);
+var isObject = __webpack_require__(35309);
+var requireObjectCoercible = __webpack_require__(11166);
+var aPossiblePrototype = __webpack_require__(29568);
+
+// `Object.setPrototypeOf` method
+// https://tc39.es/ecma262/#sec-object.setprototypeof
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+// eslint-disable-next-line es/no-object-setprototypeof -- safe
+module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
+  var CORRECT_SETTER = false;
+  var test = {};
+  var setter;
+  try {
+    setter = uncurryThisAccessor(Object.prototype, '__proto__', 'set');
+    setter(test, []);
+    CORRECT_SETTER = test instanceof Array;
+  } catch (error) { /* empty */ }
+  return function setPrototypeOf(O, proto) {
+    requireObjectCoercible(O);
+    aPossiblePrototype(proto);
+    if (!isObject(O)) return O;
+    if (CORRECT_SETTER) setter(O, proto);
+    else O.__proto__ = proto;
+    return O;
+  };
+}() : undefined);
+
+
+/***/ }),
+
+/***/ 10110:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var call = __webpack_require__(68724);
+var isCallable = __webpack_require__(30688);
+var isObject = __webpack_require__(35309);
+
+var $TypeError = TypeError;
+
+// `OrdinaryToPrimitive` abstract operation
+// https://tc39.es/ecma262/#sec-ordinarytoprimitive
+module.exports = function (input, pref) {
+  var fn, val;
+  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+  if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
+  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+  throw new $TypeError("Can't convert object to primitive value");
+};
+
+
+/***/ }),
+
+/***/ 50990:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__(2160);
+var uncurryThis = __webpack_require__(9668);
+var getOwnPropertyNamesModule = __webpack_require__(6217);
+var getOwnPropertySymbolsModule = __webpack_require__(15168);
+var anObject = __webpack_require__(89175);
+
+var concat = uncurryThis([].concat);
+
+// all object keys, includes non-enumerable and symbols
+module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
+  var keys = getOwnPropertyNamesModule.f(anObject(it));
+  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+  return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
+};
+
+
+/***/ }),
+
+/***/ 49288:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var defineProperty = (__webpack_require__(12131).f);
+
+module.exports = function (Target, Source, key) {
+  key in Target || defineProperty(Target, key, {
+    configurable: true,
+    get: function () { return Source[key]; },
+    set: function (it) { Source[key] = it; }
+  });
+};
+
+
+/***/ }),
+
+/***/ 11166:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isNullOrUndefined = __webpack_require__(5268);
+
+var $TypeError = TypeError;
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.es/ecma262/#sec-requireobjectcoercible
+module.exports = function (it) {
+  if (isNullOrUndefined(it)) throw new $TypeError("Can't call method on " + it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ 48638:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var SetHelpers = __webpack_require__(52161);
+var iterate = __webpack_require__(55896);
+
+var Set = SetHelpers.Set;
+var add = SetHelpers.add;
+
+module.exports = function (set) {
+  var result = new Set();
+  iterate(set, function (it) {
+    add(result, it);
+  });
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 14797:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var SetHelpers = __webpack_require__(52161);
+var clone = __webpack_require__(48638);
+var size = __webpack_require__(81328);
+var getSetRecord = __webpack_require__(88761);
+var iterateSet = __webpack_require__(55896);
+var iterateSimple = __webpack_require__(29936);
+
+var has = SetHelpers.has;
+var remove = SetHelpers.remove;
+
+// `Set.prototype.difference` method
+// https://github.com/tc39/proposal-set-methods
+module.exports = function difference(other) {
+  var O = aSet(this);
+  var otherRec = getSetRecord(other);
+  var result = clone(O);
+  if (size(O) <= otherRec.size) iterateSet(O, function (e) {
+    if (otherRec.includes(e)) remove(result, e);
+  });
+  else iterateSimple(otherRec.getIterator(), function (e) {
+    if (has(O, e)) remove(result, e);
+  });
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 52161:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+
+// eslint-disable-next-line es/no-set -- safe
+var SetPrototype = Set.prototype;
+
+module.exports = {
+  // eslint-disable-next-line es/no-set -- safe
+  Set: Set,
+  add: uncurryThis(SetPrototype.add),
+  has: uncurryThis(SetPrototype.has),
+  remove: uncurryThis(SetPrototype['delete']),
+  proto: SetPrototype
+};
+
+
+/***/ }),
+
+/***/ 1940:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var SetHelpers = __webpack_require__(52161);
+var size = __webpack_require__(81328);
+var getSetRecord = __webpack_require__(88761);
+var iterateSet = __webpack_require__(55896);
+var iterateSimple = __webpack_require__(29936);
+
+var Set = SetHelpers.Set;
+var add = SetHelpers.add;
+var has = SetHelpers.has;
+
+// `Set.prototype.intersection` method
+// https://github.com/tc39/proposal-set-methods
+module.exports = function intersection(other) {
+  var O = aSet(this);
+  var otherRec = getSetRecord(other);
+  var result = new Set();
+
+  if (size(O) > otherRec.size) {
+    iterateSimple(otherRec.getIterator(), function (e) {
+      if (has(O, e)) add(result, e);
+    });
+  } else {
+    iterateSet(O, function (e) {
+      if (otherRec.includes(e)) add(result, e);
+    });
+  }
+
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 2452:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var has = (__webpack_require__(52161).has);
+var size = __webpack_require__(81328);
+var getSetRecord = __webpack_require__(88761);
+var iterateSet = __webpack_require__(55896);
+var iterateSimple = __webpack_require__(29936);
+var iteratorClose = __webpack_require__(4774);
+
+// `Set.prototype.isDisjointFrom` method
+// https://tc39.github.io/proposal-set-methods/#Set.prototype.isDisjointFrom
+module.exports = function isDisjointFrom(other) {
+  var O = aSet(this);
+  var otherRec = getSetRecord(other);
+  if (size(O) <= otherRec.size) return iterateSet(O, function (e) {
+    if (otherRec.includes(e)) return false;
+  }, true) !== false;
+  var iterator = otherRec.getIterator();
+  return iterateSimple(iterator, function (e) {
+    if (has(O, e)) return iteratorClose(iterator, 'normal', false);
+  }) !== false;
+};
+
+
+/***/ }),
+
+/***/ 50589:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var size = __webpack_require__(81328);
+var iterate = __webpack_require__(55896);
+var getSetRecord = __webpack_require__(88761);
+
+// `Set.prototype.isSubsetOf` method
+// https://tc39.github.io/proposal-set-methods/#Set.prototype.isSubsetOf
+module.exports = function isSubsetOf(other) {
+  var O = aSet(this);
+  var otherRec = getSetRecord(other);
+  if (size(O) > otherRec.size) return false;
+  return iterate(O, function (e) {
+    if (!otherRec.includes(e)) return false;
+  }, true) !== false;
+};
+
+
+/***/ }),
+
+/***/ 20165:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var has = (__webpack_require__(52161).has);
+var size = __webpack_require__(81328);
+var getSetRecord = __webpack_require__(88761);
+var iterateSimple = __webpack_require__(29936);
+var iteratorClose = __webpack_require__(4774);
+
+// `Set.prototype.isSupersetOf` method
+// https://tc39.github.io/proposal-set-methods/#Set.prototype.isSupersetOf
+module.exports = function isSupersetOf(other) {
+  var O = aSet(this);
+  var otherRec = getSetRecord(other);
+  if (size(O) < otherRec.size) return false;
+  var iterator = otherRec.getIterator();
+  return iterateSimple(iterator, function (e) {
+    if (!has(O, e)) return iteratorClose(iterator, 'normal', false);
+  }) !== false;
+};
+
+
+/***/ }),
+
+/***/ 55896:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+var iterateSimple = __webpack_require__(29936);
+var SetHelpers = __webpack_require__(52161);
+
+var Set = SetHelpers.Set;
+var SetPrototype = SetHelpers.proto;
+var forEach = uncurryThis(SetPrototype.forEach);
+var keys = uncurryThis(SetPrototype.keys);
+var next = keys(new Set()).next;
+
+module.exports = function (set, fn, interruptible) {
+  return interruptible ? iterateSimple({ iterator: keys(set), next: next }, fn) : forEach(set, fn);
+};
+
+
+/***/ }),
+
+/***/ 29125:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__(2160);
+
+var createSetLike = function (size) {
+  return {
+    size: size,
+    has: function () {
+      return false;
+    },
+    keys: function () {
+      return {
+        next: function () {
+          return { done: true };
+        }
+      };
+    }
+  };
+};
+
+module.exports = function (name) {
+  var Set = getBuiltIn('Set');
+  try {
+    new Set()[name](createSetLike(0));
+    try {
+      // late spec change, early WebKit ~ Safari 17.0 beta implementation does not pass it
+      // https://github.com/tc39/proposal-set-methods/pull/88
+      new Set()[name](createSetLike(-1));
+      return false;
+    } catch (error2) {
+      return true;
+    }
+  } catch (error) {
+    return false;
+  }
+};
+
+
+/***/ }),
+
+/***/ 81328:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThisAccessor = __webpack_require__(81092);
+var SetHelpers = __webpack_require__(52161);
+
+module.exports = uncurryThisAccessor(SetHelpers.proto, 'size', 'get') || function (set) {
+  return set.size;
+};
+
+
+/***/ }),
+
+/***/ 56225:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var SetHelpers = __webpack_require__(52161);
+var clone = __webpack_require__(48638);
+var getSetRecord = __webpack_require__(88761);
+var iterateSimple = __webpack_require__(29936);
+
+var add = SetHelpers.add;
+var has = SetHelpers.has;
+var remove = SetHelpers.remove;
+
+// `Set.prototype.symmetricDifference` method
+// https://github.com/tc39/proposal-set-methods
+module.exports = function symmetricDifference(other) {
+  var O = aSet(this);
+  var keysIter = getSetRecord(other).getIterator();
+  var result = clone(O);
+  iterateSimple(keysIter, function (e) {
+    if (has(O, e)) remove(result, e);
+    else add(result, e);
+  });
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 75803:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var aSet = __webpack_require__(2712);
+var add = (__webpack_require__(52161).add);
+var clone = __webpack_require__(48638);
+var getSetRecord = __webpack_require__(88761);
+var iterateSimple = __webpack_require__(29936);
+
+// `Set.prototype.union` method
+// https://github.com/tc39/proposal-set-methods
+module.exports = function union(other) {
+  var O = aSet(this);
+  var keysIter = getSetRecord(other).getIterator();
+  var result = clone(O);
+  iterateSimple(keysIter, function (it) {
+    add(result, it);
+  });
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 41962:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var shared = __webpack_require__(72645);
+var uid = __webpack_require__(65736);
+
+var keys = shared('keys');
+
+module.exports = function (key) {
+  return keys[key] || (keys[key] = uid(key));
+};
+
+
+/***/ }),
+
+/***/ 46762:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var IS_PURE = __webpack_require__(66555);
+var globalThis = __webpack_require__(13931);
+var defineGlobalProperty = __webpack_require__(11604);
+
+var SHARED = '__core-js_shared__';
+var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
+
+(store.versions || (store.versions = [])).push({
+  version: '3.38.1',
+  mode: IS_PURE ? 'pure' : 'global',
+  copyright: '© 2014-2024 Denis Pushkarev (zloirock.ru)',
+  license: 'https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE',
+  source: 'https://github.com/zloirock/core-js'
+});
+
+
+/***/ }),
+
+/***/ 72645:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var store = __webpack_require__(46762);
+
+module.exports = function (key, value) {
+  return store[key] || (store[key] = value || {});
+};
+
+
+/***/ }),
+
+/***/ 74133:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var fails = __webpack_require__(64694);
+var V8 = __webpack_require__(42732);
+var ENVIRONMENT = __webpack_require__(82438);
+
+var structuredClone = globalThis.structuredClone;
+
+module.exports = !!structuredClone && !fails(function () {
+  // prevent V8 ArrayBufferDetaching protector cell invalidation and performance degradation
+  // https://github.com/zloirock/core-js/issues/679
+  if ((ENVIRONMENT === 'DENO' && V8 > 92) || (ENVIRONMENT === 'NODE' && V8 > 94) || (ENVIRONMENT === 'BROWSER' && V8 > 97)) return false;
+  var buffer = new ArrayBuffer(8);
+  var clone = structuredClone(buffer, { transfer: [buffer] });
+  return buffer.byteLength !== 0 || clone.byteLength !== 8;
+});
+
+
+/***/ }),
+
+/***/ 4112:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* eslint-disable es/no-symbol -- required for testing */
+var V8_VERSION = __webpack_require__(42732);
+var fails = __webpack_require__(64694);
+var globalThis = __webpack_require__(13931);
+
+var $String = globalThis.String;
+
+// eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
+module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
+  var symbol = Symbol('symbol detection');
+  // Chrome 38 Symbol has incorrect toString conversion
+  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
+  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,
+  // of course, fail.
+  return !$String(symbol) || !(Object(symbol) instanceof Symbol) ||
+    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+});
+
+
+/***/ }),
+
+/***/ 37352:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toIntegerOrInfinity = __webpack_require__(81680);
+
+var max = Math.max;
+var min = Math.min;
+
+// Helper for a popular repeating case of the spec:
+// Let integer be ? ToInteger(index).
+// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+module.exports = function (index, length) {
+  var integer = toIntegerOrInfinity(index);
+  return integer < 0 ? max(integer + length, 0) : min(integer, length);
+};
+
+
+/***/ }),
+
+/***/ 66601:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toPrimitive = __webpack_require__(31272);
+
+var $TypeError = TypeError;
+
+// `ToBigInt` abstract operation
+// https://tc39.es/ecma262/#sec-tobigint
+module.exports = function (argument) {
+  var prim = toPrimitive(argument, 'number');
+  if (typeof prim == 'number') throw new $TypeError("Can't convert number to bigint");
+  // eslint-disable-next-line es/no-bigint -- safe
+  return BigInt(prim);
+};
+
+
+/***/ }),
+
+/***/ 65992:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toIntegerOrInfinity = __webpack_require__(81680);
+var toLength = __webpack_require__(27331);
+
+var $RangeError = RangeError;
+
+// `ToIndex` abstract operation
+// https://tc39.es/ecma262/#sec-toindex
+module.exports = function (it) {
+  if (it === undefined) return 0;
+  var number = toIntegerOrInfinity(it);
+  var length = toLength(number);
+  if (number !== length) throw new $RangeError('Wrong length or index');
+  return length;
+};
+
+
+/***/ }),
+
+/***/ 36854:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+// toObject with fallback for non-array-like ES3 strings
+var IndexedObject = __webpack_require__(74347);
+var requireObjectCoercible = __webpack_require__(11166);
+
+module.exports = function (it) {
+  return IndexedObject(requireObjectCoercible(it));
+};
+
+
+/***/ }),
+
+/***/ 81680:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var trunc = __webpack_require__(41787);
+
+// `ToIntegerOrInfinity` abstract operation
+// https://tc39.es/ecma262/#sec-tointegerorinfinity
+module.exports = function (argument) {
+  var number = +argument;
+  // eslint-disable-next-line no-self-compare -- NaN check
+  return number !== number || number === 0 ? 0 : trunc(number);
+};
+
+
+/***/ }),
+
+/***/ 27331:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toIntegerOrInfinity = __webpack_require__(81680);
+
+var min = Math.min;
+
+// `ToLength` abstract operation
+// https://tc39.es/ecma262/#sec-tolength
+module.exports = function (argument) {
+  var len = toIntegerOrInfinity(argument);
+  return len > 0 ? min(len, 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+};
+
+
+/***/ }),
+
+/***/ 90298:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var requireObjectCoercible = __webpack_require__(11166);
+
+var $Object = Object;
+
+// `ToObject` abstract operation
+// https://tc39.es/ecma262/#sec-toobject
+module.exports = function (argument) {
+  return $Object(requireObjectCoercible(argument));
+};
+
+
+/***/ }),
+
+/***/ 52066:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toPositiveInteger = __webpack_require__(46949);
+
+var $RangeError = RangeError;
+
+module.exports = function (it, BYTES) {
+  var offset = toPositiveInteger(it);
+  if (offset % BYTES) throw new $RangeError('Wrong offset');
+  return offset;
+};
+
+
+/***/ }),
+
+/***/ 46949:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toIntegerOrInfinity = __webpack_require__(81680);
+
+var $RangeError = RangeError;
+
+module.exports = function (it) {
+  var result = toIntegerOrInfinity(it);
+  if (result < 0) throw new $RangeError("The argument can't be less than 0");
+  return result;
+};
+
+
+/***/ }),
+
+/***/ 31272:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var call = __webpack_require__(68724);
+var isObject = __webpack_require__(35309);
+var isSymbol = __webpack_require__(27935);
+var getMethod = __webpack_require__(75383);
+var ordinaryToPrimitive = __webpack_require__(10110);
+var wellKnownSymbol = __webpack_require__(72032);
+
+var $TypeError = TypeError;
+var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
+
+// `ToPrimitive` abstract operation
+// https://tc39.es/ecma262/#sec-toprimitive
+module.exports = function (input, pref) {
+  if (!isObject(input) || isSymbol(input)) return input;
+  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+  var result;
+  if (exoticToPrim) {
+    if (pref === undefined) pref = 'default';
+    result = call(exoticToPrim, input, pref);
+    if (!isObject(result) || isSymbol(result)) return result;
+    throw new $TypeError("Can't convert object to primitive value");
+  }
+  if (pref === undefined) pref = 'number';
+  return ordinaryToPrimitive(input, pref);
+};
+
+
+/***/ }),
+
+/***/ 2358:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var toPrimitive = __webpack_require__(31272);
+var isSymbol = __webpack_require__(27935);
+
+// `ToPropertyKey` abstract operation
+// https://tc39.es/ecma262/#sec-topropertykey
+module.exports = function (argument) {
+  var key = toPrimitive(argument, 'string');
+  return isSymbol(key) ? key : key + '';
+};
+
+
+/***/ }),
+
+/***/ 52522:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var wellKnownSymbol = __webpack_require__(72032);
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var test = {};
+
+test[TO_STRING_TAG] = 'z';
+
+module.exports = String(test) === '[object z]';
+
+
+/***/ }),
+
+/***/ 60599:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var classof = __webpack_require__(51566);
+
+var $String = String;
+
+module.exports = function (argument) {
+  if (classof(argument) === 'Symbol') throw new TypeError('Cannot convert a Symbol value to a string');
+  return $String(argument);
+};
+
+
+/***/ }),
+
+/***/ 3397:
+/***/ ((module) => {
+
+"use strict";
+
+var $String = String;
+
+module.exports = function (argument) {
+  try {
+    return $String(argument);
+  } catch (error) {
+    return 'Object';
+  }
+};
+
+
+/***/ }),
+
+/***/ 65736:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(9668);
+
+var id = 0;
+var postfix = Math.random();
+var toString = uncurryThis(1.0.toString);
+
+module.exports = function (key) {
+  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString(++id + postfix, 36);
+};
+
+
+/***/ }),
+
+/***/ 94866:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* eslint-disable es/no-symbol -- required for testing */
+var NATIVE_SYMBOL = __webpack_require__(4112);
+
+module.exports = NATIVE_SYMBOL
+  && !Symbol.sham
+  && typeof Symbol.iterator == 'symbol';
+
+
+/***/ }),
+
+/***/ 82666:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var fails = __webpack_require__(64694);
+
+// V8 ~ Chrome 36-
+// https://bugs.chromium.org/p/v8/issues/detail?id=3334
+module.exports = DESCRIPTORS && fails(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
+    value: 42,
+    writable: false
+  }).prototype !== 42;
+});
+
+
+/***/ }),
+
+/***/ 34051:
+/***/ ((module) => {
+
+"use strict";
+
+var $TypeError = TypeError;
+
+module.exports = function (passed, required) {
+  if (passed < required) throw new $TypeError('Not enough arguments');
+  return passed;
+};
+
+
+/***/ }),
+
+/***/ 34724:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var isCallable = __webpack_require__(30688);
+
+var WeakMap = globalThis.WeakMap;
+
+module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
+
+
+/***/ }),
+
+/***/ 72032:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var shared = __webpack_require__(72645);
+var hasOwn = __webpack_require__(84678);
+var uid = __webpack_require__(65736);
+var NATIVE_SYMBOL = __webpack_require__(4112);
+var USE_SYMBOL_AS_UID = __webpack_require__(94866);
+
+var Symbol = globalThis.Symbol;
+var WellKnownSymbolsStore = shared('wks');
+var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol['for'] || Symbol : Symbol && Symbol.withoutSetter || uid;
+
+module.exports = function (name) {
+  if (!hasOwn(WellKnownSymbolsStore, name)) {
+    WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol, name)
+      ? Symbol[name]
+      : createWellKnownSymbol('Symbol.' + name);
+  } return WellKnownSymbolsStore[name];
+};
+
+
+/***/ }),
+
+/***/ 77009:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__(2160);
+var hasOwn = __webpack_require__(84678);
+var createNonEnumerableProperty = __webpack_require__(22385);
+var isPrototypeOf = __webpack_require__(66148);
+var setPrototypeOf = __webpack_require__(64584);
+var copyConstructorProperties = __webpack_require__(43891);
+var proxyAccessor = __webpack_require__(49288);
+var inheritIfRequired = __webpack_require__(75086);
+var normalizeStringArgument = __webpack_require__(33887);
+var installErrorCause = __webpack_require__(99457);
+var installErrorStack = __webpack_require__(73289);
+var DESCRIPTORS = __webpack_require__(99924);
+var IS_PURE = __webpack_require__(66555);
+
+module.exports = function (FULL_NAME, wrapper, FORCED, IS_AGGREGATE_ERROR) {
+  var STACK_TRACE_LIMIT = 'stackTraceLimit';
+  var OPTIONS_POSITION = IS_AGGREGATE_ERROR ? 2 : 1;
+  var path = FULL_NAME.split('.');
+  var ERROR_NAME = path[path.length - 1];
+  var OriginalError = getBuiltIn.apply(null, path);
+
+  if (!OriginalError) return;
+
+  var OriginalErrorPrototype = OriginalError.prototype;
+
+  // V8 9.3- bug https://bugs.chromium.org/p/v8/issues/detail?id=12006
+  if (!IS_PURE && hasOwn(OriginalErrorPrototype, 'cause')) delete OriginalErrorPrototype.cause;
+
+  if (!FORCED) return OriginalError;
+
+  var BaseError = getBuiltIn('Error');
+
+  var WrappedError = wrapper(function (a, b) {
+    var message = normalizeStringArgument(IS_AGGREGATE_ERROR ? b : a, undefined);
+    var result = IS_AGGREGATE_ERROR ? new OriginalError(a) : new OriginalError();
+    if (message !== undefined) createNonEnumerableProperty(result, 'message', message);
+    installErrorStack(result, WrappedError, result.stack, 2);
+    if (this && isPrototypeOf(OriginalErrorPrototype, this)) inheritIfRequired(result, this, WrappedError);
+    if (arguments.length > OPTIONS_POSITION) installErrorCause(result, arguments[OPTIONS_POSITION]);
+    return result;
+  });
+
+  WrappedError.prototype = OriginalErrorPrototype;
+
+  if (ERROR_NAME !== 'Error') {
+    if (setPrototypeOf) setPrototypeOf(WrappedError, BaseError);
+    else copyConstructorProperties(WrappedError, BaseError, { name: true });
+  } else if (DESCRIPTORS && STACK_TRACE_LIMIT in OriginalError) {
+    proxyAccessor(WrappedError, OriginalError, STACK_TRACE_LIMIT);
+    proxyAccessor(WrappedError, OriginalError, 'prepareStackTrace');
+  }
+
+  copyConstructorProperties(WrappedError, OriginalError);
+
+  if (!IS_PURE) try {
+    // Safari 13- bug: WebAssembly errors does not have a proper `.name`
+    if (OriginalErrorPrototype.name !== ERROR_NAME) {
+      createNonEnumerableProperty(OriginalErrorPrototype, 'name', ERROR_NAME);
+    }
+    OriginalErrorPrototype.constructor = WrappedError;
+  } catch (error) { /* empty */ }
+
+  return WrappedError;
+};
+
+
+/***/ }),
+
+/***/ 85303:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var defineBuiltInAccessor = __webpack_require__(29393);
+var isDetached = __webpack_require__(49160);
+
+var ArrayBufferPrototype = ArrayBuffer.prototype;
+
+if (DESCRIPTORS && !('detached' in ArrayBufferPrototype)) {
+  defineBuiltInAccessor(ArrayBufferPrototype, 'detached', {
+    configurable: true,
+    get: function detached() {
+      return isDetached(this);
+    }
+  });
+}
+
+
+/***/ }),
+
+/***/ 48423:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var $transfer = __webpack_require__(72113);
+
+// `ArrayBuffer.prototype.transferToFixedLength` method
+// https://tc39.es/proposal-arraybuffer-transfer/#sec-arraybuffer.prototype.transfertofixedlength
+if ($transfer) $({ target: 'ArrayBuffer', proto: true }, {
+  transferToFixedLength: function transferToFixedLength() {
+    return $transfer(this, arguments.length ? arguments[0] : undefined, false);
+  }
+});
+
+
+/***/ }),
+
+/***/ 50737:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var $transfer = __webpack_require__(72113);
+
+// `ArrayBuffer.prototype.transfer` method
+// https://tc39.es/proposal-arraybuffer-transfer/#sec-arraybuffer.prototype.transfer
+if ($transfer) $({ target: 'ArrayBuffer', proto: true }, {
+  transfer: function transfer() {
+    return $transfer(this, arguments.length ? arguments[0] : undefined, true);
+  }
+});
+
+
+/***/ }),
+
+/***/ 60452:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var $includes = (__webpack_require__(21138).includes);
+var fails = __webpack_require__(64694);
+var addToUnscopables = __webpack_require__(60586);
+
+// FF99+ bug
+var BROKEN_ON_SPARSE = fails(function () {
+  // eslint-disable-next-line es/no-array-prototype-includes -- detection
+  return !Array(1).includes();
+});
+
+// `Array.prototype.includes` method
+// https://tc39.es/ecma262/#sec-array.prototype.includes
+$({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
+  includes: function includes(el /* , fromIndex = 0 */) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('includes');
+
+
+/***/ }),
+
+/***/ 44936:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var toObject = __webpack_require__(90298);
+var lengthOfArrayLike = __webpack_require__(8344);
+var setArrayLength = __webpack_require__(86207);
+var doesNotExceedSafeInteger = __webpack_require__(23433);
+var fails = __webpack_require__(64694);
+
+var INCORRECT_TO_LENGTH = fails(function () {
+  return [].push.call({ length: 0x100000000 }, 1) !== 4294967297;
+});
+
+// V8 <= 121 and Safari <= 15.4; FF < 23 throws InternalError
+// https://bugs.chromium.org/p/v8/issues/detail?id=12681
+var properErrorOnNonWritableLength = function () {
+  try {
+    // eslint-disable-next-line es/no-object-defineproperty -- safe
+    Object.defineProperty([], 'length', { writable: false }).push();
+  } catch (error) {
+    return error instanceof TypeError;
+  }
+};
+
+var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
+
+// `Array.prototype.push` method
+// https://tc39.es/ecma262/#sec-array.prototype.push
+$({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
+  push: function push(item) {
+    var O = toObject(this);
+    var len = lengthOfArrayLike(O);
+    var argCount = arguments.length;
+    doesNotExceedSafeInteger(len + argCount);
+    for (var i = 0; i < argCount; i++) {
+      O[len] = arguments[i];
+      len++;
+    }
+    setArrayLength(O, len);
+    return len;
+  }
+});
+
+
+/***/ }),
+
+/***/ 80978:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* eslint-disable no-unused-vars -- required for functions `.length` */
+var $ = __webpack_require__(55532);
+var globalThis = __webpack_require__(13931);
+var apply = __webpack_require__(39659);
+var wrapErrorConstructorWithCause = __webpack_require__(77009);
+
+var WEB_ASSEMBLY = 'WebAssembly';
+var WebAssembly = globalThis[WEB_ASSEMBLY];
+
+// eslint-disable-next-line es/no-error-cause -- feature detection
+var FORCED = new Error('e', { cause: 7 }).cause !== 7;
+
+var exportGlobalErrorCauseWrapper = function (ERROR_NAME, wrapper) {
+  var O = {};
+  O[ERROR_NAME] = wrapErrorConstructorWithCause(ERROR_NAME, wrapper, FORCED);
+  $({ global: true, constructor: true, arity: 1, forced: FORCED }, O);
+};
+
+var exportWebAssemblyErrorCauseWrapper = function (ERROR_NAME, wrapper) {
+  if (WebAssembly && WebAssembly[ERROR_NAME]) {
+    var O = {};
+    O[ERROR_NAME] = wrapErrorConstructorWithCause(WEB_ASSEMBLY + '.' + ERROR_NAME, wrapper, FORCED);
+    $({ target: WEB_ASSEMBLY, stat: true, constructor: true, arity: 1, forced: FORCED }, O);
+  }
+};
+
+// https://tc39.es/ecma262/#sec-nativeerror
+exportGlobalErrorCauseWrapper('Error', function (init) {
+  return function Error(message) { return apply(init, this, arguments); };
+});
+exportGlobalErrorCauseWrapper('EvalError', function (init) {
+  return function EvalError(message) { return apply(init, this, arguments); };
+});
+exportGlobalErrorCauseWrapper('RangeError', function (init) {
+  return function RangeError(message) { return apply(init, this, arguments); };
+});
+exportGlobalErrorCauseWrapper('ReferenceError', function (init) {
+  return function ReferenceError(message) { return apply(init, this, arguments); };
+});
+exportGlobalErrorCauseWrapper('SyntaxError', function (init) {
+  return function SyntaxError(message) { return apply(init, this, arguments); };
+});
+exportGlobalErrorCauseWrapper('TypeError', function (init) {
+  return function TypeError(message) { return apply(init, this, arguments); };
+});
+exportGlobalErrorCauseWrapper('URIError', function (init) {
+  return function URIError(message) { return apply(init, this, arguments); };
+});
+exportWebAssemblyErrorCauseWrapper('CompileError', function (init) {
+  return function CompileError(message) { return apply(init, this, arguments); };
+});
+exportWebAssemblyErrorCauseWrapper('LinkError', function (init) {
+  return function LinkError(message) { return apply(init, this, arguments); };
+});
+exportWebAssemblyErrorCauseWrapper('RuntimeError', function (init) {
+  return function RuntimeError(message) { return apply(init, this, arguments); };
+});
+
+
+/***/ }),
+
+/***/ 43623:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var difference = __webpack_require__(14797);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+// `Set.prototype.difference` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('difference') }, {
+  difference: difference
+});
+
+
+/***/ }),
+
+/***/ 9784:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var fails = __webpack_require__(64694);
+var intersection = __webpack_require__(1940);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+var INCORRECT = !setMethodAcceptSetLike('intersection') || fails(function () {
+  // eslint-disable-next-line es/no-array-from, es/no-set -- testing
+  return String(Array.from(new Set([1, 2, 3]).intersection(new Set([3, 2])))) !== '3,2';
+});
+
+// `Set.prototype.intersection` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: INCORRECT }, {
+  intersection: intersection
+});
+
+
+/***/ }),
+
+/***/ 56942:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var isDisjointFrom = __webpack_require__(2452);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+// `Set.prototype.isDisjointFrom` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('isDisjointFrom') }, {
+  isDisjointFrom: isDisjointFrom
+});
+
+
+/***/ }),
+
+/***/ 4278:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var isSubsetOf = __webpack_require__(50589);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+// `Set.prototype.isSubsetOf` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('isSubsetOf') }, {
+  isSubsetOf: isSubsetOf
+});
+
+
+/***/ }),
+
+/***/ 13963:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var isSupersetOf = __webpack_require__(20165);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+// `Set.prototype.isSupersetOf` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('isSupersetOf') }, {
+  isSupersetOf: isSupersetOf
+});
+
+
+/***/ }),
+
+/***/ 34565:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var symmetricDifference = __webpack_require__(56225);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+// `Set.prototype.symmetricDifference` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('symmetricDifference') }, {
+  symmetricDifference: symmetricDifference
+});
+
+
+/***/ }),
+
+/***/ 75485:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var union = __webpack_require__(75803);
+var setMethodAcceptSetLike = __webpack_require__(29125);
+
+// `Set.prototype.union` method
+// https://github.com/tc39/proposal-set-methods
+$({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('union') }, {
+  union: union
+});
+
+
+/***/ }),
+
+/***/ 97380:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var ArrayBufferViewCore = __webpack_require__(4317);
+var lengthOfArrayLike = __webpack_require__(8344);
+var toIntegerOrInfinity = __webpack_require__(81680);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+
+// `%TypedArray%.prototype.at` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.at
+exportTypedArrayMethod('at', function at(index) {
+  var O = aTypedArray(this);
+  var len = lengthOfArrayLike(O);
+  var relativeIndex = toIntegerOrInfinity(index);
+  var k = relativeIndex >= 0 ? relativeIndex : len + relativeIndex;
+  return (k < 0 || k >= len) ? undefined : O[k];
+});
+
+
+/***/ }),
+
+/***/ 35905:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var ArrayBufferViewCore = __webpack_require__(4317);
+var $fill = __webpack_require__(98404);
+var toBigInt = __webpack_require__(66601);
+var classof = __webpack_require__(51566);
+var call = __webpack_require__(68724);
+var uncurryThis = __webpack_require__(9668);
+var fails = __webpack_require__(64694);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+var slice = uncurryThis(''.slice);
+
+// V8 ~ Chrome < 59, Safari < 14.1, FF < 55, Edge <=18
+var CONVERSION_BUG = fails(function () {
+  var count = 0;
+  // eslint-disable-next-line es/no-typed-arrays -- safe
+  new Int8Array(2).fill({ valueOf: function () { return count++; } });
+  return count !== 1;
+});
+
+// `%TypedArray%.prototype.fill` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.fill
+exportTypedArrayMethod('fill', function fill(value /* , start, end */) {
+  var length = arguments.length;
+  aTypedArray(this);
+  var actualValue = slice(classof(this), 0, 3) === 'Big' ? toBigInt(value) : +value;
+  return call($fill, this, actualValue, length > 1 ? arguments[1] : undefined, length > 2 ? arguments[2] : undefined);
+}, CONVERSION_BUG);
+
+
+/***/ }),
+
+/***/ 9394:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var ArrayBufferViewCore = __webpack_require__(4317);
+var $findLastIndex = (__webpack_require__(50563).findLastIndex);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+
+// `%TypedArray%.prototype.findLastIndex` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.findlastindex
+exportTypedArrayMethod('findLastIndex', function findLastIndex(predicate /* , thisArg */) {
+  return $findLastIndex(aTypedArray(this), predicate, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+
+/***/ }),
+
+/***/ 71697:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var ArrayBufferViewCore = __webpack_require__(4317);
+var $findLast = (__webpack_require__(50563).findLast);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+
+// `%TypedArray%.prototype.findLast` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.findlast
+exportTypedArrayMethod('findLast', function findLast(predicate /* , thisArg */) {
+  return $findLast(aTypedArray(this), predicate, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+
+/***/ }),
+
+/***/ 13438:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var call = __webpack_require__(68724);
+var ArrayBufferViewCore = __webpack_require__(4317);
+var lengthOfArrayLike = __webpack_require__(8344);
+var toOffset = __webpack_require__(52066);
+var toIndexedObject = __webpack_require__(90298);
+var fails = __webpack_require__(64694);
+
+var RangeError = globalThis.RangeError;
+var Int8Array = globalThis.Int8Array;
+var Int8ArrayPrototype = Int8Array && Int8Array.prototype;
+var $set = Int8ArrayPrototype && Int8ArrayPrototype.set;
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+
+var WORKS_WITH_OBJECTS_AND_GENERIC_ON_TYPED_ARRAYS = !fails(function () {
+  // eslint-disable-next-line es/no-typed-arrays -- required for testing
+  var array = new Uint8ClampedArray(2);
+  call($set, array, { length: 1, 0: 3 }, 1);
+  return array[1] !== 3;
+});
+
+// https://bugs.chromium.org/p/v8/issues/detail?id=11294 and other
+var TO_OBJECT_BUG = WORKS_WITH_OBJECTS_AND_GENERIC_ON_TYPED_ARRAYS && ArrayBufferViewCore.NATIVE_ARRAY_BUFFER_VIEWS && fails(function () {
+  var array = new Int8Array(2);
+  array.set(1);
+  array.set('2', 1);
+  return array[0] !== 0 || array[1] !== 2;
+});
+
+// `%TypedArray%.prototype.set` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.set
+exportTypedArrayMethod('set', function set(arrayLike /* , offset */) {
+  aTypedArray(this);
+  var offset = toOffset(arguments.length > 1 ? arguments[1] : undefined, 1);
+  var src = toIndexedObject(arrayLike);
+  if (WORKS_WITH_OBJECTS_AND_GENERIC_ON_TYPED_ARRAYS) return call($set, this, src, offset);
+  var length = this.length;
+  var len = lengthOfArrayLike(src);
+  var index = 0;
+  if (len + offset > length) throw new RangeError('Wrong length');
+  while (index < len) this[offset + index] = src[index++];
+}, !WORKS_WITH_OBJECTS_AND_GENERIC_ON_TYPED_ARRAYS || TO_OBJECT_BUG);
+
+
+/***/ }),
+
+/***/ 53616:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var uncurryThis = __webpack_require__(5033);
+var fails = __webpack_require__(64694);
+var aCallable = __webpack_require__(21052);
+var internalSort = __webpack_require__(3097);
+var ArrayBufferViewCore = __webpack_require__(4317);
+var FF = __webpack_require__(95764);
+var IE_OR_EDGE = __webpack_require__(48512);
+var V8 = __webpack_require__(42732);
+var WEBKIT = __webpack_require__(72726);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+var Uint16Array = globalThis.Uint16Array;
+var nativeSort = Uint16Array && uncurryThis(Uint16Array.prototype.sort);
+
+// WebKit
+var ACCEPT_INCORRECT_ARGUMENTS = !!nativeSort && !(fails(function () {
+  nativeSort(new Uint16Array(2), null);
+}) && fails(function () {
+  nativeSort(new Uint16Array(2), {});
+}));
+
+var STABLE_SORT = !!nativeSort && !fails(function () {
+  // feature detection can be too slow, so check engines versions
+  if (V8) return V8 < 74;
+  if (FF) return FF < 67;
+  if (IE_OR_EDGE) return true;
+  if (WEBKIT) return WEBKIT < 602;
+
+  var array = new Uint16Array(516);
+  var expected = Array(516);
+  var index, mod;
+
+  for (index = 0; index < 516; index++) {
+    mod = index % 4;
+    array[index] = 515 - index;
+    expected[index] = index - 2 * mod + 3;
+  }
+
+  nativeSort(array, function (a, b) {
+    return (a / 4 | 0) - (b / 4 | 0);
+  });
+
+  for (index = 0; index < 516; index++) {
+    if (array[index] !== expected[index]) return true;
+  }
+});
+
+var getSortCompare = function (comparefn) {
+  return function (x, y) {
+    if (comparefn !== undefined) return +comparefn(x, y) || 0;
+    // eslint-disable-next-line no-self-compare -- NaN check
+    if (y !== y) return -1;
+    // eslint-disable-next-line no-self-compare -- NaN check
+    if (x !== x) return 1;
+    if (x === 0 && y === 0) return 1 / x > 0 && 1 / y < 0 ? 1 : -1;
+    return x > y;
+  };
+};
+
+// `%TypedArray%.prototype.sort` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.sort
+exportTypedArrayMethod('sort', function sort(comparefn) {
+  if (comparefn !== undefined) aCallable(comparefn);
+  if (STABLE_SORT) return nativeSort(this, comparefn);
+
+  return internalSort(aTypedArray(this), getSortCompare(comparefn));
+}, !STABLE_SORT || ACCEPT_INCORRECT_ARGUMENTS);
+
+
+/***/ }),
+
+/***/ 35630:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var arrayToReversed = __webpack_require__(24501);
+var ArrayBufferViewCore = __webpack_require__(4317);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+
+// `%TypedArray%.prototype.toReversed` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.toreversed
+exportTypedArrayMethod('toReversed', function toReversed() {
+  return arrayToReversed(aTypedArray(this), getTypedArrayConstructor(this));
+});
+
+
+/***/ }),
+
+/***/ 30896:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var ArrayBufferViewCore = __webpack_require__(4317);
+var uncurryThis = __webpack_require__(9668);
+var aCallable = __webpack_require__(21052);
+var arrayFromConstructorAndList = __webpack_require__(77895);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+var sort = uncurryThis(ArrayBufferViewCore.TypedArrayPrototype.sort);
+
+// `%TypedArray%.prototype.toSorted` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.tosorted
+exportTypedArrayMethod('toSorted', function toSorted(compareFn) {
+  if (compareFn !== undefined) aCallable(compareFn);
+  var O = aTypedArray(this);
+  var A = arrayFromConstructorAndList(getTypedArrayConstructor(O), O);
+  return sort(A, compareFn);
+});
+
+
+/***/ }),
+
+/***/ 24139:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var arrayWith = __webpack_require__(27117);
+var ArrayBufferViewCore = __webpack_require__(4317);
+var isBigIntArray = __webpack_require__(39232);
+var toIntegerOrInfinity = __webpack_require__(81680);
+var toBigInt = __webpack_require__(66601);
+
+var aTypedArray = ArrayBufferViewCore.aTypedArray;
+var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+
+var PROPER_ORDER = !!function () {
+  try {
+    // eslint-disable-next-line no-throw-literal, es/no-typed-arrays, es/no-array-prototype-with -- required for testing
+    new Int8Array(1)['with'](2, { valueOf: function () { throw 8; } });
+  } catch (error) {
+    // some early implementations, like WebKit, does not follow the final semantic
+    // https://github.com/tc39/proposal-change-array-by-copy/pull/86
+    return error === 8;
+  }
+}();
+
+// `%TypedArray%.prototype.with` method
+// https://tc39.es/ecma262/#sec-%typedarray%.prototype.with
+exportTypedArrayMethod('with', { 'with': function (index, value) {
+  var O = aTypedArray(this);
+  var relativeIndex = toIntegerOrInfinity(index);
+  var actualValue = isBigIntArray(O) ? toBigInt(value) : +value;
+  return arrayWith(O, getTypedArrayConstructor(O), relativeIndex, actualValue);
+} }['with'], !PROPER_ORDER);
+
+
+/***/ }),
+
+/***/ 70823:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(55532);
+var globalThis = __webpack_require__(13931);
+var getBuiltIn = __webpack_require__(2160);
+var createPropertyDescriptor = __webpack_require__(17781);
+var defineProperty = (__webpack_require__(12131).f);
+var hasOwn = __webpack_require__(84678);
+var anInstance = __webpack_require__(69887);
+var inheritIfRequired = __webpack_require__(75086);
+var normalizeStringArgument = __webpack_require__(33887);
+var DOMExceptionConstants = __webpack_require__(83687);
+var clearErrorStack = __webpack_require__(98009);
+var DESCRIPTORS = __webpack_require__(99924);
+var IS_PURE = __webpack_require__(66555);
+
+var DOM_EXCEPTION = 'DOMException';
+var Error = getBuiltIn('Error');
+var NativeDOMException = getBuiltIn(DOM_EXCEPTION);
+
+var $DOMException = function DOMException() {
+  anInstance(this, DOMExceptionPrototype);
+  var argumentsLength = arguments.length;
+  var message = normalizeStringArgument(argumentsLength < 1 ? undefined : arguments[0]);
+  var name = normalizeStringArgument(argumentsLength < 2 ? undefined : arguments[1], 'Error');
+  var that = new NativeDOMException(message, name);
+  var error = new Error(message);
+  error.name = DOM_EXCEPTION;
+  defineProperty(that, 'stack', createPropertyDescriptor(1, clearErrorStack(error.stack, 1)));
+  inheritIfRequired(that, this, $DOMException);
+  return that;
+};
+
+var DOMExceptionPrototype = $DOMException.prototype = NativeDOMException.prototype;
+
+var ERROR_HAS_STACK = 'stack' in new Error(DOM_EXCEPTION);
+var DOM_EXCEPTION_HAS_STACK = 'stack' in new NativeDOMException(1, 2);
+
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var descriptor = NativeDOMException && DESCRIPTORS && Object.getOwnPropertyDescriptor(globalThis, DOM_EXCEPTION);
+
+// Bun ~ 0.1.1 DOMException have incorrect descriptor and we can't redefine it
+// https://github.com/Jarred-Sumner/bun/issues/399
+var BUGGY_DESCRIPTOR = !!descriptor && !(descriptor.writable && descriptor.configurable);
+
+var FORCED_CONSTRUCTOR = ERROR_HAS_STACK && !BUGGY_DESCRIPTOR && !DOM_EXCEPTION_HAS_STACK;
+
+// `DOMException` constructor patch for `.stack` where it's required
+// https://webidl.spec.whatwg.org/#es-DOMException-specialness
+$({ global: true, constructor: true, forced: IS_PURE || FORCED_CONSTRUCTOR }, { // TODO: fix export logic
+  DOMException: FORCED_CONSTRUCTOR ? $DOMException : NativeDOMException
+});
+
+var PolyfilledDOMException = getBuiltIn(DOM_EXCEPTION);
+var PolyfilledDOMExceptionPrototype = PolyfilledDOMException.prototype;
+
+if (PolyfilledDOMExceptionPrototype.constructor !== PolyfilledDOMException) {
+  if (!IS_PURE) {
+    defineProperty(PolyfilledDOMExceptionPrototype, 'constructor', createPropertyDescriptor(1, PolyfilledDOMException));
+  }
+
+  for (var key in DOMExceptionConstants) if (hasOwn(DOMExceptionConstants, key)) {
+    var constant = DOMExceptionConstants[key];
+    var constantName = constant.s;
+    if (!hasOwn(PolyfilledDOMException, constantName)) {
+      defineProperty(PolyfilledDOMException, constantName, createPropertyDescriptor(6, constant.c));
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ 95850:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var defineBuiltIn = __webpack_require__(52470);
+var uncurryThis = __webpack_require__(9668);
+var toString = __webpack_require__(60599);
+var validateArgumentsLength = __webpack_require__(34051);
+
+var $URLSearchParams = URLSearchParams;
+var URLSearchParamsPrototype = $URLSearchParams.prototype;
+var append = uncurryThis(URLSearchParamsPrototype.append);
+var $delete = uncurryThis(URLSearchParamsPrototype['delete']);
+var forEach = uncurryThis(URLSearchParamsPrototype.forEach);
+var push = uncurryThis([].push);
+var params = new $URLSearchParams('a=1&a=2&b=3');
+
+params['delete']('a', 1);
+// `undefined` case is a Chromium 117 bug
+// https://bugs.chromium.org/p/v8/issues/detail?id=14222
+params['delete']('b', undefined);
+
+if (params + '' !== 'a=2') {
+  defineBuiltIn(URLSearchParamsPrototype, 'delete', function (name /* , value */) {
+    var length = arguments.length;
+    var $value = length < 2 ? undefined : arguments[1];
+    if (length && $value === undefined) return $delete(this, name);
+    var entries = [];
+    forEach(this, function (v, k) { // also validates `this`
+      push(entries, { key: k, value: v });
+    });
+    validateArgumentsLength(length, 1);
+    var key = toString(name);
+    var value = toString($value);
+    var index = 0;
+    var dindex = 0;
+    var found = false;
+    var entriesLength = entries.length;
+    var entry;
+    while (index < entriesLength) {
+      entry = entries[index++];
+      if (found || entry.key === key) {
+        found = true;
+        $delete(this, entry.key);
+      } else dindex++;
+    }
+    while (dindex < entriesLength) {
+      entry = entries[dindex++];
+      if (!(entry.key === key && entry.value === value)) append(this, entry.key, entry.value);
+    }
+  }, { enumerable: true, unsafe: true });
+}
+
+
+/***/ }),
+
+/***/ 73631:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var defineBuiltIn = __webpack_require__(52470);
+var uncurryThis = __webpack_require__(9668);
+var toString = __webpack_require__(60599);
+var validateArgumentsLength = __webpack_require__(34051);
+
+var $URLSearchParams = URLSearchParams;
+var URLSearchParamsPrototype = $URLSearchParams.prototype;
+var getAll = uncurryThis(URLSearchParamsPrototype.getAll);
+var $has = uncurryThis(URLSearchParamsPrototype.has);
+var params = new $URLSearchParams('a=1');
+
+// `undefined` case is a Chromium 117 bug
+// https://bugs.chromium.org/p/v8/issues/detail?id=14222
+if (params.has('a', 2) || !params.has('a', undefined)) {
+  defineBuiltIn(URLSearchParamsPrototype, 'has', function has(name /* , value */) {
+    var length = arguments.length;
+    var $value = length < 2 ? undefined : arguments[1];
+    if (length && $value === undefined) return $has(this, name);
+    var values = getAll(this, name); // also validates `this`
+    validateArgumentsLength(length, 1);
+    var value = toString($value);
+    var index = 0;
+    while (index < values.length) {
+      if (values[index++] === value) return true;
+    } return false;
+  }, { enumerable: true, unsafe: true });
+}
+
+
+/***/ }),
+
+/***/ 71399:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(99924);
+var uncurryThis = __webpack_require__(9668);
+var defineBuiltInAccessor = __webpack_require__(29393);
+
+var URLSearchParamsPrototype = URLSearchParams.prototype;
+var forEach = uncurryThis(URLSearchParamsPrototype.forEach);
+
+// `URLSearchParams.prototype.size` getter
+// https://github.com/whatwg/url/pull/734
+if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
+  defineBuiltInAccessor(URLSearchParamsPrototype, 'size', {
+    get: function size() {
+      var count = 0;
+      forEach(this, function () { count++; });
+      return count;
+    },
+    configurable: true,
+    enumerable: true
+  });
+}
+
+
+/***/ }),
+
+/***/ 95764:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var userAgent = __webpack_require__(68655);
+
+var firefox = userAgent.match(/firefox\/(\d+)/i);
+
+module.exports = !!firefox && +firefox[1];
+
+
+/***/ }),
+
+/***/ 42732:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(13931);
+var userAgent = __webpack_require__(68655);
+
+var process = globalThis.process;
+var Deno = globalThis.Deno;
+var versions = process && process.versions || Deno && Deno.version;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+  // but their correct versions are not interesting for us
+  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+}
+
+// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+// so check `userAgent` even if `.v8` exists, but 0
+if (!version && userAgent) {
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = +match[1];
+  }
+}
+
+module.exports = version;
+
+
+/***/ }),
+
+/***/ 72726:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var userAgent = __webpack_require__(68655);
+
+var webkit = userAgent.match(/AppleWebKit\/(\d+)\./);
+
+module.exports = !!webkit && +webkit[1];
+
+
+/***/ }),
+
+/***/ 7896:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
