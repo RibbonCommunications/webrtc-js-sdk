@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.15.0-beta.1425
+ * Version: 6.15.0-beta.1426
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 88173:
+/***/ 64249:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.15.0-beta.1425';
+  return '6.15.0-beta.1426';
 }
 
 /***/ }),
@@ -10538,7 +10538,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(88173);
+var _version = __webpack_require__(64249);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23436,7 +23436,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(88173);
+var _version = __webpack_require__(64249);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -29228,7 +29228,8 @@ function createMiddleware(context) {
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     const log = logManager.getLogger('CALL', targetCall ? targetCall.id : undefined);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
+      return;
     }
 
     /*
@@ -29309,9 +29310,9 @@ function createMiddleware(context) {
       statusCode
     } = message.sessionParams;
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-    const log = logManager.getLogger('CALL', targetCall ? targetCall.id : undefined);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      const log = logManager.getLogger('CALL');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
       return;
     }
     const domain = (0, _selectors2.getDomain)(context.getState());
@@ -29369,9 +29370,10 @@ function createMiddleware(context) {
       statusCode
     } = message.sessionParams;
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-    const log = logManager.getLogger('CALL', targetCall ? targetCall.id : undefined);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      const log = logManager.getLogger('CALL');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
+      return;
     }
     const domain = (0, _selectors2.getDomain)(context.getState());
     const remoteInfo = (0, _utils.getRemoteParticipant)(targetCall, message, domain);
@@ -29426,13 +29428,15 @@ function createMiddleware(context) {
       sessionData: wrtcsSessionId
     } = message.sessionParams;
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-    const log = logManager.getLogger('CALL', targetCall ? targetCall.id : undefined);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      const log = logManager.getLogger('CALL');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
+      return;
     }
     const domain = (0, _selectors2.getDomain)(context.getState());
     const remoteInfo = (0, _utils.getRemoteParticipant)(targetCall, message, domain);
     const params = {
+      eventType: message.eventType,
       // Remote participant's information.
       ...remoteInfo,
       customParameters: message.customParameters
@@ -29475,6 +29479,7 @@ function createMiddleware(context) {
 
     // Massage data into a generic format, instead of Link-specific.
     const params = {
+      eventType: message.eventType,
       // The remote SDP offer included with the notification (if any).
       sdp: message.sessionParams.sdp,
       // Remote participant information.
@@ -29593,7 +29598,7 @@ function createMiddleware(context) {
     } = message.sessionParams;
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
       return;
     }
     const domain = (0, _selectors2.getDomain)(context.getState());
@@ -29664,7 +29669,7 @@ function createMiddleware(context) {
     } = message.sessionParams;
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
       return;
     }
 
@@ -29677,6 +29682,7 @@ function createMiddleware(context) {
 
     // Pull-out the parameters into a standard format for the Callstack.
     const params = {
+      eventType: message.eventType,
       wrtcsSessionId: message.sessionParams.sessionData,
       sdp: message.sessionParams.sdp,
       ...remoteInfo,
@@ -29747,12 +29753,16 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = createMiddleware;
 exports.shouldHandlePattern = shouldHandlePattern;
+var _selectors = __webpack_require__(40481);
 var _actionTypes = __webpack_require__(70506);
+// Call plugin.
+
 // Other plugins
 
 function createMiddleware(context) {
   const {
-    CallManager
+    CallManager,
+    logManager
   } = context.container;
 
   /**
@@ -29765,10 +29775,19 @@ function createMiddleware(context) {
       return;
     }
     const message = action.payload.notificationMessage;
+    const {
+      sessionData: wrtcsSessionId
+    } = message.sessionParams;
+    const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
+    if (!targetCall) {
+      const log = logManager.getLogger('CALL');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
+      return;
+    }
     const notificationParams = message.callNotificationParams || {};
-    const wrtcsSessionId = message.sessionParams.sessionData;
     // Massage data into a generic format, instead of Link-specific.
     const params = {
+      eventType: message.eventType,
       sdp: message.sessionParams.sdp,
       remoteName: notificationParams.remoteName,
       remoteNumber: notificationParams.remoteDisplayNumber,
@@ -29822,9 +29841,10 @@ function createMiddleware(context) {
       statusCode
     } = message.sessionParams;
     const targetCall = (0, _selectors.getCallByWrtcsSessionId)(context.getState(), wrtcsSessionId);
-    const log = logManager.getLogger('CALL', targetCall ? targetCall.id : undefined);
     if (!targetCall) {
-      log.info('A remote operation is being requested on a call that no longer exists.');
+      const log = logManager.getLogger('CALL');
+      log.info(`Received ${message.eventType} notification for unknown call; ignoring.`);
+      return;
     }
     const domain = (0, _selectors2.getDomain)(context.getState());
     const remoteInfo = (0, _utils.getRemoteParticipant)(targetCall, message, domain);
@@ -36679,7 +36699,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(88173);
+var _version = __webpack_require__(64249);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -44551,7 +44571,7 @@ var authorizations = _interopRequireWildcard(__webpack_require__(38577));
 var _makeRequest = _interopRequireDefault(__webpack_require__(18439));
 var _utils = __webpack_require__(67426);
 var _selectors = __webpack_require__(87075);
-var _version = __webpack_require__(88173);
+var _version = __webpack_require__(64249);
 var _utils2 = __webpack_require__(1011);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -44703,7 +44723,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(88173);
+var _version = __webpack_require__(64249);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -55647,7 +55667,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(88173);
+var _version = __webpack_require__(64249);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88593,7 +88613,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 60193:
+/***/ 27011:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89034,7 +89054,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(60193));
+var _version = _interopRequireDefault(__webpack_require__(27011));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -96970,7 +96990,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(7003);
+var V8 = __webpack_require__(70615);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -96993,7 +97013,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(7003);
+var V8_VERSION = __webpack_require__(70615);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -97978,10 +97998,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(46097);
+var FF = __webpack_require__(19381);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(7003);
-var WEBKIT = __webpack_require__(25267);
+var V8 = __webpack_require__(70615);
+var WEBKIT = __webpack_require__(68287);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98329,7 +98349,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 46097:
+/***/ 19381:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98343,7 +98363,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 7003:
+/***/ 70615:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98379,7 +98399,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 25267:
+/***/ 68287:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
