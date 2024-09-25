@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.15.0-beta.1432
+ * Version: 6.15.0-beta.1433
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 99932:
+/***/ 55026:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.15.0-beta.1432';
+  return '6.15.0-beta.1433';
 }
 
 /***/ }),
@@ -10538,7 +10538,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(99932);
+var _version = __webpack_require__(55026);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23436,7 +23436,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(99932);
+var _version = __webpack_require__(55026);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -35830,7 +35830,8 @@ const bridgeCodes = exports.bridgeCodes = {
 const subscriptionCodes = exports.subscriptionCodes = {
   WS_CONNECTION_ERROR: 'subscription:1',
   NO_SERVICE_PROVIDED: 'subscription:2',
-  GENERIC_ERROR: 'subscription:3'
+  GENERIC_ERROR: 'subscription:3',
+  INVALID_STATE: 'subscription:4'
 };
 
 /**
@@ -36699,7 +36700,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(99932);
+var _version = __webpack_require__(55026);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -44716,7 +44717,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(99932);
+var _version = __webpack_require__(55026);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -46842,7 +46843,12 @@ function createAPI(container) {
           });
         }
       } else {
-        // TODO: Directly emit error event - see KJS-1756
+        emitEvent(eventTypes.SUB_ERROR, {
+          error: new _errors.default({
+            message: 'Failed to subscribe user. Please ensure credentials are set.',
+            code: _errors.subscriptionCodes.INVALID_STATE
+          })
+        });
       }
     },
     /**
@@ -46908,7 +46914,12 @@ function createAPI(container) {
           });
         }
       } else {
-        // TODO: Directly emit error event - see KJS-1756
+        emitEvent(eventTypes.SUB_ERROR, {
+          error: new _errors.default({
+            message: 'Failed to unsubscribe user: Found no existing subscription with a valid username or a valid access token.',
+            code: _errors.subscriptionCodes.INVALID_STATE
+          })
+        });
       }
     },
     /**
@@ -55660,7 +55671,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(99932);
+var _version = __webpack_require__(55026);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88606,7 +88617,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 84232:
+/***/ 77314:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89047,7 +89058,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(84232));
+var _version = _interopRequireDefault(__webpack_require__(77314));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -96983,7 +96994,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(56278);
+var V8 = __webpack_require__(58484);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -97006,7 +97017,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(56278);
+var V8_VERSION = __webpack_require__(58484);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -97991,10 +98002,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(81435);
+var FF = __webpack_require__(23002);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(56278);
-var WEBKIT = __webpack_require__(90418);
+var V8 = __webpack_require__(58484);
+var WEBKIT = __webpack_require__(8224);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98342,7 +98353,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 81435:
+/***/ 23002:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98356,7 +98367,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 56278:
+/***/ 58484:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98392,7 +98403,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 90418:
+/***/ 8224:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
