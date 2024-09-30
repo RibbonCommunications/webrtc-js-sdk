@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.15.0-beta.1440
+ * Version: 6.16.0-beta.1441
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 95161:
+/***/ 21157:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.15.0-beta.1440';
+  return '6.16.0-beta.1441';
 }
 
 /***/ }),
@@ -6661,9 +6661,14 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = getSessionsMiddleware;
 exports.shouldHandlePattern = shouldHandlePattern;
+var _actions = __webpack_require__(35);
+var eventTypes = _interopRequireWildcard(__webpack_require__(51918));
+var _constants = __webpack_require__(59090);
 var _selectors = __webpack_require__(40481);
-var _constants = __webpack_require__(77126);
+var _constants2 = __webpack_require__(77126);
 var _actionTypes = __webpack_require__(9719);
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 // Call plugin
 
 // Other plugins
@@ -6674,7 +6679,13 @@ var _actionTypes = __webpack_require__(9719);
  * @return {Function} The function which is responsible for triggering a call audit.
  */
 function getSessionsMiddleware(context) {
-  const operations = context.container.Callstack.operations;
+  const {
+    logManager,
+    Callstack,
+    CallRequests,
+    CallstackWebrtc,
+    emitEvent
+  } = context.container;
 
   /*
    * TODO: Rename this middleware (and file).
@@ -6689,7 +6700,7 @@ function getSessionsMiddleware(context) {
    * Responsibilities:
    *   1. Ensure resyncOnConnect config is set
    *   2. Filter out inactive calls (calls already in an ended state)
-   *   3. Call updateCallState operation for each active call.
+   *   3. Call resyncCallState operation for each active call.
    * @method getSessions
    * @param {Object} action Any action.
    * @return {undefined}
@@ -6708,10 +6719,109 @@ function getSessionsMiddleware(context) {
 
     // Grab all active calls
     const calls = (0, _selectors.getCalls)(context.getState());
-    const activeCalls = calls.filter(call => call.state !== _constants.CALL_STATES.CANCELLED && call.state !== _constants.CALL_STATES.ENDED);
+    const activeCalls = calls.filter(call => call.state !== _constants2.CALL_STATES.CANCELLED && call.state !== _constants2.CALL_STATES.ENDED);
+
+    /*
+     * TODO: This operation's logic is not safe. It assumes that an on-going operation will re-sync the call's state,
+     *    but not all operations will do that (eg. some operations are local-only, getStats).
+     * Reference: https://jira.rbbn.com/browse/KJS-1974
+     */
+    function hasNoOperation(call) {
+      return call.currentOperations.length === 0;
+    }
 
     // Check and update the call state of each call if necessary
-    activeCalls.map(async activeCall => await operations.updateCallState(activeCall));
+    for (const activeCall of activeCalls) {
+      const log = logManager.getLogger('CALL', activeCall.id);
+      const callStateAfterConnect = activeCall.state;
+
+      // If there is an ongoing operation when the WS connects, the response to that operation will re-sync the state
+      // Otherwise, we need to get the status of the session from the server
+      if (hasNoOperation(activeCall)) {
+        try {
+          const sessionStatusResponse = await CallRequests.getSession({
+            wrtcsSessionId: activeCall.wrtcsSessionId,
+            id: activeCall.id
+          });
+
+          // Get state of the call again before evaluating the response as an operation request and response
+          // could have been processed in between the request to get the session and the response received
+          const currentCall = (0, _selectors.getCallById)(context.getState(), activeCall.id);
+
+          // Do nothing if an operation was triggered in between the GET sessions request and response, and is ongoing
+          if (hasNoOperation(currentCall)) {
+            /*
+             * If the current call state is ringing OR if the state of the call was connected/on hold before we
+             * did the GET, look at the response of the GET request.
+             * If call is ringing and GET session returns ringing, we don't need to do anything
+             * Also, if we were previously connected, but GET returns ringing, this could be due to an operation that was resolved
+             * between the GET request and response. In any case, no need to look at GET response for this scenario.
+             */
+            if (currentCall.state === _constants2.CALL_STATES.RINGING || callStateAfterConnect !== _constants2.CALL_STATES.RINGING) {
+              await Callstack.operations.resyncCallState(activeCall.id, sessionStatusResponse);
+            }
+          }
+        } catch (error) {
+          // Get state of the call again before evaluating the response as an operation request and response
+          // could have been processed in between the request to get the session and the response received
+          const currentCall = (0, _selectors.getCallById)(context.getState(), activeCall.id);
+
+          // Do nothing if an operation was triggered in between the GET sessions request and response, and is ongoing
+          if (hasNoOperation(currentCall)) {
+            /*
+             * If the current call state is ringing OR if the state of the call was connected/on hold before we
+             * did the GET, look at the response of the GET request.
+             * If call is ringing and GET session returns ringing, we don't need to do anything
+             * Also, if we were previously connected, but GET returns ringing, this could be due to an operation that was resolved
+             * between the GET request and response. In any case, no need to look at GET response for this scenario.
+             */
+            if (currentCall.state === _constants2.CALL_STATES.RINGING || callStateAfterConnect !== _constants2.CALL_STATES.RINGING) {
+              // Call not found
+              if (error.code === 47) {
+                // End the call as the session does not exist on the server anymore (statusCode 47 response)
+                await CallstackWebrtc.closeCall(activeCall.webrtcSessionId);
+                log.info(`Call re-sync found that call is ended. Changing to ${_constants2.CALL_STATES.ENDED}.`);
+                context.dispatch(_actions.callActions.endCallFinish(activeCall.id, {
+                  isLocal: true,
+                  error
+                }));
+
+                // 1- 'call operation' event
+                emitEvent(eventTypes.CALL_OPERATION, {
+                  callId: activeCall.id,
+                  isLocal: true,
+                  operation: _constants.OPERATIONS.END,
+                  transition: _constants.OP_TRANSITIONS.FINISH,
+                  previous: {},
+                  error
+                });
+
+                // Tell the application that no tracks are available any longer.
+                emitEvent(eventTypes.CALL_TRACKS_REMOVED, {
+                  callId: activeCall.id,
+                  trackIds: [...activeCall.localTracks, ...activeCall.remoteTracks]
+                });
+
+                // 2- 'call state change' event, which updates the state.
+                emitEvent(eventTypes.CALL_STATE_CHANGE, {
+                  callId: activeCall.id,
+                  previous: {
+                    state: activeCall.state,
+                    localHold: activeCall.localHold,
+                    remoteHold: activeCall.remoteHold
+                  },
+                  error
+                });
+
+                // GET response errors other than session not found
+              } else {
+                log.debug(`Call re-sync failure (${error.code}).`, error);
+              }
+            }
+          }
+        }
+      }
+    }
   }
   return getSessions;
 }
@@ -10538,7 +10648,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(95161);
+var _version = __webpack_require__(21157);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -12492,12 +12602,6 @@ Object.defineProperty(exports, "createUnhold", ({
     return _unhold.default;
   }
 }));
-Object.defineProperty(exports, "createUpdateCallState", ({
-  enumerable: true,
-  get: function () {
-    return _updateCallState.default;
-  }
-}));
 var _consultativeTransfer = _interopRequireDefault(__webpack_require__(61246));
 var _directTransfer = _interopRequireDefault(__webpack_require__(25070));
 var _join = _interopRequireDefault(__webpack_require__(17840));
@@ -12517,7 +12621,6 @@ var _playAudioFile = _interopRequireDefault(__webpack_require__(51854));
 var _getAvailableCodecs = _interopRequireDefault(__webpack_require__(5972));
 var _iceRestart = _interopRequireDefault(__webpack_require__(87386));
 var _sendDtmf = _interopRequireDefault(__webpack_require__(62253));
-var _updateCallState = _interopRequireDefault(__webpack_require__(85330));
 var _resyncCallState = _interopRequireDefault(__webpack_require__(67163));
 var _iceCollectionCheck = _interopRequireDefault(__webpack_require__(95265));
 var _getStats = _interopRequireDefault(__webpack_require__(8683));
@@ -16753,8 +16856,8 @@ function createResync(container) {
    * This operation performs the signaling operation to get the status of a call session on the server, and any local
    *    WebRTC operations necessary for closing the call if necessary.
    */
-  return async function resyncCallState(callId) {
-    await signalling(container, callId);
+  return async function resyncCallState(callId, sessionStatus) {
+    await signalling(container, callId, sessionStatus);
   };
 }
 
@@ -16762,9 +16865,10 @@ function createResync(container) {
  * @method resyncCallState
  * @param {Object} container
  * @param {string} callId  The call being acted on.
+ * @param {Object} sessionStatus The session status response from the server.
  * @return {Promise<undefined>}
  */
-async function signalling(container, callId) {
+async function signalling(container, callId, sessionStatus) {
   const {
     context,
     CallRequests,
@@ -16775,10 +16879,10 @@ async function signalling(container, callId) {
   const log = logManager.getLogger('CALL', callId);
   const currentCall = (0, _selectors.getCallById)(context.getState(), callId);
   try {
-    const sessionStatusResponse = await CallRequests.getSession({
+    const sessionStatusResponse = sessionStatus || (await CallRequests.getSession({
       wrtcsSessionId: currentCall.wrtcsSessionId,
       id: callId
-    });
+    }));
     if (sessionStatusResponse.state === 'ANSWERED' && currentCall.state !== _constants.CALL_STATES.CONNECTED && currentCall.state !== _constants.CALL_STATES.ON_HOLD) {
       log.info('Call re-sync found that call was answered elsewhere. Cancelling call.');
       // If the call is answered, but not by us, report call as cancelled
@@ -19509,192 +19613,6 @@ function rollbackUnholdOperation(container) {
     };
   }
   return rollbackUnhold;
-}
-
-/***/ }),
-
-/***/ 85330:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = initOperation;
-var _updateCallState = _interopRequireDefault(__webpack_require__(40448));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function initOperation(bottle) {
-  // Provide the top-level container to the factory functions.
-  //    Otherwise they would get the `operations` sub-container.
-  bottle.factory('Callstack.operations.updateCallState', () => (0, _updateCallState.default)(bottle.container));
-}
-
-/***/ }),
-
-/***/ 40448:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = updateCallStateOperation;
-var _actions = __webpack_require__(35);
-var _selectors = __webpack_require__(40481);
-var _constants = __webpack_require__(77126);
-var eventTypes = _interopRequireWildcard(__webpack_require__(51918));
-var _constants2 = __webpack_require__(59090);
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-// Call plugin
-
-/**
- * Bottle wrapper for "update call state" operation.
- * @return {Function}
- */
-function updateCallStateOperation(container) {
-  const {
-    context,
-    CallRequests,
-    logManager,
-    emitEvent
-  } = container;
-
-  // eslint-disable-next-line no-warning-comments
-  /**
-   * Sends a GET session request and updates call if required.
-   *
-   * This operation performs the signaling operation to get the status of a call session on the server.
-   *    There are no local webRTC operations involved.
-   *
-   * Assumptions:
-   *    1. The server uses Kandy Link 4.7.1+
-   * Responsibilities:
-   *    2. Update the call state if the call is out of sync (call's status does not match response from server)
-   * @method updateCallState
-   * @param {Object}   activeCall        The call being acted on.
-   */
-  async function updateCallState(activeCall) {
-    const {
-      CallstackWebrtc
-    } = container;
-    const log = logManager.getLogger('CALL', activeCall.id);
-    const callStateAfterConnect = activeCall.state;
-
-    /*
-     * TODO: This operation's logic is not safe. It assumes that an on-going operation will re-sync the call's state,
-     *    but not all operations will do that (eg. some operations are local-only, getStats).
-     * Reference: https://jira.rbbn.com/browse/KJS-1974
-     */
-    function hasNoOperation(call) {
-      return call.currentOperations.length === 0;
-    }
-
-    // If there is an ongoing operation when the WS connects, the response to that operation will re-sync the state
-    // Otherwise, we need to get the status of the session from the server
-    if (hasNoOperation(activeCall)) {
-      try {
-        const sessionStatusResponse = await CallRequests.getSession({
-          wrtcsSessionId: activeCall.wrtcsSessionId,
-          id: activeCall.id
-        });
-
-        // Get state of the call again before evaluating the response as an operation request and response
-        // could have been processed in between the request to get the session and the response received
-        const currentCall = (0, _selectors.getCallById)(context.getState(), activeCall.id);
-
-        // Do nothing if an operation was triggered in between the GET sessions request and response, and is ongoing
-        if (hasNoOperation(currentCall)) {
-          /*
-           * If the current call state is ringing OR if the state of the call was connected/on hold before we
-           * did the GET, look at the response of the GET request.
-           * If call is ringing and GET session returns ringing, we don't need to do anything
-           * Also, if we were previously connected, but GET returns ringing, this could be due to an operation that was resolved
-           * between the GET request and response. In any case, no need to look at GET response for this scenario.
-           */
-          if (currentCall.state === _constants.CALL_STATES.RINGING || callStateAfterConnect !== _constants.CALL_STATES.RINGING) {
-            if (sessionStatusResponse.state === 'ANSWERED' && currentCall.state !== _constants.CALL_STATES.CONNECTED && currentCall.state !== _constants.CALL_STATES.ON_HOLD) {
-              // Report call as cancelled
-              await CallstackWebrtc.closeCall(activeCall.webrtcSessionId);
-              log.info(`Call re-sync found that call is cancelled. Changing to ${_constants.CALL_STATES.CANCELLED}.`);
-              context.dispatch(_actions.callActions.callCancelled(activeCall.id));
-              emitEvent(eventTypes.CALL_STATE_CHANGE, {
-                callId: activeCall.id,
-                previous: {
-                  state: activeCall.state,
-                  localHold: activeCall.localHold,
-                  remoteHold: activeCall.remoteHold
-                }
-              });
-            }
-          }
-        }
-      } catch (error) {
-        // Get state of the call again before evaluating the response as an operation request and response
-        // could have been processed in between the request to get the session and the response received
-        const currentCall = (0, _selectors.getCallById)(context.getState(), activeCall.id);
-
-        // Do nothing if an operation was triggered in between the GET sessions request and response, and is ongoing
-        if (hasNoOperation(currentCall)) {
-          /*
-           * If the current call state is ringing OR if the state of the call was connected/on hold before we
-           * did the GET, look at the response of the GET request.
-           * If call is ringing and GET session returns ringing, we don't need to do anything
-           * Also, if we were previously connected, but GET returns ringing, this could be due to an operation that was resolved
-           * between the GET request and response. In any case, no need to look at GET response for this scenario.
-           */
-          if (currentCall.state === _constants.CALL_STATES.RINGING || callStateAfterConnect !== _constants.CALL_STATES.RINGING) {
-            // Call not found
-            if (error.code === 47) {
-              // End the call as the session does not exist on the server anymore (statusCode 47 response)
-              await CallstackWebrtc.closeCall(activeCall.webrtcSessionId);
-              log.info(`Call re-sync found that call is ended. Changing to ${_constants.CALL_STATES.ENDED}.`);
-              context.dispatch(_actions.callActions.endCallFinish(activeCall.id, {
-                isLocal: true,
-                error
-              }));
-
-              // 1- 'call operation' event
-              emitEvent(eventTypes.CALL_OPERATION, {
-                callId: activeCall.id,
-                isLocal: true,
-                operation: _constants2.OPERATIONS.END,
-                transition: _constants2.OP_TRANSITIONS.FINISH,
-                previous: {},
-                error
-              });
-
-              // Tell the application that no tracks are available any longer.
-              emitEvent(eventTypes.CALL_TRACKS_REMOVED, {
-                callId: activeCall.id,
-                trackIds: [...activeCall.localTracks, ...activeCall.remoteTracks]
-              });
-
-              // 2- 'call state change' event, which updates the state.
-              emitEvent(eventTypes.CALL_STATE_CHANGE, {
-                callId: activeCall.id,
-                previous: {
-                  state: activeCall.state,
-                  localHold: activeCall.localHold,
-                  remoteHold: activeCall.remoteHold
-                },
-                error
-              });
-
-              // GET response errors other than session not found
-            } else {
-              log.debug(`Call re-sync failure (${error.code}).`, error);
-            }
-          }
-        }
-      }
-    }
-  }
-  return updateCallState;
 }
 
 /***/ }),
@@ -23436,7 +23354,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(95161);
+var _version = __webpack_require__(21157);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -36700,7 +36618,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(95161);
+var _version = __webpack_require__(21157);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -42172,7 +42090,7 @@ function createRequests(container) {
     if (!response.error) {
       log.info('SDP fetched successfully.');
       // TODO: test and see what this format actually is.
-      return response.payload.body;
+      return response.body;
     } else {
       log.debug(`Failed to fetch SDP. Error is: ${JSON.stringify(response.error)}`);
       throw new _errors.default({
@@ -44717,7 +44635,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(95161);
+var _version = __webpack_require__(21157);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -55671,7 +55589,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(95161);
+var _version = __webpack_require__(21157);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -59375,8 +59293,12 @@ function DeviceManager() {
 
   // Check devices on initialization.
   checkDevices().then(() => {
-    // Emit an initial event to notify that devices are available.
-    emitter.emit('change');
+    if (isListening) {
+      // Emit an initial event to notify that devices are available.
+      emitter.emit('change');
+    } else {
+      log.info('Initial media device discovery ignored.');
+    }
   });
 
   // Check devices whenever they change.
@@ -59393,8 +59315,12 @@ function DeviceManager() {
       setTimeout(() => {
         recentDeviceChange = false;
         checkDevices().then(() => {
-          // Emit an event to notify of the change.
-          emitter.emit('change');
+          if (isListening) {
+            // Emit an event to notify of the change.
+            emitter.emit('change');
+          } else {
+            log.info('Media device change ignored after being detected.');
+          }
         });
       }, 50);
     } else {
@@ -88617,7 +88543,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 30711:
+/***/ 84203:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89058,7 +88984,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(30711));
+var _version = _interopRequireDefault(__webpack_require__(84203));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -96994,7 +96920,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(9559);
+var V8 = __webpack_require__(26415);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -97017,7 +96943,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(9559);
+var V8_VERSION = __webpack_require__(26415);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -98002,10 +97928,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(74677);
+var FF = __webpack_require__(58717);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(9559);
-var WEBKIT = __webpack_require__(72447);
+var V8 = __webpack_require__(26415);
+var WEBKIT = __webpack_require__(88583);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98353,7 +98279,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 74677:
+/***/ 58717:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98367,7 +98293,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 9559:
+/***/ 26415:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98403,7 +98329,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 72447:
+/***/ 88583:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";

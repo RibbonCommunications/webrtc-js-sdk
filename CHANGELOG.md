@@ -7,6 +7,13 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.16.0 - beta
+
+### Fixed
+
+- Fixed a Proxy race-condition that could cause a `devices:change` event to be emitted for local devices when in proxy-mode. `KJS-2341`
+  - If the SDK is placed into proxy-mode before the SDK emits the initial `devices:change` event, then this event for local device discovery will no longer be emitted. Only the intended event for remote device discovery will be emitted in this scenario.
+
 ## 6.15.0 - 2024-09-27
 
 ### Added
