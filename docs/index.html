@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>webrtc-js-sdk 6.14.0 | Documentation</title>
+  <title>webrtc-js-sdk 6.15.0 | Documentation</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' type='text/css' rel='stylesheet' />
   <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>webrtc-js-sdk</h3>
-          <div class='mb1'><code>6.14.0</code></div>
+          <div class='mb1'><code>6.15.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -223,6 +223,24 @@
                               href='#callmediaconstraint'
                               class='regular pre-open'>
                               <span style="color:blue">ⓣ</span> MediaConstraint
+                            </a></li>
+                          
+                            <li><a
+                              href='#callaudiooptions'
+                              class='regular pre-open'>
+                              <span style="color:blue">ⓣ</span> AudioOptions
+                            </a></li>
+                          
+                            <li><a
+                              href='#callvideooptions'
+                              class='regular pre-open'>
+                              <span style="color:blue">ⓣ</span> VideoOptions
+                            </a></li>
+                          
+                            <li><a
+                              href='#callscreenoptions'
+                              class='regular pre-open'>
+                              <span style="color:blue">ⓣ</span> ScreenOptions
                             </a></li>
                           
                             <li><a
@@ -4984,6 +5002,333 @@ client.call.make(destination, {
       </div>
     </div>
   
+    <div class='border-bottom' id='callaudiooptions'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>AudioOptions</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>The AudioOptions type defines the format for specifying audio-related constraints.</p>
+
+
+  <div class='pre p1 fill-light mt0'>AudioOptions</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>deviceId</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>)
+          </code>
+
+          
+
+          
+             : ID of the microphone to receive audio from.
+
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Specify what specific microphone device to use by providing its device ID.</span>
+client.call.make(destination, {
+   <span class="hljs-attr">audio</span>: <span class="hljs-literal">true</span>,
+   <span class="hljs-attr">audioOptions</span>: { <span class="hljs-attr">deviceId</span>: <span class="hljs-string">&#x27;some unique device ID&#x27;</span> }
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='callvideooptions'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>VideoOptions</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>The VideoOptions type defines the format for specifying video-related constraints.</p>
+
+
+  <div class='pre p1 fill-light mt0'>VideoOptions</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>deviceId</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>)
+          </code>
+
+          
+
+          
+             : ID of the camera to receive video from.
+
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>height</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>?)
+          </code>
+
+          
+
+          
+             : The height of the video.
+
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>width</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>?)
+          </code>
+
+          
+
+          
+             : The width of the video.
+
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>frameRate</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>?)
+          </code>
+
+          
+
+          
+             : The frame rate of the video.
+
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>client.call.make(destination, {
+   <span class="hljs-attr">video</span>: <span class="hljs-literal">true</span>,
+   <span class="hljs-attr">videoOptions</span>: {
+     <span class="hljs-attr">deviceId</span>: <span class="hljs-string">&#x27;some unique device ID&#x27;</span>,
+     <span class="hljs-comment">// Set height and width constraints to exactly be 1280x720.</span>
+     <span class="hljs-attr">height</span>: { <span class="hljs-attr">exact</span>: <span class="hljs-number">720</span> },
+     <span class="hljs-attr">width</span>: { <span class="hljs-attr">exact</span>: <span class="hljs-number">1280</span> },
+     <span class="hljs-attr">frameRate</span>: { <span class="hljs-attr">exact</span>: <span class="hljs-number">24</span> }
+   }
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='callscreenoptions'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>ScreenOptions</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>The ScreenOptions type defines the format for specifying screen capturing-related constraints.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ScreenOptions</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>height</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>?)
+          </code>
+
+          
+
+          
+             : The height of the screen capture.
+
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>width</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>?)
+          </code>
+
+          
+
+          
+             : The width of the screen capture.
+
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>frameRate</span> 
+          <code class='quiet'>
+            (<a href="#callmediaconstraint">call.MediaConstraint</a>?)
+          </code>
+
+          
+
+          
+             : The frame rate of the live screen share.
+
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>client.call.make(destination, {
+   <span class="hljs-attr">screen</span>: <span class="hljs-literal">true</span>,
+   <span class="hljs-attr">screenOptions</span>: {
+     <span class="hljs-comment">// Set height and width constraints to exactly be 1280x720.</span>
+     <span class="hljs-attr">height</span>: { <span class="hljs-attr">exact</span>: <span class="hljs-number">720</span> },
+     <span class="hljs-attr">width</span>: { <span class="hljs-attr">exact</span>: <span class="hljs-number">1280</span> },
+     <span class="hljs-attr">frameRate</span>: { <span class="hljs-attr">exact</span>: <span class="hljs-number">24</span> }
+   }
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='callmediaoffered'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -7078,22 +7423,11 @@ if you have passed in a detached track id of kind video.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="#callaudiooptions">call.AudioOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's audio.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the microphone to receive audio from.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -7109,49 +7443,11 @@ if you have passed in a detached track id of kind video.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="#callvideooptions">call.VideoOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's video.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the camera to receive video from.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the video.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -7167,40 +7463,11 @@ if you have passed in a detached track id of kind video.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="#callscreenoptions">call.ScreenOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's screenShare.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the screenShare.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the screenShare.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the screenShare.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -7446,22 +7713,11 @@ permissions.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="#callaudiooptions">call.AudioOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's audio.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the microphone to receive audio from.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -7477,49 +7733,11 @@ permissions.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="#callvideooptions">call.VideoOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's video.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the camera to receive video from.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the video.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -7535,40 +7753,11 @@ permissions.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="#callscreenoptions">call.ScreenOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's screenShare.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the screenShare.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the screenShare.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the screenShare.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -8189,107 +8378,29 @@ added to the Call.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="#callaudiooptions">call.AudioOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's audio.
 </span></td>
 </tr>
 
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the microphone to receive audio from.
-</span></td>
-</tr>
-
-
-  
-
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="#callvideooptions">call.VideoOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's video.
 </span></td>
 </tr>
 
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the camera to receive video from.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the video.
-</span></td>
-</tr>
-
-
-  
-
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="#callscreenoptions">call.ScreenOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the call's screenShare.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the screenShare.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the screenShare.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.screenOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the screenShare.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -8528,7 +8639,7 @@ event both for the local and remote users to indicate a track has been
 added to the Call.</p>
 
 
-  <div class='pre p1 fill-light mt0'>startVideo(callId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, videoOptions: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</div>
+  <div class='pre p1 fill-light mt0'>startVideo(callId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, videoOptions: <a href="#callvideooptions">call.VideoOptions</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</div>
   
   
 
@@ -8554,62 +8665,10 @@ added to the Call.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>videoOptions</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+            <span class='code bold'>videoOptions</span> <code class='quiet'>(<a href="#callvideooptions">call.VideoOptions</a>?)</code>
 	    Options for configuring the call's video.
 
           </div>
-          
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>videoOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the camera to receive video from.
-</span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>videoOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The height of the video.
-</span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>videoOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the video.
-</span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>videoOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the video.
-</span></td>
-</tr>
-
-
-              
-            </tbody>
-          </table>
           
         </div>
       
@@ -8991,22 +9050,11 @@ seamlessly for the remote application, which will not receive an event.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.audioOptions</span> <code class='quiet'><a href="#callaudiooptions">call.AudioOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the audio track.
 </span></td>
 </tr>
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.audioOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>ID of the microphone to receive audio from.
-</span></td>
-</tr>
-
-
-  
 
 
               
@@ -9022,49 +9070,31 @@ seamlessly for the remote application, which will not receive an event.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?</code>
+  <td class='break-word'><span class='code bold'>media.videoOptions</span> <code class='quiet'><a href="#callvideooptions">call.VideoOptions</a>?</code>
   </td>
   <td class='break-word'><span>Options for configuring the video track.
 </span></td>
 </tr>
 
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>media.screen</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
   
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.deviceId</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
+    (default <code>false</code>)
   </td>
-  <td class='break-word'><span>ID of the camera to receive video from.
+  <td class='break-word'><span>Whether to create a screen share track.
 </span></td>
 </tr>
 
 
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.height</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>media.screenOptions</span> <code class='quiet'><a href="#callscreenoptions">call.ScreenOptions</a>?</code>
   </td>
-  <td class='break-word'><span>The height of the video.
+  <td class='break-word'><span>Options for configuring the call's screenShare.
 </span></td>
 </tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.width</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The width of the video.
-</span></td>
-</tr>
-
-
-  
-    <tr>
-  <td class='break-word'><span class='code bold'>media.videoOptions.frameRate</span> <code class='quiet'><a href="#callmediaconstraint">call.MediaConstraint</a>?</code>
-  </td>
-  <td class='break-word'><span>The frame rate of the video.
-</span></td>
-</tr>
-
-
-  
 
 
               

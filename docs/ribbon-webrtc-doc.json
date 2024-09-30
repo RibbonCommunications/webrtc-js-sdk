@@ -6681,11 +6681,11 @@
     "context": {
       "loc": {
         "start": {
-          "line": 461,
+          "line": 523,
           "column": 0
         },
         "end": {
-          "line": 471,
+          "line": 533,
           "column": 1
         }
       },
@@ -11320,11 +11320,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -12067,11 +12067,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -12182,6 +12182,651 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "The AudioOptions type defines the format for specifying audio-related constraints."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 5,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "AudioOptions"
+            },
+            {
+              "title": "memberof",
+              "description": "call",
+              "lineNumber": 6
+            },
+            {
+              "title": "property",
+              "description": "ID of the microphone to receive audio from.",
+              "lineNumber": 7,
+              "type": {
+                "type": "NameExpression",
+                "name": "call.MediaConstraint"
+              },
+              "name": "deviceId"
+            },
+            {
+              "title": "example",
+              "description": "// Specify what specific microphone device to use by providing its device ID.\nclient.call.make(destination, {\n   audio: true,\n   audioOptions: { deviceId: 'some unique device ID' }\n})",
+              "lineNumber": 8
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 105,
+              "column": 0
+            },
+            "end": {
+              "line": 119,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 523,
+                "column": 0
+              },
+              "end": {
+                "line": 533,
+                "column": 1
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/call/interface/api/index.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "// Specify what specific microphone device to use by providing its device ID.\nclient.call.make(destination, {\n   audio: true,\n   audioOptions: { deviceId: 'some unique device ID' }\n})"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "deviceId",
+              "lineNumber": 7,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ID of the microphone to receive audio from."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "call.MediaConstraint"
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "typedef",
+          "name": "AudioOptions",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "call",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "call",
+              "kind": "namespace"
+            },
+            {
+              "name": "AudioOptions",
+              "kind": "typedef",
+              "scope": "static"
+            }
+          ],
+          "namespace": "call.AudioOptions"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The VideoOptions type defines the format for specifying video-related constraints."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 5,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "VideoOptions"
+            },
+            {
+              "title": "memberof",
+              "description": "call",
+              "lineNumber": 6
+            },
+            {
+              "title": "property",
+              "description": "ID of the camera to receive video from.",
+              "lineNumber": 7,
+              "type": {
+                "type": "NameExpression",
+                "name": "call.MediaConstraint"
+              },
+              "name": "deviceId"
+            },
+            {
+              "title": "property",
+              "description": "The height of the video.",
+              "lineNumber": 8,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              },
+              "name": "height"
+            },
+            {
+              "title": "property",
+              "description": "The width of the video.",
+              "lineNumber": 9,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              },
+              "name": "width"
+            },
+            {
+              "title": "property",
+              "description": "The frame rate of the video.",
+              "lineNumber": 10,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              },
+              "name": "frameRate"
+            },
+            {
+              "title": "example",
+              "description": "client.call.make(destination, {\n   video: true,\n   videoOptions: {\n     deviceId: 'some unique device ID',\n     // Set height and width constraints to exactly be 1280x720.\n     height: { exact: 720 },\n     width: { exact: 1280 },\n     frameRate: { exact: 24 }\n   }\n})",
+              "lineNumber": 11
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 121,
+              "column": 0
+            },
+            "end": {
+              "line": 143,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 523,
+                "column": 0
+              },
+              "end": {
+                "line": 533,
+                "column": 1
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/call/interface/api/index.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "client.call.make(destination, {\n   video: true,\n   videoOptions: {\n     deviceId: 'some unique device ID',\n     // Set height and width constraints to exactly be 1280x720.\n     height: { exact: 720 },\n     width: { exact: 1280 },\n     frameRate: { exact: 24 }\n   }\n})"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "deviceId",
+              "lineNumber": 7,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ID of the camera to receive video from."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "call.MediaConstraint"
+              }
+            },
+            {
+              "title": "property",
+              "name": "height",
+              "lineNumber": 8,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The height of the video."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "width",
+              "lineNumber": 9,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The width of the video."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "frameRate",
+              "lineNumber": 10,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The frame rate of the video."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "typedef",
+          "name": "VideoOptions",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "call",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "call",
+              "kind": "namespace"
+            },
+            {
+              "name": "VideoOptions",
+              "kind": "typedef",
+              "scope": "static"
+            }
+          ],
+          "namespace": "call.VideoOptions"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The ScreenOptions type defines the format for specifying screen capturing-related constraints."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 5,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ScreenOptions"
+            },
+            {
+              "title": "memberof",
+              "description": "call",
+              "lineNumber": 6
+            },
+            {
+              "title": "property",
+              "description": "The height of the screen capture.",
+              "lineNumber": 7,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              },
+              "name": "height"
+            },
+            {
+              "title": "property",
+              "description": "The width of the screen capture.",
+              "lineNumber": 8,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              },
+              "name": "width"
+            },
+            {
+              "title": "property",
+              "description": "The frame rate of the live screen share.",
+              "lineNumber": 9,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              },
+              "name": "frameRate"
+            },
+            {
+              "title": "example",
+              "description": "client.call.make(destination, {\n   screen: true,\n   screenOptions: {\n     // Set height and width constraints to exactly be 1280x720.\n     height: { exact: 720 },\n     width: { exact: 1280 },\n     frameRate: { exact: 24 }\n   }\n})",
+              "lineNumber": 10
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 145,
+              "column": 0
+            },
+            "end": {
+              "line": 165,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 523,
+                "column": 0
+              },
+              "end": {
+                "line": 533,
+                "column": 1
+              }
+            },
+            "file": "/var/jenkins_home/workspace/Kandy.js_master/packages/kandy/src/call/interface/api/index.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "client.call.make(destination, {\n   screen: true,\n   screenOptions: {\n     // Set height and width constraints to exactly be 1280x720.\n     height: { exact: 720 },\n     width: { exact: 1280 },\n     frameRate: { exact: 24 }\n   }\n})"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "height",
+              "lineNumber": 7,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The height of the screen capture."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "width",
+              "lineNumber": 8,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The width of the screen capture."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "frameRate",
+              "lineNumber": 9,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The frame rate of the live screen share."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.MediaConstraint"
+                }
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "typedef",
+          "name": "ScreenOptions",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "call",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "call",
+              "kind": "namespace"
+            },
+            {
+              "name": "ScreenOptions",
+              "kind": "typedef",
+              "scope": "static"
+            }
+          ],
+          "namespace": "call.ScreenOptions"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "The MediaOffered type defines what media capabilities are offered by the person making a call.\nThis is an optional property and therefore may be null if it is not known or if it's associated with caller's side of the call."
                   }
                 ]
@@ -12238,22 +12883,22 @@
           ],
           "loc": {
             "start": {
-              "line": 105,
+              "line": 167,
               "column": 0
             },
             "end": {
-              "line": 115,
+              "line": 177,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -12434,22 +13079,22 @@
           ],
           "loc": {
             "start": {
-              "line": 117,
+              "line": 179,
               "column": 0
             },
             "end": {
-              "line": 137,
+              "line": 199,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -12673,22 +13318,22 @@
           ],
           "loc": {
             "start": {
-              "line": 139,
+              "line": 201,
               "column": 0
             },
             "end": {
-              "line": 151,
+              "line": 213,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -12996,22 +13641,22 @@
           ],
           "loc": {
             "start": {
-              "line": 153,
+              "line": 215,
               "column": 0
             },
             "end": {
-              "line": 171,
+              "line": 233,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -13328,22 +13973,22 @@
           ],
           "loc": {
             "start": {
-              "line": 173,
+              "line": 235,
               "column": 0
             },
             "end": {
-              "line": 183,
+              "line": 245,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -13648,22 +14293,22 @@
           ],
           "loc": {
             "start": {
-              "line": 185,
+              "line": 247,
               "column": 0
             },
             "end": {
-              "line": 206,
+              "line": 268,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -14381,22 +15026,22 @@
           ],
           "loc": {
             "start": {
-              "line": 208,
+              "line": 270,
               "column": 0
             },
             "end": {
-              "line": 266,
+              "line": 328,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -14656,22 +15301,22 @@
           ],
           "loc": {
             "start": {
-              "line": 268,
+              "line": 330,
               "column": 0
             },
             "end": {
-              "line": 282,
+              "line": 344,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -14902,22 +15547,22 @@
           ],
           "loc": {
             "start": {
-              "line": 284,
+              "line": 346,
               "column": 0
             },
             "end": {
-              "line": 295,
+              "line": 357,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -15139,22 +15784,22 @@
           ],
           "loc": {
             "start": {
-              "line": 297,
+              "line": 359,
               "column": 0
             },
             "end": {
-              "line": 307,
+              "line": 369,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -15385,22 +16030,22 @@
           ],
           "loc": {
             "start": {
-              "line": 309,
+              "line": 371,
               "column": 0
             },
             "end": {
-              "line": 321,
+              "line": 383,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -15709,22 +16354,22 @@
           ],
           "loc": {
             "start": {
-              "line": 323,
+              "line": 385,
               "column": 0
             },
             "end": {
-              "line": 344,
+              "line": 406,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -16111,22 +16756,22 @@
           ],
           "loc": {
             "start": {
-              "line": 346,
+              "line": 408,
               "column": 0
             },
             "end": {
-              "line": 356,
+              "line": 418,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -16353,22 +16998,22 @@
           ],
           "loc": {
             "start": {
-              "line": 358,
+              "line": 420,
               "column": 0
             },
             "end": {
-              "line": 369,
+              "line": 431,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -16783,22 +17428,22 @@
           ],
           "loc": {
             "start": {
-              "line": 371,
+              "line": 433,
               "column": 0
             },
             "end": {
-              "line": 411,
+              "line": 473,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 461,
+                "line": 523,
                 "column": 0
               },
               "end": {
-                "line": 471,
+                "line": 533,
                 "column": 1
               }
             },
@@ -17139,28 +17784,15 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.AudioOptions"
                 }
               },
               "name": "media.audioOptions"
             },
             {
               "title": "param",
-              "description": "ID of the microphone to receive audio from.",
-              "lineNumber": 42,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.audioOptions.deviceId"
-            },
-            {
-              "title": "param",
               "description": "Whether the call should have video on start.",
-              "lineNumber": 43,
+              "lineNumber": 42,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17174,72 +17806,20 @@
             {
               "title": "param",
               "description": "Options for configuring the call's video.",
-              "lineNumber": 44,
+              "lineNumber": 43,
               "type": {
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.VideoOptions"
                 }
               },
               "name": "media.videoOptions"
             },
             {
               "title": "param",
-              "description": "ID of the camera to receive video from.",
-              "lineNumber": 45,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.deviceId"
-            },
-            {
-              "title": "param",
-              "description": "The height of the video.",
-              "lineNumber": 46,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the video.",
-              "lineNumber": 47,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the video.",
-              "lineNumber": 48,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.frameRate"
-            },
-            {
-              "title": "param",
               "description": "Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)",
-              "lineNumber": 49,
+              "lineNumber": 44,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17253,59 +17833,20 @@
             {
               "title": "param",
               "description": "Options for configuring the call's screenShare.",
-              "lineNumber": 50,
+              "lineNumber": 45,
               "type": {
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.ScreenOptions"
                 }
               },
               "name": "media.screenOptions"
             },
             {
               "title": "param",
-              "description": "The height of the screenShare.",
-              "lineNumber": 51,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the screenShare.",
-              "lineNumber": 52,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the screenShare.",
-              "lineNumber": 53,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.frameRate"
-            },
-            {
-              "title": "param",
               "description": "List of medias containing tracks to be attached to this call.",
-              "lineNumber": 54,
+              "lineNumber": 46,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17318,7 +17859,7 @@
             {
               "title": "param",
               "description": null,
-              "lineNumber": 55,
+              "lineNumber": 47,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17331,7 +17872,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 56,
+              "lineNumber": 48,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17344,7 +17885,7 @@
             {
               "title": "param",
               "description": "Custom display name to be provided to the destination. Not supported in all environments and may use default display name.",
-              "lineNumber": 57,
+              "lineNumber": 49,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17357,7 +17898,7 @@
             {
               "title": "param",
               "description": "Custom SIP header parameters for the SIP backend.",
-              "lineNumber": 58,
+              "lineNumber": 50,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17379,7 +17920,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic",
-              "lineNumber": 59,
+              "lineNumber": 51,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17392,7 +17933,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias is not an array.",
-              "lineNumber": 60,
+              "lineNumber": 52,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17401,7 +17942,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
-              "lineNumber": 61,
+              "lineNumber": 53,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17410,7 +17951,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
-              "lineNumber": 62,
+              "lineNumber": 54,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17419,7 +17960,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
-              "lineNumber": 63,
+              "lineNumber": 55,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17428,7 +17969,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
-              "lineNumber": 64,
+              "lineNumber": 56,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17437,7 +17978,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
-              "lineNumber": 65,
+              "lineNumber": 57,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17446,7 +17987,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
-              "lineNumber": 66,
+              "lineNumber": 58,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -17455,7 +17996,7 @@
             {
               "title": "returns",
               "description": "The generated ID of the newly created call.",
-              "lineNumber": 67,
+              "lineNumber": 59,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -17464,7 +18005,7 @@
             {
               "title": "example",
               "description": "// Listen for the event emitted after making a call.\nclient.on('call:start', function (params) {\n  const { callId, error } = params\n  if (error) {\n    // Call failed to initialize.\n  } else {\n    // Call was initialized, and the recipient user will be notified.\n  }\n})\n// Make an audio-only call.\nconst newCallId = client.call.make(destination, { audio: true })",
-              "lineNumber": 68
+              "lineNumber": 60
             }
           ],
           "loc": {
@@ -17473,18 +18014,18 @@
               "column": 2
             },
             "end": {
-              "line": 108,
+              "line": 100,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 120,
+                "line": 112,
                 "column": 2
               },
               "end": {
-                "line": 207,
+                "line": 199,
                 "column": 3
               }
             },
@@ -17599,42 +18140,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.AudioOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.audioOptions.deviceId",
-                      "lineNumber": 42,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the microphone to receive audio from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.video",
-                  "lineNumber": 43,
+                  "lineNumber": 42,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17658,7 +18171,7 @@
                 {
                   "title": "param",
                   "name": "media.videoOptions",
-                  "lineNumber": 44,
+                  "lineNumber": 43,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17677,120 +18190,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.VideoOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.deviceId",
-                      "lineNumber": 45,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the camera to receive video from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.height",
-                      "lineNumber": 46,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.width",
-                      "lineNumber": 47,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.frameRate",
-                      "lineNumber": 48,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.screen",
-                  "lineNumber": 49,
+                  "lineNumber": 44,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17814,7 +18221,7 @@
                 {
                   "title": "param",
                   "name": "media.screenOptions",
-                  "lineNumber": 50,
+                  "lineNumber": 45,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17833,94 +18240,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.ScreenOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.height",
-                      "lineNumber": 51,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.width",
-                      "lineNumber": 52,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.frameRate",
-                      "lineNumber": 53,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.medias",
-                  "lineNumber": 54,
+                  "lineNumber": 46,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17948,7 +18275,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 55,
+              "lineNumber": 47,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -17960,7 +18287,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 56,
+                  "lineNumber": 48,
                   "description": {
                     "type": "root",
                     "children": [
@@ -17986,7 +18313,7 @@
                 {
                   "title": "param",
                   "name": "options.displayName",
-                  "lineNumber": 57,
+                  "lineNumber": 49,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18012,7 +18339,7 @@
                 {
                   "title": "param",
                   "name": "options.customParameters",
-                  "lineNumber": 58,
+                  "lineNumber": 50,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18047,7 +18374,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 59,
+                  "lineNumber": 51,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18485,28 +18812,15 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.AudioOptions"
                 }
               },
               "name": "media.audioOptions"
             },
             {
               "title": "param",
-              "description": "ID of the microphone to receive audio from.",
-              "lineNumber": 31,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.audioOptions.deviceId"
-            },
-            {
-              "title": "param",
               "description": "Whether the call should have video on start.",
-              "lineNumber": 32,
+              "lineNumber": 31,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18520,72 +18834,20 @@
             {
               "title": "param",
               "description": "Options for configuring the call's video.",
-              "lineNumber": 33,
+              "lineNumber": 32,
               "type": {
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.VideoOptions"
                 }
               },
               "name": "media.videoOptions"
             },
             {
               "title": "param",
-              "description": "ID of the camera to receive video from.",
-              "lineNumber": 34,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.deviceId"
-            },
-            {
-              "title": "param",
-              "description": "The height of the video.",
-              "lineNumber": 35,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the video.",
-              "lineNumber": 36,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the video.",
-              "lineNumber": 37,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.frameRate"
-            },
-            {
-              "title": "param",
               "description": "Whether the call should have screenshare on start. (Note: Screensharing is not supported on iOS Safari.)",
-              "lineNumber": 38,
+              "lineNumber": 33,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18599,59 +18861,20 @@
             {
               "title": "param",
               "description": "Options for configuring the call's screenShare.",
-              "lineNumber": 39,
+              "lineNumber": 34,
               "type": {
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.ScreenOptions"
                 }
               },
               "name": "media.screenOptions"
             },
             {
               "title": "param",
-              "description": "The height of the screenShare.",
-              "lineNumber": 40,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the screenShare.",
-              "lineNumber": 41,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the screenShare.",
-              "lineNumber": 42,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.frameRate"
-            },
-            {
-              "title": "param",
               "description": "List of medias containing tracks to be attached to this call.",
-              "lineNumber": 43,
+              "lineNumber": 35,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18664,7 +18887,7 @@
             {
               "title": "param",
               "description": null,
-              "lineNumber": 44,
+              "lineNumber": 36,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18677,7 +18900,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 45,
+              "lineNumber": 37,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18690,7 +18913,7 @@
             {
               "title": "param",
               "description": "Custom SIP header parameters for the SIP backend.",
-              "lineNumber": 46,
+              "lineNumber": 38,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18712,7 +18935,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic",
-              "lineNumber": 47,
+              "lineNumber": 39,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -18725,22 +18948,22 @@
           ],
           "loc": {
             "start": {
-              "line": 209,
+              "line": 201,
               "column": 2
             },
             "end": {
-              "line": 257,
+              "line": 241,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 270,
+                "line": 254,
                 "column": 2
               },
               "end": {
-                "line": 315,
+                "line": 299,
                 "column": 3
               }
             },
@@ -18842,42 +19065,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.AudioOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.audioOptions.deviceId",
-                      "lineNumber": 31,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the microphone to receive audio from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.video",
-                  "lineNumber": 32,
+                  "lineNumber": 31,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18901,7 +19096,7 @@
                 {
                   "title": "param",
                   "name": "media.videoOptions",
-                  "lineNumber": 33,
+                  "lineNumber": 32,
                   "description": {
                     "type": "root",
                     "children": [
@@ -18920,120 +19115,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.VideoOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.deviceId",
-                      "lineNumber": 34,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the camera to receive video from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.height",
-                      "lineNumber": 35,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.width",
-                      "lineNumber": 36,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.frameRate",
-                      "lineNumber": 37,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.screen",
-                  "lineNumber": 38,
+                  "lineNumber": 33,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19057,7 +19146,7 @@
                 {
                   "title": "param",
                   "name": "media.screenOptions",
-                  "lineNumber": 39,
+                  "lineNumber": 34,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19076,94 +19165,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.ScreenOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.height",
-                      "lineNumber": 40,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.width",
-                      "lineNumber": 41,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.frameRate",
-                      "lineNumber": 42,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.medias",
-                  "lineNumber": 43,
+                  "lineNumber": 35,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19191,7 +19200,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 44,
+              "lineNumber": 36,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -19203,7 +19212,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 45,
+                  "lineNumber": 37,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19229,7 +19238,7 @@
                 {
                   "title": "param",
                   "name": "options.customParameters",
-                  "lineNumber": 46,
+                  "lineNumber": 38,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19264,7 +19273,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 47,
+                  "lineNumber": 39,
                   "description": {
                     "type": "root",
                     "children": [
@@ -19453,22 +19462,22 @@
           ],
           "loc": {
             "start": {
-              "line": 317,
+              "line": 301,
               "column": 2
             },
             "end": {
-              "line": 336,
+              "line": 320,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 337,
+                "line": 321,
                 "column": 2
               },
               "end": {
-                "line": 365,
+                "line": 349,
                 "column": 3
               }
             },
@@ -19649,22 +19658,22 @@
           ],
           "loc": {
             "start": {
-              "line": 367,
+              "line": 351,
               "column": 2
             },
             "end": {
-              "line": 385,
+              "line": 369,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 386,
+                "line": 370,
                 "column": 2
               },
               "end": {
-                "line": 413,
+                "line": 397,
                 "column": 3
               }
             },
@@ -19864,22 +19873,22 @@
           ],
           "loc": {
             "start": {
-              "line": 415,
+              "line": 399,
               "column": 2
             },
             "end": {
-              "line": 434,
+              "line": 418,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 435,
+                "line": 419,
                 "column": 2
               },
               "end": {
-                "line": 468,
+                "line": 452,
                 "column": 3
               }
             },
@@ -20130,22 +20139,22 @@
           ],
           "loc": {
             "start": {
-              "line": 470,
+              "line": 454,
               "column": 2
             },
             "end": {
-              "line": 493,
+              "line": 477,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 494,
+                "line": 478,
                 "column": 2
               },
               "end": {
-                "line": 526,
+                "line": 510,
                 "column": 3
               }
             },
@@ -20852,7 +20861,7 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.AudioOptions"
                 }
               },
               "name": "media.audioOptions"
@@ -20865,7 +20874,7 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.VideoOptions"
                 }
               },
               "name": "media.videoOptions"
@@ -20878,119 +20887,15 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.ScreenOptions"
                 }
               },
               "name": "media.screenOptions"
             },
             {
               "title": "param",
-              "description": "ID of the microphone to receive audio from.",
-              "lineNumber": 25,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.audioOptions.deviceId"
-            },
-            {
-              "title": "param",
-              "description": "ID of the camera to receive video from.",
-              "lineNumber": 26,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.deviceId"
-            },
-            {
-              "title": "param",
-              "description": "The height of the video.",
-              "lineNumber": 27,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the video.",
-              "lineNumber": 28,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the video.",
-              "lineNumber": 29,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.frameRate"
-            },
-            {
-              "title": "param",
-              "description": "The height of the screenShare.",
-              "lineNumber": 30,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the screenShare.",
-              "lineNumber": 31,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the screenShare.",
-              "lineNumber": 32,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.screenOptions.frameRate"
-            },
-            {
-              "title": "param",
               "description": null,
-              "lineNumber": 33,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -21003,7 +20908,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 34,
+              "lineNumber": 26,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -21016,7 +20921,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic",
-              "lineNumber": 35,
+              "lineNumber": 27,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -21029,7 +20934,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias is not an array.",
-              "lineNumber": 36,
+              "lineNumber": 28,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21038,7 +20943,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
-              "lineNumber": 37,
+              "lineNumber": 29,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21047,7 +20952,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
-              "lineNumber": 38,
+              "lineNumber": 30,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21056,7 +20961,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
-              "lineNumber": 39,
+              "lineNumber": 31,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21065,7 +20970,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
-              "lineNumber": 40,
+              "lineNumber": 32,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21074,7 +20979,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
-              "lineNumber": 41,
+              "lineNumber": 33,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21083,7 +20988,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
-              "lineNumber": 42,
+              "lineNumber": 34,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -21096,18 +21001,18 @@
               "column": 2
             },
             "end": {
-              "line": 182,
+              "line": 174,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 183,
+                "line": 175,
                 "column": 2
               },
               "end": {
-                "line": 221,
+                "line": 213,
                 "column": 3
               }
             },
@@ -21284,37 +21189,9 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.AudioOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.audioOptions.deviceId",
-                      "lineNumber": 25,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the microphone to receive audio from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
@@ -21338,115 +21215,9 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.VideoOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.deviceId",
-                      "lineNumber": 26,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the camera to receive video from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.height",
-                      "lineNumber": 27,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.width",
-                      "lineNumber": 28,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.frameRate",
-                      "lineNumber": 29,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
@@ -21470,96 +21241,16 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.ScreenOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.height",
-                      "lineNumber": 30,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.width",
-                      "lineNumber": 31,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.screenOptions.frameRate",
-                      "lineNumber": 32,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the screenShare."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 }
               ]
             },
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 33,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -21571,7 +21262,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 34,
+                  "lineNumber": 26,
                   "description": {
                     "type": "root",
                     "children": [
@@ -21597,7 +21288,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 35,
+                  "lineNumber": 27,
                   "description": {
                     "type": "root",
                     "children": [
@@ -21972,22 +21663,22 @@
           ],
           "loc": {
             "start": {
-              "line": 223,
+              "line": 215,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 234,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 243,
+                "line": 235,
                 "column": 2
               },
               "end": {
-                "line": 269,
+                "line": 261,
                 "column": 3
               }
             },
@@ -22260,67 +21951,15 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.VideoOptions"
                 }
               },
               "name": "videoOptions"
             },
             {
               "title": "param",
-              "description": "ID of the camera to receive video from.",
-              "lineNumber": 23,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "videoOptions.deviceId"
-            },
-            {
-              "title": "param",
-              "description": "The height of the video.",
-              "lineNumber": 24,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "videoOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the video.",
-              "lineNumber": 25,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "videoOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the video.",
-              "lineNumber": 26,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "videoOptions.frameRate"
-            },
-            {
-              "title": "param",
               "description": null,
-              "lineNumber": 27,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -22333,7 +21972,7 @@
             {
               "title": "param",
               "description": "Options for configuring media's bandwidth.",
-              "lineNumber": 28,
+              "lineNumber": 24,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -22346,7 +21985,7 @@
             {
               "title": "param",
               "description": "Options for configuring DSCP markings on the media traffic.",
-              "lineNumber": 29,
+              "lineNumber": 25,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -22359,22 +21998,22 @@
           ],
           "loc": {
             "start": {
-              "line": 271,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 301,
+              "line": 289,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 302,
+                "line": 290,
                 "column": 2
               },
               "end": {
-                "line": 335,
+                "line": 323,
                 "column": 3
               }
             },
@@ -22429,120 +22068,14 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.VideoOptions"
                 }
-              },
-              "properties": [
-                {
-                  "title": "param",
-                  "name": "videoOptions.deviceId",
-                  "lineNumber": 23,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "ID of the camera to receive video from."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "NameExpression",
-                      "name": "call.MediaConstraint"
-                    }
-                  }
-                },
-                {
-                  "title": "param",
-                  "name": "videoOptions.height",
-                  "lineNumber": 24,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The height of the video."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "NameExpression",
-                      "name": "call.MediaConstraint"
-                    }
-                  }
-                },
-                {
-                  "title": "param",
-                  "name": "videoOptions.width",
-                  "lineNumber": 25,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The width of the video."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "NameExpression",
-                      "name": "call.MediaConstraint"
-                    }
-                  }
-                },
-                {
-                  "title": "param",
-                  "name": "videoOptions.frameRate",
-                  "lineNumber": 26,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The frame rate of the video."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "NameExpression",
-                      "name": "call.MediaConstraint"
-                    }
-                  }
-                }
-              ]
+              }
             },
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 27,
+              "lineNumber": 23,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -22554,7 +22087,7 @@
                 {
                   "title": "param",
                   "name": "options.bandwidth",
-                  "lineNumber": 28,
+                  "lineNumber": 24,
                   "description": {
                     "type": "root",
                     "children": [
@@ -22580,7 +22113,7 @@
                 {
                   "title": "param",
                   "name": "options.dscpControls",
-                  "lineNumber": 29,
+                  "lineNumber": 25,
                   "description": {
                     "type": "root",
                     "children": [
@@ -22775,22 +22308,22 @@
           ],
           "loc": {
             "start": {
-              "line": 337,
+              "line": 325,
               "column": 2
             },
             "end": {
-              "line": 359,
+              "line": 347,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 360,
+                "line": 348,
                 "column": 2
               },
               "end": {
-                "line": 388,
+                "line": 376,
                 "column": 3
               }
             },
@@ -23003,22 +22536,22 @@
           ],
           "loc": {
             "start": {
-              "line": 390,
+              "line": 378,
               "column": 2
             },
             "end": {
-              "line": 423,
+              "line": 411,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 545,
+                "line": 530,
                 "column": 2
               },
               "end": {
-                "line": 584,
+                "line": 569,
                 "column": 3
               }
             },
@@ -23220,22 +22753,22 @@
           ],
           "loc": {
             "start": {
-              "line": 425,
+              "line": 413,
               "column": 2
             },
             "end": {
-              "line": 465,
+              "line": 453,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 545,
+                "line": 530,
                 "column": 2
               },
               "end": {
-                "line": 584,
+                "line": 569,
                 "column": 3
               }
             },
@@ -23448,28 +22981,15 @@
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.AudioOptions"
                 }
               },
               "name": "media.audioOptions"
             },
             {
               "title": "param",
-              "description": "ID of the microphone to receive audio from.",
-              "lineNumber": 31,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.audioOptions.deviceId"
-            },
-            {
-              "title": "param",
               "description": "Whether to create a video track.",
-              "lineNumber": 32,
+              "lineNumber": 31,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -23483,72 +23003,47 @@
             {
               "title": "param",
               "description": "Options for configuring the video track.",
-              "lineNumber": 33,
+              "lineNumber": 32,
               "type": {
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "Object"
+                  "name": "call.VideoOptions"
                 }
               },
               "name": "media.videoOptions"
             },
             {
               "title": "param",
-              "description": "ID of the camera to receive video from.",
+              "description": "Whether to create a screen share track.",
+              "lineNumber": 33,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "media.screen",
+              "default": "false"
+            },
+            {
+              "title": "param",
+              "description": "Options for configuring the call's screenShare.",
               "lineNumber": 34,
               "type": {
                 "type": "OptionalType",
                 "expression": {
                   "type": "NameExpression",
-                  "name": "call.MediaConstraint"
+                  "name": "call.ScreenOptions"
                 }
               },
-              "name": "media.videoOptions.deviceId"
-            },
-            {
-              "title": "param",
-              "description": "The height of the video.",
-              "lineNumber": 35,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.height"
-            },
-            {
-              "title": "param",
-              "description": "The width of the video.",
-              "lineNumber": 36,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.width"
-            },
-            {
-              "title": "param",
-              "description": "The frame rate of the video.",
-              "lineNumber": 37,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.MediaConstraint"
-                }
-              },
-              "name": "media.videoOptions.frameRate"
+              "name": "media.screenOptions"
             },
             {
               "title": "param",
               "description": "List of medias containing tracks to be attached to this call.",
-              "lineNumber": 38,
+              "lineNumber": 35,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -23561,7 +23056,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias is not an array.",
-              "lineNumber": 39,
+              "lineNumber": 36,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23570,7 +23065,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
-              "lineNumber": 40,
+              "lineNumber": 37,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23579,7 +23074,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
-              "lineNumber": 41,
+              "lineNumber": 38,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23588,7 +23083,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
-              "lineNumber": 42,
+              "lineNumber": 39,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23597,7 +23092,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
-              "lineNumber": 43,
+              "lineNumber": 40,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23606,7 +23101,7 @@
             {
               "title": "throws",
               "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
-              "lineNumber": 44,
+              "lineNumber": 41,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23615,7 +23110,7 @@
             {
               "title": "throws",
               "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
-              "lineNumber": 45,
+              "lineNumber": 42,
               "type": {
                 "type": "NameExpression",
                 "name": "BasicError"
@@ -23624,32 +23119,32 @@
             {
               "title": "example",
               "description": "const callId = ...\n// Get the video track used by the call.\nconst videoTrack = ...\n\n// Replace the specified video track of the call with a new\n//    video track.\nclient.call.replaceTrack(callId, videoTrack.id, {\n  // The track should be replaced with a video track using\n  //    a specific device. This effectively changes the input\n  //    device for an ongoing call.\n  video: true,\n  videoOptions: {\n    deviceId: cameraId\n  }\n})",
-              "lineNumber": 46
+              "lineNumber": 43
             },
             {
               "title": "example",
               "description": "const callId = ...\n// Get the video track used by the call.\nconst videoTrack = ...\n\n// Can also replace the specified video track of the call with a new\n// screen sharing track because screen sharing is delivered as a video stream to remote peer.\n// User will then be prompted to pick a specific screen to share and thus the device id will be selected.\nclient.call.replaceTrack(callId, videoTrack.id, {\n  // The track should be replaced with a screen sharing track.\n  // Note that 'screenOptions' property is not mandatory, as API will use default values\n  // for properties like: width, height, frameRate.\n  screen: true\n})",
-              "lineNumber": 63
+              "lineNumber": 60
             }
           ],
           "loc": {
             "start": {
-              "line": 467,
+              "line": 455,
               "column": 2
             },
             "end": {
-              "line": 544,
+              "line": 529,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 545,
+                "line": 530,
                 "column": 2
               },
               "end": {
-                "line": 584,
+                "line": 569,
                 "column": 3
               }
             },
@@ -23782,42 +23277,14 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.AudioOptions"
                     }
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.audioOptions.deviceId",
-                      "lineNumber": 31,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the microphone to receive audio from."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.video",
-                  "lineNumber": 32,
+                  "lineNumber": 31,
                   "description": {
                     "type": "root",
                     "children": [
@@ -23841,7 +23308,7 @@
                 {
                   "title": "param",
                   "name": "media.videoOptions",
-                  "lineNumber": 33,
+                  "lineNumber": 32,
                   "description": {
                     "type": "root",
                     "children": [
@@ -23860,120 +23327,64 @@
                     "type": "OptionalType",
                     "expression": {
                       "type": "NameExpression",
-                      "name": "Object"
+                      "name": "call.VideoOptions"
                     }
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "media.screen",
+                  "lineNumber": 33,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether to create a screen share track."
+                          }
+                        ]
+                      }
+                    ]
                   },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.deviceId",
-                      "lineNumber": 34,
-                      "description": {
-                        "type": "root",
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "false"
+                },
+                {
+                  "title": "param",
+                  "name": "media.screenOptions",
+                  "lineNumber": 34,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
                         "children": [
                           {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "ID of the camera to receive video from."
-                              }
-                            ]
+                            "type": "text",
+                            "value": "Options for configuring the call's screenShare."
                           }
                         ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
                       }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.height",
-                      "lineNumber": 35,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The height of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.width",
-                      "lineNumber": 36,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The width of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "media.videoOptions.frameRate",
-                      "lineNumber": 37,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "The frame rate of the video."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "OptionalType",
-                        "expression": {
-                          "type": "NameExpression",
-                          "name": "call.MediaConstraint"
-                        }
-                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "call.ScreenOptions"
                     }
-                  ]
+                  }
                 },
                 {
                   "title": "param",
                   "name": "media.medias",
-                  "lineNumber": 38,
+                  "lineNumber": 35,
                   "description": {
                     "type": "root",
                     "children": [
@@ -24549,22 +23960,22 @@
           ],
           "loc": {
             "start": {
-              "line": 586,
+              "line": 571,
               "column": 2
             },
             "end": {
-              "line": 630,
+              "line": 615,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 631,
+                "line": 616,
                 "column": 2
               },
               "end": {
-                "line": 651,
+                "line": 636,
                 "column": 3
               }
             },
@@ -24897,22 +24308,22 @@
           ],
           "loc": {
             "start": {
-              "line": 687,
+              "line": 672,
               "column": 2
             },
             "end": {
-              "line": 750,
+              "line": 735,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 751,
+                "line": 736,
                 "column": 2
               },
               "end": {
-                "line": 791,
+                "line": 776,
                 "column": 3
               }
             },
@@ -25430,7 +24841,7 @@
                 "column": 2
               },
               "end": {
-                "line": 132,
+                "line": 136,
                 "column": 3
               }
             },
@@ -25644,22 +25055,22 @@
           ],
           "loc": {
             "start": {
-              "line": 134,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 160,
+              "line": 164,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 161,
+                "line": 165,
                 "column": 2
               },
               "end": {
-                "line": 193,
+                "line": 202,
                 "column": 3
               }
             },
@@ -42915,11 +42326,11 @@
     "context": {
       "loc": {
         "start": {
-          "line": 461,
+          "line": 523,
           "column": 0
         },
         "end": {
-          "line": 471,
+          "line": 533,
           "column": 1
         }
       },
@@ -56826,7 +56237,7 @@
                 "column": 4
               },
               "end": {
-                "line": 195,
+                "line": 200,
                 "column": 5
               }
             },
@@ -57165,22 +56576,22 @@
           ],
           "loc": {
             "start": {
-              "line": 197,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 223,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 219,
+                "line": 224,
                 "column": 4
               },
               "end": {
-                "line": 258,
+                "line": 269,
                 "column": 5
               }
             },
@@ -57412,22 +56823,22 @@
           ],
           "loc": {
             "start": {
-              "line": 260,
+              "line": 271,
               "column": 4
             },
             "end": {
-              "line": 297,
+              "line": 308,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 298,
+                "line": 309,
                 "column": 4
               },
               "end": {
-                "line": 305,
+                "line": 316,
                 "column": 5
               }
             },
