@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.16.0-beta.1447
+ * Version: 6.16.0-beta.1448
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 88367:
+/***/ 55164:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.16.0-beta.1447';
+  return '6.16.0-beta.1448';
 }
 
 /***/ }),
@@ -4321,7 +4321,7 @@ function finishOperation(container, callId, operationId, eventId, opInfo, err, s
 
 /***/ }),
 
-/***/ 15774:
+/***/ 53229:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -4345,6 +4345,34 @@ function createFlow(container, operation, stages) {
   const {
     context
   } = container;
+
+  /*
+   * Boolean map between a call ID and whether that call has received remote feedback or not.
+   */
+  const responsesReceived = operation.calls.reduce((acc, cur) => {
+    acc[cur.callId] = false;
+    return acc;
+  }, {});
+
+  /*
+   * Boolean whether the flow has performed its "resolve" functionality or not yet.
+   *    This is used to ensure multiple notifications can't trigger it multiple times
+   *    in a race-condition.
+   */
+  let hasResolved = false;
+
+  /**
+   * Helper function to know if every call has received feedback.
+   *    When this is true, that indicates the operation can resolve successfully.
+   * Note: In a failure scenario, only primary call will receive feedback.
+   * @method hasAllFeedback
+   * @returns {boolean}
+   */
+  function hasAllFeedback() {
+    // The flow has all the feedback needed to complete the operation if it has received
+    //    a notification for every call.
+    return operation.calls.every(call => responsesReceived[call.callId] === true);
+  }
 
   /**
    * A consultative transfer operation has been started locally. Perform the
@@ -4384,23 +4412,27 @@ function createFlow(container, operation, stages) {
   /**
    * A "session complete" notification has been received for the primay call,
    *    indicating the consultative transfer succeeded. The primary call needs
-   *    to be cleaned-up.
+   *    to be cleaned-up. The secondary call will receive a notification in
+   *    this scenario.
    * @method remoteSuccess
    */
   async function remoteSuccess(call, params) {
+    responsesReceived[call.id] = true;
     /*
      * TODO: Pre-processing logic.
      *    - KJS-2175 Queue Inputs: Is the operation ready for this notification?
      *    - Update call report/status: From "waiting" to "processing"?
      */
     await stages.remoteSuccess(call, params);
-    operation.reportEvent.endEvent();
-    operation.tracker.finish();
+    if (hasAllFeedback()) {
+      return onComplete();
+    }
   }
 
   /**
    * A "session failure" notification has been received for the primary call,
-   *    indicating the consultative transfer failed.
+   *    indicating the consultative transfer failed. The secondary call will not
+   *    receive a notification in this scenario.
    * @method remoteFailure
    */
   async function remoteFailure(call, params) {
@@ -4410,8 +4442,7 @@ function createFlow(container, operation, stages) {
      *    - Update call report/status: From "waiting" to "processing"?
      */
     const error = await stages.remoteFailure(call, params);
-    operation.reportEvent.endEvent(error);
-    operation.tracker.finish(error);
+    return onComplete(error);
   }
 
   /**
@@ -4422,8 +4453,27 @@ function createFlow(container, operation, stages) {
    * @method callEndSuccess
    */
   async function callEnd(call, params) {
+    responsesReceived[call.id] = true;
+
     // Handle the notification the same as the "sessionComplete" notification.
     await stages.remoteSuccess(call, params);
+    if (hasAllFeedback()) {
+      return onComplete();
+    }
+  }
+
+  /**
+   * "Resolve" functionality for the operation.
+   * @method onComplete
+   * @param {Object} [error] If a failure scenario, the error information.
+   */
+  function onComplete(error) {
+    if (hasResolved) {
+      return;
+    }
+    hasResolved = true;
+    operation.reportEvent.endEvent(error);
+    operation.tracker.finish(error);
   }
   return {
     start: localChanges,
@@ -6145,6 +6195,7 @@ function _default(bottle) {
        */
       return {
         callId,
+        // TODO: Have this just ID?
         role,
         reportEvent,
         tracker: (0, _StatusTracker.default)(bottle.container, callId, id, reportEvent.id, opInfo, {
@@ -9094,7 +9145,7 @@ var _consultativeTransfer = _interopRequireDefault(__webpack_require__(90910));
 var _remoteSuccess = _interopRequireDefault(__webpack_require__(23119));
 var _remoteFailure = _interopRequireDefault(__webpack_require__(23514));
 var _validate = _interopRequireDefault(__webpack_require__(53578));
-var _ConsultativeTransfer = _interopRequireDefault(__webpack_require__(15774));
+var _ConsultativeTransfer = _interopRequireDefault(__webpack_require__(53229));
 var _constants = __webpack_require__(59090);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Stages.
@@ -10648,7 +10699,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(88367);
+var _version = __webpack_require__(55164);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23354,7 +23405,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(88367);
+var _version = __webpack_require__(55164);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -36618,7 +36669,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(88367);
+var _version = __webpack_require__(55164);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -44635,7 +44686,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(88367);
+var _version = __webpack_require__(55164);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -55589,7 +55640,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(88367);
+var _version = __webpack_require__(55164);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88543,7 +88594,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 2959:
+/***/ 21946:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -88984,7 +89035,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(2959));
+var _version = _interopRequireDefault(__webpack_require__(21946));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -96920,7 +96971,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(84661);
+var V8 = __webpack_require__(90670);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -96943,7 +96994,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(84661);
+var V8_VERSION = __webpack_require__(90670);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -97928,10 +97979,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(43479);
+var FF = __webpack_require__(23632);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(84661);
-var WEBKIT = __webpack_require__(32037);
+var V8 = __webpack_require__(90670);
+var WEBKIT = __webpack_require__(77242);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98279,7 +98330,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 43479:
+/***/ 23632:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98293,7 +98344,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 84661:
+/***/ 90670:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98329,7 +98380,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 32037:
+/***/ 77242:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
