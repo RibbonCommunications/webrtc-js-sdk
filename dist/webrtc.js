@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.16.0-beta.1449
+ * Version: 6.16.0-beta.1450
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 10925:
+/***/ 46841:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.16.0-beta.1449';
+  return '6.16.0-beta.1450';
 }
 
 /***/ }),
@@ -4322,7 +4322,7 @@ function finishOperation(container, callId, operationId, eventId, opInfo, err, s
 /***/ }),
 
 /***/ 53229:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4331,6 +4331,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
+__webpack_require__(97107);
 /**
  * Operation flow for a consultative transfer operation.
  *
@@ -4475,11 +4476,31 @@ function createFlow(container, operation, stages) {
     operation.reportEvent.endEvent(error);
     operation.tracker.finish(error);
   }
-  return {
-    start: localChanges,
+  const feedbackHandlers = {
     sessionComplete: remoteSuccess,
     sessionFail: remoteFailure,
     callEnd
+  };
+
+  /**
+   * Operation method for receiving any/all responses from the remote side.
+   * @method receiveResponse
+   * @param {Object} call
+   * @param {Object} params
+   * @param {string} params.eventType
+   */
+  async function receiveResponse(call, params) {
+    const eventType = params.eventType;
+    if (!eventType) {
+      throw new Error(`No event type provided for ${operation.type} feedback!`);
+    } else if (typeof feedbackHandlers[eventType] === 'undefined') {
+      throw new Error(`No ${eventType} on the flow!`);
+    }
+    return feedbackHandlers[eventType](call, params);
+  }
+  return {
+    start: localChanges,
+    receiveResponse
   };
 }
 
@@ -4572,6 +4593,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createFlow;
+__webpack_require__(97107);
 var _LocalNegotiation = _interopRequireDefault(__webpack_require__(98307));
 var _constants = __webpack_require__(59090);
 var _selectors = __webpack_require__(40481);
@@ -4705,12 +4727,32 @@ function createFlow(container, operation, stages) {
       operation.tracker.finish(error);
     }
   }
-  return {
-    start: localChanges,
+  const feedbackHandlers = {
     respondCallUpdate: joinAnswer,
     callEnd: joinEnd,
     sessionComplete: remoteSuccess,
     sessionFail: remoteFailure
+  };
+
+  /**
+   * Operation method for receiving any/all responses from the remote side.
+   * @method receiveResponse
+   * @param {Object} call
+   * @param {Object} params
+   * @param {string} params.eventType
+   */
+  async function receiveResponse(call, params) {
+    const eventType = params.eventType;
+    if (!eventType) {
+      throw new Error(`No event type provided for ${operation.type} feedback!`);
+    } else if (typeof feedbackHandlers[eventType] === 'undefined') {
+      throw new Error(`No ${eventType} on the flow!`);
+    }
+    return feedbackHandlers[eventType](call, params);
+  }
+  return {
+    start: localChanges,
+    receiveResponse
   };
 }
 
@@ -6133,7 +6175,6 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = _default;
-__webpack_require__(97107);
 var _StatusTracker = _interopRequireDefault(__webpack_require__(3226));
 var _constants = __webpack_require__(84581);
 var _uuid = __webpack_require__(84596);
@@ -6205,35 +6246,22 @@ function _default(bottle) {
         })
       };
     });
-
-    /**
-     * Method to start the operation.
-     * @method start
-     */
-    async function start() {
-      return flow.start(...arguments);
-    }
-
-    /**
-     * Method to process the remote response to the negotiation.
-     * @method receiveResponse
-     */
-    async function receiveResponse(call, params) {
-      const responseType = params.eventType;
-      // TODO: Validation.
-      if (typeof flow[responseType] === 'undefined') {
-        throw new Error(`No ${responseType} on the flow!`);
-      }
-      return flow[responseType](call, params);
-    }
     const Operation = {
       // Operation meta-data.
       type,
       isNegotiation,
       isLocal: true,
       // Operation methods.
-      start,
-      receiveResponse,
+      /**
+       * Method to start the operation.
+       * @method start
+       */
+      start: undefined,
+      /**
+       * Method to process the remote response(s) to the operation.
+       * @method receiveResponse
+       */
+      receiveResponse: undefined,
       // Instance specific.
       calls,
       id,
@@ -6266,6 +6294,8 @@ function _default(bottle) {
       }
     };
     const flow = createFlow(bottle.container, Operation, stages);
+    // Add the flow methods to the Operation.
+    Object.assign(Operation, flow);
     return Operation;
   });
 }
@@ -6282,7 +6312,6 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = _default;
-__webpack_require__(97107);
 var _StatusTracker = _interopRequireDefault(__webpack_require__(3226));
 var _LocalNegotiation = _interopRequireDefault(__webpack_require__(98307));
 var _RemoteNegotiation = _interopRequireDefault(__webpack_require__(29749));
@@ -6336,47 +6365,27 @@ function _default(bottle) {
     const reportEvent = bottle.container.CallReporter.getReport(callId).addEvent(eventName);
     opInfo.isNegotiation = true;
     const tracker = (0, _StatusTracker.default)(bottle.container, callId, id, reportEvent.id, opInfo);
-
-    /**
-     * Method to start the operation.
-     * @method start
-     */
-    async function start() {
-      return flow.start(...arguments);
-    }
-
-    /**
-     * Method to process the remote response to the negotiation.
-     * @method receiveResponse
-     */
-    async function receiveResponse() {
-      // TODO: Validation.
-      if (typeof flow.receiveResponse === 'undefined') {
-        throw new Error('No receiveResponse on the flow!');
-      }
-      return flow.receiveResponse(...arguments);
-    }
-
-    /**
-     * Method to process a remote update to the negotiation.
-     * @method receiveUpdate
-     */
-    async function receiveUpdate() {
-      // TODO: Validation.
-      if (typeof flow.receiveUpdate === 'undefined') {
-        throw new Error('No receiveUpdate on the flow!');
-      }
-      return flow.receiveUpdate(...arguments);
-    }
     const Operation = {
       // Operation meta-data.
       type,
       isNegotiation: true,
       isLocal,
       // Operation methods.
-      start,
-      receiveResponse,
-      receiveUpdate,
+      /**
+       * Method to start the operation.
+       * @method start
+       */
+      start: undefined,
+      /**
+       * Method to process the remote response to the negotiation.
+       * @method receiveResponse
+       */
+      receiveResponse: undefined,
+      /**
+       * Method to process a remote update to the negotiation.
+       * @method receiveUpdate
+       */
+      receiveUpdate: undefined,
       // Instance specific.
       callId,
       id,
@@ -6392,6 +6401,8 @@ function _default(bottle) {
       reportEvent
     };
     const flow = createFlow(bottle.container, Operation, stages);
+    // Add the flow methods to the Operation.
+    Object.assign(Operation, flow);
     return Operation;
   });
 }
@@ -6483,14 +6494,6 @@ function _default(bottle) {
     const tracker = (0, _StatusTracker.default)(bottle.container, callId, id, reportEvent.id, opInfo);
 
     /**
-     * Method to start the operation.
-     * @method start
-     */
-    async function start() {
-      return flow.start(...arguments);
-    }
-
-    /**
      * @typedef {Object} UpdateOperation
      * @property {string}   type The type of operation.
      * @property {boolean}  isNegotiation Whether the operation is a negotiation or not.
@@ -6509,7 +6512,11 @@ function _default(bottle) {
       isNegotiation: false,
       isLocal,
       // Operation methods.
-      start,
+      /**
+       * Method to start the operation.
+       * @method start
+       */
+      start: undefined,
       // Instance specific.
       callId,
       id,
@@ -6524,6 +6531,8 @@ function _default(bottle) {
       reportEvent
     };
     const flow = createFlow(bottle.container, UpdateOperation, stages);
+    // Add the flow methods to the Operation.
+    Object.assign(UpdateOperation, flow);
     return UpdateOperation;
   });
 }
@@ -10699,7 +10708,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(10925);
+var _version = __webpack_require__(46841);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23405,7 +23414,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(10925);
+var _version = __webpack_require__(46841);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -36669,7 +36678,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(10925);
+var _version = __webpack_require__(46841);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -44686,7 +44695,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(10925);
+var _version = __webpack_require__(46841);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -55640,7 +55649,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(10925);
+var _version = __webpack_require__(46841);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88594,7 +88603,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 31209:
+/***/ 46175:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89035,7 +89044,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(31209));
+var _version = _interopRequireDefault(__webpack_require__(46175));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -96971,7 +96980,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(68079);
+var V8 = __webpack_require__(33707);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -96994,7 +97003,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(68079);
+var V8_VERSION = __webpack_require__(33707);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -97979,10 +97988,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(381);
+var FF = __webpack_require__(67425);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(68079);
-var WEBKIT = __webpack_require__(38727);
+var V8 = __webpack_require__(33707);
+var WEBKIT = __webpack_require__(34435);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98330,7 +98339,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 381:
+/***/ 67425:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98344,7 +98353,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 68079:
+/***/ 33707:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98380,7 +98389,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 38727:
+/***/ 34435:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
