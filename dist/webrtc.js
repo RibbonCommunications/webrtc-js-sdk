@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.16.0-beta.1454
+ * Version: 6.16.0-beta.1455
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 92593:
+/***/ 2512:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.16.0-beta.1454';
+  return '6.16.0-beta.1455';
 }
 
 /***/ }),
@@ -10708,7 +10708,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(92593);
+var _version = __webpack_require__(2512);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23414,7 +23414,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(92593);
+var _version = __webpack_require__(2512);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -24940,6 +24940,9 @@ function createAPI(container) {
   function make(destination, media) {
     let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     log.debug(API_LOG_TAG + 'call.make: ', destination, media, options);
+
+    // Validate destination
+    (0, _utils.validateDestination)(destination);
 
     // Validate mediaConstraints
     (0, _utils.validateMediaConstraints)(media);
@@ -28877,6 +28880,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.formatMediaConstraints = formatMediaConstraints;
+exports.validateDestination = validateDestination;
 exports.validateDetachedMedia = validateDetachedMedia;
 exports.validateMediaConstraints = validateMediaConstraints;
 __webpack_require__(62234);
@@ -28913,6 +28917,29 @@ function formatMediaConstraints(media) {
     medias: media.medias
   };
   return mediaConstraints;
+}
+
+/**
+ * Helper function to validate destination for Call APIs.
+ *
+ * @method validateDestination
+ * @param {string} destination
+ * @throws {BasicError} Throws an error if destination is not defined
+ * @throws {BasicError} Throws an error if destination is not a string
+ */
+function validateDestination(destination) {
+  if (!destination) {
+    throw new _errors.default({
+      message: `No destination provided.`,
+      code: _errors.callCodes.INVALID_PARAM
+    });
+  }
+  if (typeof destination !== 'string') {
+    throw new _errors.default({
+      message: `Incorrect destination type.`,
+      code: _errors.callCodes.INVALID_PARAM
+    });
+  }
 }
 
 /**
@@ -36678,7 +36705,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(92593);
+var _version = __webpack_require__(2512);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -44695,7 +44722,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(92593);
+var _version = __webpack_require__(2512);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -55649,7 +55676,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(92593);
+var _version = __webpack_require__(2512);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88603,7 +88630,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 76455:
+/***/ 17418:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89044,7 +89071,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(76455));
+var _version = _interopRequireDefault(__webpack_require__(17418));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -96980,7 +97007,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(21019);
+var V8 = __webpack_require__(59142);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -97003,7 +97030,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(21019);
+var V8_VERSION = __webpack_require__(59142);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -97988,10 +98015,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(62193);
+var FF = __webpack_require__(40056);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(21019);
-var WEBKIT = __webpack_require__(44243);
+var V8 = __webpack_require__(59142);
+var WEBKIT = __webpack_require__(90082);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98339,7 +98366,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 62193:
+/***/ 40056:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98353,7 +98380,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 21019:
+/***/ 59142:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98389,7 +98416,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 44243:
+/***/ 90082:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
