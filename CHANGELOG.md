@@ -15,6 +15,7 @@ Ribbon WebRTC SDK change log.
   - If the SDK is placed into proxy-mode before the SDK emits the initial `devices:change` event, then this event for local device discovery will no longer be emitted. Only the intended event for remote device discovery will be emitted in this scenario.
 - Fixed the cleaning of server subscription's resource for the case when websocket connection fails during a subscription attempt. `KJS-2345`
 - Fixed a Call issue where the error message for starting an outgoing call without a destination was incorrect. `KJS-2283`
+- Fixed validation for `setCredentials` api by preventing the setting of credentials if `username` parameter is not provided, while trying to authenticate via an HMAC token. `KJS-2346`
 
 ## 6.15.0 - 2024-09-27
 
