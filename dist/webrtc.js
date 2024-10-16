@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.16.0-beta.1461
+ * Version: 6.16.0-beta.1462
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2360,7 +2360,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 87145:
+/***/ 37237:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2378,7 +2378,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.16.0-beta.1461';
+  return '6.16.0-beta.1462';
 }
 
 /***/ }),
@@ -10708,7 +10708,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(87145);
+var _version = __webpack_require__(37237);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23414,7 +23414,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(87145);
+var _version = __webpack_require__(37237);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -36701,7 +36701,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(71028));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(87145);
+var _version = __webpack_require__(37237);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -44718,7 +44718,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(87145);
+var _version = __webpack_require__(37237);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -46642,8 +46642,6 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = createAPI;
-__webpack_require__(62234);
-var actions = _interopRequireWildcard(__webpack_require__(49561));
 var eventTypes = _interopRequireWildcard(__webpack_require__(34889));
 var _selectors = __webpack_require__(56512);
 var _selectors2 = __webpack_require__(87075);
@@ -46736,7 +46734,6 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 function createAPI(container) {
   const {
     context,
-    SubscriptionIntervals,
     SubscriptionOperations: operations,
     logManager,
     API_LOG_TAG,
@@ -46794,62 +46791,26 @@ function createAPI(container) {
         log.warn('forceLogOut option has been marked as deprecated, as no longer supported.');
       }
       const userInfo = (0, _selectors2.getUserInfo)(context.getState());
-      if (userInfo && (userInfo.username || userInfo.accessToken)) {
-        // Normalize services array
-        services = (0, _utils.normalizeServices)(services);
-        context.dispatch(actions.subscribe(services, options));
-        emitEvent(eventTypes.SUB_CHANGE, {
-          reason: undefined
-        });
-        try {
-          // The flow will call one of the two operations: subscribe OR updateSubscription
-          const result = await operations.subscriptionFlow({
+      try {
+        if (userInfo && (userInfo.username || userInfo.accessToken)) {
+          // Normalize services array
+          services = (0, _utils.normalizeServices)(services);
+
+          // This will call one of the two operations: subscribe OR updateSubscription
+          await operations.subscribeFlow({
             services,
             options
           });
-          if (result) {
-            // result returned by a new subcription or an updated subscription
-            context.dispatch(actions.subscribeFinished({
-              subscriptions: result.subscriptions
-            }, result.platform));
-            const payload = result.retryAfter ? {
-              reason: result.reason,
-              retryAfter: result.retryAfter
-            } : {
-              reason: result.reason
-            };
-            emitEvent(eventTypes.SUB_CHANGE, payload);
-
-            // We have a sucessful subscription, so start the resubscription interval
-            // so that we automatically update our subscription, when it expires.
-            SubscriptionIntervals.resubInterval.startResubInterval();
-          } else {
-            const error = new _errors.default({
-              message: 'Failed user subscription.',
-              code: _errors.subscriptionCodes.GENERIC_ERROR
-            });
-            context.dispatch(actions.subscribeFinished({
-              error
-            }));
-            emitEvent(eventTypes.SUB_ERROR, {
-              error
-            });
-          }
-        } catch (error) {
-          context.dispatch(actions.subscribeFinished({
-            error
-          }));
+        } else {
           emitEvent(eventTypes.SUB_ERROR, {
-            error
+            error: new _errors.default({
+              message: 'Failed to subscribe user. Please ensure credentials are set.',
+              code: _errors.subscriptionCodes.INVALID_STATE
+            })
           });
         }
-      } else {
-        emitEvent(eventTypes.SUB_ERROR, {
-          error: new _errors.default({
-            message: 'Failed to subscribe user. Please ensure credentials are set.',
-            code: _errors.subscriptionCodes.INVALID_STATE
-          })
-        });
+      } catch (error) {
+        // No further handling needed as the subscribeFlow operation emitted the subscription error.
       }
     },
     /**
@@ -46879,40 +46840,13 @@ function createAPI(container) {
       log.debug(API_LOG_TAG + 'services.unsubscribe: ', services, type);
       const userInfo = (0, _selectors2.getUserInfo)(context.getState());
       if (userInfo && (userInfo.accessToken || userInfo.username)) {
-        context.dispatch(actions.unsubscribe(services, type));
-        emitEvent(eventTypes.SUB_CHANGE, {
-          reason: undefined
-        });
         try {
-          // Compare the current services against what is being unsubscribe to figure out if partial or full.
-          const activeServices = (0, _selectors.getSubscribedServices)(context.getState());
-          const remainingServices = activeServices.filter(serv => !services.includes(serv));
-          const isPartial = remainingServices.length > 0;
-
           // The flow will call one of the two operations: unsubscribe OR updateSubscription
           // There is no extected result returned to API
-          const result = await operations.subscriptionFlow(services);
-          const platform = (0, _selectors.getSubscriptionPlatform)(context.getState());
-          // Depending if it was a partial or full unsubscribe, we need to update state differently.
-          // TODO: Have the `unsubscribeFinished` action be able to handle both partial&full scenarios.
-          if (isPartial) {
-            context.dispatch(actions.subscribeFinished({
-              subscriptions: result.subscriptions
-            }, result.platform));
-          } else {
-            //We successfuly unsubscribed from all services, so stop the resubscription interval.
-            SubscriptionIntervals.resubInterval.stopResubInterval();
-            context.dispatch(actions.unsubscribeFinished({}, platform));
-          }
-          emitEvent(eventTypes.SUB_CHANGE, {});
+          await operations.unsubscribeFlow(services, type);
           log.info('Successfully unsubscribed from all services.');
         } catch (error) {
-          context.dispatch(actions.unsubscribeFinished({
-            error
-          }));
-          emitEvent(eventTypes.SUB_ERROR, {
-            error
-          });
+          // No op, unsubscribeFlow operation will dispatch/emit errors.
         }
       } else {
         emitEvent(eventTypes.SUB_ERROR, {
@@ -47622,6 +47556,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(78641));
 var _operation = _interopRequireDefault(__webpack_require__(34189));
+var _subscribeFlow = _interopRequireDefault(__webpack_require__(65400));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('SubscriptionRequests.subscribe', container => {
@@ -47629,6 +47564,9 @@ function registerFeature(bottle) {
   });
   bottle.factory('SubscriptionOperations.subscribe', container => {
     return (0, _operation.default)(bottle.container);
+  });
+  bottle.factory('SubscriptionOperations.subscribeFlow', container => {
+    return (0, _subscribeFlow.default)(bottle.container);
   });
 }
 
@@ -48008,6 +47946,144 @@ function createRequest(container) {
 
 /***/ }),
 
+/***/ 65400:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = createOperation;
+var actions = _interopRequireWildcard(__webpack_require__(49561));
+var actionTypes = _interopRequireWildcard(__webpack_require__(34721));
+var eventTypes = _interopRequireWildcard(__webpack_require__(34889));
+var _selectors = __webpack_require__(56512);
+var _errors = _interopRequireWildcard(__webpack_require__(75412));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+// Subscription plugin.
+
+// Errors
+
+/**
+ * Operation factory function responsible for controlling the subscribe flow.
+ * @method createOperation
+ * @param  {Object} container The bottle container.
+ * @return {Function} The `subscribe flow` operation.
+ */
+function createOperation(container) {
+  const {
+    context,
+    emitEvent,
+    SubscriptionOperations: operations,
+    Notifications,
+    SubscriptionIntervals
+  } = container;
+
+  /**
+   * Entry point for subscribe and update subscription change actions.
+   * It watches over the progress by checking whether operation suceeded or there was an error.
+   * It triggers the appropriate action and event for either success or failure scenario.
+   * @method subscribeFlow
+   * @param {Object} info The info needed for a subscribe or update subscription operation.
+   */
+  async function subscribeFlow(info) {
+    const {
+      services,
+      options
+    } = info;
+    context.dispatch(actions.subscribe(services, options));
+    emitEvent(eventTypes.SUB_CHANGE, {
+      reason: undefined
+    });
+    try {
+      // Check if we have an existing subscription
+      const subscription = (0, _selectors.getSubscriptionInfo)(context.getState());
+      let finishOrCancel;
+
+      // Check what we have in Redux state at the time we got the SUBSCRIBE action
+      if (!subscription || !subscription[0]) {
+        if (!services || services.length === 0) {
+          // Error scenario: No services specified.
+          throw new _errors.default({
+            code: _errors.subscriptionCodes.NO_SERVICE_PROVIDED,
+            message: 'No service provided'
+          });
+        }
+
+        // No existing subscription, make a new subscription request
+        // Fork off and try to connect/subscribe by calling 'subscribe' operation.
+        // Call the operation just like the API calls it, except we don't await.
+        // The 'services' param is already normalized and
+        // 'options' param contains the type, clientCorrelator & forceLogOut.
+        finishOrCancel = await Promise.race([operations.subscribe(services, options), Notifications.takeAction(actionTypes.UNSUBSCRIBE)]);
+      } else {
+        // Existing subscription found, update our subscription.
+        // Fork off and try to update subscription by calling 'updateSubscription' operation
+        // by not waiting for it. 'services' param is already normalized.
+        finishOrCancel = await Promise.race([operations.updateSubscription(services, true), Notifications.takeAction(actionTypes.UNSUBSCRIBE)]);
+      }
+
+      /**
+       * This if block covers 2 of the 3 flows of subscribe / unsubscribe.
+       * 1. The first block covers what happens when we receive an UNSUBSCRIBE action before we finish connecting.
+       *        IE UNSUBSCRIBE comes before a SUBSCRIBE_FINISHED.
+       * 2. The second scenario covers what happens when we get a successful SUBSCRIBE_FINISHED event before any UNSUBSCRIBE events.
+       * 3. The third scenario is not explicitly covered here. That scenario is when we received a SUBSCRIBE_FINISHED event with an error before any unsubscribe events.
+       *      In this case, there is nothing that we explicitly have to do, since a SUBSCRIBE_FINISHED event with an error doesn't place anything into the state.
+       *      Therefore there is no real cleanup for us to do in this scenario. We then want to wait for the next SUBSCRIBE (which we do via the next iteration).
+       **/
+      // In the case when updateSubscription operation finishes first, there will be no finishOrCancel returned.
+      if (finishOrCancel && finishOrCancel.type === actionTypes.UNSUBSCRIBE) {
+        // We got unsubscribe request before 'subscribe' operation (or 'updateSubscription' operation)
+        // had a chance to finish. Therefore cancel the operation by forking the 'unsubscribe' operation.
+        operations.unsubscribe();
+      } else {
+        if (finishOrCancel) {
+          // result returned by a new subcription or an updated subscription
+          context.dispatch(actions.subscribeFinished({
+            subscriptions: finishOrCancel.subscriptions
+          }, finishOrCancel.platform));
+          const payload = finishOrCancel.retryAfter ? {
+            reason: finishOrCancel.reason,
+            retryAfter: finishOrCancel.retryAfter
+          } : {
+            reason: finishOrCancel.reason
+          };
+          emitEvent(eventTypes.SUB_CHANGE, payload);
+
+          // We have a sucessful subscription, so start the resubscription interval
+          // so that we automatically update our subscription, when it expires.
+          SubscriptionIntervals.resubInterval.startResubInterval();
+        } else {
+          const error = new _errors.default({
+            message: 'Failed user subscription.',
+            code: _errors.subscriptionCodes.GENERIC_ERROR
+          });
+          throw error;
+        }
+
+        // In the case of subscribe or updateSubscription operations finishing first, we need to return the result to API.
+        // The API will then dispatch SUBSCRIBE_FINISHED action.
+        return finishOrCancel;
+      }
+    } catch (error) {
+      context.dispatch(actions.subscribeFinished({
+        error
+      }));
+      emitEvent(eventTypes.SUB_ERROR, {
+        error
+      });
+      throw error;
+    }
+  }
+  return subscribeFlow;
+}
+
+/***/ }),
+
 /***/ 63657:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -48020,6 +48096,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = registerFeature;
 var _request = _interopRequireDefault(__webpack_require__(27388));
 var _operation = _interopRequireDefault(__webpack_require__(60508));
+var _unsubscribeFlow = _interopRequireDefault(__webpack_require__(76248));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function registerFeature(bottle) {
   bottle.factory('SubscriptionRequests.unsubscribe', container => {
@@ -48027,6 +48104,9 @@ function registerFeature(bottle) {
   });
   bottle.factory('SubscriptionOperations.unsubscribe', container => {
     return (0, _operation.default)(bottle.container);
+  });
+  bottle.factory('SubscriptionOperations.unsubscribeFlow', container => {
+    return (0, _unsubscribeFlow.default)(bottle.container);
   });
 }
 
@@ -48214,6 +48294,150 @@ function createRequest(container) {
 
 /***/ }),
 
+/***/ 76248:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = createOperation;
+__webpack_require__(62234);
+var _difference2 = _interopRequireDefault(__webpack_require__(37011));
+var _isEmpty2 = _interopRequireDefault(__webpack_require__(84499));
+var actions = _interopRequireWildcard(__webpack_require__(49561));
+var eventTypes = _interopRequireWildcard(__webpack_require__(34889));
+var _selectors = __webpack_require__(56512);
+var _constants = __webpack_require__(78215);
+var _errors = _interopRequireWildcard(__webpack_require__(75412));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+// Subscription plugin.
+
+// Constants
+
+// Errors
+
+/**
+ * Operation factory function responsible for controlling the unsubscribe flow.
+ * @method createOperation
+ * @param  {Object} container The bottle container.
+ * @return {Function} The `unsubscribe flow` operation.
+ */
+function createOperation(container) {
+  const {
+    context,
+    emitEvent,
+    SubscriptionOperations: operations,
+    SubscriptionIntervals,
+    logManager
+  } = container;
+  const log = logManager.getLogger('SUBSCRIPTION');
+
+  /**
+   * Entry point for unsubscribe subscription change actions.
+   * It triggers the appropriate action and event for either success or failure scenario.
+   * @method unsubscribeFlow
+   * @param {Array} services The services to unsubscribe to.
+   * @param {string} type The notification type.
+   */
+  async function unsubscribeFlow(services) {
+    let type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.notificationTypes.WEBSOCKET;
+    context.dispatch(actions.unsubscribe(services, type));
+    emitEvent(eventTypes.SUB_CHANGE, {
+      reason: undefined
+    });
+    if (!services || services.length === 0) {
+      // Error scenario: No services specified.
+      const error = new _errors.default({
+        code: _errors.subscriptionCodes.NO_SERVICE_PROVIDED,
+        message: 'No service provided'
+      });
+      context.dispatch(actions.unsubscribeFinished({
+        error
+      }));
+      emitEvent(eventTypes.SUB_ERROR, {
+        error
+      });
+      throw error;
+    }
+
+    // Check if we have an existing subscription
+    const subscription = (0, _selectors.getSubscriptionInfo)(context.getState());
+    if (subscription && subscription[0]) {
+      try {
+        // Remove all services from our subscribed services if they are present
+        const updatedServices = subscription[0].service.filter(service => !services.includes(service));
+        if (updatedServices.length === 0) {
+          // All services are being unsubscribed, so call 'unsubscribe' operation.
+          // Wait for 'unsubscribe' operation to finish so that when it returns,
+          // the API will dispatch the UNSUBSCRIBE_FINISHED action
+          await operations.unsubscribe();
+
+          //We successfuly unsubscribed from all services, so stop the resubscription interval.
+          SubscriptionIntervals.resubInterval.stopResubInterval();
+          const platform = (0, _selectors.getSubscriptionPlatform)(context.getState());
+          context.dispatch(actions.unsubscribeFinished({}, platform));
+          emitEvent(eventTypes.SUB_CHANGE, {});
+        } else if ((0, _isEmpty2.default)((0, _difference2.default)(subscription[0].service, updatedServices))) {
+          // We don't have a subscription for any of the services requesting unsubscribing
+          // No subscription found
+          const error = new _errors.default({
+            message: `No subscription found for ${JSON.stringify(services)}, can't unsubscribe.`,
+            code: _errors.authCodes.LINK_UNSUBSCRIBE_FAIL
+          });
+          context.dispatch(actions.unsubscribeFinished({
+            error
+          }));
+          log.debug(`Unsubscribe failed: ${error.message}`);
+          throw error;
+        } else {
+          // Some services are being unsubscribed, update our subscription
+          services = updatedServices.map(service => {
+            return {
+              service: service
+            };
+          });
+
+          // Fork off the 'updateSubscription' operation
+          const result = await operations.updateSubscription(services, false);
+          if (result) {
+            // TODO: Have the `unsubscribeFinished` action be able to handle both partial&full scenarios.
+            context.dispatch(actions.subscribeFinished({
+              subscriptions: result.subscriptions
+            }, result.platform));
+            emitEvent(eventTypes.SUB_CHANGE, {});
+          }
+        }
+      } catch (error) {
+        context.dispatch(actions.unsubscribeFinished({
+          error
+        }));
+        emitEvent(eventTypes.SUB_ERROR, {
+          error
+        });
+        throw error;
+      }
+    } else {
+      // No subscription found
+      const error = new _errors.default({
+        message: "No subscription found, can't unsubscribe.",
+        code: _errors.authCodes.LINK_UNSUBSCRIBE_FAIL
+      });
+      log.debug(`Unsubscribe failed: ${error.message}`);
+      emitEvent(eventTypes.SUB_ERROR, {
+        error
+      });
+    }
+  }
+  return unsubscribeFlow;
+}
+
+/***/ }),
+
 /***/ 32965:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -48313,7 +48537,7 @@ function createOperation(container) {
       };
       log.info(`Subscribed to the following services: ${subscription[0].service}`);
 
-      // Upon returning this to subscriptionFlow (which returns it to API),
+      // Upon returning this to subscribeFlow (which returns it to API),
       // the API will then trigger the associated action & event
       return {
         subscriptions: [updatedSubscription],
@@ -48487,7 +48711,6 @@ exports["default"] = subscriptionFactory;
 var _interface = __webpack_require__(57946);
 var actionTypes = _interopRequireWildcard(__webpack_require__(34721));
 var _constants = __webpack_require__(22191);
-var _subscriptionFlow = _interopRequireDefault(__webpack_require__(96230));
 var _onWebsocketOverridden = _interopRequireDefault(__webpack_require__(51539));
 var _onSubscriptionGone = _interopRequireDefault(__webpack_require__(19528));
 var _onConnectionLost = _interopRequireDefault(__webpack_require__(70516));
@@ -48650,11 +48873,6 @@ function subscriptionFactory() {
 
   // Register the component factory functions to the bottle.
   bottle.factory('SubscriptionAPI', _interface.createAPI);
-
-  // Register the main operation which controls the subscription flow
-  bottle.factory('SubscriptionOperations.subscriptionFlow', container => {
-    return (0, _subscriptionFlow.default)(bottle.container);
-  });
 
   // Register the operation that handles a 'websocket overwritten' notification
   bottle.factory('SubscriptionOperations.onWebsocketOverridden', container => {
@@ -49127,156 +49345,6 @@ function createOperation(container) {
     });
   }
   return handleWebSocketOverridden;
-}
-
-/***/ }),
-
-/***/ 96230:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = createOperation;
-__webpack_require__(62234);
-var _difference2 = _interopRequireDefault(__webpack_require__(37011));
-var _isEmpty2 = _interopRequireDefault(__webpack_require__(84499));
-var actionTypes = _interopRequireWildcard(__webpack_require__(34721));
-var _selectors = __webpack_require__(56512);
-var _errors = _interopRequireWildcard(__webpack_require__(75412));
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-// Subscription plugin.
-
-// Errors
-
-/**
- * Operation factory function responsible for controlling the subscription flow.
- * @method createOperation
- * @param  {Object} container The bottle container.
- * @return {Function} The `subscription flow` operation.
- */
-function createOperation(container) {
-  const {
-    context,
-    SubscriptionOperations: operations,
-    Notifications,
-    logManager
-  } = container;
-  const log = logManager.getLogger('SUBSCRIPTION');
-
-  /**
-   * Entry point for ALL subscription change actions.
-   * Handles SUBSCRIBE & UNSUBSCRIBE incoming actions and calls the appropriate operation.
-   * In the case of a subscribe or update subscription request, it also watches over the progress by checking wether
-   * operation suceeded or there was an error.
-   * It triggers the appropriate action and event for either success or failure scenario.
-   * @method subscriptionFlow
-   * @param {Object|Array} info The info needed for a subscribe Or unsubscribe operation.
-   */
-  async function subscriptionFlow(info) {
-    if (!info || info.length === 0) {
-      // Error scenario: No services specified.
-      throw new _errors.default({
-        code: _errors.subscriptionCodes.NO_SERVICE_PROVIDED,
-        message: 'No service provided'
-      });
-    }
-    if (!(info instanceof Array)) {
-      // it's a subscribe request
-      const {
-        services,
-        options
-      } = info;
-
-      // Check if we have an existing subscription
-      const subscription = (0, _selectors.getSubscriptionInfo)(context.getState());
-      let finishOrCancel;
-
-      // Check what we have in Redux state at the time we got the SUBSCRIBE action
-      if (!subscription || !subscription[0]) {
-        // No existing subscription, make a new subscription request
-        // Fork off and try to connect/subscribe by calling 'subscribe' operation.
-        // Call the operation just like the API calls it, except we don't await.
-        // The 'services' param is already normalized and
-        // 'options' param contains the type, clientCorrelator & forceLogOut.
-        finishOrCancel = await Promise.race([operations.subscribe(services, options), Notifications.takeAction(actionTypes.UNSUBSCRIBE)]);
-      } else {
-        // Existing subscription found, update our subscription.
-        // Fork off and try to update subscription by calling 'updateSubscription' operation
-        // by not waiting for it. 'services' param is already normalized.
-        finishOrCancel = await Promise.race([operations.updateSubscription(services, true), Notifications.takeAction(actionTypes.UNSUBSCRIBE)]);
-      }
-
-      /**
-       * This if block covers 2 of the 3 flows of subscribe / unsubscribe.
-       * 1. The first block covers what happens when we receive an UNSUBSCRIBE action before we finish connecting.
-       *        IE UNSUBSCRIBE comes before a SUBSCRIBE_FINISHED.
-       * 2. The second scenario covers what happens when we get a successful SUBSCRIBE_FINISHED event before any UNSUBSCRIBE events.
-       * 3. The third scenario is not explicitly covered here. That scenario is when we received a SUBSCRIBE_FINISHED event with an error before any unsubscribe events.
-       *      In this case, there is nothing that we explicitly have to do, since a SUBSCRIBE_FINISHED event with an error doesn't place anything into the state.
-       *      Therefore there is no real cleanup for us to do in this scenario. We then want to wait for the next SUBSCRIBE (which we do via the next iteration).
-       **/
-      // In the case when updateSubscription operation finishes first, there will be no finishOrCancel returned.
-      if (finishOrCancel && finishOrCancel.type === actionTypes.UNSUBSCRIBE) {
-        // We got unsubscribe request before 'subscribe' operation (or 'updateSubscription' operation)
-        // had a chance to finish. Therefore cancel the operation by forking the 'unsubscribe' operation.
-        operations.unsubscribe();
-      } else {
-        // In the case of subscribe or updateSubscription operations finishing first, we need to return the result to API.
-        // The API will then dispatch SUBSCRIBE_FINISHED action.
-        return finishOrCancel;
-      }
-    } else {
-      // it's for an unsubscribe request
-      // Check if we have an existing subscription
-      const subscription = (0, _selectors.getSubscriptionInfo)(context.getState());
-      if (subscription && subscription[0]) {
-        // Remove all services from our subscribed services if they are present
-        const updatedServices = subscription[0].service.filter(service => !info.includes(service));
-        if (updatedServices.length === 0) {
-          // All services are being unsubscribed, so call 'unsubscribe' operation.
-          // Wait for 'unsubscribe' operation to finish so that when it returns,
-          // the API will dispatch the UNSUBSCRIBE_FINISHED action
-          await operations.unsubscribe();
-        } else if ((0, _isEmpty2.default)((0, _difference2.default)(subscription[0].service, updatedServices))) {
-          // We don't have a subscription for any of the services requesting unsubscribing
-          // No subscription found
-          const error = new _errors.default({
-            message: `No subscription found for ${JSON.stringify(info)}, can't unsubscribe.`,
-            code: _errors.authCodes.LINK_UNSUBSCRIBE_FAIL
-          });
-          log.debug(`Unsubscribe failed: ${error.message}`);
-          //  The API will dispatch the action + event
-          throw error;
-        } else {
-          // Some services are being unsubscribed, update our subscription
-          info = updatedServices.map(service => {
-            return {
-              service: service
-            };
-          });
-
-          // Fork off the 'updateSubscription' operation
-          return await operations.updateSubscription(info, false);
-        }
-      } else {
-        // No subscription found
-        const error = new _errors.default({
-          message: "No subscription found, can't unsubscribe.",
-          code: _errors.authCodes.LINK_UNSUBSCRIBE_FAIL
-        });
-        log.debug(`Unsubscribe failed: ${error.message}`);
-        //  The API will dispatch the action + event
-        throw error;
-      }
-    }
-  }
-  return subscriptionFlow;
 }
 
 /***/ }),
@@ -55672,7 +55740,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(87145);
+var _version = __webpack_require__(37237);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88626,7 +88694,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 345:
+/***/ 17239:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89067,7 +89135,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(345));
+var _version = _interopRequireDefault(__webpack_require__(17239));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -97003,7 +97071,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(88799);
+var V8 = __webpack_require__(12307);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -97026,7 +97094,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(88799);
+var V8_VERSION = __webpack_require__(12307);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -98011,10 +98079,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(62989);
+var FF = __webpack_require__(16313);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(88799);
-var WEBKIT = __webpack_require__(80471);
+var V8 = __webpack_require__(12307);
+var WEBKIT = __webpack_require__(14619);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98362,7 +98430,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 62989:
+/***/ 16313:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98376,7 +98444,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 88799:
+/***/ 12307:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98412,7 +98480,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 80471:
+/***/ 14619:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
