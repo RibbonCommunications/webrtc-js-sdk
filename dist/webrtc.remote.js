@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.remote.js
- * Version: 6.15.0
+ * Version: 6.16.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -27,7 +27,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 3792:
+/***/ 7049:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45,7 +45,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.15.0';
+  return '6.16.0';
 }
 
 /***/ }),
@@ -72,7 +72,7 @@ var _isPlainObject2 = _interopRequireDefault(__webpack_require__(6705));
 var _isArray2 = _interopRequireDefault(__webpack_require__(283));
 var _mergeAllWith2 = _interopRequireDefault(__webpack_require__(1175));
 var _queryString = _interopRequireDefault(__webpack_require__(8032));
-var _effects = __webpack_require__(4286);
+var _effects = __webpack_require__(6620);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Libraries.
 
@@ -2892,7 +2892,7 @@ var _converters = _interopRequireDefault(__webpack_require__(2046));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(1336));
 var _channel = __webpack_require__(6937);
 var _logs = __webpack_require__(9932);
-var _version = __webpack_require__(3792);
+var _version = __webpack_require__(7049);
 var _errors = _interopRequireWildcard(__webpack_require__(5412));
 var _uuid = __webpack_require__(4596);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(7654));
@@ -3286,7 +3286,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(7216));
 var mediaApis = _interopRequireWildcard(__webpack_require__(1937));
 var _events = _interopRequireDefault(__webpack_require__(6880));
 var _logs = __webpack_require__(9932);
-var _version = __webpack_require__(3792);
+var _version = __webpack_require__(7049);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -6366,8 +6366,12 @@ function DeviceManager() {
 
   // Check devices on initialization.
   checkDevices().then(() => {
-    // Emit an initial event to notify that devices are available.
-    emitter.emit('change');
+    if (isListening) {
+      // Emit an initial event to notify that devices are available.
+      emitter.emit('change');
+    } else {
+      log.info('Initial media device discovery ignored.');
+    }
   });
 
   // Check devices whenever they change.
@@ -6384,8 +6388,12 @@ function DeviceManager() {
       setTimeout(() => {
         recentDeviceChange = false;
         checkDevices().then(() => {
-          // Emit an event to notify of the change.
-          emitter.emit('change');
+          if (isListening) {
+            // Emit an event to notify of the change.
+            emitter.emit('change');
+          } else {
+            log.info('Media device change ignored after being detected.');
+          }
         });
       }, 50);
     } else {
@@ -20016,7 +20024,7 @@ exports.exclude = (input, filter, options) => {
 
 /***/ }),
 
-/***/ 4286:
+/***/ 6620:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20026,7 +20034,7 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   actionChannel: () => (/* reexport */ actionChannel),
-  all: () => (/* reexport */ io_c3792963_all),
+  all: () => (/* reexport */ io_22ea0cf9_all),
   apply: () => (/* reexport */ apply),
   call: () => (/* reexport */ call),
   cancel: () => (/* reexport */ cancel),
@@ -20043,7 +20051,7 @@ __webpack_require__.d(__webpack_exports__, {
   putResolve: () => (/* reexport */ putResolve),
   race: () => (/* reexport */ race),
   retry: () => (/* reexport */ retry$1),
-  select: () => (/* reexport */ io_c3792963_select),
+  select: () => (/* reexport */ io_22ea0cf9_select),
   setContext: () => (/* reexport */ setContext),
   spawn: () => (/* reexport */ spawn),
   take: () => (/* reexport */ take),
@@ -20161,19 +20169,15 @@ var redux_saga_is_esm_effect = function effect(eff) {
 
 ;// CONCATENATED MODULE: ../../node_modules/@babel/runtime/helpers/esm/extends.js
 function extends_extends() {
-  extends_extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return extends_extends = Object.assign ? Object.assign.bind() : function (n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
     }
-    return target;
-  };
-  return extends_extends.apply(this, arguments);
+    return n;
+  }, extends_extends.apply(null, arguments);
 }
+
 ;// CONCATENATED MODULE: ../../node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
 
 
@@ -20200,7 +20204,7 @@ function delayP(ms, val) {
 
 /* harmony default export */ const redux_saga_delay_p_esm = (delayP);
 
-;// CONCATENATED MODULE: ../../node_modules/@redux-saga/core/dist/io-c3792963.js
+;// CONCATENATED MODULE: ../../node_modules/@redux-saga/core/dist/io-22ea0cf9.js
 
 
 
@@ -20223,7 +20227,7 @@ var identity = function identity(v) {
 };
 var hasSymbol = typeof Symbol === 'function';
 var asyncIteratorSymbol = hasSymbol && Symbol.asyncIterator ? Symbol.asyncIterator : '@@asyncIterator';
-function io_c3792963_check(value, predicate, error) {
+function io_22ea0cf9_check(value, predicate, error) {
   if (!predicate(value)) {
     throw new Error(error);
   }
@@ -20393,6 +20397,27 @@ function getMetaInfo(fn) {
 function getLocation(instrumented) {
   return instrumented[SAGA_LOCATION];
 }
+function compose() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  if (funcs.length === 0) {
+    return function (arg) {
+      return arg;
+    };
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0];
+  }
+
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(void 0, arguments));
+    };
+  });
+}
 
 var BUFFER_OVERFLOW = "Channel's Buffer overflow!";
 var ON_OVERFLOW_THROW = 1;
@@ -20515,7 +20540,7 @@ var CALL = 'CALL';
 var CPS = 'CPS';
 var FORK = 'FORK';
 var JOIN = 'JOIN';
-var io_c3792963_CANCEL = 'CANCEL';
+var io_22ea0cf9_CANCEL = 'CANCEL';
 var SELECT = 'SELECT';
 var ACTION_CHANNEL = 'ACTION_CHANNEL';
 var CANCELLED = 'CANCELLED';
@@ -20533,7 +20558,7 @@ var effectTypes = /*#__PURE__*/Object.freeze({
   CPS: CPS,
   FORK: FORK,
   JOIN: JOIN,
-  CANCEL: io_c3792963_CANCEL,
+  CANCEL: io_22ea0cf9_CANCEL,
   SELECT: SELECT,
   ACTION_CHANNEL: ACTION_CHANNEL,
   CANCELLED: CANCELLED,
@@ -20623,7 +20648,7 @@ var putResolve = function putResolve() {
   eff.payload.resolve = true;
   return eff;
 };
-function io_c3792963_all(effects) {
+function io_22ea0cf9_all(effects) {
   var eff = makeEffect(ALL, effects);
   eff.combinator = true;
   return eff;
@@ -20635,7 +20660,7 @@ function race(effects) {
 } // this match getFnCallDescriptor logic
 
 var validateFnDescriptor = function validateFnDescriptor(effectName, fnDescriptor) {
-  io_c3792963_check(fnDescriptor, notUndef, effectName + ": argument fn is undefined or null");
+  io_22ea0cf9_check(fnDescriptor, notUndef, effectName + ": argument fn is undefined or null");
 
   if (func(fnDescriptor)) {
     return;
@@ -20647,22 +20672,22 @@ var validateFnDescriptor = function validateFnDescriptor(effectName, fnDescripto
   if (array(fnDescriptor)) {
     context = fnDescriptor[0];
     fn = fnDescriptor[1];
-    io_c3792963_check(fn, notUndef, effectName + ": argument of type [context, fn] has undefined or null `fn`");
+    io_22ea0cf9_check(fn, notUndef, effectName + ": argument of type [context, fn] has undefined or null `fn`");
   } else if (object(fnDescriptor)) {
     context = fnDescriptor.context;
     fn = fnDescriptor.fn;
-    io_c3792963_check(fn, notUndef, effectName + ": argument of type {context, fn} has undefined or null `fn`");
+    io_22ea0cf9_check(fn, notUndef, effectName + ": argument of type {context, fn} has undefined or null `fn`");
   } else {
-    io_c3792963_check(fnDescriptor, func, effectName + ": argument fn is not function");
+    io_22ea0cf9_check(fnDescriptor, func, effectName + ": argument fn is not function");
     return;
   }
 
   if (context && string(fn)) {
-    io_c3792963_check(context[fn], func, effectName + ": context arguments has no such method - \"" + fn + "\"");
+    io_22ea0cf9_check(context[fn], func, effectName + ": context arguments has no such method - \"" + fn + "\"");
     return;
   }
 
-  io_c3792963_check(fn, func, effectName + ": unpacked fn argument (from [context, fn] or {context, fn}) is not a function");
+  io_22ea0cf9_check(fn, func, effectName + ": unpacked fn argument (from [context, fn] or {context, fn}) is not a function");
 };
 
 function getFnCallDescriptor(fnDescriptor, args) {
@@ -20755,9 +20780,9 @@ function cancel(taskOrTasks) {
 
   if (false) {}
 
-  return makeEffect(io_c3792963_CANCEL, taskOrTasks);
+  return makeEffect(io_22ea0cf9_CANCEL, taskOrTasks);
 }
-function io_c3792963_select(selector) {
+function io_22ea0cf9_select(selector) {
   if (selector === void 0) {
     selector = identity;
   }
@@ -22071,7 +22096,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 320:
+/***/ 4591:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -22173,7 +22198,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(3423));
 
 var _nil = _interopRequireDefault(__webpack_require__(5911));
 
-var _version = _interopRequireDefault(__webpack_require__(320));
+var _version = _interopRequireDefault(__webpack_require__(4591));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -28115,10 +28140,10 @@ var SHARED = '__core-js_shared__';
 var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
 
 (store.versions || (store.versions = [])).push({
-  version: '3.38.1',
+  version: '3.38.0',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2014-2024 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE',
+  license: 'https://github.com/zloirock/core-js/blob/v3.38.0/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 
@@ -28145,7 +28170,7 @@ module.exports = function (key, value) {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(4106);
+var V8_VERSION = __webpack_require__(2891);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(9117);
 
@@ -28814,7 +28839,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 4106:
+/***/ 2891:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";

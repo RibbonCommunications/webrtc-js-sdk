@@ -7,6 +7,16 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.16.0 - 2024-10-28
+
+### Fixed
+
+- Fixed a Proxy race-condition that could cause a `devices:change` event to be emitted for local devices when in proxy-mode. `KJS-2341`
+  - If the SDK is placed into proxy-mode before the SDK emits the initial `devices:change` event, then this event for local device discovery will no longer be emitted. Only the intended event for remote device discovery will be emitted in this scenario.
+- Fixed the cleaning of server subscription's resource for the case when websocket connection fails during a subscription attempt. `KJS-2345`
+- Fixed a Call issue where the error message for starting an outgoing call without a destination was incorrect. `KJS-2283`
+- Fixed validation for `setCredentials` api by preventing the setting of credentials if `username` parameter is not provided, while trying to authenticate via an HMAC token. `KJS-2346`
+
 ## 6.15.0 - 2024-09-27
 
 ### Added
