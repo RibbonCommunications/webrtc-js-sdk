@@ -143,10 +143,8 @@ The Connectivity configs are used to customize the behaviour of the websocket an
 
 ```javascript
 connectivity: {
-    // Specify that a keepAlive ping should be sent every 30 seconds,
-    // and an error should be reported after 3 missed pong responses.
-    pingInterval: 30000, // milliseconds
-    maxMissedPings: 3
+    // Specify that a keepAlive ping should be sent every 30 seconds.
+    pingInterval: 30000 // milliseconds
 }
 ```
 
@@ -163,7 +161,6 @@ connectivity: {
     reconnectTimeMultiplier: 2,
     reconnectTimeLimit: 300000, // milliseconds
     autoReconnect: true,
-    maxMissedPings: 3,
     checkConnectivity: true
 }
 ```
