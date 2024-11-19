@@ -33,8 +33,6 @@ Ribbon WebRTC SDK change log.
 
 ### Fixed
 
-- The make, answer, addMedia and replaceTrack APIs were throwing an error if parameter validation failed. This has been fixed to include the error in the event that is emitted instead of throwing.
-  - This issue was introduced in the v6.12.0. `KJS-2422`
 - Fixed an issue where if a call join request fails, the peer connection that was created locally for the new joined call doesn't get cleaned up. `KJS-2373`
 
 ### Changed
@@ -118,6 +116,15 @@ client.setCredentials({ username, bearerAccessToken: newToken })
 ```
 
 For the `getConnection` and `getServices` APIs, their functionality had been moved under the Subscription APIs, `client.services`, in the previous v6.0.0 release. The data that they return was no longer being updated with a user subscription, hence provide no useful functionality to an application. If these APIs are in use by your application, their usage should be revised.
+
+## 6.16.1 - 2024-11-18
+
+### Fixed
+
+- The make, answer, addMedia and replaceTrack APIs were throwing an error if parameter validation failed. This has been fixed to include the error in the event that is emitted instead of throwing.
+  - This issue was introduced in the v6.12.0. `KJS-2422`
+- Fixed a Call issue where DSCP Controls specified when answering a call were being ignored. `KJS-2419`
+- Fixed a Call issue where destroying the SDK before ending calls would lead to unhandled exceptions being thrown. `KJS-2416`
 
 ## 6.16.0 - 2024-10-28
 
