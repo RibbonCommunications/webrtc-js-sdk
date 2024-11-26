@@ -30,6 +30,11 @@ Ribbon WebRTC SDK change log.
   - If this API was used to retrieved the latest authentication error, the `auth:error` event should be used for that purpose.
 - Removed the `client.updateToken` Authentication API. `KJS-2348`
   - The `client.setCredentials` API should be used to update tokens.
+- Removed the `platform` parameter from the `ws:change` event.
+  - This parameter had become a constant and was no longer providing useful feedback.
+- Removed Call documentation for APIs deprecated long ago (v4). `KJS-2450`
+  - This API documentation was instructions for migrating from the deprecated APIs to the new APIs that covered that functionality. This information is no longer needed in our API documentation.
+  - The APIs include: `changeInputDevices`, `changeSpeaker`, `startScreenshare`, and `stopScreenshare`.
 
 ### Fixed
 
