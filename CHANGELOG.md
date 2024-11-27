@@ -39,6 +39,7 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed an issue where if a call join request fails, the peer connection that was created locally for the new joined call doesn't get cleaned up. `KJS-2373`
+- Fixed a Proxy Call issue where delays in messaging across the channel would add an unnecessary delay to the "end call" operation. `KJS-2280`
 
 ### Changed
 
