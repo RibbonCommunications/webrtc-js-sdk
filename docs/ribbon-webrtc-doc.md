@@ -158,9 +158,8 @@ For more information on keepalive see here: [https://en.wikipedia.org/wiki/Keepa
     *   `connectivity.reconnectTimeMultiplier` **[Number][12]** Reconnect delay multiplier for subsequent attempts. The reconnect delay time will be multiplied by this after each failed reconnect attempt to increase the delay between attempts. eg. 5000ms then 10000ms then 20000ms delay if value is 2. (optional, default `1`)
     *   `connectivity.reconnectTimeLimit` **[Number][12]** Maximum time delay between reconnect attempts (milliseconds). Used in conjunction with the reconnect time multiplier to prevent overly long delays between reconnection attempts. (optional, default `640000`)
     *   `connectivity.autoReconnect` **[Boolean][11]** Flag to determine whether the SDK will attempt to automatically reconnect after connectivity disruptions. (optional, default `true`)
-    *   `connectivity.maxMissedPings` **[Number][12]** Maximum pings sent (without receiving a response) before reporting an error. (optional, default `3`)
     *   `connectivity.checkConnectivity` **[Boolean][11]** Flag to determine whether the SDK should check connectivity. (optional, default `true`)
-    *   `connectivity.webSocketOAuthMode` **[string][8]** query will send the bearer access token to authenticate the websocket and none will not send it. (optional, default `query`)
+    *   `connectivity.webSocketOAuthMode` **[string][8]** When set to 'query', the OAuth bearer access token will be appended as a query string parameter to the websocket address. (optional, default `none`)
 
 ### config.notifications
 
@@ -320,37 +319,6 @@ log(`Browser in use: ${details.browser}, version ${details.version}.`)
 
 Returns **[Object][7]** Object containing `browser` and `version` information.
 
-### updateToken
-
-If you're authenticating with tokens that expire and have not provided a refresh token to the `connect` function, you can update your access token with `updateToken` before it expires to stay connected.
-
-#### Parameters
-
-*   `credentials` **[Object][7]** The credentials object.
-
-    *   `credentials.username` **[string][8]** The username without the application's domain.
-    *   `credentials.accessToken` **[string][8]** An access token for the user with the provided user Id.
-
-### updateToken
-
-If you're authenticating with tokens that expire, you can update your access token with `updateToken` before it expires to stay connected.
-
-#### Parameters
-
-*   `credentials` **[Object][7]** The credentials object.
-
-    *   `credentials.username` **[string][8]** The username without the application's domain.
-    *   `credentials.bearerAccessToken` **[string][8]** A bearerAccessToken provided by an outside service.
-
-#### Examples
-
-```javascript
-client.updateToken({
-  username: 'alfred@example.com',
-  bearerAccessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-});
-```
-
 ### getUserInfo
 
 Retrieves information about the current user.
@@ -424,7 +392,8 @@ client.setCredentials({
 ### setCredentials
 
 Provides a bearerAccessToken to any backend services that the SDK instance deals with.
-The bearerAccessToken provided establishes what can be accessed by the SDK.
+The bearerAccessToken provided establishes what can be accessed by the SDK. The bearerAccessToken
+can be set again after subscription as long as the subscribed username is passed with the updated bearerAccessToken.
 
 #### Parameters
 
@@ -439,27 +408,6 @@ The bearerAccessToken provided establishes what can be accessed by the SDK.
 client.setCredentials({
   username: 'alfred@example.com',
   bearerAccessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-});
-```
-
-### setCredentials
-
-Provides an access token to any backend services that the SDK instance deals with.
-The access token provided establishes what can be accessed by the SDK.
-
-#### Parameters
-
-*   `credentials` **[Object][7]** The credentials object.
-
-    *   `credentials.username` **[string][8]** The username without the application's domain.
-    *   `credentials.accessToken` **[string][8]** An accessToken retrieved using the authentication APIs of the platform. Used for CIM authentication.
-
-#### Examples
-
-```javascript
-client.setCredentials({
-  username: 'alfred@example.com',
-  accessToken: 'ATgtBl8QAoJaeeJU!zhARKBYaN2BUxFQsc8F...'
 });
 ```
 
@@ -1328,78 +1276,6 @@ has been removed.
 
 *   `callId` **[string][8]** ID of the call being acted on.
 
-### startScreenshare
-
-Adds local screenshare to an ongoing Call, to start sending to the remote
-participant.
-
-The latest SDK release (v4.X+) has not yet implemented this API in the
-same way that it was available in previous releases (v3.X). In place
-of this API, the SDK has a more general API that can be used for this
-same behaviour.
-
-The [call.addMedia][66] API can be used to perform the same behaviour
-as `startScreenshare`. [call.addMedia][66] is a general-purpose API
-for adding media to a call, which covers the same functionality as
-`startScreenshare`. Selecting only screen options when using
-[call.addMedia][66] will perform the same behaviour as using
-`startScreenshare`.
-
-#### Examples
-
-```javascript
-// Select media options for adding only screenshare.
-const media = {
-   audio: false,
-   video: false,
-   screen: true,
-   screenOptions: { ... }
-}
-
-// Add the selected media to the call.
-client.call.addMedia(callId, media)
-```
-
-### stopScreenshare
-
-Removes local screenshare from an ongoing Call, stopping it from being
-sent to the remote participant.
-
-The latest SDK release (v4.X+) has not yet implemented this API in the
-same way that it was available in previous releases (v3.X). In place
-of this API, the SDK has a more general API that can be used for this
-same behaviour.
-
-The [call.removeMedia][68] API can be used to perform the same
-behaviour as `stopScreenshare`. [call.removeMedia][68] is a
-general-purpose API for removing media from a call, which covers the
-same functionality as `stopScreenshare`. Specifying only the screen
-track when using [call.removeMedia][68] will perform the same
-behaviour as using `stopScreenshare`.
-
-There is a caveat that if a Call has multiple video tracks (for example,
-both a video and a screen track), the SDK itself cannot yet
-differentiate one from the other. The application will need to know
-which track was the screen track in this scenario.
-
-#### Examples
-
-```javascript
-const call = client.call.getById(callId)
-// Get the ID of any/all video tracks on the call.
-const videoTracks = call.localTracks.filter(trackId => {
-   const track = call.media.getTrackById(trackId)
-   // Both video and screen tracks have kind of 'video'.
-   return track.kind === 'video'
-})
-
-// Pick out the screen track.
-const screenTrack = videoTracks[0]
-
-// Remove screen from the call.
-client.call.removeMedia(callId, [ screenTrack ])
-```
-
 ### replaceTrack
 
 Replace a call's track with a new track of the same media type.
@@ -1896,80 +1772,6 @@ unexpected behaviour in future call operations for that call.
 
 Returns **[undefined][89]** 
 
-### changeInputDevices
-
-Changes the camera and/or microphone used for a Call's media input.
-
-The latest SDK release (v4.X+) has not yet implemented this API in the
-same way that it was available in previous releases (v3.X). In place
-of this API, the SDK has a more general API that can be used for this
-same behaviour.
-
-The same behaviour as the `changeInputDevices` API can be implemented
-using the general-purpose [call.replaceTrack][77] API. This API can
-be used to replace an existing media track with a new track of the
-same type, allowing an application to change certain aspects of the
-media, such as input device.
-
-#### Examples
-
-```javascript
-const call = client.call.getById(callId)
-// Get the ID of the Call's video track.
-const videoTrack = call.localTracks.find(trackId => {
-   const track = client.media.getTrackById(trackId)
-   return track.kind === 'video'
-})
-
-// Select the new video options.
-const media = {
-   video: true,
-   videoOptions: {
-       deviceId: 'cameraId'
-   }
-}
-
-// Change the call's camera by replacing the video track.
-client.call.replaceTrack(callId, videoTrack, media)
-```
-
-### changeSpeaker
-
-Changes the speaker used for a Call's audio output. Supported on
-browser's that support HTMLMediaElement.setSinkId().
-
-The latest SDK release (v4.X+) has not yet implemented this API in the
-same way that it was available in previous releases (v3.X). In place
-of this API, the SDK has a more general API that can be used for this
-same behaviour.
-
-The same behaviour as the `changeSpeaker` API can be implemented by
-re-rendering the Call's audio track.  A speaker can be selected when
-rendering an audio track, so changing a speaker can be simulated
-by unrendering the track with [media.removeTracks][74], then
-re-rendering it with a new speaker with [media.renderTracks][90].
-
-#### Examples
-
-```javascript
-const call = client.call.getById(callId)
-// Get the ID of the Call's audio track.
-const audioTrack = call.localTracks.find(trackId => {
-   const track = client.media.getTrackById(trackId)
-   return track.kind === 'audio'
-})
-
-// Where the audio track was previously rendered.
-const audioContainer = ...
-
-// Unrender the audio track we want to change speaker for.
-client.media.removeTrack([ audioTrack ], audioContainer)
-// Re-render the audio track with a new speaker.
-client.media.renderTrack([ audioTrack ], audioContainer, {
-   speakerId: 'speakerId'
-})
-```
-
 ### states
 
 Possible states that a Call can be in.
@@ -2030,11 +1832,11 @@ are occurring while the participants are expecting to be connected.
 
 An important state to check for is the `FAILED` state. This state signifies that there is no
 media connection between the call participants and an action must be taken to resolve the
-problem. Using the [call.restartMedia][91] API will attempt to reconnect the media. See
-the [call.restartMedia][91] API description for more information.
+problem. Using the [call.restartMedia][90] API will attempt to reconnect the media. See
+the [call.restartMedia][90] API description for more information.
 
 These states are direct reflections of the possible
-[RTCPeerConnection.iceConnectionState][92] values.
+[RTCPeerConnection.iceConnectionState][91] values.
 
 The Call's media connection state is a property of the [CallObject][50],
 which can be retrieved using the [call.getById][27] or
@@ -2057,7 +1859,7 @@ Type: [Object][7]
     the Call endpoints will receive each other's media.
 *   `DISCONNECTED` **[string][8]** Media has become disconnected and the Call endpoints have stopped receiving each other's media.
     The Call will automatically attempt to reconnect, transitioning back to `completed` if successful or to `failed` if not.
-*   `FAILED` **[string][8]** The connection has failed and cannot be recovered automatically. A full media connection refresh is required to reestablish a connection. See the [call.restartMedia][91] API.
+*   `FAILED` **[string][8]** The connection has failed and cannot be recovered automatically. A full media connection refresh is required to reestablish a connection. See the [call.restartMedia][90] API.
 *   `CLOSED` **[string][8]** The connection has been shut down and is no longer in use.
 
 #### Examples
@@ -2107,7 +1909,7 @@ Events used in the SDK's call reports.
 
 As a call progresses, the operation(s)/function(s) being performed throughout
 the duration of a call are recorded as events in a call report.
-The call report can be retrieved via the [call.getReport][93] API.
+The call report can be retrieved via the [call.getReport][92] API.
 An application can use these event names to find the associated event(s)
 in the call report for more information on the event.
 See *Call Reports* tutorial for more information on call reports and events.
@@ -2172,7 +1974,7 @@ Metrics are calculated only for the successful scenarios.
 
 As a call progresses, timings are calculated for the duration of operations and
 other events. They are recorded in a call report that can be retrieved via
-the [call.getReport][93] API.
+the [call.getReport][92] API.
 
 Type: [Object][7]
 
@@ -2219,7 +2021,7 @@ log(`Call duration was ${callDuration.data}ms.`)
 
 ### SIP_URI
 
-The SIP URI ie: sip:[joe@domain.com][94]
+The SIP URI ie: sip:[joe@domain.com][93]
 
 Type: [string][8]
 
@@ -2416,7 +2218,7 @@ event would indicate a single, remote video track was added. If the local
 user unheld the call, this event would indicate that any tracks previously
 on the call have been re-added, both local and remote.
 
-Information about a Track can be retrieved using the [media.getTrackById][95] API.
+Information about a Track can be retrieved using the [media.getTrackById][94] API.
 
 #### Parameters
 
@@ -2446,7 +2248,7 @@ exist, but the media is not available to both sides of the Call any longer.
 
 Tracks are removed from a Call when either the local or remote user stops the
 tracks, by using the [call.removeMedia][68] API for example, or when the
-Call is held with the [call.hold][96] API.
+Call is held with the [call.hold][95] API.
 
 This event can indicate that multiple tracks have been removed by the same
 operation. For example, if the remote user removed video from the call, this
@@ -2454,7 +2256,7 @@ event would indicate a single, remote video track was removed. If the local
 user held the call, this event would indicate that all tracks on the call
 have been removed, both local and remote.
 
-Information about a Track can be retrieved using the [media.getTrackById][95] API.
+Information about a Track can be retrieved using the [media.getTrackById][94] API.
 
 #### Parameters
 
@@ -2481,7 +2283,7 @@ client.on('call:tracksRemoved', function (params) {
 
 Stats have been retrieved for a Call or specific Track of a Call.
 
-See the [call.getStats][97] API for more information.
+See the [call.getStats][96] API for more information.
 
 #### Parameters
 
@@ -2489,7 +2291,7 @@ See the [call.getStats][97] API for more information.
 
     *   `params.callId` **[string][8]** The ID of the Call to retrieve stats for.
     *   `params.trackId` **[string][8]?** The ID of the Track to retrieve stats for.
-    *   `params.result` **[Map][98]?** The RTCStatsReport.
+    *   `params.result` **[Map][97]?** The RTCStatsReport.
     *   `params.error` **[api.BasicError][25]?** An error object, if the operation was not successful.
 
 #### Examples
@@ -2565,7 +2367,7 @@ These are parameters set by the remote endpoint of the Call. Please refer to
 
 The list of available and supported codecs by the browser have been retrieved.
 
-This event is emitted as a result of the [call.getAvailableCodecs][99] API. Please refer to the API for more
+This event is emitted as a result of the [call.getAvailableCodecs][98] API. Please refer to the API for more
 information.
 
 #### Parameters
@@ -2613,8 +2415,8 @@ See [call.mediaConnectionStates][30] for the list of possible values and descrip
 
 A media restart operation for a Call has been attempted.
 
-This event is emitted as a result of the [call.restartMedia][91] API being called.
-See the description for [call.restartMedia][91] for information about its
+This event is emitted as a result of the [call.restartMedia][90] API being called.
+See the description for [call.restartMedia][90] for information about its
 usage.
 
 The [call:mediaConnectionChange][71] event
@@ -2673,7 +2475,7 @@ Returns **[Array][19]** A list of call log records, ordered by latest first.
 ### fetch
 
 Fetches the list of call logs and stores them locally. The API
-[CallHistory.get][100] can then be used to get
+[CallHistory.get][99] can then be used to get
 the logs from local state after it has been updated.
 
 #### Parameters
@@ -2698,7 +2500,7 @@ Deletes all call logs.
 Gets the cached call history data and returns stringified data.
 
 The data is provided in a format that can be used directly with the
-[call.history.setCache][101] API. This allows an
+[call.history.setCache][100] API. This allows an
 application to persist the information across SDK instances when the
 backend environment does not support the CallHistory feature.
 
@@ -2708,7 +2510,7 @@ Returns **[string][8]** A stringified list of call log records from the cache, o
 
 Sets the cached call history data, expects stringified data as it will be parsed.
 
-The data can be retrieved from the [call.history.getCache][102] API. This allows an
+The data can be retrieved from the [call.history.getCache][101] API. This allows an
 application to persist the information across SDK instances when the
 backend environment does not support the CallHistory feature.
 
@@ -2718,7 +2520,7 @@ backend environment does not support the CallHistory feature.
 
 ### callHistory:change
 
-Call history state has been updated. See [CallHistory.get][100] to retrieve new state.
+Call history state has been updated. See [CallHistory.get][99] to retrieve new state.
 
 ### callHistory:error
 
@@ -2785,7 +2587,7 @@ the SDK and one or more backend servers.
 
 Information about a websocket connection.
 
-Can be retrieved using the [connection.getSocketState][103] API.
+Can be retrieved using the [connection.getSocketState][102] API.
 
 Type: [Object][7]
 
@@ -2793,18 +2595,12 @@ Type: [Object][7]
 
 *   `connected` **[boolean][11]** The state of the websocket connection.
 *   `pinging` **[boolean][11]** True if the client has sent a ping to the server and is still waiting for a pong response.
-*   `method` **[Object][7]** Information about how the websocket is being used.
-
-    *   `method.type` **[string][8]?** How the websocket is staying connected.
-    *   `method.responsibleParty` **[string][8]?** Who is responsible for keeping the connection alive.
-*   `platform` **[string][8]** The SDK platform being used.
 *   `pingInterval` **[number][12]** How often the client will ping the server to test for websocket connectivity.
 *   `reconnectLimit` **[number][12]** How many times the SDK will try to reconnect a disconnected websocket.
 *   `reconnectDelay` **[number][12]** How long the SDK will wait before retrying websocket reconnection.
 *   `reconnectTimeMultiplier` **[number][12]** Reconnect delay multiplier for subsequent attempts. The reconnect delay time will be multiplied by this after each failed reconnect attempt to increase the delay between attempts. eg. 5000ms then 10000ms then 20000ms delay if value is 2.
 *   `reconnectTimeLimit` **[number][12]** Maximum time delay between reconnect attempts (milliseconds). Used in conjunction with `reconnectTimeMultiplier` to prevent overly long delays between reconnection attempts.
 *   `autoReconnect` **[boolean][11]** Indicates if the SDK should automatically try reconnecting a disconnected websocket.
-*   `maxMissedPings` **[number][12]** How many missed pings before the SDK stops trying to reconnect a disconnected websocket.
 *   `webSocketOAuthMode` **[string][8]** The mode used for authenticating with the server.
 *   `wsInfo` **[Object][7]** Information required to connect a websocket to the server.
 
@@ -2813,49 +2609,44 @@ Type: [Object][7]
     *   `wsInfo.port` **[number][12]?** The port of the server to connect to.
     *   `wsInfo.url` **[string][8]?** The URL path to use to request a websocket connection.
     *   `wsInfo.params` **[string][8]?** Any additional params that might be required by the server to establish the websocket connection.
-*   `lastContact` **[number][12]** The date and time that the last known contact with the server was.
 
 ### getSocketState
 
 Get the state of the websocket.
 
-#### Parameters
-
-*   `platform` **[string][8]** Backend platform for which to request the websocket's state. (optional, default `'link'`)
-
-Returns **[connection.WSConnectionObject][104]** Details about the current websocket connection, including state and configuration.
+Returns **[connection.WSConnectionObject][103]** Details about the current websocket connection, including state and configuration.
 
 ### enableConnectivityChecking
 
 Enables or disables connectivity checking.
 
+This API will change the `connectivity.checkConnectivity` configuration set during SDK initialization. If there
+was a connected websocket while it is changed, the change will take affect immediately.
+
 #### Parameters
 
-*   `enable` **[boolean][11]** Enable connectivity checking.
+*   `enable` **[boolean][11]** Whether the websocket should be pinging to check for connectivity issues or not.
 
 ### resetConnection
 
-Triggers a reset in the connection to the WebSocket being used for notifications.
-This can be used in scenarios where a network issue (undetectable by the SDK)
-is detected by an application.
+Resets the connected websocket by manually disconnecting then reconnecting.
 
-If there is no WebSocket currently connected, this function has no effect.
-Calling this function will trigger all the normal WebSocket and connectivity lifecycle
-events as well as trigger re-connection processing that follows the configuration of the SDK.
-Calling this function always has the potential of causing some events being lost by the
-SDK and preventing proper operation.
+This API will simulate the SDK receiving a websocket disconnect from the browser,
+which will trigger its recovery functionality. This API can be used if the application
+is aware of a network issue before the SDK is notified by the browser.
+
+If there is no websocket connected, this API has no effect. If the SDK is not configured
+to autoreconnect (see `connectivity.autoReconnect` configuration property), then this
+API will not attempt to reconnect the websocket automatically.
+
+The normal websocket and lifecycle events will be emitted during this operation,
+notably the [ws:change][104] event.
 
 ### ws:change
 
 The WebSocket to the server has changed state.
 
 This event is only emitted when the WebSocket is connected, or has lost connection.
-
-#### Parameters
-
-*   `params` **[Object][7]** 
-
-    *   `params.platform` **[string][8]** The platform
 
 ## contacts
 
@@ -4334,7 +4125,7 @@ length (usually to 4KB) and will reject calls that have SDP size above this amou
 While creating an SDP handler would allow a user to perform this type of manipulation, it is a non-trivial task that requires in-depth knowledge of WebRTC SDP.
 
 To facilitate this common task, the createCodecRemover function creates a codec removal handler that can be used for this purpose. Applications can use this codec
-removal handler in combination with the [call.getAvailableCodecs][99] function in order to build logic to determine the best codecs to use
+removal handler in combination with the [call.getAvailableCodecs][98] function in order to build logic to determine the best codecs to use
 for their application.
 
 #### Parameters
@@ -4439,10 +4230,6 @@ client.services.subscribe([
 
 Subscribes to platform notifications for an SDK service.
 
-Extra configuration can be provided as an additional object parameter.
-The "forceLogOut" flag has been deprecated, as no longer being supported by backend.
-It will be removed in the next major release.
-
 For push notifications on link, please see [notifications.registerPush][152]
 
 The SDK currently only supports the `websocket` channel as a subscription
@@ -4458,7 +4245,6 @@ Upon getting such event, existing subscriptions can be retrieved using the
 *   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][154])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
-    *   `options.forceLogOut` **[boolean][11]?** Deprecated: Force the oldest connection to log out if too many simultaneous connections. Link only.
     *   `options.type` **[string][8]** The method of how to receive service updates. (optional, default `'websocket'`)
     *   `options.clientCorrelator` **[string][8]?** Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device.
 
@@ -4466,7 +4252,7 @@ Upon getting such event, existing subscriptions can be retrieved using the
 
 ```javascript
 // Subscribe for chat and SMS services.
-client.services.subscribe(['call', 'IM'], {forceLogOut: true, clientCorrelator: 'abc123'})
+client.services.subscribe(['call', 'IM'], {clientCorrelator: 'abc123'})
 ```
 
 Returns **[undefined][89]** 
@@ -4923,7 +4709,7 @@ provided as part of the event, and will also be available using the
 
 ### UserID
 
-The ID of a User (e.g. [joe@domain.com][94])
+The ID of a User (e.g. [joe@domain.com][93])
 
 Type: [string][8]
 
@@ -5191,35 +4977,35 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [89]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
 
-[90]: #mediarendertracks
+[90]: #callrestartmedia
 
-[91]: #callrestartmedia
+[91]: https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/iceConnectionState
 
-[92]: https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/iceConnectionState
+[92]: #callgetreport
 
-[93]: #callgetreport
+[93]: mailto:joe@domain.com
 
-[94]: mailto:joe@domain.com
+[94]: #mediagettrackbyid
 
-[95]: #mediagettrackbyid
+[95]: #callhold
 
-[96]: #callhold
+[96]: #callgetstats
 
-[97]: #callgetstats
+[97]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
 
-[98]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+[98]: #callgetavailablecodecs
 
-[99]: #callgetavailablecodecs
+[99]: #callhistoryget
 
-[100]: #callhistoryget
+[100]: callHistory.setCache
 
-[101]: callHistory.setCache
+[101]: callHistory.getCache
 
-[102]: callHistory.getCache
+[102]: #connectiongetsocketstate
 
-[103]: #connectiongetsocketstate
+[103]: #connectionwsconnectionobject
 
-[104]: #connectionwsconnectionobject
+[104]: #connectioneventwschange
 
 [105]: #conversationconversation
 
