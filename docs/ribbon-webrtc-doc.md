@@ -4230,7 +4230,7 @@ client.services.subscribe([
 
 Subscribes to platform notifications for an SDK service.
 
-For push notifications on link, please see [notifications.registerPush][152]
+For push notifications on WebRTC Gateway, please see [notifications.registerPush][152]
 
 The SDK currently only supports the `websocket` channel as a subscription
 type.

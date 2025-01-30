@@ -54078,7 +54078,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "For push notifications on link, please see "
+                    "value": "For push notifications on WebRTC Gateway, please see "
                   },
                   {
                     "type": "link",
