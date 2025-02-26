@@ -15,6 +15,7 @@ Ribbon WebRTC SDK change log.
 - Fixed a Call issue where improper call events were emitted when a hold operation encounters REST and rollback errors. `KJS-2508`
 - Eliminates channel crossings for getLocalMedia API in Proxy mode. `KJS-2496`
 - Fixed a Call issue where a race-condition caused by network latency could cause a negotiation operation to incorrectly fail. `KJS-2615`
+- Fixed a Call issue where an outgoing call in Proxy-mode could cause duplicate `call:stateChange` events to be emitted when a configured `iceCollectionCheckFunction` fails the call. `KJS-2682`
 
 ### Other Changes
 
