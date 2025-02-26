@@ -3501,82 +3501,6 @@ Provides an external notification to the system for processing.
 *   `channel` **[string][8]** The channel that the notification came from.
     If no channel provided, then by default it will be a PUSH notification. (optional, default `'PUSH'`)
 
-### registerApplePush
-
-Registers with Apple push notification service. Once registration is successful, the application will be able to receive
-standard and/or voip push notifications. It can then send these notifications to the SDK with [api.notifications.process][127]
-in order for the SDK to process them.
-
-#### Parameters
-
-*   `params` **[Object][7]** 
-
-    *   `params.services` **[Array][19]<[string][8]>** Array of services for which we wish to receive notifications.
-    *   `params.voipDeviceToken` **[string][8]** The voip device token used for voip push on iOS.
-        This token is required if registering for call service notifications on iOS.
-    *   `params.standardDeviceToken` **[string][8]** The standardDevice token used for standard push on iOS .
-        This token is required when registering for non-call service notifications.
-    *   `params.bundleId` **[string][8]** The bundleId to identify the application receiving the push notification.
-    *   `params.clientCorrelator` **[string][8]** Unique identifier for a client device.
-    *   `params.realm` **[string][8]** The realm used by the push registration service to identify and
-        establish a connection with the service gateway.
-    *   `params.isProduction` **[boolean][11]** If true, push notification will be sent to production.
-        If false, push notification will be sent to sandbox.
-
-Returns **[Promise][78]** When successful,  the information of the registration.
-Promise will reject with error object otherwise.
-
-### registerAndroidPush
-
-Registers with Google push notification service. Once registration is successful, the application will be able to receive
-standard and/or voip push notifications. It can then send these notifications to the SDK with [api.notifications.process][127]
-in order for the SDK to process them.
-
-#### Parameters
-
-*   `params` **[Object][7]** 
-
-    *   `params.services` **[Array][19]<[string][8]>** Array of services to register for.
-    *   `params.deviceToken` **[string][8]** The device token used for standard push on Android. This token is required
-        when registering for all related services notifications.
-    *   `params.bundleId` **[string][8]** The bundleId to identify the application receiving the push notification.
-    *   `params.clientCorrelator` **[string][8]** Unique identifier for a client device.
-    *   `params.realm` **[string][8]** The realm used by the push registration service to identify
-        and establish a connection with the service gateway.
-
-Returns **[Promise][78]** When successful,  the information of the registration.
-Promise will reject with error object otherwise.
-
-### unregisterApplePush
-
-Unregister Apple push notifications.
-
-#### Parameters
-
-*   `registrationInfo` **[string][8]** The data returned from the push registration
-
-Returns **[Promise][78]** When successful, the promise will resolve with undefined.
-Promise will reject with error object otherwise.
-
-### unregisterAndroidPush
-
-Unregister Android push notifications.
-
-#### Parameters
-
-*   `registrationInfo` **[string][8]** The data returned from the push registration
-
-Returns **[Promise][78]** When successful, the promise will resolve with undefined.
-Promise will reject with error object otherwise.
-
-### enableWebsocket
-
-Enables, or disables, the processing of websocket notifications.
-
-#### Parameters
-
-*   `enable` **[boolean][11]** Whether the websocket channel should be enabled.
-
 ### notifications:change
 
 Push notifications registration state has changed.
@@ -3606,11 +3530,11 @@ information.
 
 Presence information is persisted by the server. When the SDK is initialized,
 there will be no information available. Presence information will become
-available either by using [presence.fetch][128] or by subscribing for
-updates about other Users, using [presence.subscribe][129].
+available either by using [presence.fetch][127] or by subscribing for
+updates about other Users, using [presence.subscribe][128].
 
-Available presence information can be retrieved using [presence.get][130] or
-[presence.getAll][131].
+Available presence information can be retrieved using [presence.get][129] or
+[presence.getAll][130].
 
 ### statuses
 
@@ -3652,22 +3576,22 @@ Type: [Object][7]
 
 The PresenceStatus type defines the user's current status in terms of the user's availability to
 communicate/respond to other users in the network.
-An instance of this type can be obtained by invoking the [presence.get][130] function.
+An instance of this type can be obtained by invoking the [presence.get][129] function.
 
 Reporting when a user is on the phone is enabled (by default), which means that presence update notifications
 will be sent whenever a user is in a call, as well as when the call has ended.
 This is a user preference enabled or disabled on server side, and it can only be changed on the server side.
 
-The status is set to [open][132] as soon as a user subscribes for the presence service.
+The status is set to [open][131] as soon as a user subscribes for the presence service.
 
 Type: [Object][7]
 
 #### Properties
 
 *   `userId` **[string][8]** The unique identifier for the user associated with this presence status.
-*   `status` **[string][8]** The current status the user has set for themselves. For supported values see [presence.statuses][132].
+*   `status` **[string][8]** The current status the user has set for themselves. For supported values see [presence.statuses][131].
 *   `activity` **[string][8]** The current activity of the user.
-    For supported values see [presence.activities][133].
+    For supported values see [presence.activities][132].
 *   `note` **[string][8]** Additional message accompanying the status & activity.
 *   `loading` **[boolean][11]** Whether the presence information has been loaded or is in the process of loading.
 
@@ -3675,16 +3599,16 @@ Type: [Object][7]
 
 Updates the presence information for the current user.
 
-See [presence.statuses][132] and [presence.activities][133] for valid
+See [presence.statuses][131] and [presence.activities][132] for valid
 values.
 
 The SDK will emit a
-[presence:selfChange][134] event
+[presence:selfChange][133] event
 when the operation completes. The updated presence information is
-available and can be retrieved with [presence.getSelf][135].
+available and can be retrieved with [presence.getSelf][134].
 
 Other users subscribed for this user's presence will receive a
-[presence:change][136] event.
+[presence:change][135] event.
 
 #### Parameters
 
@@ -3698,7 +3622,7 @@ Fetches presence information for the given users. This will refresh the
 available information with any new information from the server.
 
 Available presence information an be retrieved using the
-[presence.get][130] or [presence.getAll][131] APIs.
+[presence.get][129] or [presence.getAll][130] APIs.
 
 #### Parameters
 
@@ -3709,7 +3633,7 @@ Available presence information an be retrieved using the
 Subscribe to another User's presence updates.
 
 When the User updates their presence information, the SDK will emit a
-[presence:change][136] event.
+[presence:change][135] event.
 
 #### Parameters
 
@@ -3743,7 +3667,7 @@ Returns **[Array][19]<[Object][7]>** List of user presence information.
 
 Retrieves the presence information for the current user.
 
-This information is set using the [presence.update][137] API.
+This information is set using the [presence.update][136] API.
 
 Returns **[Object][7]** Presence information for the current user.
 
@@ -3751,11 +3675,11 @@ Returns **[Object][7]** Presence information for the current user.
 
 A presence update about a subscribed user has been received.
 
-This event is generated as a result of [presence.fetch][128] or [presence.update][137] operations.
+This event is generated as a result of [presence.fetch][127] or [presence.update][136] operations.
 
 For the latter operation, the current user receives a presence update of another user that the current user is subscribed to.
 
-The changed information can be retrieved using the [presence.get][130]
+The changed information can be retrieved using the [presence.get][129]
 API.
 
 #### Parameters
@@ -3771,7 +3695,7 @@ API.
 
 The current user's presence information has changed.
 
-The changed information can be retrieved using the [presence.getSelf][135]
+The changed information can be retrieved using the [presence.getSelf][134]
 API.
 
 ### presence:subscribe
@@ -3869,10 +3793,10 @@ functionality. It is recommended that this is the last step, after setting
 a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
 is an on-going call.
 
-On completion, this API will trigger a [proxy:change][138]
-event on success. The [proxy.getProxyMode][139] or [proxy.getInfo][140]
+On completion, this API will trigger a [proxy:change][137]
+event on success. The [proxy.getProxyMode][138] or [proxy.getInfo][139]
 APIs can be used to verify that proxy mode has been changed. If an error
-is encountered, this API will trigger a [proxy:error][141]
+is encountered, this API will trigger a [proxy:error][140]
 event.
 
 #### Parameters
@@ -3910,7 +3834,7 @@ Retrieves the current mode for Proxy behaviour.
 
 When set to `true`, WebRTC operations will be proxied over a channel. When
 set to `false`, WebRTC operation will occur as normal on the local machine.
-See the [proxy.setProxyMode][142] API for more information.
+See the [proxy.setProxyMode][141] API for more information.
 
 Returns **[boolean][11]** Whether proxy mode is currently enabled.
 
@@ -3960,15 +3884,15 @@ Providing a channel is a required step for being able to use the Proxy
 functionality. This should be the first step, before initializing the
 remote endpoint and setting proxy mode.
 
-On completion, this API will trigger a [proxy:change][138]
-event on success. The [proxy.getInfo][140] API can be used to verify
+On completion, this API will trigger a [proxy:change][137]
+event on success. The [proxy.getInfo][139] API can be used to verify
 that a channel has been set. If an error is encountered, this API will
-trigger a [proxy:error][141] event. A channel
+trigger a [proxy:error][140] event. A channel
 cannot be set if there is an on-going call.
 
 #### Parameters
 
-*   `channel` **[proxy.Channel][143]** See the `Channel` module for information.
+*   `channel` **[proxy.Channel][142]** See the `Channel` module for information.
 
 #### Examples
 
@@ -3992,13 +3916,13 @@ Sends an initialization message over the channel with webRTC configurations.
 
 Initializing the Remote SDK is a required step before being able to use the
 Proxy functionality. This step requires a channel having been set previously
-(see the [API][144]). It is recommended to perform this
-step before setting the proxy mode (see the [proxy.setProxyMode][142] API).
+(see the [API][143]). It is recommended to perform this
+step before setting the proxy mode (see the [proxy.setProxyMode][141] API).
 
-On completion, this API will trigger a [proxy:change][138]
-event on success. The [proxy.getInfo][140] API can be used to verify
+On completion, this API will trigger a [proxy:change][137]
+event on success. The [proxy.getInfo][139] API can be used to verify
 that the remote endpoint is initialized. If an error is encountered, this
-API will trigger a [proxy:error][141] event.
+API will trigger a [proxy:error][140] event.
 
 This API will perform a version-check between this SDK and the Remote SDK.
 Their versions must be the same, otherwise initialization will fail.
@@ -4024,13 +3948,13 @@ if (
 
 A Proxy API has completed and changed the proxy state.
 
-The [proxy.getInfo][140] API can be used to retrieve the current proxy state.
+The [proxy.getInfo][139] API can be used to retrieve the current proxy state.
 
 ### proxy:error
 
 A Proxy API has resulted in an error.
 
-The [proxy.getInfo][140] API can be used to retrieve the current proxy state.
+The [proxy.getInfo][139] API can be used to retrieve the current proxy state.
 
 #### Parameters
 
@@ -4045,7 +3969,7 @@ The 'request' namespace (within the 'api' type) is used to make network requests
 ### fetch
 
 Send a request to the underlying REST service with the appropriate configuration and authentication.
-This is a wrapper on top of the browser's [fetch API][145]
+This is a wrapper on top of the browser's [fetch API][144]
 and behaves very similarly but using SDK configuration for the base URL and authentication as well
 as SDK logging.
 
@@ -4053,7 +3977,7 @@ as SDK logging.
 
 *   `resource` **[string][8]** The full path of the resource to fetch from the underlying service. This should include any REST version
     or user information. This path will be appended to the base URL according to SDK configuration.
-*   `init` **RequestInit** An object containing any custom settings that you want to apply to the request. See [fetch API][145]
+*   `init` **RequestInit** An object containing any custom settings that you want to apply to the request. See [fetch API][144]
     for a full description and defaults.
 
 #### Examples
@@ -4073,7 +3997,7 @@ const requestOptions = {
 const response = await client.request.fetch('/rest/version/1/user/xyz@test.com/externalnotification', requestOptions)
 ```
 
-Returns **[Promise][78]<[Response][146]>** A promise for a [Response][147] object.
+Returns **[Promise][78]<[Response][145]>** A promise for a [Response][146] object.
 
 ## sdpHandlers
 
@@ -4084,7 +4008,7 @@ environments and/or scenarios.
 Note that SDP handlers are exposed on the entry point of the SDK. They can be added during
 initialization of the SDK using the [config.call.sdpHandlers][40] configuration
 parameter. They can also be set after the SDK's creation by using the
-[call.setSdpHandlers][148] function.
+[call.setSdpHandlers][147] function.
 
 ### Examples
 
@@ -4169,8 +4093,8 @@ fully functional.
 
 The services an application can subscribe to are based on the features
 included in the SDK. The list of available services can be retrieved
-using the [services.getSubscriptions][149] API. These values can be used
-with the [services.subscribe][150] API.
+using the [services.getSubscriptions][148] API. These values can be used
+with the [services.subscribe][149] API.
 
 The channel used for subscriptions is the method for receiving the service
 updates. The recommended channel is `websocket`, where the SDK is able to
@@ -4181,7 +4105,7 @@ websocket cannot be used, will be available in the future.
 
 The ServiceDescriptor type defines the format for specifying how to subscribe for a certain service.
 This is the service configuration object that needs to be passed (as part of an array of configuration objects) when calling
-the [services.subscribe][150] function.
+the [services.subscribe][149] function.
 Only some plugins (`call`, `messaging` and `presence`) support such configuration object that needs to be passed
 to the subscribe function.
 
@@ -4208,7 +4132,7 @@ client.services.subscribe([
 ### SmsInboundServiceParams
 
 The SmsInboundServiceParams type defines the additional information when subscribing to SMS inbound service.
-This is the configuration object that needs to be passed as the value for the [ServiceDescriptor.params][151] property.
+This is the configuration object that needs to be passed as the value for the [ServiceDescriptor.params][150] property.
 
 Type: [Object][7]
 
@@ -4230,19 +4154,19 @@ client.services.subscribe([
 
 Subscribes to platform notifications for an SDK service.
 
-For push notifications on link, please see [notifications.registerPush][152]
+For push notifications on WebRTC Gateway, please see [notifications.registerPush][151]
 
 The SDK currently only supports the `websocket` channel as a subscription
 type.
 
-When calling this API, SDK emits a [subscription:change][153] event, each time there is a change in subscriptions.
+When calling this API, SDK emits a [subscription:change][152] event, each time there is a change in subscriptions.
 
 Upon getting such event, existing subscriptions can be retrieved using the
-[services.getSubscriptions][149] API.
+[services.getSubscriptions][148] API.
 
 #### Parameters
 
-*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][154])>** A list of service configurations.
+*   `services` **[Array][19]<([string][8] | [services.ServiceDescriptor][153])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
     *   `options.type` **[string][8]** The method of how to receive service updates. (optional, default `'websocket'`)
@@ -4261,10 +4185,10 @@ Returns **[undefined][89]**
 
 Cancels existing subscriptions for platform notifications.
 
-When calling this API, SDK emits a [subscription:change][153] event, each time there is a change in subscriptions.
+When calling this API, SDK emits a [subscription:change][152] event, each time there is a change in subscriptions.
 
 Upon getting such event, existing subscriptions can be retrieved using the
-[services.getSubscriptions][149] API. The `subscribed` values are the
+[services.getSubscriptions][148] API. The `subscribed` values are the
 services that can be unsubscribed from.
 
 #### Parameters
@@ -4289,7 +4213,7 @@ The data returned by this API is a snapshot of the SDK's current local subscript
 The data does indicate whether there was an ongoing subscription at the time this API was called.
 If a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete.
 
-To be notified when any subscription(s) did change/complete, listen for [subscription:change][153] events.
+To be notified when any subscription(s) did change/complete, listen for [subscription:change][152] events.
 
 The `available` values are the SDK's services that an application can
 subscribe to receive notifications about. A feature generally
@@ -4297,7 +4221,7 @@ requires a subscription to its service in order to be fully functional.
 
 The `subscribed` values are the SDK's services that the application has
 an active subscription for. Services are subscribed to using the
-[services.subscribe][150] API.
+[services.subscribe][149] API.
 
 #### Examples
 
@@ -4325,7 +4249,7 @@ Returns **[Object][7]** Lists of subscribed and available services.
 Subscription information has changed.
 
 The updated subscription information can be retrieved using the
-[services.getSubscriptions][149] API.
+[services.getSubscriptions][148] API.
 
 #### Parameters
 
@@ -4344,7 +4268,7 @@ The updated subscription information can be retrieved using the
 An error occurred during a subscription operation.
 
 The subscription information can be retrieved using the
-[services.getSubscriptions][149] API.
+[services.getSubscriptions][148] API.
 
 Below are some common errors related to service subscriptions.
 
@@ -4411,7 +4335,7 @@ specific users.
 
 A SIP event may either be solicited or unsolicited. Solicited events, such as the "presence"
 example above, requires the application to subscribe for the event. See the
-[sip.subscribe API][155] for more information about solicited events.
+[sip.subscribe API][154] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
 ### subscribe
@@ -4420,18 +4344,18 @@ Creates a subscription for a SIP event.
 
 A subscription is required to receive SIP notifications for solicited events. Before
 creating a SIP subscription, the service for the event type must have been
-provisioned as part of the user subscription using the [services.subscribe][150]
+provisioned as part of the user subscription using the [services.subscribe][149]
 API.
 
 Only one SIP subscription per event type can exist at a time. A subscription can
 watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][156] API at any time.
+from a subscription using the [sip.update][155] API at any time.
 
-The SDK will emit a [sip:subscriptionChange][157]
-event when the operations completes. The [sip.getDetails][158] API can be used
+The SDK will emit a [sip:subscriptionChange][156]
+event when the operations completes. The [sip.getDetails][157] API can be used
 to retrieve the current information about a subscription.
 
-The SDK will emit a [sip:eventsChange][159] event when
+The SDK will emit a [sip:eventsChange][158] event when
 a SIP event is received.
 
 #### Parameters
@@ -4467,8 +4391,8 @@ Updates an existing SIP event subscription.
 Allows for adding or removing users from the subscription, and for changing the
 custom parameters of the subscription.
 
-The SDK will emit a [sip:subscriptionChange][157]
-event when the operations completes. The [sip.getDetails][158] API can be used
+The SDK will emit a [sip:subscriptionChange][156]
+event when the operations completes. The [sip.getDetails][157] API can be used
 to retrieve the current information about a subscription.
 
 #### Parameters
@@ -4501,10 +4425,10 @@ client.sip.update('event:presence', userLists)
 
 Deletes an existing SIP event subscription.
 
-The SDK will emit a [sip:subscriptionChange][157]
+The SDK will emit a [sip:subscriptionChange][156]
 event when the operations completes.
 
-Subscription details will no longer be available using the [sip.getDetails][158]
+Subscription details will no longer be available using the [sip.getDetails][157]
 API after it has been unsubscribed from.
 
 #### Parameters
@@ -4548,16 +4472,16 @@ return an object namespaced by event types.
 
 A change has occurred to a SIP subscription.
 
-This event can be emitted when a new SIP subscription is created ([sip.subscribe][155]
-API), an existing subscription is updated ([sip.update][156] API), or has been
-deleted ([sip.unsubscribe][160] API). The `change` parameter on the event indicates
+This event can be emitted when a new SIP subscription is created ([sip.subscribe][154]
+API), an existing subscription is updated ([sip.update][155] API), or has been
+deleted ([sip.unsubscribe][159] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
 When users are added or removed from a subscription through a new subscription or an update,
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][158] API can be used to retrieve the current information about
+The [sip.getDetails][157] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -4651,12 +4575,12 @@ Type: [Object][7]
 
 Fetches information about a User.
 
-The SDK will emit a [users:change][161]
+The SDK will emit a [users:change][160]
 event after the operation completes. The User's information will then
 be available.
 
 Information about an available User can be retrieved using the
-[user.get][162] API.
+[user.get][161] API.
 
 #### Parameters
 
@@ -4666,23 +4590,23 @@ Information about an available User can be retrieved using the
 
 Retrieves information about a User, if available.
 
-See the [user.fetch][163] and [user.search][164] APIs for details about
+See the [user.fetch][162] and [user.search][163] APIs for details about
 making Users' information available.
 
 #### Parameters
 
 *   `userId` **[user.UserID][28]** The User ID of the user.
 
-Returns **[user.User][165]** The User object for the specified user.
+Returns **[user.User][164]** The User object for the specified user.
 
 ### getAll
 
 Retrieves information about all available Users.
 
-See the [user.fetch][163] and [user.search][164] APIs for details about
+See the [user.fetch][162] and [user.search][163] APIs for details about
 making Users' information available.
 
-Returns **[Array][19]<[user.User][165]>** An array of all the User objects.
+Returns **[Array][19]<[user.User][164]>** An array of all the User objects.
 
 ### search
 
@@ -4691,10 +4615,10 @@ Searches the domain's directory for Users.
 Directory searching only supports one filter. If multiple filters are provided, only one of the filters will be used for the search.
 A search with no filters provided will return all users.
 
-The SDK will emit a [directory:change][166]
+The SDK will emit a [directory:change][165]
 event after the operation completes. The search results will be
 provided as part of the event, and will also be available using the
-[user.get][162] and [user.getAll][167] APIs.
+[user.get][161] and [user.getAll][166] APIs.
 
 #### Parameters
 
@@ -4721,7 +4645,7 @@ The directory has changed.
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][165]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][164]>** The Users' information returned by the
         operation.
 
 ### directory:error
@@ -4742,7 +4666,7 @@ A change has occurred in the users list
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][19]<[user.User][165]>** The Users' information returned by the
+    *   `params.results` **[Array][19]<[user.User][164]>** The Users' information returned by the
         operation.
 
 ### users:error
@@ -4766,7 +4690,7 @@ Voicemail functions are all part of this namespace.
 
 Attempts to retrieve voicemail information from the server.
 
-A [voicemail:change][168] event is
+A [voicemail:change][167] event is
 emitted upon completion.
 
 ### get
@@ -5051,86 +4975,84 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [126]: #mediaeventmediasourcemuted
 
-[127]: api.notifications.process
+[127]: #presencefetch
 
-[128]: #presencefetch
+[128]: #presencesubscribe
 
-[129]: #presencesubscribe
+[129]: #presenceget
 
-[130]: #presenceget
+[130]: #presencegetall
 
-[131]: #presencegetall
+[131]: #presencestatuses
 
-[132]: #presencestatuses
+[132]: #presenceactivities
 
-[133]: #presenceactivities
+[133]: #presenceeventpresenceselfchange
 
-[134]: #presenceeventpresenceselfchange
+[134]: #presencegetself
 
-[135]: #presencegetself
+[135]: #presenceeventpresencechange
 
-[136]: #presenceeventpresencechange
+[136]: #presenceupdate
 
-[137]: #presenceupdate
+[137]: #proxyeventproxychange
 
-[138]: #proxyeventproxychange
+[138]: #proxygetproxymode
 
-[139]: #proxygetproxymode
+[139]: #proxygetinfo
 
-[140]: #proxygetinfo
+[140]: #proxyeventproxyerror
 
-[141]: #proxyeventproxyerror
+[141]: #proxysetproxymode
 
-[142]: #proxysetproxymode
+[142]: #proxychannel
 
-[143]: #proxychannel
+[143]: #proxysetchannel
 
-[144]: #proxysetchannel
+[144]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
 
-[145]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
+[145]: https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5
 
-[146]: https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5
+[146]: https://developer.mozilla.org/en-US/docs/Web/API/Response
 
-[147]: https://developer.mozilla.org/en-US/docs/Web/API/Response
+[147]: #callsetsdphandlers
 
-[148]: #callsetsdphandlers
+[148]: #servicesgetsubscriptions
 
-[149]: #servicesgetsubscriptions
+[149]: #servicessubscribe
 
-[150]: #servicessubscribe
+[150]: #servicesservicedescriptor
 
-[151]: #servicesservicedescriptor
+[151]: notifications.registerPush
 
-[152]: notifications.registerPush
+[152]: #serviceseventsubscriptionchange
 
-[153]: #serviceseventsubscriptionchange
+[153]: #servicesservicedescriptor
 
-[154]: #servicesservicedescriptor
+[154]: #sipsubscribe
 
-[155]: #sipsubscribe
+[155]: #sipupdate
 
-[156]: #sipupdate
+[156]: #sipeventsipsubscriptionchange
 
-[157]: #sipeventsipsubscriptionchange
+[157]: #sipgetdetails
 
-[158]: #sipgetdetails
+[158]: #sipeventsipeventschange
 
-[159]: #sipeventsipeventschange
+[159]: #sipunsubscribe
 
-[160]: #sipunsubscribe
+[160]: #usereventuserschange
 
-[161]: #usereventuserschange
+[161]: #userget
 
-[162]: #userget
+[162]: #userfetch
 
-[163]: #userfetch
+[163]: #usersearch
 
-[164]: #usersearch
+[164]: #useruser
 
-[165]: #useruser
+[165]: #usereventdirectorychange
 
-[166]: #usereventdirectorychange
+[166]: #usergetall
 
-[167]: #usergetall
-
-[168]: #voicemaileventvoicemailchange
+[167]: #voicemaileventvoicemailchange

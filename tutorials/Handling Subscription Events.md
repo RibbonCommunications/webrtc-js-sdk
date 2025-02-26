@@ -28,7 +28,7 @@ The connectivity events are related to the WebSocket connection created with the
 
 | <b>Event</b>|<b>Event payload<b>|<b>Event description</b>|<b>Event Handling</b>|
 | --------- | ---------- | ------------- | --------- |
-|<b>ws:change</b>|{<br>&nbsp;&nbsp;platform: 'link'<br>}|The websocket connection to the server has changed state.<br><br>This event is emitted when:<ol><li>The `WebSocket` has connected</li><li>The `WebSocket` lost connection</li></ol><br><br><b>Note</b>: this event is not emitted when the WS is closed|You can check the state of the `WebSocket` using the `connection.getSocketState` API.<br><br>You may also try resetting the connection using the `connection.resetConnection` API. This event could also be used by an application to show connection progress on a UI (e.g., from `connecting` to `connected`).|
+|<b>ws:change</b>|{}|The websocket connection to the server has changed state.<br><br>This event is emitted when:<ol><li>The `WebSocket` has connected</li><li>The `WebSocket` lost connection</li></ol><br><br><b>Note</b>: this event is not emitted when the WS is closed|You can check the state of the `WebSocket` using the `connection.getSocketState` API.<br><br>You may also try resetting the connection using the `connection.resetConnection` API. This event could also be used by an application to show connection progress on a UI (e.g., from `connecting` to `connected`).|
 
 ## Subscription Events
 
