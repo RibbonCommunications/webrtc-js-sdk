@@ -836,343 +836,6 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Configuration options for the Subscription feature."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 2,
-              "type": null
-            },
-            {
-              "title": "name",
-              "description": null,
-              "lineNumber": 3,
-              "name": "config.subscription"
-            },
-            {
-              "title": "memberof",
-              "description": "config",
-              "lineNumber": 4
-            },
-            {
-              "title": "instance",
-              "description": null,
-              "lineNumber": 5
-            },
-            {
-              "title": "param",
-              "description": "Subscription config.",
-              "lineNumber": 6,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "subscription"
-            },
-            {
-              "title": "param",
-              "description": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds.",
-              "lineNumber": 7,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "subscription.expires",
-              "default": "3600"
-            },
-            {
-              "title": "param",
-              "description": "The maximum number of times this client will retry in order to subscribe for a\ngiven service, while getting 'Service Unavailable' from backend.",
-              "lineNumber": 8,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "subscription.serviceUnavailableMaxRetries",
-              "default": "3"
-            },
-            {
-              "title": "param",
-              "description": null,
-              "lineNumber": 10,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "subscription.websocket"
-            },
-            {
-              "title": "param",
-              "description": "Hostname of the server to be used for websocket notifications.",
-              "lineNumber": 11,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "subscription.websocket.server"
-            },
-            {
-              "title": "param",
-              "description": "Protocol to be used for websocket notifications.",
-              "lineNumber": 12,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "string"
-                }
-              },
-              "name": "subscription.websocket.protocol",
-              "default": "wss"
-            },
-            {
-              "title": "param",
-              "description": "Port to be used for websocket notifications.",
-              "lineNumber": 13,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "Number"
-                }
-              },
-              "name": "subscription.websocket.port",
-              "default": "443"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 29,
-              "column": 2
-            },
-            "end": {
-              "line": 43,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 44,
-                "column": 2
-              },
-              "end": {
-                "line": 51,
-                "column": 3
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/link/index.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "subscription",
-              "lineNumber": 6,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Subscription config."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "properties": [
-                {
-                  "title": "param",
-                  "name": "subscription.expires",
-                  "lineNumber": 7,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "number"
-                  },
-                  "default": "3600"
-                },
-                {
-                  "title": "param",
-                  "name": "subscription.serviceUnavailableMaxRetries",
-                  "lineNumber": 8,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The maximum number of times this client will retry in order to subscribe for a\ngiven service, while getting 'Service Unavailable' from backend."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "number"
-                  },
-                  "default": "3"
-                },
-                {
-                  "title": "param",
-                  "name": "subscription.websocket",
-                  "lineNumber": 10,
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "Object"
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "subscription.websocket.server",
-                      "lineNumber": 11,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Hostname of the server to be used for websocket notifications."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "NameExpression",
-                        "name": "string"
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "subscription.websocket.protocol",
-                      "lineNumber": 12,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Protocol to be used for websocket notifications."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "NameExpression",
-                        "name": "string"
-                      },
-                      "default": "wss"
-                    },
-                    {
-                      "title": "param",
-                      "name": "subscription.websocket.port",
-                      "lineNumber": 13,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Port to be used for websocket notifications."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "NameExpression",
-                        "name": "Number"
-                      },
-                      "default": "443"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "name": "config.subscription",
-          "memberof": "config",
-          "scope": "instance",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "config",
-              "kind": "module"
-            },
-            {
-              "name": "config.subscription",
-              "scope": "instance"
-            }
-          ],
-          "namespace": "config#config.subscription"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
                     "value": "Configuration options for the Authentication feature."
                   }
                 ]
@@ -1424,778 +1087,6 @@
             }
           ],
           "namespace": "config#config.authentication"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Configuration options for the call feature."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 2,
-              "type": null
-            },
-            {
-              "title": "name",
-              "description": null,
-              "lineNumber": 3,
-              "name": "config.call"
-            },
-            {
-              "title": "memberof",
-              "description": "config",
-              "lineNumber": 4
-            },
-            {
-              "title": "instance",
-              "description": null,
-              "lineNumber": 5
-            },
-            {
-              "title": "param",
-              "description": "The call configuration object.",
-              "lineNumber": 6,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "call"
-            },
-            {
-              "title": "param",
-              "description": "A key-value dictionary that corresponds\n   to the available RTCPeerConfiguration which is normally passed when creating an RTCPeerConnection.\n   See {@link https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters RTCPeerConnection's configuration parameters} for more information.\n   This is the recommended way of setting ICE servers and other RTCPeerConnection-related configuration.",
-              "lineNumber": 7,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "call.RTCPeerConnectionConfig"
-                }
-              },
-              "name": "call.defaultPeerConfig"
-            },
-            {
-              "title": "param",
-              "description": "The amount of time to wait for an ideal candidate in milliseconds.\n   The default is 1000ms. An ideal list of candidates is a complete list of candidates considering the RTCPeerConnection configuration.\n   Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and\n   any timeouts must be handled by the custom function.",
-              "lineNumber": 11,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "call.iceCollectionIdealTimeout",
-              "default": "1000"
-            },
-            {
-              "title": "param",
-              "description": "The maximum amount of time to wait for ICE collection in milliseconds.\n   The default is 3000ms. After this time has been reached, the call will proceed with the currently gathered candidates.\n   Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and\n   any timeouts must be handled by the custom function.",
-              "lineNumber": 15,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "call.iceCollectionMaxTimeout",
-              "default": "3000"
-            },
-            {
-              "title": "param",
-              "description": "Override the default IceCollectionCheckFunction to manually decide when\n   to proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\n   the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return\n   a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}\n   object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for\n   more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.",
-              "lineNumber": 19,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "Function"
-                }
-              },
-              "name": "call.iceCollectionCheckFunction"
-            },
-            {
-              "title": "param",
-              "description": "Whether server-provided TURN credentials should be used.",
-              "lineNumber": 25,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.serverTurnCredentials",
-              "default": "true"
-            },
-            {
-              "title": "param",
-              "description": "List of SDP handler functions to modify SDP. Advanced usage.",
-              "lineNumber": 26,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "TypeApplication",
-                  "expression": {
-                    "type": "NameExpression",
-                    "name": "Array"
-                  },
-                  "applications": [
-                    {
-                      "type": "NameExpression",
-                      "name": "call.SdpHandlerFunction"
-                    }
-                  ]
-                }
-              },
-              "name": "call.sdpHandlers"
-            },
-            {
-              "title": "param",
-              "description": "Whether early media should be supported for calls. Not supported on Firefox.",
-              "lineNumber": 27,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.earlyMedia",
-              "default": "false"
-            },
-            {
-              "title": "param",
-              "description": "Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+).",
-              "lineNumber": 28,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.resyncOnConnect",
-              "default": "false"
-            },
-            {
-              "title": "param",
-              "description": "Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode.",
-              "lineNumber": 29,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.mediaBrokerOnly",
-              "default": "false"
-            },
-            {
-              "title": "param",
-              "description": "Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages.",
-              "lineNumber": 30,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.removeBundling",
-              "default": "false"
-            },
-            {
-              "title": "param",
-              "description": "The mode for sending ringing feedback to the Caller ('auto', 'manual').\n   By default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application\n   must initiate the feedback being sent. See the `call.sendRingingFeedback` API for more info.",
-              "lineNumber": 31,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "string"
-                }
-              },
-              "name": "call.ringingFeedbackMode",
-              "default": "'auto'"
-            },
-            {
-              "title": "param",
-              "description": "Time interval, in milliseconds between call audits.",
-              "lineNumber": 34,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "call.callAuditTimer",
-              "default": "25000"
-            },
-            {
-              "title": "param",
-              "description": "Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection.",
-              "lineNumber": 35,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "call.mediaConnectionRetryDelay",
-              "default": "3000"
-            },
-            {
-              "title": "param",
-              "description": "Specifies whether or not SIP address normalization will be applied.",
-              "lineNumber": 36,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "boolean"
-                }
-              },
-              "name": "call.normalizeDestination",
-              "default": "true"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 17,
-              "column": 0
-            },
-            "end": {
-              "line": 54,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 69,
-                "column": 0
-              },
-              "end": {
-                "line": 155,
-                "column": 1
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/link/index.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "call",
-              "lineNumber": 6,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The call configuration object."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "properties": [
-                {
-                  "title": "param",
-                  "name": "call.defaultPeerConfig",
-                  "lineNumber": 7,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "A key-value dictionary that corresponds\nto the available RTCPeerConfiguration which is normally passed when creating an RTCPeerConnection.\nSee "
-                          },
-                          {
-                            "type": "link",
-                            "url": "https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "RTCPeerConnection's configuration parameters"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "text",
-                            "value": " for more information.\nThis is the recommended way of setting ICE servers and other RTCPeerConnection-related configuration."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "NameExpression",
-                      "name": "call.RTCPeerConnectionConfig"
-                    }
-                  }
-                },
-                {
-                  "title": "param",
-                  "name": "call.iceCollectionIdealTimeout",
-                  "lineNumber": 11,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The amount of time to wait for an ideal candidate in milliseconds.\nThe default is 1000ms. An ideal list of candidates is a complete list of candidates considering the RTCPeerConnection configuration.\nNote that this values will not be considered if a custom function is passed through the "
-                          },
-                          {
-                            "type": "inlineCode",
-                            "value": "iceCollectionCheckFunction"
-                          },
-                          {
-                            "type": "text",
-                            "value": ", and\nany timeouts must be handled by the custom function."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "number"
-                  },
-                  "default": "1000"
-                },
-                {
-                  "title": "param",
-                  "name": "call.iceCollectionMaxTimeout",
-                  "lineNumber": 15,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The maximum amount of time to wait for ICE collection in milliseconds.\nThe default is 3000ms. After this time has been reached, the call will proceed with the currently gathered candidates.\nNote that this values will not be considered if a custom function is passed through the "
-                          },
-                          {
-                            "type": "inlineCode",
-                            "value": "iceCollectionCheckFunction"
-                          },
-                          {
-                            "type": "text",
-                            "value": ", and\nany timeouts must be handled by the custom function."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "number"
-                  },
-                  "default": "3000"
-                },
-                {
-                  "title": "param",
-                  "name": "call.iceCollectionCheckFunction",
-                  "lineNumber": 19,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Override the default IceCollectionCheckFunction to manually decide when\nto proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\nthe ice collection info. See "
-                          },
-                          {
-                            "type": "link",
-                            "url": "#callicecollectioninfo",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "IceCollectionInfo"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "text",
-                            "value": " for more details. The function must return\na results object with details on how to proceed with the ICE collection check or operatiaon. See "
-                          },
-                          {
-                            "type": "link",
-                            "url": "#callicecollectioncheckresult",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "IceCollectionResult"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "text",
-                            "value": "\nobject for details on the format of the return object. See "
-                          },
-                          {
-                            "type": "link",
-                            "url": "#callicecollectioncheckfunction",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "IceCollectionCheckFunction"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "text",
-                            "value": " for\nmore information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "NameExpression",
-                      "name": "Function"
-                    }
-                  }
-                },
-                {
-                  "title": "param",
-                  "name": "call.serverTurnCredentials",
-                  "lineNumber": 25,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether server-provided TURN credentials should be used."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "true"
-                },
-                {
-                  "title": "param",
-                  "name": "call.sdpHandlers",
-                  "lineNumber": 26,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "List of SDP handler functions to modify SDP. Advanced usage."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "OptionalType",
-                    "expression": {
-                      "type": "TypeApplication",
-                      "expression": {
-                        "type": "NameExpression",
-                        "name": "Array"
-                      },
-                      "applications": [
-                        {
-                          "type": "NameExpression",
-                          "name": "call.SdpHandlerFunction"
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "title": "param",
-                  "name": "call.earlyMedia",
-                  "lineNumber": 27,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether early media should be supported for calls. Not supported on Firefox."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "false"
-                },
-                {
-                  "title": "param",
-                  "name": "call.resyncOnConnect",
-                  "lineNumber": 28,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+)."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "false"
-                },
-                {
-                  "title": "param",
-                  "name": "call.mediaBrokerOnly",
-                  "lineNumber": 29,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "false"
-                },
-                {
-                  "title": "param",
-                  "name": "call.removeBundling",
-                  "lineNumber": 30,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "false"
-                },
-                {
-                  "title": "param",
-                  "name": "call.ringingFeedbackMode",
-                  "lineNumber": 31,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The mode for sending ringing feedback to the Caller ('auto', 'manual').\nBy default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application\nmust initiate the feedback being sent. See the "
-                          },
-                          {
-                            "type": "inlineCode",
-                            "value": "call.sendRingingFeedback"
-                          },
-                          {
-                            "type": "text",
-                            "value": " API for more info."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "string"
-                  },
-                  "default": "'auto'"
-                },
-                {
-                  "title": "param",
-                  "name": "call.callAuditTimer",
-                  "lineNumber": 34,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Time interval, in milliseconds between call audits."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "number"
-                  },
-                  "default": "25000"
-                },
-                {
-                  "title": "param",
-                  "name": "call.mediaConnectionRetryDelay",
-                  "lineNumber": 35,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "number"
-                  },
-                  "default": "3000"
-                },
-                {
-                  "title": "param",
-                  "name": "call.normalizeDestination",
-                  "lineNumber": 36,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Specifies whether or not SIP address normalization will be applied."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "boolean"
-                  },
-                  "default": "true"
-                }
-              ]
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "name": "config.call",
-          "memberof": "config",
-          "scope": "instance",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "config",
-              "kind": "module"
-            },
-            {
-              "name": "config.call",
-              "scope": "instance"
-            }
-          ],
-          "namespace": "config#config.call"
         },
         {
           "description": {
@@ -3064,6 +1955,1115 @@
             }
           ],
           "namespace": "config#config.notifications"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Configuration options for the Subscription feature."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "name",
+              "description": null,
+              "lineNumber": 3,
+              "name": "config.subscription"
+            },
+            {
+              "title": "memberof",
+              "description": "config",
+              "lineNumber": 4
+            },
+            {
+              "title": "instance",
+              "description": null,
+              "lineNumber": 5
+            },
+            {
+              "title": "param",
+              "description": "Subscription config.",
+              "lineNumber": 6,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "subscription"
+            },
+            {
+              "title": "param",
+              "description": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds.",
+              "lineNumber": 7,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "subscription.expires",
+              "default": "3600"
+            },
+            {
+              "title": "param",
+              "description": "The maximum number of times this client will retry in order to subscribe for a\ngiven service, while getting 'Service Unavailable' from backend.",
+              "lineNumber": 8,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "subscription.serviceUnavailableMaxRetries",
+              "default": "3"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "lineNumber": 10,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "subscription.websocket"
+            },
+            {
+              "title": "param",
+              "description": "Hostname of the server to be used for websocket notifications.",
+              "lineNumber": 11,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "subscription.websocket.server"
+            },
+            {
+              "title": "param",
+              "description": "Protocol to be used for websocket notifications.",
+              "lineNumber": 12,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              },
+              "name": "subscription.websocket.protocol",
+              "default": "wss"
+            },
+            {
+              "title": "param",
+              "description": "Port to be used for websocket notifications.",
+              "lineNumber": 13,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                }
+              },
+              "name": "subscription.websocket.port",
+              "default": "443"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 29,
+              "column": 2
+            },
+            "end": {
+              "line": 43,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 44,
+                "column": 2
+              },
+              "end": {
+                "line": 51,
+                "column": 3
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/link/index.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "subscription",
+              "lineNumber": 6,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Subscription config."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "subscription.expires",
+                  "lineNumber": 7,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "number"
+                  },
+                  "default": "3600"
+                },
+                {
+                  "title": "param",
+                  "name": "subscription.serviceUnavailableMaxRetries",
+                  "lineNumber": 8,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The maximum number of times this client will retry in order to subscribe for a\ngiven service, while getting 'Service Unavailable' from backend."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "number"
+                  },
+                  "default": "3"
+                },
+                {
+                  "title": "param",
+                  "name": "subscription.websocket",
+                  "lineNumber": 10,
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  },
+                  "properties": [
+                    {
+                      "title": "param",
+                      "name": "subscription.websocket.server",
+                      "lineNumber": 11,
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Hostname of the server to be used for websocket notifications."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "string"
+                      }
+                    },
+                    {
+                      "title": "param",
+                      "name": "subscription.websocket.protocol",
+                      "lineNumber": 12,
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Protocol to be used for websocket notifications."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "string"
+                      },
+                      "default": "wss"
+                    },
+                    {
+                      "title": "param",
+                      "name": "subscription.websocket.port",
+                      "lineNumber": 13,
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Port to be used for websocket notifications."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      },
+                      "default": "443"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "name": "config.subscription",
+          "memberof": "config",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "config",
+              "kind": "module"
+            },
+            {
+              "name": "config.subscription",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "config#config.subscription"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Configuration options for the call feature."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "name",
+              "description": null,
+              "lineNumber": 3,
+              "name": "config.call"
+            },
+            {
+              "title": "memberof",
+              "description": "config",
+              "lineNumber": 4
+            },
+            {
+              "title": "instance",
+              "description": null,
+              "lineNumber": 5
+            },
+            {
+              "title": "param",
+              "description": "The call configuration object.",
+              "lineNumber": 6,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "call"
+            },
+            {
+              "title": "param",
+              "description": "A key-value dictionary that corresponds\n   to the available RTCPeerConfiguration which is normally passed when creating an RTCPeerConnection.\n   See {@link https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters RTCPeerConnection's configuration parameters} for more information.\n   This is the recommended way of setting ICE servers and other RTCPeerConnection-related configuration.",
+              "lineNumber": 7,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "call.RTCPeerConnectionConfig"
+                }
+              },
+              "name": "call.defaultPeerConfig"
+            },
+            {
+              "title": "param",
+              "description": "The amount of time to wait for an ideal candidate in milliseconds.\n   The default is 1000ms. An ideal list of candidates is a complete list of candidates considering the RTCPeerConnection configuration.\n   Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and\n   any timeouts must be handled by the custom function.",
+              "lineNumber": 11,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "call.iceCollectionIdealTimeout",
+              "default": "1000"
+            },
+            {
+              "title": "param",
+              "description": "The maximum amount of time to wait for ICE collection in milliseconds.\n   The default is 3000ms. After this time has been reached, the call will proceed with the currently gathered candidates.\n   Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and\n   any timeouts must be handled by the custom function.",
+              "lineNumber": 15,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "call.iceCollectionMaxTimeout",
+              "default": "3000"
+            },
+            {
+              "title": "param",
+              "description": "Override the default IceCollectionCheckFunction to manually decide when\n   to proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\n   the ice collection info. See {@link call.IceCollectionInfo IceCollectionInfo} for more details. The function must return\n   a results object with details on how to proceed with the ICE collection check or operatiaon. See {@link call.IceCollectionCheckResult IceCollectionResult}\n   object for details on the format of the return object. See {@link call.IceCollectionCheckFunction IceCollectionCheckFunction} for\n   more information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided.",
+              "lineNumber": 19,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                }
+              },
+              "name": "call.iceCollectionCheckFunction"
+            },
+            {
+              "title": "param",
+              "description": "Whether server-provided TURN credentials should be used.",
+              "lineNumber": 25,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "call.serverTurnCredentials",
+              "default": "true"
+            },
+            {
+              "title": "param",
+              "description": "List of SDP handler functions to modify SDP. Advanced usage.",
+              "lineNumber": 26,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "TypeApplication",
+                  "expression": {
+                    "type": "NameExpression",
+                    "name": "Array"
+                  },
+                  "applications": [
+                    {
+                      "type": "NameExpression",
+                      "name": "call.SdpHandlerFunction"
+                    }
+                  ]
+                }
+              },
+              "name": "call.sdpHandlers"
+            },
+            {
+              "title": "param",
+              "description": "Whether early media should be supported for calls. Not supported on Firefox.",
+              "lineNumber": 27,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "call.earlyMedia",
+              "default": "false"
+            },
+            {
+              "title": "param",
+              "description": "Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+).",
+              "lineNumber": 28,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "call.resyncOnConnect",
+              "default": "false"
+            },
+            {
+              "title": "param",
+              "description": "Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode.",
+              "lineNumber": 29,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "call.mediaBrokerOnly",
+              "default": "false"
+            },
+            {
+              "title": "param",
+              "description": "Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages.",
+              "lineNumber": 30,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "call.removeBundling",
+              "default": "false"
+            },
+            {
+              "title": "param",
+              "description": "The mode for sending ringing feedback to the Caller ('auto', 'manual').\n   By default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application\n   must initiate the feedback being sent. See the `call.sendRingingFeedback` API for more info.",
+              "lineNumber": 31,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              },
+              "name": "call.ringingFeedbackMode",
+              "default": "'auto'"
+            },
+            {
+              "title": "param",
+              "description": "Time interval, in milliseconds between call audits.",
+              "lineNumber": 34,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "call.callAuditTimer",
+              "default": "25000"
+            },
+            {
+              "title": "param",
+              "description": "Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection.",
+              "lineNumber": 35,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "call.mediaConnectionRetryDelay",
+              "default": "3000"
+            },
+            {
+              "title": "param",
+              "description": "Specifies whether or not SIP address normalization will be applied.",
+              "lineNumber": 36,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "boolean"
+                }
+              },
+              "name": "call.normalizeDestination",
+              "default": "true"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 54,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 69,
+                "column": 0
+              },
+              "end": {
+                "line": 155,
+                "column": 1
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/link/index.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "call",
+              "lineNumber": 6,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The call configuration object."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "call.defaultPeerConfig",
+                  "lineNumber": 7,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "A key-value dictionary that corresponds\nto the available RTCPeerConfiguration which is normally passed when creating an RTCPeerConnection.\nSee "
+                          },
+                          {
+                            "type": "link",
+                            "url": "https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters",
+                            "title": null,
+                            "jsdoc": true,
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "RTCPeerConnection's configuration parameters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "text",
+                            "value": " for more information.\nThis is the recommended way of setting ICE servers and other RTCPeerConnection-related configuration."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "call.RTCPeerConnectionConfig"
+                    }
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "call.iceCollectionIdealTimeout",
+                  "lineNumber": 11,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The amount of time to wait for an ideal candidate in milliseconds.\nThe default is 1000ms. An ideal list of candidates is a complete list of candidates considering the RTCPeerConnection configuration.\nNote that this values will not be considered if a custom function is passed through the "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "iceCollectionCheckFunction"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", and\nany timeouts must be handled by the custom function."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "number"
+                  },
+                  "default": "1000"
+                },
+                {
+                  "title": "param",
+                  "name": "call.iceCollectionMaxTimeout",
+                  "lineNumber": 15,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The maximum amount of time to wait for ICE collection in milliseconds.\nThe default is 3000ms. After this time has been reached, the call will proceed with the currently gathered candidates.\nNote that this values will not be considered if a custom function is passed through the "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "iceCollectionCheckFunction"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", and\nany timeouts must be handled by the custom function."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "number"
+                  },
+                  "default": "3000"
+                },
+                {
+                  "title": "param",
+                  "name": "call.iceCollectionCheckFunction",
+                  "lineNumber": 19,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Override the default IceCollectionCheckFunction to manually decide when\nto proceed with operations, error out, or wait for the appropriate states and candidates. The function will receive an object containing\nthe ice collection info. See "
+                          },
+                          {
+                            "type": "link",
+                            "url": "#callicecollectioninfo",
+                            "title": null,
+                            "jsdoc": true,
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "IceCollectionInfo"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "text",
+                            "value": " for more details. The function must return\na results object with details on how to proceed with the ICE collection check or operatiaon. See "
+                          },
+                          {
+                            "type": "link",
+                            "url": "#callicecollectioncheckresult",
+                            "title": null,
+                            "jsdoc": true,
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "IceCollectionResult"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "text",
+                            "value": "\nobject for details on the format of the return object. See "
+                          },
+                          {
+                            "type": "link",
+                            "url": "#callicecollectioncheckfunction",
+                            "title": null,
+                            "jsdoc": true,
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "IceCollectionCheckFunction"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "text",
+                            "value": " for\nmore information on the form of the function, as well as information about the default IceCollectionCheckFunction that is used if nothing is provided."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "call.serverTurnCredentials",
+                  "lineNumber": 25,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether server-provided TURN credentials should be used."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "true"
+                },
+                {
+                  "title": "param",
+                  "name": "call.sdpHandlers",
+                  "lineNumber": 26,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "List of SDP handler functions to modify SDP. Advanced usage."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "call.SdpHandlerFunction"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "call.earlyMedia",
+                  "lineNumber": 27,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether early media should be supported for calls. Not supported on Firefox."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "false"
+                },
+                {
+                  "title": "param",
+                  "name": "call.resyncOnConnect",
+                  "lineNumber": 28,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether the SDK should re-sync all call states after connecting (requires WebRTC Gateway 4.7.1+)."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "false"
+                },
+                {
+                  "title": "param",
+                  "name": "call.mediaBrokerOnly",
+                  "lineNumber": 29,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether all Calls will be anchored on the MediaBroker instead of being peer-to-peer. Set to true if the backend is configured for broker only mode."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "false"
+                },
+                {
+                  "title": "param",
+                  "name": "call.removeBundling",
+                  "lineNumber": 30,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether to remove a=group attributes to stop media bundling from incoming and outgoing SDP messages."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "false"
+                },
+                {
+                  "title": "param",
+                  "name": "call.ringingFeedbackMode",
+                  "lineNumber": 31,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The mode for sending ringing feedback to the Caller ('auto', 'manual').\nBy default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application\nmust initiate the feedback being sent. See the "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "call.sendRingingFeedback"
+                          },
+                          {
+                            "type": "text",
+                            "value": " API for more info."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  "default": "'auto'"
+                },
+                {
+                  "title": "param",
+                  "name": "call.callAuditTimer",
+                  "lineNumber": 34,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Time interval, in milliseconds between call audits."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "number"
+                  },
+                  "default": "25000"
+                },
+                {
+                  "title": "param",
+                  "name": "call.mediaConnectionRetryDelay",
+                  "lineNumber": 35,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "number"
+                  },
+                  "default": "3000"
+                },
+                {
+                  "title": "param",
+                  "name": "call.normalizeDestination",
+                  "lineNumber": 36,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Specifies whether or not SIP address normalization will be applied."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "boolean"
+                  },
+                  "default": "true"
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "name": "config.call",
+          "memberof": "config",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "config",
+              "kind": "module"
+            },
+            {
+              "name": "config.call",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "config#config.call"
         }
       ],
       "events": [],
@@ -3620,22 +3620,22 @@
           ],
           "loc": {
             "start": {
-              "line": 200,
+              "line": 185,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 191,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 207,
+                "line": 192,
                 "column": 4
               },
               "end": {
-                "line": 209,
+                "line": 194,
                 "column": 5
               }
             },
@@ -3715,22 +3715,22 @@
           ],
           "loc": {
             "start": {
-              "line": 212,
+              "line": 197,
               "column": 4
             },
             "end": {
-              "line": 238,
+              "line": 223,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 239,
+                "line": 224,
                 "column": 4
               },
               "end": {
-                "line": 262,
+                "line": 247,
                 "column": 5
               }
             },
@@ -4707,161 +4707,6 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Retrieve information about the browser being used."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Browser information being defined indicates that the browser supports\nbasic webRTC scenarios."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 5,
-              "type": null
-            },
-            {
-              "title": "memberof",
-              "description": "api",
-              "lineNumber": 6
-            },
-            {
-              "title": "method",
-              "description": null,
-              "lineNumber": 7,
-              "name": "getBrowserDetails"
-            },
-            {
-              "title": "return",
-              "description": "Object containing `browser` and `version` information.",
-              "lineNumber": 8,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            },
-            {
-              "title": "example",
-              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)",
-              "lineNumber": 9
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 21,
-              "column": 2
-            },
-            "end": {
-              "line": 34,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 35,
-                "column": 2
-              },
-              "end": {
-                "line": 38,
-                "column": 3
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/index.js"
-          },
-          "augments": [],
-          "examples": [
-            {
-              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)"
-            }
-          ],
-          "implements": [],
-          "params": [],
-          "properties": [],
-          "returns": [
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Object containing "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "browser"
-                      },
-                      {
-                        "type": "text",
-                        "value": " and "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "version"
-                      },
-                      {
-                        "type": "text",
-                        "value": " information."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "memberof": "api",
-          "kind": "function",
-          "name": "getBrowserDetails",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "api",
-              "kind": "module"
-            },
-            {
-              "name": "getBrowserDetails",
-              "kind": "function"
-            }
-          ],
-          "namespace": "apigetBrowserDetails"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
                     "value": "Retrieves information about the current user."
                   }
                 ]
@@ -5766,6 +5611,161 @@
             }
           ],
           "namespace": "apisetCredentials"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Retrieve information about the browser being used."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Browser information being defined indicates that the browser supports\nbasic webRTC scenarios."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 5,
+              "type": null
+            },
+            {
+              "title": "memberof",
+              "description": "api",
+              "lineNumber": 6
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 7,
+              "name": "getBrowserDetails"
+            },
+            {
+              "title": "return",
+              "description": "Object containing `browser` and `version` information.",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "example",
+              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)",
+              "lineNumber": 9
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 21,
+              "column": 2
+            },
+            "end": {
+              "line": 34,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 35,
+                "column": 2
+              },
+              "end": {
+                "line": 38,
+                "column": 3
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/index.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Object containing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "browser"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "version"
+                      },
+                      {
+                        "type": "text",
+                        "value": " information."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "memberof": "api",
+          "kind": "function",
+          "name": "getBrowserDetails",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "api",
+              "kind": "module"
+            },
+            {
+              "name": "getBrowserDetails",
+              "kind": "function"
+            }
+          ],
+          "namespace": "apigetBrowserDetails"
         },
         {
           "description": {
@@ -10286,6 +10286,239 @@
         }
       ],
       "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SIP URI ie: sip:"
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "mailto:joe@domain.com",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "joe@domain.com"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 5,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "SIP_URI"
+            },
+            {
+              "title": "memberof",
+              "description": "call",
+              "lineNumber": 6
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 7,
+              "name": "link_user_id"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 0
+            },
+            "end": {
+              "line": 18,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 29,
+                "column": 0
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/docs/docs.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "typedef",
+          "name": "SIP_URI",
+          "type": {
+            "type": "NameExpression",
+            "name": "string"
+          },
+          "memberof": "call",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "call",
+              "kind": "namespace"
+            },
+            {
+              "name": "SIP_URI",
+              "kind": "typedef",
+              "scope": "static"
+            }
+          ],
+          "namespace": "call.SIP_URI"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The TEL URI ie: tel:+18885559876"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 5,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "TEL_URI"
+            },
+            {
+              "title": "memberof",
+              "description": "call",
+              "lineNumber": 6
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 7,
+              "name": "link_pstn"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 20,
+              "column": 0
+            },
+            "end": {
+              "line": 28,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 29,
+                "column": 0
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/docs/docs.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "typedef",
+          "name": "TEL_URI",
+          "type": {
+            "type": "NameExpression",
+            "name": "string"
+          },
+          "memberof": "call",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "call",
+              "kind": "namespace"
+            },
+            {
+              "name": "TEL_URI",
+              "kind": "typedef",
+              "scope": "static"
+            }
+          ],
+          "namespace": "call.TEL_URI"
+        },
         {
           "description": {
             "type": "root",
@@ -17251,72 +17484,9 @@
               "name": "options.dscpControls"
             },
             {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints.medias is not an array.",
-              "lineNumber": 52,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
-              "lineNumber": 53,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
-              "lineNumber": 54,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
-              "lineNumber": 55,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
-              "lineNumber": 56,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
-              "lineNumber": 57,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
-              "lineNumber": 58,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
               "title": "returns",
               "description": "The generated ID of the newly created call.",
-              "lineNumber": 59,
+              "lineNumber": 52,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -17325,7 +17495,7 @@
             {
               "title": "example",
               "description": "// Listen for the event emitted after making a call.\nclient.on('call:start', function (params) {\n  const { callId, error } = params\n  if (error) {\n    // Call failed to initialize.\n  } else {\n    // Call was initialized, and the recipient user will be notified.\n  }\n})\n// Make an audio-only call.\nconst newCallId = client.call.make(destination, { audio: true })",
-              "lineNumber": 60
+              "lineNumber": 53
             }
           ],
           "loc": {
@@ -17334,18 +17504,18 @@
               "column": 2
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 115,
+                "line": 108,
                 "column": 2
               },
               "end": {
-                "line": 191,
+                "line": 184,
                 "column": 3
               }
             },
@@ -17745,180 +17915,7 @@
             }
           ],
           "sees": [],
-          "throws": [
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints.medias is not an array."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints.medias Objects are missing "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "media"
-                      },
-                      {
-                        "type": "text",
-                        "value": " and "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "type"
-                      },
-                      {
-                        "type": "text",
-                        "value": " properties."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints contains duplicate media kinds."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if any tracks in mediaConstraints.medias are not detached."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if any tracks in mediaConstraints.medias are not local."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints.medias contains any type other than Object containing "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "media"
-                      },
-                      {
-                        "type": "text",
-                        "value": " and "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "type"
-                      },
-                      {
-                        "type": "text",
-                        "value": " properties."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            }
-          ],
+          "throws": [],
           "todos": [],
           "yields": [],
           "access": "public",
@@ -18268,22 +18265,22 @@
           ],
           "loc": {
             "start": {
-              "line": 193,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 233,
+              "line": 226,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 246,
+                "line": 239,
                 "column": 2
               },
               "end": {
-                "line": 291,
+                "line": 284,
                 "column": 3
               }
             },
@@ -18782,22 +18779,22 @@
           ],
           "loc": {
             "start": {
-              "line": 293,
+              "line": 286,
               "column": 2
             },
             "end": {
-              "line": 312,
+              "line": 305,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 313,
+                "line": 306,
                 "column": 2
               },
               "end": {
-                "line": 341,
+                "line": 334,
                 "column": 3
               }
             },
@@ -18978,22 +18975,22 @@
           ],
           "loc": {
             "start": {
-              "line": 343,
+              "line": 336,
               "column": 2
             },
             "end": {
-              "line": 361,
+              "line": 354,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 362,
+                "line": 355,
                 "column": 2
               },
               "end": {
-                "line": 389,
+                "line": 382,
                 "column": 3
               }
             },
@@ -19193,22 +19190,22 @@
           ],
           "loc": {
             "start": {
-              "line": 391,
+              "line": 384,
               "column": 2
             },
             "end": {
-              "line": 410,
+              "line": 403,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 411,
+                "line": 404,
                 "column": 2
               },
               "end": {
-                "line": 444,
+                "line": 437,
                 "column": 3
               }
             },
@@ -19459,22 +19456,22 @@
           ],
           "loc": {
             "start": {
-              "line": 446,
+              "line": 439,
               "column": 2
             },
             "end": {
-              "line": 469,
+              "line": 462,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 470,
+                "line": 463,
                 "column": 2
               },
               "end": {
-                "line": 502,
+                "line": 495,
                 "column": 3
               }
             },
@@ -20250,69 +20247,6 @@
                 }
               },
               "name": "options.dscpControls"
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints.medias is not an array.",
-              "lineNumber": 28,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints.medias Objects are missing `media` and `type` properties.",
-              "lineNumber": 29,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints contains duplicate media kinds.",
-              "lineNumber": 30,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if any tracks in mediaConstraints.medias are not detached.",
-              "lineNumber": 31,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if any tracks in mediaConstraints.medias are not local.",
-              "lineNumber": 32,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session.",
-              "lineNumber": 33,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "title": "throws",
-              "description": "Throws an error if mediaConstraints.medias contains any type other than Object containing `media` and `type` properties.",
-              "lineNumber": 34,
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
             }
           ],
           "loc": {
@@ -20321,18 +20255,18 @@
               "column": 2
             },
             "end": {
-              "line": 174,
+              "line": 167,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 175,
+                "line": 168,
                 "column": 2
               },
               "end": {
-                "line": 213,
+                "line": 206,
                 "column": 3
               }
             },
@@ -20638,180 +20572,7 @@
           "properties": [],
           "returns": [],
           "sees": [],
-          "throws": [
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints.medias is not an array."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints.medias Objects are missing "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "media"
-                      },
-                      {
-                        "type": "text",
-                        "value": " and "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "type"
-                      },
-                      {
-                        "type": "text",
-                        "value": " properties."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints contains duplicate media kinds."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if any tracks in mediaConstraints.medias are not detached."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if any tracks in mediaConstraints.medias are not local."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if any tracks in mediaConstraints.medias are already in use by a session."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            },
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Throws an error if mediaConstraints.medias contains any type other than Object containing "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "media"
-                      },
-                      {
-                        "type": "text",
-                        "value": " and "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "type"
-                      },
-                      {
-                        "type": "text",
-                        "value": " properties."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "BasicError"
-              }
-            }
-          ],
+          "throws": [],
           "todos": [],
           "yields": [],
           "access": "public",
@@ -20983,22 +20744,22 @@
           ],
           "loc": {
             "start": {
-              "line": 215,
+              "line": 208,
               "column": 2
             },
             "end": {
-              "line": 234,
+              "line": 227,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 235,
+                "line": 228,
                 "column": 2
               },
               "end": {
-                "line": 261,
+                "line": 254,
                 "column": 3
               }
             },
@@ -21318,22 +21079,22 @@
           ],
           "loc": {
             "start": {
-              "line": 263,
+              "line": 256,
               "column": 2
             },
             "end": {
-              "line": 289,
+              "line": 282,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 290,
+                "line": 283,
                 "column": 2
               },
               "end": {
-                "line": 323,
+                "line": 316,
                 "column": 3
               }
             },
@@ -21628,22 +21389,22 @@
           ],
           "loc": {
             "start": {
-              "line": 325,
+              "line": 318,
               "column": 2
             },
             "end": {
-              "line": 347,
+              "line": 340,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 348,
+                "line": 341,
                 "column": 2
               },
               "end": {
-                "line": 376,
+                "line": 369,
                 "column": 3
               }
             },
@@ -21961,22 +21722,22 @@
           ],
           "loc": {
             "start": {
-              "line": 378,
+              "line": 371,
               "column": 2
             },
             "end": {
-              "line": 445,
+              "line": 438,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 446,
+                "line": 439,
                 "column": 2
               },
               "end": {
-                "line": 485,
+                "line": 478,
                 "column": 3
               }
             },
@@ -22619,22 +22380,22 @@
           ],
           "loc": {
             "start": {
-              "line": 487,
+              "line": 480,
               "column": 2
             },
             "end": {
-              "line": 531,
+              "line": 524,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 532,
+                "line": 525,
                 "column": 2
               },
               "end": {
-                "line": 552,
+                "line": 545,
                 "column": 3
               }
             },
@@ -22967,22 +22728,22 @@
           ],
           "loc": {
             "start": {
-              "line": 588,
+              "line": 581,
               "column": 2
             },
             "end": {
-              "line": 651,
+              "line": 644,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 652,
+                "line": 645,
                 "column": 2
               },
               "end": {
-                "line": 692,
+                "line": 685,
                 "column": 3
               }
             },
@@ -30104,239 +29865,6 @@
             }
           ],
           "namespace": "call.metrics"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The SIP URI ie: sip:"
-                  },
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "mailto:joe@domain.com",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "joe@domain.com"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 3,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 4
-            },
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 5,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "SIP_URI"
-            },
-            {
-              "title": "memberof",
-              "description": "call",
-              "lineNumber": 6
-            },
-            {
-              "title": "requires",
-              "description": null,
-              "lineNumber": 7,
-              "name": "link_user_id"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 10,
-              "column": 0
-            },
-            "end": {
-              "line": 18,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 0
-              },
-              "end": {
-                "line": 29,
-                "column": 0
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/docs/docs.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "kind": "typedef",
-          "name": "SIP_URI",
-          "type": {
-            "type": "NameExpression",
-            "name": "string"
-          },
-          "memberof": "call",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "call",
-              "kind": "namespace"
-            },
-            {
-              "name": "SIP_URI",
-              "kind": "typedef",
-              "scope": "static"
-            }
-          ],
-          "namespace": "call.SIP_URI"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The TEL URI ie: tel:+18885559876"
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 3,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 4
-            },
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 5,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "TEL_URI"
-            },
-            {
-              "title": "memberof",
-              "description": "call",
-              "lineNumber": 6
-            },
-            {
-              "title": "requires",
-              "description": null,
-              "lineNumber": 7,
-              "name": "link_pstn"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 20,
-              "column": 0
-            },
-            "end": {
-              "line": 28,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 0
-              },
-              "end": {
-                "line": 29,
-                "column": 0
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/docs/docs.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "kind": "typedef",
-          "name": "TEL_URI",
-          "type": {
-            "type": "NameExpression",
-            "name": "string"
-          },
-          "memberof": "call",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "call",
-              "kind": "namespace"
-            },
-            {
-              "name": "TEL_URI",
-              "kind": "typedef",
-              "scope": "static"
-            }
-          ],
-          "namespace": "call.TEL_URI"
         }
       ]
     },
@@ -43171,16 +42699,16 @@
             },
             {
               "title": "returns",
-              "description": "Resolves with an array of objects containing both a media type and a media object.",
+              "description": "An array of objects containing both a media type and a media object.",
               "lineNumber": 6,
               "type": {
                 "type": "NameExpression",
-                "name": "Promise"
+                "name": "Array"
               }
             },
             {
               "title": "example",
-              "description": "await client.media.createLocalMedia({ video: true })\n// Get all detached tracks\nconst medias = await client.media.getLocalMedia()",
+              "description": "await client.media.createLocalMedia({ video: true })\n// Get all detached tracks\nconst medias = client.media.getLocalMedia()",
               "lineNumber": 7
             }
           ],
@@ -43210,7 +42738,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "await client.media.createLocalMedia({ video: true })\n// Get all detached tracks\nconst medias = await client.media.getLocalMedia()"
+              "description": "await client.media.createLocalMedia({ video: true })\n// Get all detached tracks\nconst medias = client.media.getLocalMedia()"
             }
           ],
           "implements": [],
@@ -43226,7 +42754,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "Resolves with an array of objects containing both a media type and a media object."
+                        "value": "An array of objects containing both a media type and a media object."
                       }
                     ]
                   }
@@ -43235,7 +42763,7 @@
               "title": "returns",
               "type": {
                 "type": "NameExpression",
-                "name": "Promise"
+                "name": "Array"
               }
             }
           ],
@@ -43308,13 +42836,22 @@
             },
             {
               "title": "param",
-              "description": "An id to a track to be cleaned up.",
+              "description": "An object representing the local media to dispose or a string representing a trackId.",
               "lineNumber": 6,
               "type": {
-                "type": "NameExpression",
-                "name": "string"
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  }
+                ]
               },
-              "name": "trackId"
+              "name": "localMedia"
             },
             {
               "title": "returns",
@@ -43378,7 +42915,7 @@
                 "column": 4
               },
               "end": {
-                "line": 205,
+                "line": 215,
                 "column": 5
               }
             },
@@ -43390,7 +42927,7 @@
           "params": [
             {
               "title": "param",
-              "name": "trackId",
+              "name": "localMedia",
               "lineNumber": 6,
               "description": {
                 "type": "root",
@@ -43400,15 +42937,24 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "An id to a track to be cleaned up."
+                        "value": "An object representing the local media to dispose or a string representing a trackId."
                       }
                     ]
                   }
                 ]
               },
               "type": {
-                "type": "NameExpression",
-                "name": "string"
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  }
+                ]
               }
             }
           ],
@@ -43634,22 +43180,22 @@
           ],
           "loc": {
             "start": {
-              "line": 207,
+              "line": 217,
               "column": 4
             },
             "end": {
-              "line": 233,
+              "line": 243,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 234,
+                "line": 244,
                 "column": 4
               },
               "end": {
-                "line": 245,
+                "line": 255,
                 "column": 5
               }
             },
@@ -43883,22 +43429,22 @@
           ],
           "loc": {
             "start": {
-              "line": 247,
+              "line": 257,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 270,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 261,
+                "line": 271,
                 "column": 4
               },
               "end": {
-                "line": 264,
+                "line": 274,
                 "column": 5
               }
             },
@@ -44107,22 +43653,22 @@
           ],
           "loc": {
             "start": {
-              "line": 266,
+              "line": 276,
               "column": 4
             },
             "end": {
-              "line": 288,
+              "line": 298,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 289,
+                "line": 299,
                 "column": 4
               },
               "end": {
-                "line": 306,
+                "line": 316,
                 "column": 5
               }
             },
@@ -44290,22 +43836,22 @@
           ],
           "loc": {
             "start": {
-              "line": 308,
+              "line": 318,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 332,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 323,
+                "line": 333,
                 "column": 4
               },
               "end": {
-                "line": 340,
+                "line": 350,
                 "column": 5
               }
             },
@@ -46181,22 +45727,22 @@
           ],
           "loc": {
             "start": {
-              "line": 18,
+              "line": 20,
               "column": 4
             },
             "end": {
-              "line": 30,
+              "line": 32,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 31,
+                "line": 33,
                 "column": 4
               },
               "end": {
-                "line": 31,
+                "line": 33,
                 "column": 37
               }
             },
@@ -46386,22 +45932,22 @@
           ],
           "loc": {
             "start": {
-              "line": 33,
+              "line": 35,
               "column": 4
             },
             "end": {
-              "line": 47,
+              "line": 49,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 48,
+                "line": 50,
                 "column": 4
               },
               "end": {
-                "line": 48,
+                "line": 50,
                 "column": 41
               }
             },
@@ -56679,6 +56225,132 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "The ID of a User (e.g. "
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "mailto:joe@domain.com",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "joe@domain.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ")"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 3
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 4,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "UserID"
+            },
+            {
+              "title": "memberof",
+              "description": "user",
+              "lineNumber": 5
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 6,
+              "name": "link_user_id"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 29,
+                "column": 0
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/docs/docs.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "typedef",
+          "name": "UserID",
+          "type": {
+            "type": "NameExpression",
+            "name": "string"
+          },
+          "memberof": "user",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "user",
+              "kind": "namespace"
+            },
+            {
+              "name": "UserID",
+              "kind": "typedef",
+              "scope": "static"
+            }
+          ],
+          "namespace": "user.UserID"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "The User data object."
                   }
                 ]
@@ -57983,132 +57655,6 @@
             }
           ],
           "namespace": "user.search"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The ID of a User (e.g. "
-                  },
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "mailto:joe@domain.com",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "joe@domain.com"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": ")"
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 2,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 3
-            },
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 4,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "UserID"
-            },
-            {
-              "title": "memberof",
-              "description": "user",
-              "lineNumber": 5
-            },
-            {
-              "title": "requires",
-              "description": null,
-              "lineNumber": 6,
-              "name": "link_user_id"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 0
-            },
-            "end": {
-              "line": 8,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 0
-              },
-              "end": {
-                "line": 29,
-                "column": 0
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/docs/docs.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "kind": "typedef",
-          "name": "UserID",
-          "type": {
-            "type": "NameExpression",
-            "name": "string"
-          },
-          "memberof": "user",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "user",
-              "kind": "namespace"
-            },
-            {
-              "name": "UserID",
-              "kind": "typedef",
-              "scope": "static"
-            }
-          ],
-          "namespace": "user.UserID"
         }
       ]
     },
