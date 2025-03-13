@@ -5111,22 +5111,22 @@
           ],
           "loc": {
             "start": {
-              "line": 17,
+              "line": 19,
               "column": 4
             },
             "end": {
-              "line": 27,
+              "line": 29,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 28,
+                "line": 30,
                 "column": 4
               },
               "end": {
-                "line": 31,
+                "line": 33,
                 "column": 5
               }
             },
@@ -5344,22 +5344,22 @@
           ],
           "loc": {
             "start": {
-              "line": 45,
+              "line": 38,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 59,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 113,
+                "line": 106,
                 "column": 4
               },
               "end": {
-                "line": 128,
+                "line": 121,
                 "column": 5
               }
             },
@@ -5625,22 +5625,22 @@
           ],
           "loc": {
             "start": {
-              "line": 67,
+              "line": 60,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 113,
+                "line": 106,
                 "column": 4
               },
               "end": {
-                "line": 128,
+                "line": 121,
                 "column": 5
               }
             },
@@ -5832,22 +5832,22 @@
           ],
           "loc": {
             "start": {
-              "line": 95,
+              "line": 88,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 105,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 113,
+                "line": 106,
                 "column": 4
               },
               "end": {
-                "line": 128,
+                "line": 121,
                 "column": 5
               }
             },
@@ -51242,6 +51242,39 @@
                     "value": " API."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "When the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "reason"
+                  },
+                  {
+                    "type": "text",
+                    "value": " parameter is provided, this means the subscription has been lost unexpectedly.\nThe value for this parameter will be one of the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceschangereasons",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "services.changeReasons"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " constants."
+                  }
+                ]
               }
             ]
           },
@@ -51249,29 +51282,29 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 8,
               "type": null
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 6
+              "lineNumber": 9
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 10,
               "name": "subscription"
             },
             {
               "title": "event",
               "description": "subscription:change",
-              "lineNumber": 8
+              "lineNumber": 11
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 9,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51280,8 +51313,8 @@
             },
             {
               "title": "param",
-              "description": "When unsolicited, the reason for the change is provided.\n  Reason can be one of the following values:\n  'GONE' - When Connection was terminated by the server.\n  'LOST_CONNECTION' - When internet connection was lost.\n  'WS_OVERRIDDEN' - When websocket was overridden by the server.\n\nIf the `reason` parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe `reason` will explain why the subscription has been lost so that the scenario can be handled appropriately.",
-              "lineNumber": 10,
+              "description": "When unsolicited, the reason for the change is provided.",
+              "lineNumber": 13,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -51298,18 +51331,18 @@
               "column": 0
             },
             "end": {
-              "line": 20,
+              "line": 15,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 21,
+                "line": 16,
                 "column": 0
               },
               "end": {
-                "line": 21,
+                "line": 16,
                 "column": 47
               }
             },
@@ -51322,7 +51355,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 9,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51331,7 +51364,7 @@
                 {
                   "title": "param",
                   "name": "params.reason",
-                  "lineNumber": 10,
+                  "lineNumber": 13,
                   "description": {
                     "type": "root",
                     "children": [
@@ -51340,32 +51373,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "When unsolicited, the reason for the change is provided.\nReason can be one of the following values:\n'GONE' - When Connection was terminated by the server.\n'LOST_CONNECTION' - When internet connection was lost.\n'WS_OVERRIDDEN' - When websocket was overridden by the server."
-                          }
-                        ]
-                      },
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "If the "
-                          },
-                          {
-                            "type": "inlineCode",
-                            "value": "reason"
-                          },
-                          {
-                            "type": "text",
-                            "value": " parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe "
-                          },
-                          {
-                            "type": "inlineCode",
-                            "value": "reason"
-                          },
-                          {
-                            "type": "text",
-                            "value": " will explain why the subscription has been lost so that the scenario can be handled appropriately."
+                            "value": "When unsolicited, the reason for the change is provided."
                           }
                         ]
                       }
@@ -51860,22 +51868,22 @@
           ],
           "loc": {
             "start": {
-              "line": 23,
+              "line": 18,
               "column": 0
             },
             "end": {
-              "line": 59,
+              "line": 54,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 60,
+                "line": 55,
                 "column": 0
               },
               "end": {
-                "line": 60,
+                "line": 55,
                 "column": 45
               }
             },
@@ -52042,22 +52050,22 @@
           ],
           "loc": {
             "start": {
-              "line": 62,
+              "line": 57,
               "column": 0
             },
             "end": {
-              "line": 76,
+              "line": 71,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 77,
+                "line": 72,
                 "column": 0
               },
               "end": {
-                "line": 77,
+                "line": 72,
                 "column": 45
               }
             },
@@ -52833,22 +52841,22 @@
           ],
           "loc": {
             "start": {
-              "line": 96,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 123,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 123,
+                "line": 124,
                 "column": 4
               },
               "end": {
-                "line": 161,
+                "line": 162,
                 "column": 5
               }
             },
@@ -53167,22 +53175,22 @@
           ],
           "loc": {
             "start": {
-              "line": 163,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 186,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 186,
+                "line": 187,
                 "column": 4
               },
               "end": {
-                "line": 209,
+                "line": 210,
                 "column": 5
               }
             },
@@ -53420,22 +53428,22 @@
           ],
           "loc": {
             "start": {
-              "line": 211,
+              "line": 212,
               "column": 4
             },
             "end": {
-              "line": 249,
+              "line": 250,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 250,
+                "line": 251,
                 "column": 4
               },
               "end": {
-                "line": 257,
+                "line": 258,
                 "column": 5
               }
             },
@@ -53501,6 +53509,228 @@
             }
           ],
           "namespace": "services.getSubscriptions"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Constants used to describe reasons for unsolicited subscription change."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "These values are used in the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event\nfor the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "reason"
+                  },
+                  {
+                    "type": "text",
+                    "value": " parameter. When the parameter is defined, it indicates the subscription changed\nfor one of these unsolicited reasons."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 7,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 8
+            },
+            {
+              "title": "memberof",
+              "description": "services",
+              "lineNumber": 9
+            },
+            {
+              "title": "property",
+              "description": "When the server terminated the subscription.",
+              "lineNumber": 10,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "GONE"
+            },
+            {
+              "title": "property",
+              "description": "When network connectivity was lost.",
+              "lineNumber": 11,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "LOST_CONNECTION"
+            },
+            {
+              "title": "property",
+              "description": "When the webSocket was overridden by the server.",
+              "lineNumber": 12,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "WS_OVERRIDDEN"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 260,
+              "column": 4
+            },
+            "end": {
+              "line": 273,
+              "column": 7
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 274,
+                "column": 4
+              },
+              "end": {
+                "line": 274,
+                "column": 33
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "GONE",
+              "lineNumber": 10,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "When the server terminated the subscription."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            },
+            {
+              "title": "property",
+              "name": "LOST_CONNECTION",
+              "lineNumber": 11,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "When network connectivity was lost."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            },
+            {
+              "title": "property",
+              "name": "WS_OVERRIDDEN",
+              "lineNumber": 12,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "When the webSocket was overridden by the server."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "services",
+          "name": "changeReasons",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "services",
+              "kind": "namespace"
+            },
+            {
+              "name": "changeReasons",
+              "scope": "static"
+            }
+          ],
+          "namespace": "services.changeReasons"
         }
       ]
     },

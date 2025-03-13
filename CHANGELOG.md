@@ -13,6 +13,8 @@ Ribbon WebRTC SDK change log.
 
 - Fixed a Call issue where the `call.resync` API would trigger the Call resyncing operation twice, even though the API was called once. `KJS-2696`
 - Fixed a Call issue where the audio or video track on the remote side will freeze if you try to add local media to the call after it has already been added previously (same track id). If you try to add the same track more than once, there will be an error on the `call:newMedia` event indicating that you can't add the same media more than once to a call. `KJS-2656`
+- Fixed an API issue where the constants used for the `subscription:change` event's `reason` property were not available on the API.
+  - These values are once again available under the `services.changeReasons` API.
 
 ### Added
 
