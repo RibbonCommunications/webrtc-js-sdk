@@ -69,20 +69,6 @@ information, see the [Logs feature][6] description.
         *   `logs.logActions.exposePayloads` **[boolean][11]** Allow action payloads
             to be exposed in the logs, potentially displaying sensitive information. (optional, default `true`)
 
-### config.authentication
-
-Configuration options for the Authentication feature.
-
-#### Parameters
-
-*   `authentication` **[Object][7]** Authentication configs.
-
-    *   `authentication.server` **[Object][7]** 
-
-        *   `authentication.server.base` **[string][8]** Hostname of the server to be used for requests.
-        *   `authentication.server.protocol` **[string][8]** Protocol to be used for requests. (optional, default `'https'`)
-        *   `authentication.server.port` **[number][12]** Port to be used for requests. (optional, default `443`)
-
 ### config.connectivity
 
 Configuration options for the Connectivity feature.
@@ -90,17 +76,17 @@ The SDK can only use keepalive as the connectivity check.
 
 Keep Alive: The client sends "keepalive" messages (to the server) on the websocket at regular intervals. This lets the server know that the client is still connected, and that it should "keep the connection alive".
 
-For more information on keepalive see here: [https://en.wikipedia.org/wiki/Keepalive][13]
+For more information on keepalive see here: [https://en.wikipedia.org/wiki/Keepalive][12]
 
 #### Parameters
 
 *   `connectivity` **[Object][7]** Connectivity configs.
 
-    *   `connectivity.pingInterval` **[Number][12]** Time in between websocket ping attempts (milliseconds). (optional, default `30000`)
-    *   `connectivity.reconnectLimit` **[Number][12]** Number of failed reconnect attempts before reporting an error. Can be set to 0 to not limit reconnection attempts. (optional, default `5`)
-    *   `connectivity.reconnectDelay` **[Number][12]** Base time between websocket reconnect attempts (milliseconds). (optional, default `5000`)
-    *   `connectivity.reconnectTimeMultiplier` **[Number][12]** Reconnect delay multiplier for subsequent attempts. The reconnect delay time will be multiplied by this after each failed reconnect attempt to increase the delay between attempts. eg. 5000ms then 10000ms then 20000ms delay if value is 2. (optional, default `1`)
-    *   `connectivity.reconnectTimeLimit` **[Number][12]** Maximum time delay between reconnect attempts (milliseconds). Used in conjunction with the reconnect time multiplier to prevent overly long delays between reconnection attempts. (optional, default `640000`)
+    *   `connectivity.pingInterval` **[Number][13]** Time in between websocket ping attempts (milliseconds). (optional, default `30000`)
+    *   `connectivity.reconnectLimit` **[Number][13]** Number of failed reconnect attempts before reporting an error. Can be set to 0 to not limit reconnection attempts. (optional, default `5`)
+    *   `connectivity.reconnectDelay` **[Number][13]** Base time between websocket reconnect attempts (milliseconds). (optional, default `5000`)
+    *   `connectivity.reconnectTimeMultiplier` **[Number][13]** Reconnect delay multiplier for subsequent attempts. The reconnect delay time will be multiplied by this after each failed reconnect attempt to increase the delay between attempts. eg. 5000ms then 10000ms then 20000ms delay if value is 2. (optional, default `1`)
+    *   `connectivity.reconnectTimeLimit` **[Number][13]** Maximum time delay between reconnect attempts (milliseconds). Used in conjunction with the reconnect time multiplier to prevent overly long delays between reconnection attempts. (optional, default `640000`)
     *   `connectivity.autoReconnect` **[Boolean][11]** Flag to determine whether the SDK will attempt to automatically reconnect after connectivity disruptions. (optional, default `true`)
     *   `connectivity.checkConnectivity` **[Boolean][11]** Flag to determine whether the SDK should check connectivity. (optional, default `true`)
     *   `connectivity.webSocketOAuthMode` **[string][8]** When set to 'query', the OAuth bearer access token will be appended as a query string parameter to the websocket address. (optional, default `none`)
@@ -113,7 +99,7 @@ Configuration options for the notification feature.
 
 *   `notifications` **[Object][7]** The notifications configuration object.
 
-    *   `notifications.idCacheLength` **[number][12]** Default amount of event ids to remember for de-duplication purposes. (optional, default `100`)
+    *   `notifications.idCacheLength` **[number][13]** Default amount of event ids to remember for de-duplication purposes. (optional, default `100`)
     *   `notifications.incomingCallNotificationMode` **[string][8]** Communication channel mode used for incoming call notifications. Supported values are 'any-channel' or 'push-channel-only'. (optional, default `'any-channel'`)
     *   `notifications.pushRegistration` **[Object][7]?** Object describing the server to use for push services.
 
@@ -132,7 +118,21 @@ The SDK uses the Request plugin to make REST requests to the Gateway.
 
 *   `request` **[Object][7]** Request configuration
 
-    *   `request.restTimeout` **[Number][12]** The timeout for REST requests, in milliseconds. After this time, the request will be considered failed. (optional, default `30000`)
+    *   `request.restTimeout` **[Number][13]** The timeout for REST requests, in milliseconds. After this time, the request will be considered failed. (optional, default `30000`)
+
+### config.authentication
+
+Configuration options for the Authentication feature.
+
+#### Parameters
+
+*   `authentication` **[Object][7]** Authentication configs.
+
+    *   `authentication.server` **[Object][7]** 
+
+        *   `authentication.server.base` **[string][8]** Hostname of the server to be used for requests.
+        *   `authentication.server.protocol` **[string][8]** Protocol to be used for requests. (optional, default `'https'`)
+        *   `authentication.server.port` **[number][13]** Port to be used for requests. (optional, default `443`)
 
 ### config.subscription
 
@@ -142,14 +142,14 @@ Configuration options for the Subscription feature.
 
 *   `subscription` **[Object][7]** Subscription config.
 
-    *   `subscription.expires` **[number][12]** The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds. (optional, default `3600`)
-    *   `subscription.serviceUnavailableMaxRetries` **[number][12]** The maximum number of times this client will retry in order to subscribe for a
+    *   `subscription.expires` **[number][13]** The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds. (optional, default `3600`)
+    *   `subscription.serviceUnavailableMaxRetries` **[number][13]** The maximum number of times this client will retry in order to subscribe for a
         given service, while getting 'Service Unavailable' from backend. (optional, default `3`)
     *   `subscription.websocket` **[Object][7]** 
 
         *   `subscription.websocket.server` **[string][8]** Hostname of the server to be used for websocket notifications.
         *   `subscription.websocket.protocol` **[string][8]** Protocol to be used for websocket notifications. (optional, default `wss`)
-        *   `subscription.websocket.port` **[Number][12]** Port to be used for websocket notifications. (optional, default `443`)
+        *   `subscription.websocket.port` **[Number][13]** Port to be used for websocket notifications. (optional, default `443`)
 
 ### config.call
 
@@ -163,11 +163,11 @@ Configuration options for the call feature.
         to the available RTCPeerConfiguration which is normally passed when creating an RTCPeerConnection.
         See [RTCPeerConnection's configuration parameters][15] for more information.
         This is the recommended way of setting ICE servers and other RTCPeerConnection-related configuration.
-    *   `call.iceCollectionIdealTimeout` **[number][12]** The amount of time to wait for an ideal candidate in milliseconds.
+    *   `call.iceCollectionIdealTimeout` **[number][13]** The amount of time to wait for an ideal candidate in milliseconds.
         The default is 1000ms. An ideal list of candidates is a complete list of candidates considering the RTCPeerConnection configuration.
         Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and
         any timeouts must be handled by the custom function. (optional, default `1000`)
-    *   `call.iceCollectionMaxTimeout` **[number][12]** The maximum amount of time to wait for ICE collection in milliseconds.
+    *   `call.iceCollectionMaxTimeout` **[number][13]** The maximum amount of time to wait for ICE collection in milliseconds.
         The default is 3000ms. After this time has been reached, the call will proceed with the currently gathered candidates.
         Note that this values will not be considered if a custom function is passed through the `iceCollectionCheckFunction`, and
         any timeouts must be handled by the custom function. (optional, default `3000`)
@@ -186,8 +186,8 @@ Configuration options for the call feature.
     *   `call.ringingFeedbackMode` **[string][8]** The mode for sending ringing feedback to the Caller ('auto', 'manual').
         By default, feedback will be automatically sent when a call has been received. In 'manual' mode, the application
         must initiate the feedback being sent. See the `call.sendRingingFeedback` API for more info. (optional, default `'auto'`)
-    *   `call.callAuditTimer` **[number][12]** Time interval, in milliseconds between call audits. (optional, default `25000`)
-    *   `call.mediaConnectionRetryDelay` **[number][12]** Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection. (optional, default `3000`)
+    *   `call.callAuditTimer` **[number][13]** Time interval, in milliseconds between call audits. (optional, default `25000`)
+    *   `call.mediaConnectionRetryDelay` **[number][13]** Delay, in milliseconds for the passive side of a call to wait before trying a media reconnection. (optional, default `3000`)
     *   `call.normalizeDestination` **[boolean][11]** Specifies whether or not SIP address normalization will be applied. (optional, default `true`)
 
 ## api
@@ -314,6 +314,23 @@ Removes a global event listener from SDK instance.
 
 *   `listener` **[Function][16]** The event listener to remove.
 
+### getBrowserDetails
+
+Retrieve information about the browser being used.
+
+Browser information being defined indicates that the browser supports
+basic webRTC scenarios.
+
+#### Examples
+
+```javascript
+const details = client.getBrowserDetails()
+
+log(`Browser in use: ${details.browser}, version ${details.version}.`)
+```
+
+Returns **[Object][7]** Object containing `browser` and `version` information.
+
 ### getUserInfo
 
 Retrieves information about the current user.
@@ -406,23 +423,6 @@ client.setCredentials({
 });
 ```
 
-### getBrowserDetails
-
-Retrieve information about the browser being used.
-
-Browser information being defined indicates that the browser supports
-basic webRTC scenarios.
-
-#### Examples
-
-```javascript
-const details = client.getBrowserDetails()
-
-log(`Browser in use: ${details.browser}, version ${details.version}.`)
-```
-
-Returns **[Object][7]** Object containing `browser` and `version` information.
-
 ### BasicError
 
 The Basic Error object. Provides information about an error that occurred in the SDK.
@@ -433,6 +433,21 @@ Type: [Object][7]
 
 *   `code` **[string][8]** The code of the error. If no code is known, this will be 'NO_CODE'.
 *   `message` **[string][8]** A human-readable message to describe the error. If no message is known, this will be 'An error occurred'.
+
+### request:error
+
+An error occurred with server authorization.
+
+This event will be emitted anytime a REST request to the server is rejected
+due to an authorization issue. This may occur for invalid credentials or
+expired tokens, depending on which form of authentication the application
+has chosen to use.
+
+#### Parameters
+
+*   `params` **[Object][7]** 
+
+    *   `params.error` **[api.BasicError][25]** The Basic error object.
 
 ### auth:change
 
@@ -445,21 +460,6 @@ The authentication credentials have been set. You can check the set user details
 ### auth:error
 
 There was an error with authentication.
-
-#### Parameters
-
-*   `params` **[Object][7]** 
-
-    *   `params.error` **[api.BasicError][25]** The Basic error object.
-
-### request:error
-
-An error occurred with server authorization.
-
-This event will be emitted anytime a REST request to the server is rejected
-due to an authorization issue. This may occur for invalid credentials or
-expired tokens, depending on which form of authentication the application
-has chosen to use.
 
 #### Parameters
 
@@ -513,8 +513,8 @@ Type: [Object][7]
     *   `remoteParticipant.displayName` **[string][8]?** The display name of the remote participant.
 *   `bandwidth` **[call.BandwidthControls][33]** The bandwidth limitations set for the call.
 *   `customParameters` **[Array][20]<[call.CustomParameter][34]>** The locally set Custom Parameters for the call.
-*   `startTime` **[number][12]** The start time of the call in milliseconds since the epoch.
-*   `endTime` **[number][12]?** The end time of the call in milliseconds since the epoch.
+*   `startTime` **[number][13]** The start time of the call in milliseconds since the epoch.
+*   `endTime` **[number][13]?** The end time of the call in milliseconds since the epoch.
 *   `currentOperations` **[Array][20]<[Object][7]>** The list of operations curently on-going for the call.
 
 ### MediaConstraint
@@ -652,9 +652,9 @@ Type: [Object][7]
 
 #### Properties
 
-*   `call` **[number][12]?** The desired combined bandwidth bitrate in kilobits per second for all media in the call.
-*   `audio` **[number][12]?** The desired bandwidth bitrate in kilobits per second for received remote audio.
-*   `video` **[number][12]?** The desired bandwidth bitrate in kilobits per second for received remote video.
+*   `call` **[number][13]?** The desired combined bandwidth bitrate in kilobits per second for all media in the call.
+*   `audio` **[number][13]?** The desired bandwidth bitrate in kilobits per second for received remote audio.
+*   `video` **[number][13]?** The desired bandwidth bitrate in kilobits per second for received remote video.
 
 #### Examples
 
@@ -697,7 +697,7 @@ Type: [Object][7]
     [here][37].
 *   `sdpSemantics` **[string][8]** The sdpSemantics to use (`'unified-plan'` or `'plan-b'`).
     As 'plan-b' has become a deprecated option, it will therefore be removed in the future. (optional, default `'unified-plan'`)
-*   `iceCandidatePoolSize` **[number][12]?** An unsigned 16-bit integer value which specifies
+*   `iceCandidatePoolSize` **[number][13]?** An unsigned 16-bit integer value which specifies
     the size of the prefetched ICE candidate pool. The default value is 0 (meaning no candidate prefetching will occur).
 *   `iceTransportPolicy` **[string][8]?** The current ICE transport policy; if the policy isn't specified,
     'all' is assumed by default. Possible values are: 'all', 'public', 'relay'.
@@ -733,7 +733,7 @@ Type: [Object][7]
     'IceGatheringStateChanged' - The ICE gathering state changed.
     'Scheduled' - A scheduled call (for first invocation, and subsequent invocations based on `wait` value returned by [IceCollectionCheckFunction][19].)
 *   `iceCandidates` **[Array][20]\<RTCIceCandidate>** An array of all ICE candidates collected so far.
-*   `iceCollectionDuration` **[number][12]** The time elapsed since the start of the ICE collection process.
+*   `iceCollectionDuration` **[number][13]** The time elapsed since the start of the ICE collection process.
 *   `iceGatheringState` **[string][8]** The current ICE gathering state.
     See [RTCPeerConnection.iceGatheringState][39].
 *   `rtcPeerConnectionConfig` **[Object][7]** The current configration for the RTCPeerConnection.
@@ -778,9 +778,9 @@ Type: [Function][16]
 *   `iceCollectionInfo` **[call.IceCollectionInfo][40]** Information about the current status of the ICE candidate collection.
 *   `iceTimeouts` **[Object][7]** Configurations provided to the SDK for ICE collection timeout boundaries.
 
-    *   `iceTimeouts.iceCollectionIdealTimeout` **[number][12]** The amount of time to wait for ideal candidates, in
+    *   `iceTimeouts.iceCollectionIdealTimeout` **[number][13]** The amount of time to wait for ideal candidates, in
         milliseconds.  See [config.call][41] for more information.
-    *   `iceTimeouts.iceCollectionMaxTimeout` **[number][12]** The maximum amount of time to wait for ICE collection,
+    *   `iceTimeouts.iceCollectionMaxTimeout` **[number][13]** The maximum amount of time to wait for ICE collection,
         in milliseconds. See [config.call][41] for more information.
 
 #### Examples
@@ -819,7 +819,7 @@ Type: [Object][7]
     'Wait' - instruct the system to wait for the specified amount of time before triggering a new ICE collection check. The amount
     of wait time should be specified in the `wait` property.
 *   `error` **[string][8]** An error to be sent the user when the `type` of the result is `IceCollectionCheckResultType.Error`
-*   `wait` **[number][12]** The amount of time (in milliseconds) to wait before triggering a new ICE collection check. This is only
+*   `wait` **[number][13]** The amount of time (in milliseconds) to wait before triggering a new ICE collection check. This is only
     valid if the `type` of result is `IceCollectionCheckResultType.Wait`. If a value is not provided, the ICE collection check function
     will only be triggered for new candidates or when the ICE gathering state changes.
 
@@ -1650,8 +1650,8 @@ The progress of the operation will be tracked via the
 
 *   `callId` **[string][8]** ID of the call being acted on.
 *   `tone` **[string][8]** DTMF tone(s) to send. Valid characters are \['0','1','2','3','4','5','6','7','8','9','#','\*' and ','].
-*   `duration` **[number][12]** The amount of time, in milliseconds, that each DTMF tone should last. (optional, default `100`)
-*   `intertoneGap` **[number][12]** The length of time, in milliseconds, to wait between tones. (optional, default `70`)
+*   `duration` **[number][13]** The amount of time, in milliseconds, that each DTMF tone should last. (optional, default `100`)
+*   `intertoneGap` **[number][13]** The length of time, in milliseconds, to wait between tones. (optional, default `70`)
 
 ### getStats
 
@@ -2144,7 +2144,7 @@ See [call.states][30] for information about call states.
         *   `params.previous.remoteHold` **[boolean][11]?** The previous remote hold state. Present when the state change was a hold/unhold operation.
     *   `params.transition` **[Object][7]?** Contains more detailed information about the state change.
 
-        *   `params.transition.statusCode` **[number][12]?** The status code associated with the particular state change's reason.
+        *   `params.transition.statusCode` **[number][13]?** The status code associated with the particular state change's reason.
         *   `params.transition.reasonText` **[string][8]?** The reason for the state change.
     *   `params.error` **[api.BasicError][25]?** An error object, if the operation was not successful.
 
@@ -2474,8 +2474,8 @@ the logs from local state after it has been updated.
 
 #### Parameters
 
-*   `amount` **[number][12]** The number of records to retrieve. (optional, default `50`)
-*   `offset` **[number][12]** Starting offset for records to retrieve. (optional, default `0`)
+*   `amount` **[number][13]** The number of records to retrieve. (optional, default `50`)
+*   `offset` **[number][13]** Starting offset for records to retrieve. (optional, default `0`)
 
 ### remove
 
@@ -2483,7 +2483,7 @@ Deletes the specified call log.
 
 #### Parameters
 
-*   `recordId` **[number][12]** The ID of the call log to be removed.
+*   `recordId` **[number][13]** The ID of the call log to be removed.
 
 ### clear
 
@@ -2589,18 +2589,18 @@ Type: [Object][7]
 
 *   `connected` **[boolean][11]** The state of the websocket connection.
 *   `pinging` **[boolean][11]** True if the client has sent a ping to the server and is still waiting for a pong response.
-*   `pingInterval` **[number][12]** How often the client will ping the server to test for websocket connectivity.
-*   `reconnectLimit` **[number][12]** How many times the SDK will try to reconnect a disconnected websocket.
-*   `reconnectDelay` **[number][12]** How long the SDK will wait before retrying websocket reconnection.
-*   `reconnectTimeMultiplier` **[number][12]** Reconnect delay multiplier for subsequent attempts. The reconnect delay time will be multiplied by this after each failed reconnect attempt to increase the delay between attempts. eg. 5000ms then 10000ms then 20000ms delay if value is 2.
-*   `reconnectTimeLimit` **[number][12]** Maximum time delay between reconnect attempts (milliseconds). Used in conjunction with `reconnectTimeMultiplier` to prevent overly long delays between reconnection attempts.
+*   `pingInterval` **[number][13]** How often the client will ping the server to test for websocket connectivity.
+*   `reconnectLimit` **[number][13]** How many times the SDK will try to reconnect a disconnected websocket.
+*   `reconnectDelay` **[number][13]** How long the SDK will wait before retrying websocket reconnection.
+*   `reconnectTimeMultiplier` **[number][13]** Reconnect delay multiplier for subsequent attempts. The reconnect delay time will be multiplied by this after each failed reconnect attempt to increase the delay between attempts. eg. 5000ms then 10000ms then 20000ms delay if value is 2.
+*   `reconnectTimeLimit` **[number][13]** Maximum time delay between reconnect attempts (milliseconds). Used in conjunction with `reconnectTimeMultiplier` to prevent overly long delays between reconnection attempts.
 *   `autoReconnect` **[boolean][11]** Indicates if the SDK should automatically try reconnecting a disconnected websocket.
 *   `webSocketOAuthMode` **[string][8]** The mode used for authenticating with the server.
 *   `wsInfo` **[Object][7]** Information required to connect a websocket to the server.
 
     *   `wsInfo.protocol` **[string][8]?** The protocol to use to connect a websocket.
     *   `wsInfo.server` **[string][8]?** The domain name or IP address of the server to connect to.
-    *   `wsInfo.port` **[number][12]?** The port of the server to connect to.
+    *   `wsInfo.port` **[number][13]?** The port of the server to connect to.
     *   `wsInfo.url` **[string][8]?** The URL path to use to request a websocket connection.
     *   `wsInfo.params` **[string][8]?** Any additional params that might be required by the server to establish the websocket connection.
 
@@ -2847,7 +2847,7 @@ Returns **[string][8]** messages.messageId The Id of the message.
 
 Returns **[string][8]** messages.sender The user Id of the user who sent the message.
 
-Returns **[number][12]** messages.timestamp The time at which the message was sent.
+Returns **[number][13]** messages.timestamp The time at which the message was sent.
 
 Returns **[boolean][11]** messages.read Whether the message has been marked as read.
 
@@ -2904,7 +2904,7 @@ Type: [Object][7]
 
 #### Properties
 
-*   `timestamp` **[number][12]** A Unix timestamp in seconds marking the time when the message was created by sender.
+*   `timestamp` **[number][13]** A Unix timestamp in seconds marking the time when the message was created by sender.
 *   `parts` **[Array][20]\<conversation.Part>** An array of Part Objects.
 *   `sender` **[string][8]** The primary contact address of the sender.
 *   `destination` **[Array][20]<[string][8]>** An array of primary contact addresses associated with various destinations to which the message is meant to be delivered. Currently, only one destination is supported.
@@ -3031,7 +3031,7 @@ Type: [Object][7]
 
 #### Properties
 
-*   `timestamp` **[number][12]** When the log was created, based on UNIX epoch.
+*   `timestamp` **[number][13]** When the log was created, based on UNIX epoch.
 *   `method` **[string][8]** The log function that was used to create the log.
 *   `level` **[string][8]** The level of severity the log.
 *   `target` **[Object][7]** The subject that the log is about.
@@ -4307,7 +4307,7 @@ session expires.
 
 *   `params` **[Object][7]** 
 
-    *   `params.attemptNum` **[number][12]** The attempt number of this resubscription.
+    *   `params.attemptNum` **[number][13]** The attempt number of this resubscription.
     *   `params.isFailure` **[boolean][11]** Whether the resubscription failed or not.
     *   `params.error` **[api.BasicError][25]?** The Basic error object.
 
@@ -4699,10 +4699,10 @@ A voicemail event has been received.
 
 *   `params` **[Object][7]** An object containing voicemail info.
 
-    *   `params.lastUpdated` **[number][12]** Timestamp of the last time voicemail data was checked.
+    *   `params.lastUpdated` **[number][13]** Timestamp of the last time voicemail data was checked.
     *   `params.newMessagesWaiting` **[boolean][11]** Whether there are new messages.
-    *   `params.totalVoice` **[number][12]** The total number of voicemail messages.
-    *   `params.unheardVoice` **[number][12]** Number of unheard voicemail messages.
+    *   `params.totalVoice` **[number][13]** The total number of voicemail messages.
+    *   `params.unheardVoice` **[number][13]** Number of unheard voicemail messages.
     *   `params.voice` **[Object][7]** Object containing individual counts of new, old, urgent voicemails.
     *   `params.fax` **[Object][7]** Object containing individual counts of new, old, urgent faxes.
     *   `params.multimedia` **[Object][7]** Object containing individual counts of new, old, urgent multimedia messages.
@@ -4739,9 +4739,9 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[12]: https://en.wikipedia.org/wiki/Keepalive
 
-[13]: https://en.wikipedia.org/wiki/Keepalive
+[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [14]: #callrtcpeerconnectionconfig
 

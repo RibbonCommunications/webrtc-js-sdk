@@ -836,267 +836,6 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Configuration options for the Authentication feature."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 2,
-              "type": null
-            },
-            {
-              "title": "name",
-              "description": null,
-              "lineNumber": 3,
-              "name": "config.authentication"
-            },
-            {
-              "title": "memberof",
-              "description": "config",
-              "lineNumber": 4
-            },
-            {
-              "title": "instance",
-              "description": null,
-              "lineNumber": 5
-            },
-            {
-              "title": "param",
-              "description": "Authentication configs.",
-              "lineNumber": 6,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "authentication"
-            },
-            {
-              "title": "param",
-              "description": null,
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "authentication.server"
-            },
-            {
-              "title": "param",
-              "description": "Hostname of the server to be used for requests.",
-              "lineNumber": 8,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "authentication.server.base"
-            },
-            {
-              "title": "param",
-              "description": "Protocol to be used for requests.",
-              "lineNumber": 9,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "string"
-                }
-              },
-              "name": "authentication.server.protocol",
-              "default": "'https'"
-            },
-            {
-              "title": "param",
-              "description": "Port to be used for requests.",
-              "lineNumber": 10,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "number"
-                }
-              },
-              "name": "authentication.server.port",
-              "default": "443"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 28,
-              "column": 2
-            },
-            "end": {
-              "line": 39,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 41,
-                "column": 2
-              },
-              "end": {
-                "line": 48,
-                "column": 3
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/link/index.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "authentication",
-              "lineNumber": 6,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Authentication configs."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "properties": [
-                {
-                  "title": "param",
-                  "name": "authentication.server",
-                  "lineNumber": 7,
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "Object"
-                  },
-                  "properties": [
-                    {
-                      "title": "param",
-                      "name": "authentication.server.base",
-                      "lineNumber": 8,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Hostname of the server to be used for requests."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "NameExpression",
-                        "name": "string"
-                      }
-                    },
-                    {
-                      "title": "param",
-                      "name": "authentication.server.protocol",
-                      "lineNumber": 9,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Protocol to be used for requests."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "NameExpression",
-                        "name": "string"
-                      },
-                      "default": "'https'"
-                    },
-                    {
-                      "title": "param",
-                      "name": "authentication.server.port",
-                      "lineNumber": 10,
-                      "description": {
-                        "type": "root",
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Port to be used for requests."
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "type": {
-                        "type": "NameExpression",
-                        "name": "number"
-                      },
-                      "default": "443"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "name": "config.authentication",
-          "memberof": "config",
-          "scope": "instance",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "config",
-              "kind": "module"
-            },
-            {
-              "name": "config.authentication",
-              "scope": "instance"
-            }
-          ],
-          "namespace": "config#config.authentication"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
                     "value": "Configuration options for the Connectivity feature.\nThe SDK can only use keepalive as the connectivity check."
                   }
                 ]
@@ -2138,6 +1877,267 @@
             }
           ],
           "namespace": "config#config.request"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Configuration options for the Authentication feature."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 2,
+              "type": null
+            },
+            {
+              "title": "name",
+              "description": null,
+              "lineNumber": 3,
+              "name": "config.authentication"
+            },
+            {
+              "title": "memberof",
+              "description": "config",
+              "lineNumber": 4
+            },
+            {
+              "title": "instance",
+              "description": null,
+              "lineNumber": 5
+            },
+            {
+              "title": "param",
+              "description": "Authentication configs.",
+              "lineNumber": 6,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "authentication"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "lineNumber": 7,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "authentication.server"
+            },
+            {
+              "title": "param",
+              "description": "Hostname of the server to be used for requests.",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "authentication.server.base"
+            },
+            {
+              "title": "param",
+              "description": "Protocol to be used for requests.",
+              "lineNumber": 9,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              },
+              "name": "authentication.server.protocol",
+              "default": "'https'"
+            },
+            {
+              "title": "param",
+              "description": "Port to be used for requests.",
+              "lineNumber": 10,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              "name": "authentication.server.port",
+              "default": "443"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 2
+            },
+            "end": {
+              "line": 39,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 41,
+                "column": 2
+              },
+              "end": {
+                "line": 48,
+                "column": 3
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/link/index.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "authentication",
+              "lineNumber": 6,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Authentication configs."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "authentication.server",
+                  "lineNumber": 7,
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  },
+                  "properties": [
+                    {
+                      "title": "param",
+                      "name": "authentication.server.base",
+                      "lineNumber": 8,
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Hostname of the server to be used for requests."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "string"
+                      }
+                    },
+                    {
+                      "title": "param",
+                      "name": "authentication.server.protocol",
+                      "lineNumber": 9,
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Protocol to be used for requests."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "string"
+                      },
+                      "default": "'https'"
+                    },
+                    {
+                      "title": "param",
+                      "name": "authentication.server.port",
+                      "lineNumber": 10,
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Port to be used for requests."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "number"
+                      },
+                      "default": "443"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "name": "config.authentication",
+          "memberof": "config",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "config",
+              "kind": "module"
+            },
+            {
+              "name": "config.authentication",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "config#config.authentication"
         },
         {
           "description": {
@@ -3340,281 +3340,6 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The authentication credentials have been set. You can check the set user details with the "
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "getUserInfo"
-                  },
-                  {
-                    "type": "text",
-                    "value": " API."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 3,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 4
-            },
-            {
-              "title": "memberof",
-              "description": "api",
-              "lineNumber": 5
-            },
-            {
-              "title": "event",
-              "description": "auth:change",
-              "lineNumber": 6
-            },
-            {
-              "title": "param",
-              "description": null,
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "params"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 0
-            },
-            "end": {
-              "line": 9,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 10,
-                "column": 0
-              },
-              "end": {
-                "line": 10,
-                "column": 40
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/eventTypes.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "params",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "memberof": "api",
-          "kind": "event",
-          "name": "auth:change",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "api",
-              "kind": "module"
-            },
-            {
-              "name": "auth:change",
-              "kind": "event",
-              "scope": "static"
-            }
-          ],
-          "namespace": "api.event:auth:change"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "There was an error with authentication."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 3,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 4
-            },
-            {
-              "title": "memberof",
-              "description": "api",
-              "lineNumber": 5
-            },
-            {
-              "title": "event",
-              "description": "auth:error",
-              "lineNumber": 6
-            },
-            {
-              "title": "param",
-              "description": null,
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "params"
-            },
-            {
-              "title": "param",
-              "description": "The Basic error object.",
-              "lineNumber": 8,
-              "type": {
-                "type": "NameExpression",
-                "name": "api.BasicError"
-              },
-              "name": "params.error"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 12,
-              "column": 0
-            },
-            "end": {
-              "line": 22,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 23,
-                "column": 0
-              },
-              "end": {
-                "line": 23,
-                "column": 38
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/eventTypes.js"
-          },
-          "augments": [],
-          "examples": [],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "params",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "properties": [
-                {
-                  "title": "param",
-                  "name": "params.error",
-                  "lineNumber": 8,
-                  "description": {
-                    "type": "root",
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "The Basic error object."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "type": {
-                    "type": "NameExpression",
-                    "name": "api.BasicError"
-                  }
-                }
-              ]
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "memberof": "api",
-          "kind": "event",
-          "name": "auth:error",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "api",
-              "kind": "module"
-            },
-            {
-              "name": "auth:error",
-              "kind": "event",
-              "scope": "static"
-            }
-          ],
-          "namespace": "api.event:auth:error"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
                     "value": "An error occurred with server authorization."
                   }
                 ]
@@ -3764,6 +3489,293 @@
             }
           ],
           "namespace": "api.event:request:error"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The authentication credentials have been set. You can check the set user details with the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "getUserInfo"
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 5,
+              "name": "auth"
+            },
+            {
+              "title": "memberof",
+              "description": "api",
+              "lineNumber": 6
+            },
+            {
+              "title": "event",
+              "description": "auth:change",
+              "lineNumber": 7
+            },
+            {
+              "title": "param",
+              "description": null,
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "params"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 11,
+                "column": 40
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/eventTypes.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "params",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "api",
+          "kind": "event",
+          "name": "auth:change",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "api",
+              "kind": "module"
+            },
+            {
+              "name": "auth:change",
+              "kind": "event",
+              "scope": "static"
+            }
+          ],
+          "namespace": "api.event:auth:change"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "There was an error with authentication."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 3,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 4
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 5,
+              "name": "auth"
+            },
+            {
+              "title": "memberof",
+              "description": "api",
+              "lineNumber": 6
+            },
+            {
+              "title": "event",
+              "description": "auth:error",
+              "lineNumber": 7
+            },
+            {
+              "title": "param",
+              "description": null,
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "params"
+            },
+            {
+              "title": "param",
+              "description": "The Basic error object.",
+              "lineNumber": 9,
+              "type": {
+                "type": "NameExpression",
+                "name": "api.BasicError"
+              },
+              "name": "params.error"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 0
+            },
+            "end": {
+              "line": 24,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 0
+              },
+              "end": {
+                "line": 25,
+                "column": 38
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/eventTypes.js"
+          },
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "params",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "params.error",
+                  "lineNumber": 9,
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "The Basic error object."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "api.BasicError"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "memberof": "api",
+          "kind": "event",
+          "name": "auth:error",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "api",
+              "kind": "module"
+            },
+            {
+              "name": "auth:error",
+              "kind": "event",
+              "scope": "static"
+            }
+          ],
+          "namespace": "api.event:auth:error"
         }
       ],
       "static": [
@@ -4890,6 +4902,161 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Retrieve information about the browser being used."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Browser information being defined indicates that the browser supports\nbasic webRTC scenarios."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 5,
+              "type": null
+            },
+            {
+              "title": "memberof",
+              "description": "api",
+              "lineNumber": 6
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 7,
+              "name": "getBrowserDetails"
+            },
+            {
+              "title": "return",
+              "description": "Object containing `browser` and `version` information.",
+              "lineNumber": 8,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "example",
+              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)",
+              "lineNumber": 9
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 21,
+              "column": 2
+            },
+            "end": {
+              "line": 34,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 35,
+                "column": 2
+              },
+              "end": {
+                "line": 38,
+                "column": 3
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/index.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Object containing "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "browser"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "version"
+                      },
+                      {
+                        "type": "text",
+                        "value": " information."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "memberof": "api",
+          "kind": "function",
+          "name": "getBrowserDetails",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "api",
+              "kind": "module"
+            },
+            {
+              "name": "getBrowserDetails",
+              "kind": "function"
+            }
+          ],
+          "namespace": "apigetBrowserDetails"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Retrieves information about the current user."
                   }
                 ]
@@ -5794,161 +5961,6 @@
             }
           ],
           "namespace": "apisetCredentials"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Retrieve information about the browser being used."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Browser information being defined indicates that the browser supports\nbasic webRTC scenarios."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 5,
-              "type": null
-            },
-            {
-              "title": "memberof",
-              "description": "api",
-              "lineNumber": 6
-            },
-            {
-              "title": "method",
-              "description": null,
-              "lineNumber": 7,
-              "name": "getBrowserDetails"
-            },
-            {
-              "title": "return",
-              "description": "Object containing `browser` and `version` information.",
-              "lineNumber": 8,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            },
-            {
-              "title": "example",
-              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)",
-              "lineNumber": 9
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 21,
-              "column": 2
-            },
-            "end": {
-              "line": 34,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 35,
-                "column": 2
-              },
-              "end": {
-                "line": 38,
-                "column": 3
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/index.js"
-          },
-          "augments": [],
-          "examples": [
-            {
-              "description": "const details = client.getBrowserDetails()\n\nlog(`Browser in use: ${details.browser}, version ${details.version}.`)"
-            }
-          ],
-          "implements": [],
-          "params": [],
-          "properties": [],
-          "returns": [
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Object containing "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "browser"
-                      },
-                      {
-                        "type": "text",
-                        "value": " and "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "version"
-                      },
-                      {
-                        "type": "text",
-                        "value": " information."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "memberof": "api",
-          "kind": "function",
-          "name": "getBrowserDetails",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "api",
-              "kind": "module"
-            },
-            {
-              "name": "getBrowserDetails",
-              "kind": "function"
-            }
-          ],
-          "namespace": "apigetBrowserDetails"
         },
         {
           "description": {
@@ -51139,9 +51151,15 @@
         "type": null
       },
       {
-        "title": "namespace",
+        "title": "requires",
         "description": null,
         "lineNumber": 18,
+        "name": "subscription"
+      },
+      {
+        "title": "namespace",
+        "description": null,
+        "lineNumber": 19,
         "type": null,
         "name": "services"
       }
@@ -51152,18 +51170,18 @@
         "column": 0
       },
       "end": {
-        "line": 20,
+        "line": 21,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 65,
+          "line": 68,
           "column": 0
         },
         "end": {
-          "line": 65,
+          "line": 68,
           "column": 42
         }
       },
@@ -51240,14 +51258,20 @@
               "lineNumber": 6
             },
             {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 7,
+              "name": "subscription"
+            },
+            {
               "title": "event",
               "description": "subscription:change",
-              "lineNumber": 7
+              "lineNumber": 8
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 9,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51257,7 +51281,7 @@
             {
               "title": "param",
               "description": "When unsolicited, the reason for the change is provided.\n  Reason can be one of the following values:\n  'GONE' - When Connection was terminated by the server.\n  'LOST_CONNECTION' - When internet connection was lost.\n  'WS_OVERRIDDEN' - When websocket was overridden by the server.\n\nIf the `reason` parameter is provided, this means the subscription has been lost unexpectedly\nand the application will need to handle the next steps.\nThe `reason` will explain why the subscription has been lost so that the scenario can be handled appropriately.",
-              "lineNumber": 9,
+              "lineNumber": 10,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -51274,18 +51298,18 @@
               "column": 0
             },
             "end": {
-              "line": 19,
+              "line": 20,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 20,
+                "line": 21,
                 "column": 0
               },
               "end": {
-                "line": 20,
+                "line": 21,
                 "column": 47
               }
             },
@@ -51298,7 +51322,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 8,
+              "lineNumber": 9,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51307,7 +51331,7 @@
                 {
                   "title": "param",
                   "name": "params.reason",
-                  "lineNumber": 9,
+                  "lineNumber": 10,
                   "description": {
                     "type": "root",
                     "children": [
@@ -51836,22 +51860,22 @@
           ],
           "loc": {
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 0
             },
             "end": {
-              "line": 58,
+              "line": 59,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 59,
+                "line": 60,
                 "column": 0
               },
               "end": {
-                "line": 59,
+                "line": 60,
                 "column": 45
               }
             },
@@ -51962,14 +51986,20 @@
               "lineNumber": 7
             },
             {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 8,
+              "name": "subscription"
+            },
+            {
               "title": "event",
               "description": "subscription:resub",
-              "lineNumber": 8
+              "lineNumber": 9
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 9,
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -51979,7 +52009,7 @@
             {
               "title": "param",
               "description": "The attempt number of this resubscription.",
-              "lineNumber": 10,
+              "lineNumber": 11,
               "type": {
                 "type": "NameExpression",
                 "name": "number"
@@ -51989,7 +52019,7 @@
             {
               "title": "param",
               "description": "Whether the resubscription failed or not.",
-              "lineNumber": 11,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "boolean"
@@ -51999,7 +52029,7 @@
             {
               "title": "param",
               "description": "The Basic error object.",
-              "lineNumber": 12,
+              "lineNumber": 13,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -52012,22 +52042,22 @@
           ],
           "loc": {
             "start": {
-              "line": 61,
+              "line": 62,
               "column": 0
             },
             "end": {
-              "line": 74,
+              "line": 76,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 75,
+                "line": 77,
                 "column": 0
               },
               "end": {
-                "line": 75,
+                "line": 77,
                 "column": 45
               }
             },
@@ -52040,7 +52070,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 9,
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -52049,7 +52079,7 @@
                 {
                   "title": "param",
                   "name": "params.attemptNum",
-                  "lineNumber": 10,
+                  "lineNumber": 11,
                   "description": {
                     "type": "root",
                     "children": [
@@ -52072,7 +52102,7 @@
                 {
                   "title": "param",
                   "name": "params.isFailure",
-                  "lineNumber": 11,
+                  "lineNumber": 12,
                   "description": {
                     "type": "root",
                     "children": [
@@ -52095,7 +52125,7 @@
                 {
                   "title": "param",
                   "name": "params.error",
-                  "lineNumber": 12,
+                  "lineNumber": 13,
                   "description": {
                     "type": "root",
                     "children": [
@@ -52220,9 +52250,15 @@
               "lineNumber": 8
             },
             {
-              "title": "typedef",
+              "title": "requires",
               "description": null,
               "lineNumber": 9,
+              "name": "subscription"
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -52232,7 +52268,7 @@
             {
               "title": "property",
               "description": "The name of the available service user wants to subscribe to.\nThe available service names are `chat`, `presence`, `call` and `smsinbound`.",
-              "lineNumber": 10,
+              "lineNumber": 11,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -52242,7 +52278,7 @@
             {
               "title": "property",
               "description": "An object containing any additional parameters required for subscribing to that service.\nThis is an optional property as not all service subscriptions require it.",
-              "lineNumber": 13,
+              "lineNumber": 14,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -52255,32 +52291,32 @@
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 15
+              "lineNumber": 16
             },
             {
               "title": "example",
               "description": "// Subscribe to chat, presence & call services on a WebSocket channel.\nclient.services.subscribe([\n   {service: 'chat'},\n   {service: 'presence'},\n   {service: 'call'},\n], 'websocket')",
-              "lineNumber": 16
+              "lineNumber": 17
             }
           ],
           "loc": {
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 0
             },
             "end": {
-              "line": 45,
+              "line": 47,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 65,
+                "line": 68,
                 "column": 0
               },
               "end": {
-                "line": 65,
+                "line": 68,
                 "column": 42
               }
             },
@@ -52298,7 +52334,7 @@
             {
               "title": "property",
               "name": "service",
-              "lineNumber": 10,
+              "lineNumber": 11,
               "description": {
                 "type": "root",
                 "children": [
@@ -52353,7 +52389,7 @@
             {
               "title": "property",
               "name": "params",
-              "lineNumber": 13,
+              "lineNumber": 14,
               "description": {
                 "type": "root",
                 "children": [
@@ -52455,9 +52491,15 @@
               "lineNumber": 5
             },
             {
-              "title": "typedef",
+              "title": "requires",
               "description": null,
               "lineNumber": 6,
+              "name": "subscription"
+            },
+            {
+              "title": "typedef",
+              "description": null,
+              "lineNumber": 7,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -52467,12 +52509,12 @@
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 7
+              "lineNumber": 8
             },
             {
               "title": "property",
               "description": "An E164 formatted DID number.\n    The subscription created will provide notifications for inbound SMS messages destined for this address.",
-              "lineNumber": 8,
+              "lineNumber": 9,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -52482,27 +52524,27 @@
             {
               "title": "example",
               "description": "// Subscribe to smsinbound service on a WebSocket channel.\nclient.services.subscribe([\n   {service: 'smsinbound', params: {destinationAddress: '+18001234567'}}\n], 'websocket')",
-              "lineNumber": 10
+              "lineNumber": 11
             }
           ],
           "loc": {
             "start": {
-              "line": 47,
+              "line": 49,
               "column": 0
             },
             "end": {
-              "line": 62,
+              "line": 65,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 65,
+                "line": 68,
                 "column": 0
               },
               "end": {
-                "line": 65,
+                "line": 68,
                 "column": 42
               }
             },
@@ -52520,7 +52562,7 @@
             {
               "title": "property",
               "name": "destinationAddress",
-              "lineNumber": 8,
+              "lineNumber": 9,
               "description": {
                 "type": "root",
                 "children": [
@@ -52791,22 +52833,22 @@
           ],
           "loc": {
             "start": {
-              "line": 93,
+              "line": 96,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 122,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 120,
+                "line": 123,
                 "column": 4
               },
               "end": {
-                "line": 158,
+                "line": 161,
                 "column": 5
               }
             },
@@ -53073,15 +53115,21 @@
               "lineNumber": 11
             },
             {
-              "title": "method",
+              "title": "requires",
               "description": null,
               "lineNumber": 12,
+              "name": "subscription"
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 13,
               "name": "unsubscribe"
             },
             {
               "title": "param",
               "description": "A list of subscribed service names.",
-              "lineNumber": 13,
+              "lineNumber": 14,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -53100,7 +53148,7 @@
             {
               "title": "param",
               "description": "The method of how the service updates\n   are being received.",
-              "lineNumber": 14,
+              "lineNumber": 15,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -53114,27 +53162,27 @@
             {
               "title": "example",
               "description": "// Unsubscribe from chat and SMS services.\nconst services = [ 'chat', 'smsinbound' ]\n\nclient.services.unsubscribe(services)",
-              "lineNumber": 16
+              "lineNumber": 17
             }
           ],
           "loc": {
             "start": {
-              "line": 160,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 181,
+              "line": 185,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 182,
+                "line": 186,
                 "column": 4
               },
               "end": {
-                "line": 205,
+                "line": 209,
                 "column": 5
               }
             },
@@ -53151,7 +53199,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 13,
+              "lineNumber": 14,
               "description": {
                 "type": "root",
                 "children": [
@@ -53183,7 +53231,7 @@
             {
               "title": "param",
               "name": "type",
-              "lineNumber": 14,
+              "lineNumber": 15,
               "description": {
                 "type": "root",
                 "children": [
@@ -53344,15 +53392,21 @@
               "lineNumber": 18
             },
             {
-              "title": "method",
+              "title": "requires",
               "description": null,
               "lineNumber": 19,
+              "name": "subscription"
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 20,
               "name": "getSubscriptions"
             },
             {
               "title": "return",
               "description": "Lists of subscribed and available services.",
-              "lineNumber": 20,
+              "lineNumber": 21,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -53361,27 +53415,27 @@
             {
               "title": "example",
               "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Ensure that there were no pending subscriptions at the time\n// we called getSubscriptions API.\nif (!services.isPending) {\n  // Figure out which available services don't have a subscription.\n  const notSubscribed = services.available.filter(service => {\n    return !services.subscribed.includes(service)\n  })\n\n  // Subscribe for all not-yet-subscribed services.\n  client.services.subscribe(notSubscribed)\n}",
-              "lineNumber": 21
+              "lineNumber": 22
             }
           ],
           "loc": {
             "start": {
-              "line": 207,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 244,
+              "line": 249,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 245,
+                "line": 250,
                 "column": 4
               },
               "end": {
-                "line": 252,
+                "line": 257,
                 "column": 5
               }
             },
