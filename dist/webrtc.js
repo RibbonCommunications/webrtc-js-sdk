@@ -12,7 +12,7 @@
  *
  * WebRTC.js
  * webrtc.js
- * Version: 6.16.1
+ * Version: 6.16.3
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -2382,7 +2382,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 78553:
+/***/ 74730:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2400,7 +2400,7 @@ exports.getVersion = getVersion;
  * for the @@ tag below with actual version value.
  */
 function getVersion() {
-  return '6.16.1';
+  return '6.16.3';
 }
 
 /***/ }),
@@ -10734,7 +10734,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = getStatsOperation;
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(78553);
+var _version = __webpack_require__(74730);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -23440,7 +23440,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(78553);
+var _version = __webpack_require__(74730);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 // Other plugins.
@@ -36737,7 +36737,7 @@ var _reduxSaga = _interopRequireDefault(__webpack_require__(49829));
 var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(78553);
+var _version = __webpack_require__(74730);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -43892,7 +43892,23 @@ var _validation = __webpack_require__(52932);
 // Parse and/or Validate
 
 /**
- * Configurable properties 'published' by this "Request" plugin.
+ * Configurable options for the Request plugin.
+ *
+ * The SDK uses the Request plugin to make REST requests to the Gateway.
+ *
+ * @public
+ * @static
+ * @name config.request
+ * @memberof config
+ * @instance
+ * @param {Object} request Request configuration
+ * @param {Number} [request.restTimeout=30000] The timeout for REST requests, in milliseconds. After this time, the request will be considered failed.
+ */
+
+/**
+ *  NOTE: The following config properties are intentionally not included to the public API documentation
+ *  because they are not currently sent to or used by the WebRTC Gateway, as far as we're aware.
+ *
  * NOTE: Do NOT expose the config properties (related to this plugin) to the public API documentation.
  *
  * @property {boolean} [injectAgentVersionHeader=true] Option to automatically inject an agent version header to every REST request.
@@ -43902,11 +43918,14 @@ var _validation = __webpack_require__(52932);
  *           This additional suffix value is only used when injectAgentVersionHeader property is enabled.
  */
 const defaultOptions = exports.defaultOptions = {
+  customAgentVersionHeaderSuffix: '',
   injectAgentVersionHeader: true,
-  customAgentVersionHeaderSuffix: ''
+  restTimeout: 30000 // milliseconds
 };
 const v8nValidation = _validation.validation.schema({
-  injectAgentVersionHeader: _validation.validation.boolean()
+  customAgentVersionHeaderSuffix: _validation.validation.string(),
+  injectAgentVersionHeader: _validation.validation.boolean(),
+  restTimeout: _validation.validation.number()
 });
 const parseOptions = exports.parseOptions = (0, _validation.parse)('request', v8nValidation);
 
@@ -44232,6 +44251,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.customAgentVersionHeaderSuffix = customAgentVersionHeaderSuffix;
+exports.getRESTTimeout = getRESTTimeout;
 exports.injectAgentVersionHeader = injectAgentVersionHeader;
 /**
  * Retrieves the flag which specifies wether or not this SDK should use a custom header as part of any requests being sent to server.
@@ -44254,6 +44274,15 @@ function customAgentVersionHeaderSuffix(state) {
   return state.config.requests.customAgentVersionHeaderSuffix;
 }
 
+/**
+ * Retrieves the timeout value for REST requests set in the configuration.
+ * @param {Object} state  The current Redux state object.
+ * @return {number} The timeout value in milliseconds.
+ */
+function getRESTTimeout(state) {
+  return state.config.requests.restTimeout;
+}
+
 /***/ }),
 
 /***/ 18439:
@@ -44268,11 +44297,15 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = makeRequest;
 __webpack_require__(97107);
 __webpack_require__(62234);
+__webpack_require__(57182);
 var _logs = __webpack_require__(69932);
 var _utils = __webpack_require__(1011);
+var _selectors = __webpack_require__(45590);
 // Other plugins.
 
 // Utils.
+
+// Selectors.
 
 /**
  * The possible response data types that can be handled.
@@ -44305,7 +44338,7 @@ const responseTypes = Object.freeze({
  * @param {Blob|BufferSource|FormData|UrlSearchParams|string} [options.body] The request body
  * @return {Promise} A promise that resolves with a custom response object.
  */
-async function makeRequest(options, requestId) {
+async function makeRequest(options, requestId, context) {
   const log = _logs.logManager.getLogger('REQUEST', requestId);
 
   /*
@@ -44330,6 +44363,11 @@ async function makeRequest(options, requestId) {
   // Cut it short if it's too long, since this should be human-readable.
   endUrl = endUrl.length > 15 ? endUrl.substring(0, 15) + '...' : endUrl;
   log.info(`Making ${fetchOptions.method} ${endUrl} request.`);
+
+  // Add a timeout to the fetch operation.
+  if (!fetchOptions.signal) {
+    fetchOptions.signal = AbortSignal.timeout((0, _selectors.getRESTTimeout)(context.getState()));
+  }
   let response;
   /*
    * Make the request. Scenarios to check for:
@@ -44341,7 +44379,8 @@ async function makeRequest(options, requestId) {
    */
   try {
     response = await fetch(url + (0, _utils.toQueryString)(queryParams), fetchOptions);
-  } catch (err) {
+  } catch (e) {
+    const err = formatFetchError(e);
     // Scenario 1: Fetch failed.
     log.info(`Failed to make request, caused by ${err.message}`);
     return makeResponse({
@@ -44589,6 +44628,38 @@ function makeResponse() {
   };
 }
 
+/**
+ * Format the error returned by fetch to be more descriptive.
+ *
+ * @param {Error} error The original error thrown by fetch
+ * @returns {Error} Either the original error or a new DOMException error with a more descriptive message
+ */
+function formatFetchError(error) {
+  /**
+   * In general we do not want to change the contents of fetch errors. Those that follow should be considered very special cases.
+   *
+   * In the case that the fetch times out, the error returned by AbortSignal.timeout() will differ depending on the browser version.
+   * See details in https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout_static#browser_compatibility
+   *
+   * In Chrome versions >=103 and <124, error.name will be "AbortError" and error.message = "The user aborted a request."
+   *  This isn't great as it indicates that the user aborted the request, which is not the case.
+   *
+   * In Chrome versions >=124, the error will be a DOMException, error.name will be "TimeoutError" and error.message = "signal timed out".
+   *  While this is better, it could still be more descriptive.
+   *
+   * Modify both of these cases to return a consistent error message that clearly indicates that the request timed out.
+   */
+
+  const {
+    name,
+    message
+  } = error;
+  if (name === 'AbortError' && message === 'The user aborted a request.' || name === 'TimeoutError' && message === 'signal timed out') {
+    return new DOMException('Request timed out', 'TimeoutError');
+  }
+  return error;
+}
+
 /***/ }),
 
 /***/ 87937:
@@ -44648,7 +44719,7 @@ function createRequestHelper(container) {
     log.debug(`Making REST request ${action.meta.requestId}.`, logOptions);
 
     // Make the request based on the action
-    const result = await (0, _makeRequest.default)(action.payload, action.meta.requestId);
+    const result = await (0, _makeRequest.default)(action.payload, action.meta.requestId, context);
     log.debug(`Received REST response ${action.meta.requestId}.`, result);
 
     // Perform the authorization check side-effect by calling the 'authorization' function for Link platform.
@@ -44754,7 +44825,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(78553);
+var _version = __webpack_require__(74730);
 var _utils = __webpack_require__(1011);
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -55792,7 +55863,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(78553);
+var _version = __webpack_require__(74730);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
@@ -88757,7 +88828,7 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ 32027:
+/***/ 15380:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -89198,7 +89269,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(32027));
+var _version = _interopRequireDefault(__webpack_require__(15380));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -97134,7 +97205,7 @@ module.exports = function (key, value) {
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(95835);
+var V8 = __webpack_require__(14316);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -97157,7 +97228,7 @@ module.exports = !!structuredClone && !fails(function () {
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(95835);
+var V8_VERSION = __webpack_require__(14316);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -98142,10 +98213,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(89873);
+var FF = __webpack_require__(34402);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(95835);
-var WEBKIT = __webpack_require__(52371);
+var V8 = __webpack_require__(14316);
+var WEBKIT = __webpack_require__(44936);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -98493,7 +98564,7 @@ if (DESCRIPTORS && !('size' in URLSearchParamsPrototype)) {
 
 /***/ }),
 
-/***/ 89873:
+/***/ 34402:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98507,7 +98578,7 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 95835:
+/***/ 14316:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -98543,7 +98614,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 52371:
+/***/ 44936:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
