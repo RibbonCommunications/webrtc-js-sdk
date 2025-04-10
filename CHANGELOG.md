@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 7.5.0 - beta
 
+### Added
+
+- Added a missing `PROCESS_MEDIA_REMOTE` sub-event in SDK's call report, which records the time it took to process the remote offer from an incoming call notification. `KJS-2738`
+
 ### Fixed
 
 - Fixed a Subscription issue where the `isPending` property of subscription state would not be reset in the error scenario of unsubscribing without a subscription.
