@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 7.5.0 - beta
 
+### Fixed
+
+- Addressed browser support gap introduced by previous REST timeout solution. `KJS-2772`
+
 ### Added
 
 - Added a missing `PROCESS_MEDIA_REMOTE` sub-event in SDK's call report, which records the time it took to process the remote offer from an incoming call notification. `KJS-2738`
