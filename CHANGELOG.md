@@ -20,8 +20,8 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed a Subscription issue where the `isPending` property of subscription state would not be reset in the error scenario of unsubscribing without a subscription.
-- Fixed Call issues where a call's report would be missing events if their respective operation failed due to media validation. `KJS-2451`, `KJS-2828`
-  - Fixed operations are: `answer`, `replaceTrack`.
+- Fixed Call issues where a call's report would be missing events if their respective operation failed due to media validation. `KJS-2451`, `KJS-2827`, `KJS-2828`
+  - Fixed operations are: `answer`, `addMedia`, `replaceTrack`.
 
 ## 7.4.0 - 2025-03-27
 
