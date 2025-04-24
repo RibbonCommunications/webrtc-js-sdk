@@ -1785,11 +1785,11 @@
           "context": {
             "loc": {
               "start": {
-                "line": 30,
+                "line": 17,
                 "column": 0
               },
               "end": {
-                "line": 34,
+                "line": 19,
                 "column": 1
               }
             },
@@ -3499,11 +3499,53 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The authentication credentials have been set. You can check the set user details with the "
+                    "value": "The authentication credentials have changed."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This event is triggered after calling the "
                   },
                   {
-                    "type": "inlineCode",
-                    "value": "getUserInfo"
+                    "type": "link",
+                    "url": "#apisetcredentials",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "setCredentials"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The current user information can be retrieved using the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "api.getUserInfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "getUserInfo"
+                      }
+                    ]
                   },
                   {
                     "type": "text",
@@ -3517,34 +3559,34 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 3,
+              "lineNumber": 7,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 4
+              "lineNumber": 8
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 9,
               "name": "auth"
             },
             {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 6
+              "lineNumber": 10
             },
             {
               "title": "event",
               "description": "auth:change",
-              "lineNumber": 7
+              "lineNumber": 11
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -3558,18 +3600,18 @@
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 14,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 11,
+                "line": 15,
                 "column": 0
               },
               "end": {
-                "line": 11,
+                "line": 15,
                 "column": 40
               }
             },
@@ -3582,7 +3624,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 8,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -3629,7 +3671,32 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "There was an error with authentication."
+                    "value": "There was an error with authentication credentials."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This event is triggered after calling the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apisetcredentials",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "setCredentials"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
                   }
                 ]
               }
@@ -3639,34 +3706,34 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 3,
+              "lineNumber": 5,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 4
+              "lineNumber": 6
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 7,
               "name": "auth"
             },
             {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 6
+              "lineNumber": 8
             },
             {
               "title": "event",
               "description": "auth:error",
-              "lineNumber": 7
+              "lineNumber": 9
             },
             {
               "title": "param",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -3676,7 +3743,7 @@
             {
               "title": "param",
               "description": "The Basic error object.",
-              "lineNumber": 9,
+              "lineNumber": 11,
               "type": {
                 "type": "NameExpression",
                 "name": "api.BasicError"
@@ -3686,22 +3753,22 @@
           ],
           "loc": {
             "start": {
-              "line": 13,
+              "line": 17,
               "column": 0
             },
             "end": {
-              "line": 24,
+              "line": 30,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 25,
+                "line": 31,
                 "column": 0
               },
               "end": {
-                "line": 25,
+                "line": 31,
                 "column": 38
               }
             },
@@ -3714,7 +3781,7 @@
             {
               "title": "param",
               "name": "params",
-              "lineNumber": 8,
+              "lineNumber": 10,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -3723,7 +3790,7 @@
                 {
                   "title": "param",
                   "name": "params.error",
-                  "lineNumber": 9,
+                  "lineNumber": 11,
                   "description": {
                     "type": "root",
                     "children": [
@@ -3815,22 +3882,22 @@
           ],
           "loc": {
             "start": {
-              "line": 185,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 196,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 192,
+                "line": 197,
                 "column": 4
               },
               "end": {
-                "line": 194,
+                "line": 199,
                 "column": 5
               }
             },
@@ -3910,22 +3977,22 @@
           ],
           "loc": {
             "start": {
-              "line": 197,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 223,
+              "line": 228,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 224,
+                "line": 229,
                 "column": 4
               },
               "end": {
-                "line": 249,
+                "line": 257,
                 "column": 5
               }
             },
@@ -5111,22 +5178,22 @@
           ],
           "loc": {
             "start": {
-              "line": 19,
+              "line": 20,
               "column": 4
             },
             "end": {
-              "line": 29,
+              "line": 30,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 30,
+                "line": 31,
                 "column": 4
               },
               "end": {
-                "line": 33,
+                "line": 34,
                 "column": 5
               }
             },
@@ -5247,7 +5314,73 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "If credentials has previously been set, they cannot be set again if there is an active\nsubscription. An "
+                    "value": "The SDK will emit an "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventauthchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event when the credentials\nare set. If there was an issue with the credentials, an "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventautherror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent will be emitted instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The currently set user information can be retrieved using the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "api.getUserInfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "getUserInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If credentials have previously been set, they cannot be set again if there is an active\nsubscription. An "
                   },
                   {
                     "type": "link",
@@ -5273,30 +5406,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 13,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 14
             },
             {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 8
+              "lineNumber": 15
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 9,
+              "lineNumber": 16,
               "name": "userCredentialsAuth"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 10,
+              "lineNumber": 17,
               "name": "setCredentials"
             },
             {
               "title": "param",
               "description": "The credentials object.",
-              "lineNumber": 11,
+              "lineNumber": 18,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -5306,7 +5444,7 @@
             {
               "title": "param",
               "description": "The username including the application's domain.",
-              "lineNumber": 12,
+              "lineNumber": 19,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5316,7 +5454,7 @@
             {
               "title": "param",
               "description": "The user's password.",
-              "lineNumber": 13,
+              "lineNumber": 20,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5326,7 +5464,7 @@
             {
               "title": "param",
               "description": "The user's authorization name.",
-              "lineNumber": 14,
+              "lineNumber": 21,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -5337,29 +5475,37 @@
               "name": "credentials.authname"
             },
             {
+              "title": "returns",
+              "description": null,
+              "lineNumber": 22,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
               "title": "example",
               "description": "client.setCredentials({\n  username: 'alfred@example.com',\n  password: '********'\n  authname: '********'\n});",
-              "lineNumber": 15
+              "lineNumber": 23
             }
           ],
           "loc": {
             "start": {
-              "line": 38,
+              "line": 39,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 68,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 106,
+                "line": 140,
                 "column": 4
               },
               "end": {
-                "line": 121,
+                "line": 151,
                 "column": 5
               }
             },
@@ -5376,7 +5522,7 @@
             {
               "title": "param",
               "name": "credentials",
-              "lineNumber": 11,
+              "lineNumber": 18,
               "description": {
                 "type": "root",
                 "children": [
@@ -5399,7 +5545,7 @@
                 {
                   "title": "param",
                   "name": "credentials.username",
-                  "lineNumber": 12,
+                  "lineNumber": 19,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5422,7 +5568,7 @@
                 {
                   "title": "param",
                   "name": "credentials.password",
-                  "lineNumber": 13,
+                  "lineNumber": 20,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5445,7 +5591,7 @@
                 {
                   "title": "param",
                   "name": "credentials.authname",
-                  "lineNumber": 14,
+                  "lineNumber": 21,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5472,12 +5618,24 @@
             }
           ],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "api",
           "kind": "function",
           "name": "setCredentials",
@@ -5495,10 +5653,11 @@
             },
             {
               "name": "setCredentials",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "apisetCredentials"
+          "namespace": "api.setCredentials"
         },
         {
           "description": {
@@ -5509,7 +5668,16 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Sets the username and HMAC token necessary to make requests to the platform.\nAn HMAC token is used to verify a user via the user's authorization within an of organization.\nHMAC tokens are generated by using the HmacSHA1 algorithm and a key on a data object\ncontaining an "
+                    "value": "Sets the user credentials necessary to make requests to the platform, using HMAC token authentication."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An HMAC token is used to verify a user via the user's authorization within an of organization. HMAC tokens\nare generated by using the HmacSHA1 algorithm and a key on a data object containing an\n"
                   },
                   {
                     "type": "inlineCode",
@@ -5560,6 +5728,97 @@
                     ]
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SDK will emit an "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventauthchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event when the credentials\nare set. If there was an issue with the credentials, an "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventautherror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent will be emitted instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The currently set user information can be retrieved using the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "api.getUserInfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "getUserInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If credentials have previously been set, they cannot be set again if there is an active\nsubscription. An "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventautherror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " will be emitted in\nthis scenario."
+                  }
+                ]
               }
             ]
           },
@@ -5567,30 +5826,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 19,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 20
             },
             {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 9
+              "lineNumber": 21
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 10,
+              "lineNumber": 22,
               "name": "hmacTokenAuth"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 11,
+              "lineNumber": 23,
               "name": "setCredentials"
             },
             {
               "title": "param",
               "description": "The credentials object.",
-              "lineNumber": 12,
+              "lineNumber": 24,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -5600,7 +5864,7 @@
             {
               "title": "param",
               "description": "The username.",
-              "lineNumber": 13,
+              "lineNumber": 25,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5610,7 +5874,7 @@
             {
               "title": "param",
               "description": "An HMAC token for the user with the provided user ID.",
-              "lineNumber": 14,
+              "lineNumber": 26,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5618,29 +5882,37 @@
               "name": "credentials.hmacToken"
             },
             {
+              "title": "returns",
+              "description": null,
+              "lineNumber": 27,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
               "title": "example",
               "description": "const hmacToken = HmacSHA1Algorithm({\n  authenticationTokenRequest: {\n    subscriberId: 'alfred',\n    organizationId: 'example.com'\n  }\n}, key)\n\nclient.setCredentials({\n  username: 'alfred@example.com',\n  hmacToken\n});",
-              "lineNumber": 15
+              "lineNumber": 28
             }
           ],
           "loc": {
             "start": {
-              "line": 60,
+              "line": 69,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 109,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 106,
+                "line": 140,
                 "column": 4
               },
               "end": {
-                "line": 121,
+                "line": 151,
                 "column": 5
               }
             },
@@ -5657,7 +5929,7 @@
             {
               "title": "param",
               "name": "credentials",
-              "lineNumber": 12,
+              "lineNumber": 24,
               "description": {
                 "type": "root",
                 "children": [
@@ -5680,7 +5952,7 @@
                 {
                   "title": "param",
                   "name": "credentials.username",
-                  "lineNumber": 13,
+                  "lineNumber": 25,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5703,7 +5975,7 @@
                 {
                   "title": "param",
                   "name": "credentials.hmacToken",
-                  "lineNumber": 14,
+                  "lineNumber": 26,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5727,12 +5999,24 @@
             }
           ],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "api",
           "kind": "function",
           "name": "setCredentials",
@@ -5750,10 +6034,11 @@
             },
             {
               "name": "setCredentials",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "apisetCredentials"
+          "namespace": "api.setCredentials"
         },
         {
           "description": {
@@ -5764,7 +6049,107 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Provides a bearerAccessToken to any backend services that the SDK instance deals with.\nThe bearerAccessToken provided establishes what can be accessed by the SDK. The bearerAccessToken\ncan be set again after subscription as long as the subscribed username is passed with the updated bearerAccessToken."
+                    "value": "Sets the user credentials necessary to make requests to the platform, using bearer token authentication."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The bearerAccessToken provided establishes what can be accessed by the SDK. The bearerAccessToken\ncan be set again after subscription as long as the subscribed username is passed with the updated bearerAccessToken."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SDK will emit an "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventauthchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event when the credentials\nare set. If there was an issue with the credentials, an "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventautherror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent will be emitted instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The currently set user information can be retrieved using the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "api.getUserInfo",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "getUserInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " API."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If credentials have previously been set, they cannot be set again if there is an active\nsubscription. An "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#apieventautherror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "auth:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " will be emitted in\nthis scenario."
                   }
                 ]
               }
@@ -5774,30 +6159,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 5,
+              "lineNumber": 15,
               "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 16
             },
             {
               "title": "memberof",
               "description": "api",
-              "lineNumber": 6
+              "lineNumber": 17
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 7,
+              "lineNumber": 18,
               "name": "bearerAccessTokenAuth"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 8,
+              "lineNumber": 19,
               "name": "setCredentials"
             },
             {
               "title": "param",
               "description": "The credentials object.",
-              "lineNumber": 9,
+              "lineNumber": 20,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -5807,7 +6197,7 @@
             {
               "title": "param",
               "description": "The username without the application's domain.",
-              "lineNumber": 10,
+              "lineNumber": 21,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5817,7 +6207,7 @@
             {
               "title": "param",
               "description": "A bearerAccessToken retrieved using the authentication APIs of the platform.",
-              "lineNumber": 11,
+              "lineNumber": 22,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -5825,29 +6215,37 @@
               "name": "credentials.bearerAccessToken"
             },
             {
+              "title": "returns",
+              "description": null,
+              "lineNumber": 23,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
               "title": "example",
               "description": "client.setCredentials({\n  username: 'alfred@example.com',\n  bearerAccessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'\n});",
-              "lineNumber": 12
+              "lineNumber": 24
             }
           ],
           "loc": {
             "start": {
-              "line": 88,
+              "line": 110,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 139,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 106,
+                "line": 140,
                 "column": 4
               },
               "end": {
-                "line": 121,
+                "line": 151,
                 "column": 5
               }
             },
@@ -5864,7 +6262,7 @@
             {
               "title": "param",
               "name": "credentials",
-              "lineNumber": 9,
+              "lineNumber": 20,
               "description": {
                 "type": "root",
                 "children": [
@@ -5887,7 +6285,7 @@
                 {
                   "title": "param",
                   "name": "credentials.username",
-                  "lineNumber": 10,
+                  "lineNumber": 21,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5910,7 +6308,7 @@
                 {
                   "title": "param",
                   "name": "credentials.bearerAccessToken",
-                  "lineNumber": 11,
+                  "lineNumber": 22,
                   "description": {
                     "type": "root",
                     "children": [
@@ -5934,12 +6332,24 @@
             }
           ],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
           "yields": [],
           "access": "public",
+          "scope": "static",
           "memberof": "api",
           "kind": "function",
           "name": "setCredentials",
@@ -5957,10 +6367,11 @@
             },
             {
               "name": "setCredentials",
-              "kind": "function"
+              "kind": "function",
+              "scope": "static"
             }
           ],
-          "namespace": "apisetCredentials"
+          "namespace": "api.setCredentials"
         },
         {
           "description": {
@@ -17695,22 +18106,22 @@
           ],
           "loc": {
             "start": {
-              "line": 31,
+              "line": 28,
               "column": 2
             },
             "end": {
-              "line": 96,
+              "line": 93,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 108,
+                "line": 105,
                 "column": 2
               },
               "end": {
-                "line": 184,
+                "line": 181,
                 "column": 3
               }
             },
@@ -18460,22 +18871,22 @@
           ],
           "loc": {
             "start": {
-              "line": 186,
+              "line": 183,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 223,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 239,
+                "line": 236,
                 "column": 2
               },
               "end": {
-                "line": 284,
+                "line": 271,
                 "column": 3
               }
             },
@@ -18974,22 +19385,22 @@
           ],
           "loc": {
             "start": {
-              "line": 286,
+              "line": 273,
               "column": 2
             },
             "end": {
-              "line": 305,
+              "line": 292,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 306,
+                "line": 293,
                 "column": 2
               },
               "end": {
-                "line": 334,
+                "line": 321,
                 "column": 3
               }
             },
@@ -19170,22 +19581,22 @@
           ],
           "loc": {
             "start": {
-              "line": 336,
+              "line": 323,
               "column": 2
             },
             "end": {
-              "line": 354,
+              "line": 341,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 355,
+                "line": 342,
                 "column": 2
               },
               "end": {
-                "line": 382,
+                "line": 369,
                 "column": 3
               }
             },
@@ -19385,22 +19796,22 @@
           ],
           "loc": {
             "start": {
-              "line": 384,
+              "line": 371,
               "column": 2
             },
             "end": {
-              "line": 403,
+              "line": 390,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 404,
+                "line": 391,
                 "column": 2
               },
               "end": {
-                "line": 437,
+                "line": 424,
                 "column": 3
               }
             },
@@ -19651,22 +20062,22 @@
           ],
           "loc": {
             "start": {
-              "line": 439,
+              "line": 426,
               "column": 2
             },
             "end": {
-              "line": 462,
+              "line": 449,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 463,
+                "line": 450,
                 "column": 2
               },
               "end": {
-                "line": 495,
+                "line": 482,
                 "column": 3
               }
             },
@@ -20461,7 +20872,7 @@
                 "column": 2
               },
               "end": {
-                "line": 206,
+                "line": 196,
                 "column": 3
               }
             },
@@ -20939,22 +21350,22 @@
           ],
           "loc": {
             "start": {
-              "line": 208,
+              "line": 198,
               "column": 2
             },
             "end": {
-              "line": 227,
+              "line": 217,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 228,
+                "line": 218,
                 "column": 2
               },
               "end": {
-                "line": 254,
+                "line": 244,
                 "column": 3
               }
             },
@@ -21274,22 +21685,22 @@
           ],
           "loc": {
             "start": {
-              "line": 256,
+              "line": 246,
               "column": 2
             },
             "end": {
-              "line": 282,
+              "line": 272,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 283,
+                "line": 273,
                 "column": 2
               },
               "end": {
-                "line": 316,
+                "line": 306,
                 "column": 3
               }
             },
@@ -21584,22 +21995,22 @@
           ],
           "loc": {
             "start": {
-              "line": 318,
+              "line": 308,
               "column": 2
             },
             "end": {
-              "line": 340,
+              "line": 330,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 341,
+                "line": 331,
                 "column": 2
               },
               "end": {
-                "line": 369,
+                "line": 359,
                 "column": 3
               }
             },
@@ -21917,22 +22328,22 @@
           ],
           "loc": {
             "start": {
-              "line": 371,
+              "line": 361,
               "column": 2
             },
             "end": {
-              "line": 438,
+              "line": 428,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 439,
+                "line": 429,
                 "column": 2
               },
               "end": {
-                "line": 478,
+                "line": 458,
                 "column": 3
               }
             },
@@ -22575,22 +22986,22 @@
           ],
           "loc": {
             "start": {
-              "line": 480,
+              "line": 460,
               "column": 2
             },
             "end": {
-              "line": 524,
+              "line": 504,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 525,
+                "line": 505,
                 "column": 2
               },
               "end": {
-                "line": 545,
+                "line": 525,
                 "column": 3
               }
             },
@@ -22923,22 +23334,22 @@
           ],
           "loc": {
             "start": {
-              "line": 581,
+              "line": 561,
               "column": 2
             },
             "end": {
-              "line": 644,
+              "line": 624,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 645,
+                "line": 625,
                 "column": 2
               },
               "end": {
-                "line": 685,
+                "line": 665,
                 "column": 3
               }
             },
@@ -51177,12 +51588,12 @@
     "context": {
       "loc": {
         "start": {
-          "line": 68,
+          "line": 67,
           "column": 0
         },
         "end": {
-          "line": 68,
-          "column": 42
+          "line": 67,
+          "column": 36
         }
       },
       "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -52199,7 +52610,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "The ServiceDescriptor type defines the format for specifying how to subscribe for a certain service.\nThis is the service configuration object that needs to be passed (as part of an array of configuration objects) when calling\nthe "
+                    "value": "The ServiceDescriptor type defines the format for specifying how to subscribe for a certain service.\nThis is the service configuration object that needs to be passed (as part of an array of configuration objects)\nwhen calling the "
                   },
                   {
                     "type": "link",
@@ -52275,7 +52686,7 @@
             },
             {
               "title": "property",
-              "description": "The name of the available service user wants to subscribe to.\nThe available service names are `chat`, `presence`, `call` and `smsinbound`.",
+              "description": "The name of the available service user wants to subscribe to.\n   The available service names are `chat`, `presence`, `call` and `smsinbound`.",
               "lineNumber": 11,
               "type": {
                 "type": "NameExpression",
@@ -52285,8 +52696,8 @@
             },
             {
               "title": "property",
-              "description": "An object containing any additional parameters required for subscribing to that service.\nThis is an optional property as not all service subscriptions require it.",
-              "lineNumber": 14,
+              "description": "An object containing any additional parameters required for subscribing to that service.\n   This is an optional property as not all service subscriptions require it.",
+              "lineNumber": 13,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -52299,12 +52710,12 @@
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 16
+              "lineNumber": 15
             },
             {
               "title": "example",
               "description": "// Subscribe to chat, presence & call services on a WebSocket channel.\nclient.services.subscribe([\n   {service: 'chat'},\n   {service: 'presence'},\n   {service: 'call'},\n], 'websocket')",
-              "lineNumber": 17
+              "lineNumber": 16
             }
           ],
           "loc": {
@@ -52313,19 +52724,19 @@
               "column": 0
             },
             "end": {
-              "line": 47,
+              "line": 46,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 68,
+                "line": 67,
                 "column": 0
               },
               "end": {
-                "line": 68,
-                "column": 42
+                "line": 67,
+                "column": 36
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -52397,7 +52808,7 @@
             {
               "title": "property",
               "name": "params",
-              "lineNumber": 14,
+              "lineNumber": 13,
               "description": {
                 "type": "root",
                 "children": [
@@ -52537,23 +52948,23 @@
           ],
           "loc": {
             "start": {
-              "line": 49,
+              "line": 48,
               "column": 0
             },
             "end": {
-              "line": 65,
+              "line": 64,
               "column": 3
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 68,
+                "line": 67,
                 "column": 0
               },
               "end": {
-                "line": 68,
-                "column": 42
+                "line": 67,
+                "column": 36
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -52643,45 +53054,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "For push notifications on WebRTC Gateway, please see "
-                  },
-                  {
-                    "type": "link",
-                    "url": "notifications.registerPush",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "notifications.registerPush"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The SDK currently only supports the "
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "websocket"
-                  },
-                  {
-                    "type": "text",
-                    "value": " channel as a subscription\ntype."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "When calling this API, SDK emits a "
+                    "value": "The SDK will emit a "
                   },
                   {
                     "type": "link",
@@ -52697,16 +53070,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " event, each time there is a change in subscriptions."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Upon getting such event, existing subscriptions can be retrieved using the\n"
+                    "value": " event for each change\nin subscription state. This includes when this API is initially called, to indicate a pending subscription,\nthen again after the operation succeeds. Upon getting such event, existing subscriptions can be retrieved\nusing the "
                   },
                   {
                     "type": "link",
@@ -52725,6 +53089,89 @@
                     "value": " API."
                   }
                 ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SDK will emit a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionerror",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:error"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event if the operation\nfails."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "clientCorrelator"
+                  },
+                  {
+                    "type": "text",
+                    "value": " option should be provided to support a user subscribing from multiple clients\nat the same time. This value is used by the platform to correlate subscriptions to specific clients.\nIf a second subscription is made with the same value (including no value), the platform will override\nthe first subscription. The client with the first subscription will receive a\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "#serviceseventsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "subscription:change"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " event with an explicit reason in this\nscenario."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SDK currently only supports the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "websocket"
+                  },
+                  {
+                    "type": "text",
+                    "value": " channel as a subscription "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": " option."
+                  }
+                ]
               }
             ]
           },
@@ -52732,35 +53179,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 13,
+              "lineNumber": 20,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 14
+              "lineNumber": 21
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 15
+              "lineNumber": 22
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 16,
+              "lineNumber": 23,
               "name": "subscription"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 17,
+              "lineNumber": 24,
               "name": "subscribe"
             },
             {
               "title": "param",
               "description": "A list of service configurations.",
-              "lineNumber": 18,
+              "lineNumber": 25,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -52788,7 +53235,7 @@
             {
               "title": "param",
               "description": "The options object for non-credential options.",
-              "lineNumber": 19,
+              "lineNumber": 26,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -52801,7 +53248,7 @@
             {
               "title": "param",
               "description": "The method of how to receive service updates.",
-              "lineNumber": 20,
+              "lineNumber": 27,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -52814,8 +53261,8 @@
             },
             {
               "title": "param",
-              "description": "Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device.",
-              "lineNumber": 21,
+              "description": "Unique ID for the client. This is used by the platform to identify\n   an instance of the application used by the specific device.",
+              "lineNumber": 28,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -52828,36 +53275,36 @@
             {
               "title": "return",
               "description": null,
-              "lineNumber": 22,
+              "lineNumber": 30,
               "type": {
                 "type": "UndefinedLiteral"
               }
             },
             {
               "title": "example",
-              "description": "// Subscribe for chat and SMS services.\nclient.services.subscribe(['call', 'IM'], {clientCorrelator: 'abc123'})",
-              "lineNumber": 23
+              "description": "// Subscribe for call and messaging services.\nclient.services.subscribe(['call', 'IM'], { clientCorrelator: 'abc123' })",
+              "lineNumber": 31
             }
           ],
           "loc": {
             "start": {
-              "line": 97,
-              "column": 4
+              "line": 96,
+              "column": 6
             },
             "end": {
-              "line": 123,
-              "column": 7
+              "line": 130,
+              "column": 9
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 124,
-                "column": 4
+                "line": 131,
+                "column": 6
               },
               "end": {
-                "line": 162,
-                "column": 5
+                "line": 179,
+                "column": 7
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -52865,7 +53312,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "// Subscribe for chat and SMS services.\nclient.services.subscribe(['call', 'IM'], {clientCorrelator: 'abc123'})"
+              "description": "// Subscribe for call and messaging services.\nclient.services.subscribe(['call', 'IM'], { clientCorrelator: 'abc123' })"
             }
           ],
           "implements": [],
@@ -52873,7 +53320,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 18,
+              "lineNumber": 25,
               "description": {
                 "type": "root",
                 "children": [
@@ -52914,7 +53361,7 @@
             {
               "title": "param",
               "name": "options",
-              "lineNumber": 19,
+              "lineNumber": 26,
               "description": {
                 "type": "root",
                 "children": [
@@ -52940,7 +53387,7 @@
                 {
                   "title": "param",
                   "name": "options.type",
-                  "lineNumber": 20,
+                  "lineNumber": 27,
                   "description": {
                     "type": "root",
                     "children": [
@@ -52964,7 +53411,7 @@
                 {
                   "title": "param",
                   "name": "options.clientCorrelator",
-                  "lineNumber": 21,
+                  "lineNumber": 28,
                   "description": {
                     "type": "root",
                     "children": [
@@ -52973,7 +53420,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "Unique ID for the client. This is used by the platform to identify an instance of the application used by the specific device."
+                            "value": "Unique ID for the client. This is used by the platform to identify\nan instance of the application used by the specific device."
                           }
                         ]
                       }
@@ -53066,7 +53513,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " event, each time there is a change in subscriptions."
+                    "value": " event, each\ntime there is a change in subscriptions."
                   }
                 ]
               },
@@ -53109,35 +53556,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 9,
+              "lineNumber": 10,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 10
+              "lineNumber": 11
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 11
+              "lineNumber": 12
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 12,
+              "lineNumber": 13,
               "name": "subscription"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 13,
+              "lineNumber": 14,
               "name": "unsubscribe"
             },
             {
               "title": "param",
               "description": "A list of subscribed service names.",
-              "lineNumber": 14,
+              "lineNumber": 15,
               "type": {
                 "type": "TypeApplication",
                 "expression": {
@@ -53156,7 +53603,7 @@
             {
               "title": "param",
               "description": "The method of how the service updates\n   are being received.",
-              "lineNumber": 15,
+              "lineNumber": 16,
               "type": {
                 "type": "OptionalType",
                 "expression": {
@@ -53170,28 +53617,28 @@
             {
               "title": "example",
               "description": "// Unsubscribe from chat and SMS services.\nconst services = [ 'chat', 'smsinbound' ]\n\nclient.services.unsubscribe(services)",
-              "lineNumber": 17
+              "lineNumber": 18
             }
           ],
           "loc": {
             "start": {
-              "line": 164,
-              "column": 4
+              "line": 181,
+              "column": 6
             },
             "end": {
-              "line": 186,
-              "column": 7
+              "line": 204,
+              "column": 9
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 187,
-                "column": 4
+                "line": 205,
+                "column": 6
               },
               "end": {
-                "line": 210,
-                "column": 5
+                "line": 240,
+                "column": 7
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -53207,7 +53654,7 @@
             {
               "title": "param",
               "name": "services",
-              "lineNumber": 14,
+              "lineNumber": 15,
               "description": {
                 "type": "root",
                 "children": [
@@ -53239,7 +53686,7 @@
             {
               "title": "param",
               "name": "type",
-              "lineNumber": 15,
+              "lineNumber": 16,
               "description": {
                 "type": "root",
                 "children": [
@@ -53301,7 +53748,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Retrieves information about currently subscribed services and available services.\nThe data returned by this API is a snapshot of the SDK's current local subscription state.\nThe data does indicate whether there was an ongoing subscription at the time this API was called.\nIf a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the subscription is not yet complete."
+                    "value": "Retrieves information about currently subscribed services and available services.\nThe data returned by this API is a snapshot of the SDK's current local subscription state.\nThe data does indicate whether there was an ongoing subscription at the time this API was called.\nIf a subscription is in fact in progress, the user should not take decisions based on this snapshot, as the\nsubscription is not yet complete."
                   }
                 ]
               },
@@ -53310,7 +53757,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "To be notified when any subscription(s) did change/complete, listen for "
+                    "value": "To be notified when any subscription(s) did change/complete, listen for\n"
                   },
                   {
                     "type": "link",
@@ -53386,35 +53833,35 @@
             {
               "title": "public",
               "description": null,
-              "lineNumber": 16,
+              "lineNumber": 18,
               "type": null
             },
             {
               "title": "static",
               "description": null,
-              "lineNumber": 17
+              "lineNumber": 19
             },
             {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 18
+              "lineNumber": 20
             },
             {
               "title": "requires",
               "description": null,
-              "lineNumber": 19,
+              "lineNumber": 21,
               "name": "subscription"
             },
             {
               "title": "method",
               "description": null,
-              "lineNumber": 20,
+              "lineNumber": 22,
               "name": "getSubscriptions"
             },
             {
               "title": "return",
               "description": "Lists of subscribed and available services.",
-              "lineNumber": 21,
+              "lineNumber": 23,
               "type": {
                 "type": "NameExpression",
                 "name": "Object"
@@ -53423,28 +53870,28 @@
             {
               "title": "example",
               "description": "// Get the lists of services.\nconst services = client.services.getSubscriptions()\n\n// Ensure that there were no pending subscriptions at the time\n// we called getSubscriptions API.\nif (!services.isPending) {\n  // Figure out which available services don't have a subscription.\n  const notSubscribed = services.available.filter(service => {\n    return !services.subscribed.includes(service)\n  })\n\n  // Subscribe for all not-yet-subscribed services.\n  client.services.subscribe(notSubscribed)\n}",
-              "lineNumber": 22
+              "lineNumber": 24
             }
           ],
           "loc": {
             "start": {
-              "line": 212,
-              "column": 4
+              "line": 242,
+              "column": 6
             },
             "end": {
-              "line": 250,
-              "column": 7
+              "line": 282,
+              "column": 9
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 251,
-                "column": 4
+                "line": 283,
+                "column": 6
               },
               "end": {
-                "line": 258,
-                "column": 5
+                "line": 290,
+                "column": 7
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -53571,14 +54018,20 @@
               "lineNumber": 8
             },
             {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 9,
+              "name": "subscription"
+            },
+            {
               "title": "memberof",
               "description": "services",
-              "lineNumber": 9
+              "lineNumber": 10
             },
             {
               "title": "property",
               "description": "When the server terminated the subscription.",
-              "lineNumber": 10,
+              "lineNumber": 11,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -53588,7 +54041,7 @@
             {
               "title": "property",
               "description": "When network connectivity was lost.",
-              "lineNumber": 11,
+              "lineNumber": 12,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -53598,7 +54051,7 @@
             {
               "title": "property",
               "description": "When the webSocket was overridden by the server.",
-              "lineNumber": 12,
+              "lineNumber": 13,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -53608,23 +54061,23 @@
           ],
           "loc": {
             "start": {
-              "line": 260,
-              "column": 4
+              "line": 292,
+              "column": 6
             },
             "end": {
-              "line": 273,
-              "column": 7
+              "line": 306,
+              "column": 9
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 274,
-                "column": 4
+                "line": 307,
+                "column": 6
               },
               "end": {
-                "line": 274,
-                "column": 33
+                "line": 307,
+                "column": 35
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/subscription/interface/api.js"
@@ -53637,7 +54090,7 @@
             {
               "title": "property",
               "name": "GONE",
-              "lineNumber": 10,
+              "lineNumber": 11,
               "description": {
                 "type": "root",
                 "children": [
@@ -53660,7 +54113,7 @@
             {
               "title": "property",
               "name": "LOST_CONNECTION",
-              "lineNumber": 11,
+              "lineNumber": 12,
               "description": {
                 "type": "root",
                 "children": [
@@ -53683,7 +54136,7 @@
             {
               "title": "property",
               "name": "WS_OVERRIDDEN",
-              "lineNumber": 12,
+              "lineNumber": 13,
               "description": {
                 "type": "root",
                 "children": [
