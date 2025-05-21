@@ -13,6 +13,10 @@ Ribbon WebRTC SDK change log.
 
 - Added missing `CREATE_ANSWER` & `CREATE_OFFER` sub-events in the SDK's call report. They record the time it took to create an answer to an incoming offer and how long it took to create an offer during the process of any negotiation. `KJS-2740`
 
+### Fixed
+
+- Fixed a Call timing issue where two call operations performed at the same time, that should be able to occur in parallel, encounter errors when generating the call report for the operations. `KJS-2846`
+
 ## 7.5.0 - 2025-04-24
 
 ### Added
