@@ -16,6 +16,8 @@ Ribbon WebRTC SDK change log.
 ### Fixed
 
 - Fixed a Call timing issue where two call operations performed at the same time, that should be able to occur in parallel, encounter errors when generating the call report for the operations. `KJS-2846`
+- Fixed a Call issue where, if a call operation missed receiving the remote response due to network issues, the operation would never finish. `KJS-2693`
+  - The operation will now timeout in error after a period longer than the configurable `config.request.restTimeout` value.
 
 ## 7.5.0 - 2025-04-24
 
