@@ -7,6 +7,19 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.6.0 - 2025-05-29
+
+### Added
+
+- Added missing `CREATE_ANSWER` & `CREATE_OFFER` sub-events in the SDK's call report. They record the time it took to create an answer to an incoming offer and how long it took to create an offer during the process of any negotiation. `KJS-2740`
+
+### Fixed
+
+- Fixed a Call timing issue where two call operations performed at the same time, that should be able to occur in parallel, encounter errors when generating the call report for the operations. `KJS-2846`
+- Fixed a Call issue where, if a call operation missed receiving the remote response due to network issues, the operation would never finish. `KJS-2693`
+  - The operation will now timeout in error after a period longer than the configurable `config.request.restTimeout` value.
+- Fixed a Call issue where removing a "detached" media track from a call using the `call.removeMedia` or `call.stopVideo` APIs would also stop the track itself.
+
 ## 7.5.0 - 2025-04-24
 
 ### Added
