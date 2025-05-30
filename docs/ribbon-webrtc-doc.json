@@ -2189,7 +2189,7 @@
             },
             {
               "title": "param",
-              "description": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds.",
+              "description": "The lifetime (in seconds) of a subscription. The SDK will automatically refresh the subscription before it expires. Cannot be less than minimum threshold of 60 seconds.",
               "lineNumber": 7,
               "type": {
                 "type": "OptionalType",
@@ -2326,7 +2326,7 @@
                         "children": [
                           {
                             "type": "text",
-                            "value": "The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds."
+                            "value": "The lifetime (in seconds) of a subscription. The SDK will automatically refresh the subscription before it expires. Cannot be less than minimum threshold of 60 seconds."
                           }
                         ]
                       }
@@ -53734,23 +53734,23 @@
           ],
           "loc": {
             "start": {
-              "line": 96,
-              "column": 6
+              "line": 94,
+              "column": 2
             },
             "end": {
-              "line": 130,
-              "column": 9
+              "line": 128,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 131,
-                "column": 6
+                "line": 129,
+                "column": 2
               },
               "end": {
-                "line": 175,
-                "column": 7
+                "line": 151,
+                "column": 3
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
@@ -54068,23 +54068,23 @@
           ],
           "loc": {
             "start": {
-              "line": 177,
-              "column": 6
+              "line": 246,
+              "column": 2
             },
             "end": {
-              "line": 200,
-              "column": 9
+              "line": 269,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 201,
-                "column": 6
+                "line": 270,
+                "column": 2
               },
               "end": {
-                "line": 236,
-                "column": 7
+                "line": 278,
+                "column": 3
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
@@ -54321,22 +54321,22 @@
           ],
           "loc": {
             "start": {
-              "line": 238,
+              "line": 358,
               "column": 6
             },
             "end": {
-              "line": 278,
+              "line": 398,
               "column": 9
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 279,
+                "line": 399,
                 "column": 6
               },
               "end": {
-                "line": 286,
+                "line": 406,
                 "column": 7
               }
             },
@@ -54507,22 +54507,22 @@
           ],
           "loc": {
             "start": {
-              "line": 288,
+              "line": 408,
               "column": 6
             },
             "end": {
-              "line": 302,
+              "line": 422,
               "column": 9
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 303,
+                "line": 423,
                 "column": 6
               },
               "end": {
-                "line": 303,
+                "line": 423,
                 "column": 35
               }
             },
