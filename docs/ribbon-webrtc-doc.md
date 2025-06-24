@@ -4539,13 +4539,13 @@ to retrieve the current information about a subscription.
 ```javascript
 // Add a user to an existing subscription.
 const userLists = {
-   subscribedUserList: ['userThree@example.com']
+   subscribeUserList: ['userThree@example.com']
 }
 client.sip.update('event:presence', userLists)
 
 // Simultaneously add and remove users from the subscription.
 const userLists = {
-   subscribedUserList: ['userThree@example.com'],
+   subscribeUserList: ['userThree@example.com'],
    unsubscribeUserList: ['userOne@example.com']
 }
 client.sip.update('event:presence', userLists)

@@ -56355,7 +56355,7 @@
             },
             {
               "title": "example",
-              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)",
+              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)",
               "lineNumber": 19
             }
           ],
@@ -56385,7 +56385,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)"
+              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)"
             }
           ],
           "implements": [],
