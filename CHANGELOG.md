@@ -7,6 +7,12 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.7.0 - 2025-06-26
+
+### Fixed
+
+- Fixed a Call issue where a call negotiation could be performed too early, while the call was still being answered. `KJS-2485`
+
 ## 7.6.0 - 2025-05-29
 
 ### Added

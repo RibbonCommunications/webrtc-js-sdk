@@ -142,7 +142,7 @@ Configuration options for the Subscription feature.
 
 *   `subscription` **[Object][7]** Subscription config.
 
-    *   `subscription.expires` **[number][13]** The amount of time (in seconds) for which to keep subscription up and alive. Cannot be less than minimum threshold of 60 seconds. (optional, default `3600`)
+    *   `subscription.expires` **[number][13]** The lifetime (in seconds) of a subscription. The SDK will automatically refresh the subscription before it expires. Cannot be less than minimum threshold of 60 seconds. (optional, default `3600`)
     *   `subscription.serviceUnavailableMaxRetries` **[number][13]** The maximum number of times this client will retry in order to subscribe for a
         given service, while getting 'Service Unavailable' from backend. (optional, default `3`)
     *   `subscription.websocket` **[Object][7]** 
@@ -956,43 +956,65 @@ Type: [Object][7]
 
 Custom SIP headers can be used to convey additional information to a SIP endpoint.
 
-These parameters must be configured on the server prior to making a request, otherwise the request will fail when trying to include the parameters.
+Any SIP header can be used as a custom parameter, such as X-Headers or proprietary headers. However, if the defined
+header name conflicts with another SIP header name in the SIP message, the existing SIP header will be removed
+and the application's custom SIP header will be added to the message.
 
-These parameters can be specified with the [call.make][49] and [call.answer][50] APIs.
-They can also be set after a Call is established using the [call.setCustomParameters][51] API, and sent using the [call.sendCustomParameters][52] API.
+These parameters must be configured on the WebRTC Gateway prior to making a REST request, otherwise the request will
+fail when trying to include the parameters. The WebRTC Gateway does not impose limitations on the length of a
+header. See the Gateway documentation for more information.
 
-Custom headers may be received anytime throughout the duration a call. A remote endpoint may send custom headers when starting a call,
-answering a call, or during call updates such as hold/unhold and addition/removal of media in the call.
-When these custom headers are received, the SDK will emit a [call:customParameters][53] event
-which will contain the custom parameters that were received.
+These parameters can be provided in the [call.make][49] and [call.answer][50] APIs, to be included during call
+establishment. They can also be set on the call after it is established using the [call.setCustomParameters][51]
+API, then sent using the [call.sendCustomParameters][52] API.
 
-A Call's custom parameters are stored on the Call's [CallObject][54],
-which can be retrieved using the [call.getById][32] or
-[call.getAll][31] APIs. These are the parameters that will be sent to the remote
-endpoint of the Call. Parameters received from a Call are not stored as
-part of the CallObject and are only provided via the [call:customParameters][53] event.
+Custom parameters may be received anytime throughout the duration a call. A remote endpoint may send custom headers
+when starting a call, answering a call, or during call updates such as hold/unhold and addition/removal of media
+in the call. When these custom headers are received, the SDK will emit a
+[call:customParameters][53] event which will contain the custom parameters that
+were received.
+
+Custom parameters set on a call are stored on its [CallObject][54], which can be retrieved using
+[call.getById][32] or [call.getAll][31] APIs. These are the parameters that will be sent to the remote
+endpoint of the call. Parameters received from a call are not stored as part of the
+[CallObject][54], and are only provided via the
+[call:customParameters][53] event.
 
 Type: [Object][7]
 
 #### Properties
 
-*   `name` **[string][8]** The name of the custom parameter
-*   `value` **[string][8]** The value of the custom parameter
+*   `name` **[string][8]** The name of the SIP header.
+*   `value` **[string][8]** The value of the SIP header.
 
 #### Examples
 
 ```javascript
-// Specify custom parameters when making a call.
+// Specify custom SIP headers to be sent when making a call.
 client.call.make(destination, mediaConstraints,
  {
    customParameters: [
      {
        name: 'X-GPS',
-       value: '42.686032,23.344565'
+       value: '51.759028,-1.213278'
+     },
+     {
+       name: 'X-Caller-ID',
+       value: 'Coombs,Ernie'
+     },
+     {
+       name: 'User-to-User',
+       value: '48656c6c6f2c20576f726c6421;encoding=hex'
      }
    ]
  }
 )
+
+// Receive custom parameters from the remote endpoint of a call.
+client.on('call:customParameters', params => {
+  const { callId, customParameters } = params
+  log(`Received custom parameters from call ${callId}:`, customParameters)
+})
 ```
 
 ### make
@@ -1634,37 +1656,50 @@ be notified of the operation through a
 
 ### setCustomParameters
 
-Set the [Custom Parameters][85] of a Call, to be provided to the remote endpoint.
+Set the [Custom Parameters][85] of a call, to be provided to the remote endpoint.
 
-The specified parameters will be saved as part of the call's information throughout the duration of the call.
-All subsequent call operations will include these custom parameters.
-Therefore, invalid parameters, or parameters not previously configured on the server, will cause subsequent call operations to fail.
+The provided parameters will be saved as part of the call data, to be used throughout the duration of the call.
+All subsequent call operations will include these custom parameters. Therefore, invalid parameters, or
+parameters not previously configured on the server, will cause subsequent call operations to fail. See
+[Custom Parameters][85] for more information on constraints.
 
-A Call's custom parameters are a property of the Call's [CallObject][54],
-which can be retrieved using the [call.getById][32] or
-[call.getAll][31] APIs.
+A Call's custom parameters are stored on the [CallObject][54], which can be retrieved using
+the [call.getById][32] or [call.getAll][31] APIs.
 
-The custom parameters set on a call can be sent directly with the [call.sendCustomParameters][52] API.
+The [call.sendCustomParameters][52] API can be used to send the custom parameters as a stand-alone REST request,
+rather than as part of a call operation.
 
-Custom parameters can be removed from a call's information by setting them as undefined (e.g., `call.setCustomParameters(callId)`).
-Subsequent call operations will no longer send custom parameters.
+Custom parameters can be removed from a call's information by setting them as undefined (e.g.,
+`call.setCustomParameters(callId)`). Subsequent call operations will then no longer send the custom parameters.
 
 #### Parameters
 
 *   `callId` **[string][8]** The ID of the call.
-*   `customParameters` **[Array][20]<[call.CustomParameter][38]>** The custom parameters to set.
+*   `customParameters` **([Array][20]<[call.CustomParameter][38]> | [undefined][27])** The custom parameters to set.
+
+#### Examples
+
+```javascript
+// Set custom parameters on a call.
+client.call.setCustomParameters(callId, [
+   {
+     name: 'Custom-Header',
+     value: 'Custom Value'
+   }
+])
+```
+
+Returns **[undefined][27]** 
 
 ### sendCustomParameters
 
-Send the custom parameters on an ongoing call to the server. The server may either consume the headers or relay them
-to another endpoint, depending on how the server is configured.
+Send the custom parameters stored as part of an ongoing call to the Gateway. The server may either consume the
+headers or relay them to another endpoint, depending on configuration.
 
-A Call's custom parameters are a property of the Call's [CallObject][54],
-which can be retrieved using the [call.getById][32] or
-[call.getAll][31] APIs.
+Custom parameters are set on a call using the [call.setCustomParameters][51] API.
 
-Before sending custom parameters, they need to be first set on the existing Call.
-To set, change or remove the custom parameters on a call, use the [call.setCustomParameters][51] API.
+A Call's custom parameters are stored on the [CallObject][54], which can be retrieved using
+the [call.getById][32] or [call.getAll][31] APIs.
 
 #### Parameters
 
@@ -4504,13 +4539,13 @@ to retrieve the current information about a subscription.
 ```javascript
 // Add a user to an existing subscription.
 const userLists = {
-   subscribedUserList: ['userThree@example.com']
+   subscribeUserList: ['userThree@example.com']
 }
 client.sip.update('event:presence', userLists)
 
 // Simultaneously add and remove users from the subscription.
 const userLists = {
-   subscribedUserList: ['userThree@example.com'],
+   subscribeUserList: ['userThree@example.com'],
    unsubscribeUserList: ['userOne@example.com']
 }
 client.sip.update('event:presence', userLists)
