@@ -4468,97 +4468,14 @@ example above, requires the application to subscribe for the event. See the
 [sip.subscribe API][165] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
-### subscribe
-
-Creates a subscription for a SIP event.
-
-A subscription is required to receive SIP notifications for solicited events. Before
-creating a SIP subscription, the service for the event type must have been
-provisioned as part of the user subscription using the [services.subscribe][159]
-API.
-
-Only one SIP subscription per event type can exist at a time. A subscription can
-watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][166] API at any time.
-
-The SDK will emit a [sip:subscriptionChange][167]
-event when the operations completes. The [sip.getDetails][168] API can be used
-to retrieve the current information about a subscription.
-
-The SDK will emit a [sip:eventsChange][169] event when
-a SIP event is received.
-
-#### Parameters
-
-*   `eventType` **[string][8]** The name of the SIP event.
-*   `subscribeUserList` **[Array][20]<[string][8]>** The list of users to receive events about.
-*   `clientCorrelator` **[string][8]** Unique identifier for a client device.
-*   `customParameters` **[Array][20]<[call.CustomParameter][38]>?** Custom SIP header parameters for the SIP backend.
-
-#### Examples
-
-```javascript
-// Provision the service for the specific SIP event during user subscription.
-//   This is required before a SIP subscription for the event can be created.
-const services = ['call', 'event:presence', ...]
-client.services.subscribe(services)
-
-// Subscribe to receive SIP presence events from two users.
-client.sip.subscribe('event:presence', ['userOne@example.com', 'userTwo@example.com'], 'clientId123')
-
-// Subscribe for SIP events with a custom parameter.
-const customParameters = [{
-   name: 'X-nt-GUID',
-   value: 'GUID123abc'
-}]
-client.sip.subscribe('event:presence', subscribeUserList, 'clientId123', customParameters)
-```
-
-### update
-
-Updates an existing SIP event subscription.
-
-Allows for adding or removing users from the subscription, and for changing the
-custom parameters of the subscription.
-
-The SDK will emit a [sip:subscriptionChange][167]
-event when the operations completes. The [sip.getDetails][168] API can be used
-to retrieve the current information about a subscription.
-
-#### Parameters
-
-*   `eventType` **[string][8]** The name of the SIP event.
-*   `userLists` **[Object][7]** 
-
-    *   `userLists.subscribeUserList` **[Array][20]<[string][8]>** List of users to add to the subscription.
-    *   `userLists.unsubscribeUserList` **[Array][20]<[string][8]>** List of users to remove from the subscription. If all users are removed, the event subscription will be deleted.
-*   `customParameters` **[Array][20]<[call.CustomParameter][38]>?** Custom SIP header parameters for the SIP backend.
-
-#### Examples
-
-```javascript
-// Add a user to an existing subscription.
-const userLists = {
-   subscribeUserList: ['userThree@example.com']
-}
-client.sip.update('event:presence', userLists)
-
-// Simultaneously add and remove users from the subscription.
-const userLists = {
-   subscribeUserList: ['userThree@example.com'],
-   unsubscribeUserList: ['userOne@example.com']
-}
-client.sip.update('event:presence', userLists)
-```
-
 ### unsubscribe
 
 Deletes an existing SIP event subscription.
 
-The SDK will emit a [sip:subscriptionChange][167]
+The SDK will emit a [sip:subscriptionChange][166]
 event when the operations completes.
 
-Subscription details will no longer be available using the [sip.getDetails][168]
+Subscription details will no longer be available using the [sip.getDetails][167]
 API after it has been unsubscribed from.
 
 #### Parameters
@@ -4598,12 +4515,95 @@ const { subscribedUsers, notifications } = subscriptions['event:presence']
 Returns **[Object][7]** SIP subscription information. If `eventType` was not provided, will
 return an object namespaced by event types.
 
+### subscribe
+
+Creates a subscription for a SIP event.
+
+A subscription is required to receive SIP notifications for solicited events. Before
+creating a SIP subscription, the service for the event type must have been
+provisioned as part of the user subscription using the [services.subscribe][159]
+API.
+
+Only one SIP subscription per event type can exist at a time. A subscription can
+watch for events from multiple users at once. Users can be added to or removed
+from a subscription using the [sip.update][168] API at any time.
+
+The SDK will emit a [sip:subscriptionChange][166]
+event when the operations completes. The [sip.getDetails][167] API can be used
+to retrieve the current information about a subscription.
+
+The SDK will emit a [sip:eventsChange][169] event when
+a SIP event is received.
+
+#### Parameters
+
+*   `eventType` **[string][8]** The name of the SIP event.
+*   `subscribeUserList` **[Array][20]<[string][8]>** The list of users to receive events about.
+*   `clientCorrelator` **[string][8]** Unique identifier for a client device.
+*   `customParameters` **[Array][20]<[call.CustomParameter][38]>?** Custom SIP header parameters for the SIP backend.
+
+#### Examples
+
+```javascript
+// Provision the service for the specific SIP event during user subscription.
+//   This is required before a SIP subscription for the event can be created.
+const services = ['call', 'event:presence', ...]
+client.services.subscribe(services)
+
+// Subscribe to receive SIP presence events from two users.
+client.sip.subscribe('event:presence', ['userOne@example.com', 'userTwo@example.com'], 'clientId123')
+
+// Subscribe for SIP events with a custom parameter.
+const customParameters = [{
+   name: 'X-nt-GUID',
+   value: 'GUID123abc'
+}]
+client.sip.subscribe('event:presence', subscribeUserList, 'clientId123', customParameters)
+```
+
+### update
+
+Updates an existing SIP event subscription.
+
+Allows for adding or removing users from the subscription, and for changing the
+custom parameters of the subscription.
+
+The SDK will emit a [sip:subscriptionChange][166]
+event when the operations completes. The [sip.getDetails][167] API can be used
+to retrieve the current information about a subscription.
+
+#### Parameters
+
+*   `eventType` **[string][8]** The name of the SIP event.
+*   `userLists` **[Object][7]** 
+
+    *   `userLists.subscribeUserList` **[Array][20]<[string][8]>** List of users to add to the subscription.
+    *   `userLists.unsubscribeUserList` **[Array][20]<[string][8]>** List of users to remove from the subscription. If all users are removed, the event subscription will be deleted.
+*   `customParameters` **[Array][20]<[call.CustomParameter][38]>?** Custom SIP header parameters for the SIP backend.
+
+#### Examples
+
+```javascript
+// Add a user to an existing subscription.
+const userLists = {
+   subscribedUserList: ['userThree@example.com']
+}
+client.sip.update('event:presence', userLists)
+
+// Simultaneously add and remove users from the subscription.
+const userLists = {
+   subscribedUserList: ['userThree@example.com'],
+   unsubscribeUserList: ['userOne@example.com']
+}
+client.sip.update('event:presence', userLists)
+```
+
 ### sip:subscriptionChange
 
 A change has occurred to a SIP subscription.
 
 This event can be emitted when a new SIP subscription is created ([sip.subscribe][165]
-API), an existing subscription is updated ([sip.update][166] API), or has been
+API), an existing subscription is updated ([sip.update][168] API), or has been
 deleted ([sip.unsubscribe][170] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
@@ -4611,7 +4611,7 @@ When users are added or removed from a subscription through a new subscription o
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][168] API can be used to retrieve the current information about
+The [sip.getDetails][167] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -5183,11 +5183,11 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [165]: #sipsubscribe
 
-[166]: #sipupdate
+[166]: #sipeventsipsubscriptionchange
 
-[167]: #sipeventsipsubscriptionchange
+[167]: #sipgetdetails
 
-[168]: #sipgetdetails
+[168]: #sipupdate
 
 [169]: #sipeventsipeventschange
 
