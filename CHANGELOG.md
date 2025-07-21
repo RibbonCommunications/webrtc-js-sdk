@@ -9,6 +9,10 @@ Ribbon WebRTC SDK change log.
 
 ## 7.8.0 - beta
 
+### Fixed
+
+- Improved error handling for Calls when answering a slow-start call, ensuring that browser resources are immediately released in failure scenarios. `KJS-2875`
+
 ## 7.7.0 - 2025-06-26
 
 ### Fixed
