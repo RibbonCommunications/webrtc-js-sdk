@@ -55785,6 +55785,402 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Deletes an existing SIP event subscription."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SDK will emit a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#sipeventsipsubscriptionchange",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "sip:subscriptionChange"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevent when the operations completes."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Subscription details will no longer be available using the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#sipgetdetails",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "sip.getDetails"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nAPI after it has been unsubscribed from."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 8,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 9
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 10,
+              "name": "unsubscribe"
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 11,
+              "name": "sipEvents"
+            },
+            {
+              "title": "memberof",
+              "description": "sip",
+              "lineNumber": 12
+            },
+            {
+              "title": "param",
+              "description": "The name of the SIP event.",
+              "lineNumber": 13,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              },
+              "name": "eventType"
+            },
+            {
+              "title": "example",
+              "description": "// Delete a SIP subscription.\nclient.sip.unsubscribe('event:presence')",
+              "lineNumber": 14
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 60,
+                "column": 4
+              },
+              "end": {
+                "line": 73,
+                "column": 5
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/sipEvents/interface/api.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "// Delete a SIP subscription.\nclient.sip.unsubscribe('event:presence')"
+            }
+          ],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "eventType",
+              "lineNumber": 13,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The name of the SIP event."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "function",
+          "name": "unsubscribe",
+          "memberof": "sip",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "sip",
+              "kind": "namespace"
+            },
+            {
+              "name": "unsubscribe",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "sip.unsubscribe"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Retrieve information about a SIP event subscription."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The SDK will track which users are included as part of the subscription and\nprevious notifications received. Each subscription will include a unique ID."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "public",
+              "description": null,
+              "lineNumber": 5,
+              "type": null
+            },
+            {
+              "title": "static",
+              "description": null,
+              "lineNumber": 6
+            },
+            {
+              "title": "method",
+              "description": null,
+              "lineNumber": 7,
+              "name": "getDetails"
+            },
+            {
+              "title": "requires",
+              "description": null,
+              "lineNumber": 8,
+              "name": "sipEvents"
+            },
+            {
+              "title": "memberof",
+              "description": "sip",
+              "lineNumber": 9
+            },
+            {
+              "title": "param",
+              "description": "The name of a SIP event. If not provided, will retrieve\n   information for all SIP subscriptions.",
+              "lineNumber": 10,
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              },
+              "name": "eventType"
+            },
+            {
+              "title": "return",
+              "description": "SIP subscription information. If `eventType` was not provided, will\n   return an object namespaced by event types.",
+              "lineNumber": 12,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "example",
+              "description": "// Retrieve information about a single SIP subscription.\nconst { subscribedUsers, notifications } = client.sip.getDetails('event:presence')\n\n// Retrieve information about all current SIP subscriptions.\nconst subscriptions = client.sip.getDetails()\nconst { subscribedUsers, notifications } = subscriptions['event:presence']",
+              "lineNumber": 14
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 75,
+              "column": 4
+            },
+            "end": {
+              "line": 96,
+              "column": 7
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 97,
+                "column": 4
+              },
+              "end": {
+                "line": 101,
+                "column": 5
+              }
+            },
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/sipEvents/interface/api.js"
+          },
+          "augments": [],
+          "examples": [
+            {
+              "description": "// Retrieve information about a single SIP subscription.\nconst { subscribedUsers, notifications } = client.sip.getDetails('event:presence')\n\n// Retrieve information about all current SIP subscriptions.\nconst subscriptions = client.sip.getDetails()\nconst { subscribedUsers, notifications } = subscriptions['event:presence']"
+            }
+          ],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "eventType",
+              "lineNumber": 10,
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The name of a SIP event. If not provided, will retrieve\ninformation for all SIP subscriptions."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "SIP subscription information. If "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "eventType"
+                      },
+                      {
+                        "type": "text",
+                        "value": " was not provided, will\nreturn an object namespaced by event types."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "yields": [],
+          "access": "public",
+          "scope": "static",
+          "kind": "function",
+          "name": "getDetails",
+          "memberof": "sip",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "sip",
+              "kind": "namespace"
+            },
+            {
+              "name": "getDetails",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "sip.getDetails"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Creates a subscription for a SIP event."
                   }
                 ]
@@ -56005,23 +56401,23 @@
           ],
           "loc": {
             "start": {
-              "line": 42,
-              "column": 4
+              "line": 104,
+              "column": 2
             },
             "end": {
-              "line": 84,
-              "column": 7
+              "line": 146,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 85,
-                "column": 4
+                "line": 147,
+                "column": 2
               },
               "end": {
-                "line": 99,
-                "column": 5
+                "line": 160,
+                "column": 3
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/sipEvents/interface/api.js"
@@ -56355,29 +56751,29 @@
             },
             {
               "title": "example",
-              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)",
+              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)",
               "lineNumber": 19
             }
           ],
           "loc": {
             "start": {
-              "line": 101,
-              "column": 4
+              "line": 229,
+              "column": 2
             },
             "end": {
-              "line": 133,
-              "column": 7
+              "line": 261,
+              "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 134,
-                "column": 4
+                "line": 262,
+                "column": 2
               },
               "end": {
-                "line": 149,
-                "column": 5
+                "line": 277,
+                "column": 3
               }
             },
             "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/sipEvents/interface/api.js"
@@ -56385,7 +56781,7 @@
           "augments": [],
           "examples": [
             {
-              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribeUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)"
+              "description": "// Add a user to an existing subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com']\n}\nclient.sip.update('event:presence', userLists)\n\n// Simultaneously add and remove users from the subscription.\nconst userLists = {\n   subscribedUserList: ['userThree@example.com'],\n   unsubscribeUserList: ['userOne@example.com']\n}\nclient.sip.update('event:presence', userLists)"
             }
           ],
           "implements": [],
@@ -56554,402 +56950,6 @@
             }
           ],
           "namespace": "sip.update"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Deletes an existing SIP event subscription."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The SDK will emit a "
-                  },
-                  {
-                    "type": "link",
-                    "url": "#sipeventsipsubscriptionchange",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "sip:subscriptionChange"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": "\nevent when the operations completes."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Subscription details will no longer be available using the "
-                  },
-                  {
-                    "type": "link",
-                    "url": "#sipgetdetails",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "sip.getDetails"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": "\nAPI after it has been unsubscribed from."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 8,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 9
-            },
-            {
-              "title": "method",
-              "description": null,
-              "lineNumber": 10,
-              "name": "unsubscribe"
-            },
-            {
-              "title": "requires",
-              "description": null,
-              "lineNumber": 11,
-              "name": "sipEvents"
-            },
-            {
-              "title": "memberof",
-              "description": "sip",
-              "lineNumber": 12
-            },
-            {
-              "title": "param",
-              "description": "The name of the SIP event.",
-              "lineNumber": 13,
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              },
-              "name": "eventType"
-            },
-            {
-              "title": "example",
-              "description": "// Delete a SIP subscription.\nclient.sip.unsubscribe('event:presence')",
-              "lineNumber": 14
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 151,
-              "column": 4
-            },
-            "end": {
-              "line": 168,
-              "column": 7
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 169,
-                "column": 4
-              },
-              "end": {
-                "line": 182,
-                "column": 5
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/sipEvents/interface/api.js"
-          },
-          "augments": [],
-          "examples": [
-            {
-              "description": "// Delete a SIP subscription.\nclient.sip.unsubscribe('event:presence')"
-            }
-          ],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "eventType",
-              "lineNumber": 13,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The name of the SIP event."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "kind": "function",
-          "name": "unsubscribe",
-          "memberof": "sip",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "sip",
-              "kind": "namespace"
-            },
-            {
-              "name": "unsubscribe",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "sip.unsubscribe"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Retrieve information about a SIP event subscription."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The SDK will track which users are included as part of the subscription and\nprevious notifications received. Each subscription will include a unique ID."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 5,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 6
-            },
-            {
-              "title": "method",
-              "description": null,
-              "lineNumber": 7,
-              "name": "getDetails"
-            },
-            {
-              "title": "requires",
-              "description": null,
-              "lineNumber": 8,
-              "name": "sipEvents"
-            },
-            {
-              "title": "memberof",
-              "description": "sip",
-              "lineNumber": 9
-            },
-            {
-              "title": "param",
-              "description": "The name of a SIP event. If not provided, will retrieve\n   information for all SIP subscriptions.",
-              "lineNumber": 10,
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "string"
-                }
-              },
-              "name": "eventType"
-            },
-            {
-              "title": "return",
-              "description": "SIP subscription information. If `eventType` was not provided, will\n   return an object namespaced by event types.",
-              "lineNumber": 12,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            },
-            {
-              "title": "example",
-              "description": "// Retrieve information about a single SIP subscription.\nconst { subscribedUsers, notifications } = client.sip.getDetails('event:presence')\n\n// Retrieve information about all current SIP subscriptions.\nconst subscriptions = client.sip.getDetails()\nconst { subscribedUsers, notifications } = subscriptions['event:presence']",
-              "lineNumber": 14
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 184,
-              "column": 4
-            },
-            "end": {
-              "line": 205,
-              "column": 7
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 206,
-                "column": 4
-              },
-              "end": {
-                "line": 210,
-                "column": 5
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_master/packages/kandy/src/sipEvents/interface/api.js"
-          },
-          "augments": [],
-          "examples": [
-            {
-              "description": "// Retrieve information about a single SIP subscription.\nconst { subscribedUsers, notifications } = client.sip.getDetails('event:presence')\n\n// Retrieve information about all current SIP subscriptions.\nconst subscriptions = client.sip.getDetails()\nconst { subscribedUsers, notifications } = subscriptions['event:presence']"
-            }
-          ],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "eventType",
-              "lineNumber": 10,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The name of a SIP event. If not provided, will retrieve\ninformation for all SIP subscriptions."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "type": {
-                "type": "OptionalType",
-                "expression": {
-                  "type": "NameExpression",
-                  "name": "string"
-                }
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [
-            {
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "SIP subscription information. If "
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "eventType"
-                      },
-                      {
-                        "type": "text",
-                        "value": " was not provided, will\nreturn an object namespaced by event types."
-                      }
-                    ]
-                  }
-                ]
-              },
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "kind": "function",
-          "name": "getDetails",
-          "memberof": "sip",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "sip",
-              "kind": "namespace"
-            },
-            {
-              "name": "getDetails",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "sip.getDetails"
         }
       ]
     },

@@ -7,6 +7,13 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.8.0 - 2025-07-24
+
+### Fixed
+
+- Improved error handling for Calls when answering a slow-start call, ensuring that browser resources are immediately released in failure scenarios. `KJS-2875`
+- Cleaned up timer handlers in Proxy plugin when SDK is destroyed to avoid stray handlers being run. `KJS-2796`
+
 ## 7.7.0 - 2025-06-26
 
 ### Fixed
