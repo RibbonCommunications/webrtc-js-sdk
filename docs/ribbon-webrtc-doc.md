@@ -1153,8 +1153,8 @@ event, that the call was rejected.
 
 Ignores an incoming call.
 
-The specified call to ignore must be in a ringing state with an incoming
-direction. The call will be ended as a result of the operation.
+The specified call to ignore must be an incoming call in Ringing state. The call will be Ended as a result
+of the operation.
 
 The progress of the operation will be tracked via the
 [call:operation][57] event.
@@ -3270,60 +3270,6 @@ Retrieve an available Track object with a specific Track ID.
 
 Returns **[call.TrackObject][101]** A Track object.
 
-### initializeDevices
-
-Requests permission to access media devices on the end-user's machine.
-
-This API will trigger the browser to ask the end-user for permission to
-access their camera and/or microphone. These permissions are
-needed for the SDK to read information about the devices (the label,
-for example) and for using the devices for a call.
-
-If the browser does not yet have permission, it will prompt the end-user
-with a small pop-up window, giving the user a chance to allow/deny the
-permissions. The behaviour of this pop-up window differs slightly
-based on the browser; it may automatically save the user's decision
-(such as in Chrome and Safari) or it may require the user to choose
-whether their decision should be saved (such as in Firefox).
-
-This API is not required for proper usage of media and/or calls, but
-helps to prepare a user before a call is made or received. It allows
-an application to prompt the user for device permissions when it is
-convenient for them, rather than during call setup. If the user saves
-their decision, they will not be prompted again when the SDK accesses
-those devices for a call.
-
-For device information, the [media.getDevices][119] API will retrieve
-the list of media devices available for the SDK to use. If this list
-is empty, or is missing information, it is likely that the browser
-does not have permission to access the device's information. We
-recommend using the [media.initializeDevices][128] API in this
-scenario if you would like to allow the end-user to select which
-device(s) they would like to use when they make a call, rather than
-using the system default.
-
-The SDK will emit a [devices:change][127]
-event when the operation is successful or a
-[devices:error][129] event if an error is
-encountered.
-
-#### Parameters
-
-*   `constraints` **[Object][7]?** 
-
-    *   `constraints.audio` **[boolean][11]** Whether to ask for audio device permissions. (optional, default `true`)
-    *   `constraints.video` **[boolean][11]** Whether to ask for video device permissions. (optional, default `true`)
-
-#### Examples
-
-```javascript
-// The SDK will ask for both audio and video permissions by default.
-client.media.initializeDevices()
-
-// The SDK will only ask for audio permissions.
-client.media.initializeDevices({ audio: true, video: false })
-```
-
 ### createLocalMedia
 
 Create local media Tracks.
@@ -3379,6 +3325,60 @@ Dispose local media Tracks.
 
 Returns **[Promise][83]<[undefined][27]>** 
 
+### initializeDevices
+
+Requests permission to access media devices on the end-user's machine.
+
+This API will trigger the browser to ask the end-user for permission to
+access their camera and/or microphone. These permissions are
+needed for the SDK to read information about the devices (the label,
+for example) and for using the devices for a call.
+
+If the browser does not yet have permission, it will prompt the end-user
+with a small pop-up window, giving the user a chance to allow/deny the
+permissions. The behaviour of this pop-up window differs slightly
+based on the browser; it may automatically save the user's decision
+(such as in Chrome and Safari) or it may require the user to choose
+whether their decision should be saved (such as in Firefox).
+
+This API is not required for proper usage of media and/or calls, but
+helps to prepare a user before a call is made or received. It allows
+an application to prompt the user for device permissions when it is
+convenient for them, rather than during call setup. If the user saves
+their decision, they will not be prompted again when the SDK accesses
+those devices for a call.
+
+For device information, the [media.getDevices][119] API will retrieve
+the list of media devices available for the SDK to use. If this list
+is empty, or is missing information, it is likely that the browser
+does not have permission to access the device's information. We
+recommend using the [media.initializeDevices][128] API in this
+scenario if you would like to allow the end-user to select which
+device(s) they would like to use when they make a call, rather than
+using the system default.
+
+The SDK will emit a [devices:change][127]
+event when the operation is successful or a
+[devices:error][129] event if an error is
+encountered.
+
+#### Parameters
+
+*   `constraints` **[Object][7]?** 
+
+    *   `constraints.audio` **[boolean][11]** Whether to ask for audio device permissions. (optional, default `true`)
+    *   `constraints.video` **[boolean][11]** Whether to ask for video device permissions. (optional, default `true`)
+
+#### Examples
+
+```javascript
+// The SDK will ask for both audio and video permissions by default.
+client.media.initializeDevices()
+
+// The SDK will only ask for audio permissions.
+client.media.initializeDevices({ audio: true, video: false })
+```
+
 ### renderTracks
 
 Render Media Tracks in a container.
@@ -3410,20 +3410,6 @@ client.on('call:tracksAdded', function (params) {
    }
 })
 ```
-
-### removeTracks
-
-Remove Media Tracks from a container.
-
-The container is specified by providing a CSS selector string that
-corresponds to the HTMLElement to act as the container.
-
-#### Parameters
-
-*   `trackIds` **[Array][20]<[string][8]>** List of Track IDs to stop being rendered.
-*   `cssSelector` **[string][8]** A CSS selector string that uniquely
-    identifies an element. Ensure that special characters are properly
-    escaped.
 
 ### muteTracks
 
@@ -3462,6 +3448,20 @@ when a Track has been unmuted.
 #### Parameters
 
 *   `trackIds` **[Array][20]<[string][8]>** List of Track IDs.
+
+### removeTracks
+
+Remove Media Tracks from a container.
+
+The container is specified by providing a CSS selector string that
+corresponds to the HTMLElement to act as the container.
+
+#### Parameters
+
+*   `trackIds` **[Array][20]<[string][8]>** List of Track IDs to stop being rendered.
+*   `cssSelector` **[string][8]** A CSS selector string that uniquely
+    identifies an element. Ensure that special characters are properly
+    escaped.
 
 ### devices:change
 
@@ -3890,59 +3890,13 @@ This function should receive all messages sent from the remote side of the chann
 
 *   `data` **[Object][7]** The message received from the Channel.
 
-### setProxyMode
-
-Sets whether Call functionality should be proxied to the Remote SDK or not.
-When set to `true`, WebRTC operations will be proxied over a channel. When
-set to `false`, WebRTC operation will occur as normal on the local machine.
-
-Setting proxy mode is a required step for being able to use the Proxy
-functionality. It is recommended that this is the last step, after setting
-a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
-is an on-going call.
-
-On completion, this API will trigger a [proxy:change][147]
-event on success. The [proxy.getProxyMode][148] or [proxy.getInfo][149]
-APIs can be used to verify that proxy mode has been changed. If an error
-is encountered, this API will trigger a [proxy:error][150]
-event.
-
-#### Parameters
-
-*   `value` **[boolean][11]** Whether proxy mode should be enabled.
-
-#### Examples
-
-```javascript
-// On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.
-client.on('proxy:change', params => {
-   const isProxied = client.proxy.getProxyMode()
-   log(`Proxy mode set to ${isProxied}.`)
-})
-// On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.
-client.on('proxy:error', params => {
-   const { code, message } = params.error
-   log(`Failed to set proxy mode due to ${code}: ${message}.`)
-})
-
-// Get the current proxy state to ensure we can set proxy mode to `true`.
-const { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()
-if (
-   hasChannel === true && // A channel was previously provided.
-   remoteInitialized === true && // The Remote SDK is ready.
-   proxyMode === false && // Proxy mode is not already `true`.
-) {
-   client.proxy.setProxyMode(true)
-}
-```
-
 ### getProxyMode
 
 Retrieves the current mode for Proxy behaviour.
 
 When set to `true`, WebRTC operations will be proxied over a channel. When
 set to `false`, WebRTC operation will occur as normal on the local machine.
-See the [proxy.setProxyMode][151] API for more information.
+See the [proxy.setProxyMode][147] API for more information.
 
 Returns **[boolean][11]** Whether proxy mode is currently enabled.
 
@@ -3992,7 +3946,7 @@ Providing a channel is a required step for being able to use the Proxy
 functionality. This should be the first step, before initializing the
 remote endpoint and setting proxy mode.
 
-On completion, this API will trigger a [proxy:change][147]
+On completion, this API will trigger a [proxy:change][148]
 event on success. The [proxy.getInfo][149] API can be used to verify
 that a channel has been set. If an error is encountered, this API will
 trigger a [proxy:error][150] event. A channel
@@ -4000,7 +3954,7 @@ cannot be set if there is an on-going call.
 
 #### Parameters
 
-*   `channel` **[proxy.Channel][152]** See the `Channel` module for information.
+*   `channel` **[proxy.Channel][151]** See the `Channel` module for information.
 
 #### Examples
 
@@ -4024,10 +3978,10 @@ Sends an initialization message over the channel with webRTC configurations.
 
 Initializing the Remote SDK is a required step before being able to use the
 Proxy functionality. This step requires a channel having been set previously
-(see the [API][153]). It is recommended to perform this
-step before setting the proxy mode (see the [proxy.setProxyMode][151] API).
+(see the [API][152]). It is recommended to perform this
+step before setting the proxy mode (see the [proxy.setProxyMode][147] API).
 
-On completion, this API will trigger a [proxy:change][147]
+On completion, this API will trigger a [proxy:change][148]
 event on success. The [proxy.getInfo][149] API can be used to verify
 that the remote endpoint is initialized. If an error is encountered, this
 API will trigger a [proxy:error][150] event.
@@ -4049,6 +4003,52 @@ if (
    remoteInitialized === false // The Remote SDK was not previously initializted.
 ) {
    client.proxy.initializeRemote()
+}
+```
+
+### setProxyMode
+
+Sets whether Call functionality should be proxied to the Remote SDK or not.
+When set to `true`, WebRTC operations will be proxied over a channel. When
+set to `false`, WebRTC operation will occur as normal on the local machine.
+
+Setting proxy mode is a required step for being able to use the Proxy
+functionality. It is recommended that this is the last step, after setting
+a channel and initializing the remote endpoint. Proxy mode cannot be changed if there
+is an on-going call.
+
+On completion, this API will trigger a [proxy:change][148]
+event on success. The [proxy.getProxyMode][153] or [proxy.getInfo][149]
+APIs can be used to verify that proxy mode has been changed. If an error
+is encountered, this API will trigger a [proxy:error][150]
+event.
+
+#### Parameters
+
+*   `value` **[boolean][11]** Whether proxy mode should be enabled.
+
+#### Examples
+
+```javascript
+// On success, the `proxy.setProxyMode` API will trigger a `proxy:change` event.
+client.on('proxy:change', params => {
+   const isProxied = client.proxy.getProxyMode()
+   log(`Proxy mode set to ${isProxied}.`)
+})
+// On error, the `proxy.setProxyMode` API will trigger a `proxy:error` event.
+client.on('proxy:error', params => {
+   const { code, message } = params.error
+   log(`Failed to set proxy mode due to ${code}: ${message}.`)
+})
+
+// Get the current proxy state to ensure we can set proxy mode to `true`.
+const { proxyMode, hasChannel, remoteInitialized } = client.proxy.getInfo()
+if (
+   hasChannel === true && // A channel was previously provided.
+   remoteInitialized === true && // The Remote SDK is ready.
+   proxyMode === false && // Proxy mode is not already `true`.
+) {
+   client.proxy.setProxyMode(true)
 }
 ```
 
@@ -4468,27 +4468,6 @@ example above, requires the application to subscribe for the event. See the
 [sip.subscribe API][165] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
-### unsubscribe
-
-Deletes an existing SIP event subscription.
-
-The SDK will emit a [sip:subscriptionChange][166]
-event when the operations completes.
-
-Subscription details will no longer be available using the [sip.getDetails][167]
-API after it has been unsubscribed from.
-
-#### Parameters
-
-*   `eventType` **[string][8]** The name of the SIP event.
-
-#### Examples
-
-```javascript
-// Delete a SIP subscription.
-client.sip.unsubscribe('event:presence')
-```
-
 ### getDetails
 
 Retrieve information about a SIP event subscription.
@@ -4526,10 +4505,10 @@ API.
 
 Only one SIP subscription per event type can exist at a time. A subscription can
 watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][168] API at any time.
+from a subscription using the [sip.update][166] API at any time.
 
-The SDK will emit a [sip:subscriptionChange][166]
-event when the operations completes. The [sip.getDetails][167] API can be used
+The SDK will emit a [sip:subscriptionChange][167]
+event when the operations completes. The [sip.getDetails][168] API can be used
 to retrieve the current information about a subscription.
 
 The SDK will emit a [sip:eventsChange][169] event when
@@ -4561,6 +4540,27 @@ const customParameters = [{
 client.sip.subscribe('event:presence', subscribeUserList, 'clientId123', customParameters)
 ```
 
+### unsubscribe
+
+Deletes an existing SIP event subscription.
+
+The SDK will emit a [sip:subscriptionChange][167]
+event when the operations completes.
+
+Subscription details will no longer be available using the [sip.getDetails][168]
+API after it has been unsubscribed from.
+
+#### Parameters
+
+*   `eventType` **[string][8]** The name of the SIP event.
+
+#### Examples
+
+```javascript
+// Delete a SIP subscription.
+client.sip.unsubscribe('event:presence')
+```
+
 ### update
 
 Updates an existing SIP event subscription.
@@ -4568,8 +4568,8 @@ Updates an existing SIP event subscription.
 Allows for adding or removing users from the subscription, and for changing the
 custom parameters of the subscription.
 
-The SDK will emit a [sip:subscriptionChange][166]
-event when the operations completes. The [sip.getDetails][167] API can be used
+The SDK will emit a [sip:subscriptionChange][167]
+event when the operations completes. The [sip.getDetails][168] API can be used
 to retrieve the current information about a subscription.
 
 #### Parameters
@@ -4603,7 +4603,7 @@ client.sip.update('event:presence', userLists)
 A change has occurred to a SIP subscription.
 
 This event can be emitted when a new SIP subscription is created ([sip.subscribe][165]
-API), an existing subscription is updated ([sip.update][168] API), or has been
+API), an existing subscription is updated ([sip.update][166] API), or has been
 deleted ([sip.unsubscribe][170] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
@@ -4611,7 +4611,7 @@ When users are added or removed from a subscription through a new subscription o
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][167] API can be used to retrieve the current information about
+The [sip.getDetails][168] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -5145,19 +5145,19 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [146]: #presenceupdate
 
-[147]: #proxyeventproxychange
+[147]: #proxysetproxymode
 
-[148]: #proxygetproxymode
+[148]: #proxyeventproxychange
 
 [149]: #proxygetinfo
 
 [150]: #proxyeventproxyerror
 
-[151]: #proxysetproxymode
+[151]: #proxychannel
 
-[152]: #proxychannel
+[152]: #proxysetchannel
 
-[153]: #proxysetchannel
+[153]: #proxygetproxymode
 
 [154]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
 
@@ -5183,11 +5183,11 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [165]: #sipsubscribe
 
-[166]: #sipeventsipsubscriptionchange
+[166]: #sipupdate
 
-[167]: #sipgetdetails
+[167]: #sipeventsipsubscriptionchange
 
-[168]: #sipupdate
+[168]: #sipgetdetails
 
 [169]: #sipeventsipeventschange
 
