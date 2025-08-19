@@ -13,6 +13,7 @@ Ribbon WebRTC SDK change log.
 
 - Fixed a Call issue where media could be lost after a remote unhold operation when music-on-hold was previously being received. `KJS-3016`
 - Fixed a Call issue where a join operation would fail for the remote users in some scenarios, causing their calls to end unexpectedly. `KJS-2988`
+- Fixed a Proxy issue where certain WebRTC errors during a call would not be returned to the local SDK to be reported. `KJS-3044`
 - Fixed a ClickToCall issue where error handling for the `clickToCall.make` API would not handle an asynchronous failure.
 - Fixed a ClickToCall issue where the `clickToCall.get` API would include incorrect data after certain error scenarios of the `clickToCall.make` API.
 
