@@ -50685,22 +50685,22 @@
           ],
           "loc": {
             "start": {
-              "line": 163,
+              "line": 162,
               "column": 2
             },
             "end": {
-              "line": 204,
+              "line": 203,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 205,
+                "line": 204,
                 "column": 2
               },
               "end": {
-                "line": 215,
+                "line": 214,
                 "column": 3
               }
             },
@@ -50932,22 +50932,22 @@
           ],
           "loc": {
             "start": {
-              "line": 265,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 294,
+              "line": 300,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 295,
+                "line": 301,
                 "column": 2
               },
               "end": {
-                "line": 305,
+                "line": 310,
                 "column": 3
               }
             },
@@ -51001,248 +51001,6 @@
             }
           ],
           "namespace": "proxy.initializeRemote"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Sends an initialization message over the channel with webRTC configurations."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "This API is equivalent to the "
-                  },
-                  {
-                    "type": "link",
-                    "url": "#proxyinitializeremote",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "proxy.initializeRemote"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": " API, but provides feedback via a returned promise instead\nof emitting events. This API will not emit error events, but may emit an event if proxy state changes."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Initializing the Remote SDK is a required step before being able to use the\nProxy functionality. This step requires a channel having been set previously\n(see the "
-                  },
-                  {
-                    "type": "link",
-                    "url": "#proxysetchannel",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "API"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": "). It is recommended to perform this\nstep before setting the proxy mode (see the "
-                  },
-                  {
-                    "type": "link",
-                    "url": "#proxysetproxymode",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "proxy.setProxyMode"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": " API)."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Returns a Promise that resolves when the operation is successful.\nThe "
-                  },
-                  {
-                    "type": "link",
-                    "url": "#proxygetinfo",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "proxy.getInfo"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": " API can be used to verify that the remote endpoint is initialized.\nIf the operation fails, the promise will reject with a "
-                  },
-                  {
-                    "type": "link",
-                    "url": "BasicError",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "BasicError"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "value": " describing the failure."
-                  }
-                ]
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "This API will perform a version-check between this SDK and the Remote SDK.\nTheir versions must be the same, otherwise initialization will fail."
-                  }
-                ]
-              }
-            ]
-          },
-          "tags": [
-            {
-              "title": "public",
-              "description": null,
-              "lineNumber": 17,
-              "type": null
-            },
-            {
-              "title": "static",
-              "description": null,
-              "lineNumber": 18
-            },
-            {
-              "title": "memberof",
-              "description": "proxy",
-              "lineNumber": 19
-            },
-            {
-              "title": "method",
-              "description": null,
-              "lineNumber": 20,
-              "name": "initializeRemoteAsync"
-            },
-            {
-              "title": "param",
-              "description": null,
-              "lineNumber": 21,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "config"
-            },
-            {
-              "title": "example",
-              "description": "// Get the current proxy state to ensure we can initialize the Remote SDK.\nconst { hasChannel, remoteInitialized } = client.proxy.getInfo()\nif (\n   hasChannel === true && // A channel was previously provided.\n   remoteInitialized === false // The Remote SDK was not previously initializted.\n) {\n   try {\n     await client.proxy.initializeRemoteAsync()\n   } catch (params) {\n     const { code, message } = params.error\n     log(`Encountered error ${code}: ${message}.`)\n   }\n   const { remoteInitialized } = client.proxy.getInfo()\n   log(`Remote ${remoteInitialized ? 'has': 'has not'} been initialized.`)\n}",
-              "lineNumber": 22
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 307,
-              "column": 2
-            },
-            "end": {
-              "line": 345,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 346,
-                "column": 2
-              },
-              "end": {
-                "line": 354,
-                "column": 3
-              }
-            },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
-          },
-          "augments": [],
-          "examples": [
-            {
-              "description": "// Get the current proxy state to ensure we can initialize the Remote SDK.\nconst { hasChannel, remoteInitialized } = client.proxy.getInfo()\nif (\n   hasChannel === true && // A channel was previously provided.\n   remoteInitialized === false // The Remote SDK was not previously initializted.\n) {\n   try {\n     await client.proxy.initializeRemoteAsync()\n   } catch (params) {\n     const { code, message } = params.error\n     log(`Encountered error ${code}: ${message}.`)\n   }\n   const { remoteInitialized } = client.proxy.getInfo()\n   log(`Remote ${remoteInitialized ? 'has': 'has not'} been initialized.`)\n}"
-            }
-          ],
-          "implements": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "config",
-              "lineNumber": 21,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "yields": [],
-          "access": "public",
-          "scope": "static",
-          "memberof": "proxy",
-          "kind": "function",
-          "name": "initializeRemoteAsync",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "proxy",
-              "kind": "namespace"
-            },
-            {
-              "name": "initializeRemoteAsync",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "proxy.initializeRemoteAsync"
         }
       ]
     },

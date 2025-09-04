@@ -4052,49 +4052,6 @@ if (
 }
 ```
 
-### initializeRemoteAsync
-
-Sends an initialization message over the channel with webRTC configurations.
-
-This API is equivalent to the [proxy.initializeRemote][154] API, but provides feedback via a returned promise instead
-of emitting events. This API will not emit error events, but may emit an event if proxy state changes.
-
-Initializing the Remote SDK is a required step before being able to use the
-Proxy functionality. This step requires a channel having been set previously
-(see the [API][153]). It is recommended to perform this
-step before setting the proxy mode (see the [proxy.setProxyMode][147] API).
-
-Returns a Promise that resolves when the operation is successful.
-The [proxy.getInfo][149] API can be used to verify that the remote endpoint is initialized.
-If the operation fails, the promise will reject with a [BasicError][155] describing the failure.
-
-This API will perform a version-check between this SDK and the Remote SDK.
-Their versions must be the same, otherwise initialization will fail.
-
-#### Parameters
-
-*   `config` **[Object][7]** 
-
-#### Examples
-
-```javascript
-// Get the current proxy state to ensure we can initialize the Remote SDK.
-const { hasChannel, remoteInitialized } = client.proxy.getInfo()
-if (
-   hasChannel === true && // A channel was previously provided.
-   remoteInitialized === false // The Remote SDK was not previously initializted.
-) {
-   try {
-     await client.proxy.initializeRemoteAsync()
-   } catch (params) {
-     const { code, message } = params.error
-     log(`Encountered error ${code}: ${message}.`)
-   }
-   const { remoteInitialized } = client.proxy.getInfo()
-   log(`Remote ${remoteInitialized ? 'has': 'has not'} been initialized.`)
-}
-```
-
 ### proxy:change
 
 A Proxy API has completed and changed the proxy state.
@@ -4120,7 +4077,7 @@ The 'request' namespace (within the 'api' type) is used to make network requests
 ### fetch
 
 Send a request to the underlying REST service with the appropriate configuration and authentication.
-This is a wrapper on top of the browser's [fetch API][156]
+This is a wrapper on top of the browser's [fetch API][154]
 and behaves very similarly but using SDK configuration for the base URL and authentication as well
 as SDK logging.
 
@@ -4128,7 +4085,7 @@ as SDK logging.
 
 *   `resource` **[string][8]** The full path of the resource to fetch from the underlying service. This should include any REST version
     or user information. This path will be appended to the base URL according to SDK configuration.
-*   `init` **RequestInit** An object containing any custom settings that you want to apply to the request. See [fetch API][156]
+*   `init` **RequestInit** An object containing any custom settings that you want to apply to the request. See [fetch API][154]
     for a full description and defaults.
 
 #### Examples
@@ -4148,7 +4105,7 @@ const requestOptions = {
 const response = await client.request.fetch('/rest/version/1/user/xyz@test.com/externalnotification', requestOptions)
 ```
 
-Returns **[Promise][62]<[Response][157]>** A promise for a [Response][158] object.
+Returns **[Promise][62]<[Response][155]>** A promise for a [Response][156] object.
 
 ## sdpHandlers
 
@@ -4159,7 +4116,7 @@ environments and/or scenarios.
 Note that SDP handlers are exposed on the entry point of the SDK. They can be added during
 initialization of the SDK using the [config.call.sdpHandlers][90] configuration
 parameter. They can also be set after the SDK's creation by using the
-[call.setSdpHandlers][159] function.
+[call.setSdpHandlers][157] function.
 
 ### Examples
 
@@ -4244,8 +4201,8 @@ fully functional.
 
 The services an application can subscribe to are based on the features
 included in the SDK. The list of available services can be retrieved
-using the [services.getSubscriptions][160] API. These values can be used
-with the [services.subscribe][161] API.
+using the [services.getSubscriptions][158] API. These values can be used
+with the [services.subscribe][159] API.
 
 The channel used for subscriptions is the method for receiving the service
 updates. The recommended channel is `websocket`, where the SDK is able to
@@ -4256,30 +4213,30 @@ websocket cannot be used, will be available in the future.
 
 Subscribes to platform notifications for an SDK service.
 
-The SDK will emit a [subscription:change][162] event for each change
+The SDK will emit a [subscription:change][160] event for each change
 in subscription state. This includes when this API is initially called, to indicate a pending subscription,
 then again after the operation succeeds. Upon getting such event, existing subscriptions can be retrieved
-using the [services.getSubscriptions][160] API.
+using the [services.getSubscriptions][158] API.
 
-The SDK will emit a [subscription:error][163] event if the operation
+The SDK will emit a [subscription:error][161] event if the operation
 fails.
 
-If the [services.unsubscribe][164] API is called while a subscription is in progress, this operation will
-be cancelled and the SDK will emit a [subscription:error][163] event
+If the [services.unsubscribe][162] API is called while a subscription is in progress, this operation will
+be cancelled and the SDK will emit a [subscription:error][161] event
 with an error indicating the cancellation.
 
 The `clientCorrelator` option should be provided to support a user subscribing from multiple clients
 at the same time. This value is used by the platform to correlate subscriptions to specific clients.
 If a second subscription is made with the same value (including no value), the platform will override
 the first subscription. The client with the first subscription will receive a
-[subscription:change][162] event with an explicit reason in this
+[subscription:change][160] event with an explicit reason in this
 scenario.
 
 The SDK currently only supports the `websocket` channel as a subscription `type` option.
 
 #### Parameters
 
-*   `services` **[Array][20]<([string][8] | [services.ServiceDescriptor][165])>** A list of service configurations.
+*   `services` **[Array][20]<([string][8] | [services.ServiceDescriptor][163])>** A list of service configurations.
 *   `options` **[Object][7]?** The options object for non-credential options.
 
     *   `options.type` **[string][8]** The method of how to receive service updates. (optional, default `'websocket'`)
@@ -4299,11 +4256,11 @@ Returns **[undefined][27]**
 
 Cancels existing subscriptions for platform notifications.
 
-When calling this API, SDK emits a [subscription:change][162] event, each
+When calling this API, SDK emits a [subscription:change][160] event, each
 time there is a change in subscriptions.
 
 Upon getting such event, existing subscriptions can be retrieved using the
-[services.getSubscriptions][160] API. The `subscribed` values are the
+[services.getSubscriptions][158] API. The `subscribed` values are the
 services that can be unsubscribed from.
 
 #### Parameters
@@ -4330,7 +4287,7 @@ If a subscription is in fact in progress, the user should not take decisions bas
 subscription is not yet complete.
 
 To be notified when any subscription(s) did change/complete, listen for
-[subscription:change][162] events.
+[subscription:change][160] events.
 
 The `available` values are the SDK's services that an application can
 subscribe to receive notifications about. A feature generally
@@ -4338,7 +4295,7 @@ requires a subscription to its service in order to be fully functional.
 
 The `subscribed` values are the SDK's services that the application has
 an active subscription for. Services are subscribed to using the
-[services.subscribe][161] API.
+[services.subscribe][159] API.
 
 #### Examples
 
@@ -4365,7 +4322,7 @@ Returns **[Object][7]** Lists of subscribed and available services.
 
 Constants used to describe reasons for unsolicited subscription change.
 
-These values are used in the [subscription:change][162] event
+These values are used in the [subscription:change][160] event
 for the `reason` parameter. When the parameter is defined, it indicates the subscription changed
 for one of these unsolicited reasons.
 
@@ -4379,7 +4336,7 @@ for one of these unsolicited reasons.
 
 The ServiceDescriptor type defines the format for specifying how to subscribe for a certain service.
 This is the service configuration object that needs to be passed (as part of an array of configuration objects)
-when calling the [services.subscribe][161] function.
+when calling the [services.subscribe][159] function.
 Only some plugins (`call`, `messaging` and `presence`) support such configuration object that needs to be passed
 to the subscribe function.
 
@@ -4408,10 +4365,10 @@ client.services.subscribe([
 Subscription information has changed.
 
 The updated subscription information can be retrieved using the
-[services.getSubscriptions][160] API.
+[services.getSubscriptions][158] API.
 
 When the `reason` parameter is provided, this means the subscription has been lost unexpectedly.
-The value for this parameter will be one of the [services.changeReasons][166] constants.
+The value for this parameter will be one of the [services.changeReasons][164] constants.
 
 #### Parameters
 
@@ -4424,7 +4381,7 @@ The value for this parameter will be one of the [services.changeReasons][166] co
 An error occurred during a subscription operation.
 
 The subscription information can be retrieved using the
-[services.getSubscriptions][160] API.
+[services.getSubscriptions][158] API.
 
 Below are some common errors related to service subscriptions.
 
@@ -4491,7 +4448,7 @@ specific users.
 
 A SIP event may either be solicited or unsolicited. Solicited events, such as the "presence"
 example above, requires the application to subscribe for the event. See the
-[sip.subscribe API][167] for more information about solicited events.
+[sip.subscribe API][165] for more information about solicited events.
 Unsolicited events have no prerequisites for being received.
 
 ### getDetails
@@ -4526,18 +4483,18 @@ Creates a subscription for a SIP event.
 
 A subscription is required to receive SIP notifications for solicited events. Before
 creating a SIP subscription, the service for the event type must have been
-provisioned as part of the user subscription using the [services.subscribe][161]
+provisioned as part of the user subscription using the [services.subscribe][159]
 API.
 
 Only one SIP subscription per event type can exist at a time. A subscription can
 watch for events from multiple users at once. Users can be added to or removed
-from a subscription using the [sip.update][168] API at any time.
+from a subscription using the [sip.update][166] API at any time.
 
-The SDK will emit a [sip:subscriptionChange][169]
-event when the operations completes. The [sip.getDetails][170] API can be used
+The SDK will emit a [sip:subscriptionChange][167]
+event when the operations completes. The [sip.getDetails][168] API can be used
 to retrieve the current information about a subscription.
 
-The SDK will emit a [sip:eventsChange][171] event when
+The SDK will emit a [sip:eventsChange][169] event when
 a SIP event is received.
 
 #### Parameters
@@ -4570,10 +4527,10 @@ client.sip.subscribe('event:presence', subscribeUserList, 'clientId123', customP
 
 Deletes an existing SIP event subscription.
 
-The SDK will emit a [sip:subscriptionChange][169]
+The SDK will emit a [sip:subscriptionChange][167]
 event when the operations completes.
 
-Subscription details will no longer be available using the [sip.getDetails][170]
+Subscription details will no longer be available using the [sip.getDetails][168]
 API after it has been unsubscribed from.
 
 #### Parameters
@@ -4594,8 +4551,8 @@ Updates an existing SIP event subscription.
 Allows for adding or removing users from the subscription, and for changing the
 custom parameters of the subscription.
 
-The SDK will emit a [sip:subscriptionChange][169]
-event when the operations completes. The [sip.getDetails][170] API can be used
+The SDK will emit a [sip:subscriptionChange][167]
+event when the operations completes. The [sip.getDetails][168] API can be used
 to retrieve the current information about a subscription.
 
 #### Parameters
@@ -4628,16 +4585,16 @@ client.sip.update('event:presence', userLists)
 
 A change has occurred to a SIP subscription.
 
-This event can be emitted when a new SIP subscription is created ([sip.subscribe][167]
-API), an existing subscription is updated ([sip.update][168] API), or has been
-deleted ([sip.unsubscribe][172] API). The `change` parameter on the event indicates
+This event can be emitted when a new SIP subscription is created ([sip.subscribe][165]
+API), an existing subscription is updated ([sip.update][166] API), or has been
+deleted ([sip.unsubscribe][170] API). The `change` parameter on the event indicates
 which scenario caused the event.
 
 When users are added or removed from a subscription through a new subscription or an update,
 the `subscribedUsers` and `unsubscribedUsers` parameters will indicate the users added
 and removed, respectively.
 
-The [sip.getDetails][170] API can be used to retrieve the current information about
+The [sip.getDetails][168] API can be used to retrieve the current information about
 a subscription.
 
 #### Parameters
@@ -4716,12 +4673,12 @@ The 'user' namespace allows access to user information for users within the same
 
 Fetches information about a User.
 
-The SDK will emit a [users:change][173]
+The SDK will emit a [users:change][171]
 event after the operation completes. The User's information will then
 be available.
 
 Information about an available User can be retrieved using the
-[user.get][174] API.
+[user.get][172] API.
 
 #### Parameters
 
@@ -4731,23 +4688,23 @@ Information about an available User can be retrieved using the
 
 Retrieves information about a User, if available.
 
-See the [user.fetch][175] and [user.search][176] APIs for details about
+See the [user.fetch][173] and [user.search][174] APIs for details about
 making Users' information available.
 
 #### Parameters
 
 *   `userId` **[user.UserID][82]** The User ID of the user.
 
-Returns **[user.User][177]** The User object for the specified user.
+Returns **[user.User][175]** The User object for the specified user.
 
 ### getAll
 
 Retrieves information about all available Users.
 
-See the [user.fetch][175] and [user.search][176] APIs for details about
+See the [user.fetch][173] and [user.search][174] APIs for details about
 making Users' information available.
 
-Returns **[Array][20]<[user.User][177]>** An array of all the User objects.
+Returns **[Array][20]<[user.User][175]>** An array of all the User objects.
 
 ### search
 
@@ -4756,10 +4713,10 @@ Searches the domain's directory for Users.
 Directory searching only supports one filter. If multiple filters are provided, only one of the filters will be used for the search.
 A search with no filters provided will return all users.
 
-The SDK will emit a [directory:change][178]
+The SDK will emit a [directory:change][176]
 event after the operation completes. The search results will be
 provided as part of the event, and will also be available using the
-[user.get][174] and [user.getAll][179] APIs.
+[user.get][172] and [user.getAll][177] APIs.
 
 #### Parameters
 
@@ -4801,7 +4758,7 @@ The directory has changed.
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][20]<[user.User][177]>** The Users' information returned by the
+    *   `params.results` **[Array][20]<[user.User][175]>** The Users' information returned by the
         operation.
 
 ### directory:error
@@ -4822,7 +4779,7 @@ A change has occurred in the users list
 
 *   `params` **[Object][7]** 
 
-    *   `params.results` **[Array][20]<[user.User][177]>** The Users' information returned by the
+    *   `params.results` **[Array][20]<[user.User][175]>** The Users' information returned by the
         operation.
 
 ### users:error
@@ -4846,7 +4803,7 @@ Voicemail functions are all part of this namespace.
 
 Attempts to retrieve voicemail information from the server.
 
-A [voicemail:change][180] event is
+A [voicemail:change][178] event is
 emitted upon completion.
 
 ### get
@@ -5185,56 +5142,52 @@ An error has occurred while attempting to retrieve voicemail data.
 
 [153]: #proxysetchannel
 
-[154]: #proxyinitializeremote
+[154]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
 
-[155]: BasicError
+[155]: https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5
 
-[156]: https://developer.mozilla.org/en-US/docs/Web/API/fetch
+[156]: https://developer.mozilla.org/en-US/docs/Web/API/Response
 
-[157]: https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5
+[157]: #callsetsdphandlers
 
-[158]: https://developer.mozilla.org/en-US/docs/Web/API/Response
+[158]: #servicesgetsubscriptions
 
-[159]: #callsetsdphandlers
+[159]: #servicessubscribe
 
-[160]: #servicesgetsubscriptions
+[160]: #serviceseventsubscriptionchange
 
-[161]: #servicessubscribe
+[161]: #serviceseventsubscriptionerror
 
-[162]: #serviceseventsubscriptionchange
+[162]: #servicesunsubscribe
 
-[163]: #serviceseventsubscriptionerror
+[163]: #servicesservicedescriptor
 
-[164]: #servicesunsubscribe
+[164]: #serviceschangereasons
 
-[165]: #servicesservicedescriptor
+[165]: #sipsubscribe
 
-[166]: #serviceschangereasons
+[166]: #sipupdate
 
-[167]: #sipsubscribe
+[167]: #sipeventsipsubscriptionchange
 
-[168]: #sipupdate
+[168]: #sipgetdetails
 
-[169]: #sipeventsipsubscriptionchange
+[169]: #sipeventsipeventschange
 
-[170]: #sipgetdetails
+[170]: #sipunsubscribe
 
-[171]: #sipeventsipeventschange
+[171]: #usereventuserschange
 
-[172]: #sipunsubscribe
+[172]: #userget
 
-[173]: #usereventuserschange
+[173]: #userfetch
 
-[174]: #userget
+[174]: #usersearch
 
-[175]: #userfetch
+[175]: #useruser
 
-[176]: #usersearch
+[176]: #usereventdirectorychange
 
-[177]: #useruser
+[177]: #usergetall
 
-[178]: #usereventdirectorychange
-
-[179]: #usergetall
-
-[180]: #voicemaileventvoicemailchange
+[178]: #voicemaileventvoicemailchange
