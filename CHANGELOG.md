@@ -7,6 +7,20 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.10.0 - 2025-09-25
+
+### Fixed
+
+- Fixed a Subscription issue where multiple operations being called at once could conflict with each other. `KJS-2777`
+  - If a subscription operation is pending, a subsequent operation will fail, leaving the first operation unaffected.
+  - The exception is if an unsubscribe is called during a pending subscribe, then the subscribe operation will be cancelled as a failure.
+- Improved error checking for REST requests, ensuring they have a clear error message if they were to fail due to misconfiguration.
+- Fixed a Call issue where, during a direct transfer operation, a `call:tracksRemoved` event would be emitted even though no tracks were removed by the transfer.
+
+### Removed
+
+- Removed the `config.call.mediaBrokerOnly` configuration parameter as a result of a bug fix. As a result of this removal, SDK will behave as if this configuration parameter was disabled. `KJS-3018`
+
 ## 7.9.0 - 2025-08-28
 
 ### Fixed
@@ -23,6 +37,8 @@ Ribbon WebRTC SDK change log.
 
 - Improved error handling for Calls when answering a slow-start call, ensuring that browser resources are immediately released in failure scenarios. `KJS-2875`
 - Cleaned up timer handlers in Proxy plugin when SDK is destroyed to avoid stray handlers being run. `KJS-2796`
+- Fixed a ClickToCall issue where error handling for the `clickToCall.make` API would not handle an asynchronous failure.
+- Fixed a ClickToCall issue where the `clickToCall.get` API would include incorrect data after certain error scenarios of the `clickToCall.make` API.
 
 ## 7.7.0 - 2025-06-26
 
