@@ -7,6 +7,18 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.11.0 - beta
+
+### Added
+
+- Improved handling for the Call config `config.call.defaultPeerConfig.iceCandidatePoolSize`. `KJS-3084`
+  - When configured, the SDK will attempt to optimize call setup time by collecting ICE candidates at an earlier stage of call establishment.
+  - Please see the API documentation for `call.RTCPeerConnectionConfig` for more information.
+
+### Fixed
+
+- Fixed an issue where the `call:stateChange` event would put the `BasicError` returned from a failed `sendRingingFeedback` request inside another object instead of passing it directly back to the client as a `BasicError`. `KJS-2954`
+
 ## 7.10.0 - 2025-09-25
 
 ### Fixed
