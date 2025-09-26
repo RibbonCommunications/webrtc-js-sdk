@@ -73,7 +73,7 @@
           "column": 58
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/builds/core/index.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/builds/core/index.js"
     },
     "augments": [],
     "examples": [
@@ -220,7 +220,7 @@
           "column": 58
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/builds/core/index.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/builds/core/index.js"
     },
     "augments": [],
     "examples": [],
@@ -519,7 +519,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/logs/configs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/logs/configs.js"
           },
           "augments": [],
           "examples": [],
@@ -1038,7 +1038,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/plugin/configs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/plugin/configs.js"
           },
           "augments": [],
           "examples": [],
@@ -1454,7 +1454,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/notifications/configs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/notifications/configs.js"
           },
           "augments": [],
           "examples": [],
@@ -1793,7 +1793,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/request/configs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/request/configs.js"
           },
           "augments": [],
           "examples": [],
@@ -1996,7 +1996,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/configs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/configs.js"
           },
           "augments": [],
           "examples": [],
@@ -2285,7 +2285,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/configs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/configs.js"
           },
           "augments": [],
           "examples": [],
@@ -2734,7 +2734,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/link/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/link/index.js"
           },
           "augments": [],
           "examples": [],
@@ -3273,7 +3273,7 @@
           "column": 58
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/builds/core/index.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/builds/core/index.js"
     },
     "augments": [],
     "examples": [],
@@ -3382,7 +3382,7 @@
                 "column": 44
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/request/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/request/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -3577,7 +3577,7 @@
                 "column": 40
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -3734,7 +3734,7 @@
                 "column": 38
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -3863,7 +3863,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/factory.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/factory.js"
           },
           "augments": [],
           "examples": [],
@@ -3958,7 +3958,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/factory.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/factory.js"
           },
           "augments": [],
           "examples": [
@@ -4072,7 +4072,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/config/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/config/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -4270,7 +4270,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/config/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/config/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -4431,7 +4431,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/events/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/events/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -4592,7 +4592,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/events/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/events/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -4739,7 +4739,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/events/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/events/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -4863,7 +4863,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/events/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/events/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -5000,7 +5000,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/index.js"
           },
           "augments": [],
           "examples": [
@@ -5159,7 +5159,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -5471,7 +5471,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -5878,7 +5878,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -6211,7 +6211,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/auth/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/auth/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -6419,7 +6419,7 @@
                 "column": 16
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/errors/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/errors/index.js"
           },
           "augments": [],
           "examples": [],
@@ -6577,7 +6577,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -6802,7 +6802,7 @@
                 "column": 46
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -7173,7 +7173,7 @@
                 "column": 40
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -7361,7 +7361,7 @@
                 "column": 36
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -7599,7 +7599,7 @@
                 "column": 43
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -7901,7 +7901,7 @@
                 "column": 51
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -8285,7 +8285,7 @@
                 "column": 47
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -8518,7 +8518,7 @@
                 "column": 53
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -8816,7 +8816,7 @@
                 "column": 51
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -9095,7 +9095,7 @@
                 "column": 55
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -9344,7 +9344,7 @@
                 "column": 50
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -9671,7 +9671,7 @@
                 "column": 55
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -9947,7 +9947,7 @@
                 "column": 56
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -10172,7 +10172,7 @@
                 "column": 54
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -10430,7 +10430,7 @@
                 "column": 67
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -10711,7 +10711,7 @@
                 "column": 48
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -11251,7 +11251,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/establish.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/establish.js"
           },
           "augments": [],
           "examples": [
@@ -12034,7 +12034,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/establish.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/establish.js"
           },
           "augments": [],
           "examples": [],
@@ -12557,7 +12557,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/establish.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/establish.js"
           },
           "augments": [],
           "examples": [],
@@ -12753,7 +12753,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/establish.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/establish.js"
           },
           "augments": [],
           "examples": [],
@@ -12968,7 +12968,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/establish.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/establish.js"
           },
           "augments": [],
           "examples": [],
@@ -13234,7 +13234,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/establish.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/establish.js"
           },
           "augments": [],
           "examples": [],
@@ -13477,7 +13477,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -13695,7 +13695,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -14038,7 +14038,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -14540,7 +14540,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -14875,7 +14875,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -15185,7 +15185,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -15527,7 +15527,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [
@@ -16194,7 +16194,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [],
@@ -16542,7 +16542,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/midcall.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/midcall.js"
           },
           "augments": [],
           "examples": [
@@ -16806,7 +16806,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/complex.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/complex.js"
           },
           "augments": [],
           "examples": [],
@@ -17060,7 +17060,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/complex.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/complex.js"
           },
           "augments": [],
           "examples": [],
@@ -17289,7 +17289,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/complex.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/complex.js"
           },
           "augments": [],
           "examples": [],
@@ -17468,7 +17468,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [
@@ -17636,7 +17636,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [],
@@ -17902,7 +17902,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [],
@@ -18225,7 +18225,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [
@@ -18505,7 +18505,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [],
@@ -18738,7 +18738,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [],
@@ -19050,7 +19050,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [
@@ -19363,7 +19363,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [
@@ -19640,7 +19640,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [],
@@ -19856,7 +19856,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/misc.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/misc.js"
           },
           "augments": [],
           "examples": [],
@@ -20188,7 +20188,7 @@
                 "column": 28
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/constants.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/constants.js"
           },
           "augments": [],
           "examples": [
@@ -20748,7 +20748,7 @@
                 "column": 60
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/interface/api/constants.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/interface/api/constants.js"
           },
           "augments": [],
           "examples": [
@@ -21543,7 +21543,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/callstack/reporter/constants.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/callstack/reporter/constants.js"
           },
           "augments": [],
           "examples": [
@@ -22894,7 +22894,7 @@
                 "column": 1
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/callstack/reporter/constants.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/callstack/reporter/constants.js"
           },
           "augments": [],
           "examples": [
@@ -23894,7 +23894,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -24005,7 +24005,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -24408,7 +24408,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -25155,7 +25155,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -25332,7 +25332,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -25519,7 +25519,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -25774,7 +25774,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -25982,7 +25982,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -26178,7 +26178,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -26417,7 +26417,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -26741,7 +26741,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -27080,7 +27080,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -27400,7 +27400,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -28133,7 +28133,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -28408,7 +28408,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -28654,7 +28654,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -28891,7 +28891,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -29137,7 +29137,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -29461,7 +29461,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -29863,7 +29863,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -30105,7 +30105,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -30560,7 +30560,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/call/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/call/docs.js"
           },
           "augments": [],
           "examples": [
@@ -30722,7 +30722,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -30812,7 +30812,7 @@
                 "column": 55
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -30921,7 +30921,7 @@
                 "column": 53
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -31045,7 +31045,7 @@
                 "column": 66
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -31165,7 +31165,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -31331,7 +31331,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -31486,7 +31486,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -31606,7 +31606,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -31736,7 +31736,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -31889,7 +31889,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/callHistory/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/callHistory/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -32015,7 +32015,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/clickToCall/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/clickToCall/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -32115,7 +32115,7 @@
                 "column": 56
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/clickToCall/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/clickToCall/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -32275,7 +32275,7 @@
                 "column": 54
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/clickToCall/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/clickToCall/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -32454,7 +32454,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/clickToCall/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/clickToCall/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -32628,7 +32628,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/clickToCall/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/clickToCall/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -32746,7 +32746,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -32829,7 +32829,7 @@
                 "column": 36
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -32935,7 +32935,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -33076,7 +33076,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -33241,7 +33241,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -33530,7 +33530,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/connectivity/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/connectivity/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -34003,7 +34003,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -34087,7 +34087,7 @@
                 "column": 42
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -34220,7 +34220,7 @@
                 "column": 46
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -34349,7 +34349,7 @@
                 "column": 48
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -34645,7 +34645,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -35138,7 +35138,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -35283,7 +35283,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -35403,7 +35403,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -35511,7 +35511,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -35825,7 +35825,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -36317,7 +36317,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/contacts.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/contacts.js"
           },
           "augments": [],
           "examples": [],
@@ -36455,7 +36455,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -36529,7 +36529,7 @@
                 "column": 52
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -36648,7 +36648,7 @@
                 "column": 58
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -36873,7 +36873,7 @@
                 "column": 48
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -37100,7 +37100,7 @@
                 "column": 46
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -37287,7 +37287,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -37507,7 +37507,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -37669,7 +37669,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -37832,7 +37832,7 @@
                       "column": 7
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/mixins.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/mixins.js"
                 },
                 "augments": [],
                 "examples": [
@@ -38032,7 +38032,7 @@
                       "column": 7
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/mixins.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/mixins.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -38218,7 +38218,7 @@
                       "column": 7
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/mixins.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/mixins.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -38538,7 +38538,7 @@
                       "column": 7
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/mixins.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/mixins.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -38719,7 +38719,7 @@
                       "column": 7
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/mixins.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/mixins.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -39155,7 +39155,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -39415,7 +39415,7 @@
                       "column": 7
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/messaging/interface/mixins.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/messaging/interface/mixins.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -39604,7 +39604,7 @@
           "column": 1
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/logs/interface/api.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/logs/interface/api.js"
     },
     "augments": [],
     "examples": [],
@@ -39808,7 +39808,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/logs/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/logs/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -40173,7 +40173,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/logs/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/logs/docs.js"
           },
           "augments": [],
           "examples": [
@@ -40544,7 +40544,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/logs/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/logs/docs.js"
           },
           "augments": [],
           "examples": [
@@ -40724,7 +40724,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -40833,7 +40833,7 @@
                 "column": 47
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -40978,7 +40978,7 @@
                 "column": 55
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -41158,7 +41158,7 @@
                 "column": 41
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -41345,7 +41345,7 @@
                 "column": 45
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -41537,7 +41537,7 @@
                 "column": 53
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -41722,7 +41722,7 @@
                 "column": 57
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -41905,7 +41905,7 @@
                 "column": 51
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -42174,7 +42174,7 @@
                 "column": 45
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -42365,7 +42365,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -42503,7 +42503,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -42665,7 +42665,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -42916,7 +42916,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [
@@ -43245,7 +43245,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [
@@ -43440,7 +43440,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -43806,7 +43806,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [
@@ -44039,7 +44039,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [
@@ -44321,7 +44321,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -44504,7 +44504,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -44672,7 +44672,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/interface/api/media.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/interface/api/media.js"
           },
           "augments": [],
           "examples": [],
@@ -44993,7 +44993,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtc/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtc/docs.js"
           },
           "augments": [],
           "examples": [
@@ -45152,7 +45152,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/notifications/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/notifications/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -45252,7 +45252,7 @@
                 "column": 49
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/notifications/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/notifications/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -45412,7 +45412,7 @@
                 "column": 47
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/notifications/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/notifications/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -45605,7 +45605,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/notifications/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/notifications/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -45850,7 +45850,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -46055,7 +46055,7 @@
                 "column": 41
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -46293,7 +46293,7 @@
                 "column": 48
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -46417,7 +46417,7 @@
                 "column": 45
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -46599,7 +46599,7 @@
                 "column": 49
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -46772,7 +46772,7 @@
                 "column": 37
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -46932,7 +46932,7 @@
                 "column": 37
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/link/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/link/index.js"
           },
           "augments": [],
           "examples": [
@@ -47137,7 +47137,7 @@
                 "column": 41
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/link/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/link/index.js"
           },
           "augments": [],
           "examples": [],
@@ -47455,7 +47455,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -47708,7 +47708,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -47906,7 +47906,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -48079,7 +48079,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -48279,7 +48279,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -48482,7 +48482,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -48650,7 +48650,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -48873,7 +48873,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/presence/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/presence/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -49132,7 +49132,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -49231,7 +49231,7 @@
                 "column": 42
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -49365,7 +49365,7 @@
                 "column": 40
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -49522,7 +49522,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/docs.js"
           },
           "augments": [],
           "examples": [
@@ -49624,7 +49624,7 @@
                       "column": 0
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/docs.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/docs.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -49759,7 +49759,7 @@
                       "column": 0
                     }
                   },
-                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/docs.js"
+                  "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/docs.js"
                 },
                 "augments": [],
                 "examples": [],
@@ -49948,7 +49948,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -50117,7 +50117,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -50338,7 +50338,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -50558,7 +50558,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -50804,7 +50804,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -51051,7 +51051,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/webrtcProxy/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/webrtcProxy/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -51163,7 +51163,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/request/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/request/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -51297,7 +51297,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/request/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/request/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -51572,7 +51572,7 @@
           "column": 58
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/builds/core/index.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/builds/core/index.js"
     },
     "augments": [],
     "examples": [
@@ -51693,7 +51693,7 @@
                 "column": 58
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/builds/core/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/builds/core/index.js"
           },
           "augments": [],
           "examples": [],
@@ -51939,7 +51939,7 @@
                 "column": 58
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/builds/core/index.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/builds/core/index.js"
           },
           "augments": [],
           "examples": [
@@ -52176,7 +52176,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -52337,7 +52337,7 @@
                 "column": 47
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -52878,7 +52878,7 @@
                 "column": 45
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -53060,7 +53060,7 @@
                 "column": 45
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -53493,7 +53493,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -53827,7 +53827,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -54080,7 +54080,7 @@
                 "column": 7
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -54266,7 +54266,7 @@
                 "column": 35
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -54509,7 +54509,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/subscription/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/subscription/docs.js"
           },
           "augments": [],
           "examples": [
@@ -54754,7 +54754,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -55023,7 +55023,7 @@
                 "column": 66
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -55281,7 +55281,7 @@
                 "column": 38
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -55523,7 +55523,7 @@
                 "column": 48
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [
@@ -55798,7 +55798,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -56144,7 +56144,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -56430,7 +56430,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -56696,7 +56696,7 @@
                 "column": 3
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/sipEvents/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/sipEvents/interface/api.js"
           },
           "augments": [],
           "examples": [
@@ -56932,7 +56932,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -57040,7 +57040,7 @@
                 "column": 50
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -57195,7 +57195,7 @@
                 "column": 48
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -57353,7 +57353,7 @@
                 "column": 42
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -57513,7 +57513,7 @@
                 "column": 40
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/events/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/events/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -57707,7 +57707,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/users.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/users.js"
           },
           "augments": [],
           "examples": [],
@@ -57888,7 +57888,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/users.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/users.js"
           },
           "augments": [],
           "examples": [],
@@ -58090,7 +58090,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/users.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/users.js"
           },
           "augments": [],
           "examples": [],
@@ -58378,7 +58378,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/interface/api/users.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/interface/api/users.js"
           },
           "augments": [],
           "examples": [],
@@ -58721,7 +58721,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -58986,7 +58986,7 @@
                 "column": 0
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/users/docs.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/users/docs.js"
           },
           "augments": [],
           "examples": [],
@@ -59103,7 +59103,7 @@
           "column": 0
         }
       },
-      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/mwi/docs.js"
+      "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/mwi/docs.js"
     },
     "augments": [],
     "examples": [],
@@ -59268,7 +59268,7 @@
                 "column": 44
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/mwi/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/mwi/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -59572,7 +59572,7 @@
                 "column": 42
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/mwi/interface/eventTypes.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/mwi/interface/eventTypes.js"
           },
           "augments": [],
           "examples": [],
@@ -59730,7 +59730,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/mwi/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/mwi/interface/api.js"
           },
           "augments": [],
           "examples": [],
@@ -59826,7 +59826,7 @@
                 "column": 5
               }
             },
-            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta@2/packages/kandy/src/mwi/interface/api.js"
+            "file": "/home/jenkins/workspace/jobs_webrtcjs_beta/packages/kandy/src/mwi/interface/api.js"
           },
           "augments": [],
           "examples": [],
