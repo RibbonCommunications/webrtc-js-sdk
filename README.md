@@ -8,14 +8,14 @@
 
 #### Install a particular build :
 
-To install a particular build branch or beta branch with the Github URL, run:
+To install a particular build with the Github URL, run:
 
-`$ npm install https://github.com/RibbonCommunications/webrtc-js-sdk#<build number or "beta"> --save`
+`$ npm install https://github.com/RibbonCommunications/webrtc-js-sdk#<build number> --save`
 
 ### In the browser :
 ```html
-<script src="https://unpkg.com/@rbbn/webrtc-js-sdk@7.12.0/dist/webrtc.js"
-  integrity="sha384-XNqTbwzsEanlb8JJX5foiWYvxPe99qXG/7csBKY3sStlUEuA7JVjSM9rV9ZnnGB+"
+<script src="https://unpkg.com/@rbbn/webrtc-js-sdk@7.13.0/dist/webrtc.js"
+  integrity="sha384-xYaBwqYMwFmM7iMTGsUO1p7Kfgj2txfH8p1jBywpE6IruuqzC82cAwa8iyWN2GJU"
   crossorigin="anonymous">
 </script>
 ```
