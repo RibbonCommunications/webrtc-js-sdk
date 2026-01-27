@@ -25,13 +25,6 @@ const configuration = {
     call: {
         serverTurnCredentials: true,
         defaultPeerConfig: {
-          // A key-value dictionary that corresponds to the available RTCPeerConfiguration which is normally
-          // passed when creating an RTCPeerConnection.
-          // See https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters RTCPeerConnection's
-          // configuration parameters} for more information.
-          // Specify the TURN/STUN servers that should be used.
-          // Note that starting with Chromium 110, TURN(S) urls must only contain a transport
-          // parameter in the query section and STUN urls must not specify any query section.
           iceServers:[
               {
                   url: 'turns:turn-blue.rbbn.com:443?transport=tcp'
@@ -86,13 +79,7 @@ The Call configs are used to initialize call/network settings. This can customiz
 ```javascript
 call: {
   defaultPeerConfig: {
-    // A key-value dictionary that corresponds to the available RTCPeerConfiguration which is normally
-    // passed when creating an RTCPeerConnection.
-    // See https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection#parameters RTCPeerConnection's
-    // configuration parameters} for more information.
-    // Specify the TURN/STUN servers that should be used.
-    // Note that starting with Chromium 110, TURN(S) urls must only contain a transport
-    // parameter in the query section and STUN urls must not specify any query section.
+    // Configurations for low-level WebRTC functionality.
     iceServers: [
       {
         urls: 'turns:...',
@@ -143,18 +130,16 @@ The Connectivity configs are used to customize the behaviour of the websocket an
 
 ```javascript
 connectivity: {
-    // Specify that a keepAlive ping should be sent every 30 seconds.
+    // Specify that a keep-alive ping should be sent every 30 seconds.
     pingInterval: 30000 // milliseconds
 }
 ```
 
 ```javascript
 connectivity: {
-    // Specify that a keepAlive ping should be sent every 60 seconds,
-    // and if unable to connect should try to reconnect 3 times before
-    // throwing an error. Specify to wait 10 seconds before attempting
-    // to connect, and double that time every connection attempt, while
-    // keeping maximum wait time under 300 seconds.
+    // Specify a keep-alive ping interval of 60 seconds.
+    // Specify that, on unexpected disconnect, automatically attempt to reconnect
+    //    3 times, with a growing delay between each attempt.
     pingInterval: 60000, // milliseconds
     reconnectLimit: 3,
     reconnectDelay: 10000, // milliseconds

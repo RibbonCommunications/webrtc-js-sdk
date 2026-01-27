@@ -9,7 +9,9 @@
 
 # Subscription-Related Events
 
-This tutorial will cover three subscription-related event categories: authentication, connectivity, and subscription.  This trail will list the events in each category , explain when they are emitted, explain what they mean, and provide information on how an application can/should handle them when encountered.
+Note: This tutorial is for the SDK's event-driven APIs, namely `setCredentials`, `services.subscribe` and `services.unsubscribe`. When using the SDK's Async APIs, only a subset of these events are emitted. Specifically, only the `auth:error`, `ws:change`, and `subscription:change` events. Feedback covered by the other events are instead provided via the returned promise from the API. Please see the [Async APIs](Async%20APIs) tutorial for more information.
+
+This tutorial will cover three subscription-related event categories: authentication, connectivity, and subscription. It will list the events in each category, explain when they are emitted, explain what they mean, and provide information on how an application can/should handle them when encountered.
 
 For more details on the error-specific events, see the other trail page titled [Handling Subscription Errors](Handling%20Subscription%20Errors).
 

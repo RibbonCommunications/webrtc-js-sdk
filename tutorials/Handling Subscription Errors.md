@@ -4,7 +4,18 @@
 
 This tutorial will go over the different types of errors that may be encountered during subscription, and also provide recommendations for handling them through some examples.
 
-The SDK reports errors from subscription attempts to the application via the `subscription:error` event. These errors are can be handled with an event handler for the error event:
+When using the `services.subscribeAsync` API, the SDK reports errors by rejecting the promise returned by the API.
+
+```javascript
+try {
+  await client.services.subscribeAsync(['call'])
+} catch (error) {
+  const { code, message } = error
+  // Handle error
+}
+```
+
+When using the SDK's event-driven API, `services.subscribe`, the SDK rerpots errors via the `subscription:error` event. These errors are can be handled with an event handler for the error event:
 
 ```javascript
 client.on('subscription:error', function (params) {
@@ -96,12 +107,16 @@ const SHORT_TIMER = 30000 * 0.8 + 3000 * 0.4 * Math.random()
 const LONG_TIMER = 300000 * 0.8 + 300000 * 0.4 * Math.random()
 let shortTimerAttempts = 0
 
-function subscribe (service) {
-  client.services.subscribe([service])
+async function subscribe (service) {
+  try {
+    await client.services.subscribeAsync([service])
+  } catch (error) {
+    handleSubscriptionError(error)
+  }
 }
 
-client.on('subscription:error', function (params) {
-  const { code, message } = params.error
+function handleSubscriptionError (error) {
+  const { code, message } = error
   if (message.toLowerCase().includes('status code: 54')) {
     if (shortTimerAttempts === 5) {
       // Switch to a long timer after 5 short timer re-tries
@@ -111,7 +126,7 @@ client.on('subscription:error', function (params) {
       setTimeout(() => subscribe('call'), SHORT_TIMER + 15000)
     }
   }
-})
+}
 ```
 
 [COPYRIGHT © 2024 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #

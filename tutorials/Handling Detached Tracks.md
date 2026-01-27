@@ -65,28 +65,28 @@ To display information to the user, a `log` function will be used to append new 
 To start previewing audio/video, we'll have the user click the 'Preview audio/video' button. This will trigger the `previewAudioVideo` function shown below. This function does two simple steps to start the preview:
 
 1. Calls the `media.createLocalMedia` API passing in a `mediaConstraints` object indicating that we want to create an audio and a video track in our media.
-2. Calls the `media.renderTracks` API for each track that was just created to have the media rendered in an HTML element.
+2. Calls the `media.renderTrackAsync` API for each track that was just created to have the media rendered in an HTML element.
 
 An array of media tracks will be returned from the `media.createLocalMedia` API, representing the tracks that have been created.
 
 ```javascript
 // Get user input to create detached tracks to preview audio and video.
-function previewAudioVideo() {
-  client.media
-    .createLocalMedia({ audio: true, video: true })
-    .then(medias => {
-      for (const media of medias) {
-        media.media.tracks.forEach(track => audioVideoTrackIds.push(track))
-      }
+async function previewAudioVideo() {
+  try {
+    const medias = await client.media.createLocalMedia({ audio: true, video: true })
+    audioVideoTrackIds = medias.map(media => media.media.tracks[0])
+  } catch (error) {
+    log('Failed to create local media: ' + error.message)
+    return
+  }
 
-      client.media.renderTracks(audioVideoTrackIds, '#video-preview-container')
-      audioVideoTrackIds.forEach(trackId => log('Track rendered: ' + trackId))
-      disableInput(document.getElementById('preview-av-button'), true)
-      disableInput(document.getElementById('end-preview-av-button'), false)
-    })
-    .catch(error => {
-      log('Error: ' + error.message)
-    })
+  audioVideoTrackIds.forEach(async trackId => {
+    await client.media.renderTrackAsync(trackId, '#video-preview-container')
+    log('Track rendered: ' + trackId)
+  })
+
+  disableInput(document.getElementById('preview-av-button'), true)
+  disableInput(document.getElementById('end-preview-av-button'), false)
 }
 ```
 
@@ -96,11 +96,16 @@ Similar to starting a preview, if we want to stop the preview, the user can clic
 
 ```javascript
 // End audio/video preview
-function endAudioVideoPreview() {
-  audioVideoTrackIds.forEach(trackId => {
-    client.media.disposeLocalMedia(trackId)
-    log('Track disposed: ' + trackId)
+async function endAudioVideoPreview() {
+  audioVideoTrackIds.forEach(async trackId => {
+    try {
+      await client.media.disposeLocalMedia(trackId)
+      log('Track disposed: ' + trackId)
+    } catch (error) {
+      log('Failed to dispose track: ' + error.message)
+    }
   })
+
   disableInput(document.getElementById('preview-av-button'), false)
   disableInput(document.getElementById('end-preview-av-button'), true)
 }
@@ -113,26 +118,23 @@ function endAudioVideoPreview() {
 To start previewing a screenshare, we'll have the user click the 'Preview screenshare' button. This will trigger the `previewScreenshare` function shown below. This function does two simple steps to start the preview:
 
 1. Calls the `media.createLocalMedia` API passing in a `mediaConstraints` object indicating that we want to create a screenshare track in our media. Calling this API will trigger your browser to prompt you to select which screen, window or browser tab you want to share. After making a selection, a new video track will be created, displaying the screen you selected to share.
-2. Calls the `media.renderTracks` API for the track that was just created to have the media rendered in an HTML element.
+2. Calls the `media.renderTrackAsync` API for the track that was just created to have the media rendered in an HTML element.
 
 ```javascript
 // Get user input to create a detached track to preview screenshare.
-function previewScreenshare() {
-  client.media
-    .createLocalMedia({ screen: true })
-    .then(medias => {
-      for (const media of medias) {
-        media.media.tracks.forEach(trackId => screenshareTrackId.push(trackId))
-      }
+async function previewScreenshare() {
+  try {
+    const medias = await client.media.createLocalMedia({ screen: true })
+    screenshareTrackId = medias[0].media.tracks[0]
+  } catch (error) {
+    log('Failed to create screenshare track: ' + error.message)
+    return
+  }
 
-      client.media.renderTracks(screenshareTrackId, '#screenshare-preview-container')
-      screenshareTrackId.forEach(trackId => log('Track rendered: ' + trackId))
-      disableInput(document.getElementById('preview-screenshare-button'), true)
-      disableInput(document.getElementById('end-preview-screenshare-button'), false)
-    })
-    .catch(error => {
-      log('Error: ' + error.message)
-    })
+  await client.media.renderTrackAsync(screenshareTrackId, '#screenshare-preview-container')
+  log('Track rendered: ' + screenshareTrackId)
+  disableInput(document.getElementById('preview-screenshare-button'), true)
+  disableInput(document.getElementById('end-preview-screenshare-button'), false)
 }
 ```
 
@@ -142,13 +144,16 @@ Similar to starting a preview, if we want to stop the preview, the user can clic
 
 ```javascript
 // End the screenshare preview
-function endScreensharePreview() {
-  screenshareTrackId.forEach(trackId => {
-    client.media.disposeLocalMedia(trackId)
-    log('Track disposed: ' + trackId)
-  })
-  disableInput(document.getElementById('preview-screenshare-button'), false)
-  disableInput(document.getElementById('end-preview-screenshare-button'), true)
+async function endScreensharePreview() {
+  try {
+    await client.media.disposeLocalMedia(screenshareTrackId)
+    log('Track disposed: ' + screenshareTrackId)
+    screenshareTrackId = null
+    disableInput(document.getElementById('preview-screenshare-button'), false)
+    disableInput(document.getElementById('end-preview-screenshare-button'), true)
+  } catch (error) {
+    log('Failed to dispose track: ' + error.message)
+  }
 }
 ```
 
@@ -158,9 +163,9 @@ Disposing a track by calling the `media.disposeLocalMedia` API will only stop th
 
 ```javascript
 // Cleanup detached tracks when they have ended.
-function cleanupTrack(track, container) {
-  client.media.removeTracks([track], container)
-  log('Track unrendered: ' + track)
+async function cleanupTrack(trackId, container) {
+  await client.media.removeTrackAsync(trackId, container)
+  log('Track unrendered: ' + trackId)
 }
 ```
 
@@ -184,15 +189,17 @@ The only media event you need to listen for is the `media:trackEnded` event. Thi
 
 ```javascript
 // Setup a listener for ended media tracks.
-client.on('media:trackEnded', function (params) {
+client.on('media:trackEnded', async function (params) {
   let container
   if (audioVideoTrackIds && audioVideoTrackIds.includes(params.trackId)) {
     container = '#video-preview-container'
   }
-  if (screenshareTrackId && screenshareTrackId.includes(params.trackId)) {
+  if (screenshareTrackId && screenshareTrackId === params.trackId) {
     container = '#screenshare-preview-container'
+    disableInput(document.getElementById('preview-screenshare-button'), false)
+    disableInput(document.getElementById('end-preview-screenshare-button'), true)
   }
-  cleanupTrack(params.trackId, container)
+  await cleanupTrack(params.trackId, container)
 })
 ```
 
@@ -200,7 +207,7 @@ client.on('media:trackEnded', function (params) {
 
 Want to play around with this example for yourself? Feel free to edit this code on Codepen.
 
-<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="codepen-form"><input type="hidden" name="data" value=' {&quot;js&quot;:&quot;/**\n * Javascript SDK Handling detached media Demo\n */\n\nconst defaultConfig = {\n  authentication: {\n    server: {\n      base: &apos;blue.rbbn.com&apos;\n    }\n  }\n}\n\nconst { create } = WebRTC\n\n// Setup the SDK with default configuration.\n// As part of configuration, we&apos;ll further apply some customization for logging.\nconst config = {\n  ...defaultConfig,\n  logs: {\n    logLevel: &apos;debug&apos;\n  }\n}\n\nconst client = create(config)\n\n// Enable/disable element\nfunction disableInput(element, disable) {\n  element.disabled = disable\n}\n\n// Utility function for appending messages to the message div.\nfunction log(message) {\n  document.getElementById(&apos;messages&apos;).innerHTML += &apos;<div>&apos; + message + &apos;</div>&apos;\n}\n\nlet audioVideoTrackIds = []\nlet screenshareTrackId = []\n\n// Get user input to create detached tracks to preview audio and video.\nfunction previewAudioVideo() {\n  client.media\n    .createLocalMedia({ audio: true, video: true })\n    .then(medias => {\n      for (const media of medias) {\n        media.media.tracks.forEach(track => audioVideoTrackIds.push(track))\n      }\n\n      client.media.renderTracks(audioVideoTrackIds, &apos;#video-preview-container&apos;)\n      audioVideoTrackIds.forEach(trackId => log(&apos;Track rendered: &apos; + trackId))\n      disableInput(document.getElementById(&apos;preview-av-button&apos;), true)\n      disableInput(document.getElementById(&apos;end-preview-av-button&apos;), false)\n    })\n    .catch(error => {\n      log(&apos;Error: &apos; + error.message)\n    })\n}\n\n// End audio/video preview\nfunction endAudioVideoPreview() {\n  audioVideoTrackIds.forEach(trackId => {\n    client.media.disposeLocalMedia(trackId)\n    log(&apos;Track disposed: &apos; + trackId)\n  })\n  disableInput(document.getElementById(&apos;preview-av-button&apos;), false)\n  disableInput(document.getElementById(&apos;end-preview-av-button&apos;), true)\n}\n\n// Get user input to create a detached track to preview screenshare.\nfunction previewScreenshare() {\n  client.media\n    .createLocalMedia({ screen: true })\n    .then(medias => {\n      for (const media of medias) {\n        media.media.tracks.forEach(trackId => screenshareTrackId.push(trackId))\n      }\n\n      client.media.renderTracks(screenshareTrackId, &apos;#screenshare-preview-container&apos;)\n      screenshareTrackId.forEach(trackId => log(&apos;Track rendered: &apos; + trackId))\n      disableInput(document.getElementById(&apos;preview-screenshare-button&apos;), true)\n      disableInput(document.getElementById(&apos;end-preview-screenshare-button&apos;), false)\n    })\n    .catch(error => {\n      log(&apos;Error: &apos; + error.message)\n    })\n}\n\n// End the screenshare preview\nfunction endScreensharePreview() {\n  screenshareTrackId.forEach(trackId => {\n    client.media.disposeLocalMedia(trackId)\n    log(&apos;Track disposed: &apos; + trackId)\n  })\n  disableInput(document.getElementById(&apos;preview-screenshare-button&apos;), false)\n  disableInput(document.getElementById(&apos;end-preview-screenshare-button&apos;), true)\n}\n\n// Cleanup detached tracks when they have ended.\nfunction cleanupTrack(track, container) {\n  client.media.removeTracks([track], container)\n  log(&apos;Track unrendered: &apos; + track)\n}\n\n// Setup a listener for ended media tracks.\nclient.on(&apos;media:trackEnded&apos;, function (params) {\n  let container\n  if (audioVideoTrackIds && audioVideoTrackIds.includes(params.trackId)) {\n    container = &apos;#video-preview-container&apos;\n  }\n  if (screenshareTrackId && screenshareTrackId.includes(params.trackId)) {\n    container = &apos;#screenshare-preview-container&apos;\n  }\n  cleanupTrack(params.trackId, container)\n})\n\n&quot;,&quot;html&quot;:&quot;<script src=\&quot;https://unpkg.com/@rbbn/webrtc-js-sdk@7.13.0/dist/webrtc.js\&quot;></script>\n\n<div>\n  <fieldset>\n    <legend>Preview audio/video</legend>\n    <div class=\&quot;bottomSpacing\&quot;>\n      <!-- UI for starting audio/video preview. -->\n      <input id=\&quot;preview-av-button\&quot; type=\&quot;button\&quot; value=\&quot;Preview audio/video\&quot; onclick=\&quot;previewAudioVideo();\&quot; />\n      <!-- UI for ending audio/video preview. -->\n      <input id=\&quot;end-preview-av-button\&quot; type=\&quot;button\&quot; value=\&quot;End preview\&quot; onclick=\&quot;endAudioVideoPreview();\&quot; disabled />\n    </div>\n    <div id=\&quot;video-preview-container\&quot;></div>\n  </fieldset>\n  <fieldset>\n    <legend>Preview screenshare</legend>\n    <div class=\&quot;bottomSpacing\&quot;>\n      <!-- UI for starting screenshare preview. -->\n      <input\n        id=\&quot;preview-screenshare-button\&quot;\n        type=\&quot;button\&quot;\n        value=\&quot;Preview screenshare\&quot;\n        onclick=\&quot;previewScreenshare();\&quot;\n      />\n      <!-- UI for ending screenshare preview. -->\n      <input\n        id=\&quot;end-preview-screenshare-button\&quot;\n        type=\&quot;button\&quot;\n        value=\&quot;End preview\&quot;\n        onclick=\&quot;endScreensharePreview();\&quot;\n        disabled\n      />\n    </div>\n    <div id=\&quot;screenshare-preview-container\&quot;></div>\n  </fieldset>\n</div>\n\n<div>\n  <fieldset>\n    <!-- Message output container. -->\n    <legend>Messages</legend>\n    <div id=\&quot;messages\&quot;></div>\n  </fieldset>\n</div>\n\n&quot;,&quot;css&quot;:&quot;video {\n  width: 50% !important;\n}\n\n.bottomSpacing {\n  margin-bottom: 15px;\n}\n\n&quot;,&quot;title&quot;:&quot;Javascript SDK Handling detached media Demo&quot;,&quot;editors&quot;:101} '><input type="image" src="./TryItOn-CodePen.png"></form>
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="codepen-form"><input type="hidden" name="data" value=' {&quot;js&quot;:&quot;/**\n * Javascript SDK Handling detached media Demo\n */\n\nconst defaultConfig = {\n  authentication: {\n    server: {\n      base: &apos;blue.rbbn.com&apos;\n    }\n  }\n}\n\nconst { create } = WebRTC\n\n// Setup the SDK with default configuration.\n// As part of configuration, we&apos;ll further apply some customization for logging.\nconst config = {\n  ...defaultConfig,\n  logs: {\n    logLevel: &apos;debug&apos;\n  }\n}\n\nconst client = create(config)\n\n// Enable/disable element\nfunction disableInput(element, disable) {\n  element.disabled = disable\n}\n\n// Utility function for appending messages to the message div.\nfunction log(message) {\n  document.getElementById(&apos;messages&apos;).innerHTML += &apos;<div>&apos; + message + &apos;</div>&apos;\n}\n\nlet audioVideoTrackIds = []\nlet screenshareTrackId\n\n// Get user input to create detached tracks to preview audio and video.\nasync function previewAudioVideo() {\n  try {\n    const medias = await client.media.createLocalMedia({ audio: true, video: true })\n    audioVideoTrackIds = medias.map(media => media.media.tracks[0])\n  } catch (error) {\n    log(&apos;Failed to create local media: &apos; + error.message)\n    return\n  }\n\n  audioVideoTrackIds.forEach(async trackId => {\n    await client.media.renderTrackAsync(trackId, &apos;#video-preview-container&apos;)\n    log(&apos;Track rendered: &apos; + trackId)\n  })\n\n  disableInput(document.getElementById(&apos;preview-av-button&apos;), true)\n  disableInput(document.getElementById(&apos;end-preview-av-button&apos;), false)\n}\n\n// End audio/video preview\nasync function endAudioVideoPreview() {\n  audioVideoTrackIds.forEach(async trackId => {\n    try {\n      await client.media.disposeLocalMedia(trackId)\n      log(&apos;Track disposed: &apos; + trackId)\n    } catch (error) {\n      log(&apos;Failed to dispose track: &apos; + error.message)\n    }\n  })\n\n  disableInput(document.getElementById(&apos;preview-av-button&apos;), false)\n  disableInput(document.getElementById(&apos;end-preview-av-button&apos;), true)\n}\n\n// Get user input to create a detached track to preview screenshare.\nasync function previewScreenshare() {\n  try {\n    const medias = await client.media.createLocalMedia({ screen: true })\n    screenshareTrackId = medias[0].media.tracks[0]\n  } catch (error) {\n    log(&apos;Failed to create screenshare track: &apos; + error.message)\n    return\n  }\n\n  await client.media.renderTrackAsync(screenshareTrackId, &apos;#screenshare-preview-container&apos;)\n  log(&apos;Track rendered: &apos; + screenshareTrackId)\n  disableInput(document.getElementById(&apos;preview-screenshare-button&apos;), true)\n  disableInput(document.getElementById(&apos;end-preview-screenshare-button&apos;), false)\n}\n\n// End the screenshare preview\nasync function endScreensharePreview() {\n  try {\n    await client.media.disposeLocalMedia(screenshareTrackId)\n    log(&apos;Track disposed: &apos; + screenshareTrackId)\n    screenshareTrackId = null\n    disableInput(document.getElementById(&apos;preview-screenshare-button&apos;), false)\n    disableInput(document.getElementById(&apos;end-preview-screenshare-button&apos;), true)\n  } catch (error) {\n    log(&apos;Failed to dispose track: &apos; + error.message)\n  }\n}\n\n// Cleanup detached tracks when they have ended.\nasync function cleanupTrack(trackId, container) {\n  await client.media.removeTrackAsync(trackId, container)\n  log(&apos;Track unrendered: &apos; + trackId)\n}\n\n// Setup a listener for ended media tracks.\nclient.on(&apos;media:trackEnded&apos;, async function (params) {\n  let container\n  if (audioVideoTrackIds && audioVideoTrackIds.includes(params.trackId)) {\n    container = &apos;#video-preview-container&apos;\n  }\n  if (screenshareTrackId && screenshareTrackId === params.trackId) {\n    container = &apos;#screenshare-preview-container&apos;\n    disableInput(document.getElementById(&apos;preview-screenshare-button&apos;), false)\n    disableInput(document.getElementById(&apos;end-preview-screenshare-button&apos;), true)\n  }\n  await cleanupTrack(params.trackId, container)\n})\n\n&quot;,&quot;html&quot;:&quot;<script src=\&quot;https://unpkg.com/@rbbn/webrtc-js-sdk@7.14.0/dist/webrtc.js\&quot;></script>\n\n<div>\n  <fieldset>\n    <legend>Preview audio/video</legend>\n    <div class=\&quot;bottomSpacing\&quot;>\n      <!-- UI for starting audio/video preview. -->\n      <input id=\&quot;preview-av-button\&quot; type=\&quot;button\&quot; value=\&quot;Preview audio/video\&quot; onclick=\&quot;previewAudioVideo();\&quot; />\n      <!-- UI for ending audio/video preview. -->\n      <input id=\&quot;end-preview-av-button\&quot; type=\&quot;button\&quot; value=\&quot;End preview\&quot; onclick=\&quot;endAudioVideoPreview();\&quot; disabled />\n    </div>\n    <div id=\&quot;video-preview-container\&quot;></div>\n  </fieldset>\n  <fieldset>\n    <legend>Preview screenshare</legend>\n    <div class=\&quot;bottomSpacing\&quot;>\n      <!-- UI for starting screenshare preview. -->\n      <input\n        id=\&quot;preview-screenshare-button\&quot;\n        type=\&quot;button\&quot;\n        value=\&quot;Preview screenshare\&quot;\n        onclick=\&quot;previewScreenshare();\&quot;\n      />\n      <!-- UI for ending screenshare preview. -->\n      <input\n        id=\&quot;end-preview-screenshare-button\&quot;\n        type=\&quot;button\&quot;\n        value=\&quot;End preview\&quot;\n        onclick=\&quot;endScreensharePreview();\&quot;\n        disabled\n      />\n    </div>\n    <div id=\&quot;screenshare-preview-container\&quot;></div>\n  </fieldset>\n</div>\n\n<div>\n  <fieldset>\n    <!-- Message output container. -->\n    <legend>Messages</legend>\n    <div id=\&quot;messages\&quot;></div>\n  </fieldset>\n</div>\n\n&quot;,&quot;css&quot;:&quot;video {\n  width: 50% !important;\n}\n\n.bottomSpacing {\n  margin-bottom: 15px;\n}\n\n&quot;,&quot;title&quot;:&quot;Javascript SDK Handling detached media Demo&quot;,&quot;editors&quot;:101} '><input type="image" src="./TryItOn-CodePen.png"></form>
 
 [COPYRIGHT © 2024 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED]: #
 

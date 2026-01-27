@@ -7,6 +7,23 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.14.0 - 2026-01-27
+
+### Fixed
+
+- Improved Call support for failed operation on Safari. `KJS-433`
+  - On failure, the SDK will attempt to rollback the operation to better handle subsequent operations.
+- When a call is ended all remote tracks on the call are now stopped. `KJS-2798`
+- Fixed a Call issue where the native WebRTC resources are not rolled back on local hold and unhold operations. `KJS-3207`
+- Fixed the emission of `media:trackEnded` event for local tracks that are explicitly ended using the SDK's `media.disposeLocalMedia` async API (i.e. the solicited usecase). In this case, the event is no longer emitted. For the case when a local track is ended unsolicited (e.g. via Browser's own capability), the event is still emitted. `KJS-3288`
+- Fixed the `call.replaceTrack` and `call.replaceTrackAsync` API's validation on track ID by detecting invalid IDs within the provided input. `KJS-3302`
+
+### Changed
+
+- Changed Call behaviour on unrecoverable negotation failure to end the call. `KJS-433`
+  - Previously, the call remained active but would encounter errors on subsequent operations.
+  - The call will now be ended, since the call is in an error state, to prevent further issues and confusion.
+
 ## 7.13.0 - 2025-12-16
 
 ### Fixed
