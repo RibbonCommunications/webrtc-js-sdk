@@ -7,6 +7,14 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.15.0 - 2026-02-25
+
+### Fixed
+
+- Clean up WebRTC resources for negotiation operations (make, hold, unhold, add media, remove media, iceRestart)on remote answer failure. `KJS-2515`
+- Fixed a CallHistory issue where two entries would be created for a call when it ended in certain failure scenarios. `KJS-2541`
+- Fixed an issue where negotiation operations (addMedia, removeMedia, hold, unhold) would not throw an error if they failed, but rollback succeeded. Rollback should still be considered a failure. `KJS-3069`
+
 ## 7.14.0 - 2026-01-27
 
 ### Fixed
@@ -20,7 +28,7 @@ Ribbon WebRTC SDK change log.
 
 ### Changed
 
-- Changed Call behaviour on unrecoverable negotation failure to end the call. `KJS-433`
+- Changed Call behaviour on unrecoverable negotiation failure to end the call. `KJS-433`
   - Previously, the call remained active but would encounter errors on subsequent operations.
   - The call will now be ended, since the call is in an error state, to prevent further issues and confusion.
 
