@@ -5058,6 +5058,20 @@ function initOperation(bottle) {
 
 /***/ }),
 
+/***/ 6001:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var userAgent = __webpack_require__(98060);
+
+var webkit = userAgent.match(/AppleWebKit\/(\d+)\./);
+
+module.exports = !!webkit && +webkit[1];
+
+
+/***/ }),
+
 /***/ 6022:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -5585,6 +5599,42 @@ function defaultLogFormatter(entry) {
   const log = entry.messages[0];
   return `${logInfo} - ${log}`;
 }
+
+/***/ }),
+
+/***/ 7697:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(79117);
+var userAgent = __webpack_require__(98060);
+
+var process = globalThis.process;
+var Deno = globalThis.Deno;
+var versions = process && process.versions || Deno && Deno.version;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+  // but their correct versions are not interesting for us
+  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+}
+
+// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+// so check `userAgent` even if `.v8` exists, but 0
+if (!version && userAgent) {
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = +match[1];
+  }
+}
+
+module.exports = version;
+
 
 /***/ }),
 
@@ -13357,7 +13407,7 @@ __webpack_require__(62234);
 var _manager = _interopRequireDefault(__webpack_require__(95398));
 var _channel = __webpack_require__(46937);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(81039);
+var _version = __webpack_require__(82599);
 var _errors = _interopRequireWildcard(__webpack_require__(75412));
 var _uuid = __webpack_require__(84596);
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
@@ -15404,7 +15454,7 @@ __webpack_require__(91883);
 __webpack_require__(70286);
 var _logs = __webpack_require__(69932);
 var _mergeValues = _interopRequireDefault(__webpack_require__(7485));
-var _version = __webpack_require__(81039);
+var _version = __webpack_require__(82599);
 var _defaults = __webpack_require__(24679);
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -20811,42 +20861,6 @@ function keysIn(object) {
 }
 
 module.exports = keysIn;
-
-
-/***/ }),
-
-/***/ 25309:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-var globalThis = __webpack_require__(79117);
-var userAgent = __webpack_require__(98060);
-
-var process = globalThis.process;
-var Deno = globalThis.Deno;
-var versions = process && process.versions || Deno && Deno.version;
-var v8 = versions && versions.v8;
-var match, version;
-
-if (v8) {
-  match = v8.split('.');
-  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
-  // but their correct versions are not interesting for us
-  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
-}
-
-// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
-// so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent) {
-  match = userAgent.match(/Edge\/(\d+)/);
-  if (!match || match[1] >= 74) {
-    match = userAgent.match(/Chrome\/(\d+)/);
-    if (match) version = +match[1];
-  }
-}
-
-module.exports = version;
 
 
 /***/ }),
@@ -34716,7 +34730,7 @@ var _effects = __webpack_require__(89979);
 var _bottlejs = _interopRequireDefault(__webpack_require__(8997));
 var _mergeValues = _interopRequireDefault(__webpack_require__(7485));
 var _utils = __webpack_require__(1011);
-var _version = __webpack_require__(81039);
+var _version = __webpack_require__(82599);
 var _intervalFactory = _interopRequireDefault(__webpack_require__(73181));
 var _validation = __webpack_require__(52932);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -40859,6 +40873,34 @@ function watchDeviceEvents(manager, handler) {
   };
   return unsubscribe;
 }
+
+/***/ }),
+
+/***/ 42311:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _validate = _interopRequireDefault(__webpack_require__(4564));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function version(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  return parseInt(uuid.slice(14, 15), 16);
+}
+
+var _default = version;
+exports["default"] = _default;
 
 /***/ }),
 
@@ -47266,7 +47308,7 @@ __webpack_require__(81045);
 __webpack_require__(5350);
 var _selectors = __webpack_require__(40481);
 var _kandyWebrtc = __webpack_require__(37654);
-var _version = __webpack_require__(81039);
+var _version = __webpack_require__(82599);
 var _sdkId = _interopRequireDefault(__webpack_require__(20855));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Call plugin.
@@ -47953,7 +47995,7 @@ module.exports = mergeWith;
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(25309);
+var V8_VERSION = __webpack_require__(7697);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(79117);
 
@@ -51747,34 +51789,6 @@ module.exports = getFuncName;
 
 /***/ }),
 
-/***/ 51165:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _validate = _interopRequireDefault(__webpack_require__(4564));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function version(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  return parseInt(uuid.slice(14, 15), 16);
-}
-
-var _default = version;
-exports["default"] = _default;
-
-/***/ }),
-
 /***/ 51187:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -54474,6 +54488,20 @@ function createMiddleware(context) {
 function shouldHandlePattern(action) {
   return action.type === _actionTypes.NOTIFICATION_RECEIVED && action.payload.notificationMessage.eventType === 'callCancel';
 }
+
+/***/ }),
+
+/***/ 54107:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var userAgent = __webpack_require__(98060);
+
+var firefox = userAgent.match(/firefox\/(\d+)/i);
+
+module.exports = !!firefox && +firefox[1];
+
 
 /***/ }),
 
@@ -65001,7 +65029,7 @@ var _cloneDeep2 = _interopRequireDefault(__webpack_require__(89321));
 var _selectors = __webpack_require__(45590);
 var _selectors2 = __webpack_require__(87075);
 var _logs = __webpack_require__(69932);
-var _version = __webpack_require__(81039);
+var _version = __webpack_require__(82599);
 var _toQueryString = _interopRequireDefault(__webpack_require__(2633));
 var _effects = __webpack_require__(89979);
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -66778,10 +66806,10 @@ var fails = __webpack_require__(5234);
 var aCallable = __webpack_require__(44977);
 var internalSort = __webpack_require__(9295);
 var ArrayBufferViewCore = __webpack_require__(47223);
-var FF = __webpack_require__(91055);
+var FF = __webpack_require__(54107);
 var IE_OR_EDGE = __webpack_require__(84598);
-var V8 = __webpack_require__(25309);
-var WEBKIT = __webpack_require__(88733);
+var V8 = __webpack_require__(7697);
+var WEBKIT = __webpack_require__(6001);
 
 var aTypedArray = ArrayBufferViewCore.aTypedArray;
 var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
@@ -68485,7 +68513,7 @@ $({ target: 'Set', proto: true, real: true, forced: !setMethodAcceptSetLike('dif
 
 var globalThis = __webpack_require__(79117);
 var fails = __webpack_require__(5234);
-var V8 = __webpack_require__(25309);
+var V8 = __webpack_require__(7697);
 var ENVIRONMENT = __webpack_require__(11078);
 
 var structuredClone = globalThis.structuredClone;
@@ -79518,29 +79546,6 @@ function createLogOperations(container) {
 
 /***/ }),
 
-/***/ 81039:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.getVersion = getVersion;
-/**
- * Returns the version of the currently running SDK.
- *
- * It must be used by any plugins (including the factory) as the unique source of truth when it comes to determine the current SDK version.
- * The actual version value is provided by the build process scripts (aka webpack.config.***.js) which simply do a string substitution
- * for the @@ tag below with actual version value.
- */
-function getVersion() {
-  return '6.17.0';
-}
-
-/***/ }),
-
 /***/ 81045:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -80969,6 +80974,29 @@ function getRemoteParticipant(targetCall, notification, domain) {
 
 module.exports = __webpack_require__(50593);
 
+
+/***/ }),
+
+/***/ 82599:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.getVersion = getVersion;
+/**
+ * Returns the version of the currently running SDK.
+ *
+ * It must be used by any plugins (including the factory) as the unique source of truth when it comes to determine the current SDK version.
+ * The actual version value is provided by the build process scripts (aka webpack.config.***.js) which simply do a string substitution
+ * for the @@ tag below with actual version value.
+ */
+function getVersion() {
+  return '6.17.0';
+}
 
 /***/ }),
 
@@ -83773,7 +83801,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(93423));
 
 var _nil = _interopRequireDefault(__webpack_require__(35911));
 
-var _version = _interopRequireDefault(__webpack_require__(51165));
+var _version = _interopRequireDefault(__webpack_require__(42311));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -86599,20 +86627,6 @@ module.exports = function (iterator, kind, value) {
   anObject(innerResult);
   return value;
 };
-
-
-/***/ }),
-
-/***/ 88733:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-var userAgent = __webpack_require__(98060);
-
-var webkit = userAgent.match(/AppleWebKit\/(\d+)\./);
-
-module.exports = !!webkit && +webkit[1];
 
 
 /***/ }),
@@ -91979,20 +91993,6 @@ function trimStart(string, chars, guard) {
 }
 
 module.exports = trimStart;
-
-
-/***/ }),
-
-/***/ 91055:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-var userAgent = __webpack_require__(98060);
-
-var firefox = userAgent.match(/firefox\/(\d+)/i);
-
-module.exports = !!firefox && +firefox[1];
 
 
 /***/ }),
