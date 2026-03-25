@@ -334,17 +334,6 @@ Returns **[Object][7]** Object containing `browser` and `version` information.
 
 ### updateToken
 
-If you're authenticating with tokens that expire and have not provided a refresh token to the `connect` function, you can update your access token with `updateToken` before it expires to stay connected.
-
-#### Parameters
-
-*   `credentials` **[Object][7]** The credentials object.
-
-    *   `credentials.username` **[string][8]** The username without the application's domain.
-    *   `credentials.accessToken` **[string][8]** An access token for the user with the provided user Id.
-
-### updateToken
-
 If you're authenticating with tokens that expire, you can update your access token with `updateToken` before it expires to stay connected.
 
 #### Parameters
@@ -451,27 +440,6 @@ The bearerAccessToken provided establishes what can be accessed by the SDK.
 client.setCredentials({
   username: 'alfred@example.com',
   bearerAccessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-});
-```
-
-### setCredentials
-
-Provides an access token to any backend services that the SDK instance deals with.
-The access token provided establishes what can be accessed by the SDK.
-
-#### Parameters
-
-*   `credentials` **[Object][7]** The credentials object.
-
-    *   `credentials.username` **[string][8]** The username without the application's domain.
-    *   `credentials.accessToken` **[string][8]** An accessToken retrieved using the authentication APIs of the platform. Used for CIM authentication.
-
-#### Examples
-
-```javascript
-client.setCredentials({
-  username: 'alfred@example.com',
-  accessToken: 'ATgtBl8QAoJaeeJU!zhARKBYaN2BUxFQsc8F...'
 });
 ```
 
