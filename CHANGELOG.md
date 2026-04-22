@@ -7,6 +7,13 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.16.0 - 2026-04-22
+
+### Fixed
+
+- Fixed an issue where `getLocalMedia` would return all detached media, regardless of if the tracks involved are live or not. We now only return media with live tracks. `KJS-3384`
+- Fixed an issue where we weren't properly updating call state when removing tracks. This resulted with inactive tracks being added back to a call after they've been removed and media is renegotiated (hold/unhold). `KJS-3404`
+
 ## 7.15.0 - 2026-02-25
 
 ### Fixed

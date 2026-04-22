@@ -4101,7 +4101,7 @@ Returns **[Promise][49]<[Array][20]<[media.DetachedMedia][42]>>** Resolves with 
 
 ### getLocalMedia
 
-Get local media Tracks.
+Gets an array of live detached media objects.
 
 #### Examples
 
@@ -4111,7 +4111,7 @@ await client.media.createLocalMedia({ video: true })
 const medias = client.media.getLocalMedia()
 ```
 
-Returns **[Array][20]<[media.DetachedMedia][42]>** An array of detached media objects.
+Returns **[Array][20]<[media.DetachedMedia][42]>** An array of live detached media objects.
 
 ### disposeLocalMedia
 

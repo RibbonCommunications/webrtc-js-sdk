@@ -52198,7 +52198,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Get local media Tracks."
+                    "value": "Gets an array of live detached media objects."
                   }
                 ]
               }
@@ -52229,7 +52229,7 @@
             },
             {
               "title": "returns",
-              "description": "An array of detached media objects.",
+              "description": "An array of live detached media objects.",
               "lineNumber": 6,
               "type": {
                 "type": "TypeApplication",
@@ -52268,7 +52268,7 @@
                 "column": 4
               },
               "end": {
-                "line": 126,
+                "line": 128,
                 "column": 5
               }
             },
@@ -52293,7 +52293,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "An array of detached media objects."
+                        "value": "An array of live detached media objects."
                       }
                     ]
                   }
@@ -52448,22 +52448,22 @@
           ],
           "loc": {
             "start": {
-              "line": 128,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 141,
               "column": 7
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 140,
+                "line": 142,
                 "column": 4
               },
               "end": {
-                "line": 154,
+                "line": 156,
                 "column": 5
               }
             },
@@ -52814,22 +52814,22 @@
           ],
           "loc": {
             "start": {
-              "line": 157,
+              "line": 159,
               "column": 2
             },
             "end": {
-              "line": 205,
+              "line": 207,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 206,
+                "line": 208,
                 "column": 2
               },
               "end": {
-                "line": 217,
+                "line": 219,
                 "column": 3
               }
             },
@@ -53148,22 +53148,22 @@
           ],
           "loc": {
             "start": {
-              "line": 219,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 281,
+              "line": 283,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 282,
+                "line": 284,
                 "column": 2
               },
               "end": {
-                "line": 293,
+                "line": 295,
                 "column": 3
               }
             },
@@ -53433,22 +53433,22 @@
           ],
           "loc": {
             "start": {
-              "line": 295,
+              "line": 297,
               "column": 2
             },
             "end": {
-              "line": 321,
+              "line": 323,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 322,
+                "line": 324,
                 "column": 2
               },
               "end": {
-                "line": 375,
+                "line": 377,
                 "column": 3
               }
             },
@@ -53760,22 +53760,22 @@
           ],
           "loc": {
             "start": {
-              "line": 377,
+              "line": 379,
               "column": 2
             },
             "end": {
-              "line": 416,
+              "line": 418,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 417,
+                "line": 419,
                 "column": 2
               },
               "end": {
-                "line": 458,
+                "line": 460,
                 "column": 3
               }
             },
@@ -54085,22 +54085,22 @@
           ],
           "loc": {
             "start": {
-              "line": 460,
+              "line": 462,
               "column": 2
             },
             "end": {
-              "line": 482,
+              "line": 484,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 483,
+                "line": 485,
                 "column": 2
               },
               "end": {
-                "line": 505,
+                "line": 507,
                 "column": 3
               }
             },
@@ -54313,22 +54313,22 @@
           ],
           "loc": {
             "start": {
-              "line": 507,
+              "line": 509,
               "column": 2
             },
             "end": {
-              "line": 543,
+              "line": 545,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 544,
+                "line": 546,
                 "column": 2
               },
               "end": {
-                "line": 555,
+                "line": 557,
                 "column": 3
               }
             },
@@ -54543,22 +54543,22 @@
           ],
           "loc": {
             "start": {
-              "line": 557,
+              "line": 559,
               "column": 2
             },
             "end": {
-              "line": 571,
+              "line": 573,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 572,
+                "line": 574,
                 "column": 2
               },
               "end": {
-                "line": 594,
+                "line": 596,
                 "column": 3
               }
             },
@@ -54753,22 +54753,22 @@
           ],
           "loc": {
             "start": {
-              "line": 596,
+              "line": 598,
               "column": 2
             },
             "end": {
-              "line": 624,
+              "line": 626,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 625,
+                "line": 627,
                 "column": 2
               },
               "end": {
-                "line": 636,
+                "line": 638,
                 "column": 3
               }
             },
@@ -54968,22 +54968,22 @@
           ],
           "loc": {
             "start": {
-              "line": 638,
+              "line": 640,
               "column": 2
             },
             "end": {
-              "line": 651,
+              "line": 653,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 652,
+                "line": 654,
                 "column": 2
               },
               "end": {
-                "line": 664,
+                "line": 666,
                 "column": 3
               }
             },
@@ -55211,22 +55211,22 @@
           ],
           "loc": {
             "start": {
-              "line": 666,
+              "line": 668,
               "column": 2
             },
             "end": {
-              "line": 696,
+              "line": 698,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 697,
+                "line": 699,
                 "column": 2
               },
               "end": {
-                "line": 700,
+                "line": 702,
                 "column": 3
               }
             },
