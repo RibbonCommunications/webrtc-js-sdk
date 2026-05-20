@@ -2283,34 +2283,6 @@ $({ global: true, constructor: true, forced: FORCED }, {
 
 /***/ }),
 
-/***/ 1074:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _validate = _interopRequireDefault(__webpack_require__(4564));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function version(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  return parseInt(uuid.slice(14, 15), 16);
-}
-
-var _default = version;
-exports["default"] = _default;
-
-/***/ }),
-
 /***/ 1112:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -2443,42 +2415,6 @@ function arrayPush(array, values) {
 }
 
 module.exports = arrayPush;
-
-
-/***/ }),
-
-/***/ 1148:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-var globalThis = __webpack_require__(9117);
-var userAgent = __webpack_require__(8060);
-
-var process = globalThis.process;
-var Deno = globalThis.Deno;
-var versions = process && process.versions || Deno && Deno.version;
-var v8 = versions && versions.v8;
-var match, version;
-
-if (v8) {
-  match = v8.split('.');
-  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
-  // but their correct versions are not interesting for us
-  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
-}
-
-// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
-// so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent) {
-  match = userAgent.match(/Edge\/(\d+)/);
-  if (!match || match[1] >= 74) {
-    match = userAgent.match(/Chrome\/(\d+)/);
-    if (match) version = +match[1];
-  }
-}
-
-module.exports = version;
 
 
 /***/ }),
@@ -8874,7 +8810,7 @@ var _clientProxy = _interopRequireDefault(__webpack_require__(7216));
 var mediaApis = _interopRequireWildcard(__webpack_require__(1937));
 var _events = _interopRequireDefault(__webpack_require__(6880));
 var _logs = __webpack_require__(9932);
-var _version = __webpack_require__(5858);
+var _version = __webpack_require__(8311);
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // Other plugins.
@@ -10727,7 +10663,7 @@ var _v4 = _interopRequireDefault(__webpack_require__(3423));
 
 var _nil = _interopRequireDefault(__webpack_require__(5911));
 
-var _version = _interopRequireDefault(__webpack_require__(1074));
+var _version = _interopRequireDefault(__webpack_require__(6449));
 
 var _validate = _interopRequireDefault(__webpack_require__(4564));
 
@@ -13691,29 +13627,6 @@ module.exports = flatten;
 
 /***/ }),
 
-/***/ 5858:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.getVersion = getVersion;
-/**
- * Returns the version of the currently running SDK.
- *
- * It must be used by any plugins (including the factory) as the unique source of truth when it comes to determine the current SDK version.
- * The actual version value is provided by the build process scripts (aka webpack.config.***.js) which simply do a string substitution
- * for the @@ tag below with actual version value.
- */
-function getVersion() {
-  return '6.17.0';
-}
-
-/***/ }),
-
 /***/ 5860:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -16138,6 +16051,34 @@ const miscActions = exports.miscActions = miscActionsImport;
 
 /***/ }),
 
+/***/ 6449:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _validate = _interopRequireDefault(__webpack_require__(4564));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function version(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  return parseInt(uuid.slice(14, 15), 16);
+}
+
+var _default = version;
+exports["default"] = _default;
+
+/***/ }),
+
 /***/ 6465:
 /***/ ((module) => {
 
@@ -18287,7 +18228,7 @@ var _converters = _interopRequireDefault(__webpack_require__(2046));
 var _webrtcEvents = _interopRequireDefault(__webpack_require__(1336));
 var _channel = __webpack_require__(6937);
 var _logs = __webpack_require__(9932);
-var _version = __webpack_require__(5858);
+var _version = __webpack_require__(8311);
 var _errors = _interopRequireWildcard(__webpack_require__(5412));
 var _uuid = __webpack_require__(4596);
 var _kandyWebrtc = _interopRequireDefault(__webpack_require__(7654));
@@ -19138,6 +19079,42 @@ function stackHas(key) {
 }
 
 module.exports = stackHas;
+
+
+/***/ }),
+
+/***/ 7489:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(9117);
+var userAgent = __webpack_require__(8060);
+
+var process = globalThis.process;
+var Deno = globalThis.Deno;
+var versions = process && process.versions || Deno && Deno.version;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+  // but their correct versions are not interesting for us
+  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+}
+
+// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+// so check `userAgent` even if `.v8` exists, but 0
+if (!version && userAgent) {
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = +match[1];
+  }
+}
+
+module.exports = version;
 
 
 /***/ }),
@@ -20832,6 +20809,29 @@ module.exports = function (O, options) {
   }
 };
 
+
+/***/ }),
+
+/***/ 8311:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.getVersion = getVersion;
+/**
+ * Returns the version of the currently running SDK.
+ *
+ * It must be used by any plugins (including the factory) as the unique source of truth when it comes to determine the current SDK version.
+ * The actual version value is provided by the build process scripts (aka webpack.config.***.js) which simply do a string substitution
+ * for the @@ tag below with actual version value.
+ */
+function getVersion() {
+  return '6.17.0';
+}
 
 /***/ }),
 
@@ -23626,7 +23626,7 @@ module.exports = root;
 "use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(1148);
+var V8_VERSION = __webpack_require__(7489);
 var fails = __webpack_require__(5234);
 var globalThis = __webpack_require__(9117);
 
