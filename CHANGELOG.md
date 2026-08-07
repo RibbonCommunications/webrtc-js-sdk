@@ -7,6 +7,12 @@ Ribbon WebRTC SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 7.17.0 - 2026-08-07
+
+### Changed
+
+- Upgraded some of the WebRTC's package dependencies to use more recent versions. Packages upgraded: lodash & uuid.
+
 ## 7.16.0 - 2026-04-22
 
 ### Fixed

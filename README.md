@@ -14,8 +14,8 @@ To install a particular build with the Github URL, run:
 
 ### In the browser :
 ```html
-<script src="https://unpkg.com/@rbbn/webrtc-js-sdk@7.16.0/dist/webrtc.js"
-  integrity="sha384-jaR0zt9UoAJ7DmuPhnF+lrWYGQWOEveWkBS/BaDfoNxG+8CYzB1LdbnrSDDXMOBO"
+<script src="https://unpkg.com/@rbbn/webrtc-js-sdk@7.17.0/dist/webrtc.js"
+  integrity="sha384-JArGbZejinuye/WqAU1aIDe9imvNdM9muGRDyd84SN/y+w0NqqvnoLlIWPTshuov"
   crossorigin="anonymous">
 </script>
 ```
